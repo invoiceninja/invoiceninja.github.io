@@ -1,15 +1,30 @@
 language: node_js
 node_js:
-  - lts/*
+    - "10"
+env:
+    - CXX=g++-4.8
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-4.8
 install:
-  - npm i # npm ci
+    - npm install -g vuepress
 script:
-  - npm run docs:build
+    - npm run docs:build
+cache:
+    directories:
+        - "node_modules"
+notifications:
+    email: false
 deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: docs/.vuepress/dist
-  github_token: $GITHUB_TOKEN
-  keep_history: true
-  on:
-    branch: master
+    provider: pages
+    skip-cleanup: true
+    local_dir: docs/.vuepress/dist
+    github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    repo: invoiceninja/invoiceninja.github.io
+    keep-history: true
+    target-branch: master
+    on:
+        branch: master
