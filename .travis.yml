@@ -13,7 +13,7 @@ install:
     - yarn global add vuepress
     - yarn add -D vuepress-plugin-versioning
 script:
-    - yarn run build
+    - vuepress build
 cache:
     directories:
         - "node_modules"
