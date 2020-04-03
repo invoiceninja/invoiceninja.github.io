@@ -1,1 +1,1 @@
-## Invoice Ninja - documentation
+## Invoice Ninja - documentation x 2
