@@ -27,7 +27,7 @@
 #    keep-history: true
 #    target-branch: master
 #    on:
-        branch: master
+#        branch: master
 
 language: node_js
 node_js:
