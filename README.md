@@ -1,1 +1,1 @@
-# Hello VuePress
+# InvoiceNinja Documentation using VuePress
