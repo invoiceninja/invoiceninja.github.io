@@ -13,5 +13,5 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_REPO: invoiceninja/invoiceninja.github.io
         TARGET_BRANCH: master
-        BUILD_SCRIPT: npm ci && npm run docs:build
+        BUILD_SCRIPT: npm i && npm run docs:build
         BUILD_DIR: docs/.vuepress/dist/
