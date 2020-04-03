@@ -8,6 +8,17 @@ module.exports = {
         nav: [
             { text: 'Home', link: '/' },
             { text: 'Github', link: 'http://github.com/invoiceninja/invoiceninja/' },
-        ]
+        ],
+        sidebar: [
+	      {
+	        title: 'Introduction',   // required
+	        path: '/introduction/',      // optional, which should be a absolute path.
+	        collapsable: false, // optional, defaults to true
+	        sidebarDepth: 1,    // optional, defaults to 1
+	        children: [
+	          '/'
+	        ]
+	      }
+		]
     }
 };
