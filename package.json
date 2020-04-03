@@ -1,22 +1,29 @@
 {
-	"name": "invoiceninja.github.io",
-	"version": "0.0.1",
-	"description": "Static documentation website built with VuePress and deployed to Github Pages",
-	"scripts": {
-		"docs:build":"vuepress build docs",
-		"start": "vuepress dev",
-		"build": "vuepress build"
-	},
-	"repository": "https://github.com/invoiceninja/invoiceninja.github.io",
-	"keywords": [
-		"VuePress",
-		"GitHub",
-		"Pages",
-		"Invoice Ninja"
-	],
-	"author": "David Bomba <turbo124@gmail.com>",
-	"license": "AAL",
-	"devDependencies": {
-		"vuepress": "1.4.0"
-	}
+  "name": "invoiceninja.github.io",
+  "version": "0.0.1",
+  "description": "Static documentation website built with VuePress and deployed to Github Pages",
+  "scripts": {
+    "docs:build": "vuepress build docs",
+    "start": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/invoiceninja/invoiceninja.github.io.git"
+  },
+  "keywords": [
+    "VuePress",
+    "GitHub",
+    "Pages",
+    "Invoice Ninja"
+  ],
+  "author": "David Bomba <turbo124@gmail.com>",
+  "license": "AAL",
+  "devDependencies": {
+    "vuepress": "1.4.0"
+  },
+  "bugs": {
+    "url": "https://github.com/invoiceninja/invoiceninja.github.io/issues"
+  },
+  "homepage": "https://github.com/invoiceninja/invoiceninja.github.io#readme"
 }
