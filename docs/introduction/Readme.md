@@ -1,2 +1,2 @@
-![Flutter](/images/flutter.png)
-![Laravel](/images/laravel.svg)
+![Flutter](/flutter.png)
+![Laravel](/laravel.svg)
