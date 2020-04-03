@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"description": "Static documentation website built with VuePress and deployed to Github Pages",
 	"scripts": {
+		"docs:build":"vuepress build docs",
 		"start": "vuepress dev",
 		"build": "vuepress build"
 	},
