@@ -11,7 +11,7 @@ addons:
             - g++-4.8
 install:
     - yarn global add vuepress
-    - yarn add -D vuepress-plugin-versioning
+    - yarn global add vuepress-plugin-versioning
 script:
     - vuepress build
 cache:
