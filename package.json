@@ -20,7 +20,8 @@
   "author": "David Bomba <turbo124@gmail.com>",
   "license": "AAL",
   "devDependencies": {
-    "vuepress": "1.4.0"
+    "vuepress": "1.4.0",
+    "vuepress-plugin-versioning": "^4.0.1"
   },
   "bugs": {
     "url": "https://github.com/invoiceninja/invoiceninja.github.io/issues"
