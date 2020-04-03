@@ -28,5 +28,3 @@ or
 ```sh
 yarn start
 ```
-
-## Build
