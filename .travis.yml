@@ -11,7 +11,7 @@ addons:
             - g++-4.8
 install:
     - npm install -g vuepress
-    - npm i -D vuepress-plugin-versioning
+    - npm install -g vuepress-plugin-versioning
 script:
     - npm run docs:build
 cache:
