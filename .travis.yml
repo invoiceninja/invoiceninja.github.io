@@ -10,10 +10,10 @@ addons:
         packages:
             - g++-4.8
 install:
-    - npm install -g vuepress
-    - npm install -g vuepress-plugin-versioning
+    - yarn global add vuepress
+    - yarn add -D vuepress-plugin-versioning
 script:
-    - npm run docs:build
+    - yarn run build
 cache:
     directories:
         - "node_modules"
