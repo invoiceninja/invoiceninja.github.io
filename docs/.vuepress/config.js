@@ -12,6 +12,13 @@ module.exports = {
         ],
         sidebar: [
 	      {
+	        title: 'Home',   // required
+	        path: '/',      // optional, which should be a absolute path.
+	        collapsable: false, // optional, defaults to true
+	        sidebarDepth: 1,    // optional, defaults to 1
+	        children: []
+	      },
+	      {
 	        title: 'Introduction',   // required
 	        path: '/introduction/',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
