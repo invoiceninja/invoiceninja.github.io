@@ -22,7 +22,8 @@
   "devDependencies": {
     "vuepress": "1.4.0",
     "vuepress-plugin-apidocs": "^4.3.0",
-    "vuepress-plugin-versioning": "^4.0.1"
+    "vuepress-plugin-versioning": "^4.0.1",
+    "vuepress-theme-titanium": "^4.0.1"
   },
   "bugs": {
     "url": "https://github.com/invoiceninja/invoiceninja.github.io/issues"
