@@ -1,0 +1,13 @@
+{
+  "sidebar": [
+    {
+      "title": "Introduction",
+      "path": "/introduction/",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": [
+        "/"
+      ]
+    }
+  ]
+}
