@@ -21,6 +21,7 @@
   "license": "AAL",
   "devDependencies": {
     "vuepress": "1.4.0",
+    "vuepress-plugin-apidocs": "^4.3.0",
     "vuepress-plugin-versioning": "^4.0.1"
   },
   "bugs": {

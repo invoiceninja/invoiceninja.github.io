@@ -1,8 +1,20 @@
-module.exports = {
+module.exports = context => ({
+	  plugins: [
+	    ['versioning', {
+	      async onNewVersion(version, versionDestPath) {
+	        const metadataFile = path.join(context.sourceDir, 'api', 'api.json')
+	        if (await fs.exists(metadataFile)) {
+	          const versioneddMetadataFile = path.join(versionDestPath, 'api', 'api.json')
+	          await fs.copyFile(metadataFile, versioneddMetadataFile)
+	        }
+	      }
+	    }],
+	    'apidocs'
+	  ]
+	},
     title: 'InvoiceNinja',
     description: "A to Z documentation for Invoice InvoiceNinja",
     base: '/next/', 
-    plugins: ['versioning'],
     themeConfig:{
 	    lastUpdated: 'Last Updated', 
 	    smoothScroll: true,
@@ -27,4 +39,4 @@ module.exports = {
 	      }
 		]
     }
-};
+});
