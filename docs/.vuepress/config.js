@@ -18,13 +18,6 @@ module.exports = {
 	        children: []
 	      },
 	      {
-	        title: 'Introduction',   // required
-	        path: '/introduction/',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
-	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
-	      },
-	      {
 	        title: 'Clients',   // required
 	        path: '/clients/',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
@@ -64,7 +57,9 @@ module.exports = {
 	        path: '/selfhost/',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
+	        children: [
+	        	['api', 'API'],
+	        ]
 	      }
 		]
     }
