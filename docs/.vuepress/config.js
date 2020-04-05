@@ -1,7 +1,17 @@
-module.exports = {
+const path = require('path')
+
+	module.exports = context => ({
     title: 'Invoice Ninja',
     description: "A to Z documentation for Invoice Ninja",
     base: '/', 
+	plugins: ['versioning', {
+		versionedSourceDir: path.resolve(context.sourceDir, '..', 'versioned_docs'),
+	    pagesSourceDir: path.resolve(context.sourceDir, '..', 'unversioned_pages'),
+	    onNewVersion(version, versionDestPath) {
+	      // post-create hook
+	      console.log(`Created version ${version} in ${versionDestPath}`)
+	    }
+	}],
     markdown: {
     	lineNumbers: true
   	},
@@ -11,6 +21,9 @@ module.exports = {
         nav: [
             { text: 'Home', link: '/' },
             { text: 'Github', link: 'http://github.com/invoiceninja/invoiceninja/' },
+            { text: 'Version', items: [
+            	{ text: 'Master', link: 'https://invoiceninja.github.io/next/'}
+            ]}
         ],
         sidebar: [
 	      {
@@ -67,4 +80,4 @@ module.exports = {
 	      }
 		]
     }
-};
+})
