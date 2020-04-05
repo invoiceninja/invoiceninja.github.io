@@ -20,7 +20,7 @@ const path = require('path')
 	    lastUpdated: 'Last Updated', 
 	    smoothScroll: true,
         nav: [
-            { text: 'Home', link: '/next/home.html' },
+            { text: 'Home', link: '/next/' },
             { text: 'Github', link: 'http://github.com/invoiceninja/invoiceninja/' },
             { text: 'Version', items: [
             	{ text: 'Master', link: 'https://invoiceninja.github.io/', target:'_self', rel:''}
