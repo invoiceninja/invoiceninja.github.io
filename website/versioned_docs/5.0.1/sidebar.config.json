@@ -2,14 +2,14 @@
   "sidebar": [
     {
       "title": "Home",
-      "path": "next/",
+      "path": "5.0.1/",
       "collapsable": false,
       "sidebarDepth": 1,
       "children": []
     },
     {
       "title": "Introduction",
-      "path": "next/introduction/",
+      "path": "5.0.1/introduction",
       "collapsable": false,
       "sidebarDepth": 1,
       "children": []
