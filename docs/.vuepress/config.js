@@ -1,6 +1,7 @@
 const path = require('path')
 
 	module.exports = context => ({
+	home: false,
     title: 'Invoice Ninja',
     description: "A to Z documentation for Invoice Ninja",
     base: '/', 
@@ -19,7 +20,7 @@ const path = require('path')
 	    lastUpdated: 'Last Updated', 
 	    smoothScroll: true,
         nav: [
-            { text: 'Home', link: '/' },
+            { text: 'Home', link: '/next/home.html' },
             { text: 'Github', link: 'http://github.com/invoiceninja/invoiceninja/' },
             { text: 'Version', items: [
             	{ text: 'Master', link: 'https://invoiceninja.github.io/', target:'_self', rel:''}

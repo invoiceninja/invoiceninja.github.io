@@ -24,7 +24,7 @@
 
 ## Installing Invoice Ninja
 
-   #### Download pre build zip method
+### Download pre build zip method
 
 <p>A prebuilt zip can be downloaded from our GitHub release page [here](https://github.com/invoiceninja/invoiceninja/releases)</a>. You will 
 need to download the package which is appended with <b>-release<b>, the release should have 3 files, download the file named invoiceninja.zip.</p>
@@ -32,3 +32,7 @@ need to download the package which is appended with <b>-release<b>, the release 
 <p>Unzip this file into the virtual host directory you have created, and ensure the file permission have been changed to the web server user in Ubuntu, this is www-data<p>
 
 <p>For example if you have configured a virtual host with a root directory of `/var/www/html` you would set the ownership like this</p>
+
+```bash
+sudo chown -R www-data:www-data /var/www/html.
+```
