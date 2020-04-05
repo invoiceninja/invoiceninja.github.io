@@ -22,7 +22,7 @@ const path = require('path')
             { text: 'Home', link: '/' },
             { text: 'Github', link: 'http://github.com/invoiceninja/invoiceninja/' },
             { text: 'Version', items: [
-            	{ text: 'Master', link: 'https://invoiceninja.github.io/next/'}
+            	{ text: 'Master', link: 'https://invoiceninja.github.io/'}
             ]}
         ],
         sidebar: [
@@ -35,48 +35,45 @@ const path = require('path')
 	      },
 	      {
 	        title: 'Clients',   // required
-	        path: '/clients/',      // optional, which should be a absolute path.
+	        path: '/clients.md',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
 	      },
 	      {
 	        title: 'Invoices',   // required
-	        path: '/invoices/',      // optional, which should be a absolute path.
+	        path: '/invoices.md',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
 	      },
 	      {
 	        title: 'Products',   // required
-	        path: '/products/',      // optional, which should be a absolute path.
+	        path: '/products.md',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
 	      },
 	      {
 	        title: 'Payments',   // required
-	        path: '/payments/',      // optional, which should be a absolute path.
+	        path: '/payments.md',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
 	      },
 	      {
 	        title: 'Settings',   // required
-	        path: '/settings/',      // optional, which should be a absolute path.
+	        path: '/settings.md',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
 	      },
 	      {
 	        title: 'Self Host',   // required
-	        path: '/selfhost/',      // optional, which should be a absolute path.
+	        path: '/selfhost.md',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: [
-	        	['/selfhost/installation.md', 'Installation'],
-	        	['/selfhost/api.md', 'API'],
-	        ]
+	        children: []
 	      }
 		]
     }
