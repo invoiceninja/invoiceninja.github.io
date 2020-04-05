@@ -26,7 +26,7 @@
 
 ### Download pre build zip method
 
-<p>A prebuilt zip can be downloaded from our GitHub release page [here](https://github.com/invoiceninja/invoiceninja/releases). You will 
+<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will 
 need to download the package which is appended with <b>-release<b>, the release should have 3 files, download the file named invoiceninja.zip.</p>
 
 <p>Unzip this file into the virtual host directory you have created, and ensure the file permission have been changed to the web server user in Ubuntu, this is www-data<p>
