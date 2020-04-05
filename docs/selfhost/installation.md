@@ -24,4 +24,7 @@
 
 ## Installing Invoice Ninja
 
-<p>There are several ways to install Invoice Ninja</p>
+### levels
+#### levels
+
+<p>There are several ways to install Invoice Ninja. </p>
