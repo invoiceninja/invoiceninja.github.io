@@ -5,14 +5,16 @@ const path = require('path')
     title: 'Invoice Ninja',
     description: "A to Z documentation for Invoice Ninja",
     base: '/', 
-	plugins: ['versioning', {
-		versionedSourceDir: path.resolve(context.sourceDir, '..', 'versioned_docs'),
-	    pagesSourceDir: path.resolve(context.sourceDir, '..', 'unversioned_pages'),
-	    onNewVersion(version, versionDestPath) {
-	      // post-create hook
-	      console.log(`Created version ${version} in ${versionDestPath}`)
-	    }
-	}],
+	plugins: [
+			['@dovyp/vuepress-plugin-clipboard-copy', true],['versioning', {
+			versionedSourceDir: path.resolve(context.sourceDir, '..', 'versioned_docs'),
+		    pagesSourceDir: path.resolve(context.sourceDir, '..', 'unversioned_pages'),
+		    onNewVersion(version, versionDestPath) {
+		      // post-create hook
+		      console.log(`Created version ${version} in ${versionDestPath}`)
+		    }
+		}]
+	],
     markdown: {
     	lineNumbers: true
   	},

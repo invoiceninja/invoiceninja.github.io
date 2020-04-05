@@ -12,6 +12,7 @@ addons:
 install:
     - npm install -g vuepress
     - npm install -g vuepress-plugin-versioning
+    - npm install -g  @dovyp/vuepress-plugin-clipboard-copy
 script:
     - npm run docs:build
 cache:

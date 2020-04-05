@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/invoiceninja/invoiceninja.github.io/issues"
   },
-  "homepage": "https://github.com/invoiceninja/invoiceninja.github.io#readme"
+  "homepage": "https://github.com/invoiceninja/invoiceninja.github.io#readme",
+  "dependencies": {
+    "@dovyp/vuepress-plugin-clipboard-copy": "^1.0.0-alpha.7"
+  }
 }
