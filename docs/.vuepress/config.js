@@ -22,7 +22,7 @@ const path = require('path')
             { text: 'Home', link: '/' },
             { text: 'Github', link: 'http://github.com/invoiceninja/invoiceninja/' },
             { text: 'Version', items: [
-            	{ text: 'Master', link: 'https://invoiceninja.github.io/'}
+            	{ text: 'Master', link: 'https://invoiceninja.github.io/next'}
             ]}
         ],
         sidebar: [

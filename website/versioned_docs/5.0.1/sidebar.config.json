@@ -1,0 +1,18 @@
+{
+  "sidebar": [
+    {
+      "title": "Home",
+      "path": "next/",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": []
+    },
+    {
+      "title": "Introduction",
+      "path": "next/introduction/",
+      "collapsable": false,
+      "sidebarDepth": 1,
+      "children": []
+    }
+  ]
+}
