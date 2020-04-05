@@ -6,7 +6,10 @@ const path = require('path')
     description: "A to Z documentation for Invoice Ninja",
     base: '/', 
 	plugins: [
-			['@dovyp/vuepress-plugin-clipboard-copy', true],['versioning', {
+			['@vuepress/nprogress'],
+			['@vuepress/back-to-top'],
+			['@dovyp/vuepress-plugin-clipboard-copy', true],
+			['versioning', {
 			versionedSourceDir: path.resolve(context.sourceDir, '..', 'versioned_docs'),
 		    pagesSourceDir: path.resolve(context.sourceDir, '..', 'unversioned_pages'),
 		    onNewVersion(version, versionDestPath) {

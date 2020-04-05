@@ -20,6 +20,8 @@
   "author": "David Bomba <turbo124@gmail.com>",
   "license": "AAL",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.4.0",
+    "@vuepress/plugin-nprogress": "^1.4.0",
     "vuepress": "1.4.0",
     "vuepress-plugin-apidocs": "^4.3.0",
     "vuepress-plugin-versioning": "^4.0.1",
