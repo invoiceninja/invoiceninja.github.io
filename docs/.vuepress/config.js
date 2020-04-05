@@ -23,6 +23,41 @@ module.exports = {
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
+	      },
+	      {
+	        title: 'Clients',   // required
+	        path: '/clients/',      // optional, which should be a absolute path.
+	        collapsable: false, // optional, defaults to true
+	        sidebarDepth: 1,    // optional, defaults to 1
+	        children: []
+	      },
+	      {
+	        title: 'Invoices',   // required
+	        path: '/invoices/',      // optional, which should be a absolute path.
+	        collapsable: false, // optional, defaults to true
+	        sidebarDepth: 1,    // optional, defaults to 1
+	        children: []
+	      },
+	      {
+	        title: 'Products',   // required
+	        path: '/products/',      // optional, which should be a absolute path.
+	        collapsable: false, // optional, defaults to true
+	        sidebarDepth: 1,    // optional, defaults to 1
+	        children: []
+	      },
+	      {
+	        title: 'Payments',   // required
+	        path: '/payments/',      // optional, which should be a absolute path.
+	        collapsable: false, // optional, defaults to true
+	        sidebarDepth: 1,    // optional, defaults to 1
+	        children: []
+	      },
+	      {
+	        title: 'Settings',   // required
+	        path: '/settings/',      // optional, which should be a absolute path.
+	        collapsable: false, // optional, defaults to true
+	        sidebarDepth: 1,    // optional, defaults to 1
+	        children: []
 	      }
 		]
     }
