@@ -24,7 +24,7 @@ const path = require('path')
 		}]
 	],
     markdown: {
-    	lineNumbers: true
+    	lineNumbers: false
   	},
     themeConfig:{
 	    lastUpdated: 'Last Updated', 
