@@ -35,10 +35,11 @@ Ensure the file permission have been set to the web server user. For example in 
 :::
 
 ```bash
-sudo chown -R www-data:www-data /var/www/html.
+sudo chown -R www-data:www-data /var/www/html
 ```
 
-<p>Web server configuration, a sample NGINX configuration is provided below, it assumes you have PHP 7.4 installed with the PHP FPM extension installed</p>
+##### Web server configuration
+<p>A sample NGINX configuration is provided below, it assumes you have PHP 7.4 installed with the PHP FPM extension installed</p>
 
 ```bash
 server {
@@ -67,7 +68,11 @@ location ~ /\.ht {
 }
 ```
 
+##### Database server configuration
+
 <p>Create a database on your MySQL compatible server and add a user that has full access to the database, database configuration is out of the scope of this article, more information can be found <a href="https://dev.mysql.com/doc/refman/8.0/en/creating-database.html">here</a></p>
+
+##### Headless Chrome
 
 <p>Invoice Ninja currently relies on Headless Chrome to generate PDFs, you will need to install this by running the follow command from the project directory</p>
 
@@ -75,13 +80,15 @@ location ~ /\.ht {
 npm install
 ```
 
+##### Cron configuration
+
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
 
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-<p>Navigate your browser to your installation domain name address with /setup appended ie, <b>www.invoiceninja.test:8000</b> from this page you will configure your database, mailserver and the primary account user, when completed, click Submit and the app will setup your application and redirect you to the login page</p>
+<p>Navigate your browser to your installation domain name address with /setup appended ie, <b>www.invoiceninja.test/setup</b> from this page you will configure your database, mailserver and the primary account user, when completed, click Submit and the app will setup your application and redirect you to the login page</p>
 
 ### Method 2: Installation from git
 
@@ -101,6 +108,7 @@ npm i
 php artisan optimize
 ```
 
+##### Cron configuration
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
 
 ```bash
