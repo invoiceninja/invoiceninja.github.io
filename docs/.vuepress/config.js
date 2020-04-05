@@ -29,7 +29,7 @@ const path = require('path')
         sidebar: [
 	      {
 	        title: 'Home',   // required
-	        path: '/',      // optional, which should be a absolute path.
+	        path: '',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
