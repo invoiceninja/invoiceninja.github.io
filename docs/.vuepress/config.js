@@ -8,7 +8,7 @@ const path = require('path')
 	plugins: [
 			['@vuepress/nprogress'],
 			['@vuepress/back-to-top'],
-			['@dovyp/vuepress-plugin-clipboard-copy', true],
+			['one-click-copy'],
 			['versioning', {
 			versionedSourceDir: path.resolve(context.sourceDir, '..', 'versioned_docs'),
 		    pagesSourceDir: path.resolve(context.sourceDir, '..', 'unversioned_pages'),

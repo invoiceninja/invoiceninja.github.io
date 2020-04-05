@@ -24,6 +24,7 @@
     "@vuepress/plugin-nprogress": "^1.4.0",
     "vuepress": "1.4.0",
     "vuepress-plugin-apidocs": "^4.3.0",
+    "vuepress-plugin-one-click-copy": "^1.0.2",
     "vuepress-plugin-versioning": "^4.0.1",
     "vuepress-theme-titanium": "^4.0.1"
   },
