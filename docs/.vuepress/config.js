@@ -2,6 +2,9 @@ module.exports = {
     title: 'Invoice Ninja',
     description: "A to Z documentation for Invoice Ninja",
     base: '/', 
+    markdown: {
+    	lineNumbers: true
+  	},
     themeConfig:{
 	    lastUpdated: 'Last Updated', 
 	    smoothScroll: true,
