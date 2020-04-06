@@ -30,7 +30,7 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 * The invoice is marked as Partial or Paid (ie. some payment amount has been applied)
 
-<p>When a invoice is cancelled the <i>invoice balance</i> is set to zero and the status updated to <b>Cancelled</b> If payments have been applied to the invoice these will remain linked to the invoice.</p>
+<p>When a invoice is cancelled the <i>invoice balance</i> is set to zero and the status updated to <b>Cancelled</b>, the <i>client balance</i> is also adjusted down. If payments have been applied to the invoice these will remain linked to the invoice.</p>
 
 ### Deleted
 

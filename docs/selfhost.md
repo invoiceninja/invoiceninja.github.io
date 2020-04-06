@@ -116,3 +116,9 @@ php artisan optimize
 ```
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
+
+## Trouble shooting
+
+### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
+
+<p>The most common cause of this issue is running multiple version of PHP, if the caches are built with a different version of PHP you may see the above error as differing versions of PHP may not be interoperable on the same installation. Ensure you are running the same CLI and Web PHP version to prevent any errors</p>
