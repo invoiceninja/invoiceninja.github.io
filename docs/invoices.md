@@ -12,26 +12,27 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 ### Sent
 
-<p>An invoice is marked as sent when it has been emailed to the client or Marked as <b>sent</b> in the admin panel</p>
+<p>An invoice is marked as sent when it has been emailed to the client or Marked as _sent_ in the admin panel</p>
 
-<p>When the invoice status is changed to Sent, the client balance increases by the invoice.balance amount</p>
+<p>When the invoice status is changed to Sent, the client balance increases by the _invoice balance_ amount</p>
 
 ### Partial
 
+<p>An invoice status of Partial means that a payment has been applied to the invoice, but there is still an outstanding balance remaining on the invoice.</p>
+
 ### Paid
+
+<p>An invoice status of Paid means that full payment has been applied to the invoice. The _invoice balance_ will be 0.</p>
 
 ### Cancelled
 
+<p>An invoice can be cancelled under the following conditions</p>
+
+* The invoice is marked as Partial or Paid (ie. some payment amount has been applied)
+
+<p>When an invoice is cancelled the invoice balance is set to zero and the status updated to <b>Cancelled</b> If payments have been applied to the invoice these will remain linked to the invoice.</p>
+
 ### Deleted
-
-### Reversed
-
-### Archived
-
-
-### Deleting / Reversing / Cancelling an invoice
-
-#### Deleting an invoice
 
 <p>An invoice can be marked as deleted if the following conditions have been met</p>
 
@@ -44,7 +45,7 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 * Client balance is reduced by the invoice balance
 * Invoice status set to deleted
 
-#### Reversing an invoice
+### Reversed
 
 <p>An invoice can be reversed under the following conditions</p>
 
@@ -60,10 +61,6 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 <p>When an invoice has been reversed, the previous payments relationships are broken and cannot be restored.</p>
 
-#### Cancelling an invoice
+### Archived
 
-<p>An invoice can be cancelled under the following conditions</p>
-
-* The invoice is marked as Partial or Paid (ie. some payment amount has been applied)
-
-<p>When an invoice is cancelled the invoice balance is set to zero and the status updated to <b>Cancelled</b> If payments have been applied to the invoice these will remain linked to the invoice.</p>
+<p>Archiving an invoice simply removes the invoice from the invoice list view. Archiving an invoice keeps your list views clean and tidy and does not effect the ledger / client balance.</p>
