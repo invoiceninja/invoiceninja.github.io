@@ -12,9 +12,9 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 ### Sent
 
-<p>A invoice is marked as sent when it has been emailed to the client or marked as __sent__ in the admin panel</p>
+<p>A invoice is marked as sent when it has been emailed to the client or marked as <i>sent</i> in the admin panel</p>
 
-<p>When the invoice status is changed to Sent, the client balance increases by the __invoice balance__ amount</p>
+<p>When the invoice status is changed to Sent, the client balance increases by the <i>invoice balance</i> amount</p>
 
 ### Partial
 
@@ -22,7 +22,7 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 ### Paid
 
-<p>A invoice status of Paid means that full payment has been applied to the invoice. The __invoice balance__ will be 0.</p>
+<p>A invoice status of Paid means that full payment has been applied to the invoice. The <i>invoice balance</i> will be 0.</p>
 
 ### Cancelled
 
@@ -30,7 +30,7 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 * The invoice is marked as Partial or Paid (ie. some payment amount has been applied)
 
-<p>When a invoice is cancelled the __invoice balance__ is set to zero and the status updated to <b>Cancelled</b> If payments have been applied to the invoice these will remain linked to the invoice.</p>
+<p>When a invoice is cancelled the <i>invoice balance</i> is set to zero and the status updated to <b>Cancelled</b> If payments have been applied to the invoice these will remain linked to the invoice.</p>
 
 ### Deleted
 
