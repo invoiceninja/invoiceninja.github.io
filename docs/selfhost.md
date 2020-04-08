@@ -126,3 +126,11 @@ php artisan optimize
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
 
 <p>The most common cause of this issue is running multiple version of PHP, if the caches are built with a different version of PHP you may see the above error as differing versions of PHP may not be interoperable on the same installation. Ensure you are running the same CLI and Web PHP version to prevent any errors</p>
+
+### Unable to connect to database after installation
+
+<p>You may need to restart the queue like this</p>
+
+```bash
+php artisan queue:restart
+```
