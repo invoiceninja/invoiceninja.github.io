@@ -28,7 +28,7 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 <p>A invoice can be cancelled under the following conditions</p>
 
-* The invoice is marked as Partial or Paid (ie. some payment amount has been applied)
+* The invoice is marked as Sent, Partial or Paid (ie. some payment amount has been applied)
 
 <p>When a invoice is cancelled the <i>invoice balance</i> is set to zero and the status updated to <b>Cancelled</b>, the <i>client balance</i> is also adjusted down. If payments have been applied to the invoice these will remain linked to the invoice.</p>
 
@@ -49,7 +49,7 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 <p>A invoice can be reversed under the following conditions</p>
 
-* The invoice is marked as Partial or Paid (ie. some payment amount has been applied to the invoice)
+* The invoice is marked as Sent, Partial or Paid (ie. some payment amount has been applied to the invoice)
 
 <p>When a invoice is reversed the payment/s that have been applied to the invoice have a credit generated against them. The ledger is also adjusted as follows:</p>
 

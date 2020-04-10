@@ -52,6 +52,8 @@ listen 80;
 server_name invoiceninja.test;
 root /var/www/invoiceninja/public;
 index index.php index.html index.htm;
+client_max_body_size 20M;
+
 location / {
     try_files $uri $uri/ =404;
 }
@@ -133,4 +135,12 @@ php artisan optimize
 
 ```bash
 php artisan queue:restart
+```
+
+### Nginx: 413 – Request Entity Too Large
+
+This error indicated that the client_max_body_size parameter in NGINX is too small, you will need to edit your nginx config and increase the size
+
+```bash
+client_max_body_size 100M;
 ```
