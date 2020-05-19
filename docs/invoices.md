@@ -38,13 +38,15 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 * The invoice is marked as Sent / Draft.
 * The invoice does not have any payments applied to it.
+* The invoice balance is 0
 
 <p>What happens when a invoice is deleted?</p>
 
-* Invoice balance set to 0
-* Client balance is reduced by the invoice balance
 * Invoice status set to deleted
 
+:::warning
+Important! If a invoice has a remaining balance or has had payments applied to it, the invoice cannot be deleted until it has been cancelled or reversed.
+:::
 ### Reversed
 
 <p>A invoice can be reversed under the following conditions</p>
