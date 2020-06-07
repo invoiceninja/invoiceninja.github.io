@@ -36,7 +36,7 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 
 <p>A invoice can be marked as deleted if the following conditions have been met</p>
 
-* The invoice is marked as Sent / Draft.
+* The invoice has a status of Sent / Draft / Paid / Partial.
 
 <p>What happens when a invoice is deleted?</p>
 
