@@ -37,15 +37,16 @@ Once a draft invoice has been emailed/marked as sent its status cannot be change
 <p>A invoice can be marked as deleted if the following conditions have been met</p>
 
 * The invoice is marked as Sent / Draft.
-* The invoice does not have any payments applied to it.
-* The invoice balance is 0
 
 <p>What happens when a invoice is deleted?</p>
 
+If the invoice has a balance remaining, in order to balance the ledger, we perform a <b>Cancellation</b> on the invoice first and then perform the deletion.
+
 * Invoice status set to deleted
+* The invoice number is appended with <b>_deleted</b> in order to allow reuse of invoice numbers.
 
 :::warning
-Important! If a invoice has a remaining balance or has had payments applied to it, the invoice cannot be deleted until it has been cancelled or reversed.
+Important! If a invoice has a remaining balance or has had payments applied to it, the invoice is cancelled and then deleted.
 :::
 ### Reversed
 
