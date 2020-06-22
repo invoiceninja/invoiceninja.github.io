@@ -123,6 +123,9 @@ php artisan optimize
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 
+## Installing Invoice Ninja (Docker)
+<p>If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a></p>
+
 ## Trouble shooting
 
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
