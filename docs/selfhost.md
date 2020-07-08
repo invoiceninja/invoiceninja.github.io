@@ -132,7 +132,7 @@ php artisan optimize
 
 <p>Migration of your data from V4 to V5 is done via the Settings panel of V4. Navigate to Settings > Account Management and click on Start Migration</p>
 
-<p>For the migration to be successful you will need to ensure you setup your V5 installation with the same email address as you have on V4. It is not possible to cross migrate using different email address as part of your credentials</p>
+<p>For the migration to be successful you will need to ensure the signup email address is the same between V4 and V5. It is not possible to cross migrate using different email address as part of your credentials</p>
 
 <p>For further help with migrating please chat to us on our <a href="https://forum.invoiceninja.com">Forum</a> or our <a href="https://invoiceninja.slack.com">Slack Channel</a></p>
 
@@ -142,6 +142,8 @@ After migration you will want to ensure all of your balances are correct to do t
 ```bash
 php artisan ninja:check-data
 ```
+
+The command will output errors and identify where balances are not matching.
 :::
 
 ## Trouble shooting
