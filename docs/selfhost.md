@@ -136,6 +136,14 @@ php artisan optimize
 
 <p>For further help with migrating please chat to us on our <a href="https://forum.invoiceninja.com">Forum</a> or our <a href="https://invoiceninja.slack.com">Slack Channel</a></p>
 
+::: warning
+After migration you will want to ensure all of your balances are correct to do this from the command line enter the following command
+
+```bash
+php artisan ninja:check-data
+```
+:::
+
 ## Trouble shooting
 
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
