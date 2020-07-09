@@ -56,6 +56,11 @@ root /var/www/invoiceninja/public;
 index index.php index.html index.htm;
 client_max_body_size 20M;
 
+gzip on;
+gzip_types      application/javascript application/x-javascript text/javascript text/plain application/xml application/json;
+gzip_proxied    no-cache no-store private expired auth;
+gzip_min_length 1000;
+
 location / {
     try_files $uri $uri/ =404;
 }
@@ -75,6 +80,12 @@ location ~ /\.ht {
 
 }
 ```
+
+::: warning
+Performance hint!
+
+Enable gzip in your webserver configuration, this will dramatically improve the loading time of the application! Please see the above nginx configuration for a sample of how to load the components of the application with gzip.
+:::
 
 ##### Database server configuration
 
