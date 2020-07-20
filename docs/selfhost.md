@@ -136,12 +136,12 @@ php artisan optimize
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 
-## Installing Invoice Ninja (Docker)
-<p>If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a></p>
-
 ### Method 3: Installing on CentOS 8
 
 <p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja V5 from scratch onto CentOS, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a></p>
+
+## Installing Invoice Ninja (Docker)
+<p>If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a></p>
 
 ## Migrating from V4
 
