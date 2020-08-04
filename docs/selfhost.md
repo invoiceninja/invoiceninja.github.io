@@ -161,6 +161,22 @@ php artisan ninja:check-data
 The command will output errors and identify where balances are not matching.
 :::
 
+## Phantom JS
+<p>If it is not possible to install npm/node you can use an <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day, which may suit most users</p>
+
+<p>To override the system generating its own PDFs, you will need to insert the following keys into your .env file</p>
+
+```bash
+PHANTOMJS_KEY=your-phantom-js-cloud-api-key-here
+PHANTOMJS_SECRET=your-secret-here
+```
+
+<p>Once this has been done you'll need to refresh the config cache</p>
+
+```bash
+php artisan optimize
+```
+
 ## Trouble shooting
 
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
@@ -196,6 +212,10 @@ chrome: error while loading shared libraries: libX11-xcb.so.1: cannot open share
 ```bash
 sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
 ```
+
+::: warning
+If you are having troubles installing NPM/NODE you may want to consider using PhantomJS Cloud, instructions to implement this can be found here <a href="https://invoiceninja.github.io/selfhost.html#phantom-js">Phantom JS</a>
+:::
 
 ### Using multiple versions of NPM / NODE
 
