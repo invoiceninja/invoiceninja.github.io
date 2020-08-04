@@ -177,6 +177,10 @@ PHANTOMJS_SECRET=your-secret-here
 php artisan optimize
 ```
 
+:::warning
+For PhantomJS to work, your Invoice Ninja installation web address must be public, localhost installations or those on private networks won't be able to use PhantomJS Cloud 
+:::
+
 ## Trouble shooting
 
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
