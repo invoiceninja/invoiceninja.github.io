@@ -161,7 +161,23 @@ php artisan ninja:check-data
 The command will output errors and identify where balances are not matching.
 :::
 
+## Currency Conversion
+
+<p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion. Open Exchange currently provides a free tier which is suitable for daily updates of the exchange rates. Simply insert a Open Exchange API key into your .env file to enable exchange rate updates</p>
+
+```bash
+OPENEXCHANGE_APP_ID=your_open_exchange_api_key_here
+```
+
+Make sure to update your cache afterwards
+
+```bash
+php artisan optimize
+```
+
+
 ## Phantom JS
+
 <p>If it is not possible to install npm/node you can use an <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day, which may suit most users</p>
 
 <p>To override the system generating its own PDFs, you will need to insert the following keys into your .env file</p>
