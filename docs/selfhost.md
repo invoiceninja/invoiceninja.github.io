@@ -28,7 +28,11 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 
 ## Installing Invoice Ninja
 
-### Method 1: Download pre built zip.
+### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
+
+<p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja V5 from scratch onto CentOS, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a>. If Ubuntu is more your flavour you can follow his awesome guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588">here</a></p>
+
+### Download pre built zip. (Advanced)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -109,7 +113,7 @@ npm install
 
 <p>Navigate your browser to your installation domain name address with /setup appended ie, <b>www.invoiceninja.test/setup</b> from this page you will configure your database, mailserver and the primary account user, when completed, click Submit and the app will setup your application and redirect you to the login page</p>
 
-### Method 2: Installation from git
+### Installation from git (Advanced)
 
 <p>For power users installing the app from Github can be done with the following steps</p>
 
@@ -137,10 +141,6 @@ php artisan optimize
 ```
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
-
-### Method 3: Installing on CentOS 8 / Ubuntu 20.04
-
-<p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja V5 from scratch onto CentOS, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a>. If Ubuntu is more your flavour you can follow his awesome guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588">here</a></p>
 
 ## Installing Invoice Ninja (Docker)
 <p>If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a></p>
