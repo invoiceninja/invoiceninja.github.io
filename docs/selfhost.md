@@ -167,7 +167,7 @@ The command will output errors and identify where balances are not matching.
 <p>To override the system generating its own PDFs, you will need to insert the following keys into your .env file</p>
 
 ```bash
-PHANTOMJS_KEY=your-phantom-js-cloud-api-key-here
+PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET=your-secret-here
 ```
 
