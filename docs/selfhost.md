@@ -255,3 +255,7 @@ After updating the .env file you will need to recache the configuration, the sim
 ```bash
 php artisan optimize
 ```
+
+### Node / NPM version
+
+<p>As we are using the latest version of Puppeteer (v5), NPM version must be >= 6 and Node >=12</p>
