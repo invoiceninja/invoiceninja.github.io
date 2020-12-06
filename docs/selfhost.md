@@ -120,15 +120,17 @@ npm install
 ```bash
 git clone https://github.com/invoiceninja/invoiceninja.git
 
-git checkout v2
+git checkout v5-develop
 
-composer update
+composer install --no-dev
 
 cp .env.example .env
 
 npm i
 
 php artisan key:generate
+
+php artisan storage:link
 
 php artisan optimize
 ```

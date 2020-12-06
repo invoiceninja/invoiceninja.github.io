@@ -79,3 +79,4 @@ If your gateway has multiple ways to pay, ie Credit Card, Bank Transfer etc, the
 
 $gateway->default_gateway_type_id = 1;
 $gateway->save();
+
