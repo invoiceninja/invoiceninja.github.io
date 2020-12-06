@@ -17,7 +17,7 @@ You should update your code to be up to date with the v5-develop branch.
 You will then want to create your own branch for for your driver ie.
 
 ```
-Git branch my_special_driver
+git branch my_special_driver
 ```
 
 Add the gateway into the gateways table
@@ -30,39 +30,31 @@ php artisan make:migration my_new_gateway
 
 Let open this file and in the up() method create our new gateway record
 
-
-```
 Init a new gateway instance
 
+```
 $gateway = new Gateway;
-
-The name of your gateway (Type: string)
-
-$gateway->name = ‘Fancy Gateway’;
-
-A random 32 alphanumeric gateway key (Type: string)
-$gateway->key = Str::lower(Str::random(32));
-
-This is a camel cased string which is used to initialize your payment driver. We append the string Driver to this class, so if you payment driver is FancyGatewayDriver, then your provider will be FancyGateway. (Type: string)
-
+$gateway->name = 'Fancy Gateway'; 
+$gateway->key = Str::lower(Str::random(32)); 
 $gateway->provider = ‘FancyGateway’;
-Is_offsite specifies is this payment driver redirects the user to another page to complete the payment. Paypal Express for instance redirects to Paypal, and then returns the user once the payment is completed (Type: bool)
-
 $gateway->is_offsite = true;
-
-The fields property contains a stdClass object of key values which defines the user settings required for the gateway, ie, Api Keys, Secrets etc. All of these fields are strings except for testMode which is a boolean and indicates whether the gateway is set to test mode. (Type stdClass)
-
 $gateway->fields = new \stdClass;
-
-The visible field defines whether the gateway should be visible in the UI (Type: bool)
-
 $gateway->visible = true;
-
-The site_url is a linkable field which allows the user to go directly to the gateway page for further information (Type: string, url)
-
 $gateway->site_url = ‘https://stripe.com’;
+$gateway->default_gateway_type_id = 1;
+$gateway->save();
+```
 
-If your gateway has multiple ways to pay, ie Credit Card, Bank Transfer etc, then you’ll want to select a default method. The list of defined methods are found on the GatewayType model
+#### Gateway Properties
+
+* name: The name of your gateway
+* key: A random 32 alphanumeric gateway key (Type: string)
+* provider: This is a camel cased string which is used to initialize your payment driver. We append the string Driver to this class, so if you payment driver is FancyGatewayDriver, then your provider will be FancyGateway. (Type: string)
+* is_offsite: Specifies is this payment driver redirects the user to another page to complete the payment. Paypal Express for instance redirects to Paypal, and then returns the user once the payment is completed (Type: bool)
+* fields: A stdClass object of key values which defines the user settings required for the gateway, ie, Api Keys, Secrets etc. All of these fields are strings except for testMode which is a boolean and indicates whether the gateway is set to test mode. (Type stdClass)
+* visible: Defines whether the gateway should be visible in the UI (Type: bool)
+* site_url: A URL field which allows the user to go directly to the gateway page for further information (Type: string, url)
+* default_gateway_type_id: If your gateway has multiple ways to pay, ie Credit Card, Bank Transfer etc, then you’ll want to select a default method. The list of defined methods are found on the GatewayType model as follows:
 
 ```
     const CREDIT_CARD = 1;
@@ -77,6 +69,4 @@ If your gateway has multiple ways to pay, ie Credit Card, Bank Transfer etc, the
     const CREDIT = 10;
 ```
 
-$gateway->default_gateway_type_id = 1;
-$gateway->save();
 
