@@ -30,7 +30,7 @@ const path = require('path')
 	    lastUpdated: 'Last Updated', 
 	    smoothScroll: true,
         nav: [
-            { text: 'Home', link: '/' },
+            { text: 'User Guide', link: '/' },
             { text: 'Github', link: 'http://github.com/invoiceninja/invoiceninja/' },
             { text: 'Version', items: [
             	{ text: 'Master', link: 'https://invoiceninja.github.io/', target:'_self', rel:''}
@@ -38,54 +38,56 @@ const path = require('path')
         ],
         sidebar: [
 	      {
-	        title: 'Home',   // required
+	        title: 'User Guide',   // required
 	        path: '/',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
+	        children: [
+	        	{
+			        title: 'Clients',   // required
+			        path: '/clients.md',      // optional, which should be a absolute path.
+			        collapsable: false, // optional, defaults to true
+			        sidebarDepth: 1,    // optional, defaults to 1
+			        children: []
+	        	},
+	        	{
+			        title: 'Invoices',   // required
+			        path: '/invoices.md',      // optional, which should be a absolute path.
+			        collapsable: false, // optional, defaults to true
+			        sidebarDepth: 1,    // optional, defaults to 1
+			        children: []
+				},
+				{
+					title: 'Products',   // required
+					path: '/products.md',      // optional, which should be a absolute path.
+					collapsable: false, // optional, defaults to true
+					sidebarDepth: 1,    // optional, defaults to 1
+					children: []
+				},
+				{
+					title: 'Payments',   // required
+					path: '/payments.md',      // optional, which should be a absolute path.
+					collapsable: false, // optional, defaults to true
+					sidebarDepth: 1,    // optional, defaults to 1
+					children: []
+				},
+				{
+					title: 'Settings',   // required
+					path: '/settings.md',      // optional, which should be a absolute path.
+					collapsable: false, // optional, defaults to true
+					sidebarDepth: 1,    // optional, defaults to 1
+					children: []
+				},
+	        ]
 	      },
-	      {
-	        title: 'Clients',   // required
-	        path: '/clients.md',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
-	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
-	      },
-	      {
-	        title: 'Invoices',   // required
-	        path: '/invoices.md',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
-	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
-	      },
-	      {
-	        title: 'Products',   // required
-	        path: '/products.md',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
-	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
-	      },
-	      {
-	        title: 'Payments',   // required
-	        path: '/payments.md',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
-	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
-	      },
-	      {
-	        title: 'Settings',   // required
-	        path: '/settings.md',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
-	        sidebarDepth: 1,    // optional, defaults to 1
-	        children: []
-	      },
+	      
 	      {
 	        title: 'Developer Guide',   // required
 	        path: '/developer.md',      // optional, which should be a absolute path.
 	        collapsable: false, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
-	      }.
+	      },
 	      {
 	        title: 'Self Host',   // required
 	        path: '/selfhost.md',      // optional, which should be a absolute path.
