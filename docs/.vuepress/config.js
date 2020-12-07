@@ -46,35 +46,35 @@ const path = require('path')
 	        	{
 			        title: 'Clients',   // required
 			        path: '/clients.md',      // optional, which should be a absolute path.
-			        collapsable: true, // optional, defaults to true
+			        collapsable: false, // optional, defaults to true
 			        sidebarDepth: 1,    // optional, defaults to 1
 			        children: []
 	        	},
 	        	{
 			        title: 'Invoices',   // required
 			        path: '/invoices.md',      // optional, which should be a absolute path.
-			        collapsable: true, // optional, defaults to true
+			        collapsable: false, // optional, defaults to true
 			        sidebarDepth: 1,    // optional, defaults to 1
 			        children: []
 				},
 				{
 					title: 'Products',   // required
 					path: '/products.md',      // optional, which should be a absolute path.
-					collapsable: true, // optional, defaults to true
+					collapsable: false, // optional, defaults to true
 					sidebarDepth: 1,    // optional, defaults to 1
 					children: []
 				},
 				{
 					title: 'Payments',   // required
 					path: '/payments.md',      // optional, which should be a absolute path.
-					collapsable: true, // optional, defaults to true
+					collapsable: false, // optional, defaults to true
 					sidebarDepth: 1,    // optional, defaults to 1
 					children: []
 				},
 				{
 					title: 'Settings',   // required
 					path: '/settings.md',      // optional, which should be a absolute path.
-					collapsable: true, // optional, defaults to true
+					collapsable: false, // optional, defaults to true
 					sidebarDepth: 1,    // optional, defaults to 1
 					children: []
 				},
@@ -84,14 +84,14 @@ const path = require('path')
 	      {
 	        title: 'Developer Guide',   // required
 	        path: '/developer.md',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
+	        collapsable: true, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
 	      },
 	      {
 	        title: 'Self Host',   // required
 	        path: '/selfhost.md',      // optional, which should be a absolute path.
-	        collapsable: false, // optional, defaults to true
+	        collapsable: true, // optional, defaults to true
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: []
 	      }
