@@ -14,7 +14,7 @@ So you want to make a payment driver for invoice ninja, but don't know where to 
 
 Ready? Lets go!
 
-### Step 1.
+### Step 1. Setup environment
 
 You should update your code to be up to date with the <a href="https://github.com/invoiceninja/v5-develop">v5-develop</a> branch.
 
