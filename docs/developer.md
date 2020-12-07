@@ -8,6 +8,8 @@ The Invoice Ninja API is built on top of the <a href="laravel.com">Laravel Frame
 
 If you are planning to build new functionality in Invoice Ninja, for example a Inventory Module, rather than integrate this directly into the codebase, we highly recommend using the <a href="https://github.com/nwidart/laravel-modules">Laravel Modules</a> library. This library is already part of the Invoice Ninja core, so you can dive straight in and start building.
 
+If you plan to contribute your code back to the official Invoice Ninja repository, please ensure you have test coverage for your functionality. We use <a href="https://phpunit.de/">Phpunit</a> for our API testing, and <a href="https://www.cypress.io/">Cypress</a> for our UI testing of the client portal.
+
 ## API Definition
 
 Our full API definition can be found on swagger <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja">here</a>

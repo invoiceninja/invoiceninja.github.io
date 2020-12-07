@@ -144,7 +144,34 @@ php artisan optimize
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 
+### Shared Hosting
+
+##### Server Requirements
+
+We have tested Invoice Ninja V5 on shared hosting and can confirm that it does work. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
+
+* proc_open
+* exec
+* open_basedir
+
+Without these modules, you will not be able to run Invoice Ninja. We do include some preflight checks of these modules in the Setup workflow, but it is best to check with your host that they support these modules. Some hosts choose to disable these modules as they classify them as security risks.
+
+##### Database configuration
+
+<p>Create a MySQL compatibledatabase in your shared host control panel along with a database user, record the database name and username and password as you'll need this later. Ensure your database user has full access to the database.
+
+##### Upload release asset
+
+Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.zip.
+
+Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the .zip file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
+
+##### Run setup
+
+Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some test flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
+
 ## Installing Invoice Ninja (Docker)
+
 <p>If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a></p>
 
 ## Migrating from V4
