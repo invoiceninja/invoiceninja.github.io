@@ -3,5 +3,5 @@
 ## Introduction
 
 ::: wrapper
-![Clients List](/images/client.png)
+![Clients List](client.png)
 :::
