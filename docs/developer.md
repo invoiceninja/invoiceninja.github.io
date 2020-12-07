@@ -1,26 +1,30 @@
+# Developer resources
+
 [[toc]]
 
-# Developer resources
+## API Definition
+
+Our full API definition can be found on swagger <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja">here</a>
 
 ## Adding payment gateways
 
 Payment Driver Template.
 
-So you want to make a payment driver for invoice ninja, but where to start? The first step would be to reach out to us directly on Slack https://invoiceninja.slack.com and have a chat to us in real time we can help you hit the ground running and build your driver in the most efficient way possible. Contacting us prior will also ensure that your code can be merged back into the official repository as we will be maintaining this code into the future. 
+So you want to make a payment driver for invoice ninja, but don't know where to start? The first step would be to reach out to us directly on Slack https://invoiceninja.slack.com and have a chat to us in real time so that we can help you hit the ground running and build your driver in the most efficient way possible. Contacting us prior will also ensure that your code can be merged back into the official repository as we will be maintaining this code into the future. 
 
 Ready? Lets go!
 
-Step 1.
+### Step 1.
 
-You should update your code to be up to date with the v5-develop branch.
+You should update your code to be up to date with the <a href="https://github.com/invoiceninja/v5-develop">v5-develop</a> branch.
 
 You will then want to create your own branch for for your driver ie.
 
 ```
-git branch my_special_driver
+git branch my_payment_driver
 ```
 
-Add the gateway into the gateways table
+### Step 2. Adding the gateway into the gateways table
 
 Lets create a migration file which will insert a record identifying the gateway.
 
