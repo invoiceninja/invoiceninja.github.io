@@ -144,7 +144,7 @@ php artisan optimize
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 
-### Shared Hosting
+## Shared Hosting
 
 ##### Server Requirements
 
@@ -158,29 +158,29 @@ Without these modules, you will not be able to run Invoice Ninja. We do include 
 
 ##### Database configuration
 
-<p>Create a MySQL compatibledatabase in your shared host control panel along with a database user, record the database name and username and password as you'll need this later. Ensure your database user has full access to the database.
+<p>Create a MySQL compatible database in your shared host control panel along with a database user, record the database name, username and password as you'll need this later. Ensure your database user has full access to the database you've just created.
 
 ##### Upload release asset
 
 Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.zip.
 
-Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the .zip file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
+Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **invoiceninja.zip** file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
 
 ##### Run setup
 
-Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some test flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
+Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some pre flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
 
 ## Installing Invoice Ninja (Docker)
 
-<p>If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a></p>
+If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>
 
 ## Migrating from V4
 
-<p>Migration of your data from V4 to V5 is done via the Settings panel of V4. Navigate to Settings > Account Management and click on Start Migration</p>
+Migration of your data from V4 to V5 is done via the Settings panel of V4. Navigate to Settings > Account Management and click on Start Migration
 
-<p>For the migration to be successful you will need to ensure the signup email address is the same between V4 and V5. It is not possible to cross migrate using different email address as part of your credentials</p>
+For the migration to be successful you will need to ensure the signup email address is the same between V4 and V5. It is not possible to cross migrate using different email address as part of your credentials
 
-<p>For further help with migrating please chat to us on our <a href="https://forum.invoiceninja.com">Forum</a> or our <a href="https://invoiceninja.slack.com">Slack Channel</a></p>
+For further help with migrating please chat to us on our <a href="https://forum.invoiceninja.com">Forum</a> or our <a href="https://invoiceninja.slack.com">Slack Channel</a>
 
 ::: warning
 After migration you will want to ensure all of your balances are correct to do this from the command line enter the following command
