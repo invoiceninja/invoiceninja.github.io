@@ -130,8 +130,6 @@ npm i
 
 php artisan key:generate
 
-php artisan storage:link
-
 php artisan optimize
 ```
 
@@ -209,13 +207,14 @@ php artisan optimize
 
 ## Phantom JS
 
-<p>If it is not possible to install npm/node you can use an <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day, which may suit most users</p>
+<p>If it is not possible to install npm/node you can use an <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day which may suit most users</p>
 
-<p>To override the system generating its own PDFs, you will need to insert the following keys into your .env file</p>
+<p>Phantom JS is the default PDF generator and can be toggled on and off by settings the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.</p>
 
 ```bash
+PHANTOMJS_PDF_GENERATION=true
 PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
-PHANTOMJS_SECRET=your-secret-here
+PHANTOMJS_SECRET='your-secret-here'
 ```
 
 <p>Once this has been done you'll need to refresh the config cache</p>
