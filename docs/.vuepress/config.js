@@ -80,7 +80,6 @@ const path = require('path')
 				},
 	        ]
 	      },
-	      
 	      {
 	        title: 'Developer Guide',   // required
 	        path: '/developer.md',      // optional, which should be a absolute path.
