@@ -2,6 +2,12 @@
 
 [[toc]]
 
+## Getting Started.
+
+The Invoice Ninja API is built on top of the <a href="laravel.com">Laravel Framework</a>, this is a hugely popular PHP framework with extensive high quality documentation and tutorials all over the web. To get started customizing and/or extending Invoice Ninja you will need to be acquainted with the latest version of Laravel and all of its features. The URL namespace for the api is **/api/v1** The Client Portal is a traditional web application also built with Laravel along with Livewire and Tailwind components. The URL namespace for client facing URLs is **/client/**
+
+If you are planning to build new functionality in Invoice Ninja, for example a Inventory Module, rather than integrate this directly into the codebase, we highly recommend using the <a href="https://github.com/nwidart/laravel-modules">Laravel Modules</a> library. This library is already part of the Invoice Ninja core, so you can dive straight in and start building.
+
 ## API Definition
 
 Our full API definition can be found on swagger <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja">here</a>
