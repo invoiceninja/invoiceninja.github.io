@@ -7,7 +7,12 @@ module.exports = {
     ]
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "ninja-blue": "#117cc1",
+        "ninja-blue-darker": "#0a3f60",
+      },
+    },
   },
   variants: {
     extend: {},
