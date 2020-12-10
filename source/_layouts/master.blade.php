@@ -19,14 +19,14 @@
 
     <nav class="py-4 uppercase bg-white border-b">
         <div id="navigation-content" class="container flex items-center justify-between px-4 md:px-0 md:mx-auto">
-            <a href="https://invoiceninja.github.io" id="left-side-logo">
+            <a href="/" id="left-side-logo">
                 <img class="h-10" src="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/public/images/invoiceninja-black-logo-2.png" alt="Invoice Ninja logo" />
             </a>
             <section id="right-side-items" class="text-sm">
                 <div class="hidden md:block md:space-x-5">
                     <input type="text" placeholder="Quick search..." class="px-4 py-2 border rounded hover:border-ninja-blue focus:border-ninja-blue focus:outline-none">
-                    <a href="#" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
-                    <a href="#" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
+                    <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+                    <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
                     <a href="https://app.invoiceninja.com" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Log in</a>
                 </div>
                 <div class="flex flex-col md:hidden">

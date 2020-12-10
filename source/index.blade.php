@@ -30,8 +30,8 @@
         <h4 class="text-2xl font-semibold md:text-3xl">Didn't find what you looking for?</h4>
 
         <div class="flex flex-col items-center justify-center mt-2 space-x-4 md:flex-row">
-            <a class="pb-1 border-b border-transparent hover:border-ninja-blue" href="https://forum.invoiceninja.com">Forum</a>
-            <a class="pb-1 border-b border-transparent hover:border-ninja-blue" href="https://www.invoiceninja.com/contact/">Technical support</a>
+            <a class="pb-1 border-b border-transparent hover:border-ninja-blue" target="_blank" href="https://forum.invoiceninja.com">Forum</a>
+            <a class="pb-1 border-b border-transparent hover:border-ninja-blue" target="_blank" href="https://www.invoiceninja.com/contact/">Technical support</a>
         </div>
     </div>
 </div>

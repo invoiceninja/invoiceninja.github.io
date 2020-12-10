@@ -9,6 +9,7 @@
         "watch": "npm run local -- --watch"
     },
     "devDependencies": {
+        "@tailwindcss/typography": "0.2.0",
         "cross-env": "^3.2.3",
         "laravel-mix": "^5.0.5",
         "laravel-mix-jigsaw": "^1.1.0",
