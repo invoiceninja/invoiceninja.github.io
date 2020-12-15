@@ -30,7 +30,7 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 
 ### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
 
-<p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja V5 from scratch onto CentOS, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a>. If Ubuntu is more your flavour you can follow his awesome guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588">here</a></p>
+<p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto CentOS, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a>. If Ubuntu is more your flavour you can follow his awesome guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588">here</a></p>
 
 ### Download pre built zip. (Advanced)
 
@@ -146,7 +146,7 @@ php artisan optimize
 
 ##### Server Requirements
 
-We have tested Invoice Ninja V5 on shared hosting and can confirm that it does work. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
+We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
 
 * proc_open
 * exec
@@ -172,11 +172,11 @@ Navigate to https://your.url.com/setup and fill in the form. The setup process w
 
 If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>
 
-## Migrating from V4
+## Migrating from v4
 
-Migration of your data from V4 to V5 is done via the Settings panel of V4. Navigate to Settings > Account Management and click on Start Migration
+Migration of your data from v4 to v5 is done via the Settings panel of v4. Navigate to Settings > Account Management and click on Start Migration
 
-For the migration to be successful you will need to ensure the signup email address is the same between V4 and V5. It is not possible to cross migrate using different email address as part of your credentials
+For the migration to be successful you will need to ensure the signup email address is the same between v4 and v5. It is not possible to cross migrate using different email address as part of your credentials
 
 For further help with migrating please chat to us on our <a href="https://forum.invoiceninja.com">Forum</a> or our <a href="https://invoiceninja.slack.com">Slack Channel</a>
 

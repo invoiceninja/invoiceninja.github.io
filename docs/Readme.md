@@ -2,7 +2,7 @@
   <img alt="Invoice Ninja" src="https://raw.githubusercontent.com/hillelcoren/invoice-ninja/master/public/images/round_logo.png">
 </p>
 
-# Invoice Ninja V5 
+# Invoice Ninja v5
 
 ## Overview
 
