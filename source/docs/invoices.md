@@ -3,9 +3,9 @@ extends: _layouts.docs
 section: content
 ---
 
-# Lifecycle of invoice {#lifecycle-of-invoice}
+# Lifecycle of invoice
 
-- [Lifecycle of invoice {#lifecycle-of-invoice}](#lifecycle-of-invoice-lifecycle-of-invoice)
+- [Lifecycle of invoice](#lifecycle-of-invoice)
 - [Lifecycle of an invoice](#lifecycle-of-an-invoice)
   - [Draft](#draft)
   - [Sent](#sent)
