@@ -43,6 +43,7 @@
     </nav>
 
     @yield('body')
+    @yield('before-closing-body')
 </body>
 
 </html>

@@ -16,5 +16,8 @@
         "postcss-import": "^12.0.0",
         "tailwindcss": "^1.9.6",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "anchor-js": "^4.3.0"
     }
 }
