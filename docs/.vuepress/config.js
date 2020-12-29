@@ -44,25 +44,32 @@ const path = require('path')
 	        sidebarDepth: 1,    // optional, defaults to 1
 	        children: [
 	        	{
+			        title: 'Introduction',   // required
+			        path: '/introduction.md',      // optional, which should be a absolute path.
+			        collapsable: true, // optional, defaults to true
+			        sidebarDepth: 1,    // optional, defaults to 1
+			        children: []
+	        	},
+	        	{
 			        title: 'Clients',   // required
 			        path: '/clients.md',      // optional, which should be a absolute path.
 			        collapsable: true, // optional, defaults to true
 			        sidebarDepth: 1,    // optional, defaults to 1
 			        children: []
 	        	},
-	        	{
-			        title: 'Invoices',   // required
-			        path: '/invoices.md',      // optional, which should be a absolute path.
-			        collapsable: true, // optional, defaults to true
-			        sidebarDepth: 1,    // optional, defaults to 1
-			        children: []
-				},
 				{
 					title: 'Products',   // required
 					path: '/products.md',      // optional, which should be a absolute path.
 					collapsable: true, // optional, defaults to true
 					sidebarDepth: 1,    // optional, defaults to 1
 					children: []
+				},
+	        	{
+			        title: 'Invoices',   // required
+			        path: '/invoices.md',      // optional, which should be a absolute path.
+			        collapsable: true, // optional, defaults to true
+			        sidebarDepth: 1,    // optional, defaults to 1
+			        children: []
 				},
 				{
 					title: 'Payments',   // required
