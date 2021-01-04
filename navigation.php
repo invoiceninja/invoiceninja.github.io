@@ -6,8 +6,8 @@ return [
         'children' => [
             'Introduction' => '/docs/introduction',
             'Clients' => '/docs/clients',
-            'Invoices' => '/docs/invoices',
             'Products' => '/docs/products',
+            'Invoices' => '/docs/invoices',
             'Payments' => '/docs/payments',
             'Settings' => '/docs/settings',
         ],

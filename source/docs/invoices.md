@@ -23,9 +23,7 @@ section: content
 
 <p>The Draft status is the first status in the lifecycle of a invoice. In this status, changes can be made to the invoice and the invoice is hidden completely from the client. A draft invoice does not affect the ledger nor does it change the client balance. Draft invoices are inactive until either emailed to the client or marked as sent.</p>
 
-<x-warning>
-    Once a draft invoice has been emailed/marked as sent its status cannot be changed back to draft.
-</x-warning>
+<x-info>Once a draft invoice has been emailed/marked as sent its status cannot be changed back to draft.</x-info>
 
 ## Sent
 

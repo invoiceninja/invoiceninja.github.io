@@ -32,7 +32,7 @@
                     <a href="https://app.invoiceninja.com" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Log in</a>
                 </div>
                 <div class="flex flex-col md:hidden">
-                    <button>
+                    <button id="mobile-menu-toggle" class="focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
                             <line x1="3" y1="12" x2="21" y2="12"></line>
                             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -42,10 +42,27 @@
                 </div>
             </section>
         </div>
+        <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+            <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+            <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
+            <a href="https://app.invoiceninja.com" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Login</a>
+        </div>
     </nav>
 
     @yield('body')
     @yield('before-closing-body')
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
 </body>
 
 </html>
