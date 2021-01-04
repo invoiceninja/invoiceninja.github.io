@@ -1,3 +1,3 @@
-<div class="py-4 pl-8 pr-4 bg-gray-200 border-l-4 border-red-300">
-    {{ $slot }}
+<div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>{{ $slot }}</span>
 </div>

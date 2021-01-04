@@ -9,7 +9,6 @@ anchors.options = {
 
 anchors.add();
 
-
 // Smooth scroll to the div.
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

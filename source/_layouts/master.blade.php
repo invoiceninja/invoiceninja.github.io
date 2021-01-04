@@ -12,6 +12,8 @@
     <meta name="description" content="{{ $page->description }}">
 
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
+
+    @yield('before-closing-head')
 </head>
 
 <body class="font-sans antialiased text-gray-900 bg-gray-100">
