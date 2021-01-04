@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpInconsistentReturnPointsInspection */
 
 return [
     'production' => false,
@@ -10,11 +10,12 @@ return [
     'isActive' => function ($page, $path) {
         return trimPath($page) == trimPath($path);
     },
-    'isActiveParent' => function ($page, $menuItem) {
+    'isActiveParent' => function ($page, $menuItem): ?string {
         if (is_object($menuItem) && $menuItem->children) {
             return $menuItem->children->contains(function ($child) use ($page) {
                 return trimPath($page->getPath()) == trimPath($child);
             });
         }
     },
+    'repositoryUrl' => 'https://github.com/beganovich/invoiceninja-docs',
 ];
