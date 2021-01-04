@@ -4,6 +4,7 @@ return [
     'User guide' => [
         'url' => '/docs/getting-started',
         'children' => [
+            'Introduction' => '/docs/introduction',
             'Clients' => '/docs/clients',
             'Invoices' => '/docs/invoices',
             'Products' => '/docs/products',
