@@ -95,17 +95,12 @@ Enable gzip in your webserver configuration, this will dramatically improve the 
 
 <p>Create a database on your MySQL compatible server and add a user that has full access to the database, database configuration is out of the scope of this article, more information can be found <a href="https://dev.mysql.com/doc/refman/8.0/en/creating-database.html">here</a></p>
 
-##### Headless Chrome
-
-<p>Invoice Ninja currently relies on Headless Chrome to generate PDFs, you will need to install this by running the follow command from the project directory</p>
-
-```bash
-npm install
-```
-
 ##### Cron configuration
 
-<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
+:::warning
+Ensure you set the scheduler under the web server user! ie sudo -u www-data crontab -e
+
+<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record.</p>
 
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
@@ -120,7 +115,7 @@ npm install
 ```bash
 git clone https://github.com/invoiceninja/invoiceninja.git
 
-git checkout v5-develop
+git checkout v5-stable
 
 composer install --no-dev
 
@@ -135,6 +130,9 @@ php artisan optimize
 
 ##### Cron configuration
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
+
+:::warning
+Ensure you set the scheduler under the web server user! ie sudo -u www-data crontab -e
 
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
