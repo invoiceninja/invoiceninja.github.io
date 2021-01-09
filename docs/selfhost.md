@@ -98,7 +98,8 @@ Enable gzip in your webserver configuration, this will dramatically improve the 
 ##### Cron configuration
 
 :::warning
-Ensure you set the scheduler under the web server user! ie sudo -u www-data crontab -e
+Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
+:::
 
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record.</p>
 
@@ -106,7 +107,7 @@ Ensure you set the scheduler under the web server user! ie sudo -u www-data cron
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-<p>Navigate your browser to your installation domain name address with /setup appended ie, <b>www.invoiceninja.test/setup</b> from this page you will configure your database, mailserver and the primary account user, when completed, click Submit and the app will setup your application and redirect you to the login page</p>
+<p>Navigate your browser to your installation domain name address with /setup appended i.e. <b>www.invoiceninja.test/setup</b> from this page you will configure your database, mailserver and the primary account user, when completed, click Submit and the app will setup your application and redirect you to the login page</p>
 
 ### Installation from git (Advanced)
 
@@ -132,7 +133,8 @@ php artisan optimize
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
 
 :::warning
-Ensure you set the scheduler under the web server user! ie sudo -u www-data crontab -e
+Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
+:::
 
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
