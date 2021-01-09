@@ -192,13 +192,15 @@ The command will output errors and identify where balances are not matching.
 
 ## Currency Conversion
 
-<p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion. Open Exchange currently provides a free tier which is suitable for daily updates of the exchange rates. Simply insert a Open Exchange API key into your .env file to enable exchange rate updates</p>
+<p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.
+Open Exchange currently provides a free tier which is suitable for daily updates of the exchange rates.
+Simply insert a Open Exchange API key into your .env file to enable exchange rate updates:</p>
 
 ```bash
 OPENEXCHANGE_APP_ID=your_open_exchange_api_key_here
 ```
 
-Make sure to update your cache afterwards
+Make sure to update your cache afterwards:
 
 ```bash
 php artisan optimize
@@ -207,7 +209,7 @@ php artisan optimize
 
 ## Phantom JS
 
-<p>If it is not possible to install npm/node you can use an <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day which may suit most users</p>
+<p>If it is not possible to install npm/node you can use <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day which will suffice for most users.</p>
 
 <p>Phantom JS is the default PDF generator and can be toggled on and off by settings the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.</p>
 
@@ -217,21 +219,25 @@ PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET='your-secret-here'
 ```
 
-<p>Once this has been done you'll need to refresh the config cache</p>
+<p>Once this has been done you'll need to refresh the config cache:</p>
 
 ```bash
 php artisan optimize
 ```
 
 :::warning
-For PhantomJS to work, your Invoice Ninja installation web address must be public, localhost installations or those on private networks won't be able to use PhantomJS Cloud 
+For PhantomJS to work, your Invoice Ninja installation web address must be public; localhost installations or those on private networks won't be able to use PhantomJS Cloud.
 :::
 
-## Trouble shooting
+## Troubleshooting
+
+### General advice
+
+When facing errors, first set `APP_DEBUG=true` in `.env` and execute `php artisan optimize` to get more extensive debug information.
 
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
 
-<p>The most common cause of this issue is running multiple version of PHP, if the caches are built with a different version of PHP you may see the above error as differing versions of PHP may not be interoperable on the same installation. Ensure you are running the same CLI and Web PHP version to prevent any errors</p>
+<p>The most common cause of this issue is running multiple version of PHP, if the caches are built with a different version of PHP you may see the above error as differing versions of PHP may not be interoperable on the same installation. Ensure you are running the same CLI and Web PHP version to prevent any errors/</p>
 
 ### Unable to connect to database after installation
 
@@ -257,17 +263,19 @@ client_max_body_size 100M;
 chrome: error while loading shared libraries: libX11-xcb.so.1: cannot open shared object file: No such file or directory
 ```
 
-<p>To fix this you will need to install packages to support xcb </p>
+<p>To fix this you will need to install packages to support xcb:</p>
 
 ```bash
 sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
 ```
 
 ::: warning
-If you are having troubles installing NPM/NODE you may want to consider using PhantomJS Cloud, instructions to implement this can be found here <a href="https://invoiceninja.github.io/selfhost.html#phantom-js">Phantom JS</a>
+If you are having troubles installing NPM/NODE you may want to consider using PhantomJS Cloud, instructions for that are <a href="https://invoiceninja.github.io/selfhost.html#phantom-js">above</a>.
 :::
 
-### Using multiple versions of NPM / NODE
+### NPM / NODE versions
+
+<p>As we are using the latest version of Puppeteer (v5), NPM version must be >= 6 and Node >=12</p>
 
 <p>If you are running mulitple versions of Node/NPM you may want to specify path to the correct version. To enable this you will need to set the environment variables as follows in the .env file</p>
 
@@ -276,14 +284,8 @@ NODE_PATH=/usr/bin...path_to_node
 NPM_PATH=/usr/bin....path_to_npm
 ```
 
-::: warning
-After updating the .env file you will need to recache the configuration, the simplest way to do this is.
-:::
+<p>Don't forget to refresh the config cache:</p>
 
 ```bash
 php artisan optimize
 ```
-
-### Node / NPM version
-
-<p>As we are using the latest version of Puppeteer (v5), NPM version must be >= 6 and Node >=12</p>
