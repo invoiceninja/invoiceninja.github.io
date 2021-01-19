@@ -17,5 +17,5 @@ return [
             });
         }
     },
-    'repositoryUrl' => 'https://github.com/beganovich/invoiceninja-docs',
+    'repositoryUrl' => 'https://github.com/invoiceninja/invoiceninja.github.io',
 ];

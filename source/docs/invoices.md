@@ -62,9 +62,9 @@ If the invoice has a balance remaining, in order to balance the ledger, we perfo
 * The invoice number is appended with <b>_deleted</b> in order to allow reuse of invoice numbers.
 
 
-> {warning}
-Important! If a invoice has a remaining balance or has had payments applied to it, the invoice is cancelled and then deleted.
-
+<x-warning>
+<h4>Important!</h4> If a invoice has a remaining balance or has had payments applied to it, the invoice is cancelled and then deleted.
+</x-warning>
 
 ## Reversed
 
@@ -89,9 +89,9 @@ Important! If a invoice has a remaining balance or has had payments applied to i
 
 Archiving a invoice simply removes the invoice from the invoice list view. Archiving a invoice keeps your list views clean and tidy and does not effect the ledger / client balance.
 
-> {warning}
+<x-warning>
 When a invoice is archived no further modifications can be made to the invoice. To modify the invoice you will need to Restore the invoice first.
-
+</x-warning>
 
 ## Restored
 
