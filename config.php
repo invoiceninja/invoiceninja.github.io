@@ -2,7 +2,7 @@
 
 return [
     'production' => false,
-    'baseUrl' => '',
+    'baseUrl' => 'https://invoiceninja.github.io',
     'title' => 'Free Open-Source Invoicing, Expenses & Time-Tracking | Invoice Ninja',
     'description' => 'The leading free open-source online invoicing app for freelancers & businesses. Invoice, accept payments, track expenses, create proposals, & time-tasks',
     'collections' => [],
