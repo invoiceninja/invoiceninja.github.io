@@ -17,9 +17,7 @@
 </head>
 
 <body class="font-sans antialiased text-gray-900 bg-gray-100">
-    <div class="p-px bg-ninja-blue"></div>
-
-    <nav class="py-4 uppercase bg-white border-b">
+    <nav class="py-4 uppercase bg-white border-b sticky top-0 z-40">
         <div id="navigation-content" class="container flex items-center justify-between px-4 md:px-0 md:mx-auto">
             <a href="/" id="left-side-logo">
                 <img class="h-10" src="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/public/images/invoiceninja-black-logo-2.png" alt="Invoice Ninja logo" />

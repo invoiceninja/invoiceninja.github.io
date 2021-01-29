@@ -1,24 +1,28 @@
 @extends('_layouts.master')
 
-@section('body')
-    <div class="container flex py-4 mx-auto">
-        <div class="hidden w-1/4 mr-4 space-y-6 md:block">
-            @foreach($page->navigation as $section => $props)
-                <div>
-                    <a class="block py-1 hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
-                       href="{{ $props['url'] }}">{{ $section }}</a>
+@yield('beforeBody')
 
-                    <div class="mt-2">
-                        @foreach($props->children as $child => $url)
-                            <a class="block hover:text-ninja-blue py-1 {{ (trimPath($page->getPath()) == trimPath($url)) ? 'text-ninja-blue' : '' }}"
-                               href="{{ $url }}">{{ $child }}</a>
-                        @endforeach
+@section('body')
+    <div class="container grid grid-cols-12 py-4 mx-auto">
+        <div class="hidden mr-4 space-y-6 md:block md:col-span-3">
+            <div class="fixed mt-2">
+                @foreach($page->navigation as $section => $props)
+                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
+                           href="{{ $props['url'] }}">{{ $section }}</a>
+
+                        <div class="mt-2">
+                            @foreach($props->children as $child => $url)
+                                <a class="block hover:text-ninja-blue py-1 {{ (trimPath($page->getPath()) == trimPath($url)) ? 'text-ninja-blue' : '' }}"
+                                   href="{{ $url }}">{{ $child }}</a>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div> <!-- End of sidebar -->
 
-        <div class="w-full p-4 prose xl:prose-lg 2xl:prose-xl">
+        <div class="col-span-12 md:col-span-6 p-4 prose xl:prose-lg 2xl:prose-xl" id="page-content">
             @yield('content')
 
             <a href="{{ $page->repositoryUrl . '/blob/master/source' . $page->getPath() }}.md"
@@ -31,6 +35,13 @@
                 <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
             </a>
         </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-3 p-4">
+            <div class="fixed" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
     </div>
 @stop
 

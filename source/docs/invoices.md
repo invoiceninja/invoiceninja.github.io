@@ -5,20 +5,6 @@ section: content
 
 # Lifecycle of invoice
 
-- [Lifecycle of invoice](#lifecycle-of-invoice)
-- [Lifecycle of an invoice](#lifecycle-of-an-invoice)
-  - [Draft](#draft)
-  - [Sent](#sent)
-  - [Partial](#partial)
-  - [Paid](#paid)
-  - [Cancelled](#cancelled)
-  - [Deleted](#deleted)
-  - [Reversed](#reversed)
-  - [Archived](#archived)
-  - [Restored](#restored)
-
-# Lifecycle of an invoice
-
 ## Draft
 
 <p>The Draft status is the first status in the lifecycle of a invoice. In this status, changes can be made to the invoice and the invoice is hidden completely from the client. A draft invoice does not affect the ledger nor does it change the client balance. Draft invoices are inactive until either emailed to the client or marked as sent.</p>

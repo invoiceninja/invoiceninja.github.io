@@ -5,10 +5,6 @@ section: content
 
 # Clients
 
-- [Clients](#clients)
-    - [Creating clients](#creating-clients)
-    - [Grouping settings](#grouping-settings)
-
 ## Creating clients
 
 There several ways for a client to be created, including:
