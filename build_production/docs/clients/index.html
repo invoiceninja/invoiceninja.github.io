@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Open-Source Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/docs/clients">
+    <meta name="description" content="The leading free open-source online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, create proposals, &amp; time-tasks">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=ff820cbee6919541d5ea">
+
+    </head>
+
+<body class="font-sans antialiased text-gray-900 bg-gray-100">
+    <nav class="py-4 uppercase bg-white border-b sticky top-0 z-40">
+        <div id="navigation-content" class="container flex items-center justify-between px-4 md:px-0 md:mx-auto">
+            <a href="/" id="left-side-logo">
+                <img class="h-10" src="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/public/images/invoiceninja-black-logo-2.png" alt="Invoice Ninja logo" />
+            </a>
+            <section id="right-side-items" class="text-sm">
+                <div class="hidden md:block md:space-x-5">
+                    <input type="text" placeholder="Quick search..." class="px-4 py-2 border rounded hover:border-ninja-blue focus:border-ninja-blue focus:outline-none">
+                    <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+                    <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
+                    <a href="https://app.invoiceninja.com" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Log in</a>
+                </div>
+                <div class="flex flex-col md:hidden">
+                    <button id="mobile-menu-toggle" class="focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+        </div>
+        <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+            <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+            <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
+            <a href="https://app.invoiceninja.com" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Login</a>
+        </div>
+    </nav>
+
+        <div class="container grid grid-cols-12 py-4 mx-auto">
+        <div class="hidden mr-4 space-y-6 md:block md:col-span-3">
+            <div class="fixed mt-2">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/getting-started">User guide</a>
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/introduction">Introduction</a>
+                                                            <a class="block hover:text-ninja-blue py-1 text-ninja-blue"
+                                   href="/docs/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/settings">Settings</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/developer-guide">Developer guide</a>
+
+                        <div class="mt-2">
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/self-host">Self host</a>
+
+                        <div class="mt-2">
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/migration">Migrating to V5</a>
+
+                        <div class="mt-2">
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-6 p-4 prose xl:prose-lg 2xl:prose-xl" id="page-content">
+            <h1>Clients</h1>
+
+<h2>Creating clients</h2>
+
+<p>There several ways for a client to be created, including:</p>
+
+<ul>
+<li>Admin Portal > Create Client</li>
+<li>Admin Portal > Client CSV Import</li>
+<li>Client Portal (if client registration is enabled on Settings > Client Portal)</li>
+<li>API</li>
+<li>Integrator: Zapier, Integromat or APISync</li>
+</ul>
+
+<p>A "Client" can either represent a person or a company. If only the contact information is set the contact name will be
+used as the client's display name. If the client's name is set then it will be used instead.</p>
+
+<h2>Grouping settings</h2>
+
+<p>If many clients share the same settings, for example, the same currency or email reminder settings, you can create a
+group on Settings > Groups to, as the name implies, group together the settings.</p>
+
+<p>For most settings, the app will first check if the client has a value in place, if not it will check if the client
+belongs to a group and if that group defines a value. Finally, it will use the default value set at the company level.</p>
+
+<p>The benefit of using groups is that if in the future you need to change the setting you can change it one place rather
+than having to update multiple clients individually. Without groups, bulk updating client settings would require using
+the API or an integrator.</p>
+
+<p> <div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/docs/products">
+        <span>Products</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div> </p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/master/source/docs/clients.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-3 p-4">
+            <div class="fixed" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=731da87cdc9da824dedd"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>

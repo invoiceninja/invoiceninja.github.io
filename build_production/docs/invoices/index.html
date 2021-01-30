@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Open-Source Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/docs/invoices">
+    <meta name="description" content="The leading free open-source online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, create proposals, &amp; time-tasks">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=ff820cbee6919541d5ea">
+
+    </head>
+
+<body class="font-sans antialiased text-gray-900 bg-gray-100">
+    <nav class="py-4 uppercase bg-white border-b sticky top-0 z-40">
+        <div id="navigation-content" class="container flex items-center justify-between px-4 md:px-0 md:mx-auto">
+            <a href="/" id="left-side-logo">
+                <img class="h-10" src="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/public/images/invoiceninja-black-logo-2.png" alt="Invoice Ninja logo" />
+            </a>
+            <section id="right-side-items" class="text-sm">
+                <div class="hidden md:block md:space-x-5">
+                    <input type="text" placeholder="Quick search..." class="px-4 py-2 border rounded hover:border-ninja-blue focus:border-ninja-blue focus:outline-none">
+                    <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+                    <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
+                    <a href="https://app.invoiceninja.com" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Log in</a>
+                </div>
+                <div class="flex flex-col md:hidden">
+                    <button id="mobile-menu-toggle" class="focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+        </div>
+        <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+            <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+            <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
+            <a href="https://app.invoiceninja.com" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Login</a>
+        </div>
+    </nav>
+
+        <div class="container grid grid-cols-12 py-4 mx-auto">
+        <div class="hidden mr-4 space-y-6 md:block md:col-span-3">
+            <div class="fixed mt-2">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/getting-started">User guide</a>
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/introduction">Introduction</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 text-ninja-blue"
+                                   href="/docs/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                   href="/docs/settings">Settings</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/developer-guide">Developer guide</a>
+
+                        <div class="mt-2">
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/self-host">Self host</a>
+
+                        <div class="mt-2">
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                           href="/docs/migration">Migrating to V5</a>
+
+                        <div class="mt-2">
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-6 p-4 prose xl:prose-lg 2xl:prose-xl" id="page-content">
+            <h1>Lifecycle of an invoice</h1>
+
+<h2>Draft</h2>
+
+<p>The Draft status is the first status in the lifecycle of a invoice. In this status, changes can be made to the invoice and the invoice is hidden completely from the client. A draft invoice does not affect the ledger nor does it change the client balance. Draft invoices are inactive until either emailed to the client or marked as sent.</p>
+
+<p>::: warning
+Once a draft invoice has been emailed/marked as sent its status cannot be changed back to draft.
+:::</p>
+
+<h2>Sent</h2>
+
+<p>A invoice is marked as sent when it has been emailed to the client or marked as <i>sent</i> in the admin panel</p>
+
+<p>When the invoice status is changed to Sent, the client balance increases by the <i>invoice balance</i> amount</p>
+
+<h2>Partial</h2>
+
+<p>A invoice status of Partial means that a payment has been applied to the invoice but there is still a outstanding balance remaining on the invoice.</p>
+
+<h2>Paid</h2>
+
+<p>A invoice status of Paid means that full payment has been applied to the invoice. The <i>invoice balance</i> will be 0.</p>
+
+<h2>Cancelled</h2>
+
+<p>A invoice can be cancelled under the following conditions</p>
+
+<ul>
+<li>The invoice is marked as Sent, Partial or Paid (ie. some payment amount has been applied or the invoice is active)</li>
+</ul>
+
+<p>When a invoice is cancelled the <i>invoice balance</i> is set to zero and the status updated to <b>Cancelled</b>, the <i>client balance</i> is also adjusted down. If payments have been applied to the invoice these will remain linked to the invoice.</p>
+
+<h2>Deleted</h2>
+
+<p>A invoice can be marked as deleted if the following conditions have been met</p>
+
+<ul>
+<li>The invoice has a status of Sent / Draft / Paid / Partial.</li>
+</ul>
+
+<p>What happens when a invoice is deleted?</p>
+
+<p>If the invoice has a balance remaining, in order to balance the ledger, we perform a <b>Cancellation</b> on the invoice first and then perform the deletion.</p>
+
+<ul>
+<li>Invoice status set to deleted</li>
+<li>The invoice number is appended with <b>_deleted</b> in order to allow reuse of invoice numbers.</li>
+</ul>
+
+<p>:::warning
+Important! If a invoice has a remaining balance or has had payments applied to it, the invoice is cancelled and then deleted.
+:::</p>
+
+<h2>Reversed</h2>
+
+<p>A invoice can be reversed under the following conditions</p>
+
+<ul>
+<li>The invoice is marked as Sent, Partial or Paid (ie. some payment amount has been applied to the invoice)</li>
+</ul>
+
+<p>When a invoice is reversed the payment/s that have been applied to the invoice have a credit generated against them. The ledger is also adjusted as follows:</p>
+
+<ul>
+<li>The client paid to date amount is reduced by the calculated amount of (invoice balance - invoice amount).</li>
+<li>A credit is generated for the payments applied to the invoice (invoice balance - invoice amount).</li>
+<li>The client balance is reduced by the invoice balance.</li>
+<li>The invoice balance is finally set to 0.</li>
+<li>The invoice status is set to Reversed.</li>
+</ul>
+
+<p>When a invoice has been reversed, the previous payments relationships are unlinked and cannot be restored.</p>
+
+<h2>Archived</h2>
+
+<p>Archiving a invoice simply removes the invoice from the invoice list view. Archiving a invoice keeps your list views clean and tidy and does not effect the ledger / client balance.</p>
+
+<p>:::warning
+When a invoice is archived no further modifications can be made to the invoice. To modify the invoice you will need to Restore the invoice first.
+:::</p>
+
+<h2>Restored</h2>
+
+<p>Restoring a invoice from the archived state will set the invoice back to its previous state prior to archiving.</p>
+
+<p> <div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/docs/payments">
+        <span>Payments</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div> </p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/master/source/docs/invoices.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-3 p-4">
+            <div class="fixed" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=731da87cdc9da824dedd"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+</body>
+
+</html>
