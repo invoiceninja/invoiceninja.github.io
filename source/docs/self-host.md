@@ -9,9 +9,9 @@ section: content
 
 <p>Invoice Ninja has a few system requirements. Built on top of <a href="www.laravel.com/docs/">Laravel</a> it requires a PHP and MySQL server at a minimum with the following version and extensions installed.</p>
 
-:::warning
+<x-warning>
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
-::: 
+</x-warning>
 
 * PHP >= 7.3.x
 * bcmath extension
@@ -41,11 +41,11 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 
 <p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will  need to download the package which is appended with <b>-release</b>, download the file named invoiceninja.zip.</p>
 
-<p>Unzip this file into the virtual host directory you have created.<p>
+<p>Unzip this file into the virtual host directory you have created.</p>
 
-::: warning
+<x-warning>
 Ensure the file permission have been set to the web server user. For example in Ubuntu this is www-data if you have configured a virtual host with a root directory of `/var/www/html` you would set the ownership like this.
-:::
+</x-warning>
 
 ```bash
 sudo chown -R www-data:www-data /var/www/html
@@ -88,11 +88,11 @@ location ~ /\.ht {
 }
 ```
 
-::: warning
+<x-warning>
 Performance hint!
 
 Enable gzip in your webserver configuration, this will dramatically improve the loading time of the application! Please see the above nginx configuration for a sample of how to load the components of the application with gzip.
-:::
+</x-warning>
 
 ##### Database server configuration
 
@@ -100,9 +100,9 @@ Enable gzip in your webserver configuration, this will dramatically improve the 
 
 ##### Cron configuration
 
-:::warning
+<x-warning>
 Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
-:::
+</x-warning>
 
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record.</p>
 
@@ -133,9 +133,9 @@ php artisan optimize
 ##### Cron configuration
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
 
-:::warning
+<x-warning>
 Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
-:::
+</x-warning>
 
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
@@ -221,7 +221,7 @@ For the migration to be successful you will need to ensure the signup email addr
 
 For further help with migrating please chat to us on our <a href="https://forum.invoiceninja.com">Forum</a> or our <a href="https://invoiceninja.slack.com">Slack Channel</a>
 
-::: warning
+<x-warning>
 After migration you will want to ensure all of your balances are correct to do this from the command line enter the following command
 
 ```bash
@@ -229,7 +229,7 @@ php artisan ninja:check-data
 ```
 
 The command will output errors and identify where balances are not matching.
-:::
+</x-warning>
 
 ## Currency Conversion
 
