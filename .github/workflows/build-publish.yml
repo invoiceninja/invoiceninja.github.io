@@ -18,23 +18,22 @@ jobs:
         with:
           php-version: 7.4
           extensions: mysql, mysqlnd, sqlite3, bcmath, gd, curl, zip, openssl, mbstring, xml
-    steps:
-    - uses: actions/checkout@v2
-    - name: Install Composer Dependencies
-      run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-    - name: Install NPM Dependencies
-      run: npm install
-    - name: Build Site
-      run: npm run production
-    - name: Stage Files
-      run: git add -f build_production
-    - name: Commit files
-      run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        git commit -m "Build for deploy"
-    - name: Publish
-      run: |
-        git subtree split --prefix build_production -b master
-        git push -f origin master:master
-        git branch -D master
+      - uses: actions/checkout@v2
+      - name: Install Composer Dependencies
+        run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Install NPM Dependencies
+        run: npm install
+      - name: Build Site
+        run: npm run production
+      - name: Stage Files
+        run: git add -f build_production
+      - name: Commit files
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit -m "Build for deploy"
+      - name: Publish
+        run: |
+          git subtree split --prefix build_production -b master
+          git push -f origin master:master
+          git branch -D master
