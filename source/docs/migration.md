@@ -51,3 +51,61 @@ Important points at this stage:
 ![alt text](/assets/images/migration/migration_step_6.png "Migration started")
 
 ## V5 Migration Process
+
+With a little luck, you should have already received an email notification advising the migration has completed!
+
+There are a couple of things you will want to check to ensure the data has come across correctly:
+
+* Ensure your company logo has migrated (Settings > Company Details > Logo)
+* Ensure the migrated data passes our data quality check by running
+
+```php
+php artisan ninja:check-data
+```
+
+A series of checks are run and if you see 0 issues, that means your data has come across correctly.
+
+* You'll also want to inspect the logs located in :
+
+```bash
+storage/logs/laravel.log
+```
+
+Inside here you will see output such as this:
+
+```bash
+[2021-01-30 10:46:04] development.INFO: Importing account  
+[2021-01-30 10:46:04] development.INFO: Importing company  
+[2021-01-30 10:46:04] development.INFO: Importing users  
+[2021-01-30 10:46:04] development.INFO: Importing payment_terms  
+[2021-01-30 10:46:04] development.INFO: Importing tax_rates  
+[2021-01-30 10:46:04] development.INFO: Importing clients  
+[2021-01-30 10:46:04] development.INFO: Importing company_gateways  
+[2021-01-30 10:46:04] development.INFO: Importing client_gateway_tokens  
+[2021-01-30 10:46:04] development.INFO: Importing vendors  
+[2021-01-30 10:46:04] development.INFO: Importing projects  
+[2021-01-30 10:46:04] development.INFO: Importing products  
+[2021-01-30 10:46:04] development.INFO: Importing credits  
+[2021-01-30 10:46:04] development.INFO: Importing invoices  
+[2021-01-30 10:46:06] development.INFO: Importing recurring_invoices  
+[2021-01-30 10:46:06] development.INFO: Importing quotes  
+[2021-01-30 10:46:07] development.INFO: Importing payments  
+[2021-01-30 10:46:08] development.INFO: Importing expense_categories  
+[2021-01-30 10:46:08] development.INFO: Importing task_statuses  
+[2021-01-30 10:46:08] development.INFO: Importing expenses  
+[2021-01-30 10:46:08] development.INFO: Importing tasks  
+[2021-01-30 10:46:08] development.INFO: Importing documents  
+[2021-01-30 10:46:09] development.INFO: Completed🚀🚀🚀🚀🚀 at 2021-01-30 
+[2021-01-30 10:46:09] development.INFO: latest version = 5.0.56  
+```
+
+This example output would indicate that each entity was successfully brought across, if a problem is detected early the migration will fail early and return an error. A Laravel error will also be thrown indicating the exact issue.
+
+## Troubleshooting
+
+If you are experiencing issues with the migration not running as expected please run through the following checklist:
+
+* Ensure directories are read/writable by the webuser (ie www-data)
+* Ensure the cron scheduler is running (and working) - You can verify it is working by inspecting the ```jobs``` table in the database, it should be empty
+* Inspect the log file /storage/logs/laravel.log for further information.
+* If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. EXPANDED_LOGGING=true then optimize with php artisan optimize . Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
