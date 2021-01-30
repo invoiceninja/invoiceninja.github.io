@@ -25,12 +25,13 @@ jobs:
         run: npm install
       - name: Build Site
         run: npm run production
-      - name: Stage Files
-        run: git add -f build_production
-      - name: Commit files
+      - name: Prepare production
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit -m "Build for deploy"
+          git add build_production -f && git commit -m "Build for deploy"
+      - name: Deploy website
+        run: |
+          git remote set-url origin https://${{secrets.DEPLOY_KEY}}@github.com/YOUR_USERNAME/REPOSITORY_NAME.git
           git subtree split --prefix build_production -b gh-pages
           git push -f origin gh-pages:gh-pages
