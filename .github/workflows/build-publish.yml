@@ -34,6 +34,5 @@ jobs:
           git commit -m "Build for deploy"
       - name: Publish
         run: |
-          git subtree split --prefix build_production -b master
-          git push -f origin master:master
-          git branch -D master
+          git subtree split --prefix build_production -b gh-pages
+          git push -f origin gh-pages:gh-pages
