@@ -20,4 +20,8 @@ return [
         'url' => '/docs/self-host',
         'children' => [],
     ],
+    'Migrating to V5' => [
+        'url' => '/docs/migration',
+        'children' => [],
+    ]
 ];
