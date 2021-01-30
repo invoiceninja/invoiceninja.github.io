@@ -34,6 +34,5 @@ jobs:
           git add build_production -f && git commit -m "Build for deploy"
       - name: Publish
         run: |
-          git remote set-url origin https://${{secrets.DEPLOY_KEY}}@github.com/invoiceninja/invoiceninja.github.io.git
           git subtree split --prefix build_production -b gh-pages
           git push -f origin gh-pages:gh-pages
