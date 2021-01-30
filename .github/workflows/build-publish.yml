@@ -36,3 +36,4 @@ jobs:
         run: |
           git subtree split --prefix build_production -b gh-pages
           git push -f origin gh-pages:gh-pages
+          
