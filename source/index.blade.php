@@ -15,12 +15,12 @@
             <p class="mt-2">Find solution for common issues.</p>
         </a>
 
-        <a href="/docs/self-hosting/getting-started" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-white md:bg-gray-200 md:col-span-6">
+        <a href="/docs/self-host/" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-white md:bg-gray-200 md:col-span-6">
             <h4 class="text-3xl font-semibold">Self hosted guide</h4>
             <p class="mt-2">Learn more about self-hosting Invoice Ninja.</p>
         </a>
 
-        <a href="/docs/api/getting-started" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-gray-200 md:bg-white md:col-span-6">
+        <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-gray-200 md:bg-white md:col-span-6">
             <h4 class="text-3xl font-semibold">API integration</h4>
             <p class="mt-2">Integrate Invoice Ninja in own projects.</p>
         </a>

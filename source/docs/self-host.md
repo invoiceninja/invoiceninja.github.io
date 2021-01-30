@@ -1,0 +1,312 @@
+---
+extends: _layouts.docs
+section: content
+---
+
+# Installation
+
+## Server Requirements
+
+<p>Invoice Ninja has a few system requirements. Built on top of <a href="www.laravel.com/docs/">Laravel</a> it requires a PHP and MySQL server at a minimum with the following version and extensions installed.</p>
+
+:::warning
+You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
+::: 
+
+* PHP >= 7.3.x
+* bcmath extension
+* ctype extension
+* fileinfo extension
+* json extension
+* mbstring extension
+* openssl extension
+* PDO extension
+* tokenizer extension
+* xml extension
+* curl extension
+* zip extension
+* gmp extension
+* mysqli extension
+* MySQL / MariaDB Server
+
+## Installing Invoice Ninja
+
+### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
+
+<p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto CentOS, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a>. If Ubuntu is more your flavour you can follow his awesome guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588">here</a></p>
+
+### Download pre built zip. (Advanced)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will  need to download the package which is appended with <b>-release</b>, download the file named invoiceninja.zip.</p>
+
+<p>Unzip this file into the virtual host directory you have created.<p>
+
+::: warning
+Ensure the file permission have been set to the web server user. For example in Ubuntu this is www-data if you have configured a virtual host with a root directory of `/var/www/html` you would set the ownership like this.
+:::
+
+```bash
+sudo chown -R www-data:www-data /var/www/html
+```
+
+##### Web server configuration
+<p>A sample NGINX configuration is provided below, it assumes you have PHP 7.4 installed with the PHP FPM extension installed</p>
+
+```bash
+server {
+
+listen 80;
+server_name invoiceninja.test;
+root /var/www/invoiceninja/public;
+index index.php index.html index.htm;
+client_max_body_size 20M;
+
+gzip on;
+gzip_types      application/javascript application/x-javascript text/javascript text/plain application/xml application/json;
+gzip_proxied    no-cache no-store private expired auth;
+gzip_min_length 1000;
+
+location / {
+    try_files $uri $uri/ =404;
+}
+
+if (!-e $request_filename) {
+    rewrite ^(.+)$ /index.php?q= last;
+}
+
+location ~ \.php$ {
+include snippets/fastcgi-php.conf;
+fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+}
+
+location ~ /\.ht {
+    deny all;
+}
+
+}
+```
+
+::: warning
+Performance hint!
+
+Enable gzip in your webserver configuration, this will dramatically improve the loading time of the application! Please see the above nginx configuration for a sample of how to load the components of the application with gzip.
+:::
+
+##### Database server configuration
+
+<p>Create a database on your MySQL compatible server and add a user that has full access to the database, database configuration is out of the scope of this article, more information can be found <a href="https://dev.mysql.com/doc/refman/8.0/en/creating-database.html">here</a></p>
+
+##### Cron configuration
+
+:::warning
+Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
+:::
+
+<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record.</p>
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+<p>Navigate your browser to your installation domain name address with /setup appended i.e. <b>www.invoiceninja.test/setup</b> from this page you will configure your database, mailserver and the primary account user, when completed, click Submit and the app will setup your application and redirect you to the login page</p>
+
+### Installation from git (Advanced)
+
+<p>For power users installing the app from Github can be done with the following steps</p>
+
+```bash
+git clone https://github.com/invoiceninja/invoiceninja.git
+
+git checkout v5-stable
+
+composer install --no-dev
+
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan optimize
+```
+
+##### Cron configuration
+<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
+
+:::warning
+Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
+:::
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+<p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
+
+## Shared Hosting
+
+##### Server Requirements
+
+We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
+
+* proc_open
+* exec
+* open_basedir
+
+Without these modules, you will not be able to run Invoice Ninja. We do include some preflight checks of these modules in the Setup workflow, but it is best to check with your host that they support these modules. Some hosts choose to disable these modules as they classify them as security risks.
+
+##### Database configuration
+
+<p>Create a MySQL compatible database in your shared host control panel along with a database user, record the database name, username and password as you'll need this later. Ensure your database user has full access to the database you've just created.
+
+##### Upload release asset
+
+Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.zip.
+
+Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **invoiceninja.zip** file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
+
+##### Run setup
+
+Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some pre flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
+
+##### Add the cron job
+
+Add the Laravel scheduler cron job, be sure to include the full path, for a cPanel host it should look like this:
+
+```bash
+* * * * * /opt/alt/php73/usr/bin/php /home/<myuseraccount>/public_html/artisan schedule:run
+```
+
+## Installing Invoice Ninja (Docker)
+
+If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>
+
+## Updating Invoice Ninja
+
+
+### Docker
+
+When we tag a new release, a new image is built. All that is required for docker users is to bring down the container, pull in the new image and then bring the container up again, these three commands are all that is needed.
+
+```bash
+docker-compose down
+docker-compose pull
+docker-compose up
+```
+
+### Git users
+
+If you have installed Invoice Ninja using just git, then all that is required is to pull in the changes, run the migration, update the config cache and restart the queue. These commands are as follows:
+
+```bash 
+git pull
+php artisan migrate
+php artisan optimize
+php artisan queue:restart
+```
+
+### Shared hosting / ZIP builds
+
+If you have installed the application using the precompiled .zip file, then the internal self updater should perform all the necessary tasks to bring your app up to the latest version. The only strict requirements are:
+
+* The directory is owned recursively by the web user.
+* Git is available for execution. 
+* The scheduler cron is running.
+
+## Migrating from v4
+
+Migration of your data from v4 to v5 is done via the Settings panel of v4. Navigate to Settings > Account Management and click on Start Migration
+
+For the migration to be successful you will need to ensure the signup email address is the same between v4 and v5. It is not possible to cross migrate using different email address as part of your credentials
+
+For further help with migrating please chat to us on our <a href="https://forum.invoiceninja.com">Forum</a> or our <a href="https://invoiceninja.slack.com">Slack Channel</a>
+
+::: warning
+After migration you will want to ensure all of your balances are correct to do this from the command line enter the following command
+
+```bash
+php artisan ninja:check-data
+```
+
+The command will output errors and identify where balances are not matching.
+:::
+
+## Currency Conversion
+
+<p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.
+Open Exchange currently provides a free tier which is suitable for daily updates of the exchange rates.
+Simply insert a Open Exchange API key into your .env file to enable exchange rate updates:</p>
+
+```bash
+OPENEXCHANGE_APP_ID=your_open_exchange_api_key_here
+```
+
+Make sure to update your cache afterwards:
+
+```bash
+php artisan optimize
+```
+
+
+## Phantom JS
+
+<p>Using Phantom JS is an option <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day which will suffice for most users.</p>
+
+<p>Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.</p>
+
+```bash
+PHANTOMJS_PDF_GENERATION=true
+PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
+PHANTOMJS_SECRET='your-secret-here'
+```
+
+<p>Once this has been done you'll need to refresh the config cache:</p>
+
+```bash
+php artisan optimize
+```
+
+:::warning
+For PhantomJS to work, your Invoice Ninja installation web address must be public; localhost installations or those on private networks won't be able to use PhantomJS Cloud.
+:::
+
+## Troubleshooting
+
+### General advice
+
+When facing errors, first set `APP_DEBUG=true` in `.env` and execute `php artisan optimize` to get more extensive debug information.
+
+### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
+
+<p>The most common cause of this issue is running multiple version of PHP, if the caches are built with a different version of PHP you may see the above error as differing versions of PHP may not be interoperable on the same installation. Ensure you are running the same CLI and Web PHP version to prevent any errors/</p>
+
+### Unable to connect to database after installation
+
+<p>You may need to restart the queue like this</p>
+
+```bash
+php artisan queue:restart
+```
+
+### Nginx: 413 – Request Entity Too Large
+
+This error indicated that the client_max_body_size parameter in NGINX is too small, you will need to edit your nginx config and increase the size
+
+```bash
+client_max_body_size 100M;
+```
+
+### Proxy configuration.
+
+For users that rely on configuring a reverse proxy, please consider this post on our forum which details steps which may assist in configuring a reverse proxy.
+
+<a href="https://forum.invoiceninja.com/t/selfhosting-setup-failing/5651/8">Reverse Proxy Invoice Ninja</a>
+
+### Problems with migration
+
+If you are experiencing issues with the migration not running as expected please run through the following checklist:
+
+ * Ensure directories are read/writable by the webuser (ie www-data)
+ * Ensure the cron scheduler is running (and working) - You can verify it is working by inspecting the ```jobs``` table in the database, it should be empty
+ * Inspect the log file /storage/logs/laravel.log for further information.
+ * If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. ```EXPANDED_LOGGING=true``` then optimize with ```php artisan optimize``` . Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log

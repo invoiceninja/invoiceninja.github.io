@@ -5,10 +5,6 @@ section: content
 
 # Introduction
 
-- [Introduction](#introduction)
-    * [App basics](#app-basics)
-    * [Debugging problems](#debugging-problems)
-
 ## App basics
 
 The app interface is divided into three parts: the sidebar navigation menu, the list (or table) and the preview. The

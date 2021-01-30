@@ -5,10 +5,6 @@ section: content
 
 # Getting started
 
-- [Getting started](#getting-started)
-    - [Overview](#overview)
-    - [Architecture](#architecture)
-
 ## Overview
 
 Invoice Ninja is a invoicing application that makes sending invoices and receiving payments simple and easy. Our latest
