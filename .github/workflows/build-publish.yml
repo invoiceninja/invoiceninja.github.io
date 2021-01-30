@@ -9,12 +9,15 @@ on:
       - v5-rework
 
 jobs:
-  run:
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: ['ubuntu-20.04']
-        php-versions: ['7.4']
+  build:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: mysql, mysqlnd, sqlite3, bcmath, gd, curl, zip, openssl, mbstring, xml
     steps:
     - uses: actions/checkout@v2
     - name: Install Composer Dependencies
