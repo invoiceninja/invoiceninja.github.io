@@ -9,7 +9,7 @@ on:
       - v5-rework
 
 jobs:
-  build-site:
+  run:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
