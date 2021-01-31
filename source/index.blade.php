@@ -11,7 +11,7 @@
         </a>
 
         <a href="/docs/migration" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-gray-200 md:rounded-tr md:col-span-6">
-            <h4 class="text-3xl font-semibold">Migration to Version 5</h4>
+            <h4 class="text-3xl font-semibold">Migrate to Version 5</h4>
             <p class="mt-2">Step by step guide to migrate from Version 4 to 5!</p>
         </a>
 
