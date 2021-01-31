@@ -10,9 +10,9 @@
             <p class="mt-2">Learn how to get started with Invoice Ninja.</p>
         </a>
 
-        <a href="/docs/troubleshooting" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-gray-200 md:rounded-tr md:col-span-6">
-            <h4 class="text-3xl font-semibold">Troubleshooting</h4>
-            <p class="mt-2">Find solution for common issues.</p>
+        <a href="/docs/migration" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-gray-200 md:rounded-tr md:col-span-6">
+            <h4 class="text-3xl font-semibold">Migration to Version 5</h4>
+            <p class="mt-2">Step by step guide to migrate from Version 4 to 5!</p>
         </a>
 
         <a href="/docs/self-host/" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-white md:bg-gray-200 md:col-span-6">
