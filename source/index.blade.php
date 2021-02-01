@@ -1,4 +1,4 @@
-@extends('_layouts.master')
+@extends('_layouts.master', ['bodyClass' => 'bg-gray-100'])
 
 @section('body')
 @include('_partials.header', ['title' => 'Documentation', 'text' => 'What can we help with?'])
