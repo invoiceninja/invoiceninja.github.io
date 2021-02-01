@@ -37,7 +37,7 @@
         </div> <!-- End of main content -->
 
         <div class="hidden md:block col-span-3 p-4">
-            <div class="fixed" id="toc-container">
+            <div class="fixed overflow-y-auto pr-10 h-full pb-32" id="toc-container">
                 <!-- Placeholder for table of contents -->
                 <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
             </div>

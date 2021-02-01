@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://invoiceninja.github.io/docs/migration">
     <meta name="description" content="The leading free open-source online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, create proposals, &amp; time-tasks">
 
-    <link rel="stylesheet" href="/assets/build/css/main.css?id=098343128cd16893e85d">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=2b2e241bbe0e58257f31">
 
     </head>
 
@@ -212,6 +212,7 @@
 <li>Ensure the cron scheduler is running (and working) - You can verify it is working by inspecting the <code>jobs</code> table in the database, it should be empty</li>
 <li>Inspect the log file /storage/logs/laravel.log for further information.</li>
 <li>If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. EXPANDED_LOGGING=true then optimize with php artisan optimize . Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log</li>
+<li>If using <code>https://</code> ensure you are using a signed SSL certificate, you may get authentication errors if you attempt to use a self signed certificate. Free ssl's are available from <a href="https://letsencrypt.org">lets encrypt</a></li>
 <li>Still having troubles? search the <a href="https://forum.invoiceninja.com">forum</a> or come and chat with us on <a href="https://invoiceninja.slack.com">slack</a></li>
 </ul>
 
@@ -227,7 +228,7 @@
         </div> <!-- End of main content -->
 
         <div class="hidden md:block col-span-3 p-4">
-            <div class="fixed" id="toc-container">
+            <div class="fixed overflow-y-auto pr-10 h-full pb-32" id="toc-container">
                 <!-- Placeholder for table of contents -->
                 <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
             </div>
