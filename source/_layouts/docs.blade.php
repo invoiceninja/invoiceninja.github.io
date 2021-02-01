@@ -3,9 +3,9 @@
 @yield('beforeBody')
 
 @section('body')
-    <div class="container grid grid-cols-12 py-4 mx-auto">
-        <div class="hidden mr-4 space-y-6 md:block md:col-span-3">
-            <div class="fixed mt-2">
+    <div class="max-w-8xl grid grid-cols-12 md:gap-16 py-4 mx-auto">
+        <div class="hidden mr-4 space-y-6 md:block lg:col-span-2">
+            <div class="hidden md:block fixed mt-2">
                 @foreach($page->navigation as $section => $props)
                     <div clasS="mb-8">
                         <a class="block hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
@@ -22,7 +22,7 @@
             </div>
         </div> <!-- End of sidebar -->
 
-        <div class="col-span-12 md:col-span-6 p-4 prose xl:prose-lg 2xl:prose-xl" id="page-content">
+        <div class="col-span-12 md:col-span-7 p-4 prose mx-auto" style="max-width: 100% !important;" id="page-content">
             @yield('content')
 
             <a href="{{ $page->repositoryUrl . '/blob/master/source' . $page->getPath() }}.md"

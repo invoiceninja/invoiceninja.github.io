@@ -10,17 +10,40 @@ anchors.options = {
 anchors.add();
 
 document.addEventListener('DOMContentLoaded', function () {
-    let h2s = document.querySelectorAll('#page-content > h2');
     let contentsTable = document.getElementById('toc-container');
 
-    h2s.forEach((h2) => {
-        let _element = document.createElement('a');
-        _element.appendChild(document.createTextNode(h2.innerText));
+    let elements = document.querySelectorAll('#page-content > h2[id], #page-content > h3[id]');
+
+    for (let child of elements) {
+        let _element;
+
+        _element = document.createElement('a');
+        _element.appendChild(document.createTextNode(child.innerText));
         _element.classList.add('block', 'hover:text-ninja-blue', 'py-1', 'toc-link');
-        _element.href = h2.querySelector('a').getAttribute('href');
+
+        if (child.nodeName === 'H3') {
+            _element.classList.add('ml-4');
+        }
+
+        _element.href = child.querySelector('a').getAttribute('href');
 
         contentsTable.appendChild(_element);
-    });
+    }
+
+    // const observer = new IntersectionObserver(entries => {
+    //     entries.forEach(entry => {
+    //         const id = entry.target.getAttribute('id');
+    //         if (entry.intersectionRatio > 0) {
+    //             document.querySelector(`a[href="#${id}"].toc-link`).classList.add('text-ninja-blue');
+    //         } else {
+    //             document.querySelector(`a[href="#${id}"].toc-link`).classList.remove('text-ninja-blue');
+    //         }
+    //     });
+    // });
+
+    // elements.forEach((section) => {
+    //     observer.observe(section);
+    // });
 
     document.querySelectorAll('a.toc-link').forEach(anchor => {
         anchor.addEventListener('click', (event) => {
@@ -34,4 +57,5 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+
 }, false);
