@@ -11,44 +11,53 @@
     <link rel="canonical" href="https://invoiceninja.github.io/docs/settings">
     <meta name="description" content="The leading free open-source online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, create proposals, &amp; time-tasks">
 
-    <link rel="stylesheet" href="/assets/build/css/main.css?id=ff820cbee6919541d5ea">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=098343128cd16893e85d">
 
     </head>
 
-<body class="font-sans antialiased text-gray-900 bg-gray-100">
-    <nav class="py-4 uppercase bg-white border-b sticky top-0 z-40">
-        <div id="navigation-content" class="container flex items-center justify-between px-4 md:px-0 md:mx-auto">
-            <a href="/" id="left-side-logo">
-                <img class="h-10" src="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/public/images/invoiceninja-black-logo-2.png" alt="Invoice Ninja logo" />
-            </a>
-            <section id="right-side-items" class="text-sm">
-                <div class="hidden md:block md:space-x-5">
-                    <input type="text" placeholder="Quick search..." class="px-4 py-2 border rounded hover:border-ninja-blue focus:border-ninja-blue focus:outline-none">
-                    <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
-                    <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
-                    <a href="https://app.invoiceninja.com" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Log in</a>
-                </div>
-                <div class="flex flex-col md:hidden">
-                    <button id="mobile-menu-toggle" class="focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <line x1="3" y1="18" x2="21" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-            </section>
-        </div>
-        <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
-            <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
-            <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API documentation</a>
-            <a href="https://app.invoiceninja.com" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Login</a>
-        </div>
-    </nav>
-
-        <div class="container grid grid-cols-12 py-4 mx-auto">
-        <div class="hidden mr-4 space-y-6 md:block md:col-span-3">
-            <div class="fixed mt-2">
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full mx-auto bg-white border-b">
+    <div id="navigation-content" class="flex items-center justify-between px-4 md:px-0 md:mx-auto max-w-8xl">
+        <a href="/" id="left-side-logo">
+            <img class="h-8"
+                 src="/assets/images/logo.png"
+                 alt="Invoice Ninja logo"/>
+        </a>
+        <section id="right-side-items" class="text-sm">
+            <div class="hidden md:block md:space-x-5">
+                <input type="text" placeholder="Quick search..."
+                       class="px-4 py-2 border rounded hover:border-ninja-blue focus:border-ninja-blue focus:outline-none">
+                <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+                <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank"
+                   class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                <a href="https://app.invoiceninja.com" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go
+                    to app</a>
+            </div>
+            <div class="flex flex-col md:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </section>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/docs/getting-started"
+           class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+        <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank"
+           class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+        <a href="https://app.invoiceninja.com" target="_blank"
+           class="py-2 border-b border-transparent hover:border-ninja-blue">Go to app</a>
+    </div>
+</nav>
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="max-w-8xl grid grid-cols-12 md:gap-16 py-4 mx-auto">
+        <div class="hidden mr-4 space-y-6 md:block lg:col-span-2">
+            <div class="hidden md:block fixed mt-2">
                                     <div clasS="mb-8">
                         <a class="block hover:text-ninja-blue font-semibold uppercase "
                            href="/docs/getting-started">User guide</a>
@@ -92,12 +101,50 @@
                             </div>
         </div> <!-- End of sidebar -->
 
-        <div class="col-span-12 md:col-span-6 p-4 prose xl:prose-lg 2xl:prose-xl" id="page-content">
+        <div class="col-span-12 md:col-span-7 p-4 prose mx-auto" style="max-width: 100% !important;" id="page-content">
             <h1>Settings</h1>
 
 <h2>Basic Settings</h2>
 
+<p>The basic settings are where you can setup everything you need to define your company.</p>
+
 <h2>Company Details</h2>
+
+<p>The company details are where you configure your address, upload your company logo and also set your company defaults:</p>
+
+<h2>Defaults</h2>
+
+<p>The defaults are system wide - company level defaults, this will applied at every level of the application they refer to.</p>
+
+<h3>Autobill</h3>
+
+<p>The Auto Bill selector has 4 options:</p>
+
+<ul>
+<li>Enabled - A user a payment will be automatically attempted if a payment method is stored on file.</li>
+<li>Enabled by default - The client will be given the option to allow payment methods to be stored with the radio box selected.</li>
+<li>Disabled by default - The client will be given the option to allow payment methods to be stored with the radio box unselected.</li>
+<li>Disabled - No option is given, and auto billing is disabled.</li>
+</ul>
+
+<h3>Payment Type</h3>
+
+<p>This selector will set the default payment method.</p>
+
+<h3>Payment Term</h3>
+
+<p>The payment term defined in 'days'. You can configure custom payment terms by clicking the Configure Payment Terms button</p>
+
+<h3>Payment Emails</h3>
+
+<ul>
+<li>Manual Payment Email - Sends a payment notification to the client when a manual payment is applied</li>
+<li>Online Payment Email - Sends a payment notification to the client when an online payment has been processed.</li>
+</ul>
+
+<h3>Terms and Footers</h3>
+
+<p>The terms and footers text inputs allow you to define default for each. These will be injected into the document automagically for you. All you need to do is set it once here and we'll take care of the rest! Note, you can always override these values by editing them directly in the entity.</p>
 
 <h2>User Details</h2>
 
@@ -127,9 +174,44 @@
 
 <h2>Generated Numbers</h2>
 
-<p><img src="/assets/images/generated_numbers/generated_numbers_settings_pane.png" alt="alt text" title="Generated Numbers Settings" /></p>
+<p><img src="/assets/images/settings/generated_numbers/generated_numbers_settings_pane.png" alt="alt text" title="Generated Numbers Settings" /></p>
 
-<p>Generated numbers contain a very configurable collection of variables that allow very fine grained customization of numbers for any entity in the application.</p>
+<p>Generated numbers contain a collection of variables that allow very fine grained customization of generated numbers for any entity in the application.</p>
+
+<h3>Number Padding</h3>
+
+<p>The number padding drop down indicates how many leading zeros you'd like before each number. The default padding is 3 leading zeros ie 0001,0002,0003.</p>
+
+<h3>Generate Number</h3>
+
+<p>The generate number option allows you to customize WHEN the number is applied, there are two configurations; When Saved (will apply immediate when you save an entity) or When Sent (when the entity is sent / marked as sent).</p>
+
+<h3>Recurring Prefix</h3>
+
+<p>The recurring prefix is a prefix which is applied to entities that are created when a recurring entity has been generated.</p>
+
+<h3>Shared Invoice Quote Counter</h3>
+
+<p>The shared invoice quote counter switch enables sharing of the counter between quote and invoices, so both entities increment as one rather than separate entities</p>
+
+<h3>Reset Counter</h3>
+
+<p>Generated counters can be reset at a variety of frequencies. It is important to note that in order to reset the counter, you must combine enough unique variables to ensure that the generated counter will still be unique.</p>
+
+<pre><code class="language-bash">{$date|y}-{$counter}
+
+generates 
+
+2021-0001
+</code></pre>
+
+<p>This counter will generate a date string of which could reset yearly, however it could not reset at a monthly interval as you will have counter collisions.</p>
+
+<p><img src="/assets/images/settings/generated_numbers/generated_numbers_client.png" alt="alt text" title="Client generated numbers" /></p>
+
+<h3>Entity generated numbers</h3>
+
+<p>As well as defining the pattern, you are also able to define where the counter can start.</p>
 
 <h2>Email Settings</h2>
 
@@ -172,7 +254,7 @@
             </div>
         </div>
     </div>
-        <script src="/assets/build/js/main.js?id=731da87cdc9da824dedd"></script>
+        <script src="/assets/build/js/main.js?id=f8ae428c8ff7fbb77216"></script>
 
     <script>
         document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
