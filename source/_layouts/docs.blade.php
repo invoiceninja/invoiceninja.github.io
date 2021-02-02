@@ -3,9 +3,34 @@
 @yield('beforeBody')
 
 @section('body')
-    <div class="max-w-8xl grid grid-cols-12 md:gap-16 py-4 mx-auto">
+    <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+               @foreach($page->navigation as $section => $props)
+                   <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
+                          href="{{ $props['url'] }}">{{ $section }}</a>
+
+                       <div class="mt-2">
+                           @foreach($props->children as $child => $url)
+                               <a class="block hover:text-ninja-blue py-1 {{ (trimPath($page->getPath()) == trimPath($url)) ? 'text-ninja-blue' : '' }}"
+                                  href="{{ $url }}">{{ $child }}</a>
+                           @endforeach
+                       </div>
+                   </div>
+               @endforeach
+           </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-8xl grid grid-cols-12 md:gap-16 py-4 px-4 lg:mx-auto">
         <div class="hidden mr-4 space-y-6 md:block lg:col-span-2">
-            <div class="hidden md:block fixed mt-2">
+            <div class="hidden lg:block fixed mt-2">
                 @foreach($page->navigation as $section => $props)
                     <div clasS="mb-8">
                         <a class="block hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
@@ -23,6 +48,10 @@
         </div> <!-- End of sidebar -->
 
         <div class="col-span-12 md:col-span-7 p-4 prose mx-auto" style="max-width: 100% !important;" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
             @yield('content')
 
             <a href="{{ $page->repositoryUrl . '/blob/master/source' . $page->getPath() }}.md"
