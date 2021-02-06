@@ -152,6 +152,7 @@ We have tested Invoice Ninja v5 on shared hosting and can confirm that it does w
 * proc_open
 * exec
 * open_basedir
+* fpassthru
 
 Without these modules, you will not be able to run Invoice Ninja. We do include some preflight checks of these modules in the Setup workflow, but it is best to check with your host that they support these modules. Some hosts choose to disable these modules as they classify them as security risks.
 
