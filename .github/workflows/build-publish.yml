@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - v5-rework
-  pull_request:
-    branches:
-      - v5-rework
 
 jobs:
   build:
