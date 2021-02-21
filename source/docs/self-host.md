@@ -17,6 +17,7 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 * bcmath extension
 * ctype extension
 * fileinfo extension
+* gd extension
 * json extension
 * mbstring extension
 * openssl extension
