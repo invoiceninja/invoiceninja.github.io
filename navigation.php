@@ -8,6 +8,7 @@ return [
             'Clients' => '/docs/clients',
             'Products' => '/docs/products',
             'Invoices' => '/docs/invoices',
+            'Recurring Invoices' => '/docs/recurring-invoices',
             'Payments' => '/docs/payments',
             'Settings' => '/docs/settings',
             'PDF customization' => '/docs/custom-fields',

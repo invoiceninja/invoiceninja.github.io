@@ -79,4 +79,4 @@ When a invoice is archived no further modifications can be made to the invoice. 
 
 <p>Restoring a invoice from the archived state will set the invoice back to its previous state prior to archiving.</p>
 
-<x-next url=/docs/payments>Payments</x-next>
+<x-next url=/docs/recurring-invoices>Recurring Invoices</x-next>
