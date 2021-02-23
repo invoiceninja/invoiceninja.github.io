@@ -39,6 +39,7 @@ $view_link - Entity view link ie. <a href="/link/to/entity">View Invoice</a>
 $view_url - Entity view url ie. https://link.to.resource
 
 $project.name - Project name label/value
+$project.number - Project number /value
 
 $entity_number - Alias of $number
 $invoice.discount - Invoice dicount label/value
