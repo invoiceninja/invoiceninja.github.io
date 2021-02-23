@@ -10,6 +10,7 @@ return [
             'Invoices' => '/docs/invoices',
             'Payments' => '/docs/payments',
             'Settings' => '/docs/settings',
+            'PDF customization' => '/docs/custom-fields',
         ],
     ],
     'Developer guide' => [
