@@ -1,10 +1,83 @@
 ---
-extends: _layouts.docs
+extends: _layouts.docs 
 section: content
 ---
 
 # Recurring Invoices
 
-## Dynamic Date Ranges
+## Reserved keywords in the items description
+
+To make your life easier, we've put together few reserved keywords in the line items description to make your work with
+recurring invoices, much easier.
+
+Reserved keywords are:
+
+- :MONTH
+- :YEAR
+- :QUARTER
+
+As you may guess, each time invoice (PDF) is generated, keywords will be replaced with actual value, so:
+
+- :MONTH will get translated to real month (e.g. January).
+- :YEAR to the numeric value of the current year (e.g. 2021)
+- .. and the :QUARTER to e.g. Q2.
+
+These keywords also support basic mathematical operations: **addition**, **subtraction**, **multiplication** & **
+division**.
+
+So this is the pattern for mathematical operations:
+
+> %KEYWORD% %OPERATION% %VALUE%
+
+Let's see it in practice. Imagine you're sending an invoice for a gym membership every three months. Write this in item
+description & let's see what we get: 
+
+> Gym membership: :MONTH to :MONTH+3
+
+![alt text](/assets/images/recurring_invoices/reserved-keywords-step-one.png "Typing reserved keys in description")
+
+... and let's save & preview the invoice:
+
+![alt text](/assets/images/recurring_invoices/reserved-keywords-pdf.png "Screenshot of PDF")
+
+Nice! Now, each time you send this invoice, you don't have to put the exact month, nor the upcoming month.
+
+### Supported combinations
+```
+Month: :MONTH
+Year: :YEAR
+Quarter: :QUARTER
+
+:MONTH (+, -, *, /) e.g. :MONTH+1 :MONTH-1 :MONTH*2 :MONTH/2
+:YEAR (+, -) :YEAR+1 :YEAR-1
+:QUARTER (+, -) :QUARTER+1 :QUARTER-1
+```
+
+## Reserved keyword for date ranges
+
+Previously listed keywords are *super* cool, but what if we have to generate for example:
+
+> Gym membership: February 2021 to February 2023
+
+It's easy as typing following:
+> Gym membership: [MONTHYEAR|MONTHYEAR+24]
+
+Gym membership: February 2021 to February 2023 🎉
+
+![alt text](/assets/images/recurring_invoices/reserved-keywords-monthyear-preview.png "Screenshot of PDF")
+
+Another way to do it this:
+> Gym membership: :MONTH :YEAR to :MONTH :YEAR+2
+
+Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlapping dates**.
+
+###  Supported combinations
+```
+[MONTHYEAR|MONTHYEAR +, -], [MONTHYEAR|MONTHYEAR+16], [MONTHYEAR|MONTHYEAR-2]
+```
+
+### Translations
+As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/docs/settings/#localization).
+
 
 <x-next url=/docs/payments>Payments</x-next>
