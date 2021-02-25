@@ -19,7 +19,7 @@ return [
         'children' => [],
     ],
     'Self host' => [
-        'url' => '/docs/self-host',
+        'url' => '#',
         'children' => [
             'Installation' => '/docs/self-host-installation',
             'Updating' => '/docs/self-host-updating',
