@@ -4,6 +4,7 @@ module.exports = {
       'source/**/*.blade.php',
       'source/**/*.md',
       'source/**/*.html',
+      'source/_assets/js/main.js',
     ]
   },
   theme: {
