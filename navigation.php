@@ -20,7 +20,11 @@ return [
     ],
     'Self host' => [
         'url' => '/docs/self-host',
-        'children' => [],
+        'children' => [
+            'Installation' => '/docs/self-host-installation',
+            'Updating' => '/docs/self-host-updating',
+            'Troubleshooting' => '/docs/self-host-troubleshooting',
+        ],
     ],
     'Migrating to V5' => [
         'url' => '/docs/migration',

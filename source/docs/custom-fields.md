@@ -11,6 +11,7 @@ One way we make customizing your PDF easier is by providing a list of variables 
 
 ## Custom fields
 
+```bash
 $tax - Tax Label  
 $app_url - The full URL to the application  
 $from - From label  
@@ -223,3 +224,4 @@ $details - Details label
 $item - Item label  
 $description - Description label  
 $entity_footer - Entity footer label/value  
+```
