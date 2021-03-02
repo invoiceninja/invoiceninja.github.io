@@ -15,7 +15,7 @@
             <p class="mt-2">Step by step guide to migrate from Version 4 to 5!</p>
         </a>
 
-        <a href="/docs/self-host/" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-white md:bg-gray-200 md:col-span-6">
+        <a href="/docs/self-host-installation/" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-white md:bg-gray-200 md:col-span-6">
             <h4 class="text-3xl font-semibold">Self hosted guide</h4>
             <p class="mt-2">Learn more about self-hosting Invoice Ninja.</p>
         </a>
