@@ -87,3 +87,20 @@ If you are experiencing issues with the migration not running as expected please
 ### libatk.so not loading for Google
 
 Pdf generation will not working using the inbuilt PDF engine without some subsystem dependencies, please consult this resource for the list of necessary libraries for each supported platform <a href="https://github.com/beganovich/snappdf#headless-chrome-doesnt-launch-on-unix">Snappdf required libraries</a>
+
+### WebCron configuration
+
+Some systems do not allow cron configurations, one work around is to use a web cron service which can hit a defined endpoint which executes the scheduler via a GET HTTP request. Invoice Ninja has implemented a small service to allow a webcron service to hit the end point:
+
+```
+https://domain.com/webcron?secret=
+```
+
+To configure the service, you need to add a .env variable
+
+```
+WEBCRON_SECRET=password
+```
+
+Define your own secret password and then re optimize the cache The service will then be activated.
+
