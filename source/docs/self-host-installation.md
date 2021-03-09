@@ -38,7 +38,7 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 
 ### Installing on Arch
 
-<p>brackenhill-mob from our forum has a very thorough step by step installation guide for Arch [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)</p>
+If Arch Linux is more your flavor, brackenhill-mob from our forum has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
 
 ### Download pre built zip. (Advanced)
 
