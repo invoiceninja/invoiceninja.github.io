@@ -7,7 +7,7 @@ section: content
 
 ## Preparing V4.
 
-The first step needed to prepare to migrate your data across to your new V5 installation is to update your V4 installation to the latest version available. This is a critical step and you will see problems migrating your data if you do not update to the latest V4.
+The first step needed to prepare to migrate your data across to your new V5 installation is to update your V4 installation to the [latest version](https://download.invoiceninja.com) available. This is a critical step and you will see problems migrating your data if you do not update to the latest V4.
 
 ## Installing V5.
 

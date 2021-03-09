@@ -9,9 +9,9 @@ section: content
 
 <p>The Draft status is the first status in the lifecycle of a invoice. In this status, changes can be made to the invoice and the invoice is hidden completely from the client. A draft invoice does not affect the ledger nor does it change the client balance. Draft invoices are inactive until either emailed to the client or marked as sent.</p>
 
-::: warning
+<x-warning>
 Once a draft invoice has been emailed/marked as sent its status cannot be changed back to draft.
-:::
+</x-warning>
 
 ## Sent
 
@@ -48,9 +48,9 @@ If the invoice has a balance remaining, in order to balance the ledger, we perfo
 * Invoice status set to deleted
 * The invoice number is appended with <b>_deleted</b> in order to allow reuse of invoice numbers.
 
-:::warning
+<x-warning>
 Important! If a invoice has a remaining balance or has had payments applied to it, the invoice is cancelled and then deleted.
-:::
+</x-warning>
 ## Reversed
 
 <p>A invoice can be reversed under the following conditions</p>
@@ -71,9 +71,9 @@ Important! If a invoice has a remaining balance or has had payments applied to i
 
 <p>Archiving a invoice simply removes the invoice from the invoice list view. Archiving a invoice keeps your list views clean and tidy and does not effect the ledger / client balance.</p>
 
-:::warning
+<x-warning>
 When a invoice is archived no further modifications can be made to the invoice. To modify the invoice you will need to Restore the invoice first.
-:::
+</x-warning>
 
 ## Restored
 
