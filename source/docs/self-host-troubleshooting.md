@@ -23,7 +23,7 @@ php artisan optimize
 
 ## Phantom JS
 
-<p>Using Phantom JS is an option <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day which will suffice for most users.</p>
+<p>Using Phantom JS Cloud is the default PDF engine <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> to generate your PDFs. They currently provide 500 free PDFs per day which will suffice for most users.</p>
 
 <p>Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.</p>
 
