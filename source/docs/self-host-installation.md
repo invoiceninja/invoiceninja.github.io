@@ -163,7 +163,7 @@ Without these modules, you will not be able to run Invoice Ninja. We do include 
 
 ##### Database configuration
 
-<p>Create a MySQL compatible database in your shared host control panel along with a database user, record the database name, username and password as you'll need this later. Ensure your database user has full access to the database you've just created.
+Create a MySQL compatible database in your shared host control panel along with a database user, record the database name, username and password as you'll need this later. Ensure your database user has full access to the database you've just created.
 
 ##### Upload release asset
 
@@ -174,6 +174,8 @@ Upload this file to your shared host, typically if your webhost uses the industr
 ##### Run setup
 
 Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some pre flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
+
+If you see a **404 webserver error** and use **sub.domain.com** make sure to point the path for the subdomain towards the `/public` folder from the extracted invoiceninja.zip file, for example: ``/domains/domain.com/public_html/invoices2/public/``
 
 ##### Add the cron job
 
