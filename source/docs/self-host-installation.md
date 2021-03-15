@@ -146,6 +146,8 @@ Ensure you set the scheduler under the web server user i.e. `sudo -u www-data cr
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
+Some Webservers require the cronjob to end with `> /dev/null 2>&1` instead of `>> /dev/null 2>&1` for it to work.
+
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 
 ## Shared Hosting
