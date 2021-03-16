@@ -111,7 +111,7 @@ $gateway->save();
     const CREDIT = 10;
 ```
 
-#### Gateway.php Model Getters and Setters
+### Step 3. App\Models\Gateway.php Model Getters and Setters
 
 Two methods need to be appended to: 
 
@@ -127,7 +127,7 @@ Two methods need to be appended to:
 
 The array is stored in a case/switch block, which switches on the gateway->id property.
 
-#### Starting work on the Payment Driver
+### Step 4. Starting work on the Payment Driver
 
 All payment drivers must extend the BaseDriver class which itself extends the abstract class AbstractPaymentDriver which enforces the following required methods.
 
