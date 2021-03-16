@@ -15,6 +15,3 @@ use TightenCo\Jigsaw\Jigsaw;
  *     // Your code here
  * });
  */
-$container['markdownParser']->code_block_content_func = function ($code, $language) {
-    return (new \Highlight\Highlighter())->highlight($language ?? 'plaintext', $code)->value;
-};
