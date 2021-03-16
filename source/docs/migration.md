@@ -46,6 +46,7 @@ If you successfully authenticate you'll see the next screen which allows you to 
 Important points at this stage:
 
 * Force migration will overwrite an existing company that has already been migrated to V5, this is destructive and cannot be undone.
+<br>**NOTE:** If the 1st Migration fails and only part of the data got transferred, PURGE and DELETE the Data/Company and retry the process with "Force migration" checked.
 * Just selecting the checkbox next to the company name will attempt a migration if the company has never been migrated to the V5 installation. This is a non-destructive migration. ie. it will not overwrite a matching company.
 
 ![alt text](/assets/images/migration/migration_step_6.png "Migration started")
