@@ -39,6 +39,8 @@ PHANTOMJS_SECRET='your-secret-here'
 php artisan optimize
 ```
 
+If you experience errors with PDF generation, such as `500 Server error` or `Failed to load PDF document` or a continuous loading bar, try getting a PhantomJS key here:  https://dashboard.phantomjscloud.com/dash.html#/signup, Replace it with the prefilled key `a-demo-key-with-low-quota-per-ip-address` and run `php artisan optimize` again.
+
 <x-warning>
 For PhantomJS to work, your Invoice Ninja installation web address must be public; localhost installations or those on private networks won't be able to use PhantomJS Cloud.
 </x-warning>
