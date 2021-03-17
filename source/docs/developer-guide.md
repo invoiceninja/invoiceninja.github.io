@@ -21,9 +21,9 @@ Our full API definition can be found on swagger <a href="https://app.swaggerhub.
 
 Invoice Ninja v4 was initially built as a web application with an API added on later to support common uses cases and the limited functionality of the v4 mobile app. With v5 we’ve instead built an API first application, all features in the web/mobile/desktop apps are powered by the API.
 
-For example v4 <a href="https://github.com/invoiceninja/invoiceninja/blob/master/app/Ninja/Transformers/ClientTransformer.php#L51">client includes</a> are limited to contacts, invoices, credits and activities, whereas in v5 where <a href="https://github.com/invoiceninja/invoiceninja/blob/v5-develop/app/Transformers/ClientTransformer.php#L32">all options</a> are available. This includes: contacts, documents, gateway_tokens, documents, gateway_tokens, activities, ledger and system_logs.  
+For example v4 <a href="https://github.com/invoiceninja/invoiceninja/blob/master/app/Ninja/Transformers/ClientTransformer.php#L51">client includes</a> are limited to contacts, invoices, credits and activities, whereas in v5 where <a href="https://github.com/invoiceninja/invoiceninja/blob/v5-develop/app/Transformers/ClientTransformer.php#L32">all options</a> are available. This includes: contacts, documents, gateway_tokens, documents, gateway_tokens, activities, ledger and system_logs.
 
-Another major shortcoming of the v4 API is the docs, even though the functionality is limited, what is available isn’t necessarily documented. In v5 we’ve made sure to document every aspect of the API. 
+Another major shortcoming of the v4 API is the docs, even though the functionality is limited, what is available isn’t necessarily documented. In v5 we’ve made sure to document every aspect of the API.
 
 The v4 and v5 APIs are mostly the same but there are some key changes which are important to be aware of.
 
@@ -31,7 +31,7 @@ The v4 and v5 APIs are mostly the same but there are some key changes which are 
 The header name for the API token has changed from X-Ninja-Token in v4 to X-API-Token in v5.
 </x-warning>
 
-The data type of the id fields has changes from integer to string to support the new id format.  
+The data type of the id fields has changes from integer to string to support the new id format.
 
 The route for uploading documents has changed, here's a v5 cURL example:
 
@@ -48,7 +48,7 @@ curl -X POST http://example.com/api/v1/invoices/<invoice_id> \
 
 Payment Driver Template.
 
-So you want to make a payment driver for invoice ninja, but don't know where to start? The first step would be to reach out to us directly on Slack https://invoiceninja.slack.com and have a chat to us in real time so that we can help you hit the ground running and build your driver in the most efficient way possible. Contacting us prior will also ensure that your code can be merged back into the official repository as we will be maintaining this code into the future. 
+So you want to make a payment driver for invoice ninja, but don't know where to start? The first step would be to reach out to us directly on Slack https://invoiceninja.slack.com and have a chat to us in real time so that we can help you hit the ground running and build your driver in the most efficient way possible. Contacting us prior will also ensure that your code can be merged back into the official repository as we will be maintaining this code into the future.
 
 Ready? Lets go!
 
@@ -99,23 +99,23 @@ $gateway->save();
 * default_gateway_type_id: If your gateway has multiple ways to pay, ie Credit Card, Bank Transfer etc, then you’ll want to select a default method. The list of defined methods are found on the GatewayType model as follows:
 
 ```
-    const CREDIT_CARD = 1;
-    const BANK_TRANSFER = 2;
-    const PAYPAL = 3;
-    const CRYPTO = 4;
-    const CUSTOM = 5;
-    const ALIPAY = 6;
-    const SOFORT = 7;
-    const APPLE_PAY = 8;
-    const SEPA = 9;
-    const CREDIT = 10;
+const CREDIT_CARD = 1;
+const BANK_TRANSFER = 2;
+const PAYPAL = 3;
+const CRYPTO = 4;
+const CUSTOM = 5;
+const ALIPAY = 6;
+const SOFORT = 7;
+const APPLE_PAY = 8;
+const SEPA = 9;
+const CREDIT = 10;
 ```
 
 ### Step 3. App\Models\Gateway.php Model Getters and Setters
 
-Two methods need to be appended to: 
+Two methods need to be appended to:
 
-1.  ```getHelp()``` returns a link to the gateways help page, we display a link in the UI for the user to open a direct webpage to the gateway.  
+1.  ```getHelp()``` returns a link to the gateways help page, we display a link in the UI for the user to open a direct webpage to the gateway.
 2.  ```getMethods()``` returns an array of the supported gateway types (ie payment methods), whether the gateway supports refunds and token billing and also webhook meta data. The structure of the array looks like this:
 
 ```php
@@ -129,22 +129,22 @@ The array is stored in a case/switch block, which switches on the gateway->id pr
 
 ### Step 4. Starting work on the Payment Driver
 
-All payment drivers must extend the BaseDriver class which itself extends the abstract class AbstractPaymentDriver which enforces the following required methods. We have stubbed an example payment driver class and view files which can be downloaded [here](/assets/files/PaymentDriver.zip) 
+All payment drivers must extend the BaseDriver class which itself extends the abstract class AbstractPaymentDriver which enforces the following required methods. We have stubbed an example payment driver class and view files which can be downloaded [here](/assets/files/PaymentDriver.zip)
 
 ```php
-    abstract public function authorizeView(array $data);
+abstract public function authorizeView(array $data);
 
-    abstract public function authorizeResponse(Request $request);
+abstract public function authorizeResponse(Request $request);
 
-    abstract public function processPaymentView(array $data);
+abstract public function processPaymentView(array $data);
 
-    abstract public function processPaymentResponse(Request $request);
+abstract public function processPaymentResponse(Request $request);
 
-    abstract public function refund(Payment $payment, $refund_amount, $return_client_response = false);
+abstract public function refund(Payment $payment, $refund_amount, $return_client_response = false);
 
-    abstract public function tokenBilling(ClientGatewayToken $cgt, PaymentHash $payment_hash);
+abstract public function tokenBilling(ClientGatewayToken $cgt, PaymentHash $payment_hash);
 
-    abstract public function setPaymentMethod($payment_method_id);
+abstract public function setPaymentMethod($payment_method_id);
 ```
 
 * authorizeView() returns a view which enables capture of a token for a particular payment method, ie Credit Card or Bank Transfer
@@ -157,7 +157,7 @@ All layouts extend from the following
 @extends('portal.ninja2020.layout.payments', ['gateway_title' => ctrans('texts.credit_card'), 'card_title' => ctrans('texts.credit_card')])
 ```
 
-* authorizeReponse() processes the gateway response and if successful creates a ```ClientGatewayToken``` record followed by returning the user to the following route 
+* authorizeReponse() processes the gateway response and if successful creates a ```ClientGatewayToken``` record followed by returning the user to the following route
 
 ```php
 return redirect()->route('client.payment_methods.index');
@@ -191,18 +191,17 @@ This method is used to store a token generated by a payment gateway, it requires
 
 ```php
 [
-'token', (string)
-'payment_method_id', (ie GatewayType::CREDIT_CARD)
-'payment_meta', stdClass object as defined below
+    'token', // (string),
+    'payment_method_id', // (ie GatewayType::CREDIT_CARD), 
+    'payment_meta', // stdClass object as defined below
 ]
 
-  $payment_meta = new \stdClass;
-  $payment_meta->exp_month = (string) $method->card->exp_month;
-  $payment_meta->exp_year = (string) $method->card->exp_year;
-  $payment_meta->brand = (string) $method->card->brand;
-  $payment_meta->last4 = (string) $method->card->last4;
-  $payment_meta->type = GatewayType::CREDIT_CARD;
-
+$payment_meta = new \stdClass;
+$payment_meta->exp_month = (string) $method->card->exp_month;
+$payment_meta->exp_year = (string) $method->card->exp_year;
+$payment_meta->brand = (string) $method->card->brand;
+$payment_meta->last4 = (string) $method->card->last4;
+$payment_meta->type = GatewayType::CREDIT_CARD;
 ```
 
 To improve abstraction, we encourage the development of the actual payment gateway implementation into its own namespace. Once you have completed processing a gateway response, you'll need to perform some additional work this could include:
@@ -225,7 +224,6 @@ $payment_hash = PaymentHash::whereRaw('BINARY `hash`= ?', [$request->input('paym
 At this point you will need to create a payment record, this can be passed directly to the BaseDriver method defined below
 
 ```php 
-
 public function createPayment(array $data, $status = Payment::STATUS_COMPLETED): Payment
 ```
 
@@ -233,17 +231,17 @@ The data array here requires the following properties to be passed in from you c
 
 ```php
 [
-'gateway_type_id', (ie GatewayType::CREDIT_CARD) 
-'amount', (float) see below
-'payment_type', (ie PaymentType::CREDIT_CARD_OTHER)
-'transfaction_reference',
+    'gateway_type_id', // (ie GatewayType::CREDIT_CARD) 
+    'amount', // (float) see below
+    'payment_type', // (ie PaymentType::CREDIT_CARD_OTHER)
+    'transfaction_reference',
 ]
 ```
 
 The amount key is hydrated from the payment hash the follow query should be used to determine the amount
 
 ```php
-array_sum(array_column($payment_hash->invoices(), 'amount')) + $payment_hash->fee_total
+array_sum(array_column($payment_hash->invoices(), 'amount')) + $payment_hash->fee_total;
 ```
 
 In addition to creating the Payment record, we highly recommend logging the full output from the gateway to enable debugging for future purpose, this is done via the SystemLogger::job() which is defined as follows
@@ -252,7 +250,7 @@ In addition to creating the Payment record, we highly recommend logging the full
 public function __construct(array $log, int $category_id, int $event_id, int $type_id, ?Client $client)
 ```
 
-The array is the gateway response, bundled with any other meta data you would like to add, the remaining properties are the const values defined in SystemLog, these define the category, event and type of log. Feel free to create additional categories using the template in the SystemLog model class.
+The array is the gateway response, bundled with any other metadata you would like to add, the remaining properties are the const values defined in SystemLog, these define the category, event and type of log. Feel free to create additional categories using the template in the SystemLog model class.
 
 #### 2. Process a refund
 
@@ -281,9 +279,9 @@ The properties required for the data array are as follows:
   'token',
   'payment_method_id',
   'payment_meta',
-  'payment_method_id'], ie. GatewayType::CREDIT_CARD
-  'gateway_customer_reference', optional
-  ]
+  'payment_method_id', // ie. GatewayType::CREDIT_CARD
+  'gateway_customer_reference', // optional
+]
 ```
 
 #### 4. Process a failed payment response to the end user
