@@ -183,8 +183,8 @@ If you see a **404 webserver error** and use **sub.domain.com** make sure to poi
 
 Add the Laravel scheduler cron job, be sure to include the full path, for a cPanel host it should look like this:
 
-```bash
-* * * * * /opt/alt/php73/usr/bin/php /home/<myuseraccount>/public_html/artisan schedule:run
+```
+* * * * * cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
 
 ## Installing Invoice Ninja (Docker)
