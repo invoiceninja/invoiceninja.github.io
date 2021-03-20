@@ -26,6 +26,8 @@ The final source of information in diagnosing mail troubles is to inspect the ``
 
 If you are using the Queue system ie. QUEUE_CONNECTION=database then you may also want to check the ```jobs``` table in the database, there should be _no_ records in that table... If there are records in the table it means that your queue is not running and therefore no mail jobs are being processed.
 
+It's possible the emails are sent but are blocked for DNS, SPF, DKIM or other reasons. In these cases adding https://mail-tester.com as a client and emailing a test invoice can help debug certain problems.
+
 ## PDF conversion issues.
 
 We strongly recommend using the built in [snappdf](https://github.com/beganovich/snappdf) package which is a highly performant PDF generator based on the headless chrome/chromium binary. This package is perfect for users that have root access to their server and are able to install the required dependencies if needed.
