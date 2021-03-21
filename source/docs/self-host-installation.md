@@ -30,6 +30,12 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 * mysqli extension
 * MySQL / MariaDB Server
 
+On ubuntu this should be as simple as running:
+
+```bash
+sudo apt install php7.4-bcmath php7.4-gmp php7.4-fileinfo php7.4-gd php7.4-json php7.4-mbstring php7.4-pdo php7.4-xml php7.4-curl php7.4-zip php7.4-gmp php7.4-mysqlnd
+```
+
 ## Installing Invoice Ninja
 
 ### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
