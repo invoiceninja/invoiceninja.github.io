@@ -156,6 +156,8 @@ Some Webservers require the Cronjob to end with `> /dev/null 2>&1` instead of `>
 Also check if your Webserver Cronjob needs to be set with `/private_html/` instead of `/public_html/` within the path.
 And sometimes it's enough to put `php` instead of `/opt/alt/php73/usr/bin/php` in the cronjob scheduler command to execute.
 
+If you still encounter errors, it may be helpful to temporarily remove `>> /dev/null 2>&1` from  the cron, this should output the cron to the `cron.log`
+
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 
 ## Shared Hosting
