@@ -37,6 +37,7 @@ return [
             'Data Privacy' => '/docs/legal/data_privacy',
             'Selfhost Data Privacy' => '/docs/legal/self_hosting_data',
             'Selfhost Terms' => '/docs/legal/self_hosting_terms',
+            'GDPR' => '/docs/legal/gdpr',
         ],        
     ]
 
