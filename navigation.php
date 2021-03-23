@@ -29,5 +29,15 @@ return [
     'Migrating to V5' => [
         'url' => '/docs/migration',
         'children' => [],
+    ],
+    'Legal' => [
+        'url' => '',
+        'children' => [
+            'Terms of Service' => '/docs/legal/terms_of_service',
+            'Data Privacy' => '/docs/legal/data_privacy',
+            'Self-Hosting Data' => '/docs/legal/self_hosting_data',
+            'Self-Hosting Terms' => '/docs/legal/self_hosting_terms',
+        ],        
     ]
+
 ];
