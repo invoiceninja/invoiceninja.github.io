@@ -204,3 +204,17 @@ If you are finding that all your pre setup checks are passing however you keep f
 ```
 php artisan migrate:fresh --seed 
 ```
+
+### flock() expects parameter 1 to be resource, bool given
+
+This error is thrown from deep within PHP and indicates a permissions issue - most likely the public/storage and/or storage/ directory is not writable by the web user, depending on your platform, you'll need to run something like:
+
+```
+sudo chown -R www-data:www-data public/storage
+```
+
+and/or
+
+```
+sudo chown -R www-data:www-data storage/
+```
