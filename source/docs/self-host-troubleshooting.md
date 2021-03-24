@@ -196,3 +196,11 @@ should be updated to
 ```php
 RewriteRule ^(.*)$ subdirectoryname/public/$1 [L]
 ```
+
+### Endless setup loop
+
+If you are finding that all your pre setup checks are passing however you keep falling back to the setup screen, this could indicate that you are missing the ```mysql-client``` library which is needed to perform the initial migration. If you are unable to install this for some reason (ie. XAMPP) then you'll need to run the migrations manually by entering the following at the command prompt
+
+```
+php artisan migrate:fresh --seed 
+```
