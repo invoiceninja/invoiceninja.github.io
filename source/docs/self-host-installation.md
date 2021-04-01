@@ -30,6 +30,12 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 * mysqli extension
 * MySQL / MariaDB Server
 
+On ubuntu this should be as simple as running:
+
+```bash
+sudo apt install php7.4-bcmath php7.4-gmp php7.4-fileinfo php7.4-gd php7.4-json php7.4-mbstring php7.4-pdo php7.4-xml php7.4-curl php7.4-zip php7.4-gmp php7.4-mysqlnd
+```
+
 ## Installing Invoice Ninja
 
 ### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
@@ -149,6 +155,8 @@ Ensure you set the scheduler under the web server user i.e. `sudo -u www-data cr
 Some Webservers require the Cronjob to end with `> /dev/null 2>&1` instead of `>> /dev/null 2>&1` for it to work.
 Also check if your Webserver Cronjob needs to be set with `/private_html/` instead of `/public_html/` within the path.
 And sometimes it's enough to put `php` instead of `/opt/alt/php73/usr/bin/php` in the cronjob scheduler command to execute.
+
+If you still encounter errors, it may be helpful to temporarily remove `>> /dev/null 2>&1` from  the cron, this should output the cron to the `cron.log`
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 

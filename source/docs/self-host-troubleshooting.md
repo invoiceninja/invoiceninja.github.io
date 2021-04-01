@@ -196,3 +196,25 @@ should be updated to
 ```php
 RewriteRule ^(.*)$ subdirectoryname/public/$1 [L]
 ```
+
+### Endless setup loop
+
+If you are finding that all your pre setup checks are passing however you keep falling back to the setup screen, this could indicate that you are missing the ```mysql-client``` library which is needed to perform the initial migration. If you are unable to install this for some reason (ie. XAMPP) then you'll need to run the migrations manually by entering the following at the command prompt
+
+```
+php artisan migrate:fresh --seed 
+```
+
+### flock() expects parameter 1 to be resource, bool given
+
+This error is thrown from deep within PHP and indicates a permissions issue - most likely the public/storage and/or storage/ directory is not writable by the web user, depending on your platform, you'll need to run something like:
+
+```
+sudo chown -R www-data:www-data public/storage
+```
+
+and/or
+
+```
+sudo chown -R www-data:www-data storage/
+```
