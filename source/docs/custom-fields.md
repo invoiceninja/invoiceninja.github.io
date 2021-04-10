@@ -260,3 +260,12 @@ This will hide columns & rows related entirely. In this example, we hide the cus
 [data-ref="product_table-product.product1-th"],
 [data-ref="product_table-product.product1-td"] { display: none; }
 ```
+
+### Overwiting the "hidden" property on element
+Some elements have "hidden" property on the element. You can overwrite this with CSS.
+
+```css
+[data-ref="totals_table-subtotal-label"] {
+    display: inline; /* or block */
+}
+```
