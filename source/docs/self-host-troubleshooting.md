@@ -5,6 +5,16 @@ section: content
 
 # Troubleshooting
 
+## PDFs don't appear to be updating
+
+If you are using Cloudflare, then most likely Cloudflare could be caching your static data. To force cache busting, edit your nginx.conf file and add in the following snippet
+
+```bash
+location ~* \.pdf$ {
+    add_header Cache-Control no-store;
+}
+```
+
 ## Email not sending
 
 If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 

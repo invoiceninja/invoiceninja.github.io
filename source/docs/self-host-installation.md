@@ -83,6 +83,10 @@ location / {
     try_files $uri $uri/ =404;
 }
 
+location ~* \.pdf$ {
+    add_header Cache-Control no-store;
+}
+
 if (!-e $request_filename) {
     rewrite ^(.+)$ /index.php?q= last;
 }
@@ -132,7 +136,7 @@ git clone https://github.com/invoiceninja/invoiceninja.git
 
 git checkout v5-stable
 
-composer install --no-dev
+composer install --no-dev -o
 
 cp .env.example .env
 
@@ -157,6 +161,8 @@ Also check if your Webserver Cronjob needs to be set with `/private_html/` inste
 And sometimes it's enough to put `php` instead of `/opt/alt/php73/usr/bin/php` in the cronjob scheduler command to execute.
 
 If you still encounter errors, it may be helpful to temporarily remove `>> /dev/null 2>&1` from  the cron, this should output the cron to the `cron.log`
+
+If you are having troubles with your crons, have a look at the troubleshooting section [here](https://invoiceninja.github.io/docs/self-host-troubleshooting/#cron-not-running-queue-not-running)
 
 <p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
 
