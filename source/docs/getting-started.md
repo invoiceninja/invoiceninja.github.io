@@ -17,6 +17,6 @@ The user interface for version 5 has been written in [Flutter](https://flutter.d
 from [Google](https://google.com), it provides a consistent cross-platform experience with native applications available
 for Mac, Linux, Windows, mobile and web platforms.
 
-The API has been developed using [Laravel](https://laravel.com) the full API specification can be found here.
+The API has been developed using [Laravel](https://laravel.com) the full API specification can be found [here](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja).
 
 <x-next url=/docs/introduction>Introduction</x-next>

@@ -28,11 +28,13 @@ MAIL_PASSWORD='supersecretpassword'
 MAIL_ENCRYPTION='tls'
 ```
 
+<x-warning>If you are using Gmail - ensure you have less secure apps turned on.</x-warning>
+
 The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 support natively is supported in this app.
 
 If the mail config is correct, the next place to check would be to check the error logs for any errors that are being thrown, the error log is found in ```storage/logs/laravel.log```
 
-The final source of information in diagnosing mail troubles is to inspect the ```system_logs``` table, in here we log any messages from the mail server itself which may be instructive as to the cause of your issues.
+The final source of information in diagnosing mail troubles is to inspect the ```System Logs``` tab in the dashboard of the application, in here we log any messages from the mail server itself which may be instructive as to the cause of your issues.
 
 If you are using the Queue system ie. QUEUE_CONNECTION=database then you may also want to check the ```jobs``` table in the database, there should be _no_ records in that table... If there are records in the table it means that your queue is not running and therefore no mail jobs are being processed.
 
@@ -48,7 +50,7 @@ If you are on shared hosting, snappdf probably will be impossible for you to use
 
 ### Phantom JS
 
-Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscloud.com/) to generate your PDFs, the configuration that comes with a clean installation can generate 100 PDFs per day. If you register for an API key, you will be able to generate 500 PDFs per day, which should suit most users.
+Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscloud.com/) to generate your PDFs, the default API key that comes with a clean installation can generate 100 PDFs per day. If you register for an API key, you will be able to generate 500 PDFs per day, which should suit most users.
 
 Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.
 
@@ -78,7 +80,7 @@ If you are a white label user, then to enable the Invoice Ninja hosted PDF gener
 NINJA_HOSTED_PDF=true
 ```  
 
-you will also need to turn OFF PhantomJS cloud
+You will also need to turn OFF PhantomJS cloud
 
 ```
 PHANTOMJS_PDF_GENERATION=false
@@ -96,40 +98,6 @@ If you are using shared hosting, then will need to add an additional parameter t
 
 ```
 cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
-```
-
-If you would like to improve the performance of your Invoice Ninja installation, then turning on the queue system will dramatically improve the performance of the application.
-
-If you have root access to your system, then simply follow the Laravel [guide](https://laravel.com/docs/8.x/queues#supervisor-configuration) to configure the supervisor service to start and restart your queue.
-
-You will then need to update the QUEUE_CONNECTION variable in the .env file as follows:
-
-```
-QUEUE_CONNECTION=database
-```
-
-If you are on shared hosting, it is possible to get the queues working by defining a new cron with the following configuration:
-
-```
-*/5 * * * * cd  /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan queue:work --stop-when-empty
-```
-
-This cron will start a queue worker every 5 minutes and run any jobs that are in the queue and then gracefully terminate itself. This means any emails / notification may be queued for a small period of time prior to executing. If this amount of delay is acceptable, it is a great way to get queue's working on shared hosting.
-
-## Currency Conversion
-
-<p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.
-Open Exchange currently provides a free tier which is suitable for daily updates of the exchange rates.
-Simply insert a Open Exchange API key into your .env file to enable exchange rate updates:</p>
-
-```bash
-OPENEXCHANGE_APP_ID=your_open_exchange_api_key_here
-```
-
-Make sure to update your cache afterwards:
-
-```bash
-php artisan optimize
 ```
 
 ## Platform specific issues
@@ -228,3 +196,7 @@ and/or
 ```
 sudo chown -R www-data:www-data storage/
 ```
+
+### Unresponsive UI
+
+If for some reason the UI becomes unresponsive, you may need to flush some subsystem configuration and rebuild. It is possible to do this by navigating to the `/update?secret=`  route, ie. https://invoiceninja.test/update?secret= This will perform a number of system clean ups and may resolve issues resulting from an incomplete upgrade. To protect this route, you are advised to add a .env pararameter `UPDATE_SECRET=a_secret_passcode` this will restrict the route to users with the UPDATE_SECRET passcode.

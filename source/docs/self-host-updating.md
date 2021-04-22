@@ -31,5 +31,6 @@ php artisan queue:restart
 If you have installed the application using the precompiled .zip file, then the internal self updater should perform all the necessary tasks to bring your app up to the latest version. The only strict requirements are:
 
 * The directory is owned recursively by the web user.
-* Git is available for execution. 
 * The scheduler cron is running.
+
+The self updater will pull the latest release from our Github repository, extract and overwrite the system files. Prior to attempting any of this, the system performs a recursive file check to ensure _all_ files are owned by the webuser. 

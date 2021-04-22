@@ -125,7 +125,11 @@ Ensure you set the scheduler under the web server user i.e. `sudo -u www-data cr
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-<p>Navigate your browser to your installation domain name address with /setup appended i.e. <b>www.invoiceninja.test/setup</b> from this page you will configure your database, mailserver and the primary account user, when completed, click Submit and the app will setup your application and redirect you to the login page</p>
+<p>If you are using shared hosting, then you will need to add an additional parameter to the cron command which looks like this:</p>
+
+```
+* * * * * cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
+```
 
 ### Installation from git (Advanced)
 
@@ -144,6 +148,11 @@ php artisan key:generate
 
 php artisan optimize
 ```
+
+### Final setup steps
+
+<p>Once you have configured your virtual host, create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page</p>
+
 
 ##### Cron configuration
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
@@ -164,13 +173,29 @@ If you still encounter errors, it may be helpful to temporarily remove `>> /dev/
 
 If you are having troubles with your crons, have a look at the troubleshooting section [here](https://invoiceninja.github.io/docs/self-host-troubleshooting/#cron-not-running-queue-not-running)
 
-<p>Configure your virtual host, create a database and point your browser to http://your.domain.com/setup and follow the bouncing ball!</p>
+If you would like to improve the performance of your Invoice Ninja installation, then turning on the queue system will dramatically improve the performance of the application.
+
+If you have root access to your system, then simply follow the Laravel [guide](https://laravel.com/docs/8.x/queues#supervisor-configuration) to configure the supervisor service to start and restart your queue.
+
+You will then need to update the QUEUE_CONNECTION variable in the .env file as follows:
+
+```
+QUEUE_CONNECTION=database
+```
+
+If you are on shared hosting, it is possible to get the queues working by defining a new cron with the following configuration:
+
+```
+*/5 * * * * cd  /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan queue:work --stop-when-empty
+```
+
+This cron will start a queue worker every 5 minutes and run any jobs that are in the queue and then gracefully terminate itself. This means any emails / notification may be queued for a small period of time prior to executing. If this amount of delay is acceptable, it is a great way to get queue's working on shared hosting.
 
 ## Shared Hosting
 
 ##### Server Requirements
 
-We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
+We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. Softaculous has a one click installer which makes the entire setup process simple, however if you do not have Softaculous available it may still be possible to instlal Invoice Ninja. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
 
 * proc_open
 * exec
@@ -206,3 +231,19 @@ Add the Laravel scheduler cron job, be sure to include the full path, for a cPan
 ## Installing Invoice Ninja (Docker)
 
 If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>
+
+## Currency Conversion
+
+<p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.
+Open Exchange currently provides a free tier which is suitable for daily updates of the exchange rates.
+Simply insert a Open Exchange API key into your .env file to enable exchange rate updates:</p>
+
+```bash
+OPENEXCHANGE_APP_ID=your_open_exchange_api_key_here
+```
+
+Make sure to update your cache afterwards:
+
+```bash
+php artisan optimize
+```
