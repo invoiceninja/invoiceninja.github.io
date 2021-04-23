@@ -34,3 +34,5 @@ If you have installed the application using the precompiled .zip file, then the 
 * The scheduler cron is running.
 
 The self updater will pull the latest release from our Github repository, extract and overwrite the system files. Prior to attempting any of this, the system performs a recursive file check to ensure _all_ files are owned by the webuser. 
+
+<x-warning>Please ensure to delete the .git folder prior to attempting updates on v5.1.50 and over. The updater will fail silently if any hidden folders are present.</x-warning>
