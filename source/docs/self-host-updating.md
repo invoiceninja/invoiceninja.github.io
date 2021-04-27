@@ -33,6 +33,16 @@ If you have installed the application using the precompiled .zip file, then the 
 * The directory is owned recursively by the web user.
 * The scheduler cron is running.
 
-The self updater will pull the latest release from our Github repository, extract and overwrite the system files. Prior to attempting any of this, the system performs a recursive file check to ensure _all_ files are owned by the webuser. 
+The self updater will pull the latest release from our Github repository, extract and overwrite the system files. Prior to attempting any of this, the system performs a recursive file check to ensure _all_ files are owned by the webuser.
+
+If the update button does not work, you can alternatively download the "Source code" and overwrite the folder of your installation, note that there are 3 files always:  https://github.com/invoiceninja/invoiceninja/releases
+
+```
+invoiceninja.zip - 170 MB or 500 MB roughly
+Source code (zip) - 15 MB roughly
+Source code (tar.gz) - 14 MB roughly
+```
+
+_(The 2 "Source code" files are the correct ones, the other is the fully built package which includes the ".env" file, if that file is overwritten, then your configuration is also gone)_
 
 <x-warning>Please ensure to delete the .git folder prior to attempting updates on v5.1.50 and over. The updater will fail silently if any hidden folders are present.</x-warning>
