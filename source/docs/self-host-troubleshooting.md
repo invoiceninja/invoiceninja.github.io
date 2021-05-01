@@ -30,6 +30,20 @@ MAIL_ENCRYPTION='tls'
 
 <x-warning>If you are using Gmail - ensure you have less secure apps turned on.</x-warning>
 
+If you are using gmail smtp relay, then a additional .env variable is required.
+
+```
+SERVER_NAME=
+```
+
+Emails will fail with the message:
+
+```
+Expected response code 250 but got an empty response
+```
+
+without this additional field.
+
 The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 support natively is supported in this app.
 
 If the mail config is correct, the next place to check would be to check the error logs for any errors that are being thrown, the error log is found in ```storage/logs/laravel.log```
