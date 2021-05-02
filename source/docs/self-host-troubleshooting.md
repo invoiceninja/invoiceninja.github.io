@@ -42,7 +42,7 @@ MAIL_PASSWORD='supersecretpassword'
 MAIL_ENCRYPTION='tls'
 ```
 
-<x-warning>If you are using Gmail - ensure you have less secure apps turned on.</x-warning>
+<x-warning>If you are using Gmail - Use an [app specific password](https://support.google.com/accounts/answer/185833?hl=en) or ensure you have less secure apps turned on.</x-warning>
 
 If you are using gmail smtp relay, then a additional .env variable is required.
 
