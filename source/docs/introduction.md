@@ -23,7 +23,7 @@ tapping it will instead create a new client. This pattern is used throughout the
 ## Debugging problems
 
 If you run into any problems you can contact us directly in the app using the support icon in the bottom left corner of
-the screen. If you're using the web app you can add `?clear=true` to the URL to clear the browser's local cache. If
+the screen. If you're using the web app you can add `?clear_local=true` to the URL to clear the browser's local cache. If
 you're using the mobile app it may help to uninstall the app and then re-install the app.
 
 <x-next url=/docs/clients>Clients</x-next>
