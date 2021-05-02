@@ -5,9 +5,11 @@ section: content
 
 # PDF Customizations
 
-PDF generation in v5 is via a HTML templating system. We provide multiple design templates for you to choose from, or you can create your own design using any HTML/CSS combinations.
+PDF generation in v5 is via a HTML templating system. We provide multiple design templates for you to choose from, or
+you can create your own design using any HTML/CSS combinations.
 
-One way we make customizing your PDF easier is by providing a list of variables you can using in your templates which can shown dynamic content, these are all itemized in our Custom Fields section.
+One way we make customizing your PDF easier is by providing a list of variables you can using in your templates which
+can shown dynamic content, these are all itemized in our Custom Fields section.
 
 ## Custom fields
 
@@ -224,4 +226,46 @@ $details - Details label
 $item - Item label  
 $description - Description label  
 $entity_footer - Entity footer label/value  
+```
+
+## Snippets
+
+These snippets are collected over time, some might find them useful, so we decided to collect them in the official
+documentation.
+
+### Getting all available selectors on the design
+To make sure we can target all elements easily & make changes available faster to you, we introduced the "Draft" mode.
+To turn on "Draft" mode, make sure you toggle:
+
+Settings (Advanced settings) > Invoice Design > Customize & preview > Draft mode:
+
+![alt text](/assets/images/pdf_customization/draft-mode.png "Toggling draft mode")
+
+Let's select the item column:
+
+![alt text](/assets/images/pdf_customization/1-selecting-element-in-draft.png "Selecting element in the draft mode")
+
+Now you can select element & inspect its selector:
+
+![alt text](/assets/images/pdf_customization/2-inspecting-data-ref-of-element.png "Inspecting data-ref in the source code")
+
+The important part for us is **data-ref**.
+
+### Showing table column on one design & hiding on others
+This will hide columns & rows related entirely. In this example, we hide the custom product field.
+
+```css
+/** CSS (includes) **/
+
+[data-ref="product_table-product.product1-th"],
+[data-ref="product_table-product.product1-td"] { display: none; }
+```
+
+### Overwriting the "hidden" property on element
+Some elements have "hidden" property on the element. You can overwrite this with CSS.
+
+```css
+[data-ref="totals_table-subtotal-label"] {
+    display: inline; /* or block */
+}
 ```

@@ -11,8 +11,6 @@ The app interface is divided into three parts: the sidebar navigation menu, the 
 layout can be customized to fit your needs using a combination of the icons at the bottom of the screen, and the option
 on Settings > Device Settings.
 
-![Client list](https://via.placeholder.com/614x350)
-
 By default, all supported modules are enabled, if you know you won't be using some features you can disable them on
 Settings > Account Management > Enabled Modules.
 

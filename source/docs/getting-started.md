@@ -19,7 +19,7 @@ The app is divided into three main parts: the backend/API, the Admin Portal (AP)
 
 ##### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
 
-The backend has been created using [Laravel](https://laravel.com). The latest code can be found in the [v5-stable](https://github.com/invoiceninja/invoiceninja/tree/v5-stable) and [v5-develop](https://github.com/invoiceninja/invoiceninja/tree/v5-develop) branches in the GitHub repo.
+The API has been developed using [Laravel](https://laravel.com) the full API specification can be found [here](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja). The latest code can be found in the [v5-stable](https://github.com/invoiceninja/invoiceninja/tree/v5-stable) and [v5-develop](https://github.com/invoiceninja/invoiceninja/tree/v5-develop) branches in the GitHub repo.
 
 ### Admin Portal (AP)
 
