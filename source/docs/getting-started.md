@@ -25,7 +25,7 @@ The API has been developed using [Laravel](https://laravel.com) the full API spe
 
 #### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
 
-The user interface for v5 has been written in [Flutter](https://flutter.dev), it provides a consistent cross-platform experience with native applications available for web, mobile and desktop. The latest code can be found [here](https://github.com/invoiceninja/admin-portal/).
+The Admin Portal has been developed using [Flutter](https://flutter.dev), it provides a consistent cross-platform experience with native applications for web, mobile and desktop. The latest code can be found [here](https://github.com/invoiceninja/admin-portal/).
 
 ### Client Portal - CP
 
