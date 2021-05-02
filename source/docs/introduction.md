@@ -7,7 +7,7 @@ section: content
 
 ## App basics
 
-The version (ie. v5.1.56-A47) is comprised of two parts: the API version and the Admin Portal version. In this cases the API version is 5.1.56 and the AP version is 47. The 'A' denotes the platform, in this case Android.
+The version (ie. `v5.1.56-A47`) is comprised of two parts: the API version and the Admin Portal version. In this cases the API version is `5.1.56` and the AP version is `47`. The `A` denotes the platform, in this case Android.
 
 The app interface is divided into three parts: the sidebar navigation menu, the list (or table) and the preview. The
 layout can be customized to fit your needs using a combination of the icons at the bottom of the screen, and the option
