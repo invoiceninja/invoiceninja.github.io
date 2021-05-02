@@ -17,19 +17,19 @@ The app is divided into three main parts: the backend/API, the Admin Portal and 
 
 ### Backend - API
 
-##### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
+#### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
 
 The API has been developed using [Laravel](https://laravel.com) the full API specification can be found [here](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja). The latest code can be found in the [v5-stable](https://github.com/invoiceninja/invoiceninja/tree/v5-stable) and [v5-develop](https://github.com/invoiceninja/invoiceninja/tree/v5-develop) branches in the GitHub repo.
 
 ### Admin Portal - AP
 
-##### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
+#### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
 
 The user interface for v5 has been written in [Flutter](https://flutter.dev), it provides a consistent cross-platform experience with native applications available for web, mobile and desktop. The latest code can be found [here](https://github.com/invoiceninja/admin-portal/).
 
 ### Client Portal - CP
 
-##### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
+#### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
 
 The Client Portal is also developed with Laravel along with [Tailwind](https://tailwindcss.com/).
 
