@@ -13,21 +13,21 @@ a wide range of features and enhancements that you have asked for.
 
 ## Architecture
 
-The app is divided into three main parts: the backend/API, the Admin Portal (AP) and the Client Portal (CP).
+The app is divided into three main parts: the backend/API, the Admin Portal and the Client Portal.
 
-### Backend/API
+### Backend - API
 
 ##### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
 
 The API has been developed using [Laravel](https://laravel.com) the full API specification can be found [here](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja). The latest code can be found in the [v5-stable](https://github.com/invoiceninja/invoiceninja/tree/v5-stable) and [v5-develop](https://github.com/invoiceninja/invoiceninja/tree/v5-develop) branches in the GitHub repo.
 
-### Admin Portal (AP)
+### Admin Portal - AP
 
 ##### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
 
 The user interface for v5 has been written in [Flutter](https://flutter.dev), it provides a consistent cross-platform experience with native applications available for web, mobile and desktop. The latest code can be found [here](https://github.com/invoiceninja/admin-portal/).
 
-### Client Portal (CP)
+### Client Portal - CP
 
 ##### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
 
