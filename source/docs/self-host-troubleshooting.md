@@ -15,6 +15,20 @@ location ~* \.pdf$ {
 }
 ```
 
+On Apache based servers, open the [/public/.htaccess](https://github.com/invoiceninja/invoiceninja/blob/master/public/.htaccess#L25) file and update the mod_headers block
+
+```apacheconf
+<IfModule mod_headers.c>
+    # Blocks Search Engine Indexing
+    Header set X-Robots-Tag "noindex, nofollow"
+
+    # Prevents PDF File Caching
+    <FilesMatch ".pdf$">
+        Header set Cache-Control no-store
+    </FilesMatch>
+</IfModule>
+```
+
 ## Email not sending
 
 If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 
