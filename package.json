@@ -12,12 +12,12 @@
         "@tailwindcss/typography": "0.2.0",
         "cross-env": "^3.2.3",
         "laravel-mix": "^5.0.5",
-        "laravel-mix-jigsaw": "^1.1.0",
+        "laravel-mix-jigsaw": "^1.5.0",
         "postcss-import": "^12.0.0",
         "tailwindcss": "^1.9.6",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "anchor-js": "^4.3.0"
+        "anchor-js": "^4.3.1"
     }
 }
