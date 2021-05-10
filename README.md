@@ -13,8 +13,8 @@ Documentation is available at [https://invoiceninja.github.io](https://invoiceni
     + [Introduction](#introduction)
     + [Getting started](#getting-started)
         - [Clone the repository](#clone-the-repository)
-        - [Change directory & install dependencies](#change-directory-and-install-dependencies)
-        - [Preview it!](#preview-it)
+        - [Change directory and install dependencies](#change-directory-and-install-dependencies)
+        - [Preview it](#preview-it)
 
 ### Introduction
 
