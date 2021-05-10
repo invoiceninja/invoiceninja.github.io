@@ -49,3 +49,9 @@ Now you should be able to edit & preview your changes in real-time.
 
 The official repository is configured to build the site on each commit, so there's no need to compile the production version
 locally.
+
+### Code of Conduct
+Code of conduct can be found in our main repository. [Code of Conduct](https://github.com/invoiceninja/invoiceninja/blob/master/CODE_OF_CONDUCT.md).
+
+### Licence
+Licence can be found in our main repository. [Licence](https://github.com/invoiceninja/invoiceninja/blob/master/LICENSE).
