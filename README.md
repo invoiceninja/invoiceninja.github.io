@@ -13,8 +13,8 @@ Documentation is available at [https://invoiceninja.github.io](https://invoiceni
     + [Introduction](#introduction)
     + [Getting started](#getting-started)
         - [Clone the repository](#clone-the-repository)
-        - [Change directory & install dependencies](#change-directory---install-dependencies)
-        - [Preview it!](#preview-it-)
+        - [Change directory & install dependencies](#change-directory-and-install-dependencies)
+        - [Preview it!](#preview-it)
 
 ### Introduction
 
@@ -31,7 +31,7 @@ The documentation is using Laravel Jigsaw (https://jigsaw.tighten.co/) as a proc
 git clone https://github.com/invoiceninja/invoiceninja.github.io.git
 ```
 
-#### Change directory & install dependencies
+#### Change directory and install dependencies
 
 ```bash
 cd invoiceninja.github.io
@@ -39,7 +39,7 @@ composer i
 npm i
 ```
 
-#### Preview it!
+#### Preview it
 
 ```bash
 npm run watch
