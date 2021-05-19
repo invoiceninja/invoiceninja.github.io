@@ -74,6 +74,8 @@ PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET='your-secret-here'
 ```
 
+The `PHANTOMJS_SECRET` can be any random value, it's used to bypass the client portal password.
+
 <p>Once this has been done you'll need to refresh the config cache:</p>
 
 ```bash
