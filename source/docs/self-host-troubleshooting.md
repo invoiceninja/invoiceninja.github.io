@@ -15,6 +15,20 @@ location ~* \.pdf$ {
 }
 ```
 
+On Apache based servers, open the [/public/.htaccess](https://github.com/invoiceninja/invoiceninja/blob/master/public/.htaccess#L25) file and update the mod_headers block
+
+```apacheconf
+<IfModule mod_headers.c>
+    # Blocks Search Engine Indexing
+    Header set X-Robots-Tag "noindex, nofollow"
+
+    # Prevents PDF File Caching
+    <FilesMatch ".pdf$">
+        Header set Cache-Control no-store
+    </FilesMatch>
+</IfModule>
+```
+
 ## Email not sending
 
 If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 
@@ -28,7 +42,7 @@ MAIL_PASSWORD='supersecretpassword'
 MAIL_ENCRYPTION='tls'
 ```
 
-<x-warning>If you are using Gmail - ensure you have less secure apps turned on.</x-warning>
+<x-warning>If you are using Gmail - Use an [app specific password](https://support.google.com/accounts/answer/185833?hl=en) or ensure you have less secure apps turned on.</x-warning>
 
 If you are using gmail smtp relay, then a additional .env variable is required.
 
