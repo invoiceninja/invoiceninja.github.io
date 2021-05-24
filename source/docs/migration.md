@@ -112,3 +112,7 @@ If you are experiencing issues with the migration not running as expected please
 * If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. EXPANDED_LOGGING=true then optimize with php artisan optimize . Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
 * If using `https://` ensure you are using a signed SSL certificate, you may get authentication errors if you attempt to use a self signed certificate. Free ssl's are available from [lets encrypt](https://letsencrypt.org)
 * Still having troubles? search the [forum](https://forum.invoiceninja.com) or come and chat with us on [slack](https://invoiceninja.slack.com)
+
+## Cross account migration
+Migration from version 4 to version 5 is only allowed between accounts with the same e-mail address. This is requirement,
+and before starting the migration, make sure you are using the same e-mail address on both version 4 and version 5 for the user.
