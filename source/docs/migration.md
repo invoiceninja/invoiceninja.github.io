@@ -112,3 +112,15 @@ If you are experiencing issues with the migration not running as expected please
 * If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. EXPANDED_LOGGING=true then optimize with php artisan optimize . Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
 * If using `https://` ensure you are using a signed SSL certificate, you may get authentication errors if you attempt to use a self signed certificate. Free ssl's are available from [lets encrypt](https://letsencrypt.org)
 * Still having troubles? search the [forum](https://forum.invoiceninja.com) or come and chat with us on [slack](https://invoiceninja.slack.com)
+
+## Migration Failed notifications
+
+The app will do its best to report back a human readable error if the migration fails for some reason.
+
+Some known issues when migrating to our hosted platform include:
+
+```
+"This user is unable to be attached to this company. Perhaps they have already registered a user on another account?"
+```
+
+If you see this error it indicates that one of your users has already registered their own account on the hosted platform. We do not support cross account users for security purposes. You'll need to change the user's email address in your V4 installation to a different email address for the migration to succeed.
