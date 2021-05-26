@@ -124,3 +124,7 @@ Some known issues when migrating to our hosted platform include:
 ```
 
 If you see this error it indicates that one of your users has already registered their own account on the hosted platform. We do not support cross account users for security purposes. You'll need to change the user's email address in your V4 installation to a different email address for the migration to succeed.
+=======
+## Cross account migration
+Migration from version 4 to version 5 is only allowed between accounts with the same e-mail address. This is requirement,
+and before starting the migration, make sure you are using the same e-mail address on both version 4 and version 5 for the user.
