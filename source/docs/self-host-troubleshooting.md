@@ -44,6 +44,8 @@ MAIL_ENCRYPTION='tls'
 
 <x-warning>If you are using Gmail - Use an [app specific password](https://support.google.com/accounts/answer/185833?hl=en) or ensure you have less secure apps turned on.</x-warning>
 
+<x-warning>If you are using Office 365 - You may need to [enable SMTP AUTH](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission).</x-warning>
+
 If you are using gmail smtp relay, then a additional .env variable is required.
 
 ```
