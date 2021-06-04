@@ -27,6 +27,10 @@ return [
             'Troubleshooting' => '/docs/self-host-troubleshooting',
         ],
     ],
+    'Hosted' => [
+        'url' => '/docs/hosted',
+        'children' => [],
+    ],
     'Migrating to V5' => [
         'url' => '/docs/migration',
         'children' => [],
