@@ -33,13 +33,15 @@ On Apache based servers, open the [/public/.htaccess](https://github.com/invoice
 
 If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 
 
-```
+```bash
 MAIL_MAILER=smtp
-MAIL_HOST=localhost
-MAIL_PORT=1025
-MAIL_USERNAME='email@gmail.com'
-MAIL_PASSWORD='supersecretpassword'
-MAIL_ENCRYPTION='tls'
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="your_email_address@gmail.com"
+MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_email_address@gmail.com"
+MAIL_FROM_NAME="Full Name With Double Quotes"
 ```
 
 <x-warning>If you are using Gmail - Use an [app specific password](https://support.google.com/accounts/answer/185833?hl=en) or ensure you have less secure apps turned on.</x-warning>
@@ -110,13 +112,9 @@ If you are a white label user, then to enable the Invoice Ninja hosted PDF gener
 
 ```
 NINJA_HOSTED_PDF=true
-```  
-
-You will also need to turn OFF PhantomJS cloud
-
-```
 PHANTOMJS_PDF_GENERATION=false
-```
+
+```  
 
 <x-warning>
 Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize

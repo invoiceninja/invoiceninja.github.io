@@ -232,6 +232,32 @@ Add the Laravel scheduler cron job, be sure to include the full path, for a cPan
 
 If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>
 
+## Mail Configuration
+
+When configuring your email, please ensure all of the fields are filled in. In particular you _must_ include the MAIL_FROM_ADDRESS and MAIL_FROM_NAME to prevent errors such as 
+
+```bash
+Address in mailbox given [ ] does not comply with RFC 2822, 3.6.2.
+```
+
+Here is a full example - using Gmail as an example.
+
+```bash
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="your_email_address@gmail.com"
+MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_email_address@gmail.com"
+MAIL_FROM_NAME="Full Name With Double Quotes"
+
+```
+
+<x-warning>
+    NOTE: if you are using SSL encryption the MAIL_PORT is 465. TLS encryption is on port 587.
+</x-warning>
+
 ## Currency Conversion
 
 <p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.
