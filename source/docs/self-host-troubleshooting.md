@@ -33,16 +33,20 @@ On Apache based servers, open the [/public/.htaccess](https://github.com/invoice
 
 If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 
 
-```
+```bash
 MAIL_MAILER=smtp
-MAIL_HOST=localhost
-MAIL_PORT=1025
-MAIL_USERNAME='email@gmail.com'
-MAIL_PASSWORD='supersecretpassword'
-MAIL_ENCRYPTION='tls'
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="your_email_address@gmail.com"
+MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_email_address@gmail.com"
+MAIL_FROM_NAME="Full Name With Double Quotes"
 ```
 
 <x-warning>If you are using Gmail - Use an [app specific password](https://support.google.com/accounts/answer/185833?hl=en) or ensure you have less secure apps turned on.</x-warning>
+
+<x-warning>If you are using Office 365 - You may need to [enable SMTP AUTH](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission).</x-warning>
 
 If you are using gmail smtp relay, then a additional .env variable is required.
 
@@ -88,6 +92,8 @@ PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET='your-secret-here'
 ```
 
+The `PHANTOMJS_SECRET` can be any random value, it's used to bypass the client portal password.
+
 <p>Once this has been done you'll need to refresh the config cache:</p>
 
 ```bash
@@ -106,13 +112,9 @@ If you are a white label user, then to enable the Invoice Ninja hosted PDF gener
 
 ```
 NINJA_HOSTED_PDF=true
-```  
-
-You will also need to turn OFF PhantomJS cloud
-
-```
 PHANTOMJS_PDF_GENERATION=false
-```
+
+```  
 
 <x-warning>
 Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize
@@ -244,3 +246,15 @@ max_allowed_packet
 ```
 
 To a larger value. Sometimes a value of 1024M is required.
+
+It may also be wise to increase the variable
+
+```
+max_connections
+```
+
+as similar errors can be reported from the DB.
+
+### 500 error when editing PDF templates
+There was a [report](https://forum.invoiceninja.com/t/500-error-when-editing-pdf-invoice-templates-potential-fix/7067) 
+from the user who solved 500 error on their server by disabling ModSecurity.
