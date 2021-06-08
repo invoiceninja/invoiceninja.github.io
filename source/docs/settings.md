@@ -59,6 +59,26 @@ The terms and footers text inputs allow you to define default for each. These wi
 
 ## Import | Export
 
+### JSON 
+
+A full company backup can be generated via the Export option. This will schedule a job which will export all settings and data and compress it into a .zip file for download. When the job has been completed an email is sent with a download link (Download links expire daily).
+
+The data can be transported to another installation, or used to overwrite an existing company dataset.
+
+<x-warning>
+
+If you do not wish to overwrite the current company and instead import the dataset as a NEW company you _must_ create a new company first prior to importing as this will overwrite the current company!
+
+</x-warning>
+
+When importing JSON you have the option to import only settings or data or both.
+
+<x-warning>
+
+Note on the hosted platform, the company importer will perform a preflight check to ensure your dataset is importable. If your plan does not have sufficient resources (ie. multiple users or client limit is reached), the importer will fail and you will be notified via email of the exact issue.
+
+</x-warning>
+
 ## Device Settings
 
 ## Account Management
