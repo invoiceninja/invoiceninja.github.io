@@ -5,7 +5,7 @@ section: content
 
 ## License
 
-We receive many queries about how users the Invoice Ninja sourcecode/application for their own use cases. We feel it is important the community understands our interpretation of the license so there is no confusion about how this software can be used.
+We receive many queries about the Invoice Ninja sourcecode/application license and what is considered within the license and outside of the license. We feel it is important the community understands our interpretation of the license so there is no confusion about how this software can be used.
 
 We have selected the Open Source [Attribution Assurance License](https://github.com/invoiceninja/invoiceninja/blob/master/LICENSE) from [Open Source](https://opensource.org) as we believe it offers flexibility to use this software for their personal requirements and protects our commercial use of the code for our Hosted SaaS product. 
 
