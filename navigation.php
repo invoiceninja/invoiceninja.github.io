@@ -38,6 +38,7 @@ return [
     'Legal' => [
         'url' => '',
         'children' => [
+            'License' => '/docs/legal/license',
             'Terms of Service' => '/docs/legal/terms_of_service',
             'Data Privacy' => '/docs/legal/data_privacy',
             'Selfhost Data Privacy' => '/docs/legal/self_hosting_data',
