@@ -7,7 +7,7 @@ section: content
 
 We receive many queries about the Invoice Ninja sourcecode/application license and what is considered within the license and outside of the license. We feel it is important the community understands our interpretation of the license so there is no confusion about how this software can be used.
 
-We have selected the Open Source [Attribution Assurance License](https://github.com/invoiceninja/invoiceninja/blob/master/LICENSE) from [Open Source](https://opensource.org) as we believe it offers flexibility to use this software for their personal requirements and protects our commercial use of the code for our Hosted SaaS product. 
+We have selected the Elastic License 2.0 as we believe it offers flexibility to use this software for their personal requirements and protects our commercial use of the code for our Hosted SaaS product. 
 
 So what does all this mean? Lets give a couple examples of how this code can and cannot be used in a completely "free" sense.
 
