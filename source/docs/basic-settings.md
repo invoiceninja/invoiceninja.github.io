@@ -3,7 +3,7 @@ extends: _layouts.docs
 section: content
 ---
 
-## Basic Settings
+# Basic Settings
 
 The basic settings are where you can setup everything you need to define your company. 
 
@@ -99,4 +99,4 @@ Note on the hosted platform, the company importer will perform a preflight check
 
 <h2 id=account_management>Account Management</h2>
 
-<x-next url=/docs/developer-guide>Developer Guide</x-next>
+<x-next url=/docs/advanced-settings>Advanced Settings</x-next>

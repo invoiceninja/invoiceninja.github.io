@@ -1,3 +1,8 @@
+---
+extends: _layouts.docs
+section: content
+---
+
 # Advanced Settings
 
 <h2 id=invoice_design>Invoice Design</h2>
@@ -57,3 +62,5 @@ As well as defining the pattern, you are also able to define where the counter c
 <h2 id=workflow_settings>Workflow Settings</h2>
 
 <h2 id=user_management>User Management</h2>
+
+<x-next url=/docs/developer-guide>Developer Guide</x-next>
