@@ -264,4 +264,4 @@ from the user who solved 500 error on their server by disabling ModSecurity.
 
 When changes are made to the container this can causes the cache to become stale in the application preventing it from booting. 
 
-The solution is to clear the contents of the folder ```bootstrap/cache```, running ```/update?secret=``` will can clear this directory. 
+The solution is to clear the contents of the folder ```bootstrap/cache```, by either manually deleting files or by running ```/update?secret=``` which will also delete the contents of this directory. 
