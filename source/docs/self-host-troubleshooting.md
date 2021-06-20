@@ -256,5 +256,12 @@ max_connections
 as similar errors can be reported from the DB.
 
 ### 500 error when editing PDF templates
+
 There was a [report](https://forum.invoiceninja.com/t/500-error-when-editing-pdf-invoice-templates-potential-fix/7067) 
 from the user who solved 500 error on their server by disabling ModSecurity.
+
+### Unresolvable dependency resolving [Parameter #0 [ array $options ]] in class App\Utils\CssInlinerPlugin
+
+When changes are made to the container this can causes the cache to become stale in the application preventing it from booting. 
+
+The solution is to clear the contents of the folder ```bootstrap/cache```, running ```/update?secret=``` will can clear this directory. 
