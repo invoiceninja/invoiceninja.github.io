@@ -3,8 +3,8 @@
 return [
     'production' => false,
     'baseUrl' => 'https://invoiceninja.github.io',
-    'title' => 'Free Open-Source Invoicing, Expenses & Time-Tracking | Invoice Ninja',
-    'description' => 'The leading free open-source online invoicing app for freelancers & businesses. Invoice, accept payments, track expenses, create proposals, & time-tasks',
+    'title' => 'Free Source Available Invoicing, Expenses & Time-Tracking | Invoice Ninja',
+    'description' => 'The leading free source available online invoicing app for freelancers & businesses. Invoice, accept payments, track expenses, create proposals, & time-tasks',
     'collections' => [],
     'navigation' => require_once('navigation.php'),
     'isActive' => function ($page, $path) {
