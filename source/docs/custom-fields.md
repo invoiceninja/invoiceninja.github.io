@@ -1,15 +1,15 @@
 ---
-extends: _layouts.docs 
+extends: _layouts.docs
 section: content
 ---
 
 # PDF Customizations
 
-PDF generation in v5 is via a HTML templating system. We provide multiple design templates for you to choose from, or
-you can create your own design using any HTML/CSS combinations.
+PDF generation in v5 is via an HTML templating system. We provide multiple design templates for you to choose from, or
+you can create your design using any HTML/CSS combinations.
 
-One way we make customizing your PDF easier is by providing a list of variables you can using in your templates which
-can shown dynamic content, these are all itemized in our Custom Fields section.
+One way we make customizing your PDF easier is by providing a list of variables you can use in your templates which
+can show dynamic content, these are all itemized in our Custom Fields section.
 
 ## Custom fields
 
@@ -228,6 +228,23 @@ $description - Description label
 $entity_footer - Entity footer label/value  
 ```
 
+## Getting PDF source code
+
+It's easier to tinker with HTML if you can get your hands on raw HTML. This can be enabled in your
+.env file.
+
+<x-info>
+    `.env` file is by default hidden on most operating systems. It's located in the root
+    of your Invoice Ninja installation.
+</x-info>
+
+1. Set `LOG_PDF_HTML=true` in your .env
+2. Run: `php artisan optimize`
+
+Now, any newly generated PDF will output the source code in the `storage/framework/laravel.log` file.
+
+Source code is plain HTML, so you can just cut and paste it on your computer & run it locally in the browser.
+
 ## Snippets
 
 These snippets are collected over time, some might find them useful, so we decided to collect them in the official
@@ -262,7 +279,7 @@ This will hide columns & rows related entirely. In this example, we hide the cus
 ```
 
 ### Overwriting the "hidden" property on element
-Some elements have "hidden" property on the element. You can overwrite this with CSS.
+Some elements have a "hidden" property on the element. You can overwrite this with CSS.
 
 ```css
 [data-ref="totals_table-subtotal-label"] {
