@@ -102,6 +102,14 @@ Inside here you will see output such as this:
 
 This example output would indicate that each entity was successfully brought across, if a problem is detected early the migration will fail early and return an error. A Laravel error will also be thrown indicating the exact issue.
 
+## Forwarding users from V4 to V5
+
+When you have completed the migration and are happy with the configuration of your V4 installation, it is time to forward your users with existing V4 invitations to your V5 installation.
+
+In V4 navigate to Settings > Account Management - Forward customers to V5.
+
+Enter in the URL for your V5 installation and click save. When your users use existing V4 links, they will be transparently forwarded to your V5 installation.
+
 ## Troubleshooting
 
 If you are experiencing issues with the migration not running as expected please run through the following checklist:
