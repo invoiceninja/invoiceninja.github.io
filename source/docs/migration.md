@@ -110,6 +110,10 @@ In V4 navigate to Settings > Account Management - Forward customers to V5.
 
 Enter in the URL for your V5 installation and click save. When your users use existing V4 links, they will be transparently forwarded to your V5 installation.
 
+For hosted users, you can discover your full URL by navigating in V5 to Settings > Client Portal. The Subdomain field will be whatever the subdomain value is with invoicing.co on the end. ie.
+
+https://subdomain.invoicing.co
+
 ## Troubleshooting
 
 If you are experiencing issues with the migration not running as expected please run through the following checklist:
