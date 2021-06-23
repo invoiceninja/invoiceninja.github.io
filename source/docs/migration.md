@@ -112,6 +112,10 @@ Enter in the URL for your V5 installation and click save. When your users use ex
 
 For hosted users, you can discover your full URL by navigating in V5 to Settings > Client Portal. The Subdomain field will be whatever the subdomain value is with invoicing.co on the end. ie.
 
+<x-warning>
+    Note! Once you have enabled forwarding. Your V4 account will become disabled. This means that your recurring invoices and reminders / auto billing will no longer be performed from this installation at all.
+</x-warning>
+
 https://subdomain.invoicing.co
 
 ## Troubleshooting
