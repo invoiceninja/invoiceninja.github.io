@@ -5,6 +5,10 @@ section: content
 
 # Migrating to V5
 
+<x-warning>
+You need to setup this version (v5) completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
+</x-warning>
+
 ## Preparing V4.
 
 The first step needed to prepare to migrate your data across to your new V5 installation is to update your V4 installation to the [latest version](https://download.invoiceninja.com) available. This is a critical step and you will see problems migrating your data if you do not update to the latest V4.
