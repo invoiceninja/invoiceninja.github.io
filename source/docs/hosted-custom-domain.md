@@ -3,6 +3,4 @@ extends: _layouts.docs
 section: content
 ---
 
-# Hosted Documentation
-
-## Custom Domains
+## Custom Domain Configuration

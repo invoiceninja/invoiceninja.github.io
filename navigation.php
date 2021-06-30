@@ -29,8 +29,11 @@ return [
         ],
     ],
     'Hosted' => [
-        'url' => '/docs/hosted',
-        'children' => [],
+        'url' => '',
+        'children' => [
+            'Activate' => '/docs/hosted-activate',
+            'Custom Domain' => '/docs/hosted-custom-domain',
+        ],
     ],
     'Migrating to V5' => [
         'url' => '/docs/migration',
