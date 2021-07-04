@@ -33,6 +33,7 @@ return [
         'children' => [
             'Activate' => '/docs/hosted-activate',
             'Custom Domain' => '/docs/hosted-custom-domain',
+            'Hosted Migration' => '/docs/hosted-migration',
         ],
     ],
     'Migrating to V5' => [
