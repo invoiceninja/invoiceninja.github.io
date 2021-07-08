@@ -24,8 +24,6 @@ This button takes you to a very advanced template code editor, with a live previ
 * **Page Size** - Preformats the PDF renderings of your entities to be better suited for certain printer page sizes.  Typically select the most common page size A4, the default, unless you have specific print requirements in house.
 * **Font Size** - Adjust the default font size to your preference.  Default 7.
 
-
-
 * **Primary Font** - Default Roboto.  A default custom font for document templates.
 * **Secondary Font** - Default Roboto.  A default secondary custom font for document templates.
 * **Primary Color** - Default #0c45a3.  A default custom color used by document templates.
@@ -123,9 +121,70 @@ As well as defining the pattern, you are also able to define where the counter c
 
 <h2 id=email_settings>Email Settings</h2>
 
+These settings govern the behavior, appearance, and other settings for emails sent by Invoice Ninja software on behalf of your company.
 
+* **Reply-To Name** - Specify a *reply-to name* to put at the top of your automated emails, such as to forward support requests to the appropriate contact.
+* **Reply-To Email** - Specify the *reply-to email* of the user clients should contact for support.
+* **BCC Email** - Blind Carbon Copy (BCC) email gets sent to a comma separated list of your specified email addresses.  BCC contact email addresses cannot be seen by any of the recipients of the email messages.
+
+* **Email Design** - Select a design template for the appearance of your emails.
+* **Email Signature** - Include a signature message along with all of your company email messages.  Multiple lines of text here for you to enter your custom signature.  HTML tags are respected here for formatting your email signature.
+
+* **Send Time** - Any scheduled reminders for the day will get sent at this time.
+* **Attach PDF** - Turning on this switch will send invoices as PDFs attached to your emails.  By default, your emails all have links to view the documents on the client portal, but it may be preferable to send the PDF directly.
+* **Attach Documents** - When enabled, any files included in the *Documents* tab of the invoice, or other record, are attached to your emails to the clients.  Otherwise they can be viewed through the link on the client portal.
+* **Attach UBL** - International standard Universal Business Language (UBL).   UBL documents are XML business documents such as purchase orders and invoices.  Enabling this feature attaches an XML document along with the PDF invoice.  Normally all the XML information is embedded in the PDF but some users prefer or cannot read the embedded XML data in a PDF. 
 
 <h2 id=client_portal>Client Portal</h2>
+
+These settings govern the behavior, function, and presentation of the Client Portal.
+
+There are four tabs in this setting panel, with unique features in each of them to cover.
+
+### Settings
+
+These settings control the basic or general function and behavior of the client portal.
+
+* **Client Portal** - Enable or disable the client portal.  Disabling it will send all links to the client portal to a page that says the application has been blocked by the administrator.  Generally enabled by default.
+* **Tasks** - Disabled by default.  Enable it to present a tab on the left hand side for clients, to view Tasks that are assigned to them, whether invoiced or not.  Clients can see the tasks in a list, with columns for the task description, project name, status, and total duration.  This can allow clients to see your company's progress on tasks for them so far, and give them an overview of your project work for them.
+
+* **Client Registration** - Enabling this will allow new users to register themselves, and generate their own client entries in your database through a registration link on the client portal.  
+* **Document Upload** - Enable allowing your clients to upload documents to the server, which will be attached as documents to their own client records.  In the client portal, they will see the option to drag and drop or click to upload files with a large button across the screen under the Documents tab.
+* **Storefront** - Enables API access to create invoices automatically.  After enabling, it will generate a company key, or API key to be used by your own or another third party's apps to perform invoice creation, and act as an automated storefront for your company's products or services.
+
+* **Terms of Service** - Custom, multi-line text field will be presented as your terms of service, in a discrete, clickable link at the bottom of every page of the client portal.
+* **Privacy Policy** - Another custom, multi-line text field will be presented as your Privacy Policy, in a discrete, clickable link at the bottom of every page of the client portal, right next to the Terms of Service.
+
+### Authorization
+
+These settings govern authorization, accountability, and authentication features for the client portal and client's invoices.
+
+* **Password Protect Invoices** -  Disabled by default.  When enabled, clients will be asked to set a password the first time they view their invoices.  From now on they will need to enter this password.
+
+* **Invoice Terms Checkbox** - Prompts the client to accept the invoice terms when making a payment for an invoice in the client portal.
+* **Quote Terms Checkbox** - Prompts the client to accept the quote terms when confirming the quote in the client portal.
+
+* **Invoice Signature** - Require client to provide their signature on the screen with a mouse or touch screen, when paying an invoice on the client portal.
+* **Quote Signature** - Require client to provide their signature on the screen with a mouse or touch screen, when confirming a quote on the client portal.
+* **Show on PDF** - Show the client's signature on the invoice/quote PDF after it has been signed.
+
+### Messages
+
+These are messages to be presented to clients at various screens of the client portal.  
+
+* **Dashboard** - From the dashboard page, the client will be greeted by this message.
+* **Unpaid Invoice** - When viewing an unpaid invoice, the client will see this message.
+* **Paid Invoice** - Client will see this message when viewing a paid invoice.
+* **Unapproved Quote** - Client will be greeted by this message when opening a quote that is pending approval.
+
+### Customize
+
+Here we can customize the appearance of the client portal a little more.
+
+* **Header** - Multi-line text value to be presented with a solid bar on its own row at the top of every page in the client portal.
+* **Footer** - Multi-line text value to be presented with a solid bar on its own row at the bottom of every page in the client portal.
+* **Custom CSS** - Enter your own custom CSS code to replace the stock CSS code of the client portal.
+* **Custom JavaScript** - Enter any custom JavaScript code you would like to embed on the client portal also here.
 
 <h2 id=templates_and_reminders>Templates & Reminders</h2>
 
