@@ -217,6 +217,32 @@ As mentioned above, when you select a reminder from the template list at the top
 
 <h2 id=group_settings>Group Settings</h2>
 
+Group settings is another category with a lot of depth, but most of the topics are covered exactly already because Group settings is mostly about enabling specific basic or advanced settings on a per-group basis, allowing you to build unique experiences for certain collections of clients.
+
+The first step is to create a group, which is very simple, and only requires a group name.  Create  a group with the "+" icon in the top left corner of the group settings panel.  Give it a name and click "Save".
+
+Select your group.  You will see an *Overview* tab and a *Documents* tab.   From the *Documents* tab you can upload files like most other Documents tabs, they will not be seen anywhere other than the admin portal.  The *Overview* tab has two options, an interactive Clients button, where you can view a list of clients in the group, or add clients to the group, and a *Configure Settings* button.
+
+Note:  To remove a client from a group, it is easiest to edit the client directly and change their group or remove it.
+
+### Configure Settings 
+
+Customize any options here to override the regular settings for each respective category, or leave a field blank to use the regular settings.
+
+* **Company Details** - Configure a custom company profile for the client group.  This includes custom invoice terms, footers, and autobill settings.
+* **Localization** - Configure a custom localization for your clients in other countries/time zones, or using different languages, currencies, etc.
+* **Online Payments** - Change autobill, and over/under payment permissions for the group.  Configure payment gateways for the group.
+* **Task Settings** - Set specific task rate, and rule for presentation of tasks in the client portal, for the group.
+* **Invoice Design** - Custom invoice design templates, specific to the group.
+* **Generated Numbers** - Use a unique number counter and set of numbering rules for the group, apart from the rest of your clients.
+* **Email Settings** - Change the default generic settings for emails sent out to group members by Invoice NInja.
+* **Client Portal** - Customize the client portal, exclusively for group members.
+* **Templates & Reminders** - Have special rules for templates & reminders for your group, personalize your messages further, or be more or less restrictive about late payments with certain groups.
+* **Subscriptions** - View and edit general, and group-specific subscription settings.
+* **Workflow Settings** - Change some of the admin portal UI workflow settings when interacting with invoices or quotes from client's group.
+
+<h2 id=subscriptions>Subscriptions</h2>
+
 
 
 <h2 id=workflow_settings>Workflow Settings</h2>
@@ -224,5 +250,7 @@ As mentioned above, when you select a reminder from the template list at the top
 
 
 <h2 id=user_management>User Management</h2>
+
+
 
 <x-next url=/docs/developer-guide>Developer Guide</x-next>
