@@ -188,10 +188,69 @@ Here we can customize the appearance of the client portal a little more.
 
 <h2 id=templates_and_reminders>Templates & Reminders</h2>
 
+Here we have one *edit* tab with some depth for control, and a *preview* tab, to see our changes.  This allows us to customize the messages that get included with your invoice, quote, payment, or reminder emails.
+
+* **Template** - A drop down select menu to choose the email template we are going to modify.  Invoices, quotes, payments, reminders 1, 2, 3, etc.  **Reminders** are going to have more depth to customize, and their unique options will appear when you select a reminder template.  See below.
+* **Subject** - Email subject line.  Default subject for an invoice email:  "New invoice $number from $company.name".  These values are sourced from your company data and records per message.  You can select different values from the menus below, according to your template category, to further customize the message in your email template subject lines.
+* **Body** - Construct the body of the email template's message.  The default message body for an invoice email:  "<p>To view your invoice for $amount, click the link below.</p><div class="center">$view_link</div>".  The email message body accepts basic HTML formatting for additional customization, and like with the subject, you may also add  other values to your body message, by selecting from the appropriate list of values below.
+
+The categories below are tabs to select values to customize and personalize your message templates with, select the tabs to see the values ($amount, $due_date, etc) available for your template to get the relevant values in your messages.  Invoice and Quote template types have a slightly different set of available values, populating from the original invoice, or quote respectively.  
+
+The values below are mostly self explanatory.  **Invoice / Quote** tab offers values populated from the relevant invoice or quote being emailed about.  **Client** tab offers values populated from the relevant client entry.  **Contact** tab offers values relevant for the first contact selected in the invoice record.  **Company** tab offers values from your own company record, to present information about your own company.  **User** tab offers values that represent the logged in user representing your company, who is sending the email message.  You can see what the values look like in an example message under the *Preview* tab.
+
+### Reminder Templates
+
+As mentioned above, when you select a reminder from the template list at the top of the edit tab, you will see new options appear specific to the reminders.
+
+* **First, Second, and Third Reminders**
+  * **Days** - A simple integer is accepted here for the number of days before sending the reminder email.
+  * **Schedule** - When to send the email reminder, offset by the number of days chosen.   
+    * *After the invoice date* - Reminder sent days after the invoice date.
+    * *Before the due date* - Reminder sent days before the invoice due date.
+    * *After the due date* - Reminder sent days after the invoice due date.
+  * **Send Email** - An on/off toggle switch, to enable sending emails automatically for this reminder message.
+  * **Late Fee Amount** - Enter a dollar value for a flat late fee charge.
+  * **Late Fee Percent** - Enter a percent value to apply a late fee rate as a percent of the remaining balance.
+* **Endless Reminders**
+  * **Send Email** - An on/off toggle switch, to enable sending emails automatically for this reminder message.
+  * **Frequency** - A drop down menu to select the frequency of sending automated, endless reminder emails, once first, second, and third reminders are exhausted.
+
 <h2 id=group_settings>Group Settings</h2>
+
+Group settings is another category with a lot of depth, but most of the topics are covered exactly already because Group settings is mostly about enabling specific basic or advanced settings on a per-group basis, allowing you to build unique experiences for certain collections of clients.
+
+The first step is to create a group, which is very simple, and only requires a group name.  Create  a group with the "+" icon in the top left corner of the group settings panel.  Give it a name and click "Save".
+
+Select your group.  You will see an *Overview* tab and a *Documents* tab.   From the *Documents* tab you can upload files like most other Documents tabs, they will not be seen anywhere other than the admin portal.  The *Overview* tab has two options, an interactive Clients button, where you can view a list of clients in the group, or add clients to the group, and a *Configure Settings* button.
+
+Note:  To remove a client from a group, it is easiest to edit the client directly and change their group or remove it.
+
+### Configure Settings 
+
+Customize any options here to override the regular settings for each respective category, or leave a field blank to use the regular settings.
+
+* **Company Details** - Configure a custom company profile for the client group.  This includes custom invoice terms, footers, and autobill settings.
+* **Localization** - Configure a custom localization for your clients in other countries/time zones, or using different languages, currencies, etc.
+* **Online Payments** - Change autobill, and over/under payment permissions for the group.  Configure payment gateways for the group.
+* **Task Settings** - Set specific task rate, and rule for presentation of tasks in the client portal, for the group.
+* **Invoice Design** - Custom invoice design templates, specific to the group.
+* **Generated Numbers** - Use a unique number counter and set of numbering rules for the group, apart from the rest of your clients.
+* **Email Settings** - Change the default generic settings for emails sent out to group members by Invoice NInja.
+* **Client Portal** - Customize the client portal, exclusively for group members.
+* **Templates & Reminders** - Have special rules for templates & reminders for your group, personalize your messages further, or be more or less restrictive about late payments with certain groups.
+* **Subscriptions** - View and edit general, and group-specific subscription settings.
+* **Workflow Settings** - Change some of the admin portal UI workflow settings when interacting with invoices or quotes from client's group.
+
+<h2 id=subscriptions>Subscriptions</h2>
+
+
 
 <h2 id=workflow_settings>Workflow Settings</h2>
 
+
+
 <h2 id=user_management>User Management</h2>
+
+
 
 <x-next url=/docs/developer-guide>Developer Guide</x-next>
