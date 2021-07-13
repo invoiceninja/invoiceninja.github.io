@@ -77,6 +77,8 @@ Each of these 5 field types can be assigned to up to 4 custom fields per entity 
 * **Expenses** - Add more detail to your expense records with custom fields for a tax category of your expenses to help at the end of the year.
 * **Users** - These custom fields add detail to your user account records for registered users of the admin portal.  This would be a good place to put employee details if you plan to use the tasks system or have many users to manage.
 
+
+
 <h2 id=generated_numbers>Generated Numbers</h2>
 
 ![alt text](/assets/images/settings/generated_numbers/generated_numbers_settings_pane.png "Generated Numbers Settings")
@@ -86,8 +88,6 @@ Generated numbers contain a collection of variables that allow very fine grained
 **Number Padding**
 
 The number padding drop down indicates how many leading zeros you'd like before each number. The default padding is 3 leading zeros ie 0001,0002,0003.
-
-<h2 id=generated_numbers>Generated Numbers</h2>
 
 The generate number option allows you to customize WHEN the number is applied, there are two configurations; When Saved (will apply immediate when you save an entity) or When Sent (when the entity is sent / marked as sent).
 
@@ -119,6 +119,8 @@ This counter will generate a date string of which could reset yearly, however it
 
 As well as defining the pattern, you are also able to define where the counter can start.
 
+
+
 <h2 id=email_settings>Email Settings</h2>
 
 These settings govern the behavior, appearance, and other settings for emails sent by Invoice Ninja software on behalf of your company.
@@ -126,14 +128,14 @@ These settings govern the behavior, appearance, and other settings for emails se
 * **Reply-To Name** - Specify a *reply-to name* to put at the top of your automated emails, such as to forward support requests to the appropriate contact.
 * **Reply-To Email** - Specify the *reply-to email* of the user clients should contact for support.
 * **BCC Email** - Blind Carbon Copy (BCC) email gets sent to a comma separated list of your specified email addresses.  BCC contact email addresses cannot be seen by any of the recipients of the email messages.
-
 * **Email Design** - Select a design template for the appearance of your emails.
 * **Email Signature** - Include a signature message along with all of your company email messages.  Multiple lines of text here for you to enter your custom signature.  HTML tags are respected here for formatting your email signature.
-
 * **Send Time** - Any scheduled reminders for the day will get sent at this time.
 * **Attach PDF** - Turning on this switch will send invoices as PDFs attached to your emails.  By default, your emails all have links to view the documents on the client portal, but it may be preferable to send the PDF directly.
 * **Attach Documents** - When enabled, any files included in the *Documents* tab of the invoice, or other record, are attached to your emails to the clients.  Otherwise they can be viewed through the link on the client portal.
 * **Attach UBL** - International standard Universal Business Language (UBL).   UBL documents are XML business documents such as purchase orders and invoices.  Enabling this feature attaches an XML document along with the PDF invoice.  Normally all the XML information is embedded in the PDF but some users prefer or cannot read the embedded XML data in a PDF. 
+
+
 
 <h2 id=client_portal>Client Portal</h2>
 
@@ -186,6 +188,8 @@ Here we can customize the appearance of the client portal a little more.
 * **Custom CSS** - Enter your own custom CSS code to replace the stock CSS code of the client portal.
 * **Custom JavaScript** - Enter any custom JavaScript code you would like to embed on the client portal also here.
 
+
+
 <h2 id=templates_and_reminders>Templates & Reminders</h2>
 
 Here we have one *edit* tab with some depth for control, and a *preview* tab, to see our changes.  This allows us to customize the messages that get included with your invoice, quote, payment, or reminder emails.
@@ -215,6 +219,8 @@ As mentioned above, when you select a reminder from the template list at the top
   * **Send Email** - An on/off toggle switch, to enable sending emails automatically for this reminder message.
   * **Frequency** - A drop down menu to select the frequency of sending automated, endless reminder emails, once first, second, and third reminders are exhausted.
 
+
+
 <h2 id=group_settings>Group Settings</h2>
 
 Group settings is another category with a lot of depth, but most of the topics are covered exactly already because Group settings is mostly about enabling specific basic or advanced settings on a per-group basis, allowing you to build unique experiences for certain collections of clients.
@@ -241,15 +247,110 @@ Customize any options here to override the regular settings for each respective 
 * **Subscriptions** - View and edit general, and group-specific subscription settings.
 * **Workflow Settings** - Change some of the admin portal UI workflow settings when interacting with invoices or quotes from client's group.
 
+
+
 <h2 id=subscriptions>Subscriptions</h2>
+
+There are three views to the Subscriptions panel.  The subscription list, viewing a subscription, and creating or editing a subscription.
+
+From the subscription list you can select existing subscriptions to view, or edit them.  You can also add new subscriptions with the "+" character in the top left corner of the subscriptions list panel.
+
+When viewing a subscription you will see the initial cost of the subscription service at the top.  Below it, is a link you can copy and share to clients, or post on your storefront, which prompts clients to pay for, and setup the selected subscription, which creates the invoice and payment records for you when they do that.   Finally you will see links to filtered lists of invoices, or recurring invoices that are directly related to your subscription.   
+
+When you *edit a subscription* there are three tabs with unique features to control the subscriptions with.
+
+### Overview
+
+* **Name** - The name of your monthly subscription, presentable to clients.
+* **Group** - Assign subscriptions to groups, to allow group members to switch between subscriptions available exclusively to them based on their group membership.  Subscriptions not assigned to a group, will be visible to users who are not in a group only.  Use this to make special subscription models available to certain VIP clients, or etc.
+
+* **Products** - A searchable, and selectable drop down list of available products from the company.  These products are issued as a one-time purchase on the subscription model.  For example, a setup service fee.
+
+* **Recurring Products** - Also a searchable, and selectable drop down list of available products.  These products will appear on recurring invoices, for example, as the regular subscription fee.
+
+### Settings
+
+* **Frequency** - A drop down selection list to choose a regular interval to charge the clients for this subscription model.
+* **Auto bill**
+  * *Enabled* - A user a payment will be automatically attempted if a payment method is stored on file.
+  * *Enabled by default* - The client will be given the option to allow payment methods to be stored with the radio box selected.
+  * *Disabled by default* - The client will be given the option to allow payment methods to be stored with the radio box unselected.
+  * *Disabled* - No option is given, and auto billing is disabled.
+* **Promo Code** - An optional promo code to reward the client if they enter the correct code at checkout.
+* **Promo Discount** - Select from the drop down menu on the right, either "Percent" or "Amount" to discount the client by a flat rate, or percentage of the invoice amount for that period.  On the left, in the text field, enter the rate to discount by.
+
+* **Return URL** - Manually specify a URL to return the clients to when they are finished paying for and setting up their subscription.
+* **Allow Query Overrides** - This toggle switch enables API calls to the backend to override subscription requests, in order to append additional information to the subscription requests automatically when the client interacts with your storefront's website or app.
+* **Allow Plan Changes** - Allow clients who are on this subscription, the option to manually switch subscription models.  Different subscriptions available to change to, must be assigned to the same group.  Note, you can allow switching off of subscription A onto subscription B, and disallow switching off of subscription B, by not enabling *Allow Plan Changes* for subscription B only.
+* **Allow Cancellation** - Allow clients to manually request subscription cancellations from the client portal.  When enabled, optionally set a time window for clients to qualify for a refund on their subscription.
+* **Trial Enabled** - When enabled, the initial "Pay Now" button becomes a "Start Free Trial" button with no demand for payment details at the time of trial beginning.  When enabled, you should select a *Trial Duration* below in the newly spawned drop down menu.  Otherwise the trials will be indefinite.
+* **Per Seat Enabled** - Toggle on or off to enable a maximum capacity, or seat limit for the subscription.  When enabled, enter a number on the single text line spawned below, to specify the number of maximum seats.
+
+### Webhook
+
+Webhooks allow your web based applications to communicate with each other.   These settings here, govern rules for outgoing webhooks when subscriptions are signed up for by clients.
+
+* **Webhook URL** - Enter the URL of the web service you wish to send your notification to.
+* **REST Method** - A drop down menu to select POST, or PUT.
+  * **POST** - When you want to create a new entry, or record.
+  * **PUT** - Use PUT to modify an entry or record.  The PUT functionality will cause the original entry or record to be fully replaced with the new incoming data.
+
+Below you can set as many Key-Value header pairs as you like.  This is a JSON payload, 
+
+* **Header Key** - Enter the appropriate HTTP header as per available headers for InvoiceNinja's JSON API.
+* **Header Value** - Enter the value to be assigned to this custom HTTP header.
 
 
 
 <h2 id=workflow_settings>Workflow Settings</h2>
 
+A few settings to automate behaviors for handling invoices and quotes with.
+
+### Invoices
+
+* **Auto Email** - Enabled by default, will automatically send emails to clients when a recurring invoice is created for them.
+* **Auto Archive** - Disabled by default, will automatically archive invoice records when they are fully paid.
+* **Lock Invoices** - Automatically lock invoices to prevent changes:
+  * **Off** - Disable this feature.
+  * **When Sent** - Lock invoice after it has been sent to the client.
+  * **When Paid** - Lock invoice only after the client has fully paid off the invoice.
+
+### Quotes
+
+* **Automatically Convert** - Enabled by default. Automatically convert the quote you sent into an invoice, after the client has approved the quote.
+* **Auto Archive** - Disabled by default. Automatically archive quotes, after they have been successfully converted into invoices.
+
 
 
 <h2 id=user_management>User Management</h2>
+
+There are three views to the User Management panel.  The users list, viewing a user, and creating or editing a user, and their permissions in the admin portal..
+
+When viewing a user, you see their email address at the top, which is used to sign into the admin portal with.  Below, you can see a list of buttons for all the client, invoice, quote, task, etc, records that the user has created, or been assigned.  The buttons will open user-filtered lists of the records for each respective category.
+
+When at the edit user pane, you will see three tabs to customize user settings with:
+
+### Details
+
+* **First Name** - The user's first name.
+* **Last Name** - The user's last name.
+* **Email** - The user's email address.  Mandatory for the user to log in with.  When the user's account is first created, they will get an email from the InvoiceNinja server to verify their email address and log in.
+* **Phone** - Optionally add a phone number to your user entries for reference.
+
+### Notifications
+
+A full list of events is shown here, for when an invoice, quote, payment, or credit has any sort of action taken, such as being created, being viewed, expiring, successful or failed payment, etc.
+
+Enable email notifications to the user for any number of these events.  Choose a notification behavior for each event as preferred:
+
+* **None** - No notifications will be sent for this event.
+* **Owned by User** - Only  when the event occurs to a record owned by the user, will the notification be sent.
+* **All Records** - Notify the user whenever this event occurs regardless of who owns the record.
+
+### Permissions
+
+* **Administrator** - an on/off switch to elevate the user to Administrator level privileges.
+  * When disabled, a list of permission categories appears below, which the user will be subjected to.  Grant, or deny permissions to create, edit, or view any record category here; clients, invoices, quotes, tasks, vendors, products, etc.
 
 
 
