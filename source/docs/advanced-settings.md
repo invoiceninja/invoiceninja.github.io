@@ -133,12 +133,14 @@ The various entity records available that generated numbers apply to, are all li
 
 * **Number Pattern** - Single line text field you can manually edit to finely tune your generated numbers.  Create a rule that outlines how new numbers will be generated.
 
-* **Number Counter** - The number counter is manually editable, but you can create counter collisions if you're not careful.  The number counter for any given entity type states the progress of the number counter for that entity.
-
 ```bash
 {$date|y}-{$counter}
 ```
-This counter will generate a date string of which could reset yearly, however it could not reset at a monthly interval as you will have counter collisions.
+This example of a number pattern will produce a number like this, for the 9th count in 2021:  2021-0009
+
+Care to ensure you are adding enough unique data to the number patterns if you are using the *Reset Counter* feature, to prevent counter collisions.
+
+* **Number Counter** - The number counter is manually editable, but you can create counter collisions if you're not careful.  The number counter for any given entity type states the progress of the number counter for that entity.
 
 Also, at the bottom you will see some useful information to help you customize your *Number Pattern* more effectively.  The large button **View Date Formats** links to a page with a PHP style guide.  Below that, every entity type has it's own list of variables that can be used to add further customization to the *Number Pattern*.
 
@@ -238,7 +240,11 @@ Here we have one *edit* tab with some depth for control, and a *preview* tab, to
 
 * **Subject** - Email subject line.  Default subject for an invoice email:  "New invoice $number from $company.name".  These values are sourced from your company data and records per message.  You can select different values from the menus below, according to your template category, to further customize the message in your email template subject lines.
 
-* **Body** - Construct the body of the email template's message.  The default message body for an invoice email:  "<p>To view your invoice for $amount, click the link below.</p><div class="center">$view_link</div>".  The email message body accepts basic HTML formatting for additional customization, and like with the subject, you may also add  other values to your body message, by selecting from the appropriate list of values below.
+* **Body** - Construct the body of the email template's message.  The default message body for an invoice email:  
+
+     `"<p>To view your invoice for $amount, click the link below.</p><div class="center">$view_link</div>".`
+
+     The email message body accepts basic HTML formatting for additional customization, and like with the subject, you may also add  other values to your body message, by selecting from the appropriate list of values below.
 
 The categories below are tabs to select values to customize and personalize your message templates with, select the tabs to see the values ($amount, $due_date, etc) available for your template to get the relevant values in your messages.  Invoice and Quote template types have a slightly different set of available values, populating from the original invoice, or quote respectively.  
 
