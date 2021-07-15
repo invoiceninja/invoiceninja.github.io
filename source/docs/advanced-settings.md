@@ -240,7 +240,11 @@ Here we have one *edit* tab with some depth for control, and a *preview* tab, to
 
 * **Subject** - Email subject line.  Default subject for an invoice email:  "New invoice $number from $company.name".  These values are sourced from your company data and records per message.  You can select different values from the menus below, according to your template category, to further customize the message in your email template subject lines.
 
-* **Body** - Construct the body of the email template's message.  The default message body for an invoice email:  "<p>To view your invoice for $amount, click the link below.</p><div class="center">$view_link</div>".  The email message body accepts basic HTML formatting for additional customization, and like with the subject, you may also add  other values to your body message, by selecting from the appropriate list of values below.
+* **Body** - Construct the body of the email template's message.  The default message body for an invoice email:  
+
+     `"<p>To view your invoice for $amount, click the link below.</p><div class="center">$view_link</div>".`
+
+     The email message body accepts basic HTML formatting for additional customization, and like with the subject, you may also add  other values to your body message, by selecting from the appropriate list of values below.
 
 The categories below are tabs to select values to customize and personalize your message templates with, select the tabs to see the values ($amount, $due_date, etc) available for your template to get the relevant values in your messages.  Invoice and Quote template types have a slightly different set of available values, populating from the original invoice, or quote respectively.  
 
