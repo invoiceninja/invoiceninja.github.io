@@ -133,12 +133,14 @@ The various entity records available that generated numbers apply to, are all li
 
 * **Number Pattern** - Single line text field you can manually edit to finely tune your generated numbers.  Create a rule that outlines how new numbers will be generated.
 
-* **Number Counter** - The number counter is manually editable, but you can create counter collisions if you're not careful.  The number counter for any given entity type states the progress of the number counter for that entity.
-
 ```bash
 {$date|y}-{$counter}
 ```
-This counter will generate a date string of which could reset yearly, however it could not reset at a monthly interval as you will have counter collisions.
+This example of a number pattern will produce a number like this, for the 9th count in 2021:  2021-0009
+
+Care to ensure you are adding enough unique data to the number patterns if you are using the *Reset Counter* feature, to prevent counter collisions.
+
+* **Number Counter** - The number counter is manually editable, but you can create counter collisions if you're not careful.  The number counter for any given entity type states the progress of the number counter for that entity.
 
 Also, at the bottom you will see some useful information to help you customize your *Number Pattern* more effectively.  The large button **View Date Formats** links to a page with a PHP style guide.  Below that, every entity type has it's own list of variables that can be used to add further customization to the *Number Pattern*.
 
