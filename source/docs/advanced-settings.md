@@ -81,45 +81,40 @@ Each of these 5 field types can be assigned to up to 4 custom fields per entity 
 
 <h2 id=generated_numbers>Generated Numbers</h2>
 
-![alt text](/assets/images/settings/generated_numbers/generated_numbers_settings_pane.png "Generated Numbers Settings")
-
 Generated numbers contain a collection of variables that allow very fine grained customization of generated numbers for any entity in the application.
 
-**Number Padding**
+### Settings
 
-The number padding drop down indicates how many leading zeros you'd like before each number. The default padding is 3 leading zeros ie 0001,0002,0003.
+![alt text](/assets/images/settings/generated_numbers/generated_numbers_settings_pane.png "Generated Numbers Settings")
 
-The generate number option allows you to customize WHEN the number is applied, there are two configurations; When Saved (will apply immediate when you save an entity) or When Sent (when the entity is sent / marked as sent).
+The settings tab contains the most general options that apply to number generation.  The other tabs provide more specific options that apply exclusively to each entity type.  The rules here apply broadly to every entity type.
 
-**Recurring Prefix**
+* **Number Padding** - The number padding drop down indicates how many leading zeros you'd like before each number. The default padding is 3 leading zeros ie 0001,0002,0003.
 
-The recurring prefix is a prefix which is applied to entities that are created when a recurring entity has been generated.
+* **Generate Number** - The generate number option allows you to customize WHEN the number is applied, there are two configurations; When Saved (will apply immediate when you save an entity) or When Sent (when the entity is sent / marked as sent).
 
-**Shared Invoice Quote Counter**
+* **Recurring Prefix** - The recurring prefix is a prefix which is applied to entities that are created when a recurring entity has been generated.
 
-The shared invoice quote counter switch enables sharing of the counter between quote and invoices, so both entities increment as one rather than separate entities
+* **Shared Invoice/Quote Counter** - The shared invoice quote counter switch enables sharing of the counter between quote and invoices, so that quotes will use the counter that invoices use.
 
-**Reset Counter**
+* **Shared Invoice/Credit Counter** - The shared invoice credit counter switch enables sharing of the counter between credits and invoices, so that credits will use the counter that invoices use.  Enabling both Invoice/Quote, and Invoice/Credit shared counters, will have all three entities use the same counter as invoices do, and share number sequencing.
 
-Generated counters can be reset at a variety of frequencies. It is important to note that in order to reset the counter, you must combine enough unique variables to ensure that the generated counter will still be unique. 
+* **Reset Counter** - Generated counters can be reset at a variety of frequencies. It is important to note that in order to reset the counter, you must combine enough unique variables to ensure that the generated counter will still be unique.  For example - if you use an annual reset counter for new entities, it would be a perfect addition to include the year at the beginning of the invoice number.
 
-```bash
-{$date|y}-{$counter}
-
-generates 
-
-2021-0001
-```
-
-This counter will generate a date string of which could reset yearly, however it could not reset at a monthly interval as you will have counter collisions.
+### Clients, Invoices, Recurring Invoices, Payments, etc.
 
 ![alt text](/assets/images/settings/generated_numbers/generated_numbers_client.png "Client generated numbers")
 
-**Entity generated numbers**
+The various entity records available that generated numbers apply to, are all listed with their own tabs at the top, for you to customize the behaviours of the number generation for each respective entity type.
 
-As well as defining the pattern, you are also able to define where the counter can start.
+* **Number Pattern** - Single line text field you can manually edit to finely tune your generated numbers.  Create a rule that outlines how new numbers will be generated.
 
+* **Number Counter** - The number counter is manually editable, but you can create counter collisions if you're not careful.  The number counter for any given entity type states the progress of the number counter for that entity.
 
+```bash
+{$date|y}-{$counter}
+```
+This counter will generate a date string of which could reset yearly, however it could not reset at a monthly interval as you will have counter collisions.
 
 <h2 id=email_settings>Email Settings</h2>
 
