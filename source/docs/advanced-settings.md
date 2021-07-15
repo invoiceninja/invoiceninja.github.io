@@ -116,6 +116,8 @@ The various entity records available that generated numbers apply to, are all li
 ```
 This counter will generate a date string of which could reset yearly, however it could not reset at a monthly interval as you will have counter collisions.
 
+Also, at the bottom you will see some useful information to help you customize your *Number Pattern* more effectively.  The large button **View Date Formats** links to a page with a PHP style guide.  Below that, every entity type has it's own list of variables that can be used to add further customization to the *Number Pattern*.
+
 <h2 id=email_settings>Email Settings</h2>
 
 These settings govern the behavior, appearance, and other settings for emails sent by Invoice Ninja software on behalf of your company.
