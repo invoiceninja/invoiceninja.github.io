@@ -34,6 +34,7 @@ return [
             'Activate' => '/docs/hosted-activate',
             'Custom Domain' => '/docs/hosted-custom-domain',
             'Hosted Migration' => '/docs/hosted-migration',
+            'Stripe Integration' => '/docs/hosted-stripe',
         ],
     ],
     'Migrating to V5' => [
