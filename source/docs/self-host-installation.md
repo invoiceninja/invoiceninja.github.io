@@ -46,6 +46,10 @@ sudo apt install php7.4-bcmath php7.4-gmp php7.4-fileinfo php7.4-gd php7.4-json 
 
 If Arch Linux is more your flavor, brackenhill-mob from our forum has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
 
+### Installing on Enterprise Linux
+
+<p>Technically computers also has a guide for installation Invoice Ninja on Enterprise Linux [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293)</p>
+
 ### Download pre built zip. (Advanced)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
