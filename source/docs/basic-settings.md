@@ -169,8 +169,6 @@ In the new pane for Configure Payment Gateways, you see a list of configured pay
     * ***Note*** - When attempting to perfectly capture the payment gateway fee 100% and apply it to the client's payment using *Adjust Fee Percent*, you must disable *Invoice Tax Rates* and exclusively use *Item Tax Rates* (Basic Settings > Tax Settings).  When a payment fee is applied to a customer invoice, it is entered as a line item, and any invoice tax rates will be applied to the fee, which will throw off the formula to calculate the new fee percent correctly.  
     * You are responsible for verifying that your tax and fee settings comply with any laws that apply.  Seek legal counsel if you require direction on fee and tax policies for your organization.
 
-
-
 <h2 id=tax_settings>Tax Settings</h2>
 
 In this section we can configure some of the default settings for taxes applied to either entire invoices, or products themselves only.  Tax rates are expressed in % values only.
