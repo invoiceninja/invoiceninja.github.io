@@ -257,9 +257,9 @@ As mentioned above, when you select a reminder from the template list at the top
 * **First, Second, and Third Reminders**
   * **Days** - A simple integer is accepted here for the number of days before sending the reminder email.
   * **Schedule** - When to send the email reminder, offset by the number of days chosen.   
-    * *After the invoice date* - Reminder sent days after the invoice date.
-    * *Before the due date* - Reminder sent days before the invoice due date.
-    * *After the due date* - Reminder sent days after the invoice due date.
+    *After the invoice date* - Reminder sent days after the invoice date.
+    *Before the due date* - Reminder sent days before the invoice due date.
+    *After the due date* - Reminder sent days after the invoice due date.
   * **Send Email** - An on/off toggle switch, to enable sending emails automatically for this reminder message.
   * **Late Fee Amount** - Enter a dollar value for a flat late fee charge.
   * **Late Fee Percent** - Enter a percent value to apply a late fee rate as a percent of the remaining balance.
