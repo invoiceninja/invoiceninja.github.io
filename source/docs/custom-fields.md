@@ -286,3 +286,5 @@ Some elements have a "hidden" property on the element. You can overwrite this wi
     display: inline; /* or block */
 }
 ```
+
+<x-next url=/docs/troubleshooting>Troubleshooting</x-next>

@@ -14,6 +14,7 @@ return [
             'Basic Settings' => '/docs/basic-settings',
             'Advanced Settings' => '/docs/advanced-settings',
             'PDF customization' => '/docs/custom-fields',
+            'Troubleshooting' => '/docs/troubleshooting',
         ],
     ],
     'Developer guide' => [
