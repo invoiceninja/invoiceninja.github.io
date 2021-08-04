@@ -40,7 +40,7 @@ sudo apt install php7.4-bcmath php7.4-gmp php7.4-fileinfo php7.4-gd php7.4-json 
 
 ### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
 
-<p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto CentOS, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). If Ubuntu is more your flavour you can follow his awesome guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
+Technically computers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto CentOS, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). If Ubuntu is more your flavour you can follow his awesome guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
 
 ### Installing on Arch
 
