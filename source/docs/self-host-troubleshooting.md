@@ -76,6 +76,13 @@ It's possible the emails are sent but are blocked for DNS, SPF, DKIM or other re
 
 We strongly recommend using the built in [snappdf](https://github.com/beganovich/snappdf) package which is a highly performant PDF generator based on the headless chrome/chromium binary. This package is perfect for users that have root access to their server and are able to install the required dependencies if needed.
 
+To configure SnapPDF use the following .env vars
+
+```bash
+PHANTOMJS_PDF_GENERATION=false
+PDF_GENERATOR=snappdf
+```
+
 Snappdf is also the default PDF engine in our [Docker](https://github.com/invoiceninja/dockerfiles) image, so if you prefer a very simple installation please consider our Docker setup as it is very fast to get going!
 
 If you are on shared hosting, snappdf probably will be impossible for you to use as you do not have access to the subsystem to install the required packages. Instead, you will need to use a hosted PDF service, the two that Invoice Ninja v5 supports is [PhantomJS Cloud](https://phantomjscloud.com/) and our own hosted PDF generator that users with a white label license can use for _free_ to generate _unlimited_ PDFs.
