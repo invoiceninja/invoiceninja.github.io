@@ -10,6 +10,7 @@ return [
             'Invoices' => '/docs/invoices',
             'Recurring Invoices' => '/docs/recurring-invoices',
             // 'Payments' => '/docs/payments',
+            'Online Payments' => '/docs/gateways',
             'Subscriptions' => '/docs/subscriptions',
             'Basic Settings' => '/docs/basic-settings',
             'Advanced Settings' => '/docs/advanced-settings',
