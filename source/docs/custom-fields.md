@@ -287,4 +287,45 @@ Some elements have a "hidden" property on the element. You can overwrite this wi
 }
 ```
 
+## Creating a custom design
+This is section for you that want to create new design completely from scratch
+or just curious about understanding how templates work.
+
+<x-info>Keep in mind that in order to create designs some knowledge of HTML and CSS is mandatory.</x-info>
+
+### Creating a design entry
+
+Let's start by cloning existing design. 
+To do so, open the admin panel and navigate to **Settings > Invoice Design > Customize & Preview**.
+
+Base design isn't important, if you have completely new design in mind. Name your design and click **Save**.
+
+![alt text](/assets/images/creating-custom-design/01-creating-design-entry.png "Creating a design entry")
+
+We will name ours **Tutorial** and turn on **HTML Mode** to see changes more quickly.
+
+### Design structure
+On the top of the page we should see tabs such as, **Body**, **Header**, **Footer**, **Products**, **Includes**.
+This is how design is structured and for the most part you can leave at is. 
+
+We will spend most of our time in **Includes** and **Body** sections.
+
+#### Body
+As the name suggests this is heart of the design. This is where we will organise
+our elements.
+
+#### Header
+If you want to be fully semantic & fully follow HTML standards, this is where
+you should place your header content.
+
+#### Footer
+Just like header, this is more semantic section for footer content.
+
+#### Products
+<x-warning>At the moment of the writing, this is **unsupported** feature. In future,
+it will allow you to dynamically allocate table columns.</x-warning>
+
+#### Includes
+This is where your styles go.
+
 <x-next url=/docs/troubleshooting>Troubleshooting</x-next>
