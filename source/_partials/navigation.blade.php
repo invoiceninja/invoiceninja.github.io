@@ -34,7 +34,7 @@
            class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
         <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank"
            class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
-        <a href="https://app.invoiceninja.com" target="_blank"
+        <a href="https://invoicing.co" target="_blank"
            class="py-2 border-b border-transparent hover:border-ninja-blue">Go to app</a>
     </div>
 </nav>
