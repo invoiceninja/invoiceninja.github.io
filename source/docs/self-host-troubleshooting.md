@@ -62,7 +62,7 @@ Expected response code 250 but got an empty response
 
 without this additional field.
 
-The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 support natively is supported in this app.
+The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 supports natively is supported in this app.
 
 If the mail config is correct, the next place to check would be to check the error logs for any errors that are being thrown, the error log is found in ```storage/logs/laravel.log```
 
