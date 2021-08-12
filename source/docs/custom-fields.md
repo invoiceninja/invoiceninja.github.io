@@ -328,4 +328,28 @@ it will allow you to dynamically allocate table columns.</x-warning>
 #### Includes
 This is where your styles go.
 
+### Requirements
+
+Before we start customizing/coding our own design, keep in mind that Invoice Ninja have some requirements.
+They are specific IDs for contents.
+
+#### Target elements:
+- #company-details
+- #company-address
+- #client-details
+- #entity-details
+- #delivery-note-table
+- #product-table
+- #task-table
+- #table-totals
+- #footer
+
+To get specific selectors, please refer to [Getting all available selectors on the design](#getting-all-available-selectors-on-the-design).
+
+If it's easier for you to develop static template first, you can always copy the source code provided
+under Settings tab and develop locally, copying changes into Invoice Ninja once you're happy
+with the design.
+
+![alt text](/assets/images/creating-custom-design/02-showing-the-source-code.png "Grabbing the source PDFs' source code")
+
 <x-next url=/docs/troubleshooting>Troubleshooting</x-next>
