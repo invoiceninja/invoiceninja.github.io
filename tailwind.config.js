@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: {
     content: [
@@ -15,6 +17,9 @@ module.exports = {
       },
       maxWidth: {
         '8xl': '90rem',
+      },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans]
       }
     },
   },
