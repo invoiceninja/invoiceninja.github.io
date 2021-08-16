@@ -56,7 +56,7 @@
             </div>
         </div> <!-- End of sidebar -->
 
-        <div class="col-span-12 md:col-span-7 p-4 prose mx-auto" style="max-width: 100% !important;" id="page-content">
+        <div class="col-span-12 md:col-span-7 p-4 prose mx-auto" id="page-content">
             <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
                 <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
             </div>
