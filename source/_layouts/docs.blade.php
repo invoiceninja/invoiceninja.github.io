@@ -37,9 +37,9 @@
        </div>
     </div>
 
-    <div class="max-w-8xl grid grid-cols-12 md:gap-16 py-4 px-4 lg:mx-auto">
-        <div class="hidden mr-4 space-y-6 md:block lg:col-span-2">
-            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-10">
+    <div class="max-w-12xl grid grid-cols-12 py-4 px-4 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
                 @foreach($page->navigation as $section => $props)
                     <div clasS="mb-8">
                         <a class="block hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
@@ -75,7 +75,7 @@
         </div> <!-- End of main content -->
 
         <div class="hidden md:block col-span-3 p-4">
-            <div class="fixed overflow-y-auto pr-10 h-full pb-32" id="toc-container">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
                 <!-- Placeholder for table of contents -->
                 <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
             </div>
