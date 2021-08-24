@@ -13,7 +13,7 @@ section: content
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-* PHP >= 7.3.x
+* PHP >= 7.4.x
 * bcmath extension
 * ctype extension
 * fileinfo extension
