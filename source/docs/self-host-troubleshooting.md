@@ -137,6 +137,10 @@ If you are using shared hosting, then will need to add an additional parameter t
 cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
 
+Please note a small red triangle appears in the bottom left hand corner of the application if the crons are not running. After making any changes to your cron setup you'll want to force a recheck of the cron setting. To do this navigate to http://url/update?secret=
+
+This will force a recheck and if the cron is working the red error triangle will disappear.
+
 ## Platform specific issues
 
 ### General advice
