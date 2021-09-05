@@ -27,6 +27,7 @@ return [
         'children' => [
             'Installation' => '/docs/self-host-installation',
             'Updating' => '/docs/self-host-updating',
+            'Env Variables' => '/docs/env-variables',
             'Troubleshooting' => '/docs/self-host-troubleshooting',
         ],
     ],
