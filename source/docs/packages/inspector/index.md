@@ -47,7 +47,7 @@ To show all tables we can make use of `getTableNames()` method.
 ```php
 public function index(\InvoiceNinja\Inspector $inspector)
 {
-    return view('some-page', [
+    return view('show-tables', [
         'tables' => $inspector->getTableNames()
     ]);
 }
@@ -64,3 +64,24 @@ Now on frontend, we can make use of `x-inspector-tables` component to show all o
 Now we should have a nice representation of all tables:
 
 ![alt text](/assets/images/packages/inspector/show-all-tables.png "Showing all tables")
+
+### Showing table columns
+
+Next step would be to show single table columns & records. Let's start by showing all records. We can do that by calling `getTableColumns(string $tableName)` method.
+
+```php
+public function show(string $tableName, \InvoiceNinja\Inspector $inspector)
+{
+    return view('show-columns', [
+        'columns' => $inspector->getTableColumns($tableName),
+    ]);
+}
+```
+
+.. and use `x-inspector-columns` component to show all columns.
+
+```html
+<x-inspector-columns :columns="$columns" />
+```
+
+![alt text](/assets/images/packages/inspector/show-all-columns.png "Showing all tables")
