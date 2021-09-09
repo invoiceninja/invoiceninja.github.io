@@ -41,7 +41,7 @@ with all available tables in our database.
 To show all tables we can make use of `getTableNames()` method.
 
 ```php
-public function index(\InvoiceNinja\Inspector $inspector)
+public function index(\InvoiceNinja\Inspector\Inspector $inspector)
 {
     return view('show-tables', [
         'tables' => $inspector->getTableNames()
@@ -66,7 +66,7 @@ Now we should have a nice representation of all tables:
 Next step would be to show single table columns & records. Let's start by showing all records. We can do that by calling `getTableColumns(string $tableName)` method.
 
 ```php
-public function show(string $tableName, \InvoiceNinja\Inspector $inspector)
+public function show(string $tableName, \InvoiceNinja\Inspector\Inspector $inspector)
 {
     return view('show-columns', [
         'columns' => $inspector->getTableColumns($tableName),
