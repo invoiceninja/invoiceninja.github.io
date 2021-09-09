@@ -54,6 +54,11 @@ return [
             'Selfhost Terms' => '/docs/legal/self_hosting_terms',
             'GDPR' => '/docs/legal/gdpr',
         ],        
-    ]
-
+    ],
+    'Packages' => [
+        'url' => '/docs/packages/inspector',
+        'children' => [
+            'Inspector' => '/docs/packages/inspector',
+        ],
+    ],
 ];
