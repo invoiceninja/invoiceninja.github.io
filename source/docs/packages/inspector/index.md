@@ -31,10 +31,6 @@ do you use Livewire, or anything else.
 We built set of nice & simple wrapper methods in the main Inspector class, so you should be only responsible from passing data from & to Inspector. This way, Inspector
 doesn't take over your frontend, nor it forces you to install Javascript or CSS frameworks.
 
-### .. but I love Bootstrap more than Tailwind? What to do?
-
-You can always publish the components & modify them fully. We're fine with that. Component classes are fully configurable.
-
 ## Usage
 
 Like we previously said, you are reponsible from passing data from and to Inspector, so this is how it looks in the action. Let's say on frontend we want HTML table
