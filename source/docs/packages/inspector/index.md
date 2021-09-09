@@ -81,3 +81,33 @@ public function show(string $tableName, \InvoiceNinja\Inspector\Inspector $inspe
 ```
 
 ![alt text](/assets/images/packages/inspector/show-all-columns.png "Showing all tables")
+
+### Showing table records
+
+To show table records we can make use of `getTableRecords(string $tableName)` method.
+
+```php
+public function show(string $tableName, \InvoiceNinja\Inspector\Inspector $inspector)
+{
+    return view('show-records', [
+        'table' => $inspector->getTableSchema($tableName),
+        'columns' => $inspector->getTableColumns($tableName),
+        'records' => $inspector->getResources($tableName),
+    ]);
+}
+```
+
+```html
+<x-inspector-records 
+    :table="$resource"
+    :columns="$columns" 
+    :records="$records"  /> 
+```
+
+To paginate the records, make use of `paginate()`.
+
+```php
+'records' => $this->inspector->getTable($resource)->paginate(5),
+```
+
+The logic behind pagination is Laravel-native. `getTable` returns instance of `\Illuminate\Database\Query\Builder` so you can apply standard Laravel adjustments.
