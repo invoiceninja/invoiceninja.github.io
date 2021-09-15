@@ -8,7 +8,7 @@ Clients
 ### Endpoints
 <x-container>
 <x-section>
-The client object allows you to interact with clients and their contacts.
+The clients endpoint allows you to interact with clients and their contacts.
 </x-section>
 <x-section>
 Endpoints
@@ -25,7 +25,6 @@ POST /v1/api/clients/bulk
 
 
 ### Get Clients
-Its important to note that contacts are intimately related to the client. The API expects the full contacts array with each POST/PUT request.
 
 <x-container>
 <x-section>
@@ -66,100 +65,100 @@ ____
 ```
 {
 "data": [
-    {
-        "id": "OpnelpJeKB",
-        "user_id": "q9wdL84djP",
-        "assigned_user_id": "",
-        "name": "O'Reilly-Metz",
-        "website": "http:\/\/www.okeefe.com\/aut-nostrum-omnis-explicabo-nostrum.html",
-        "private_notes": "Laudantium enim numquam provident eius ipsa. Perspiciatis aut et sunt veniam sapiente. Et dicta quo quis vel consectetur dolor.",
-        "balance": 10735.05,
-        "group_settings_id": "",
-        "paid_to_date": 0,
-        "credit_balance": 0,
-        "last_login": 0,
-        "size_id": "",
-        "public_notes": "",
-        "client_hash": "VOYXVqOLrT1pc4FdKCg8AXVIeumby5IfKvkQ1eAB",
-        "address1": "83865",
-        "address2": "28362 Carlotta Junctions Apt. 508",
-        "phone": "",
-        "city": "South Sibylstad",
-        "state": "New York",
-        "postal_code": "52557-0628",
-        "country_id": "288",
+{
+    "id": "OpnelpJeKB",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "O'Reilly-Metz",
+    "website": "http:\/\/www.okeefe.com\/aut-nostrum-omnis-explicabo-nostrum.html",
+    "private_notes": "Laudantium enim numquam provident eius ipsa. Perspiciatis aut et sunt veniam sapiente. Et dicta quo quis vel consectetur dolor.",
+    "balance": 10735.05,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "VOYXVqOLrT1pc4FdKCg8AXVIeumby5IfKvkQ1eAB",
+    "address1": "83865",
+    "address2": "28362 Carlotta Junctions Apt. 508",
+    "phone": "",
+    "city": "South Sibylstad",
+    "state": "New York",
+    "postal_code": "52557-0628",
+    "country_id": "288",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "9999",
+    "shipping_address2": "6540 Kari Meadows Apt. 411",
+    "shipping_city": "East Jordy",
+    "shipping_state": "Illinois",
+    "shipping_postal_code": "39913-0552",
+    "shipping_country_id": "4",
+    "settings": {
+        "entity": "App\\Models\\Client",
         "industry_id": "",
-        "custom_value1": "",
-        "custom_value2": "",
-        "custom_value3": "",
-        "custom_value4": "",
-        "shipping_address1": "9999",
-        "shipping_address2": "6540 Kari Meadows Apt. 411",
-        "shipping_city": "East Jordy",
-        "shipping_state": "Illinois",
-        "shipping_postal_code": "39913-0552",
-        "shipping_country_id": "4",
-        "settings": {
-            "entity": "App\\Models\\Client",
-            "industry_id": "",
-            "size_id": "",
-            "currency_id": "1"
+        "size_id": "",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "929146739",
+    "id_number": "",
+    "updated_at": 1631673918,
+    "archived_at": 0,
+    "created_at": 1631673918,
+    "display_name": "O'Reilly-Metz",
+    "number": "0001",
+    "contacts": [
+        {
+            "id": "YQdJqg9bOG",
+            "first_name": "Jewell",
+            "last_name": "McClure",
+            "email": "user@example.com",
+            "created_at": 1631673918,
+            "updated_at": 1631673918,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "276-345-6722",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q",
+            "send_email": true,
+            "last_login": 0,
+            "password": "**********",
+            "link": "http:\/\/ninja.test:8000\/client\/key_login\/d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q"
         },
-        "is_deleted": false,
-        "vat_number": "929146739",
-        "id_number": "",
-        "updated_at": 1631673918,
-        "archived_at": 0,
-        "created_at": 1631673918,
-        "display_name": "O'Reilly-Metz",
-        "number": "0001",
-        "contacts": [
-            {
-                "id": "YQdJqg9bOG",
-                "first_name": "Jewell",
-                "last_name": "McClure",
-                "email": "user@example.com",
-                "created_at": 1631673918,
-                "updated_at": 1631673918,
-                "archived_at": 0,
-                "is_primary": true,
-                "is_locked": false,
-                "phone": "276-345-6722",
-                "custom_value1": "",
-                "custom_value2": "",
-                "custom_value3": "",
-                "custom_value4": "",
-                "contact_key": "d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q",
-                "send_email": true,
-                "last_login": 0,
-                "password": "**********",
-                "link": "http:\/\/ninja.test:8000\/client\/key_login\/d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q"
-            },
-            {
-                "id": "y1aKZjleQG",
-                "first_name": "Alaina",
-                "last_name": "Wuckert",
-                "email": "amcdermott@example.org",
-                "created_at": 1631673918,
-                "updated_at": 1631673918,
-                "archived_at": 0,
-                "is_primary": false,
-                "is_locked": false,
-                "phone": "(641) 879-8481",
-                "custom_value1": "",
-                "custom_value2": "",
-                "custom_value3": "",
-                "custom_value4": "",
-                "contact_key": "KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86",
-                "send_email": true,
-                "last_login": 0,
-                "password": "**********",
-                "link": "http:\/\/ninja.test:8000\/client\/key_login\/KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86"
-            }
-        ],
-        "documents": [],
-        "gateway_tokens": []
-    }
+        {
+            "id": "y1aKZjleQG",
+            "first_name": "Alaina",
+            "last_name": "Wuckert",
+            "email": "amcdermott@example.org",
+            "created_at": 1631673918,
+            "updated_at": 1631673918,
+            "archived_at": 0,
+            "is_primary": false,
+            "is_locked": false,
+            "phone": "(641) 879-8481",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86",
+            "send_email": true,
+            "last_login": 0,
+            "password": "**********",
+            "link": "http:\/\/ninja.test:8000\/client\/key_login\/KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86"
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
 ],
 "meta": {
     "pagination": {
@@ -223,7 +222,7 @@ ____
 **settings**: (object) Settings object for the client - see Company Settings for more information  
 **vat_number**: (string) Tax number of the client  
 **id_number**: (string) ID reference for the client  
-**group_settings_id**: (integer) The group membership id  
+**group_settings_id**: (string) The group membership id  
 **public_notes**: (string) Public notes for the client  
 **phone**: (string) The phone number of the client  
 **number**: (string) The reference number for the client  
@@ -237,3 +236,491 @@ Contacts array:
 **custom_value2**: (string) Custom value  
 **custom_value3**: (string) Custom value  
 **custom_value4**: (string) Custom value  
+
+#### Response
+____
+
+```
+{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "balance": 0,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "address1": "",
+    "address2": "",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "postal_code": "",
+    "country_id": "840",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "",
+    "shipping_address2": "",
+    "shipping_city": "",
+    "shipping_state": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h",
+            "send_email": true,
+            "last_login": 0,
+            "password": "",
+            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+
+```
+
+### Update Client
+
+<x-container>
+<x-section>
+The PUT route is used to create a client.  
+
+It is important to note that the primary key representation of the client is not an integer, but a hased id, ie. ```wMvbmEAbYA```
+</x-section>
+<x-section>
+```
+curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA' \
+-H "Content-Type:application/json" \
+-d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+```
+</x-section>
+</x-container>
+
+#### Parameters
+____
+
+**name**: (string) The client name  
+**website**: (string) The client website  
+**private_notes**: (string) Private notes for the client  
+**industry_id**: (integer) The industry id of the client  
+**size_id**: (integer) The size id of the client  
+**address1**: (string) Address line 1  
+**address2**: (string) Address line 2  
+**city**: (string) City  
+**state**: (string) State  
+**postal_code**: (string) Postal code  
+**country_id**: (string) The country id of the client  
+**custom_value1**: (string) Custom value  
+**custom_value2**: (string) Custom value  
+**custom_value3**: (string) Custom value  
+**custom_value4**: (string) Custom value  
+**shipping_address1**: (string) Shipping address line 1  
+**shipping_address2**: (string) Shipping address line 2  
+**shipping_city**: (string) Shipping city  
+**shipping_state**: (string) Shipping state  
+**shipping_postal_code**: (string) Shipping postal code  
+**shipping_country_id**: (integer) Shipping country id  
+**settings**: (object) Settings object for the client - see Company Settings for more information  
+**vat_number**: (string) Tax number of the client  
+**id_number**: (string) ID reference for the client  
+**group_settings_id**: (string) The group membership id  
+**public_notes**: (string) Public notes for the client  
+**phone**: (string) The phone number of the client  
+**number**: (string) The reference number for the client  
+
+Contacts array:  
+**first_name**: (string) Contact first name.  
+**last_name**: (string) Contact last name.  
+**email**: (string) Contact email.  
+**phone**: (string) Contact phone number.  
+**custom_value1**: (string) Custom value  
+**custom_value2**: (string) Custom value  
+**custom_value3**: (string) Custom value  
+**custom_value4**: (string) Custom value  
+
+#### Response
+____
+
+```
+{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "balance": 0,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "address1": "",
+    "address2": "",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "postal_code": "",
+    "country_id": "840",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "",
+    "shipping_address2": "",
+    "shipping_city": "",
+    "shipping_state": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h",
+            "send_email": true,
+            "last_login": 0,
+            "password": "",
+            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+
+```
+
+
+### Upload Client Documents
+
+<x-container>
+<x-section>
+The PUT route is used to upload documents to a client record.  
+
+</x-section>
+<x-section>
+```
+curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA' \
+-H 'Content-Type: multipart/form-data' \
+-F _method=PUT \
+-F 'documents[]=@filename.png'
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+```
+</x-section>
+</x-container>
+
+
+#### Parameters
+____
+
+none.
+
+#### Response
+____
+
+
+```
+{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "balance": 0,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "address1": "",
+    "address2": "",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "postal_code": "",
+    "country_id": "840",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "",
+    "shipping_address2": "",
+    "shipping_city": "",
+    "shipping_state": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h",
+            "send_email": true,
+            "last_login": 0,
+            "password": "",
+            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+        }
+    ],
+    "documents": [
+        {
+            "id": "Wpmbk5ezJn",
+            "user_id": "q9wdL84djP",
+            "assigned_user_id": "",
+            "project_id": "",
+            "vendor_id": "",
+            "url": "http:\/\/ninja.test\/api\/v1\/documents\/Wpmbk5ezJn\/download",
+            "preview": "",
+            "name": "document.pdf",
+            "type": "pdf",
+            "disk": "public",
+            "hash": "niqbMIupZI0p1wS1ZwsEqJSMac8plimEXAr0TuIR.pdf",
+            "size": 40078,
+            "width": 0,
+            "height": 0,
+            "is_default": false,
+            "updated_at": 1631681485,
+            "archived_at": 0,
+            "created_at": 1631681485,
+            "is_deleted": false
+        }
+    ],
+    "gateway_tokens": []
+}
+```
+
+### Delete Client
+
+<x-container>
+<x-section>
+The DELETE route is delete a Client. Note* To ensure referential integrity entity records are never permanently deleted. A deleted client is simply "hidden" from view and their balance, invoices and payments are hidden from all reports.  
+
+</x-section>
+<x-section>
+```
+curl -X DELETE 'http://ninja.test:8000/api/v1/clients' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-API-SECRET:password" \
+-H "X-Requested-With: XMLHttpRequest";
+```
+</x-section>
+</x-container>
+
+
+#### Parameters
+____
+
+none.
+
+#### Response
+____
+
+```
+{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+```
+
+### Client Bulk Actions
+
+<x-container>
+<x-section>
+The bulk action route allows you to perform an action on multiple clients.
+
+</x-section>
+<x-section>
+```
+curl -X POST 'http://ninja.test/api/v1/clients/bulk' \
+-H "Content-Type:application/json" \
+-d '{"action":"restore","ids":["VolejRejNm","wMvbmEAbYA"]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+```
+</x-section>
+</x-container>
+
+#### Parameters
+____
+
+**archive**: Archive clients.  
+**restore**: Restore clients.  
+**delete**: Delete clients.  
+
+#### Response
+____
+
+#### Response  
+____
+
+Array of clients
+```
+{
+"data": [
+{
+    "id": "OpnelpJeKB",
+    "user_id": "q9wdL84djP",
+    "shipping_country_id": "4",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "industry_id": "",
+        "size_id": "",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "929146739",
+    "contacts": [
+        {
+            "id": "YQdJqg9bOG",
+            "first_name": "Jewell",
+            "last_name": "McClure",
+            "email": "user@example.com",
+
+        },
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+],
+"meta": {
+    "pagination": {
+        "total": 1,
+        "count": 1,
+        "per_page": 1,
+        "current_page": 1,
+        "total_pages": 1,
+        "links": []
+    }
+}
+}⏎           
+```

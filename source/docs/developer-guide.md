@@ -105,3 +105,6 @@ Content-Type: multipart/form-data
 </x-section>
 </x-container>
 
+### Primary Keys
+
+In version 5 of Invoice Ninja we move away from integer based primary keys and moved to hashed_id's, these are obfuscated string representations of the primary key for the all entity records.
