@@ -37,7 +37,7 @@
        </div>
     </div>
 
-    <div class="max-w-12xl grid grid-cols-12 py-4 px-4 lg:mx-auto">
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
         <div class="hidden space-y-6 md:block lg:col-span-2">
             <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
                 @foreach($page->navigation as $section => $props)
@@ -56,7 +56,7 @@
             </div>
         </div> <!-- End of sidebar -->
 
-        <div class="col-span-12 md:col-span-7 p-4 prose mx-auto max-w-max" id="page-content">
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
             <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
                 <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
             </div>
@@ -74,7 +74,7 @@
             </a>
         </div> <!-- End of main content -->
 
-        <div class="hidden md:block col-span-3 p-4">
+        <div class="hidden md:block col-span-2 p-4">
             <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
                 <!-- Placeholder for table of contents -->
                 <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>

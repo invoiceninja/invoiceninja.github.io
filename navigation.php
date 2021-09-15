@@ -20,7 +20,11 @@ return [
     ],
     'Developer guide' => [
         'url' => '/docs/developer-guide',
-        'children' => [],
+        'children' => [
+            'Authentication' => '/docs/api/authentication',
+            'Clients' => '/docs/api/clients',
+            'Payment Gateways' => '/docs/payment-gateways'
+        ],
     ],
     'Self host' => [
         'url' => '/docs/self-host-installation',
