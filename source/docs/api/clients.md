@@ -468,7 +468,7 @@ The PUT route is used to upload documents to a client record.
 </x-section>
 <x-section>
 ```
-curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA' \
+curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA/upload' \
 -H 'Content-Type: multipart/form-data' \
 -F _method=PUT \
 -F 'documents[]=@filename.png'
