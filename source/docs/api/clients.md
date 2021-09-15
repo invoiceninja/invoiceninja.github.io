@@ -24,7 +24,7 @@ POST /v1/api/clients/bulk
 </x-container>
 
 
-### GET Clients
+### Get Clients
 Its important to note that contacts are intimately related to the client. The API expects the full contacts array with each POST/PUT request.
 
 <x-container>
@@ -173,3 +173,67 @@ ____
 }
 }⏎           
 ```
+
+### Create Client
+
+<x-container>
+<x-section>
+The POST route is used to create a client.  
+
+Its important to note that contacts are intimately related to the client. The API expects the full contacts array with each POST/PUT request.  
+
+To remove a contact you would simply drop the contact object from the contacts array and PUT back to the API.
+
+</x-section>
+<x-section>
+```
+curl -X POST 'http://ninja.test:8000/api/v1/clients' \
+-H "Content-Type:application/json" \
+-d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+```
+</x-section>
+</x-container>
+
+#### Parameters
+____
+
+**name**: (string) The client name  
+**website**: (string) The client website  
+**private_notes**: (string) Private notes for the client  
+**industry_id**: (integer) The industry id of the client  
+**size_id**: (integer) The size id of the client  
+**address1**: (string) Address line 1  
+**address2**: (string) Address line 2  
+**city**: (string) City  
+**state**: (string) State  
+**postal_code**: (string) Postal code  
+**country_id**: (string) The country id of the client  
+**custom_value1**: (string) Custom value  
+**custom_value2**: (string) Custom value  
+**custom_value3**: (string) Custom value  
+**custom_value4**: (string) Custom value  
+**shipping_address1**: (string) Shipping address line 1  
+**shipping_address2**: (string) Shipping address line 2  
+**shipping_city**: (string) Shipping city  
+**shipping_state**: (string) Shipping state  
+**shipping_postal_code**: (string) Shipping postal code  
+**shipping_country_id**: (integer) Shipping country id  
+**settings**: (object) Settings object for the client - see Company Settings for more information  
+**vat_number**: (string) Tax number of the client  
+**id_number**: (string) ID reference for the client  
+**group_settings_id**: (integer) The group membership id  
+**public_notes**: (string) Public notes for the client  
+**phone**: (string) The phone number of the client  
+**number**: (string) The reference number for the client  
+
+Contacts array:  
+**first_name**: (string) Contact first name.  
+**last_name**: (string) Contact last name.  
+**email**: (string) Contact email.  
+**phone**: (string) Contact phone number.  
+**custom_value1**: (string) Custom value  
+**custom_value2**: (string) Custom value  
+**custom_value3**: (string) Custom value  
+**custom_value4**: (string) Custom value  
