@@ -5,6 +5,14 @@ section: content
 
 # Migrating to V5
 
+```
+If you are a Hosted Invoice Ninja you can skip all of these steps. Just log into your account, click on the Start Migration button in Settings > Account Management and we will take care of the rest. Once you are happy your data is across you can follow the steps in our [Activation](https://invoiceninja.github.io/docs/hosted-activate/) guide
+```
+
+<x-warning>
+You need to setup this version (v5) completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
+</x-warning>
+
 ## Preparing V4.
 
 The first step needed to prepare to migrate your data across to your new V5 installation is to update your V4 installation to the [latest version](https://download.invoiceninja.com) available. This is a critical step and you will see problems migrating your data if you do not update to the latest V4.
@@ -16,6 +24,10 @@ Installing V5 is covered in detail [here](/docs/self-host-installation) with res
 An important detail with your V5 installation is that your initial user login is identical to your V4 installation.
 
 The migration relies heavily on the Laravel queue system, so you will need to ensure that you have configured the cron scheduler which boots the laravel queue for you. If you do not configure the cron scheduler, the migration will not work and you will end up with a blank company with no content. 
+
+<x-warning>
+    Please note v5.3.0 now requires PHP 7.4. For some environments you may need to consider using a platform which enables you to use multiple version of PHP. Most reputable web hosts offer cPanel with MultiPHP switcher
+</x-warning>
 
 ## Starting the migration
 
@@ -102,6 +114,22 @@ Inside here you will see output such as this:
 
 This example output would indicate that each entity was successfully brought across, if a problem is detected early the migration will fail early and return an error. A Laravel error will also be thrown indicating the exact issue.
 
+## Forwarding users from V4 to V5
+
+When you have completed the migration and are happy with the configuration of your V4 installation, it is time to forward your users with existing V4 invitations to your V5 installation.
+
+In V4 navigate to Settings > Account Management - Forward customers to V5.
+
+Enter in the URL for your V5 installation and click save. When your users use existing V4 links, they will be transparently forwarded to your V5 installation.
+
+For hosted users, you can discover your full URL by navigating in V5 to Settings > Client Portal. The Subdomain field will be whatever the subdomain value is with invoicing.co on the end. ie.
+
+<x-warning>
+    Note! Once you have enabled forwarding. Your V4 account will become disabled. This means that your recurring invoices and reminders / auto billing will no longer be performed from this installation at all.
+</x-warning>
+
+https://subdomain.invoicing.co
+
 ## Troubleshooting
 
 If you are experiencing issues with the migration not running as expected please run through the following checklist:
@@ -124,7 +152,9 @@ Some known issues when migrating to our hosted platform include:
 ```
 
 If you see this error it indicates that one of your users has already registered their own account on the hosted platform. We do not support cross account users for security purposes. You'll need to change the user's email address in your V4 installation to a different email address for the migration to succeed.
-=======
+
+
 ## Cross account migration
+
 Migration from version 4 to version 5 is only allowed between accounts with the same e-mail address. This is requirement,
 and before starting the migration, make sure you are using the same e-mail address on both version 4 and version 5 for the user.

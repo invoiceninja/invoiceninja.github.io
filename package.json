@@ -1,9 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "local": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "staging": "cross-env NODE_ENV=staging node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "local": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "staging": "cross-env NODE_ENV=staging node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "dev": "npm run local",
         "prod": "npm run production",
         "watch": "npm run local -- --watch"
@@ -11,8 +11,9 @@
     "devDependencies": {
         "@tailwindcss/typography": "0.2.0",
         "cross-env": "^3.2.3",
-        "laravel-mix": "^5.0.5",
+        "laravel-mix": "^6",
         "laravel-mix-jigsaw": "^1.5.0",
+        "postcss": "^8.3.5",
         "postcss-import": "^12.0.0",
         "tailwindcss": "^1.9.6",
         "vue-template-compiler": "^2.6.12"

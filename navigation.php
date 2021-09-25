@@ -10,26 +10,39 @@ return [
             'Invoices' => '/docs/invoices',
             'Recurring Invoices' => '/docs/recurring-invoices',
             // 'Payments' => '/docs/payments',
+            'Online Payments' => '/docs/gateways',
             'Subscriptions' => '/docs/subscriptions',
-            'Settings' => '/docs/settings',
+            'Basic Settings' => '/docs/basic-settings',
+            'Advanced Settings' => '/docs/advanced-settings',
             'PDF customization' => '/docs/custom-fields',
+            'Troubleshooting' => '/docs/troubleshooting',
         ],
     ],
     'Developer guide' => [
         'url' => '/docs/developer-guide',
-        'children' => [],
+        'children' => [
+            'Auth' => '/docs/api/authentication',
+            'Clients' => '/docs/api/clients',
+            'Payment Gateways' => '/docs/payment-gateways'
+        ],
     ],
     'Self host' => [
         'url' => '/docs/self-host-installation',
         'children' => [
             'Installation' => '/docs/self-host-installation',
             'Updating' => '/docs/self-host-updating',
+            'Env Variables' => '/docs/env-variables',
             'Troubleshooting' => '/docs/self-host-troubleshooting',
         ],
     ],
     'Hosted' => [
-        'url' => '/docs/hosted',
-        'children' => [],
+        'url' => '',
+        'children' => [
+            'Activate' => '/docs/hosted-activate',
+            'Custom Domain' => '/docs/hosted-custom-domain',
+            'Hosted Migration' => '/docs/hosted-migration',
+            'Stripe Integration' => '/docs/hosted-stripe',
+        ],
     ],
     'Migrating to V5' => [
         'url' => '/docs/migration',
@@ -38,6 +51,7 @@ return [
     'Legal' => [
         'url' => '',
         'children' => [
+            'License' => '/docs/legal/license',
             'Terms of Service' => '/docs/legal/terms_of_service',
             'Data Privacy' => '/docs/legal/data_privacy',
             'Selfhost Data Privacy' => '/docs/legal/self_hosting_data',

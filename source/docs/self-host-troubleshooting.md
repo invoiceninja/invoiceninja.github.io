@@ -62,7 +62,7 @@ Expected response code 250 but got an empty response
 
 without this additional field.
 
-The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 support natively is supported in this app.
+The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 supports natively is supported in this app.
 
 If the mail config is correct, the next place to check would be to check the error logs for any errors that are being thrown, the error log is found in ```storage/logs/laravel.log```
 
@@ -75,6 +75,13 @@ It's possible the emails are sent but are blocked for DNS, SPF, DKIM or other re
 ## PDF conversion issues.
 
 We strongly recommend using the built in [snappdf](https://github.com/beganovich/snappdf) package which is a highly performant PDF generator based on the headless chrome/chromium binary. This package is perfect for users that have root access to their server and are able to install the required dependencies if needed.
+
+To configure SnapPDF use the following .env vars
+
+```bash
+PHANTOMJS_PDF_GENERATION=false
+PDF_GENERATOR=snappdf
+```
 
 Snappdf is also the default PDF engine in our [Docker](https://github.com/invoiceninja/dockerfiles) image, so if you prefer a very simple installation please consider our Docker setup as it is very fast to get going!
 
@@ -117,10 +124,16 @@ PHANTOMJS_PDF_GENERATION=false
 ```  
 
 <x-warning>
-Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize
+Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize.
 </x-warning>
 
 ## Cron not running / Queue not running
+
+<x-warning>
+It can take up to an hour for the red warning triangle to disappear after correctly configuring your Cron.  
+
+After making any changes to your cron setup you'll want to force a recheck of the cron setting. To do this navigate to http://url/update?secret=
+</x-warning>
 
 If you are faced with your recurring invoices not firing, or your reminders not sending, then most likely your cron job isn't working. The first thing is to make sure you have your cron jobs configured correctly by following the guide [here](https://invoiceninja.github.io/docs/self-host-installation/#cron-configuration-1) 
 
@@ -129,6 +142,8 @@ If you are using shared hosting, then will need to add an additional parameter t
 ```
 cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
+
+This will force a recheck and if the cron is working the red error triangle will disappear.
 
 ## Platform specific issues
 
@@ -256,5 +271,12 @@ max_connections
 as similar errors can be reported from the DB.
 
 ### 500 error when editing PDF templates
+
 There was a [report](https://forum.invoiceninja.com/t/500-error-when-editing-pdf-invoice-templates-potential-fix/7067) 
 from the user who solved 500 error on their server by disabling ModSecurity.
+
+### Unresolvable dependency resolving [Parameter #0 [ array $options ]] in class App\Utils\CssInlinerPlugin
+
+When changes are made to the container this can causes the cache to become stale in the application preventing it from booting. 
+
+The solution is to clear the contents of the folder ```bootstrap/cache```, by either manually deleting files or by running ```/update?secret=``` which will also delete the contents of this directory. 
