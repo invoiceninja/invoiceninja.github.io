@@ -309,7 +309,7 @@ First are things related to your company's status, or terms with Invoice Ninja
 
 * **Plan** - Status of your current plan with Invoice Ninja hosting services.
 * **Activate Company** - Enable or disable company active state, disabling it will disable a number of automated features, like emails, recurring invoices, and notifications.
-* **Enable Markdown** - Enable your template designs to embed markdown into your HTML code, for formatting PDFs with markdown.  
+* **Enable Markdown** - Enable your template designs to embed markdown into your HTML code, for formatting PDFs with markdown.  At this time, the markdown code can only be converted from within product line item descriptions, but there are plans to implement wider support.
 * **Decimal Comma** - When creating or editing documents (invoices, quotes, etc) in the admin portal, enabling this will change the use of decimals, to commas in order to separate dollars from cents.  It operates with one or the other but not both at once.  For example, 20.00 will instead be represented as 20,00.  A decimal will be ignored with commas enabled, and vice versa.
 * **Include Drafts** - When generating reports from the "Reports" module, enabling this feature will include objects that are still marked as drafts in the figures of your reports.
 * **Purchase License** - A link to request an invoice from Invoice Ninja for a white label license.  License will be emailed to you.
