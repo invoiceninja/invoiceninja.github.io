@@ -332,7 +332,7 @@ Tick boxes here enable and disable entire modules for the company.  Disabling a 
 
 ### Integrations
 
-* **Google Analytics Tracking ID** - Without needing to write in the code yourself, easily integrate analytics and ecommerce tracking on your domain by inserting your Google Analytics account tracking ID in this field.  
+* **Google Analytics Tracking ID** - Without needing to write in the code yourself, easily integrate analytics and ecommerce tracking on your domain by inserting your Google Analytics account tracking ID in this field.  See [here](https://support.google.com/analytics/answer/1008080#zippy=%2Cin-this-article) for help finding your Analytics tracking ID.
 
 ### Security Settings
 
