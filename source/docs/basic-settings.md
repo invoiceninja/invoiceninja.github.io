@@ -309,6 +309,8 @@ First are things related to your company's status, or terms with Invoice Ninja
 
 * **Plan** - Status of your current plan with Invoice Ninja hosting services.
 * **Activate Company** - Enable or disable company active state, disabling it will disable a number of automated features, like emails, recurring invoices, and notifications.
+* **Enable Markdown** - Enable your template designs to embed markdown into your HTML code, for formatting PDFs with markdown.  
+* **Include Drafts** - When generating reports from the "Reports" module, enabling this feature will include objects that are still marked as drafts in the figures of your reports.
 * **Purchase License** - A link to request an invoice from Invoice Ninja for a white label license.  License will be emailed to you.
 * **Apply License** - Enter the license key provided by Invoice Ninja to remove white label from documents and client-facing parts of the app.
 
@@ -327,6 +329,10 @@ Third, are the most dangerous and serious buttons!  Make sure you know what you 
 ### Enabled Modules
 
 Tick boxes here enable and disable entire modules for the company.  Disabling a category or two like "Projects" and "Tasks" will remove them from the menu sidebar on the righthand-side and hide them and all their existing records, until you re-enable the module again.
+
+### Integrations
+
+* **Google Analytics Tracking ID** - Without needing to write in the code yourself, easily integrate analytics and ecommerce tracking on your domain by inserting your Google Analytics account tracking ID in this field.  
 
 ### Security Settings
 
