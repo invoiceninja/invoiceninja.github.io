@@ -17,13 +17,11 @@ docker-compose up
 
 ### Git users
 
-If you have installed Invoice Ninja using just git, then all that is required is to pull in the changes, run the migration, update the config cache and restart the queue. These commands are as follows:
+If you have installed Invoice Ninja using just git, then all that is required is to pull in the changes and to call the post-update command. These commands are as follows:
 
 ```bash 
 git pull
-php artisan migrate
-php artisan optimize
-php artisan queue:restart
+php artisan ninja:post-update
 ```
 
 ### Shared hosting / ZIP builds
