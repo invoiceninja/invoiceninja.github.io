@@ -20,13 +20,18 @@ return [
     ],
     'Developer guide' => [
         'url' => '/docs/developer-guide',
-        'children' => [],
+        'children' => [
+            'Auth' => '/docs/api/authentication',
+            'Clients' => '/docs/api/clients',
+            'Payment Gateways' => '/docs/payment-gateways'
+        ],
     ],
     'Self host' => [
         'url' => '/docs/self-host-installation',
         'children' => [
             'Installation' => '/docs/self-host-installation',
             'Updating' => '/docs/self-host-updating',
+            'Env Variables' => '/docs/env-variables',
             'Troubleshooting' => '/docs/self-host-troubleshooting',
         ],
     ],

@@ -25,6 +25,10 @@ An important detail with your V5 installation is that your initial user login is
 
 The migration relies heavily on the Laravel queue system, so you will need to ensure that you have configured the cron scheduler which boots the laravel queue for you. If you do not configure the cron scheduler, the migration will not work and you will end up with a blank company with no content. 
 
+<x-warning>
+    Please note v5.3.0 now requires PHP 7.4. For some environments you may need to consider using a platform which enables you to use multiple version of PHP. Most reputable web hosts offer cPanel with MultiPHP switcher
+</x-warning>
+
 ## Starting the migration
 
 ![alt text](/assets/images/migration/migration_step_1.png "Start migration")

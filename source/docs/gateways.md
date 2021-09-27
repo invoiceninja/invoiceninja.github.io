@@ -30,3 +30,5 @@ Our PayFast integration includes Credit Card payment options.
 ## Authorize.net
 
 Our PayTrace integration includes Credit Card payment options, including token billing and refunds.
+
+<x-next url=/docs/subscriptions>Subscriptions</x-next>

@@ -13,7 +13,7 @@ section: content
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-* PHP >= 7.3.x
+* PHP >= 7.4.x
 * bcmath extension
 * ctype extension
 * fileinfo extension
@@ -137,20 +137,12 @@ Ensure you set the scheduler under the web server user i.e. `sudo -u www-data cr
 
 ### Installation from git (Advanced)
 
-<p>For power users installing the app from Github can be done with the following steps</p>
+<p>For power users installing the app from Github can be done with the following two steps</p>
 
 ```bash
-git clone https://github.com/invoiceninja/invoiceninja.git
+git clone -b v5-stable --single-branch https://github.com/invoiceninja/invoiceninja.git
 
-git checkout v5-stable
-
-composer install --no-dev -o
-
-cp .env.example .env
-
-php artisan key:generate
-
-php artisan optimize
+composer create-project --no-dev
 ```
 
 ### Final setup steps
