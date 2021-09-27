@@ -33,6 +33,7 @@ return [
     'Hosted' => [
         'url' => '',
         'children' => [
+            'Quick Start' => '/docs/hosted-quickstart',
             'Activate' => '/docs/hosted-activate',
             'Custom Domain' => '/docs/hosted-custom-domain',
             'Hosted Migration' => '/docs/hosted-migration',
