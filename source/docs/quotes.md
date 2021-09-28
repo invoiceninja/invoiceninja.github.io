@@ -6,7 +6,7 @@ section: content
 
 # Quotes
 
-Quote records are used to provide your clients with accurate previews of what a quote might look like for requested products and/or services.  Quotes can be generated as PDFs, viewed in the client portal by the client, and if agreed upon, they can be converted directly into quotes.
+Quote records are used to provide your clients with accurate previews of what a quote might look like for requested products and/or services.  Quotes can be generated as PDFs, viewed in the client portal by the client, and if agreed upon, they can be converted directly into quotes.  Unless it is converted to an invoice, quotes have no effect on a clients balance or ledger.
 
 Viewing, editing, or creating a quote is virtually the same as it is for a quote.
 
@@ -87,7 +87,7 @@ All under one panel in the mobile layout, these options each have their own tabs
 
 ### Draft
 
-The Draft status is the first status in the lifecycle of a quote. In this status, changes can be made to the quote and the quote is hidden completely from the client. A draft quote does not affect the ledger nor does it change the client balance. Draft quotes are inactive until either emailed to the client or marked as sent.
+The Draft status is the first status in the lifecycle of a quote. In this status, changes can be made to the quote and the quote is hidden completely from the client. Draft quotes are inactive until either emailed to the client or marked as sent.
 
 <x-warning>
 Once a draft quote has been emailed/marked as sent its status cannot be changed back to draft.
@@ -96,8 +96,6 @@ Once a draft quote has been emailed/marked as sent its status cannot be changed 
 ### Sent
 
 A quote is marked as sent when it has been emailed to the client or marked as *sent* in the admin panel.
-
-When the quote status is changed to Sent, the client balance increases by the *quote balance* amount.
 
 ### Deleted
 
@@ -120,6 +118,6 @@ When a quote is archived no further modifications can be made to the quote. To m
 
 ### Restored
 
-Restoring a quote from the archived state will set the quote back to its previous state prior to archiving.
+Restoring a quote from the archived or deleted state will set the quote back to its previous state prior to archiving.
 
 <x-next url=/docs/credits>Credits</x-next>

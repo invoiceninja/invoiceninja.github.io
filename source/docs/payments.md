@@ -40,4 +40,42 @@ When manually entering a payment, all of the above fields apply, in addition to 
 * **Applied** - Appearing after selecting an invoice, the amount applied to the invoice, generated automatically.  Any overpayment by the client is applied to their client record for future invoices.
 * **Send Email** - Enabled by default, disable to skip sending the client an email notifying them of their payment.
 
+## Lifecycle of a Payment
+
+### Unapplied
+
+If a payment is created, assigned to a client, and given a value greater than 0 (zero), but not assigned or linked to an invoice, the payment is marked *Unapplied*.
+
+### Partial
+
+You can apply one payment to multiple invoices.  If you apply an *Unapplied* payment to an invoice with a balance lower than the payment amount, or if you allow overpayment on an invoice, the payment will be marked as *Partial* and you will be able to apply the remaining balance of the payment to another invoice.  You can see the remaining balance of a partial payment when you view a payment details.
+
+### Completed
+
+*Completed* Payments are fully applied to one or more invoices, and have no remaining value.
+
+### Refunded
+
+When viewing a payment, you can use the kebab menu in the upper right corner of the view panel to refund it.  The payment will be unlinked from any invoices it has been applied to.
+
+### Cancelled & Deleted
+
+What happens when a payment is deleted?
+
+* Payment status set to deleted
+* The payment number is appended with <b>_deleted</b> in order to allow reuse of payment numbers.
+* If the payment was previously marked *Partial* or *Completed* the remaining payment balance will no longer be available to the customer, and will be unlinked from any invoices it was previously linked to.
+
+### Archived
+
+Archiving a payment simply removes the payment from the payment list view. Archiving a payment keeps your list views clean and tidy.
+
+<x-warning>
+When a payment is archived no further modifications can be made to the payment. To modify the payment you will need to *Restore* the payment first.
+</x-warning>
+
+### Restored
+
+Restoring a payment from the archived or deleted state will set the payment back to its previous state prior to archiving.
+
 <x-next url=/docs/quotes>Quotes</x-next>

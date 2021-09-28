@@ -137,7 +137,8 @@ A invoice can be reversed under the following conditions
 When a invoice is reversed the payment/s that have been applied to the invoice have a credit generated against them. The ledger is also adjusted as follows:
 
 * The client paid to date amount is reduced by the calculated amount of (invoice balance - invoice amount).
-* A credit is generated for the payments applied to the invoice (invoice balance - invoice amount).
+* A credit is generated for the payments applied to the invoice (invoice balance - invoice amount).  The original payment record that was linked to the invoice will now be linked to a new credit record.
+* Any credit value that was applied as payment to the invoice is then converted into a new credit record.
 * The client balance is reduced by the invoice balance.
 * The invoice balance is finally set to 0.
 * The invoice status is set to Reversed.
@@ -154,6 +155,6 @@ When a invoice is archived no further modifications can be made to the invoice. 
 
 ### Restored
 
-Restoring a invoice from the archived state will set the invoice back to its previous state prior to archiving.
+Restoring a invoice from the archived or deleted state will set the invoice back to its previous state prior to archiving.
 
 <x-next url=/docs/recurring-invoices>Recurring Invoices</x-next>
