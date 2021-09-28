@@ -6,11 +6,13 @@ return [
         'children' => [
             'Introduction' => '/docs/introduction',
             'Clients' => '/docs/clients',
-            // 'Products' => '/docs/products',
+            'Products' => '/docs/products',
             'Invoices' => '/docs/invoices',
             'Recurring Invoices' => '/docs/recurring-invoices',
-            // 'Payments' => '/docs/payments',
-            'Online Payments' => '/docs/gateways',
+            'Payments' => '/docs/payments',
+            'Quotes' => '/docs/quotes',
+            'Credits' => '/docs/credits',
+            // 'Online Payments' => '/docs/gateways',  // Content has been included in /docs/basic-settings now.
             'Subscriptions' => '/docs/subscriptions',
             'Basic Settings' => '/docs/basic-settings',
             'Advanced Settings' => '/docs/advanced-settings',
