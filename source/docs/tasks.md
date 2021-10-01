@@ -27,8 +27,13 @@ Select a task from the list or table view, or click on "View" for a task in the 
 
 In the top of the *Tasks* panel you will see the *Task Number*, and you will have an "edit" button, and a kebab menu full of context sensitive options to manipulate and manage your task record that offers almost all functions available in a list.  At the bottom of the *Tasks* panel you will have two large buttons for common functions.  The first function button changes depending on the state of the task, either "Start", "Stop", or "Resume" which will respectively start and create a date/time line in the task record to begin tracking billable hours for the work, stop the timer and fill in the end time with the current time, or resume timing the task with another date/time line in the task record.  The second button "Invoice Task" will create a new invoice record automatically filled with the current task for the assigned client of that task.
 
-* **Overview** - Under the overview tab you will find all the general information about a task, you can see duration of the task and "Amount" or value of the work logged so far, and the task's status at the top.  Private notes, and public notes are highlighted, and prefixed by an icon of a lock for private notes, and a icon with a circle around the letter "i" for public notes which will be included automatically in generated invoices.  Interactive buttons that connect you to filtered lists or views of the linked client, project, task status, or user appear, as well as a breakdown of dates and times of work entered in the task record.
-* **Documents** - Here you are able to upload files such as pictures, documents, and more in order to give your client access to these files from the client portal.
+### Overview
+
+Under the overview tab you will find all the general information about a task, you can see duration of the task and "Amount" or value of the work logged so far, and the task's status at the top.  Private notes, and public notes are highlighted, and prefixed by an icon of a lock for private notes, and a icon with a circle around the letter "i" for public notes which will be included automatically in generated invoices.  Interactive buttons that connect you to filtered lists or views of the linked client, project, task status, or user appear, as well as a breakdown of dates and times of work entered in the task record.
+
+### Documents
+
+Here you are able to upload files such as pictures, documents, and more in order to give your client access to these files from the client portal.
 
 ## Creating and Editing a Task
 

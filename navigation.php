@@ -12,12 +12,18 @@ return [
             'Payments' => '/docs/payments',
             'Quotes' => '/docs/quotes',
             'Credits' => '/docs/credits',
-            // 'Online Payments' => '/docs/gateways',  // Content has been included in /docs/basic-settings now.
-            'Subscriptions' => '/docs/subscriptions',
+            'Projects' => '/docs/projects',
+            'Tasks' => '/docs/tasks',
+            'Vendors' => '/docs/vendors',
+            'Expenses' => '/docs/expenses',
+            'Recurring Expenses' => '/docs/recurring-expenses',
+            'Reports' => '/docs/reports',
             'Basic Settings' => '/docs/basic-settings',
             'Advanced Settings' => '/docs/advanced-settings',
+            'Subscriptions' => '/docs/subscriptions',
             'PDF customization' => '/docs/custom-fields',
             'Troubleshooting' => '/docs/troubleshooting',
+            // 'Online Payments' => '/docs/gateways',  // Content has been included in /docs/basic-settings now.
         ],
     ],
     'Developer guide' => [
