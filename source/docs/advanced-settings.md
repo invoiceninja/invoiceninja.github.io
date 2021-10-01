@@ -432,4 +432,4 @@ Enable email notifications to the user for any number of these events.  Choose a
 
 
 
-<x-next url=/docs/developer-guide>Developer Guide</x-next>
+<x-next url=/docs/subscriptions>Subscriptions</x-next>
