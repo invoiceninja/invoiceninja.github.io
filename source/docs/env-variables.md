@@ -147,7 +147,6 @@ Phantom Cloud JS configuration API key and password used to secure the phantom r
 ```
 #options - snappdf / phantom / hosted_ninja
 PDF_GENERATOR=snappdf
-PHANTOMJS_PDF_GENERATION=false
 ```
 Configures the PDF engine to be used. SnapPDF is the recommended way to generate PDFs however does require direct access to the server to install some required packages.
 

@@ -83,7 +83,6 @@ We strongly recommend using the built in [snappdf](https://github.com/beganovich
 To configure SnapPDF use the following .env vars
 
 ```bash
-PHANTOMJS_PDF_GENERATION=false
 PDF_GENERATOR=snappdf
 ```
 
@@ -98,7 +97,7 @@ Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscl
 Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.
 
 ```bash
-PHANTOMJS_PDF_GENERATION=true
+PDF_GENERATOR=phantom
 PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET='your-secret-here'
 ```
@@ -122,9 +121,7 @@ For PhantomJS to work, your Invoice Ninja installation web address must be publi
 If you are a white label user, then to enable the Invoice Ninja hosted PDF generator you will need to add a variable to the .env file as follows
 
 ```
-NINJA_HOSTED_PDF=true
-PHANTOMJS_PDF_GENERATION=false
-
+PDF_GENERATOR=hosted_ninja
 ```  
 
 <x-warning>
