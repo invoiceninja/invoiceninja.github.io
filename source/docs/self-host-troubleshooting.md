@@ -276,6 +276,26 @@ as similar errors can be reported from the DB.
 There was a [report](https://forum.invoiceninja.com/t/500-error-when-editing-pdf-invoice-templates-potential-fix/7067) 
 from the user who solved 500 error on their server by disabling ModSecurity.
 
+### 500 error when trying to login or edit company details
+
+Try these steps to fix the 500 server error when trying to login or editing company details
+
+1. Download the latest update from the [github releases](https://github.com/invoiceninja/invoiceninja/releases) (not `invoiceninja.zip` but `Source code (zip)`)
+2. Upload the zip, extract the files and override them in your /public_html/ (Be careful to not override the .env file or all will be gone)
+3. Login to your root and make sure first of all that all files are owned recursively by the user, ex. `sudo chown -R www-data:www-data dir/`
+4. Run this command `cd /home/domain.com/public_html/invoiceninja/ && php artisan migrate` or simply `php artisan migrate` whatever works for you, select "YES"
+5. If an error occurs like this one
+
+```
+PHP Fatal error:  Cannot declare class UpdateDesigns, because the name is already in use in /home/domain.com/public_html/invoiceninja/database/migrations/2021_09_16_115919_update_designs.php on line 0
+In 2021_09_16_115919_update_designs.php line n/a: Cannot declare class UpdateDesigns, because the name is already in use
+```
+
+Delete that file and retry the command until it works and runs properly.
+
+7. Once succeeded with step 5, run this command `cd /home/domain.com/public_html/invoiceninja/ && php artisan optimize` or simply `php artisan optimize` whatever works for you
+8. Go to https://domain.com/update?secret=x to be sure the update worked, it should load the login screen and work, you should also be able to edit the company details again.
+
 ### Unresolvable dependency resolving [Parameter #0 [ array $options ]] in class App\Utils\CssInlinerPlugin
 
 When changes are made to the container this can causes the cache to become stale in the application preventing it from booting. 
