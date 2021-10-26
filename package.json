@@ -9,14 +9,14 @@
         "watch": "npm run local -- --watch"
     },
     "devDependencies": {
-        "@tailwindcss/typography": "0.2.0",
-        "cross-env": "^3.2.3",
+        "@tailwindcss/typography": "0.4.1",
+        "cross-env": "^7.0.3",
         "laravel-mix": "^6",
-        "laravel-mix-jigsaw": "^1.5.0",
-        "postcss": "^8.3.5",
-        "postcss-import": "^12.0.0",
-        "tailwindcss": "^1.9.6",
-        "vue-template-compiler": "^2.6.12"
+        "laravel-mix-jigsaw": "^2.0.0",
+        "postcss": "^8.3.11",
+        "postcss-import": "^14.0.2",
+        "tailwindcss": "^2.2.17",
+        "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
         "anchor-js": "^4.3.1"
