@@ -147,10 +147,24 @@ composer create-project --no-dev
 
 ### Final setup steps
 
-<p>Once you have configured your virtual host, create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page</p>
+<p>Once you have configured your virtual host, copy the same .env file </p>
 
 
-##### Cron configuration
+```bash
+.env.example
+
+``` 
+to 
+
+```bash
+.env
+
+``` 
+<p>
+then create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page</p>
+
+
+#### Cron configuration
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
 
 <x-warning>
@@ -189,7 +203,7 @@ This cron will start a queue worker every 5 minutes and run any jobs that are in
 
 ## Shared Hosting
 
-##### Server Requirements
+#### Server Requirements
 
 We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. Softaculous has a one click installer which makes the entire setup process simple, however if you do not have Softaculous available it may still be possible to install Invoice Ninja. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
 
@@ -200,17 +214,19 @@ We have tested Invoice Ninja v5 on shared hosting and can confirm that it does w
 
 Without these modules, you will not be able to run Invoice Ninja. We do include some preflight checks of these modules in the Setup workflow, but it is best to check with your host that they support these modules. Some hosts choose to disable these modules as they classify them as security risks.
 
-##### Database configuration
+#### Database configuration
 
 Create a MySQL compatible database in your shared host control panel along with a database user, record the database name, username and password as you'll need this later. Ensure your database user has full access to the database you've just created.
 
-##### Upload release asset
+#### Upload release asset
 
 Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.zip.
 
 Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **invoiceninja.zip** file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
 
-##### Run setup
+You will also need to copy/rename the .env.example file to .env
+
+#### Run setup
 
 Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some pre flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
 
