@@ -21,9 +21,13 @@ tapping it will instead create a new client. This pattern is used throughout the
 
 ## Performance
 
+There are three main areas to consider: the initial data load, navigating through the app and finally saving changes.
+
+<x-info>
+
 For optimal performance we recommend using the native [desktop](https://invoiceninja.com/desktop) and [mobile](https://invoiceninja.com/mobile) apps.
 
-There are three main areas to consider: the initial data load, navigating through the app and finally saving changes.
+</x-info>
 
 ### Loading
 
