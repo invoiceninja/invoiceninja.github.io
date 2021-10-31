@@ -30,3 +30,5 @@ The settings pane allows you to define the frequency / auto billing and also pro
 ![alt text](/assets/images/subscriptions/subscription_webhooks.png "Subscription webhooks")
 
 The final piece of the subscriptions puzzle is integrating with third party services. When a subscription is purchased / cancelled / upgraded we can notify a third party end point!
+
+<x-next url=/docs/custom-fields>PDF Customization</x-next>

@@ -13,7 +13,7 @@ section: content
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-* PHP >= 7.3.x
+* PHP >= 7.4.x
 * bcmath extension
 * ctype extension
 * fileinfo extension
@@ -40,17 +40,21 @@ sudo apt install php7.4-bcmath php7.4-gmp php7.4-fileinfo php7.4-gd php7.4-json 
 
 ### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
 
-<p>Technically computers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto CentOS, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a>. If Ubuntu is more your flavour you can follow his awesome guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588">here</a></p>
+Technically computers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto CentOS, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). If Ubuntu is more your flavour you can follow his awesome guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
 
 ### Installing on Arch
 
 If Arch Linux is more your flavor, brackenhill-mob from our forum has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
 
+### Installing on Enterprise Linux
+
+Technically computers also has a guide for installation Invoice Ninja on Enterprise Linux [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293)
+
 ### Download pre built zip. (Advanced)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will  need to download the package which is appended with <b>-release</b>, download the file named invoiceninja.zip.</p>
+<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>invoiceninja.zip</b></p>
 
 <p>Unzip this file into the virtual host directory you have created.</p>
 
@@ -133,28 +137,34 @@ Ensure you set the scheduler under the web server user i.e. `sudo -u www-data cr
 
 ### Installation from git (Advanced)
 
-<p>For power users installing the app from Github can be done with the following steps</p>
+<p>For power users installing the app from Github can be done with the following two steps</p>
 
 ```bash
-git clone https://github.com/invoiceninja/invoiceninja.git
+git clone -b v5-stable --single-branch https://github.com/invoiceninja/invoiceninja.git
 
-git checkout v5-stable
-
-composer install --no-dev -o
-
-cp .env.example .env
-
-php artisan key:generate
-
-php artisan optimize
+composer create-project --no-dev
 ```
 
 ### Final setup steps
 
-<p>Once you have configured your virtual host, create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page</p>
+<p>Once you have configured your virtual host, copy the same .env file </p>
 
 
-##### Cron configuration
+```bash
+.env.example
+
+``` 
+to 
+
+```bash
+.env
+
+``` 
+<p>
+then create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page</p>
+
+
+#### Cron configuration
 <p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
 
 <x-warning>
@@ -193,9 +203,9 @@ This cron will start a queue worker every 5 minutes and run any jobs that are in
 
 ## Shared Hosting
 
-##### Server Requirements
+#### Server Requirements
 
-We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. Softaculous has a one click installer which makes the entire setup process simple, however if you do not have Softaculous available it may still be possible to instlal Invoice Ninja. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
+We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. Softaculous has a one click installer which makes the entire setup process simple, however if you do not have Softaculous available it may still be possible to install Invoice Ninja. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:
 
 * proc_open
 * exec
@@ -204,17 +214,19 @@ We have tested Invoice Ninja v5 on shared hosting and can confirm that it does w
 
 Without these modules, you will not be able to run Invoice Ninja. We do include some preflight checks of these modules in the Setup workflow, but it is best to check with your host that they support these modules. Some hosts choose to disable these modules as they classify them as security risks.
 
-##### Database configuration
+#### Database configuration
 
 Create a MySQL compatible database in your shared host control panel along with a database user, record the database name, username and password as you'll need this later. Ensure your database user has full access to the database you've just created.
 
-##### Upload release asset
+#### Upload release asset
 
 Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.zip.
 
 Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **invoiceninja.zip** file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
 
-##### Run setup
+You will also need to copy/rename the .env.example file to .env
+
+#### Run setup
 
 Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some pre flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
 
@@ -231,6 +243,32 @@ Add the Laravel scheduler cron job, be sure to include the full path, for a cPan
 ## Installing Invoice Ninja (Docker)
 
 If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>
+
+## Mail Configuration
+
+When configuring your email, please ensure all of the fields are filled in. In particular you _must_ include the MAIL_FROM_ADDRESS and MAIL_FROM_NAME to prevent errors such as 
+
+```bash
+Address in mailbox given [ ] does not comply with RFC 2822, 3.6.2.
+```
+
+Here is a full example - using Gmail as an example.
+
+```bash
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="your_email_address@gmail.com"
+MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_email_address@gmail.com"
+MAIL_FROM_NAME="Full Name With Double Quotes"
+
+```
+
+<x-warning>
+    NOTE: if you are using SSL encryption the MAIL_PORT is 465. TLS encryption is on port 587.
+</x-warning>
 
 ## Currency Conversion
 

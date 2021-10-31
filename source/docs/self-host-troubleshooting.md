@@ -33,13 +33,15 @@ On Apache based servers, open the [/public/.htaccess](https://github.com/invoice
 
 If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 
 
-```
+```bash
 MAIL_MAILER=smtp
-MAIL_HOST=localhost
-MAIL_PORT=1025
-MAIL_USERNAME='email@gmail.com'
-MAIL_PASSWORD='supersecretpassword'
-MAIL_ENCRYPTION='tls'
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="your_email_address@gmail.com"
+MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_email_address@gmail.com"
+MAIL_FROM_NAME="Full Name With Double Quotes"
 ```
 
 <x-warning>If you are using Gmail - Use an [app specific password](https://support.google.com/accounts/answer/185833?hl=en) or ensure you have less secure apps turned on.</x-warning>
@@ -60,7 +62,7 @@ Expected response code 250 but got an empty response
 
 without this additional field.
 
-The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 support natively is supported in this app.
+The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 supports natively is supported in this app.
 
 If the mail config is correct, the next place to check would be to check the error logs for any errors that are being thrown, the error log is found in ```storage/logs/laravel.log```
 
@@ -70,9 +72,19 @@ If you are using the Queue system ie. QUEUE_CONNECTION=database then you may als
 
 It's possible the emails are sent but are blocked for DNS, SPF, DKIM or other reasons. In these cases emailing a test invoice to [mail-tester.com](https://mail-tester.com) can help debug certain problems.
 
+Also, if you see in /storage/logs/invoiceninja.log this line ```error failed with stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed``` then try running `yum update` on your webserver, it should fix the ca-certificates problem.
+
+
 ## PDF conversion issues.
 
 We strongly recommend using the built in [snappdf](https://github.com/beganovich/snappdf) package which is a highly performant PDF generator based on the headless chrome/chromium binary. This package is perfect for users that have root access to their server and are able to install the required dependencies if needed.
+
+To configure SnapPDF use the following .env vars
+
+```bash
+PDF_GENERATOR=snappdf
+```
 
 Snappdf is also the default PDF engine in our [Docker](https://github.com/invoiceninja/dockerfiles) image, so if you prefer a very simple installation please consider our Docker setup as it is very fast to get going!
 
@@ -85,7 +97,7 @@ Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscl
 Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.
 
 ```bash
-PHANTOMJS_PDF_GENERATION=true
+PDF_GENERATOR=phantom
 PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET='your-secret-here'
 ```
@@ -109,20 +121,20 @@ For PhantomJS to work, your Invoice Ninja installation web address must be publi
 If you are a white label user, then to enable the Invoice Ninja hosted PDF generator you will need to add a variable to the .env file as follows
 
 ```
-NINJA_HOSTED_PDF=true
+PDF_GENERATOR=hosted_ninja
 ```  
 
-You will also need to turn OFF PhantomJS cloud
-
-```
-PHANTOMJS_PDF_GENERATION=false
-```
-
 <x-warning>
-Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize
+Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize.
 </x-warning>
 
 ## Cron not running / Queue not running
+
+<x-warning>
+It can take up to an hour for the red warning triangle to disappear after correctly configuring your Cron.  
+
+After making any changes to your cron setup you'll want to force a recheck of the cron setting. To do this navigate to http://url/update?secret=
+</x-warning>
 
 If you are faced with your recurring invoices not firing, or your reminders not sending, then most likely your cron job isn't working. The first thing is to make sure you have your cron jobs configured correctly by following the guide [here](https://invoiceninja.github.io/docs/self-host-installation/#cron-configuration-1) 
 
@@ -131,6 +143,8 @@ If you are using shared hosting, then will need to add an additional parameter t
 ```
 cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
+
+This will force a recheck and if the cron is working the red error triangle will disappear.
 
 ## Platform specific issues
 
@@ -233,7 +247,57 @@ sudo chown -R www-data:www-data storage/
 
 If for some reason the UI becomes unresponsive, you may need to flush some subsystem configuration and rebuild. It is possible to do this by navigating to the `/update?secret=`  route, ie. https://invoiceninja.test/update?secret= This will perform a number of system clean ups and may resolve issues resulting from an incomplete upgrade. To protect this route, you are advised to add a .env pararameter `UPDATE_SECRET=a_secret_passcode` this will restrict the route to users with the UPDATE_SECRET passcode.
 
+### Communication link failure: 1153 Got a packet bigger than 'max_allowed_packet'
+
+If you are using the database for your queue's then sometimes you may see an error from MySQL
+
+```
+1153 Got a packet bigger than 'max_allowed_packet'
+```
+
+This indicates the insertion payload is bigger than MySQL is configured to handle! To work around this, you will need to increate the mysql variable
+
+```
+max_allowed_packet
+```
+
+To a larger value. Sometimes a value of 1024M is required.
+
+It may also be wise to increase the variable
+
+```
+max_connections
+```
+
+as similar errors can be reported from the DB.
 
 ### 500 error when editing PDF templates
+
 There was a [report](https://forum.invoiceninja.com/t/500-error-when-editing-pdf-invoice-templates-potential-fix/7067) 
 from the user who solved 500 error on their server by disabling ModSecurity.
+
+### 500 error when trying to login or edit company details
+
+Try these steps to fix the 500 server error when trying to login or editing company details
+
+1. Download the latest update from the [github releases](https://github.com/invoiceninja/invoiceninja/releases) (not `invoiceninja.zip` but `Source code (zip)`)
+2. Upload the zip, extract the files and override them in your /public_html/ (Be careful to not override the .env file or all will be gone)
+3. Login to your root and make sure first of all that all files are owned recursively by the user, ex. `sudo chown -R www-data:www-data dir/`
+4. Run this command `cd /home/domain.com/public_html/invoiceninja/ && php artisan migrate` or simply `php artisan migrate` whatever works for you, select "YES"
+5. If an error occurs like this one
+
+```
+PHP Fatal error:  Cannot declare class UpdateDesigns, because the name is already in use in /home/domain.com/public_html/invoiceninja/database/migrations/2021_09_16_115919_update_designs.php on line 0
+In 2021_09_16_115919_update_designs.php line n/a: Cannot declare class UpdateDesigns, because the name is already in use
+```
+
+Delete that file and retry the command until it works and runs properly.
+
+7. Once succeeded with step 5, run this command `cd /home/domain.com/public_html/invoiceninja/ && php artisan optimize` or simply `php artisan optimize` whatever works for you
+8. Go to https://domain.com/update?secret=x to be sure the update worked, it should load the login screen and work, you should also be able to edit the company details again.
+
+### Unresolvable dependency resolving [Parameter #0 [ array $options ]] in class App\Utils\CssInlinerPlugin
+
+When changes are made to the container this can causes the cache to become stale in the application preventing it from booting. 
+
+The solution is to clear the contents of the folder ```bootstrap/cache```, by either manually deleting files or by running ```/update?secret=``` which will also delete the contents of this directory. 

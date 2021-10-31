@@ -1,15 +1,15 @@
 ---
-extends: _layouts.docs 
+extends: _layouts.docs
 section: content
 ---
 
 # PDF Customizations
 
-PDF generation in v5 is via a HTML templating system. We provide multiple design templates for you to choose from, or
-you can create your own design using any HTML/CSS combinations.
+PDF generation in v5 is via an HTML templating system. We provide multiple design templates for you to choose from, or
+you can create your design using any HTML/CSS combinations.
 
-One way we make customizing your PDF easier is by providing a list of variables you can using in your templates which
-can shown dynamic content, these are all itemized in our Custom Fields section.
+One way we make customizing your PDF easier is by providing a list of variables you can use in your templates which
+can show dynamic content, these are all itemized in our Custom Fields section.
 
 ## Custom fields
 
@@ -228,6 +228,23 @@ $description - Description label
 $entity_footer - Entity footer label/value  
 ```
 
+## Getting PDF source code
+
+It's easier to tinker with HTML if you can get your hands on raw HTML. This can be enabled in your
+.env file.
+
+<x-info>
+    `.env` file is by default hidden on most operating systems. It's located in the root
+    of your Invoice Ninja installation.
+</x-info>
+
+1. Set `LOG_PDF_HTML=true` in your .env
+2. Run: `php artisan optimize`
+
+Now, any newly generated PDF will output the source code in the `storage/framework/laravel.log` file.
+
+Source code is plain HTML, so you can just cut and paste it on your computer & run it locally in the browser.
+
 ## Snippets
 
 These snippets are collected over time, some might find them useful, so we decided to collect them in the official
@@ -262,10 +279,189 @@ This will hide columns & rows related entirely. In this example, we hide the cus
 ```
 
 ### Overwriting the "hidden" property on element
-Some elements have "hidden" property on the element. You can overwrite this with CSS.
+Some elements have a "hidden" property on the element. You can overwrite this with CSS.
 
 ```css
 [data-ref="totals_table-subtotal-label"] {
     display: inline; /* or block */
 }
 ```
+
+## Creating a custom design
+This is a section for you that want to create a new design completely from scratch
+or just curious about understanding how templates work.
+
+<x-info>Keep in mind that in order to create designs some knowledge of HTML and CSS is mandatory.</x-info>
+
+### Creating a design entry
+
+Let's start by cloning the existing design. 
+To do so, open the admin panel and navigate to **Settings > Invoice Design > Customize & Preview**.
+
+The base design isn't important if you have a completely new design in mind. Name your design and click **Save**.
+
+![alt text](/assets/images/creating-custom-design/01-creating-design-entry.png "Creating a design entry")
+
+We will name ours **Tutorial** and turn on **HTML Mode** to see changes more quickly.
+
+### Design structure
+On the top of the page we should see tabs such as, **Body**, **Header**, **Footer**, **Products**, **Includes**.
+This is how design is structured and for the most part, you can leave at is. 
+
+We will spend most of our time in **Includes** and **Body** sections.
+
+#### Body
+As the name suggests this is the heart of the design. This is where we will organize
+our elements.
+
+#### Header
+If you want to be fully semantic & fully follow HTML standards, this is where
+you should place your header content.
+
+#### Footer
+Just like the header, this is a more semantic section for footer content.
+
+#### Products
+<x-warning>At the moment of the writing, this is **unsupported** feature. In the future,
+it will allow you to dynamically allocate table columns.</x-warning>
+
+#### Includes
+This is where your styles go.
+
+### Requirements
+
+Before we start customizing/coding our own design, keep in mind that Invoice Ninja has some requirements.
+They are specific IDs for contents.
+
+#### Target elements:
+- #company-details
+- #company-address
+- #client-details
+- #entity-details
+- #delivery-note-table
+- #product-table
+- #task-table
+- #table-totals
+- #footer
+
+To get specific selectors, please refer to [Getting all available selectors on the design](#getting-all-available-selectors-on-the-design).
+
+If it's easier for you to develop a static template first, you can always copy the source code provided
+under Settings tab and develop locally, copying changes into Invoice Ninja once you're happy
+with the design.
+
+![alt text](/assets/images/creating-custom-design/02-showing-the-source-code.png "Grabbing the source PDFs' source code")
+
+### Selectors
+<x-info>All the following selectors are marked using `data-ref` attribute.</x-info>
+
+To query `client_details-client.name` for example, use following:
+
+```css
+[data-ref="client_details-client.name"] { 
+    background-color: red; 
+}  
+```
+
+#### Client details
+- client_details-client.name
+- client_details-client.number
+- client_details-client.vat_number
+- client_details-client.address1
+- client_details-client.address2
+- client_details-client.city_state_postal
+- client_details-client.country
+- client_details-client.phone
+- client_details-client.email
+
+#### Company details
+- company_details-company.name
+- company_details-company.id_number
+- company_details-company.vat_number
+- company_details-company.website
+- company_details-company.email
+- company_details-company.phone
+
+#### Company address
+- company_address-company.address1
+- company_address-company.address2
+- company_address-company.city_state_postal
+- company_address-company.country
+
+#### Invoice details
+- entity_details-invoice.number_label
+- entity_details-invoice.number
+- entity_details-invoice.po_number_label
+- entity_details-invoice.po_number
+- entity_details-invoice.date_label
+- entity_details-invoice.date
+- entity_details-invoice.due_date_label
+- entity_details-invoice.due_date
+- entity_details-invoice.total_label
+- entity_details-invoice.total
+- entity_details-invoice.balance_due_label
+- entity_details-invoice.balance_due
+
+#### Quote details
+- entity_details-quote.number_label
+- entity_details-quote.number
+- entity_details-quote.po_number_label
+- entity_details-quote.po_number
+- entity_details-quote.date_label
+- entity_details-quote.date
+- entity_details-quote.valid_until_label
+- entity_details-quote.valid_until
+- entity_details-quote.total_label
+- entity_details-quote.total
+
+#### Credit details
+- entity_details-quote.number_label
+- entity_details-quote.number
+- entity_details-quote.po_number_label
+- entity_details-quote.po_number
+- entity_details-quote.date_label
+- entity_details-quote.date
+- entity_details-quote.balance_label
+- entity_details-quote.balance
+- entity_details-quote.total_label
+- entity_details-quote.total
+
+#### Product table
+- product_table-product.item-th
+- product_table-product.description-th
+- product_table-product.unit_cost-th
+- product_table-product.quantity-th
+- product_table-product.discount-th
+- product_table-product.tax-th
+- product_table-product.line_total-th
+
+#### Task table
+- task_table-task.service-th
+- task_table-task.description-th
+- task_table-task.rate-th
+- task_table-task.hours-th
+- task_table-task.discount-th
+- task_table-task.tax-th
+- task_table-task.line_total-th
+
+#### Total columns
+- totals_table-net_subtotal-label
+- totals_table-net_subtotal
+- totals_table-subtotal-label
+- totals_table-subtotal
+- totals_table-discount-label
+- totals_table-discount
+- totals_table-custom_surcharge1-label
+- totals_table-custom_surcharge1
+- totals_table-custom_surcharge2-label
+- totals_table-custom_surcharge2
+- totals_table-custom_surcharge3-label
+- totals_table-custom_surcharge3
+- totals_table-custom_surcharge4-label
+- totals_table-custom_surcharge4
+- totals_table-paid_to_date-label
+- totals_table-paid_to_date
+- totals_table-outstanding-label
+- totals_table-outstanding
+
+<x-next url=/docs/troubleshooting>Troubleshooting</x-next>

@@ -5,6 +5,31 @@ section: content
 
 # Recurring Invoices
 
+## Autobill options
+
+When configuring a Recurring invoice, you have a variety of options of how AutoBilling can be enabled. There are 4 options:
+
+- Off
+- Enabled
+- Enabled by default
+- Disabled by default
+
+### Off
+
+When set to Off it means that the recurring invoice will _never_ be auto-billed.
+
+### Enabled
+
+When set to Enabled it means that the recurring invoice will _always_ be auto-billed if a valid payment method is on file.
+
+### Enabled by default
+
+When set to Enabled by default - a radio checkbox will appear during the payment process. This checkbox will allow the user to opt in or opt out from auto-billing. With this particular setting, the radio button will be pre-selected to ENABLED auto-billing.
+
+### Disabled by default
+
+When set to Disabled by default - a radio checkbox will appear during the payment process. This checkbox will allow the user to opt in or opt out from auto-billing. With this particular setting, the radio button will be pre-selected to DISABLE auto-billing.
+
 ## Reserved keywords in the items description
 
 To make your life easier, we've put together few reserved keywords in the line items description to make your work with
@@ -15,6 +40,9 @@ Reserved keywords are:
 - :MONTH
 - :YEAR
 - :QUARTER
+- :WEEK
+- :WEEK_BEFORE
+- :WEEK_AHEAD 
 
 As you may guess, each time invoice (PDF) is generated, keywords will be replaced with actual value, so:
 
@@ -22,7 +50,7 @@ As you may guess, each time invoice (PDF) is generated, keywords will be replace
 - :YEAR to the numeric value of the current year (e.g. 2021)
 - .. and the :QUARTER to e.g. Q2.
 
-These keywords also support basic mathematical operations: **addition**, **subtraction**, **multiplication** & **
+:MONTH, :YEAR, :QUARTER keywords also support basic mathematical operations: **addition**, **subtraction**, **multiplication** & **
 division**.
 
 So this is the pattern for mathematical operations:
@@ -78,6 +106,5 @@ Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlappi
 
 ### Translations
 As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/docs/settings/#localization).
-
 
 <x-next url=/docs/payments>Payments</x-next>

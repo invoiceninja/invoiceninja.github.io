@@ -13,7 +13,7 @@
                 <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
                 <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank"
                    class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
-                <a href="https://app.invoiceninja.com" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go
+                <a target="_blank" href="https://invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go
                     to app</a>
             </div>
             <div class="flex flex-col lg:hidden">
@@ -34,7 +34,7 @@
            class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
         <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank"
            class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
-        <a href="https://app.invoiceninja.com" target="_blank"
+        <a href="https://invoicing.co" target="_blank"
            class="py-2 border-b border-transparent hover:border-ninja-blue">Go to app</a>
     </div>
 </nav>
