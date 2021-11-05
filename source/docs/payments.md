@@ -78,4 +78,26 @@ When a payment is archived no further modifications can be made to the payment. 
 
 Restoring a payment from the archived or deleted state will set the payment back to its previous state prior to archiving.
 
+## Apple Pay, Google Pay & Microsoft Pay
+As of this moment, to pay with Apple, Google or Microsoft Pay a credit card needs to already be configured in your browser. This is not Invoice Ninja preference, but a platform choice.
+
+**Safari on desktop**:
+
+- Safari on Mac running macOS Sierra or later
+- A iPhone (iPad isn't supported yet) with a credit card configured in Wallet. More info can be found on [Apple's support site](https://support.apple.com/en-us/HT204681).
+
+**Safari on mobile**:
+
+- iOS 10.1 or later
+- A card configured in the Wallet app
+
+**Google Chrome**: 
+
+- [A saved credit card](https://support.google.com/chrome/answer/142893?co=GENIE.Platform%3DDesktop&hl=en)
+
+**Microsoft Edge**:
+
+- Microsoft Edge 16.16299 or newer
+- [A saved credit card](https://support.microsoft.com/en-us/help/4026594/microsoft-account-add-update-remove-credit-cards-and-other-ways-to-pay)
+
 <x-next url=/docs/quotes>Quotes</x-next>
