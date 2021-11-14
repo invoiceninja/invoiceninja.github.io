@@ -199,6 +199,12 @@ If you are on shared hosting, it is possible to get the queues working by defini
 */5 * * * * cd  /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan queue:work --stop-when-empty
 ```
 
+Some people have different web hosting setups, so this might also work:
+
+```
+*/5 * * * * php /home/admin/domains/site.com/private_html/invoices_site/artisan queue:work --stop-when-empty
+```
+
 This cron will start a queue worker every 5 minutes and run any jobs that are in the queue and then gracefully terminate itself. This means any emails / notification may be queued for a small period of time prior to executing. If this amount of delay is acceptable, it is a great way to get queue's working on shared hosting.
 
 ## Shared Hosting
