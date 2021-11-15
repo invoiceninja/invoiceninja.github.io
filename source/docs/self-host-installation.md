@@ -207,6 +207,15 @@ Some people have different web hosting setups, so this might also work:
 
 This cron will start a queue worker every 5 minutes and run any jobs that are in the queue and then gracefully terminate itself. This means any emails / notification may be queued for a small period of time prior to executing. If this amount of delay is acceptable, it is a great way to get queue's working on shared hosting.
 
+If you prefer to manage the queues with Supervisor, then you will want to disable the internal Invoice Ninja commands which start the queue, to do this simly set the following .env var
+
+```
+INTERNAL_QUEUE_ENABLED=false
+```
+
+You will then have full control over the queue.
+
+
 ## Shared Hosting
 
 #### Server Requirements
