@@ -17,6 +17,14 @@ If you plan to contribute your code back to the official Invoice Ninja repositor
 
 Our full API definition can be found on swagger <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja">here</a>
 
+### Base URL for v5
+
+The base url for v5 is:
+
+```
+https://invoicing.co
+```
+
 ### Migrating from v4
 
 Invoice Ninja v4 was initially built as a web application with an API added on later to support common uses cases and the limited functionality of the v4 mobile app. With v5 we’ve instead built an API first application, all features in the web/mobile/desktop apps are powered by the API.
@@ -36,7 +44,7 @@ The data type of the id fields has changes from integer to string to support the
 The route for uploading documents has changed, here's a v5 cURL example:
 
 ```
-curl -X POST http://example.com/api/v1/invoices/<invoice_id> \
+curl -X POST https://invoicing.co/api/v1/invoices/<invoice_id> \
   -H 'Content-Type: multipart/form-data' \
   -H 'X-API-TOKEN: TOKEN' \
   -H 'X-Requested-With: XMLHttpRequest' \
