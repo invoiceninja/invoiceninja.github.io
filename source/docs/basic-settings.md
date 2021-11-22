@@ -113,6 +113,19 @@ Here you can set some server-wide settings for Invoice Ninja that will be applie
 * **Military Time** - Toggle on and off 24-hour time preference.
 * **First Month of the Year** - Default January, used to determine annual start point when looking at or generating reports.
 
+### Custom Labels
+
+In the custom labels section, you are able to reformat the descriptive text labels used in all your document templates.  This is a useful feature to add custom language settings to your documents manually.
+
+You have a list to maintain of custom labels.  Adding a custom label, such as "Item", will add it to your list on the left column, and in the right column next to "Item" you will see a text-entry field for the text you want to replace "Item" with.  For example "Line Item", or "UPC".  This replaces the text used on all your invoices,  and etc.
+
+* **Select Label** - From this drop down list you can select a label from a list of labels.
+* **Add Custom** - Add a label to virtually any value used on your documents, with a few more steps.  Click the *Add Custom* blue text button in the top right of the panel, and what Invoice Ninja expects from you to create a working label for you, is the key name for the label (not the label's current text value).
+	* **Labels** - Click the blue text "Labels" button in the "Add Custom" popup, to open a link a dictionary list of all the labels in a single PHP document.  Select a desired label to change from this extensive list, and use the key name `invoice_date` and not the value "Invoice Date" as the label name when adding a custom label, to link it directly to the dictionary key `invoice_date`.  When it appears in the list, it will present the key's value "Invoice Date" on your custom labels list, allowing you to change the text to "Date of Transaction", or anything else.
+
+Edit, or create a new invoice, credit, etc, in order to see the changes to the text labels applied across your documents now.
+
+
 <h2 id=online_payments>Online Payments</h2>
 
 You may configure payment gateways, and payment rules/behaviors from here.
