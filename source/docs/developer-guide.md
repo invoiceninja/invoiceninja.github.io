@@ -44,7 +44,7 @@ The data type of the id fields has changes from integer to string to support the
 The route for uploading documents has changed, here's a v5 cURL example:
 
 ```
-curl -X POST https://invoicing.co/api/v1/invoices/<invoice_id> \
+curl -X POST https://invoicing.co/api/v1/invoices/<invoice_id>/upload \
   -H 'Content-Type: multipart/form-data' \
   -H 'X-API-TOKEN: TOKEN' \
   -H 'X-Requested-With: XMLHttpRequest' \
