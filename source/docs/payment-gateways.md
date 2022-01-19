@@ -14,7 +14,7 @@ Ready? Lets go!
 
 ### Step 1. Setup environment
 
-You should update your code to be up to date with the <a href="https://github.com/invoiceninja/v5-develop">v5-develop</a> branch.
+You should update your code to be up to date with the <a href="https://github.com/invoiceninja/invoiceninja/tree/v5-develop">v5-develop</a> branch.
 
 You will then want to create your own branch for for your driver ie.
 
