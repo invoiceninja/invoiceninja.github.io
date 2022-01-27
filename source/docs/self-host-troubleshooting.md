@@ -76,6 +76,10 @@ Also, if you see in /storage/logs/invoiceninja.log this line ```error failed wit
 error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed``` then try running `yum update` on your webserver, it should fix the ca-certificates problem.
 
 
+## GoDaddy email sending woes
+
+GoDaddy does not allowing sending via third party [SMTP](https://my.godaddy.com/help/send-form-mail-using-an-smtp-relay-server-953) servers. They require sending all email via their own servers. If you need to use GoDaddy, we suggest using a transactional email service such as PostMark to bypass.
+
 ## PDF conversion issues.
 
 We strongly recommend using the built in [snappdf](https://github.com/beganovich/snappdf) package which is a highly performant PDF generator based on the headless chrome/chromium binary. This package is perfect for users that have root access to their server and are able to install the required dependencies if needed.
