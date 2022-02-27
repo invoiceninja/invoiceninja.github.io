@@ -96,7 +96,7 @@ If you are on shared hosting, snappdf probably will be impossible for you to use
 
 ### Phantom JS
 
-Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscloud.com/) to generate your PDFs, the default API key that comes with a clean installation can generate 100 PDFs per day. If you register for an API key, you will be able to generate 500 PDFs per day, which should suit most users.
+Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscloud.com/) to generate your PDFs, the default API key that comes with a clean installation will no reliably generate PDFs, to ensure you can generate PDFs you should register for an API key on the phantomjscloud website and use this key in the .env file.
 
 Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.
 
@@ -114,7 +114,7 @@ The `PHANTOMJS_SECRET` can be any random value, it's used to bypass the client p
 php artisan optimize
 ```
 
-If you experience errors with PDF generation, such as `500 Server error` or `Failed to load PDF document` or a continuous loading bar, try getting a PhantomJS key [here](https://dashboard.phantomjscloud.com/dash.html#/signup), Replace it with the prefilled key `a-demo-key-with-low-quota-per-ip-address` and run `php artisan optimize` again.
+If you experience errors with PDF generation, such as `500 Server error` or `Failed to load PDF document` or a continuous loading bar, you must get a PhantomJS key [here](https://dashboard.phantomjscloud.com/dash.html#/signup), Replace it with the prefilled key `a-demo-key-with-low-quota-per-ip-address` and run `php artisan optimize` again. (On shared hosting to clear the cache you will need to either empty to contents of /bootstrap/cache/* OR run https://your.website.com/update?secret=secret)
 
 <x-warning>
 For PhantomJS to work, your Invoice Ninja installation web address must be public; localhost installations or those on private networks won't be able to use PhantomJS Cloud.
@@ -127,6 +127,8 @@ If you are a white label user, then to enable the Invoice Ninja hosted PDF gener
 ```
 PDF_GENERATOR=hosted_ninja
 ```  
+
+The hosted ninja PDF generator is an offsite PDF generator hosted by Invoice Ninja, which operate similar to PhantomJS.
 
 <x-warning>
 Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize.
