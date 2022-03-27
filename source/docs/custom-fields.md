@@ -275,10 +275,12 @@ $outstanding - Alias of $balance_due
 $partial_due - Partial due label/value  
 $total - Total label/value  
 $amount - Alias of $total  
+$amount_raw - Unformatted alias of $total
 $amount_due - Alias of $total  
 $quote.total - Alias of $total  
 
 $invoice.total - Alias of $total  
+$invoice.total_raw - Unformatted alias of $total
 $invoice.amount - Alias of $total  
 $quote.amount - Alias of $total  
 $credit.total - Alias of $total  
@@ -353,6 +355,8 @@ $client.country - Alias of $country
 $client.email - Alias of $email  
 
 $client.currency - Client currency code ie. AUD, USD  
+
+$client.lang_2 - Locale of client language, ie. 'en'
 
 $client.balance - Client balance label/value  
 $outstanding - Alias of $client.balance  
