@@ -280,7 +280,7 @@ $amount_due - Alias of $total
 $quote.total - Alias of $total  
 
 $invoice.total - Alias of $total  
-$invoice.total_raw - Unformatted alias of $total
+$invoice_total_raw - Unformatted alias of $total
 $invoice.amount - Alias of $total  
 $quote.amount - Alias of $total  
 $credit.total - Alias of $total  
