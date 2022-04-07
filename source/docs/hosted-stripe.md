@@ -18,3 +18,21 @@ Click on this button and you'll be taken to a page like this:
 ![alt text](/assets/images/stripe/stripe2.png "OAuth Stripe")
 
 Select the account you wish to connect and we will look after the rest!!
+
+## Stripe Webhooks
+
+It is highly recommended that you configure webhooks that allow Stripe to communicate with Invoice Ninja.
+
+In cases where the customer leaves prior to the transaction completing or a loss of communication between Stripe and Invoice Ninja. Webhooks can self heal any transactions that are incomplete.
+
+You can find your webhook details on the Stripe overview page in Settings > Online Payments > Configure Gateways > Stripe
+
+![alt text](/assets/images/stripe/stripe_webhook_overview1.png "Webhook Settings Invoice Ninja")
+
+Using these details, log into Stripe and navigate to Developers > Webhooks
+
+![alt text](/assets/images/stripe/stripe_webhook_overview2.png "Webhook edit in Stripe")
+
+Enter in your dedicated webhook URL as well as the three event types
+
+![alt text](/assets/images/stripe/stripe_webhook_overview3.png "Add Events")
