@@ -27,12 +27,12 @@ In cases where the customer leaves prior to the transaction completing or a loss
 
 You can find your webhook details on the Stripe overview page in Settings > Online Payments > Configure Gateways > Stripe
 
-![alt text](/assets/images/stripe/stripe_webhook_overview1.png "Webhook Settings Invoice Ninja")
+![alt text](/assets/images/stripe/stripe_webhook_overview_1.png "Webhook Settings Invoice Ninja")
 
 Using these details, log into Stripe and navigate to Developers > Webhooks
 
-![alt text](/assets/images/stripe/stripe_webhook_overview2.png "Webhook edit in Stripe")
+![alt text](/assets/images/stripe/stripe_webhook_overview_2.png "Webhook edit in Stripe")
 
 Enter in your dedicated webhook URL as well as the three event types
 
-![alt text](/assets/images/stripe/stripe_webhook_overview3.png "Add Events")
+![alt text](/assets/images/stripe/stripe_webhook_overview_3.png "Add Events")
