@@ -240,7 +240,7 @@ $line_tax_labels - Map of line tax labels
 $line_tax_values - Map of line tax values  
 $date - Entity date label/value  
 $invoice.date - Alias of the $date label  
-$due_date - Entity due date label/value  
+$due_date - Entity due date label/value (or partial payment's due date if set on invoice or quote)
 $invoice.due_date - Alias of due date  
 $payment_due - Payment due label/value  
 $invoice.number - Invoice number label/value  
