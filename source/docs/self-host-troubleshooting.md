@@ -241,12 +241,16 @@ This error is thrown from deep within PHP and indicates a permissions issue - mo
 
 ```
 sudo chown -R www-data:www-data public/storage
+
+sudo find ./ -type d -exec chmod 755 {} \;
 ```
 
 and/or
 
 ```
 sudo chown -R www-data:www-data storage/
+
+sudo find ./ -type d -exec chmod 755 {} \;
 ```
 
 ### Unresponsive UI
