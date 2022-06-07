@@ -58,12 +58,15 @@ Technically computers also has a guide for installation Invoice Ninja on Enterpr
 
 <p>Unzip this file into the virtual host directory you have created.</p>
 
+#### File Permissions
+
 <x-warning>
 Ensure the file permission have been set to the web server user. For example in Ubuntu this is www-data if you have configured a virtual host with a root directory of `/var/www/html` you would set the ownership like this.
 </x-warning>
 
 ```bash
 sudo chown -R www-data:www-data /var/www/html
+sudo find ./ -type d -exec chmod 755 {} \;
 ```
 
 ##### Web server configuration
