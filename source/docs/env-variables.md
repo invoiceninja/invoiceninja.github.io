@@ -89,7 +89,7 @@ MAIL_FROM_NAME='David Canary'
 Your mail configuration
 
 ```
-POSTMARK_API_TOKEN=
+POSTMARK_SECRET=
 ```
 Your postmark API key if you wish to use Postmark
 
