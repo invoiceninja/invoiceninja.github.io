@@ -31,7 +31,8 @@ return [
         'children' => [
             'Auth' => '/docs/api/authentication',
             'Clients' => '/docs/api/clients',
-            'Payment Gateways' => '/docs/payment-gateways'
+            'Payment Gateways' => '/docs/payment-gateways',
+            'Static Variables' => '/docs/statics',
         ],
     ],
     'Self host' => [
