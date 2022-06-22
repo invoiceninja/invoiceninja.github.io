@@ -122,7 +122,7 @@ For PhantomJS to work, your Invoice Ninja installation web address must be publi
 
 ### Hosted Invoice Ninja PDF generation
 
-If you are a white label user, then to enable the Invoice Ninja hosted PDF generator you will need to add a variable to the .env file as follows
+To enable the Invoice Ninja hosted PDF generator you will need to add a variable to the .env file as follows
 
 ```
 PDF_GENERATOR=hosted_ninja
