@@ -270,7 +270,7 @@ You will have to manually select matching categories for some entries in the CSV
 
 When importing your CSV document, verify that the column on the left matches your column labels from the CSV file, and that the column in the middle matches the first row underneath the column labels of your CSV file.  Then on the right, select the most accurate label available from Invoice Ninja to associate those values with the new label upon import.
 
-### JSON 
+### JSON
 
 A full company backup can be generated via the Export option. This will schedule a job which will export all settings and data and compress it into a .zip file for download. When the job has been completed an email is sent with a download link (Download links expire daily).
 
@@ -360,5 +360,5 @@ Configure some simple server account security settings for logged in users.
 * **Web Session Timeout** - Disabled by default, set a timeout to logout the user from the admin portal after a given time.
 * **Require Password with Social Login** - If you have social login enabled on your server, you may enable this setting to force users to verify their account password anyways when they log in.
 
-<x-next url=/docs/advanced-settings>Advanced Settings</x-next>
+<x-next url=/docs/custom-fields>PDF customization</x-next>
 

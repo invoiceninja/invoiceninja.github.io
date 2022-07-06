@@ -448,4 +448,33 @@ $description - Description label
 $entity_footer - Entity footer label/value  
 ```
 
+## Swiss QR Codes
+
+For Swiss users, you are able to automatically inject Swiss Compatible payment QR codes directly into the invoice design.
+
+![alt text](/assets/images/pdf_customization/swiss_qrcode1.png "Swiss QR Codes")
+
+To configure this, you'll need your QR IBAN number and BESR ID. In Settigns > Company Details you'll need to enter these values in the Details page.
+
+
+![alt text](/assets/images/pdf_customization/swiss_qrcode3.png "Swiss QR Codes")
+
+You'll then need to customize your design to include the QR code on your PDFs. To do this create a new design in Settings > Inovice Design > Customize
+
+In the body tab, at the bottom add
+
+```
+<div>
+$swiss_qr
+</div>
+```
+
+After you have saved the design, you'll want to make this your new default design.
+
+
+![alt text](/assets/images/pdf_customization/swiss_qrcode2.png "Swiss QR Codes")
+
+
+If your QR codes are not appearing then there would be a configuration issue that needs to be addressed. The most common reasons the QR code does not appear on the PDF is due to missing company details. Your full address is required along with the clients full details.
+
 <x-next url=/docs/troubleshooting>Troubleshooting</x-next>

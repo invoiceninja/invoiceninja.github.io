@@ -31,4 +31,4 @@ The settings pane allows you to define the frequency / auto billing and also pro
 
 The final piece of the subscriptions puzzle is integrating with third party services. When a subscription is purchased / cancelled / upgraded we can notify a third party end point!
 
-<x-next url=/docs/custom-fields>PDF Customization</x-next>
+<x-next url=/docs/tasks>Tasks</x-next>

@@ -99,7 +99,7 @@ Another way to do it this:
 
 Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlapping dates**.
 
-###  Supported combinations
+### Supported combinations
 ```
 [MONTHYEAR|MONTHYEAR +, -], [MONTHYEAR|MONTHYEAR+16], [MONTHYEAR|MONTHYEAR-2]
 ```
@@ -107,4 +107,4 @@ Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlappi
 ### Translations
 As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/docs/basic-settings/#localization).
 
-<x-next url=/docs/payments>Payments</x-next>
+<x-next url=/docs/subscriptions>Subscriptions</x-next>

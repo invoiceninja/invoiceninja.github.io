@@ -47,4 +47,18 @@ There is only a few fields that apply to a product:
 * **Price** - The standard price of your product.
 * **Default Quantity** - The default quantity is used automatically when the product is added to an invoice or quote.
 
-<x-next url=/docs/invoices>Invoices</x-next>
+## Inventory Tracking
+
+If you run a business which stocks products, tracking inventory levels is an important component of running a business. In Invoive Ninja, tracking inventory is super simple.
+
+![alt text](/assets/images/products/track_inventory_settings.png "Inventory Tracking")
+
+Simply turn on Track Inventory in the settings panel, you can also add notifications when a product reaches a threshold you will receive an email notifying you of the current stock level. For more fine grained control, you can assign thresholds directory on the product itself.
+
+![alt text](/assets/images/products/inventory_tracking_product.png "Product overview")
+
+To view the current stock levels, simply viewing the product will show the current level.
+
+You can also combine the Purchase Order module to update your inventory level automatically, see <a href="/docs/purchase_order"> Purchase Orders</a> for more info.
+
+<x-next url=/docs/projects>Projects</x-next>

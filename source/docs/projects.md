@@ -46,4 +46,4 @@ Creating and editing a project is very simple, there are only a few customizable
 * **Public Notes** - Public notes help add a little perspective to the nature of the work for you, and your client's records.
 * **Private Notes** - A place for you to make comments about the project only to be shared with your coworkers who have access to the admin portal viewing the project.
 
-<x-next url=/docs/tasks>Tasks</x-next>
+<x-next url=/docs/purchase_orders>Purchase Orders</x-next>

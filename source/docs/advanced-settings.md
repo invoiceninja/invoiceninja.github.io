@@ -280,7 +280,7 @@ Select your group.  You will see an *Overview* tab and a *Documents* tab.   From
 
 Note:  To remove a client from a group, it is easiest to edit the client directly and change their group or remove it.
 
-### Configure Settings 
+### Configure Settings
 
 Customize any options here to override the regular settings for each respective category, or leave a field blank to use the regular settings.
 
@@ -432,4 +432,4 @@ Enable email notifications to the user for any number of these events.  Choose a
 
 
 
-<x-next url=/docs/subscriptions>Subscriptions</x-next>
+<x-next url=/docs/basic-settings>Basic Settings</x-next>

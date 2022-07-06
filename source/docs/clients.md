@@ -125,4 +125,4 @@ For most settings, the app will first check if the client has a value in place, 
 
 The benefit of using groups is that if in the future you need to change the setting you can change it one place rather than having to update multiple clients individually. Without groups, bulk updating client settings would require using the API or an integrator.
 
-<x-next url=/docs/products>Products</x-next>
+<x-next url=/docs/credits>Credits</x-next>
