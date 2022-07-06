@@ -43,6 +43,7 @@ Reserved keywords are:
 - :WEEK
 - :WEEK_BEFORE
 - :WEEK_AHEAD 
+- :MONTHYEAR
 
 As you may guess, each time invoice (PDF) is generated, keywords will be replaced with actual value, so:
 
@@ -50,7 +51,7 @@ As you may guess, each time invoice (PDF) is generated, keywords will be replace
 - :YEAR to the numeric value of the current year (e.g. 2021)
 - .. and the :QUARTER to e.g. Q2.
 
-:MONTH, :YEAR, :QUARTER keywords also support basic mathematical operations: **addition**, **subtraction**, **multiplication** & **
+:MONTH, :YEAR, :QUARTER :MONTHYEAR keywords also support basic mathematical operations: **addition**, **subtraction**, **multiplication** & **
 division**.
 
 So this is the pattern for mathematical operations:
@@ -79,6 +80,7 @@ Quarter: :QUARTER
 :MONTH (+, -, *, /) e.g. :MONTH+1 :MONTH-1 :MONTH*2 :MONTH/2
 :YEAR (+, -) :YEAR+1 :YEAR-1
 :QUARTER (+, -) :QUARTER+1 :QUARTER-1
+:MONTHYEAR (+, -) :MONTHYEAR :MONTHYEAR+1
 ```
 
 ## Reserved keyword for date ranges
