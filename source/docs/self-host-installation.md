@@ -13,12 +13,11 @@ section: content
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-* PHP >= 7.4.x
+* PHP 8.1
 * bcmath extension
 * ctype extension
 * fileinfo extension
 * gd extension
-* json extension
 * mbstring extension
 * openssl extension
 * PDO extension
@@ -33,7 +32,7 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 On ubuntu this should be as simple as running:
 
 ```bash
-sudo apt install php7.4-bcmath php7.4-gmp php7.4-fileinfo php7.4-gd php7.4-json php7.4-mbstring php7.4-pdo php7.4-xml php7.4-curl php7.4-zip php7.4-gmp php7.4-mysqlnd
+sudo apt install php8.1-bcmath php8.1-gmp php8.1-fileinfo php8.1-gd php8.1-json php8.1-mbstring php8.1-pdo php8.1-xml php8.1-curl php8.1-zip php8.1-gmp php8.1-mysqlnd
 ```
 
 ## Installing Invoice Ninja
@@ -70,7 +69,7 @@ sudo find ./ -type d -exec chmod 755 {} \;
 ```
 
 ##### Web server configuration
-<p>A sample NGINX configuration is provided below, it assumes you have PHP 7.4 installed with the PHP FPM extension installed</p>
+<p>A sample NGINX configuration is provided below, it assumes you have PHP 8.1 installed with the PHP FPM extension installed</p>
 
 ```bash
 server {
@@ -100,7 +99,7 @@ if (!-e $request_filename) {
 
 location ~ \.php$ {
 include snippets/fastcgi-php.conf;
-fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+fastcgi_pass unix:/run/php/php8.1-fpm.sock;
 }
 
 location ~ /\.ht {
