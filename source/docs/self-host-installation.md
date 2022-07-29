@@ -28,11 +28,12 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 * gmp extension
 * mysqli extension
 * MySQL / MariaDB Server
+* fpm (if using NGINX)
 
 On ubuntu this should be as simple as running:
 
 ```bash
-sudo apt install php8.1-bcmath php8.1-gmp php8.1-fileinfo php8.1-gd php8.1-json php8.1-mbstring php8.1-pdo php8.1-xml php8.1-curl php8.1-zip php8.1-gmp php8.1-mysqlnd
+sudo apt install php8.1-bcmath php8.1-gmp php8.1-fileinfo php8.1-gd php8.1-json php8.1-mbstring php8.1-pdo php8.1-xml php8.1-curl php8.1-zip php8.1-gmp php8.1-mysql php8.1-fpm
 ```
 
 ## Installing Invoice Ninja
