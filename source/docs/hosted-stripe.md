@@ -33,6 +33,6 @@ Using these details, log into Stripe and navigate to Developers > Webhooks
 
 ![alt text](/assets/images/stripe/stripe_webhook_overview_2.png "Webhook edit in Stripe")
 
-Enter in your dedicated webhook URL as well as the three event types
+Enter in your dedicated webhook URL as well as the five event types
 
 ![alt text](/assets/images/stripe/stripe_webhook_overview_3.png "Add Events")
