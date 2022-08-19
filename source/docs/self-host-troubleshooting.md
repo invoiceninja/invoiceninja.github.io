@@ -90,6 +90,12 @@ To configure SnapPDF use the following .env vars
 PDF_GENERATOR=snappdf
 ```
 
+As of version 5.5.12 we no longer prebundle snappdf in the release files, so if you have a new installation you'll need to manually invoke the download of the chromium binary, from the root of the project run the following:
+
+```
+vendor/bin/snappdf download
+```
+
 Snappdf is also the default PDF engine in our [Docker](https://github.com/invoiceninja/dockerfiles) image, so if you prefer a very simple installation please consider our Docker setup as it is very fast to get going!
 
 If you are on shared hosting, snappdf probably will be impossible for you to use as you do not have access to the subsystem to install the required packages. Instead, you will need to use a hosted PDF service, the two that Invoice Ninja v5 supports is [PhantomJS Cloud](https://phantomjscloud.com/) and our own hosted PDF generator which can use for _free_ to generate _unlimited_ PDFs.
@@ -122,13 +128,11 @@ For PhantomJS to work, your Invoice Ninja installation web address must be publi
 
 ### Hosted Invoice Ninja PDF generation
 
-To enable the Invoice Ninja hosted PDF generator you will need to add a variable to the .env file as follows
+The default PDF generated as of version 5.5.12 is our hosted platform PDF conversion system. The hosted ninja PDF generator is an offsite PDF generator hosted by Invoice Ninja, which operate similar to PhantomJS. It is important to note that we do not store any information with this service, we simply convert the HTML your system sends into a PDF file which is return on the fly.
 
 ```
 PDF_GENERATOR=hosted_ninja
 ```  
-
-The hosted ninja PDF generator is an offsite PDF generator hosted by Invoice Ninja, which operate similar to PhantomJS.
 
 <x-warning>
 Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize.
