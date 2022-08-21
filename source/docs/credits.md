@@ -7,7 +7,7 @@ section: content
 
 # Credits
 
-Credit records are used to issue redeemable credits for a specific *Product* or for a flat rate.  
+Credit records are used to issue redeemable credits for a specific *Product* or for a flat rate. Credits can be applied to invoices as a payment.
 
 ## Viewing a Credit
 
