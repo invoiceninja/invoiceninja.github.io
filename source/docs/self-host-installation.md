@@ -118,7 +118,7 @@ Enable gzip in your webserver configuration, this will dramatically improve the 
 
 ##### Database server configuration
 
-<p>Create a database on your MySQL compatible server and add a user that has full access to the database, database configuration is out of the scope of this article, more information can be found <a href="https://dev.mysql.com/doc/refman/8.0/en/creating-database.html">here</a></p>
+<p>Create a database on your MySQL compatible server and add a user that has full access to the database. Database configuration is out of the scope of this article, more information can be found <a href="https://dev.mysql.com/doc/refman/8.0/en/creating-database.html">here</a></p>
 
 ##### Cron configuration
 

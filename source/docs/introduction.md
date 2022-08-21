@@ -7,10 +7,8 @@ section: content
 
 ## App basics
 
-The app version (ie. `v5.1.56-A47`) is comprised of two parts: the API version and the Admin Portal version. In this cases the API version is `5.1.56` and the AP version is `47`. The `A` denotes the platform, in this case Android.
-
 The main interface is divided into three parts: the sidebar navigation menu, the list (or table) and the preview. The
-layout can be customized to fit your needs using a combination of the icons at the bottom of the screen, and the option on Settings > Device Settings.
+layout can be customized to fit your needs using a combination of the icons at the bottom of the screen, and the options in Settings > Device Settings.
 
 By default, all supported modules are enabled, if you know you won't be using some features you can disable them on
 Settings > Account Management > Enabled Modules.
@@ -18,6 +16,8 @@ Settings > Account Management > Enabled Modules.
 In many cases in the app a single tap will take one action, while a long tap will provide a shortcut to a common
 secondary action. For example tapping on the 'Clients' option in the sidebar will load the clients view, whereas long
 tapping it will instead create a new client. This pattern is used throughout the app.
+
+The app version (ie. `v5.1.56-A47`) is comprised of two parts: the API version and the Admin Portal version. In this cases the API version is `5.1.56` and the AP version is `47`. The `A` denotes the platform, in this case Android.
 
 ## Performance
 

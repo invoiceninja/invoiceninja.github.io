@@ -125,4 +125,28 @@ For most settings, the app will first check if the client has a value in place, 
 
 The benefit of using groups is that if in the future you need to change the setting you can change it one place rather than having to update multiple clients individually. Without groups, bulk updating client settings would require using the API or an integrator.
 
+## Custom Fields
+
+Sometimes you need extra fields to populate additional information for your clients. With Invoice Ninja you can add up to 4 custom fields for both the client and also each contact of the client.
+
+To create a custom field navigate to Settings > Custom fields. Advanced features including being able to include these custom fields on the invoice PDF by using the placeholders:
+
+### Client placeholders
+
+```
+$client.custom1
+$client.custom2
+$client.custom3
+$client.custom4
+```
+
+### Contact placeholders
+
+```
+$contact.custom1
+$contact.custom2
+$contact.custom3
+$contact.custom4
+```
+
 <x-next url=/docs/credits>Credits</x-next>
