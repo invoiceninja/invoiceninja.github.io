@@ -44,6 +44,18 @@ The *Activity* panel presents a chronological overview of any actions performed 
 
 There are several fields available when filling a credit, and the view when creating or editing a credit is broken down a little differently depending on whether you are viewing things with the mobile layout, or desktop layout.  In the desktop layout, all of the panels described below are presented at the same time on one big screen and laid out a little differently.
 
+<video width="100%" controls>
+  <source src="/assets/videos/credits/create_credit.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+You can also create a credit directly from a invoice. For instance if you need to create a credit for an entire invoice, instead of retyping the entire document you can clone the invoice to a credit an example is included in the video below:
+
+<video width="100%" controls>
+  <source src="/assets/videos/credits/create_credit_from_invoice.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
 ### Details
 
 The *Details* panel includes the most basic information about the credit:
