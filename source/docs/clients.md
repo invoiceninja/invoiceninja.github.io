@@ -7,7 +7,7 @@ section: content
 
 ## Creating Clients
 
-<video width="640" controls>
+<video width="100%" controls>
   <source src="/assets/videos/clients/create_client.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
