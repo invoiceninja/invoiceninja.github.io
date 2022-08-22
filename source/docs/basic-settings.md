@@ -207,6 +207,7 @@ You can accidentally double charge taxes if you apply tax rates on the flat bala
 
 * **Invoice Tax Rates** - Disabled, one, two, or three tax rates choices.  You will see "*Default Tax Rate*" fields spawn near the bottom when you change this setting.  The new fields below will set the default tax rates applied to the flat balance of any invoice.  Note, that you can change the tax rates for any individual invoice.
 * **Item Tax Rates** - Disabled, one, two, or three tax rate choices.  Optionally enable "*Tax*" fields which will then spawn in the *Edit Product* panel, or in the product listing on an invoice. 
+* **Expense Tax Rates** - Disabled, one, two or three tax rate choices. Defines the number of tax rates to be configured for expenses.
 * **Inclusive Taxes** - Enable this setting to use inclusive taxes, which determines whether the tax rate is reduced from the set product/invoice total value, or added on top of it after.
   * *Example*
     Exclusive:  100 + 10% = 100 + 10

@@ -7,6 +7,11 @@ section: content
 
 ## Creating Clients
 
+<video width="640" controls>
+  <source src="/assets/videos/clients/create_client.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
 There several ways for a client to be created, including:
 
 * Admin Portal > Client Module > New Client
@@ -28,7 +33,7 @@ To view a client, select one from the list of clients on the client panel, or by
 
 ### Overview
 
-The overview panel presents a quick look at the paid to date, and amount owing of a client, public and private notes about the client, followed by a list of interactive buttons to see a client-filtered list of any category.  
+The overview panel presents a quick look at the paid to date, the outstanding balance of a client, public and private notes about the client, followed by a list of interactive buttons to see a client-filtered list of any category.  
 
 You can select from **Groups, Invoices, Payments, Recurring Invoices, Quotes, Credits, Projects, Tasks, or Expenses**.  Hover your mouse over one of these categories, and the icon will turn into a "plus" symbol; it is a clickable button to create a new invoice, quote, payment, etc.  On mobile devices, you can touch and hold anywhere on the button to create new, instead of viewing a client-filtered list.
 
@@ -99,7 +104,7 @@ From the admin portal, you will see the button *Add Second Contact* to expand th
 * **Invoice Payment Terms** - Set a default invoice payment term length, if you have agreed on payment arrangements with your client on a regular basis.
 * **Quote Valid Until** - Set a default term length for quotes given to your customer that you will honor the price in your quotes for.
 * **Task Rate** - Set a default hourly rate for *Tasks* that are performed for the client.
-* **Email Reminders** - Enable or disable email reminders to the client for things such as unpaid invoices.  Set fine tuned rules for the behavior of email reminders under *Settings* > *Templates & Reminders*.
+* **Send Reminders** - Enable or disable email reminders to the client for things such as unpaid invoices.  Set fine tuned rules for the behavior of email reminders under *Settings* > *Templates & Reminders*.
 
 ### Billing Address
 

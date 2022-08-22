@@ -7,7 +7,8 @@ section: content
 
 # Credits
 
-Credit records are used to issue redeemable credits for a specific *Product* or for a flat rate. Credits can be applied to invoices as a payment.
+A credit note is a document sent to the client, notifying that a credit has been provided to their account. Credit notes are used to issue redeemable credits for a specific *Product* or for a flat rate. Credits can be applied to invoices as a payment.
+
 
 ## Viewing a Credit
 
