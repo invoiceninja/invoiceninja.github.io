@@ -7,6 +7,11 @@ section: content
 
 Invoice records support a lot of detail and allow you to bill your clients for *Products*, *Tasks*, or *Expenses*.  You can attach documents or pictures to invoices, which the client may view from the client portal.  Invoice records keep a history of when changes were made to them, and which users performed those changes, in order to increase accountability within your business.
 
+<video width="100%" controls>
+  <source src="/assets/videos/invoices/create_invoice.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
 ## Viewing an Invoice
 
 Simply select an invoice from the list, and you will see the invoice details, in the mobile layout you will be taken directly to the invoice view, in a desktop layout the view will appear on the righthand side.

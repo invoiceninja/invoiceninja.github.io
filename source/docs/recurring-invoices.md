@@ -5,6 +5,13 @@ section: content
 
 # Recurring Invoices
 
+Recurring invoices are invoices which are sent on a defined schedule to the same client. By settings up a recurring invoice you are automating the creation of invoices for your client with the option to automatically email and bill them as they are generated.
+
+<video width="100%" controls>
+  <source src="/assets/videos/recurring_invoices/create_recurring_invoice.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
 ## Autobill options
 
 When configuring a Recurring invoice, you have a variety of options of how AutoBilling can be enabled. There are 4 options:
