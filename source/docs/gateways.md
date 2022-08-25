@@ -8,6 +8,9 @@ section: content
 Version 5 of Invoice Ninja includes deep integration with a range of high quality payment gateways. 
 
 ## Stripe
+<p align="center">
+	<img class="h-10" src="/assets/images/gateways/stripe.svg" alt="Stripe"/>
+</p>
 
 Our Stripe integration includes a wide range of payment options including:
 
