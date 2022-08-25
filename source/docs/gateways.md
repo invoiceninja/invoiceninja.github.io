@@ -9,7 +9,24 @@ Version 5 of Invoice Ninja includes deep integration with a range of high qualit
 
 ## Stripe
 
-Our Stripe integration includes Credit Card, ACH, Sofort payment options. Our Stripe integration also includes token billing and refunds
+Our Stripe integration includes a wide range of payment options including:
+
+- Card 
+- ACH
+- SOFORT
+- Alipay
+- Pay
+- SEPA
+- Bancontact
+- iDEAL
+- Giropay
+- Przelewy24
+- EPS
+- ACSS
+- BECS
+- FPX
+
+Our Stripe integration also includes token billing and refunds
 
 ## Checkout
 
@@ -17,7 +34,13 @@ Our Checkout integration includes Credit Card payment options, including token b
 
 ## Mollie
 
-Our Mollie integration includes Credit Card payment options, including token billing.
+Our Mollie integration includes a wide range of payment options including:
+
+- Credit Card (including token billing)
+- Bank Transfer
+- KBC
+- Bancontact
+- iDEAL
 
 ## PayTrace
 

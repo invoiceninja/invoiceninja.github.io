@@ -9,6 +9,7 @@ return [
             'Credits' => '/docs/credits',
             'Expenses' => '/docs/expenses',
             'Invoices' => '/docs/invoices',
+            'Gateways' => '/docs/gateways',
             'Payments' => '/docs/payments',
             'Products' => '/docs/products',
             'Projects' => '/docs/projects',
