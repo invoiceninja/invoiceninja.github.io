@@ -303,3 +303,5 @@ Make sure to update your cache afterwards:
 ```bash
 php artisan optimize
 ```
+
+Currencies are updated automatically by using the scheduler. In case the currencies are not available within the UI please double check the database table `currencies` and ensure that `exchange_rate` fields contains realistic values.
