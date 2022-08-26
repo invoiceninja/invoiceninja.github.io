@@ -5,7 +5,11 @@ section: content
 
 # Gateways
 
-Version 5 of Invoice Ninja includes deep integration with a range of high quality payment gateways. 
+Version 5 of Invoice Ninja includes deep integration with a range of high quality payment gateways, allowing you to get paid fast and across many different gateways. 
+
+You can also integrate multiple gateways for different payment types, ie you can configure Stripe for your ACH payments, Auth.net for you credit card payments and also Paypal. Gateways can also be configured based on a minimum or maximum amount also giving your maximum flexibility.
+
+Gateway fees can also be configured and past onto the client when they perform transactions.
 
 ## Stripe
 <p align="center">
