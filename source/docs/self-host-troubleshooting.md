@@ -315,3 +315,10 @@ Delete that file and retry the command until it works and runs properly.
 When changes are made to the container this can causes the cache to become stale in the application preventing it from booting. 
 
 The solution is to clear the contents of the folder ```bootstrap/cache```, by either manually deleting files or by running ```/update?secret=``` which will also delete the contents of this directory. 
+
+### file_exists(): open_basedir restriction in effect
+
+If you aren't able to adjust the open_basedir restrictions the following steps may help:
+
+1. Delete bootstrap/cache/config.php
+2. Delete all log files in storage/logs
