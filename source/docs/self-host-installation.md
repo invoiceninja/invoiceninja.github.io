@@ -38,17 +38,21 @@ sudo apt install php8.1-bcmath php8.1-gmp php8.1-fileinfo php8.1-gd php8.1-mbstr
 
 ## Installing Invoice Ninja
 
-### Installing on CentOS 8 / Ubuntu 20.04 (Recommended)
+### Ubuntu 20.04 (Recommended)
 
-Technically computers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto CentOS, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). If Ubuntu is more your flavour you can follow his awesome guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
+Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
+
+### Installing on CentOS 8
+
+If CentOS is more your Flavour, community member TechnicallyComputers has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). 
 
 ### Installing on Arch
 
-If Arch Linux is more your flavor, brackenhill-mob from our forum has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
+If Arch Linux is more your flavour, community member brackenhill-mob has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
 
 ### Installing on Enterprise Linux
 
-Technically computers also has a guide for installation Invoice Ninja on Enterprise Linux [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293)
+TechnicallyComputers also has a guide for installation Invoice Ninja on Enterprise Linux [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293)
 
 ### Download pre built zip. (Advanced)
 
