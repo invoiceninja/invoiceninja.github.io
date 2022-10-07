@@ -28,7 +28,7 @@ You need to setup this version completely from scratch. Do not attempt to overwr
     * gmp
     * mysqli
     * fpm (if using NGINX)
-* MySQL 5.7+ / MariaDB 10.3+
+* MySQL 5.7+ or MariaDB 10.3+
 * NGINX or Apache
 
 On ubuntu this should be as simple as running:
