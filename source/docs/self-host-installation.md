@@ -13,22 +13,23 @@ section: content
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-* PHP 8.1
-* bcmath extension
-* ctype extension
-* fileinfo extension
-* gd extension
-* mbstring extension
-* openssl extension
-* PDO extension
-* tokenizer extension
-* xml extension
-* curl extension
-* zip extension
-* gmp extension
-* mysqli extension
-* MySQL / MariaDB Server
-* fpm (if using NGINX)
+* PHP 8.1 with following extensions
+    * bcmath
+    * ctype
+    * fileinfo
+    * gd
+    * mbstring
+    * openssl
+    * PDO
+    * tokenizer
+    * xml
+    * curl
+    * zip
+    * gmp
+    * mysqli
+    * fpm (if using NGINX)
+* MySQL 5.7+ or MariaDB 10.3+
+* NGINX or Apache
 
 On ubuntu this should be as simple as running:
 
