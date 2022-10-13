@@ -17,23 +17,23 @@ The app is divided into three main parts: the backend/API and the two admin port
 
 #### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
 
-- Code: [GitHub](https://github.com/invoiceninja/invoiceninja/tree/v5-stable)
 - Framework: [Laravel](https://laravel.com)
+- Code: [GitHub](https://github.com/invoiceninja/invoiceninja/tree/v5-stable)
 - API Docs: [SwaggerHub](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja)
 
 ### Admin Portal - Desktop/Mobile/Web
 
 #### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
 
-- Code: [GitHub](https://github.com/invoiceninja/admin-portal)
 - Framework: [Flutter](https://flutter.dev)
+- Code: [GitHub](https://github.com/invoiceninja/admin-portal)
 - Demo: [demo.invoiceninja.com](https://demo.invoiceninja.com)
 
 ### Admin Portal - Web
 
 #### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
 
-- Code: [GitHub](https://github.com/invoiceninja/ui)
 - Framework: [React](https://reactjs.org)
+- Code: [GitHub](https://github.com/invoiceninja/ui)
 
 <x-next url=/docs/introduction>Introduction</x-next>
