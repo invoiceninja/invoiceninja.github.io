@@ -5,6 +5,24 @@ section: content
 
 # Troubleshooting
 
+## Cron not running / Queue not running
+
+<x-warning>
+It can take up to an hour for the red warning triangle to disappear after correctly configuring your Cron.  
+
+After making any changes to your cron setup you'll want to force a recheck of the cron setting. To do this navigate to http://url/update?secret=
+</x-warning>
+
+If you are faced with your recurring invoices not firing, or your reminders not sending, then most likely your cron job isn't working. The first thing is to make sure you have your cron jobs configured correctly by following the guide [here](https://invoiceninja.github.io/docs/self-host-installation/#cron-configuration-1) 
+
+If you are using shared hosting, then will need to add an additional parameter to the cron command which looks like this:
+
+```
+cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
+```
+
+This will force a recheck and if the cron is working the red error triangle will disappear.
+
 ## PDFs don't appear to be updating
 
 If you are using Cloudflare, then most likely Cloudflare could be caching your static data. To force cache busting, edit your nginx.conf file and add in the following snippet
@@ -137,24 +155,6 @@ PDF_GENERATOR=hosted_ninja
 <x-warning>
 Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize.
 </x-warning>
-
-## Cron not running / Queue not running
-
-<x-warning>
-It can take up to an hour for the red warning triangle to disappear after correctly configuring your Cron.  
-
-After making any changes to your cron setup you'll want to force a recheck of the cron setting. To do this navigate to http://url/update?secret=
-</x-warning>
-
-If you are faced with your recurring invoices not firing, or your reminders not sending, then most likely your cron job isn't working. The first thing is to make sure you have your cron jobs configured correctly by following the guide [here](https://invoiceninja.github.io/docs/self-host-installation/#cron-configuration-1) 
-
-If you are using shared hosting, then will need to add an additional parameter to the cron command which looks like this:
-
-```
-cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
-```
-
-This will force a recheck and if the cron is working the red error triangle will disappear.
 
 ## Platform specific issues
 
