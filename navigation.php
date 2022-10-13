@@ -21,11 +21,10 @@ return [
             'Subscriptions' => '/docs/subscriptions',
             'Tasks' => '/docs/tasks',
             'Vendors' => '/docs/vendors',
-            'Advanced Settings' => '/docs/advanced-settings',
             'Basic Settings' => '/docs/basic-settings',
+            'Advanced Settings' => '/docs/advanced-settings',
             'PDF customization' => '/docs/custom-fields',
             'Troubleshooting' => '/docs/troubleshooting',
-            // 'Online Payments' => '/docs/gateways',  // Content has been included in /docs/basic-settings now.
         ],
     ],
     'Developer guide' => [
@@ -41,9 +40,9 @@ return [
         'url' => '/docs/self-host-installation',
         'children' => [
             'Installation' => '/docs/self-host-installation',
+            'Troubleshooting' => '/docs/self-host-troubleshooting',
             'Updating' => '/docs/self-host-updating',
             'Env Variables' => '/docs/env-variables',
-            'Troubleshooting' => '/docs/self-host-troubleshooting',
         ],
     ],
     'Hosted' => [

@@ -17,18 +17,22 @@ The app is divided into three main parts: the backend/API, the Admin Portal and 
 
 #### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
 
-The API has been developed using [Laravel](https://laravel.com) the full API specification can be found [here](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja). The latest code can be found in the [v5-stable](https://github.com/invoiceninja/invoiceninja/tree/v5-stable) and [v5-develop](https://github.com/invoiceninja/invoiceninja/tree/v5-develop) branches in the GitHub repo.
+- Code: [GitHub](https://github.com/invoiceninja/invoiceninja/tree/v5-stable)
+- Framework: [Laravel](https://laravel.com)
+- API Docs: [SwaggerHub](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja)
 
-### Admin Portal - AP
+### Admin Portal - Desktop/Mobile/Web
 
 #### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
 
-The Admin Portal has been developed using [Flutter](https://flutter.dev), it provides a consistent cross-platform experience with native applications for web, mobile and desktop. The latest code can be found [here](https://github.com/invoiceninja/admin-portal/).
+- Code: [GitHub](https://github.com/invoiceninja/admin-portal)
+- Framework: [Flutter](https://flutter.dev)
 
-### Client Portal - CP
+### Admin Portal - Web
 
 #### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
 
-The Client Portal is also developed with Laravel along with [Tailwind](https://tailwindcss.com/).
+- Code: [GitHub](https://github.com/invoiceninja/ui)
+- Framework: [React](https://reactjs.org)
 
 <x-next url=/docs/introduction>Introduction</x-next>
