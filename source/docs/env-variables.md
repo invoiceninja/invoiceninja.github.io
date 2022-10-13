@@ -163,7 +163,7 @@ If you are running a docker setup, you may want to set this to true as there are
 ```
 LOCAL_DOWNLOAD=FALSE
 ```
-This var circumvents our base64 encoding of the company logo.
+This var circumvents our base64 encoding of the company logo, this may help if the logo is failing to show on the PDF.
 
 ```
 NINJA_ENVIRONMENT=selfhost
