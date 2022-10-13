@@ -21,7 +21,7 @@ The app is divided into three main parts: the backend/API and the two admin port
 - Code: [GitHub](https://github.com/invoiceninja/invoiceninja/tree/v5-stable)
 - API Docs: [SwaggerHub](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja)
 
-### Admin Portal - Desktop/Mobile/Web
+### Admin Portal - Desktop & Mobile
 
 #### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
 
