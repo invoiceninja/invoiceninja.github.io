@@ -7,6 +7,10 @@ section: content
 
 The basic settings are where you can setup everything you need to define your company. 
 
+<x-info>
+The settings search is a great way to find settings that are configured in multiple places. If you search for email, color or any other term you’ll find all of the relevant settings. 
+</x-info>
+
 <h2 id=company_details>Company Details</h2>
 
 Settings found here relate to the currently selected company, from the company selection drop-down widget in the top left corner of the admin portal UI.  Select the company you want to view settings for.  The Company Details section is where you configure your address, upload your company logo and also set your company defaults.  

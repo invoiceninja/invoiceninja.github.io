@@ -60,6 +60,10 @@ The *Details* panel includes the most basic information about the invoice:
 * **Exchange Rate** - Optionally, for when your client record has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what they will owe in their own default currency.  This option is found under the *Settings* tab in the desktop invoice view.
 * **Auto Bill Enabled** - When enabled, the client contact(s) will automatically be emailed for payment of their invoice.  By default, auto bill actions will be performed on the invoice due date, as specified under *Settings* > *Online Payments*.  This option is found under the *Settings* tab in the desktop invoice view.
 
+<x-info>
+Date fields support adding and subtracting days. For example if you enter `+10` the date will be set to ten days in the future and if you enter `-10` the date will be set to ten days in the past.
+</x-info>
+
 ### Contacts
 
 *Contacts* has it's own panel in the mobile view, while in desktop view this is shown directly under the *Client* field after you have selected a client.  
