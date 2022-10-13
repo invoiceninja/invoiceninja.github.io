@@ -60,6 +60,8 @@ TechnicallyComputers also has a guide for installation Invoice Ninja on Enterpri
 
 ### Installing using Docker
 
+We have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xo6a3KtLC2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Download pre built zip. (Advanced)
@@ -269,10 +271,6 @@ Add the Laravel scheduler cron job, be sure to include the full path, for a cPan
 ```
 * * * * * cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
-
-## Installing Invoice Ninja (Docker)
-
-If you prefer to use Docker, we have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>
 
 ## Mail Configuration
 
