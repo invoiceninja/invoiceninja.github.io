@@ -26,13 +26,14 @@ return [
             'Subscriptions' => '/docs/subscriptions',
         ],
     ],
-    'Developer guide' => [
-        'url' => '/docs/developer-guide',
+    'Hosted' => [
+        'url' => '',
         'children' => [
-            'Auth' => '/docs/api/authentication',
-            'Clients' => '/docs/api/clients',
-            'Payment Gateways' => '/docs/payment-gateways',
-            'Static Variables' => '/docs/statics',
+            'Quick Start' => '/docs/hosted-quickstart',
+            'Activate' => '/docs/hosted-activate',
+            'Custom Domain' => '/docs/hosted-custom-domain',
+            'Hosted Migration' => '/docs/hosted-migration',
+            'Stripe Integration' => '/docs/hosted-stripe',
         ],
     ],
     'Self host' => [
@@ -44,14 +45,13 @@ return [
             'Env Variables' => '/docs/env-variables',
         ],
     ],
-    'Hosted' => [
-        'url' => '',
+    'Developer guide' => [
+        'url' => '/docs/developer-guide',
         'children' => [
-            'Quick Start' => '/docs/hosted-quickstart',
-            'Activate' => '/docs/hosted-activate',
-            'Custom Domain' => '/docs/hosted-custom-domain',
-            'Hosted Migration' => '/docs/hosted-migration',
-            'Stripe Integration' => '/docs/hosted-stripe',
+            'Auth' => '/docs/api/authentication',
+            'Clients' => '/docs/api/clients',
+            'Payment Gateways' => '/docs/payment-gateways',
+            'Static Variables' => '/docs/statics',
         ],
     ],
     'Migrating to V5' => [
