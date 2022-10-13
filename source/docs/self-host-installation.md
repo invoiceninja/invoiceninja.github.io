@@ -26,6 +26,7 @@ You need to setup this version completely from scratch. Do not attempt to overwr
     * curl
     * zip
     * gmp
+    * iconv
     * mysqli
     * fpm (if using NGINX)
 * MySQL 5.7+ or MariaDB 10.3+
