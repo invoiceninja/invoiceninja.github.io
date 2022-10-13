@@ -6,7 +6,8 @@ section: content
 # Modules
 
 <x-info>
-You can hide modules you don't plan to use on Settings > Account Management > Enabled Modules.
+By default, all supported modules are enabled, if you know you won't be using some features you can disable them on
+-Settings > Account Management > Enabled Modules.
 </x-info>
 
 - [Clients](/docs/clients)
