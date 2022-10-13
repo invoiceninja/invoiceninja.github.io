@@ -14,16 +14,6 @@ return [
             'Subscriptions' => '/docs/subscriptions',
         ],
     ],
-    'Hosted' => [
-        'url' => '',
-        'children' => [
-            'Quick Start' => '/docs/hosted-quickstart',
-            'Activate' => '/docs/hosted-activate',
-            'Custom Domain' => '/docs/hosted-custom-domain',
-            'Hosted Migration' => '/docs/hosted-migration',
-            'Stripe Integration' => '/docs/hosted-stripe',
-        ],
-    ],
     'Self host' => [
         'url' => '/docs/self-host-installation',
         'children' => [
@@ -40,6 +30,16 @@ return [
             'Clients' => '/docs/api/clients',
             'Payment Gateways' => '/docs/payment-gateways',
             'Static Variables' => '/docs/statics',
+        ],
+    ],
+    'Hosted' => [
+        'url' => '',
+        'children' => [
+            'Quick Start' => '/docs/hosted-quickstart',
+            'Activate' => '/docs/hosted-activate',
+            'Custom Domain' => '/docs/hosted-custom-domain',
+            'Hosted Migration' => '/docs/hosted-migration',
+            'Stripe Integration' => '/docs/hosted-stripe',
         ],
     ],
     'Migrating to V5' => [
