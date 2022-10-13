@@ -11,7 +11,7 @@ Invoice Ninja is an invoicing application which makes sending invoices and recei
 
 ## Architecture
 
-The app is divided into three main parts: the backend/API, the Admin Portal and the Client Portal.
+The app is divided into three main parts: the backend/API and the two admin portals.
 
 ### Backend - API
 
