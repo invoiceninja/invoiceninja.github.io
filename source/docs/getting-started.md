@@ -27,6 +27,7 @@ The app is divided into three main parts: the backend/API and the two admin port
 
 - Code: [GitHub](https://github.com/invoiceninja/admin-portal)
 - Framework: [Flutter](https://flutter.dev)
+- Demo: [demo.invoiceninja.com](https://demo.invoiceninja.com)
 
 ### Admin Portal - Web
 
