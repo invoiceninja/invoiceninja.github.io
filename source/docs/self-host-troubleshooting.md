@@ -261,6 +261,10 @@ sudo find ./ -type d -exec chmod 755 {} \;
 
 If for some reason the UI becomes unresponsive, you may need to flush some subsystem configuration and rebuild. It is possible to do this by navigating to the `/update?secret=`  route, ie. https://invoiceninja.test/update?secret= This will perform a number of system clean ups and may resolve issues resulting from an incomplete upgrade. To protect this route, you are advised to add a .env pararameter `UPDATE_SECRET=a_secret_passcode` this will restrict the route to users with the UPDATE_SECRET passcode.
 
+### Logo not appearing in the PDF
+
+It may help to add `LOCAL_DOWNLOAD=true` to the .env file, this will embed the image in the PDF rather than request it over the network.
+
 ### Communication link failure: 1153 Got a packet bigger than 'max_allowed_packet'
 
 If you are using the database for your queue's then sometimes you may see an error from MySQL
