@@ -431,5 +431,4 @@ Enable email notifications to the user for any number of these events.  Choose a
   * When disabled, a list of permission categories appears below, which the user will be subjected to.  Grant, or deny permissions to create, edit, or view any record category here; clients, invoices, quotes, tasks, vendors, products, etc.
 
 
-
-<x-next url=/docs/basic-settings>Basic Settings</x-next>
+<x-next url=/docs/custom-fields>PDF customization</x-next>

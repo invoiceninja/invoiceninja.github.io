@@ -365,5 +365,5 @@ Configure some simple server account security settings for logged in users.
 * **Web Session Timeout** - Disabled by default, set a timeout to logout the user from the admin portal after a given time.
 * **Require Password with Social Login** - If you have social login enabled on your server, you may enable this setting to force users to verify their account password anyways when they log in.
 
-<x-next url=/docs/custom-fields>PDF customization</x-next>
+<x-next url=/docs/advanced-settings>Advanced Settings</x-next>
 

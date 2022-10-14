@@ -477,4 +477,4 @@ After you have saved the design, you'll want to make this your new default desig
 
 If your QR codes are not appearing then there would be a configuration issue that needs to be addressed. The most common reasons the QR code does not appear on the PDF is due to missing company details. Your full address is required along with the clients full details.
 
-<x-next url=/docs/troubleshooting>Troubleshooting</x-next>
+<x-next url=/docs/gateways>Gateways</x-next>
