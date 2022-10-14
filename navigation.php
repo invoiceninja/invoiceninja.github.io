@@ -21,7 +21,7 @@ return [
             'Installation' => '/docs/self-host-installation',
             'Troubleshooting' => '/docs/self-host-troubleshooting',
             'Updating' => '/docs/self-host-updating',
-            'Env Variables' => '/docs/env-variables',
+            '.env Variables' => '/docs/env-variables',
         ],
     ],
     'Hosted' => [
