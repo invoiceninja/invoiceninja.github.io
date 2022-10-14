@@ -100,4 +100,4 @@ As of this moment, to pay with Apple, Google or Microsoft Pay a credit card need
 - Microsoft Edge 16.16299 or newer
 - [A saved credit card](https://support.microsoft.com/en-us/help/4026594/microsoft-account-add-update-remove-credit-cards-and-other-ways-to-pay)
 
-<x-next url=/docs/products>Products</x-next>
+<x-next url=/docs/quotes>Quotes</x-next>

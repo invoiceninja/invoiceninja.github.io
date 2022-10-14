@@ -154,4 +154,4 @@ $contact.custom3
 $contact.custom4
 ```
 
-<x-next url=/docs/credits>Credits</x-next>
+<x-next url=/docs/products>Products</x-next>

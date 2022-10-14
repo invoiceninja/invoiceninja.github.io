@@ -138,4 +138,4 @@ When a credit is archived no further modifications can be made to the credit. To
 
 Restoring a credit from the archived or deleted state will set the credit back to its previous state prior to archiving.
 
-<x-next url=/docs/expenses>Expenses</x-next>
+<x-next url=/docs/projects>Projects</x-next>

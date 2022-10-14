@@ -101,4 +101,4 @@ An expense record can manually be archived, which simply hides it from view in t
 
 An expense record can manually be deleted, which will remove it from view, and remove it from any reports as well.  Deleted expense records can be seen by changing your filters when viewing the table or list of expenses, and using the "Restore" function can return the deleted expense record to its former state.
 
-<x-next url=/docs/invoices>Invoices</x-next>
+<x-next url=/docs/recurring-expenses>Recurring Expenses</x-next>

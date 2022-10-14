@@ -73,5 +73,5 @@ Billing address details for your vendor can be entered here for record keeping p
 * **Postal Code**
 * **Country**
 
-  <x-next url=/docs/advanced-settings>Advanced Settings</x-next>
+  <x-next url=/docs/purchase-orders>Purchase Orders</x-next>
 

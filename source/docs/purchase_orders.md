@@ -105,4 +105,4 @@ When a purchase order is archived no further modifications can be made to the pu
 Restoring a purchase order from the archived or deleted state will set the purchase order back to its previous state prior to archiving.
 
 
-<x-next url=/docs/purchase orders>purchase orders</x-next>
+<x-next url=/docs/expenses>Expenses</x-next>
