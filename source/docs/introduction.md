@@ -55,6 +55,10 @@ Some fields (such as date and time) support shorthand input and provide a previe
 
 The app version (ie. `v5.1.56-A47`) is comprised of two parts: the API version and the Admin Portal version. In this cases the API version is `5.1.56` and the AP version is `47`. The `A` denotes the platform, in this case Android.
 
+<x-info>
+Tip: You can directly navigate to the relevant section of the docs using the question mark icon in the lower left corner of the app.
+</x-info>
+
 ## Debugging problems
 
 If you run into any problems you can contact us directly in the app using the support icon in the bottom left corner of
