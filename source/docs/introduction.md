@@ -51,6 +51,8 @@ tapping it will instead create a new client. This pattern is used throughout the
 
 Two other examples are you can long press an invoice on the dashboard to navigate directly to the edit screen and long pressing the edit button on the tables will start multi-select and select the record.
 
+Some fields (such as date and time) support shorthand input and provide a preview of the selected value. For example, you can select enter April 4th in the date field by typing `404` and `1.5` in a time field will be converted to one and a half hours.
+
 The app version (ie. `v5.1.56-A47`) is comprised of two parts: the API version and the Admin Portal version. In this cases the API version is `5.1.56` and the AP version is `47`. The `A` denotes the platform, in this case Android.
 
 ## Debugging problems
