@@ -28,7 +28,7 @@ You can further customize your reports by selecting different columns of data to
 
 When looking at the list of records at the bottom of the screen, there is a field at the top of every column that you can use to filter your records with.  These filters apply to your report, and will change your chart, and the *Export* data when you generate a .CSV file.
 
-Most of the filters are simple, matching text based filters (like filtering for clients named "Daniel"), but some function a little differently.  Below you can see that columns with a dollar value allow you to filter based on a *minimum value* rather than an exact value.
+Most of the filters are simple, matching text based filters (like filtering for clients named "Daniel"), but some function a little differently.  Below you can see that columns with a dollar value allow you to filter based on a *minimum value* rather than an exact value. You can also use min-max (ie. `100-200`) to see records between the selected amounts.
 
 ![alt text](/assets/images/reports/filter-minimum-value.png "Filter by Minimum Value")
 
