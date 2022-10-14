@@ -12,7 +12,7 @@ return [
             'PDF customization' => '/docs/custom-fields',
             'Gateways' => '/docs/gateways',
             'Subscriptions' => '/docs/subscriptions',
-            'Migrating to v5' => '/docs/migration',
+            'Migrating to V5' => '/docs/migration',
         ],
     ],
     'Self host' => [
