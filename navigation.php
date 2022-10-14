@@ -12,6 +12,7 @@ return [
             'PDF customization' => '/docs/custom-fields',
             'Gateways' => '/docs/gateways',
             'Subscriptions' => '/docs/subscriptions',
+            'Migrating to v5' => '/docs/migration',
         ],
     ],
     'Self host' => [
@@ -27,7 +28,6 @@ return [
         'url' => '/docs/hosted-quickstart',
         'children' => [
             'Quick Start' => '/docs/hosted-quickstart',
-            'Migrating to v5' => '/docs/migration',
             'Activate' => '/docs/hosted-activate',
             'Custom Domain' => '/docs/hosted-custom-domain',
             'Hosted Migration' => '/docs/hosted-migration',
