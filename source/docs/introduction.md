@@ -5,7 +5,7 @@ section: content
 
 # Introduction
 
-## App basics
+## App Basics
 
 The main interface is divided into three parts: the sidebar navigation menu, the list (or table) and the preview. The
 layout can be customized to fit your needs using a combination of the icons at the bottom of the screen, and the options in Settings > Device Settings.
