@@ -23,6 +23,17 @@ return [
             'Env Variables' => '/docs/env-variables',
         ],
     ],
+    'Hosted' => [
+        'url' => '/docs/hosted-quickstart',
+        'children' => [
+            'Quick Start' => '/docs/hosted-quickstart',
+            'Migrating to v5' => '/docs/migration',
+            'Activate' => '/docs/hosted-activate',
+            'Custom Domain' => '/docs/hosted-custom-domain',
+            'Hosted Migration' => '/docs/hosted-migration',
+            'Stripe Integration' => '/docs/hosted-stripe',
+        ],
+    ],
     'Developer guide' => [
         'url' => '/docs/developer-guide',
         'children' => [
@@ -32,22 +43,8 @@ return [
             'Static Variables' => '/docs/statics',
         ],
     ],
-    'Hosted' => [
-        'url' => '',
-        'children' => [
-            'Quick Start' => '/docs/hosted-quickstart',
-            'Activate' => '/docs/hosted-activate',
-            'Custom Domain' => '/docs/hosted-custom-domain',
-            'Hosted Migration' => '/docs/hosted-migration',
-            'Stripe Integration' => '/docs/hosted-stripe',
-        ],
-    ],
-    'Migrating to V5' => [
-        'url' => '/docs/migration',
-        'children' => [],
-    ],
     'Legal' => [
-        'url' => '',
+        'url' => '/docs/legal/license',
         'children' => [
             'License' => '/docs/legal/license',
             'Terms of Service' => '/docs/legal/terms_of_service',
