@@ -30,7 +30,7 @@
         </section>
     </div>
     <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
-        <a href="/docs/getting-started"
+        <a href="/docs/introduction"
            class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
         <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank"
            class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>

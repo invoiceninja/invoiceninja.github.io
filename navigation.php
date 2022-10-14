@@ -2,7 +2,7 @@
 
 return [
     'User guide' => [
-        'url' => '/docs/getting-started',
+        'url' => '/docs/introduction',
         'children' => [
             'Introduction' => '/docs/introduction',
             'Modules' => '/docs/modules',
@@ -37,6 +37,7 @@ return [
     'Developer guide' => [
         'url' => '/docs/developer-guide',
         'children' => [
+            'Getting Started' => '/docs/developer-guide',
             'Auth' => '/docs/api/authentication',
             'Clients' => '/docs/api/clients',
             'Payment Gateways' => '/docs/payment-gateways',

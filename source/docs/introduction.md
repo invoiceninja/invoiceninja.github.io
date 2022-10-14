@@ -5,6 +5,41 @@ section: content
 
 # Introduction
 
+## Overview
+
+Invoice Ninja is an invoicing application which makes sending invoices and receiving payments simple and easy. Our latest version is a clean slate rewrite of our popular invoicing application which builds on the existing feature set and adds a wide range of features and enhancements the community has asked for.
+
+## Architecture
+
+The app is divided into three main parts: the backend/API and the two admin portals.
+
+### Backend - API
+
+#### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
+
+- Framework: [Laravel](https://laravel.com)
+- Code: [GitHub](https://github.com/invoiceninja/invoiceninja/tree/v5-stable)
+- API Docs: [SwaggerHub](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja)
+
+### Admin Portal - Desktop & Mobile
+
+#### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
+
+- Framework: [Flutter](https://flutter.dev)
+- Code: [GitHub](https://github.com/invoiceninja/admin-portal)
+- Demo: [demo.invoiceninja.com](https://demo.invoiceninja.com)
+
+### Admin Portal - Web
+
+#### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
+
+- Framework: [React](https://reactjs.org)
+- Code: [GitHub](https://github.com/invoiceninja/ui)
+
+## Performance
+
+For large accounts we recommend using the web app. The desktop/mobile apps load all company data when first logging in, this makes it very fast to navigate but can cause problem with larger accounts. The web app loads data on demand so can better handle large accounts.
+
 ## App Basics
 
 The main interface is divided into three parts: the sidebar navigation menu, the list (or table) and the preview. The
@@ -17,30 +52,6 @@ tapping it will instead create a new client. This pattern is used throughout the
 Two other examples are you can long press an invoice on the dashboard to navigate directly to the edit screen and long pressing the edit button on the tables will start multi-select and select the record.
 
 The app version (ie. `v5.1.56-A47`) is comprised of two parts: the API version and the Admin Portal version. In this cases the API version is `5.1.56` and the AP version is `47`. The `A` denotes the platform, in this case Android.
-
-## Performance
-
-There are three main areas to consider: the initial data load, navigating through the app and finally saving changes.
-
-<x-info>
-
-For optimal performance we recommend using the native [desktop](https://invoiceninja.com/desktop) and [mobile](https://invoiceninja.com/mobile) apps.
-
-</x-info>
-
-### Loading
-
-In large accounts the initial loads can take a bit of time. One way to optimize this is to load less data, you can select the number of years to load on Settings > User Details.
-
-You can also enable "Persist Data" on Settings > Device Settings to save the data locally however with very large accounts we don't recommend using this option in the web app.
-
-### Navigating
-
-Once the data is loaded navigating through the app should be fast on all platforms however the mobile/desktop apps will always be faster than the web app.
-
-### Saving
-
-Most save requests should process quickly. If you find the app is slow after saving check that "Persist Data" is disabled on Settings > Device Settings.
 
 ## Debugging problems
 

@@ -11,7 +11,6 @@ Documentation is available at [https://invoiceninja.github.io](https://invoiceni
 ### Table of contents
 - [Invoice Ninja Documentation](#invoice-ninja-documentation)
     + [Introduction](#introduction)
-    + [Getting started](#getting-started)
         - [Clone the repository](#clone-the-repository)
         - [Change directory and install dependencies](#change-directory-and-install-dependencies)
         - [Preview it](#preview-it)
