@@ -19,7 +19,7 @@ Once you have decided on a name,  you need to create a CNAME pointing your domai
 cname.invoicing.co.
 ```
 
-Once you can see the record resolving correctly, you then add your domain name to the V5 admin panel in Settings > Client Portal.
+Once you can see the record resolving correctly, you then add your domain name to the v5 admin panel in Settings > Client Portal.
 
 Change your portal mode to Domain and then enter the fully qualified domain name ie:
 

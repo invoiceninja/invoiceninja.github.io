@@ -3,7 +3,7 @@ extends: _layouts.docs
 section: content
 ---
 
-# Migrating to V5
+# Migrating to v5
 
 <x-info>
 If you are a Hosted Invoice Ninja you can skip all of these steps. Just log into your account, click on the Start Migration button in Settings > Account Management and we will take care of the rest. Once you are happy your data is across you can follow the steps in our [Activation](https://invoiceninja.github.io/docs/hosted-activate/) guide
@@ -13,15 +13,15 @@ If you are a Hosted Invoice Ninja you can skip all of these steps. Just log into
 You need to setup this version (v5) completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-## Preparing V4.
+## Preparing v4.
 
-The first step needed to prepare to migrate your data across to your new V5 installation is to update your V4 installation to the [latest version](https://download.invoiceninja.com) available. This is a critical step and you will see problems migrating your data if you do not update to the latest V4.
+The first step needed to prepare to migrate your data across to your new v5 installation is to update your v4 installation to the [latest version](https://download.invoiceninja.com) available. This is a critical step and you will see problems migrating your data if you do not update to the latest v4.
 
-## Installing V5.
+## Installing v5.
 
-Installing V5 is covered in detail [here](/docs/self-host-installation) with resources to cover your needs for Docker / Shared Hosting or Ubuntu/Centos installations.
+Installing v5 is covered in detail [here](/docs/self-host-installation) with resources to cover your needs for Docker / Shared Hosting or Ubuntu/Centos installations.
 
-An important detail with your V5 installation is that your initial user login is identical to your V4 installation.
+An important detail with your v5 installation is that your initial user login is identical to your v4 installation.
 
 The migration relies heavily on the Laravel queue system, so you will need to ensure that you have configured the cron scheduler which boots the laravel queue for you. If you do not configure the cron scheduler, the migration will not work and you will end up with a blank company with no content. 
 
@@ -41,13 +41,13 @@ After clicking ```Start migration```, you'll get another screen, simply select t
 
 ![alt text](/assets/images/migration/migration_step_3.png "Enter URL")
 
-The next screen asks for the full qualified domain name of your V5 installation, enter this including the http:// or https:// in your URL, ie
+The next screen asks for the full qualified domain name of your v5 installation, enter this including the http:// or https:// in your URL, ie
 
 ```http:://ninja.test```
 
 ![alt text](/assets/images/migration/migration_step_4.png "Authenticate")
 
-The next screen requires you to enter your login credentials, remembering that these should be identical between your V4 and V5 installation. You'll also notice an additional field ```API_SECRET``` this can be ignore if you do not have a value set for this in your ```.env``` file.
+The next screen requires you to enter your login credentials, remembering that these should be identical between your v4 and v5 installation. You'll also notice an additional field ```API_SECRET``` this can be ignore if you do not have a value set for this in your ```.env``` file.
 
 If you experience an error at this point, most likely either your credentials are wrong, or the URL you have entered is not correct.
 
@@ -57,13 +57,13 @@ If you successfully authenticate you'll see the next screen which allows you to 
 
 Important points at this stage:
 
-* Force migration will overwrite an existing company that has already been migrated to V5, this is destructive and cannot be undone.
+* Force migration will overwrite an existing company that has already been migrated to v5, this is destructive and cannot be undone.
 <br>**NOTE:** If the 1st Migration fails and only part of the data got transferred, PURGE and DELETE the Data/Company and retry the process with "Force migration" checked.
-* Just selecting the checkbox next to the company name will attempt a migration if the company has never been migrated to the V5 installation. This is a non-destructive migration. ie. it will not overwrite a matching company.
+* Just selecting the checkbox next to the company name will attempt a migration if the company has never been migrated to the v5 installation. This is a non-destructive migration. ie. it will not overwrite a matching company.
 
 ![alt text](/assets/images/migration/migration_step_6.png "Migration started")
 
-## V5 Migration Process
+## v5 Migration Process
 
 With a little luck, you should have already received an email notification advising the migration has completed!
 
@@ -114,18 +114,18 @@ Inside here you will see output such as this:
 
 This example output would indicate that each entity was successfully brought across, if a problem is detected early the migration will fail early and return an error. A Laravel error will also be thrown indicating the exact issue.
 
-## Forwarding users from V4 to V5
+## Forwarding users from v4 to v5
 
-When you have completed the migration and are happy with the configuration of your V4 installation, it is time to forward your users with existing V4 invitations to your V5 installation.
+When you have completed the migration and are happy with the configuration of your v4 installation, it is time to forward your users with existing v4 invitations to your v5 installation.
 
-In V4 navigate to Settings > Account Management - Forward customers to V5.
+In v4 navigate to Settings > Account Management - Forward customers to v5.
 
-Enter in the URL for your V5 installation and click save. When your users use existing V4 links, they will be transparently forwarded to your V5 installation.
+Enter in the URL for your v5 installation and click save. When your users use existing v4 links, they will be transparently forwarded to your v5 installation.
 
-For hosted users, you can discover your full URL by navigating in V5 to Settings > Client Portal. The Subdomain field will be whatever the subdomain value is with invoicing.co on the end. ie.
+For hosted users, you can discover your full URL by navigating in v5 to Settings > Client Portal. The Subdomain field will be whatever the subdomain value is with invoicing.co on the end. ie.
 
 <x-warning>
-    Note! Once you have enabled forwarding. Your V4 account will become disabled. This means that your recurring invoices and reminders / auto billing will no longer be performed from this installation at all.
+    Note! Once you have enabled forwarding. Your v4 account will become disabled. This means that your recurring invoices and reminders / auto billing will no longer be performed from this installation at all.
 </x-warning>
 
 https://subdomain.invoicing.co
@@ -151,7 +151,7 @@ Some known issues when migrating to our hosted platform include:
 "This user is unable to be attached to this company. Perhaps they have already registered a user on another account?"
 ```
 
-If you see this error it indicates that one of your users has already registered their own account on the hosted platform. We do not support cross account users for security purposes. You'll need to change the user's email address in your V4 installation to a different email address for the migration to succeed.
+If you see this error it indicates that one of your users has already registered their own account on the hosted platform. We do not support cross account users for security purposes. You'll need to change the user's email address in your v4 installation to a different email address for the migration to succeed.
 
 
 ## Cross account migration
