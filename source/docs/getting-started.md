@@ -3,7 +3,7 @@ extends: _layouts.docs
 section: content
 ---
 
-# Introduction
+# Getting Started
 
 ## Overview
 
@@ -38,7 +38,7 @@ The app is divided into three main parts: the backend/API and the two admin port
 
 ## Performance
 
-For large accounts we recommend using the web app. The desktop/mobile apps load all company data when first logging in, this makes it very fast to navigate but can cause problem with larger accounts. The web app loads data on demand so can better handle large accounts.
+For large accounts or accounts with many users we recommend using the web app. The desktop/mobile apps load all company data when first logging in, this makes it very fast to navigate but can cause problem with larger accounts. The web app loads data on demand so can better handle large accounts.
 
 ## App Basics
 

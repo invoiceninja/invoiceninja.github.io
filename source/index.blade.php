@@ -5,7 +5,7 @@
 
 <div class="container px-8 my-10 md:mx-auto">
     <div class="grid grid-cols-12">
-        <a href="/docs/introduction" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-white md:col-span-6">
+        <a href="/docs/getting-started" class="flex flex-col flex-wrap content-center justify-center h-64 col-span-12 p-4 text-center bg-white md:col-span-6">
             <h4 class="text-3xl font-semibold">Getting started</h4>
             <p class="mt-2">Learn how to get started with Invoice Ninja.</p>
         </a>

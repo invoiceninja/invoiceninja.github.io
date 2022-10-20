@@ -2,9 +2,9 @@
 
 return [
     'User guide' => [
-        'url' => '/docs/introduction',
+        'url' => '/docs/getting-started',
         'children' => [
-            'Introduction' => '/docs/introduction',
+            'Introduction' => '/docs/getting-started',
             'Modules' => '/docs/modules',
             'Reports' => '/docs/reports',
             'Basic Settings' => '/docs/basic-settings',
