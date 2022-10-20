@@ -4,7 +4,7 @@ return [
     'User guide' => [
         'url' => '/docs/getting-started',
         'children' => [
-            'Introduction' => '/docs/getting-started',
+            'Getting Started' => '/docs/getting-started',
             'Modules' => '/docs/modules',
             'Reports' => '/docs/reports',
             'Basic Settings' => '/docs/basic-settings',
