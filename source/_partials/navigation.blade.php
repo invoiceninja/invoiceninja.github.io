@@ -10,7 +10,7 @@
             <div class="hidden md:hidden lg:block md:space-x-5">
                 <input type="text" placeholder="Quick search ..." id="topSearchBox"
                        class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none">
-                <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation</a>
+                <a href="/docs/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
                 <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja" target="_blank"
                    class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
                 <a target="_blank" href="https://invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go
