@@ -454,7 +454,17 @@ For Swiss users, you are able to automatically inject Swiss Compatible payment Q
 
 ![alt text](/assets/images/pdf_customization/swiss_qrcode1.png "Swiss QR Codes")
 
-To configure this, you'll need your QR IBAN number and BESR ID. In Settigns > Company Details you'll need to enter these values in the Details page.
+There are three types of QR-Rechnungen. 
+1. There is the QR-IBAN with QR-Referenz. 
+**QR-IBAN:** This is a special IBAN, different from you normal IBAN. You can calculate your QR-IBAN from your normal IBAN. For example, the normal IID of Raiffeisen is 80808. Because of that, a Raiffeisen IBAN looks like this  CH21 **8080 8**001 2345 6789 0
+You can lookup the QR-IID of your bank (something between 30000 and 31999) and replace the IID with the QR-IID. The Raiffeisen QR-IID is 30808.
+If we replace the previous IBAN with this, we get:  CH12 **3080 8**001 2345 6789 0. This is the QR-IBAN.
+**The QR-Referez:** is a 26 digit number follow by one checksum digit. The checksum has to be modulo 10, recursiv. Additionally you can add 140 symbols of text.
+2. QR-Rechnung with IBAN and without Referenz. This is your normal IBAN. You can't use a Referenz! You are only allowed to use 140 symbols of text.
+3. QR-Rechnung with IBAN and Creditor Reference. Follows the ISO-11649 norm. Works like a QR-Reference but uses ISO-11649 which makes it usable international. The other two QR methods only work in Switzerand. You have to use the normal IBAN, not the QR IBAN. 
+
+
+You can configure this under Settigns > Company Details in the Details page.
 
 
 ![alt text](/assets/images/pdf_customization/swiss_qrcode3.png "Swiss QR Codes")
