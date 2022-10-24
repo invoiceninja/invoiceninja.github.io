@@ -453,6 +453,7 @@ $entity_footer - Entity footer label/value
 For Swiss users, you are able to automatically inject Swiss Compatible payment QR codes directly into the invoice design.
 
 There are three types of QR-Rechnungen. 
+
 1. **QR-IBAN with QR-Reference**. 
 This is a special IBAN, different from you normal IBAN. Easiest way is to ask your bank for the QR-IBAN, but you can also calculate it yourself. 
 The QR-Referez is a 26 digit number follow by one checksum digit. The checksum has to be modulo 10, recursiv. Additionally you can add 140 symbols of text.
