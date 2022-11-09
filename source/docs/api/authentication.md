@@ -1,9 +1,9 @@
 ---
-extends: _layouts.docs
+extends: _layouts.developer_resources
 section: content
 ---
 
-Authentication
+# Authentication
 
 ## Base login
 

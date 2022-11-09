@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs 
+extends: _layouts.user_guide
 section: content
 ---
 
@@ -105,7 +105,7 @@ A quote can be marked as deleted if the following conditions have been met
 What happens when a quote is deleted?
 
 * Quote status set to deleted
-* The quote number is appended with <b>_deleted</b> in order to allow reuse of quote numbers.
+* The quote number is appended with **_deleted** in order to allow reuse of quote numbers.
 
 ### Archived
 
@@ -119,4 +119,4 @@ When a quote is archived no further modifications can be made to the quote. To m
 
 Restoring a quote from the archived or deleted state will set the quote back to its previous state prior to archiving.
 
-<x-next url=/docs/credits>Credits</x-next>
+<x-next url=/docs/tasks>Tasks</x-next>

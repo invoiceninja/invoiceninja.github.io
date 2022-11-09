@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs 
+extends: _layouts.user_guide 
 section: content
 ---
 
@@ -14,8 +14,8 @@ Your browser does not support the video tag.
 
 There several ways for a client to be created, including:
 
-* Admin Portal > Client Module > New Client
-* Admin Portal > Settings > Import | Export > Client CSV Import
+* Clients > + Client
+* Settings > Import | Export > Client CSV Import
 * Client Portal (if client registration is enabled on Settings > Client Portal)
 * API Integrator: Zapier, Integromat, APISync, or manual API calls developed using the [API Documentation](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja/).
 
@@ -29,7 +29,7 @@ There are three different client id fields:
 
 ## Viewing Clients
 
-To view a client, select one from the list of clients on the client panel, or by linking to it from a related invoice, project, task, or transaction.  
+To view a client, select one from the list of clients on the client panel, or by linking to it from a related invoice, project, task or transaction.  
 
 ### Overview
 
@@ -154,4 +154,4 @@ $contact.custom3
 $contact.custom4
 ```
 
-<x-next url=/docs/products>Products</x-next>
+<x-next url=/docs/credits>Credits</x-next>

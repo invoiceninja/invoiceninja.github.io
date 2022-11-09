@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs 
+extends: _layouts.self_host 
 section: content
 ---
 
@@ -66,4 +66,3 @@ the screen. If you're using the web app you can hit /update?secret=`YOUR-SECRET-
 
 Your `secret` is part of the .env file.
 
-<x-next url=/docs/modules>Modules</x-next>

@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs
+extends: _layouts.user_guide 
 section: content
 ---
 
@@ -128,10 +128,10 @@ A invoice can be marked as deleted if the following conditions have been met
 
 What happens when a invoice is deleted?
 
-If the invoice has a balance remaining, in order to balance the ledger, we perform a <b>Cancellation</b> on the invoice first and then perform the deletion.
+If the invoice has a balance remaining, in order to balance the ledger, we perform a **Cancellation** on the invoice first and then perform the deletion.
 
 * Invoice status set to deleted
-* The invoice number is appended with <b>_deleted</b> in order to allow reuse of invoice numbers.
+* The invoice number is appended with **_deleted** in order to allow reuse of invoice numbers.
 
 <x-warning>
 Important! If a invoice has a remaining balance or has had payments applied to it, the invoice is cancelled and then deleted.
@@ -166,4 +166,4 @@ When a invoice is archived no further modifications can be made to the invoice. 
 
 Restoring a invoice from the archived or deleted state will set the invoice back to its previous state prior to archiving.
 
-<x-next url=/docs/recurring-invoices>Recurring Invoices</x-next>
+<x-next url=/docs/payments>Payments</x-next>

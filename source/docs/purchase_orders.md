@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs
+extends: _layouts.user_guide
 section: content
 ---
 
@@ -90,7 +90,7 @@ A purchase order can be marked as deleted if the following conditions have been 
 What happens when a purchase order is deleted?
 
 * purchase order status set to deleted
-* The purchase order number is appended with <b>_deleted</b> in order to allow reuse of purchase order numbers.
+* The purchase order number is appended with **_deleted** in order to allow reuse of purchase order numbers.
 
 ### Archived
 
@@ -104,5 +104,4 @@ When a purchase order is archived no further modifications can be made to the pu
 
 Restoring a purchase order from the archived or deleted state will set the purchase order back to its previous state prior to archiving.
 
-
-<x-next url=/docs/expenses>Expenses</x-next>
+<x-next url=/docs/recurring-expenses>Recurring Expenses</x-next>

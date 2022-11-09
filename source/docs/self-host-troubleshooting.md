@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs
+extends: _layouts.self_host
 section: content
 ---
 

@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs
+extends: _layouts.user_guide
 section: content
 ---
 
@@ -81,4 +81,4 @@ Note that when you view your reports, recurring expenses will be categorized by 
   * **By Rate** or **By Amount** - Change between rate or amount to change the *Tax* field (under the details tab) from a percent based tax, to a custom flat tax.
   * **Inclusive Taxes** - Enable this option if the taxes are inclusive to the cost of the expense, rather than exclusive.  For example:  Exclusive tax is applied on top of the expense cost, like so: 100 + 10% = $110 total (100 + 10).  Inclusive tax is when taxes are deducted from the amount the vendor bills you, and included in your expense amount, rather than tacked on top of what you pay the vendor, like so:  100 + 10% = $100 total (90.91 +9.09).
 
-<x-next url=/docs/reports>Reports</x-next>
+<x-next url=/docs/recurring-invoices>Recurring Invoices</x-next>

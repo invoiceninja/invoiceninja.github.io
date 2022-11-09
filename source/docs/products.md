@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs
+extends: _layouts.user_guide 
 section: content
 ---
 
@@ -61,4 +61,4 @@ To view the current stock levels, simply viewing the product will show the curre
 
 You can also combine the Purchase Order module to update your inventory level automatically, see <a href="/docs/purchase_order"> Purchase Orders</a> for more info.
 
-<x-next url=/docs/invoices>Invoices</x-next>
+<x-next url=/docs/purchase_orders>Purchase Orders</x-next>

@@ -1,5 +1,5 @@
 ---
-extends: _layouts.docs
+extends: _layouts.developer_resources
 section: content
 ---
 
@@ -12,6 +12,33 @@ The Invoice Ninja API is built on top of the <a href="https://laravel.com">Larav
 If you are planning to build new functionality in Invoice Ninja, for example a Inventory Module, rather than integrate this directly into the codebase, we highly recommend using the <a href="https://github.com/nwidart/laravel-modules">Laravel Modules</a> library. This library is already part of the Invoice Ninja core, so you can dive straight in and start building.
 
 If you plan to contribute your code back to the official Invoice Ninja repository, please ensure you have test coverage for your functionality. We use <a href="https://phpunit.de/">Phpunit</a> for our API testing, and <a href="https://www.cypress.io/">Cypress</a> for our UI testing of the client portal.
+
+## Architecture
+
+The app is divided into three main parts: the backend/API and the two admin portals.
+
+### Backend - API
+
+#### Lead developer: [David Bomba](https://twitter.com/deadbeefx0)
+
+- Framework: [Laravel](https://laravel.com)
+- Code: [GitHub](https://github.com/invoiceninja/invoiceninja/tree/v5-stable)
+- API Docs: [SwaggerHub](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja)
+
+### Admin Portal - Desktop & Mobile
+
+#### Lead developer: [Hillel Coren](https://twitter.com/hillelcoren)
+
+- Framework: [Flutter](https://flutter.dev)
+- Code: [GitHub](https://github.com/invoiceninja/admin-portal)
+- Demo: [demo.invoiceninja.com](https://demo.invoiceninja.com)
+
+### Admin Portal - Web
+
+#### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
+
+- Framework: [React](https://reactjs.org)
+- Code: [GitHub](https://github.com/invoiceninja/ui)
 
 ## API Definition
 
