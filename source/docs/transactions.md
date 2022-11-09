@@ -23,9 +23,9 @@ For enterprise hosted users, you can use the Connect Accounts button to add / up
 
 Clicking on this button will take you to the Yodlee platform which will allow you to securely authenticate with your bank, from there can you can select the bank accounts you wish to link with Invoice Ninja.
 
-Once you have connected you bank account you have to option to enable automatic syncing where Invoice Ninja will perform rolling data syncs to keep all of your transactions up to date.
+Once you have connected your bank account you have to option to enable automatic syncing where Invoice Ninja will perform rolling data syncs to keep all of your transactions up to date.
 
-It is also possible to manually create a bank account and manually create transactions, you can also import bank statements which are in CSV format ( Settings > Import | Export ) 
+It is also possible to manually create a bank account and transactions, you can also import bank statements which are in CSV format ( Settings > Import | Export ) 
 
 ## Transaction List
 
