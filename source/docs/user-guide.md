@@ -35,7 +35,7 @@ You'll want to do some basic configuration when you log in for the first time, s
 
 ### Company Logo
 
-Display your company logo on your Invoice PDFs and in the client portal. All emails that you send to yuor client from Invoice Ninja will display your Company Logo. You can upload your company logo in:
+Display your company logo on your Invoice PDFs and in the client portal. All emails that you send to your client from Invoice Ninja will display your Company Logo. You can upload your company logo in:
 
 ```bash
 Settings > Company Details > Logo
