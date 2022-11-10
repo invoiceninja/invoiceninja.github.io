@@ -11,7 +11,7 @@
 
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
-        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow border-t-4" style="border-color: rgb(84, 180, 52);">
             <a href="/docs/user-guide">
                 <div class="flex flex-1 flex-col p-8">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-auto h-32 w-32 flex-shrink-0">
@@ -22,7 +22,7 @@
             </a>
         </li>
 
-        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow border-t-4" style="border-color: rgb(0, 128, 255);">
             <a href="/docs/developer-guide">
                 <div class="flex flex-1 flex-col p-8">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-auto h-32 w-32 flex-shrink-0">
@@ -33,7 +33,7 @@
             </a>
         </li>
 
-        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow border-t-4" style="border-color: rgb(255, 0, 0);">
             <a href="/docs/getting-started/">
                 <div class="flex flex-1 flex-col p-8">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-auto h-32 w-32 flex-shrink-0">
@@ -44,7 +44,7 @@
             </a>
         </li>
 
-        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow">
+        <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow border-t-4" style="border-color: rgb(255, 128, 0);">
             <a href="/docs/migration">    
                 <div class="flex flex-1 flex-col p-8">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-auto h-32 w-32 flex-shrink-0">
