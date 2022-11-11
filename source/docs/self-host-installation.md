@@ -298,9 +298,7 @@ MAIL_FROM_NAME="Full Name With Double Quotes"
     NOTE: if you are using SSL encryption the MAIL_PORT is 465. TLS encryption is on port 587.
 </x-warning>
 
-###
-
-Individual mail configurations per company
+### Individual mail configurations per company
 
 From v5.5.38 we support per company mail configurations.
 
