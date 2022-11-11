@@ -298,6 +298,45 @@ MAIL_FROM_NAME="Full Name With Double Quotes"
     NOTE: if you are using SSL encryption the MAIL_PORT is 465. TLS encryption is on port 587.
 </x-warning>
 
+###
+
+Individual mail configurations per company
+
+From v5.5.38 we support per company mail configurations.
+
+What does this mean?
+
+For example if you have two Companies, Acme co and Ninja co you can create separate mail server configurations for each company.
+
+To configure this you will need to prefix your .env  with the primary key of the company ie In your database open the companies table, and if the primary ID column is 1 for Acme co this would be the configuration
+
+```
+1_MAIL_HOST=
+1_MAIL_PORT=
+1_MAIL_USERNAME=null
+1_MAIL_PASSWORD=null
+1_MAIL_ENCRYPTION=null
+```
+
+If Ninja Co company id 5
+
+```
+5_MAIL_HOST=
+5_MAIL_PORT=
+5_MAIL_USERNAME=null
+5_MAIL_PASSWORD=null
+5_MAIL_ENCRYPTION=null
+```
+
+And for these configuration, always ensure your cache is never optimized, you'll want to run:
+
+```
+php artisan config:cache
+php artisan config:clear
+```
+
+This last step is extremely important. If your system caches the configuration it will not read in the configuration values and your emails will fail.
+
 ## Currency Conversion
 
 <p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.
