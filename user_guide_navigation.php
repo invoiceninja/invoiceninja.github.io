@@ -29,6 +29,7 @@ return [
         'children' => [
             'PDF Customization' => '/docs/custom-fields',
             'Payment Gateways' => '/docs/gateways',
+            'QR Codes' => '/docs/qr-codes',
             'Subscriptions' => '/docs/subscriptions',
             'Import|Export' => '/docs/import-and-export'
         ],        
