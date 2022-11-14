@@ -29,7 +29,7 @@ It is also possible to manually create a bank account and transactions, you can 
 
 ## Transaction List
 
-The transactions overview display all of your transactions and their status.
+The transactions overview displays all of your transactions and their status.
 
 ![alt text](/assets/images/transactions/transaction_list.png "Transaction Overview")
 
@@ -37,11 +37,11 @@ The transactions overview display all of your transactions and their status.
 * **Status** - Defines the status of the transaction.
  - Unmatched - A new transaction that needs to be matched to a Invoice or Expense
  - Matched - A transaction that (based on predefined rules) has been matched to a Invoice or Expense
- - Completes - A transaction that has been matched AND linked to a Invoice or Expense
+ - Completed - A transaction that has been matched AND linked to a Invoice or Expense
 * Deposit - The amount of income for the transaction.
-* Withdrawal - The amount of th expense for the transaction.
+* Withdrawal - The amount of the expense for the transaction.
 * Date - The Date of the transaction.
-* Description - The description of the transactions
+* Description - The description of the transaction.
 * Invoices - The linked invoices (visible when completed)
 * Expenses - The linked expenses (visible when completed)
 
@@ -63,6 +63,22 @@ Select the bank account to link the transaction to
 Enter a description. For auto matching, if you enter the invoice number we will automatically find and match the related invoice.
 
 ## Matching Transactions
+
+When you click on a transaction a second window pane will open which will show you the matching options:
+
+### Invoice Matching.
+
+To match one or more invoices to a transaction you can use the search dialog to find your invoice, or simply scroll through the list and check one of more invoice to link to the transaction.
+
+![alt text](/assets/images/user_guide/invoice_match.png "Match a invoice")
+
+To finalize, click on the Convert To Payment button. This will create the matching payment for the invoice/s and will also update the status of the invoices to paid
+
+### Expense Matching.
+
+When matching expenses you are able to assign the Vendor and/or a expense category
+
+![alt text](/assets/images/user_guide/expense_match.png "Match a expense")
 
 
 <x-next url=/docs/vendors>Vendors</x-next>
