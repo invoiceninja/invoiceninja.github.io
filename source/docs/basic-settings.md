@@ -52,21 +52,9 @@ The image you select should be 300x300 for best results, and there are no restri
 
 The defaults are system wide - company level defaults, this will applied at every level of the application they refer to.
 
-* **Auto bill**
-  * *Enabled* - A user a payment will be automatically attempted if a payment method is stored on file.
-  * *Enabled by default* - The client will be given the option to allow payment methods to be stored with the radio box selected.
-  * *Disabled by default* - The client will be given the option to allow payment methods to be stored with the radio box unselected.
-  * *Disabled* - No option is given, and auto billing is disabled.
-
-* **Payment Type** - This selector will set the default payment method.
-
 * **Invoice Payment Terms** - The payment term defined in 'days'. You can configure custom payment terms by clicking the **Configure Payment Terms** button
 
 * **Quote Valid Until** - Similar to Invoice Payment Terms, you will select a length of time in days, from the list of payment terms time lengths.
-
-* **Payment Emails**
-  * *Manual Payment Email* - Sends a payment notification to the client when a manual payment is applied
-  * *Online Payment Email* - Sends a payment notification to the client when an online payment has been processed.
 
 * **Terms and Footers** - The terms and footers text inputs allow you to define default for each. These will be injected into the document automagically for you. All you need to do is set it once here and we'll take care of the rest!  Note, you can always override these values by editing them directly in the entity. 
 
@@ -129,18 +117,28 @@ You have a list to maintain of custom labels.  Adding a custom label, such as "I
 
 Edit, or create a new invoice, credit, etc, in order to see the changes to the text labels applied across your documents now.
 
-
-<h2 id=online_payments>Online Payments</h2>
+<h2 id=payment_settings>Payment Settings</h2>
 
 You may configure payment gateways, and payment rules/behaviors from here.
 
+* **Auto bill**
+  * *Enabled* - A user a payment will be automatically attempted if a payment method is stored on file.
+  * *Enabled by default* - The client will be given the option to allow payment methods to be stored with the radio box selected.
+  * *Disabled by default* - The client will be given the option to allow payment methods to be stored with the radio box unselected.
+  * *Disabled* - No option is given, and auto billing is disabled.
 * **Auto Bill On** - In an event where auto billing is enabled, you can configure the automatic payment to be triggered when an invoice is sent, or on the due date of that invoice.
+* **Payment Type** - This selector will set the default payment method.
 * **Use Available Credits** - Configure behavior for when a client has available credits in their account as they go to make a payment
   * *Off* - Will not use available credits in the client's account.
   * *Enabled* - Will use any available credits by default.
   * *Show Option* - Will prompt the user making the payment that there are credits available, if they choose to apply them.
+
 * **Allow Over Payment** - Toggle on/off client ability to optionally pay extra as a tip.
 * **Allow Under Payment** - Toggle the ability for clients to pay a minimum or partial amount owing.
+
+* **Payment Emails**
+  * *Manual Payment Email* - Sends a payment notification to the client when a manual payment is applied
+  * *Online Payment Email* - Sends a payment notification to the client when an online payment has been processed.
 
 ### Configure Payment Gateways
 
