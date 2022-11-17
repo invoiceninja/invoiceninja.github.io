@@ -29,4 +29,9 @@ https://portal.best-brand.com
 
 and finally click save.
 
+<x-warning>
+If you are migrating your custom domain from v4, please consider using a different domain on v5. If you transfer your v4 domain, your forwarding will not work, ie, v4 invoice links will no longer resolve a redirect to v5.
+</x-warning>
+
+
 The system will then generate a SSL certificate for your domain. If you do not see your domain resolve with a valid SSL certificate, please send us an email at contact@invoiceninja.com advising us the full domain and the issue.
