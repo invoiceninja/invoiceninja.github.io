@@ -5,23 +5,32 @@ section: content
 
 # Credits
 
-A credit note is a document sent to the client, notifying that a credit has been provided to their account. Credit notes are used to issue redeemable credits for a specific *Product* or for a flat rate. Credits can be applied to invoices as a payment.
+A credit note is a document sent to the client, notifying that a credit has been provided to their account.
+Credit notes are used to issue redeemable credits for a specific *Product* or for a flat rate.
+Credits can be applied to invoices as a payment.
+
+Note that choosing the right Payment Settings is vital to make credits intuitive and useful to your customers, see https://invoiceninja.github.io/docs/basic-settings/#payment_settings.
 
 ## Viewing a Credit
 
-Simply select a credit from the list, and you will see the credit details, in the mobile layout you will be taken directly to the credit view.  When you select a credit from the list in a desktop layout the credit preview will appear on the left hand side.
+Simply select a credit from the list to see its details.
+In the mobile layout you will be taken directly to the credit view.
+When you select a credit from the list in a desktop layout the credit preview will appear on the left hand side.
 
-From anywhere in the credit view, you will have the option to *Edit* the credit from a button in the top right of the viewing panel.  You can use two buttons at the bottom of the view panel: *View PDF* in order to load a PDF of the credit directly from the admin portal, or *Email Credit* to email the client contacts a link to view the PDF for their available credit from the client portal.
+You can *Edit* the credit from anywhere in the credit view via a button in the top right of the viewing panel.
+Ther are two buttons at the bottom of the view panel: *View PDF* in order to load a PDF of the credit directly from the admin portal, or *Email Credit* to email the client contacts a link to view the PDF for their available credit from the client portal.
 
 The Kebab menu in the uppermost right corner of the credit view presents many functions to work with or manipulate the credit, which can vary based on the state of the credit.  You can change the status of the credit's lifecycle manually, clone the credit, *Enter a Payment* against an invoice with the selected credit, and more.	
 
 ### Overview
 
-From the overview panel, you will see general information about the credit.  The full amount of the credit, credit remaining, which client it is assigned to, the date of the credit, and the line items describing what the credit is for.
+General information about the credit can be found in the overview panel.
+The full amount of the credit, credit remaining, which client it is assigned to, the date of the credit, and the line items describing what the credit is for.
 
 ### Contacts
 
-Here you see the contacts from your client that are marked as included in the credit.  Included contacts will get a copy of the emails sent, and will be able to view the credit from the client portal when they sign in.
+Here you see the contacts from your client that are marked as included in the credit.
+Included contacts will get a copy of the emails sent, and will be able to view the credit from the client portal when they sign in.
 
 Also available are links to the client portal for each respective contact included.
 
