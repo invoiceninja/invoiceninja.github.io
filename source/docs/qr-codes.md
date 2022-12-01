@@ -68,7 +68,7 @@ If your QR codes are not appearing then there would be a configuration issue tha
 
 To enable SEPA QR codes you'll need to follow a couple of steps to ensure there is the correct data.
 
-SEPA QR codes require at the very least a IBAN, for payments outside of EEA you will also need the BIC. These two fields are harvested from the Custom Company Fields section of Invoice Ninja. To configure these navigate to
+SEPA QR codes require at the very least a IBAN, for payments outside of EEA you will also need the BIC. These two fields are harvested from the Custom Company Fields section of Invoice Ninja. Please note that IBAN must be the first custom field and BIC the second custom field. To configure these navigate to
 
 ```bash
 Settings > Custom Fields > Company
