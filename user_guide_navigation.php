@@ -5,6 +5,7 @@ return [
         'url' => '/docs/getting-started',
         'children' => [
             'Getting Started' => '/docs/user-guide',
+            'Banking' => '/docs/banking',
             'Clients' => '/docs/clients',
             'Credits' => '/docs/credits',
             'Expenses' => '/docs/expenses',
