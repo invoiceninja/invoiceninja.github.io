@@ -90,7 +90,44 @@ A transaction can be manually created or updated.
 - Bank Account | The bank account to associate the transactio with
 - Description | The description of the transaction
 
-### Converting a transaction to an expense
+### Converting a transaction to a expense
+
+![alt text](/assets/images/banking/convert_to_expense.png "Convert a transaction to a expense")
+
+When you click on the transaction row, a side panel will appear as above.
+
+From this panel you are able to assign a Vendor and/or an expense category to this transaction. When you are satisfied, just click on Convert to expense. The system will then process the transaction, convert it to an expense and finally link the expense and transaction together.
+
+### Convert a transaction to a payment
+
+![alt text](/assets/images/banking/convert_to_payment.png "Convert a transaction to a payment")
+
+When you click on the transaction row, a side panel will appear as above.
+
+From this panel you are able to click on a range of invoice which are to be associated with this transaction.
+
+When this has been completed, click on the Create Payment Button. The system will then process the transaction, creating a payment for the full tranasction amount, apply the payment to the associated invoices, and then link the invoice / transaction and payments together.
+
+## Bank Rules
+
+To improve your efficiency, you can build a ruleset to match your incoming transactions.
+
+Using a rule set will allow Invoice Ninja to performing the matching and/or conversion of transactions for you.
+
+
+### Create a Bank Transaction Rule
+
+![alt text](/assets/images/banking/create_bank_rule.png "Create a bank rule")
+
+To create a bank rule navigate to
+
+```bash
+Settings > Back Accounts > Manage Rules
+```
+
+![alt text](/assets/images/banking/bank_rule_list.png "Bank rule lists")
+
+You can edit and create rules from this page, simpy click on a rule, or the create button to create a new bank rule.
 
 
 
