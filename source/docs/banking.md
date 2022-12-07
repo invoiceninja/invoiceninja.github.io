@@ -127,8 +127,39 @@ Settings > Back Accounts > Manage Rules
 
 ![alt text](/assets/images/banking/bank_rule_list.png "Bank rule lists")
 
-You can edit and create rules from this page, simpy click on a rule, or the create button to create a new bank rule.
+You can edit and create rules from this page, simply click on a rule, or the create button to create a new bank rule.
 
+![alt text](/assets/images/banking/create_rule.png "Create bank rule")
 
+When creating a rule there are a number of options to consider:
+
+- Name | The name of the rule
+- Match All Rules | This settings means that for the rule to match, all of the subrules must be present for the transaction to be matched or converted.
+- Auto Convert | Boolean flag which defines what to do when a transaction rule matches. If set ON the transaction will convert to an invoice or expense.
+- Rules | contains one or many configurable rules.
+- Vendor | The vendor selector. When a vendor is selected, this vendor will be assigned to the transaction expense.
+- Category | The expense category selector. When a categorty is selected, this category will be assigned to the transaction expense.
+
+![alt text](/assets/images/banking/rule_spec.png "Rule specifications")
+
+When creating a rule there are a number of options available.
+
+- Field | The field to search on (Description or Amount)
+- Operator - Description | when matching text there are several matching options available
+
+* Contains | The description must contain the value assigned
+* Starts with | The description text must start with the value assigned 
+* Is | The description must exactly match
+* Is Empty | The description must be empty
+
+- Operator - Amount | when matching on the transaction amount there are several options available
+
+* < | The amount must be less than the value
+* <= | The amount must be less than or equal to the value
+* = | The amount must be equal to the value
+* > | The amount must be greater than the value
+* \>= | The amount must be greater than or equal to the value
+
+- Value | The user assigned value used to compare against.
 
 <x-next url=/docs/clients>Clients</x-next>
