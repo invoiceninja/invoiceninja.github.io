@@ -354,6 +354,14 @@ $client.postal_city_state - Alias of $postal_city_state
 $client.country - Alias of $country  
 $client.email - Alias of $email  
 
+$client.shipping_address - Full client shipping address block
+$client.shipping_address1 - Shipping address line one label/value  
+$client.shipping_address2 - Shipping address line two label/value  
+$client.shipping_city - Shipping address city
+$client.shipping_state - Shipping address state
+$client.shipping_postal_code - Shipping address postal code
+$client.shipping_country - Shipping address country
+
 $client.currency - Client currency code ie. AUD, USD  
 
 $client.lang_2 - Locale of client language, ie. 'en'
