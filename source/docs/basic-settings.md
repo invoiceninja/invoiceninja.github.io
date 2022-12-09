@@ -122,7 +122,7 @@ Edit, or create a new invoice, credit, etc, in order to see the changes to the t
 You may configure payment gateways, and payment rules/behaviors from here.
 
 * **Auto bill**
-  * *Enabled* - A user a payment will be automatically attempted if a payment method is stored on file.
+  * *Enabled* - A payment will be automatically attempted if a valid payment method is stored on file.
   * *Enabled by default* - The client will be given the option to allow payment methods to be stored with the radio box selected.
   * *Disabled by default* - The client will be given the option to allow payment methods to be stored with the radio box unselected.
   * *Disabled* - No option is given, and auto billing is disabled.
