@@ -326,3 +326,30 @@ If you aren't able to adjust the open_basedir restrictions the following steps m
 
 1. Delete bootstrap/cache/config.php
 2. Delete all log files in storage/logs
+
+### I've forgotten my password and cannot reset it, HELP!
+
+If you have command line access, you can reset your password manually by following the following steps. From the command line, navigate to the project directory and run
+
+```bash
+php artisan tinker
+```
+
+Then find the id of the user for the password reset
+
+```bash
+User::all();
+```
+
+Retrieve the user
+
+```bash
+$user = User::find(id_of_user_to_find);
+```
+
+Now lets reset the password
+
+```bash
+$user->password = Hash::make('password');
+$u->save();
+```
