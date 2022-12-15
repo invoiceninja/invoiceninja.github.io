@@ -134,7 +134,7 @@ The various entity records available that generated numbers apply to, are all li
 * **Number Pattern** - Single line text field you can manually edit to finely tune your generated numbers.  Create a rule that outlines how new numbers will be generated.
 
 ```bash
-{$date|y}-{$counter}
+{$date:y}-{$counter}
 ```
 This example of a number pattern will produce a number like this, for the 9th count in 2021:  2021-0009
 
