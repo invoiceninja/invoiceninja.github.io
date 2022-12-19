@@ -5,6 +5,8 @@ section: content
 
 # Subscriptions
 
+## Introduction
+
 Subscriptions are a supercharged version of our Buy Now links from version 4.
 
 In version 5 subscriptions allow you to build an instant shop front where you can bundle your existing products into direct link purchases.
