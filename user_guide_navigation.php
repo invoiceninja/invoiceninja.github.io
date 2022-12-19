@@ -18,6 +18,7 @@ return [
             'Recurring Invoices' => '/docs/recurring-invoices',
             'Reports' => '/docs/reports',
             'Quotes' => '/docs/quotes',
+            'Subscriptions' => '/docs/subscriptions',
             'Tasks' => '/docs/tasks',
             'Transactions' => '/docs/transactions',
             'Vendors' => '/docs/vendors',
@@ -31,7 +32,6 @@ return [
             'PDF Customization' => '/docs/custom-fields',
             'Payment Gateways' => '/docs/gateways',
             'QR Codes' => '/docs/qr-codes',
-            'Subscriptions' => '/docs/subscriptions',
             'Import|Export' => '/docs/import-and-export'
         ],        
     ],

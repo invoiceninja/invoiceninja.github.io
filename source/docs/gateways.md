@@ -95,4 +95,4 @@ Our PayFast integration includes Credit Card payment options. Here is a quick gu
 
 Our PayTrace integration includes Credit Card payment options, including token billing and refunds.
 
-<x-next url=/docs/subscriptions>Subscriptions</x-next>
+<x-next url=/docs/qr-codes>QR Codes</x-next>
