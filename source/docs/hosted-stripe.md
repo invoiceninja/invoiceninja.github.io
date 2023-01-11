@@ -36,12 +36,12 @@ Using these details, log into Stripe and navigate to Developers > Webhooks
 Enter in your dedicated webhook URL as well as the five event types
 
 <x-info>
-source.chargeable
-charge.succeeded
-customer.source.updated
-payment_intent.processing
-payment_intent.succeeded
-payment_intent.payment_failed
+source.chargeable  
+charge.succeeded  
+customer.source.updated  
+payment_intent.processing  
+payment_intent.succeeded  
+payment_intent.payment_failed  
 </x-info>
 
 ![alt text](/assets/images/stripe/stripe_webhook_overview_3.png "Add Events")
