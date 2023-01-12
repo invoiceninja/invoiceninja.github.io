@@ -18,7 +18,7 @@ Products can also be used to represent services rendered.  For example, you coul
 
 ## Viewing Products
 
-To view products from the Invoice Ninja admin portal, you must visit the Products module on the left hand navigation menu.  Alternatively, you can view and analyze your products list in an external application by exporting products as a .CSV file using the API, or the Export function under *Settings*.
+You can view the products in the Invoice Ninja admin portal by going to the Products module in the left navigation menu. You can also export the products as a CSV file using the API or the Export function under Settings, to analyze them in an external application.
 
 ### Overview
 
@@ -26,7 +26,7 @@ The *Overview* pane presents a very simple layout, with the product price in lar
 
 ### Documents
 
-The *Documents* pane provides the ability to upload documents and view documents you have linked to the product.  These uploaded files are *only* accessible through the admin portal.  A useful way to employ the document uploads feature, is by posting product signage, or documents with thorough product descriptions or technical details.  
+The Documents pane allows you to upload and view documents that are linked to the product. These files are only accessible through the admin portal (or client portal if client documents are enabled). This feature is useful for uploading product signage, detailed product descriptions, or technical documents.
 
 **Note** that uploaded documents are saved in the "public/storage" directory in a folder structure using hashed folder names to match the product entry, so backup this directory along with your database to preserve your attached documents.
 

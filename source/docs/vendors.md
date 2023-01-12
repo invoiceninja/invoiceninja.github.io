@@ -5,19 +5,15 @@ section: content
 
 # Vendors
 
-The *Vendors* module enables you to manage a list of vendors that your organization purchases goods or services from for business related purposes.  You can enter all the necessary relevant contact information, and billing information for your vendor into a vendor record.  Expense records track your individual purchases, and get linked to vendor records in order to organize the sources of your expenses.  Managing vendor records is a key part of the management of your business or organization.
+The Vendors module allows you to manage a list of vendors that your organization purchases goods or services from for business-related purposes. You can enter all necessary contact and billing information for each vendor, and track individual purchases through expense records which are linked to the corresponding vendor record. Managing vendor records is crucial for effective management of your business or organization.
 
 ## Vendor Module View
 
-When you select the *Vendors* module from the navigation menu on the left hand side of the admin portal, by default you are brought to a table view listing all of your current vendor records.  
-
-The table view allows you to sort vendors by the available column types at the top of the list.  You can add/remove columns from the table view with the *Columns* button in the bottom right corner of this screen.  You can use filters to view archived or deleted vendors, and create new vendors from this screen also.  Each vendor in the table will have a kebab menu to the left of its entry in the table, with available functions to manage the vendor record or take actions against it, such as editing it, creating a new expense record linked to that vendor, archiving, and deleting.
+When you select the Vendors module from the navigation menu on the left side of the admin portal, you are brought to a table view of all current vendor records. The table view allows you to sort vendors by column types, add/remove columns and filter to view archived or deleted vendors. You can also create new vendors from this screen. Each vendor in the table will have a kebab menu to the left of its entry in the table, where you can manage the vendor record or take actions such as editing, creating new expense records, archiving and deleting.
 
 ## Viewing a Vendor
 
-Select a vendor from the table or list view by clicking on the vendor's line, to bring up the preview panel.  There are 3 tabs under the vendor preview panel.  The edit button at the top of the screen brings you to a vendor edit screen, and the kebab menu next to it is full of a list of any actions you can take against the vendor record.
-
-The two buttons at the bottom of the vendor preview panel are "New Expense" and "Archive".  New Expense will create a new expense record linked to the vendor, and Archive will archive the vendor which will hide it from the default table view unless you change your filters.
+To view a vendor's details, select it from the table or list view. The preview panel will appear with 3 tabs. The top of the screen has an Edit button that takes you to the vendor edit screen, and a kebab menu with options to take action on the vendor record. The bottom of the preview panel has two buttons, "New Expense" and "Archive", that allow you to create a new expense record linked to the vendor or archive the vendor and hide it from the default table view.
 
 ### Overview
 

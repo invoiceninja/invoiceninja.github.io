@@ -5,19 +5,16 @@ section: content
 
 # Payments
 
-Payment records are most often generated automatically when payments are processed from the client portal, or when you mark an invoice as paid.  When you mark an invoice as paid, a payment record is created for the full amount due on the invoice, and it is given a *Transaction Record* of "Manual Entry".
+Payment records are automatically generated when payments are processed from the client portal or when an invoice is marked as paid. When an invoice is marked as paid, a payment record for the full amount is created and labeled as "Manual Entry."
 
-Generally a payment record has four statuses available.  "Unapplied" when a payment has not been applied to anything, "Partially Unapplied" when there are credits remaining from that payment still not applied to an invoice, "Paid" when the full payment has been applied to an invoice, and "Refunded" when a payment has been returned to the customer.  **Note** that any amount paid must be applied to something before it can be marked as "Refunded", which can greatly complicate recordkeeping of overpayment refunds.  It would be best to avoid these situations.
+There are four possible statuses for a payment record: "Unapplied" for payments that have not been assigned to an invoice, "Partially Unapplied" for payments with remaining credit, "Paid" for payments that have been fully applied to an invoice, and "Refunded" for payments that have been returned to the customer. Note that any refunded amount must have been applied to an invoice first.
 
-Payment records are not a document type that gets printed and issued to the customer, instead an invoice gets marked as "Paid" when there is a payment record associated with it.
-
+It is important to note that payment records are not printed or issued to the customer, instead an invoice is marked as "Paid" when there is a payment record associated with it.
 ## View a Payment
 
-From the payment view panel you will see an overview of the status of the client's payment (or refund if one was provided), which invoice it was applied to and how much was applied, as well as the date of payment, transaction reference, and any private notes attached to the payment record.
+The payment view panel displays an overview of the payment status, the invoice it was applied to, the amount applied, the date of payment, the transaction reference, and any private notes. You can edit the payment record using the "Edit" button in the top right corner and use the Kebab menu to archive or delete it.
 
-You will have a button to *Edit* the payment record in the top right corner of the screen.  You can use the kebab menu button next to that, to archive, or delete the payment record.  
-
-At the bottom of the Payment view panel, you have buttons to *Apply* a payment, or *Refund* a payment.  A single payment can be applied to multiple invoices when entered manually in the admin portal in this way.  Although you can issue partial refunds, remember that only "Applied" payment amounts can be refunded.
+At the bottom of the panel, you can apply or refund a payment. Keep in mind that a payment can be applied to multiple invoices when entered manually in the admin portal. Also, partial refunds are allowed, but only "Applied" payment amounts can be refunded."
 
 ## Edit a Payment
 
@@ -48,7 +45,7 @@ If a payment is created, assigned to a client, and given a value greater than 0 
 
 ### Partial
 
-You can apply one payment to multiple invoices.  If you apply an *Unapplied* payment to an invoice with a balance lower than the payment amount, or if you allow overpayment on an invoice, the payment will be marked as *Partial* and you will be able to apply the remaining balance of the payment to another invoice.  You can see the remaining balance of a partial payment when you view a payment details.
+You can apply one payment to multiple invoices. If the payment amount is greater than the invoice balance, the payment will be marked as "Partially Applied" and the remaining balance can be applied to another invoice. You can view the remaining balance of a partial payment by viewing the payment details.
 
 ### Completed
 

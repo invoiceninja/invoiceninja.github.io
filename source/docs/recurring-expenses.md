@@ -15,19 +15,15 @@ Note that at the time of this writing (Oct/01/2021), recurring expenses can be l
 
 ## Recurring Expenses Module View
 
-When you select the *Recurring Expenses* module from the navigation menu on the left hand side of the screen, by default you will be taken to the table view listing and sorting all available expense records.  
-
-From the table view you can sort recurring expense records by the various columns at the top of the table.  With the *Columns* button in the bottom right of the table view, you can add/remove columns from the table.  You can use the *filter* and *status* buttons in the bottom left to change visible records listed.  A kebab menu to the left of each entry in the table shows a list of available management actions you can take against a recurring expense record, such as editing, and cloning to a new expense or recurring expense record.
+The Recurring Expenses module, located in the left-hand navigation menu, displays a table view of all available expense records. You can sort and filter the records by using the options at the top and bottom of the table. The Columns button allows you to add or remove columns, and the filter and status buttons allow you to change the visible records. Each entry in the table has a kebab menu that provides options for managing the record, such as editing and cloning.
 
 ## Viewing a Recurring Expense
 
-Simply click on an entry from the table to view the preview panel for that recurring expense record.  
-
-You can use the "Edit" button at the top of the preview panel to edit the expense record.  You can use the kebab menu in the top right corner of the panel to see a list of management actions that can be taken against the recurring expense record, cloning the expense record, or deleting it.  At the bottom of the expense preview panel, you will find two buttons to "Start" or "Stop", and "Clone to Recurring".  Start and Stop will pause, and unpause a recurring expense, preventing or enabling the continuing cycle of billing.  Clone to Recurring will create a new recurring expense record with the same details as the original, and give you an opportunity to edit those details before saving.
+To view a recurring expense record, simply click on it from the table. The preview panel will appear, where you can edit the record using the "Edit" button or manage it using the kebab menu. The options include cloning or deleting the record. You also have the option to Start/Stop the recurring cycle of billing and clone the record to a new recurring expense. The "Clone to Recurring" button will create a new recurring expense record with the same details as the original, allowing you to make changes before saving.
 
 ### Overview
 
-Here you can see the total cost of the recurring expense, and the state of the expense at the top.  Multifunctional interactive buttons in a list will connect you to the vendor, client, project, user, and invoice that are linked to the recurring expense record.  Public and private notes appear highlighted, prefixed by a lock icon to indicate a private note, or a small "i" in a circle to indicate a public note.  The bottom of the overview tab displays the recurring expense's start date, frequency, remaining cycles, and information about when the last payment was reported.
+The overview tab of the recurring expense record displays the total cost and state of the expense at the top. Interactive buttons in a list allow you to view the linked vendor, client, project, user, and invoice. Public and private notes are distinguished by a lock icon for private notes and an "i" in a circle for public notes. The bottom of the tab shows the start date, frequency, remaining cycles and last payment date of the recurring expense.
 
 ### Documents
 

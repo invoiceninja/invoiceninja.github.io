@@ -5,17 +5,31 @@ section: content
 
 # Tasks
 
-*Tasks* represent small to medium sized jobs or services performed for a client, and are suited perfectly for services rendered with an hourly rate.  Tasks enable you to track your time on the job, with stopwatch-like functions baked into your tasks, and you can track and record hours across as many date and time periods as you need to.  You can assign tasks to a project, in order to keep track of the various jobs involved in it, or leave them as standalone small jobs.  Tasks can be added to a clients invoice independently, or in bulk when you create an invoice out of the project record itself.  Tasks also allow you to assign an admin portal *User* to them, to maintain accountability and responsibility for the work associated with them.
+*Tasks* represent small to medium sized jobs or services performed for a client, and are suited perfectly for services rendered with an hourly rate. Tasks enable you to track your time on the job, with stopwatch-like functions baked into your tasks, and you can track and record hours across as many date and time periods as you need to. You can assign tasks to a project, in order to keep track of the various jobs involved in it, or leave them as standalone small jobs. Tasks can be added to a clients invoice independently, or in bulk when you create an invoice out of the project record itself. Tasks also allow you to assign an admin portal User to them, to maintain accountability and responsibility for the work associated with them.
 
-The *Tasks* module is powerful, especially when used in combination with *Projects* and *Expenses*, and very useful to any service-based business.  
+The *Tasks* module is powerful, especially when used in combination with Projects and Expenses, and very useful to any service-based business.
 
-## Tasks Module View
+## Overview
 
-When you first select the *Tasks* module from the navigation menu on the left hand side, by default you will see the table view of all available tasks, where you can customize columns, and sorting of the tasks in the list.  
+The Tasks module allows you to easily manage and organize your tasks within the software application. 
 
-When viewing the *Tasks* module in table view, you can change the column layout and add/remove columns to the table with the "Columns" button at the bottom right corner of the screen.  In addition to filters for "Active", "Archived", and "Deleted" task records, you can also filter by a task's status "Invoiced" for anything billed to a client already, "Logged" for tasks not yet billed and not in progress at the moment, and "Running" for tasks that are currently in progress and counting time on the clock.
+### Table View
 
-Unique to the *Tasks* module, is an alternative viewing mode, a board view, to visualize your active tasks with.  On the top bar and near the left corner of the *Tasks* view you will see the buttons to create a task ("Plus" symbol), to enter multi-select mode ("Checkbox" symbol), and third, the unique board view button (A small white box, with two vertical bars inside).  In the board view, you will find tasks sorted into vertical lists by their task status, appearing like notes stuck to a board.  Hover over a task 'note' (or select the kebab menu button on mobile) to either view, edit, or delete the task.  Clicking directly on the task 'note' will enable you to quickly edit the name of the note.  You can also press and hold a note to drag and drop it into another status column, changing the status of the task quickly and easily.  This highly visual view mode for tasks can help you manage your work better.  
+- By default, the Tasks module opens to the table view, where you can see all available tasks. 
+- Customize the columns and sort the tasks in the list to suit your needs.
+- Use the 'Columns' button at the bottom right corner of the screen to add or remove columns from the table.
+- Filter tasks by their status: "Active", "Archived", "Deleted", "Invoiced", "Logged", and "Running".
+
+### Board View
+
+- The Tasks module also offers an alternative viewing mode, the board view.
+- Use the board view to visualize your active tasks in a highly visual way.
+- Tasks are sorted into vertical lists by their status, and appear like notes stuck to a board.
+- Hover over a task 'note' to view, edit, or delete the task.
+- Click directly on the task 'note' to quickly edit the name of the task.
+- Press and hold a note to drag and drop it into another status column, changing the status of the task quickly and easily.
+
+With the Tasks module, you can easily manage your work and stay organized. Try it out today!
 
 <x-warning>
 Note that the *Tasks* board view does not present invoiced and paid tasks, it is more like a "to do list" board for visualizing and managing your current work, rather than a full history view, which the table view is better suited for.
@@ -23,13 +37,24 @@ Note that the *Tasks* board view does not present invoiced and paid tasks, it is
 
 ## Viewing a Task
 
-Select a task from the list or table view, or click on "View" for a task in the task board view, in order to bring up the *Tasks* preview panel.  
+- Select a task from the list or table view, or click on "View" for a task in the task board view to bring up the Tasks panel.
+- At the top of the Tasks panel, you will see the Task Number and an "Edit" button.
+- Use the kebab menu for context-sensitive options to manipulate and manage your task record.
+- At the bottom of the Tasks panel, you will have two large buttons for common functions.
+- The first function button changes depending on the state of the task, either "Start", "Stop", or "Resume" which will respectively start and create a date/time line in the task record to begin tracking billable hours for the work, stop the timer and fill in the end time with the current time, or resume timing the task with another date/time line in the task record.
+- The second button "Invoice Task" will create a new invoice record automatically filled with the current task for the assigned client of that task.
 
-In the top of the *Tasks* panel you will see the *Task Number*, and you will have an "edit" button, and a kebab menu full of context sensitive options to manipulate and manage your task record that offers almost all functions available in a list.  At the bottom of the *Tasks* panel you will have two large buttons for common functions.  The first function button changes depending on the state of the task, either "Start", "Stop", or "Resume" which will respectively start and create a date/time line in the task record to begin tracking billable hours for the work, stop the timer and fill in the end time with the current time, or resume timing the task with another date/time line in the task record.  The second button "Invoice Task" will create a new invoice record automatically filled with the current task for the assigned client of that task.
+With the Tasks panel, you can easily view and manage your tasks and stay organized. Try it out today!
 
 ### Overview
 
-Under the overview tab you will find all the general information about a task, you can see duration of the task and "Amount" or value of the work logged so far, and the task's status at the top.  Private notes, and public notes are highlighted, and prefixed by an icon of a lock for private notes, and a icon with a circle around the letter "i" for public notes which will be included automatically in generated invoices.  Interactive buttons that connect you to filtered lists or views of the linked client, project, task status, or user appear, as well as a breakdown of dates and times of work entered in the task record.
+The Overview tab in the Tasks panel provides you with all the general information about a task, including duration, value, and status.
+
+- View the duration of the task and the "Amount" or value of the work logged so far at the top of the tab.
+- See the task's status and check if it's private or public note.
+- Notes are highlighted and prefixed by an icon of a lock for private notes and a icon with a circle around the letter "i" for public notes, which will be included automatically in generated invoices.
+- A breakdown of dates and times of work entered in the task record is also displayed.
+- Click on the interactive buttons to access filtered lists or views of linked clients, projects, task status, or users.
 
 ### Documents
 
@@ -48,19 +73,27 @@ When creating or editing a task in the desktop layout, you will be switched away
 * **Status** - Select a task status.  Task statuses are a small part of the task lifecycle and help sort your tasks for organizational purposes.  You can select one of the prebuilt task statuses, or create your own task statuses under *Settings* > *Task Settings*.
 * **Description** - Create a description for your task, which will be included within the line item description of the task when you create an invoice out of your tasks or projects.
 
-### Times
+## Time Tracking
 
-Here you will see a mostly self explanatory list of date and times.  This list is used to track billable hours for your work on a task for the client.  You can manually enter or edit date and time entries here, or use the large button at the bottom right of the screen that looks like a *Play* or *Stop* icon in order to start and stop the timer.  Starting the timer will always create a new line in the list with the current *Date* and *Start Time*.  Stopping the timer will populate the "End Time", which calculates what to fill for the *Duration*.  Alternatively you can manually set the *Duration* which will calculate your end time for you.
+The time tracking feature allows you to easily track billable hours for your work on a task for the client. 
 
-If an entry in the times list has no end time yet, the task record is considered to have the *Running* status, in addition to the manually set task status, and you will see the *Duration* of the task change every second when viewing the task, while it tracks the progress.
+### Time Entries
+
+- View a mostly self-explanatory list of date and times.
+- Manually enter or edit date and time entries.
+- Use the play/stop button to start and stop the timer.
+- Starting the timer creates a new line in the list with the current Date and Start Time.
+- Stopping the timer will populate the "End Time", which calculates the Duration.
+- Alternatively, you can manually set the Duration, which will calculate your end time for you.
+- If an entry in the times list has no end time yet, the task record is considered to have the Running status and you will see the Duration of the task change every second when viewing the task, while it tracks the progress.
 
 ## Lifecycle of a Task
 
-Tasks have a most unique lifecycle, because of the option to create custom task statuses, and support for multiple statuses in some cases, to support sorting and managing tasks, while also reflecting their current states.
+Tasks have a unique lifecycle, with the option to create custom statuses and support for multiple statuses to aid in sorting and managing tasks while reflecting their current states.
 
 ### Manual Task Status or *Logged*
 
-A manually set task status is one that is selected or configured by you, such as one of the pre-configured task statuses (Backlog, Done, In progress, or Ready to do), or a custom status you've created in *Settings* > *Task Settings*.  The manually set task statuses exist primarily for your own recordkeeping purposes, and help sort and visualize your many active tasks at work.  When an invoice in the table or the overview panel is shown to have one of the manual task statuses, it is considered *Logged*.  A *Logged* status is any status that has not yet been invoiced, and is not currently in a *Running* state.
+A manually set task status is one that you select or configure, such as one of the pre-configured task statuses (Backlog, Done, In progress, or Ready to do) or a custom status you've created in *Settings* > *Task Settings*. These statuses serve primarily as recordkeeping and help sort and visualize your active tasks. Tasks with a manually set status are considered *Logged* if they have not been invoiced and are not currently in a *Running* state.
 
 ### Running
 

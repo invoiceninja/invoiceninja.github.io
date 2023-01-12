@@ -5,11 +5,10 @@ section: content
 
 # Purchase Orders
 
-Purchase orders are a legal document requesting services / products from a vendor. The structure of a purchase order is very similar to an invoice in that it defines products / services, quantity and cost.
+A purchase order (PO) is a legally binding document that a buyer uses to request goods or services from a supplier. It serves as an official offer to purchase specific items at a specified price and is typically used by businesses in the procurement process. The PO includes details such as the type, quantity, and cost of the products or services being requested, as well as any relevant delivery or payment terms. 
 
-When a purchase order is accepted by the vendor it forms a contract between the buyer and seller.
+Once a supplier accepts the PO, it becomes a binding contract between the buyer and seller.
 
-Each purchase order contains a unique "Number" which is the reference used in communication about the transaction in progress.
 
 ## Creating a Purchase Order
 

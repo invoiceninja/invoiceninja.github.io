@@ -14,11 +14,11 @@ Your browser does not support the video tag.
 
 ## Viewing an Invoice
 
-Simply select an invoice from the list, and you will see the invoice details, in the mobile layout you will be taken directly to the invoice view, in a desktop layout the view will appear on the righthand side.
+To view an invoice, select it from the list. The invoice details will appear in the mobile layout or on the right side in the desktop layout. From there, you can edit the invoice by clicking the "Edit" button in the top right corner. 
 
-From anywhere in the invoice view, you will have the option to *Edit* the invoice from a button in the top right of the viewing panel.  You can use two buttons at the bottom of the view panel: *View PDF* in order to load a PDF of the invoice directly from the admin portal, or *Email Invoice* to email the client contacts a link to view and pay for their invoice from the client portal.
+At the bottom of the panel, you can also view the invoice as a PDF or email it to the client. 
 
-The Kebab menu in the uppermost right corner of the invoice view presents many functions to work with or manipulate the invoice, which can vary based on the state of the invoice.  You can change the status of the invoice's lifecycle manually, clone the invoice, view it directly from the client portal, and more.
+Additionally, the Kebab menu in the top right corner provides various options to manage the invoice, such as changing its status, cloning it, or viewing it from the client portal.
 
 ### Overview
 

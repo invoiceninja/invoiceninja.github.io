@@ -7,7 +7,7 @@ section: content
 
 ## Overview
 
-Invoice Ninja has integrated with leading data provider [Yodlee](https://www.yodlee.com/) to access bank data feeds. Yodlee provides global access to most major banks and allows you to connect your bank accounts with Invoice Ninja for the automatic reconcilation of payments and expenses.
+Invoice Ninja has partnered with [Yodlee](https://www.yodlee.com/), a top data provider, to gain access to bank data feeds. This partnership gives Invoice Ninja users worldwide access to major banks and enables them to connect their bank accounts for automatic reconciliation of payments and expenses.
 
 ## Bank Accounts
 
@@ -19,13 +19,9 @@ You can view and add bank accounts in the settings section of the application
 
 ![alt text](/assets/images/transactions/bank_account_list.png "Bank Accounts")
 
-For enterprise hosted users, you can use the Connect Accounts button to add / update and remove accounts from Invoice Ninja.
+For enterprise hosted users, the Connect Accounts button allows you to add, update, and remove accounts from Invoice Ninja. Clicking on this button will take you to the Yodlee platform where you can securely authenticate with your bank and select the accounts you wish to link with Invoice Ninja.
 
-Clicking on this button will take you to the Yodlee platform which will allow you to securely authenticate with your bank, from there can you can select the bank accounts you wish to link with Invoice Ninja.
-
-Once you have connected your bank account you have to option to enable automatic syncing where Invoice Ninja will perform rolling data syncs to keep all of your transactions up to date.
-
-It is also possible to manually create a bank account and transactions, you can also import bank statements which are in CSV format ( Settings > Import | Export ) 
+Once your bank account is connected, you have the option to enable automatic syncing, which will keep all of your transactions up to date. If you prefer, you can also manually create bank accounts and transactions, or import bank statements in CSV format (Settings > Import | Export).
 
 ## Transaction List
 
