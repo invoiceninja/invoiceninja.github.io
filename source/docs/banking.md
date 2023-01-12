@@ -7,7 +7,7 @@ section: content
 
 ## Bank Integrations with Yodlee
 
-For enterprise users on our hosted platform, we have integrated with (Yodlee)[https://www.yodlee.com] a leading data aggregration platform.
+For enterprise users on our hosted platform, we have integrated with [Yodlee](https://www.yodlee.com) a leading data aggregration platform.
 
 Yodlee integration with most of the major global banks, allowing you to link your bank accounts with Invoice Ninja to import your bank transactions for reconciliation.
 
