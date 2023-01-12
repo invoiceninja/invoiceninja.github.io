@@ -15,7 +15,7 @@ Invoice Ninja has partnered with [Yodlee](https://www.yodlee.com) a top data pro
 Settings > Bank Accounts
 ```
 
-You can view and add bank accounts in the settings section of the application
+You can view and add bank accounts in the settings section of the application.
 
 ![alt text](/assets/images/transactions/bank_account_list.png "Bank Accounts")
 
@@ -75,6 +75,5 @@ To finalize, click on the Convert To Payment button. This will create the matchi
 When matching expenses you are able to assign the Vendor and/or a expense category
 
 ![alt text](/assets/images/user_guide/expense_match.png "Match a expense")
-
 
 <x-next url=/docs/vendors>Vendors</x-next>
