@@ -7,7 +7,7 @@ section: content
 
 ## Overview
 
-Invoice Ninja has partnered with [Yodlee](https://www.yodlee.com/), a top data provider, to gain access to bank data feeds. This partnership gives Invoice Ninja users worldwide access to major banks and enables them to connect their bank accounts for automatic reconciliation of payments and expenses.
+Invoice Ninja has partnered with [Yodlee](https://www.yodlee.com) a top data provider, to gain access to bank data feeds. This partnership gives Invoice Ninja users worldwide access to major banks and enables them to connect their bank accounts for automatic reconciliation of payments and expenses.
 
 ## Bank Accounts
 
