@@ -5,12 +5,12 @@ section: content
 
 # Clients
 
-## Creating Clients
-
 <video width="100%" controls>
   <source src="/assets/videos/clients/create_client.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+
+## Creating Clients
 
 There several ways for a client to be created, including:
 
