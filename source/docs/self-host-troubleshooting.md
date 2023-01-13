@@ -116,6 +116,14 @@ vendor/bin/snappdf download
 
 Snappdf is also the default PDF engine in our [Docker](https://github.com/invoiceninja/dockerfiles) image, so if you prefer a very simple installation please consider our Docker setup as it is very fast to get going!
 
+You can use this command to test Snappdf:
+
+```bash
+./vendor/bin/snappdf convert --html "<h1>Hello world</h1>" test.pdf
+```
+
+A complete list of required dependencies is available [here](https://github.com/beganovich/snappdf#headless-chrome-doesnt-launch-on-unix).
+
 If you are on shared hosting, snappdf probably will be impossible for you to use as you do not have access to the subsystem to install the required packages. Instead, you will need to use a hosted PDF service, the two that Invoice Ninja v5 supports is [PhantomJS Cloud](https://phantomjscloud.com/) and our own hosted PDF generator which can use for _free_ to generate _unlimited_ PDFs.
 
 ### Phantom JS
