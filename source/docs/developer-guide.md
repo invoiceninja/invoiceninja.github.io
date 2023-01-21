@@ -88,7 +88,7 @@ The X-API-SECRET can be used as another layer of protection for your API.
 
 The X-API-SECRET requires you to configure a .env variable ```API_SECRET=```
 
-This is an optional header.
+This is an optional header, and is only assessed on the /api/v1/login route.
 </x-section>
 <x-section>
 ```

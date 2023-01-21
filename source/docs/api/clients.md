@@ -34,7 +34,6 @@ The GET route returns a list of clients and their associated contacts.
 ```
 curl -X GET 'http://ninja.test:8000/api/v1/clients' \
 -H "X-API-TOKEN:company-token-test" \
--H "X-API-SECRET:password" \
 -H "X-Requested-With: XMLHttpRequest";
 ```
 </x-section>
@@ -59,7 +58,7 @@ Query parameters can be chained together to form complex queries. The current su
 **created_at**: Search by created at (Unix timestamp)  
 **is_deleted**: Search using is_deleted boolean flag  
 
-#### Response  
+#### Response
 ____
 
 ```
@@ -597,7 +596,6 @@ The DELETE route is delete a Client. Note* To ensure referential integrity entit
 ```
 curl -X DELETE 'http://ninja.test:8000/api/v1/clients' \
 -H "X-API-TOKEN:company-token-test" \
--H "X-API-SECRET:password" \
 -H "X-Requested-With: XMLHttpRequest";
 ```
 </x-section>
@@ -680,7 +678,7 @@ ____
 #### Response
 ____
 
-#### Response  
+#### Response
 ____
 
 Array of clients
