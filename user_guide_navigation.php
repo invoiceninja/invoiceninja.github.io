@@ -30,7 +30,6 @@ return [
         'url' => '#',
         'children' => [
             'Import|Export' => '/docs/import-and-export',
-            'Mail Servers' => '/docs/hosted-mail',
             'PDF Customization' => '/docs/custom-fields',
             'Payment Gateways' => '/docs/gateways',
             'QR Codes' => '/docs/qr-codes',
@@ -43,6 +42,7 @@ return [
             'Activate' => '/docs/hosted-activate',
             'Custom Domain' => '/docs/hosted-custom-domain',
             'Hosted Migration' => '/docs/hosted-migration',
+            'Mail Servers' => '/docs/hosted-mail',
             'Stripe Integration' => '/docs/hosted-stripe',
         ],
     ],
