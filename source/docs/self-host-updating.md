@@ -21,7 +21,7 @@ If you have installed Invoice Ninja using just git, then all that is required is
 
 ```bash 
 git pull
-composer install
+composer install -o --no-dev
 php artisan ninja:post-update
 ```
 

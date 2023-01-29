@@ -29,10 +29,11 @@ return [
     'Advanced Topics' => [
         'url' => '#',
         'children' => [
+            'Import|Export' => '/docs/import-and-export',
+            'Mail Servers' => '/docs/hosted-mail',
             'PDF Customization' => '/docs/custom-fields',
             'Payment Gateways' => '/docs/gateways',
             'QR Codes' => '/docs/qr-codes',
-            'Import|Export' => '/docs/import-and-export'
         ],        
     ],
     'Hosted' => [
