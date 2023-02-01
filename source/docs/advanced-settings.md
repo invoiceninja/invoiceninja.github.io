@@ -288,7 +288,7 @@ Customize any options here to override the regular settings for each respective 
 
 * **Localization** - Configure a custom localization for your clients in other countries/time zones, or using different languages, currencies, etc.
 
-* **Online Payments** - Change autobill, and over/under payment permissions for the group.  Configure payment gateways for the group.
+* **Payment Settings** - Change autobill, and over/under payment permissions for the group.  Configure payment gateways for the group.
 
 * **Task Settings** - Set specific task rate, and rule for presentation of tasks in the client portal, for the group.
 

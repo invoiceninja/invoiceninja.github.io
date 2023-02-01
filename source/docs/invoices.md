@@ -58,7 +58,7 @@ The *Details* panel includes the most basic information about the invoice:
 * **Discount** - Enter a discount amount to apply to the invoice, either as a percentage, or a flat rate.
 * **Design** - Choose a template design from one of the premade templates, or one of your own custom designs.  This option is found under the *Settings* tab in the desktop invoice view.
 * **Exchange Rate** - Optionally, for when your client record has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what they will owe in their own default currency.  This option is found under the *Settings* tab in the desktop invoice view.
-* **Auto Bill Enabled** - When enabled, the client contact(s) will automatically be emailed for payment of their invoice.  By default, auto bill actions will be performed on the invoice due date, as specified under *Settings* > *Online Payments*.  This option is found under the *Settings* tab in the desktop invoice view.
+* **Auto Bill Enabled** - When enabled, the client contact(s) will automatically be emailed for payment of their invoice.  By default, auto bill actions will be performed on the invoice due date, as specified under *Settings* > *Payment Settings*.  This option is found under the *Settings* tab in the desktop invoice view.
 
 <x-info>
 Date fields support adding and subtracting days. For example if you enter `+10` the date will be set to ten days in the future and if you enter `-10` the date will be set to ten days in the past.
