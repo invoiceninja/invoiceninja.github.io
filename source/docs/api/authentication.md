@@ -100,3 +100,28 @@ http://ninja.test/api/login?include_static=true
 ```
 
 This will include a data array (These are datetime / payment terms and other "static" data that is used in the selectors of the administrator panel) located [here](https://github.com/invoiceninja/invoiceninja/blob/v5-stable/app/Utils/Statics.php)
+
+## X-API-SECRET header
+
+To improve the resilience of the login route, you may also append an additional header
+
+```
+X-API-SECRET
+```
+
+This value would need to match the .env variable
+
+```
+API_SECRET
+```
+
+A full example of a login using the X-API-SECRET would be as follows:
+
+
+```
+curl -X POST 'http://ninja.test/api/v1/login' \
+-H "Content-Type:application/json" \
+-d '{"email":"demo@invoiceninja.com","password":"Password0"}' \
+-H "X-API-SECRET: SuperSecretSecret" \
+-H "X-Requested-With: XMLHttpRequest";
+```

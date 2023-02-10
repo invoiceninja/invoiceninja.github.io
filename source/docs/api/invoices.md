@@ -3,36 +3,39 @@ extends: _layouts.developer_resources
 section: content
 ---
 
-# Clients
+# Invoices
 
 ### Endpoints
 <x-container>
 <x-section>
-The clients endpoint allows you to interact with clients and their contacts.
+The invoices endpoint allows you to interact with invoices.
 </x-section>
 <x-section>
 Endpoints
 ```
-GET /api/v1/clients
-POST /api/v1/clients
-PUT /api/v1/clients/{client}
-PUT /api/v1/clients/{client}/upload
-DELETE /api/v1/clients/{client}
-POST /api/v1/clients/bulk
+GET /api/v1/invoices
+POST /api/v1/invoices
+PUT /api/v1/invoices/{invoice}
+PUT /api/v1/invoices/{invoice}/upload
+DELETE /api/v1/invoices/{invoice}
+POST /api/v1/invoices/bulk
+GET /api/v1/invoices/{invoice}/delivery_note
+GET /api/v1/invoice/{invitation_key}/download
+POST /api/v1/invoices/update_reminders
 ```
 </x-section>
 </x-container>
 
 
-### Get Clients
+### Get Invoices
 
 <x-container>
 <x-section>
-The GET route returns a list of clients and their associated contacts.
+The GET route returns a list of invoices.
 </x-section>
 <x-section>
 ```
-curl -X GET 'http://ninja.test:8000/api/v1/clients' \
+curl -X GET 'http://ninja.test:8000/api/v1/invoices' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-Requested-With: XMLHttpRequest";
 ```
@@ -43,27 +46,41 @@ curl -X GET 'http://ninja.test:8000/api/v1/clients' \
 ___
 Query parameters can be chained together to form complex queries. The current supported values are:
 
-**balance**: A query to return clients with a balance using an operator and value  
- - ie ?balance=lt:10 Returns clients with a balance less than 10  
- - available operators lt, lte, gt, gte, eq  
-**between_balance**: Returns clients with a balance between two values  
- - ie ?between_balance=10:20 - Returns clients with a balance between 10 and 20  
-**client_id**: Search by the client_id parameter
-**created_at**: Search by created at (Unix timestamp)  
-**updated_at**: Search by updated at (Unix timestamp)  
-**email**: Returns clients with a contacts.email field equal to an email  
-**filter**: Search across multiple columns (name, id_number, first_name, last_name, email, custom_value1, custom_value2, custom_value3, custom_value4)  
-**id_number**: Search by id_number  
+**client_status**: Filters invoice by their status values:  
+- **1** DRAFT  
+- **2** SENT  
+- **3** PARTIALLY PAID  
+- **4** PAID  
+
+It is possible to chain together multiple statuses using a comma separated list for example:  
+
+```
+/api/v1/invoices?client_status=1,2,3
+```
+
+**filter**: Search across multiple columns (number, po_number, date, amount, balance, custom_value1, custom_value2, custom_value3, custom_value4)  
+
+```
+/api/v1/invoices?filter=2022-01-05
+```
+
+**number**: Search by invoice number  
+**without_deleted_clients**: Filters the returning invoices and excludes invoices for deleted clients.  
+**with_trashed**: Returning invoices that have been archived.  
+**upcoming**: Returns invoices which have NO due date or the due date is in the future.  
+**overdue**: Returns invoices which have a due_date OR partial_due_date in the past.  
+**payable**: Returns invoices which have a pending balance remaining.  
+**sort**: Sort the returning dataset, format is column|ASC ie ?sort=name|DESC  
+**private_notes**: Searches invoice on the private_notes column  
+**created_at**: Filters invoices greater than or equal to the created_at timestamp (Unix Timestamp)  
+**updated_at**: Filters invoices greater than or equal to the updated_at timestamp (Unix Timestamp)  
 **is_deleted**: Search using is_deleted boolean flag  
-**include**: A comma separated list of relations to include. 
- - contacts - The array of contacts associated with the client
- - documents - The array of documents associated with the client
- - gateway_tokens - Payment gateway tokens associated with the client
-**name**: Search by Client Name
-**number**: Search by number  
-**per_page**: The number of clients per page you want returned  
+**include**: A comma separated list of relationships to be returned back in the dataset options include:  
+- client - The associated client  
+- payments - The associated payments for this invoice  
+- activities - The activity records for this invoice  
+**per_page**: The number of invoices per page you want returned  
 **page**: The page number  
-**sort**: Sort the returning dataset, format is column|ASC ie ?sort=name|DESC
 
 #### Response
 ____
@@ -72,129 +89,130 @@ ____
 {
 "data": [
 {
-    "id": "OpnelpJeKB",
-    "user_id": "q9wdL84djP",
+    "id": "xYRdG7dDzO",
+    "user_id": "VolejRejNm",
+    "project_id": "",
     "assigned_user_id": "",
-    "name": "O'Reilly-Metz",
-    "website": "http:\/\/www.okeefe.com\/aut-nostrum-omnis-explicabo-nostrum.html",
-    "private_notes": "Laudantium enim numquam provident eius ipsa. Perspiciatis aut et sunt veniam sapiente. Et dicta quo quis vel consectetur dolor.",
-    "balance": 10735.05,
-    "group_settings_id": "",
-    "paid_to_date": 0,
-    "credit_balance": 0,
-    "last_login": 0,
-    "size_id": "",
+    "amount": 4513.61,
+    "balance": 4513.61,
+    "client_id": "Wpmbk5ezJn",
+    "vendor_id": "",
+    "status_id": "2",
+    "design_id": "",
+    "recurring_id": "",
+    "created_at": 1675982786,
+    "updated_at": 1675982786,
+    "archived_at": 0,
+    "is_deleted": false,
+    "number": "0019",
+    "discount": 0,
+    "po_number": "",
+    "date": "2022-12-20",
+    "last_sent_date": "",
+    "next_send_date": "",
+    "due_date": "",
+    "terms": "",
     "public_notes": "",
-    "client_hash": "VOYXVqOLrT1pc4FdKCg8AXVIeumby5IfKvkQ1eAB",
-    "address1": "83865",
-    "address2": "28362 Carlotta Junctions Apt. 508",
-    "phone": "",
-    "city": "South Sibylstad",
-    "state": "New York",
-    "postal_code": "52557-0628",
-    "country_id": "288",
-    "industry_id": "",
-    "custom_value1": "",
-    "custom_value2": "",
+    "private_notes": "",
+    "uses_inclusive_taxes": false,
+    "tax_name1": "",
+    "tax_rate1": 0,
+    "tax_name2": "",
+    "tax_rate2": 0,
+    "tax_name3": "CA Sales Tax",
+    "tax_rate3": 5,
+    "total_taxes": 483.61,
+    "is_amount_discount": true,
+    "footer": "",
+    "partial": 0,
+    "partial_due_date": "",
+    "custom_value1": "1972-12-12",
+    "custom_value2": "no",
     "custom_value3": "",
     "custom_value4": "",
-    "shipping_address1": "9999",
-    "shipping_address2": "6540 Kari Meadows Apt. 411",
-    "shipping_city": "East Jordy",
-    "shipping_state": "Illinois",
-    "shipping_postal_code": "39913-0552",
-    "shipping_country_id": "4",
-    "settings": {
-        "entity": "App\\Models\\Client",
-        "industry_id": "",
-        "size_id": "",
-        "currency_id": "1"
-    },
-    "is_deleted": false,
-    "vat_number": "929146739",
-    "id_number": "",
-    "updated_at": 1631673918,
-    "archived_at": 0,
-    "created_at": 1631673918,
-    "display_name": "O'Reilly-Metz",
-    "number": "0001",
-    "contacts": [
+    "has_tasks": false,
+    "has_expenses": false,
+    "custom_surcharge1": 0,
+    "custom_surcharge2": 0,
+    "custom_surcharge3": 0,
+    "custom_surcharge4": 0,
+    "exchange_rate": 1,
+    "custom_surcharge_tax1": false,
+    "custom_surcharge_tax2": false,
+    "custom_surcharge_tax3": false,
+    "custom_surcharge_tax4": false,
+    "line_items": [
         {
-            "id": "YQdJqg9bOG",
-            "first_name": "Jewell",
-            "last_name": "McClure",
-            "email": "user@example.com",
-            "created_at": 1631673918,
-            "updated_at": 1631673918,
-            "archived_at": 0,
-            "is_primary": true,
-            "is_locked": false,
-            "phone": "276-345-6722",
-            "custom_value1": "",
-            "custom_value2": "",
-            "custom_value3": "",
-            "custom_value4": "",
-            "contact_key": "d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q",
-            "send_email": true,
-            "last_login": 0,
-            "password": "**********",
-            "link": "http:\/\/ninja.test:8000\/client\/key_login\/d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q"
-        },
-        {
-            "id": "y1aKZjleQG",
-            "first_name": "Alaina",
-            "last_name": "Wuckert",
-            "email": "amcdermott@example.org",
-            "created_at": 1631673918,
-            "updated_at": 1631673918,
-            "archived_at": 0,
-            "is_primary": false,
-            "is_locked": false,
-            "phone": "(641) 879-8481",
-            "custom_value1": "",
-            "custom_value2": "",
-            "custom_value3": "",
-            "custom_value4": "",
-            "contact_key": "KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86",
-            "send_email": true,
-            "last_login": 0,
-            "password": "**********",
-            "link": "http:\/\/ninja.test:8000\/client\/key_login\/KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86"
+            "quantity": 1,
+            "cost": 403,
+            "product_key": "Id sit.",
+            "notes": "Excepturi vel.",
+            "discount": 0,
+            "is_amount_discount": true,
+            "tax_name1": "Sales Tax",
+            "tax_rate1": 5,
+            "tax_name2": "",
+            "tax_rate2": 0,
+            "tax_name3": "",
+            "tax_rate3": 0,
+            "sort_id": 0,
+            "line_total": 403,
+            "gross_line_total": 423.15,
+            "custom_value1": "https:\/\/picsum.photos\/200",
+            "custom_value2": "47",
+            "custom_value3": "Sed placeat et.",
+            "custom_value4": "Eos et iusto velit.",
+            "type_id": "1",
+            "product_cost": 0,
+            "tax_amount": 20.15,
+            "date": ""
         }
     ],
-    "documents": [],
-    "gateway_tokens": []
-}
-],
-"meta": {
-    "pagination": {
-        "total": 1,
-        "count": 1,
-        "per_page": 1,
-        "current_page": 1,
-        "total_pages": 1,
-        "links": []
-    }
-}
+    "entity_type": "invoice",
+    "reminder1_sent": "",
+    "reminder2_sent": "",
+    "reminder3_sent": "",
+    "reminder_last_sent": "",
+    "paid_to_date": 0,
+    "subscription_id": "",
+    "auto_bill_enabled": false,
+    "invitations": [
+        {
+            "id": "W4QbYKezqM",
+            "client_contact_id": "Wpmbk5ezJn",
+            "key": "3TlMBVTIGgPQNMHzRhoHAo0mayy5O3rv",
+            "link": "http:\/\/ninja.test:8000\/client\/invoice\/3TlMBVTIGgPQNMHzRhoHAo0mayy5O3rv",
+            "sent_date": "2023-02-09 22:46:26",
+            "viewed_date": "",
+            "opened_date": "",
+            "updated_at": 1675982786,
+            "archived_at": 0,
+            "created_at": 1675982786,
+            "email_status": "",
+            "email_error": ""
+        },
+    ],
+    "documents": []
+},
 }⏎           
 ```
 
-### Create Client
+### Create Invoice
 
 <x-container>
 <x-section>
-The POST route is used to create a client.  
+The POST route is used to create a invoice.  
 
-Its important to note that contacts are intimately related to the client. The API expects the full contacts array with each POST/PUT request.  
+Its important to note that contacts are intimately related to the invoice. The API expects the full contacts array with each POST/PUT request.  
 
 To remove a contact you would simply drop the contact object from the contacts array and PUT back to the API.
 
 </x-section>
 <x-section>
 ```
-curl -X POST 'http://ninja.test:8000/api/v1/clients' \
+curl -X POST 'http://ninja.test:8000/api/v1/invoices' \
 -H "Content-Type:application/json" \
--d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
+-d '{"name":"Invoice Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-Requested-With: XMLHttpRequest";
 ```
@@ -204,17 +222,17 @@ curl -X POST 'http://ninja.test:8000/api/v1/clients' \
 #### Parameters
 ____
 
-**name**: (string) The client name  
-**website**: (string) The client website  
-**private_notes**: (string) Private notes for the client  
-**industry_id**: (integer) The industry id of the client  
-**size_id**: (integer) The size id of the client  
+**name**: (string) The invoice name  
+**website**: (string) The invoice website  
+**private_notes**: (string) Private notes for the invoice  
+**industry_id**: (integer) The industry id of the invoice  
+**size_id**: (integer) The size id of the invoice  
 **address1**: (string) Address line 1  
 **address2**: (string) Address line 2  
 **city**: (string) City  
 **state**: (string) State  
 **postal_code**: (string) Postal code  
-**country_id**: (string) The country id of the client  
+**country_id**: (string) The country id of the invoice  
 **custom_value1**: (string) Custom value  
 **custom_value2**: (string) Custom value  
 **custom_value3**: (string) Custom value  
@@ -225,13 +243,13 @@ ____
 **shipping_state**: (string) Shipping state  
 **shipping_postal_code**: (string) Shipping postal code  
 **shipping_country_id**: (integer) Shipping country id  
-**settings**: (object) Settings object for the client - see Company Settings for more information  
-**vat_number**: (string) Tax number of the client  
-**id_number**: (string) ID reference for the client  
+**settings**: (object) Settings object for the invoice - see Company Settings for more information  
+**vat_number**: (string) Tax number of the invoice  
+**id_number**: (string) ID reference for the invoice  
 **group_settings_id**: (string) The group membership id  
-**public_notes**: (string) Public notes for the client  
-**phone**: (string) The phone number of the client  
-**number**: (string) The reference number for the client  
+**public_notes**: (string) Public notes for the invoice  
+**phone**: (string) The phone number of the invoice  
+**number**: (string) The reference number for the invoice  
 
 Contacts array:  
 **first_name**: (string) Contact first name.  
@@ -253,7 +271,7 @@ ____
     "id": "wMvbmEAbYA",
     "user_id": "q9wdL84djP",
     "assigned_user_id": "",
-    "name": "Client Name",
+    "name": "Invoice Name",
     "website": "",
     "private_notes": "",
     "balance": 0,
@@ -263,7 +281,7 @@ ____
     "last_login": 0,
     "size_id": "",
     "public_notes": "",
-    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "invoice_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
     "address1": "",
     "address2": "",
     "phone": "",
@@ -283,8 +301,8 @@ ____
     "shipping_postal_code": "",
     "shipping_country_id": "",
     "settings": {
-        "entity": "App\\Models\\Client",
-        "invoice_terms": "Client Terms",
+        "entity": "App\\Models\\Invoice",
+        "invoice_terms": "Invoice Terms",
         "currency_id": "1"
     },
     "is_deleted": false,
@@ -315,7 +333,7 @@ ____
             "send_email": true,
             "last_login": 0,
             "password": "",
-            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+            "link": "http:\/\/ninja.test\/invoice\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
         }
     ],
     "documents": [],
@@ -324,19 +342,19 @@ ____
 
 ```
 
-### Update Client
+### Update Invoice
 
 <x-container>
 <x-section>
-The PUT route is used to create a client.  
+The PUT route is used to create a invoice.  
 
-It is important to note that the primary key representation of the client is not an integer, but a hashed id, ie. ```wMvbmEAbYA```
+It is important to note that the primary key representation of the invoice is not an integer, but a hashed id, ie. ```wMvbmEAbYA```
 </x-section>
 <x-section>
 ```
-curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA' \
+curl -X PUT 'http://ninja.test:8000/api/v1/invoices/wMvbmEAbYA' \
 -H "Content-Type:application/json" \
--d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
+-d '{"name":"Invoice Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-Requested-With: XMLHttpRequest";
 ```
@@ -346,17 +364,17 @@ curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA' \
 #### Parameters
 ____
 
-**name**: (string) The client name  
-**website**: (string) The client website  
-**private_notes**: (string) Private notes for the client  
-**industry_id**: (integer) The industry id of the client  
-**size_id**: (integer) The size id of the client  
+**name**: (string) The invoice name  
+**website**: (string) The invoice website  
+**private_notes**: (string) Private notes for the invoice  
+**industry_id**: (integer) The industry id of the invoice  
+**size_id**: (integer) The size id of the invoice  
 **address1**: (string) Address line 1  
 **address2**: (string) Address line 2  
 **city**: (string) City  
 **state**: (string) State  
 **postal_code**: (string) Postal code  
-**country_id**: (string) The country id of the client  
+**country_id**: (string) The country id of the invoice  
 **custom_value1**: (string) Custom value  
 **custom_value2**: (string) Custom value  
 **custom_value3**: (string) Custom value  
@@ -367,13 +385,13 @@ ____
 **shipping_state**: (string) Shipping state  
 **shipping_postal_code**: (string) Shipping postal code  
 **shipping_country_id**: (integer) Shipping country id  
-**settings**: (object) Settings object for the client - see Company Settings for more information  
-**vat_number**: (string) Tax number of the client  
-**id_number**: (string) ID reference for the client  
+**settings**: (object) Settings object for the invoice - see Company Settings for more information  
+**vat_number**: (string) Tax number of the invoice  
+**id_number**: (string) ID reference for the invoice  
 **group_settings_id**: (string) The group membership id  
-**public_notes**: (string) Public notes for the client  
-**phone**: (string) The phone number of the client  
-**number**: (string) The reference number for the client  
+**public_notes**: (string) Public notes for the invoice  
+**phone**: (string) The phone number of the invoice  
+**number**: (string) The reference number for the invoice  
 
 Contacts array:  
 **first_name**: (string) Contact first name.  
@@ -395,7 +413,7 @@ ____
     "id": "wMvbmEAbYA",
     "user_id": "q9wdL84djP",
     "assigned_user_id": "",
-    "name": "Client Name",
+    "name": "Invoice Name",
     "website": "",
     "private_notes": "",
     "balance": 0,
@@ -405,7 +423,7 @@ ____
     "last_login": 0,
     "size_id": "",
     "public_notes": "",
-    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "invoice_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
     "address1": "",
     "address2": "",
     "phone": "",
@@ -425,8 +443,8 @@ ____
     "shipping_postal_code": "",
     "shipping_country_id": "",
     "settings": {
-        "entity": "App\\Models\\Client",
-        "invoice_terms": "Client Terms",
+        "entity": "App\\Models\\Invoice",
+        "invoice_terms": "Invoice Terms",
         "currency_id": "1"
     },
     "is_deleted": false,
@@ -457,7 +475,7 @@ ____
             "send_email": true,
             "last_login": 0,
             "password": "",
-            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+            "link": "http:\/\/ninja.test\/invoice\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
         }
     ],
     "documents": [],
@@ -467,16 +485,16 @@ ____
 ```
 
 
-### Upload Client Documents
+### Upload Invoice Documents
 
 <x-container>
 <x-section>
-The PUT route is used to upload documents to a client record.  
+The PUT route is used to upload documents to a invoice record.  
 
 </x-section>
 <x-section>
 ```
-curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA/upload' \
+curl -X PUT 'http://ninja.test:8000/api/v1/invoices/wMvbmEAbYA/upload' \
 -H 'Content-Type: multipart/form-data' \
 -F _method=PUT \
 -F 'documents[]=@filename.png'
@@ -502,7 +520,7 @@ ____
     "id": "wMvbmEAbYA",
     "user_id": "q9wdL84djP",
     "assigned_user_id": "",
-    "name": "Client Name",
+    "name": "Invoice Name",
     "website": "",
     "private_notes": "",
     "balance": 0,
@@ -512,7 +530,7 @@ ____
     "last_login": 0,
     "size_id": "",
     "public_notes": "",
-    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "invoice_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
     "address1": "",
     "address2": "",
     "phone": "",
@@ -532,8 +550,8 @@ ____
     "shipping_postal_code": "",
     "shipping_country_id": "",
     "settings": {
-        "entity": "App\\Models\\Client",
-        "invoice_terms": "Client Terms",
+        "entity": "App\\Models\\Invoice",
+        "invoice_terms": "Invoice Terms",
         "currency_id": "1"
     },
     "is_deleted": false,
@@ -564,7 +582,7 @@ ____
             "send_email": true,
             "last_login": 0,
             "password": "",
-            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+            "link": "http:\/\/ninja.test\/invoice\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
         }
     ],
     "documents": [
@@ -594,16 +612,16 @@ ____
 }
 ```
 
-### Delete Client
+### Delete Invoice
 
 <x-container>
 <x-section>
-The DELETE route is delete a Client. Note* To ensure referential integrity entity records are never permanently deleted. A deleted client is simply "hidden" from view and their balance, invoices and payments are hidden from all reports.  
+The DELETE route is delete a Invoice. Note* To ensure referential integrity entity records are never permanently deleted. A deleted invoice is simply "hidden" from view and their balance, invoices and payments are hidden from all reports.  
 
 </x-section>
 <x-section>
 ```
-curl -X DELETE 'http://ninja.test:8000/api/v1/clients' \
+curl -X DELETE 'http://ninja.test:8000/api/v1/invoices' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-Requested-With: XMLHttpRequest";
 ```
@@ -625,14 +643,14 @@ ____
     "id": "wMvbmEAbYA",
     "user_id": "q9wdL84djP",
     "assigned_user_id": "",
-    "name": "Client Name",
+    "name": "Invoice Name",
     "website": "",
     "private_notes": "",
     "shipping_postal_code": "",
     "shipping_country_id": "",
     "settings": {
-        "entity": "App\\Models\\Client",
-        "invoice_terms": "Client Terms",
+        "entity": "App\\Models\\Invoice",
+        "invoice_terms": "Invoice Terms",
         "currency_id": "1"
     },
     "is_deleted": false,
@@ -659,16 +677,16 @@ ____
 }
 ```
 
-### Client Bulk Actions
+### Invoice Bulk Actions
 
 <x-container>
 <x-section>
-The bulk action route allows you to perform an action on multiple clients.
+The bulk action route allows you to perform an action on multiple invoices.
 
 </x-section>
 <x-section>
 ```
-curl -X POST 'http://ninja.test/api/v1/clients/bulk' \
+curl -X POST 'http://ninja.test/api/v1/invoices/bulk' \
 -H "Content-Type:application/json" \
 -d '{"action":"restore","ids":["VolejRejNm","wMvbmEAbYA"]}' \
 -H "X-API-TOKEN:company-token-test" \
@@ -680,9 +698,9 @@ curl -X POST 'http://ninja.test/api/v1/clients/bulk' \
 #### Parameters
 ____
 
-**archive**: Archive clients.  
-**restore**: Restore clients.  
-**delete**: Delete clients.  
+**archive**: Archive invoices.  
+**restore**: Restore invoices.  
+**delete**: Delete invoices.  
 
 #### Response
 ____
@@ -690,7 +708,7 @@ ____
 #### Response
 ____
 
-Array of clients
+Array of invoices
 ```
 {
 "data": [
@@ -699,7 +717,7 @@ Array of clients
     "user_id": "q9wdL84djP",
     "shipping_country_id": "4",
     "settings": {
-        "entity": "App\\Models\\Client",
+        "entity": "App\\Models\\Invoice",
         "industry_id": "",
         "size_id": "",
         "currency_id": "1"
@@ -732,11 +750,11 @@ Array of clients
 }⏎           
 ```
 
-### Client Purge
+### Invoice Purge
 
 <x-container>
 <x-section>
-It is possible to remove a client (and all their associated data) permanently from the system. In order to
+It is possible to remove a invoice (and all their associated data) permanently from the system. In order to
 do this, you would need to use the purge routes.
 
 This is a password protected route, meaning that a password override is required to execute this command, to
@@ -745,7 +763,7 @@ use this the header field X-API-PASSWORD is also required in the request. This p
 </x-section>
 <x-section>
 ```
-curl -X POST '/api/v1/clients/{id}/purge' \
+curl -X POST '/api/v1/invoices/{id}/purge' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-API-PASSWORD:your_login_password_here" \
 -H "X-Requested-With: XMLHttpRequest";
@@ -756,7 +774,7 @@ curl -X POST '/api/v1/clients/{id}/purge' \
 #### Route Parameters
 ____
 
-id: The hashed ID of the client
+id: The hashed ID of the invoice
 
 
 #### Response
@@ -770,11 +788,11 @@ HTTP response code 200
 }⏎      
 ```
 
-### Client Merge
+### Invoice Merge
 
 <x-container>
 <x-section>
-It is possible to merge two clients into a single client. This will aggregate both clients invoices / documents and other attributes into a single client.
+It is possible to merge two invoices into a single invoice. This will aggregate both invoices invoices / documents and other attributes into a single invoice.
 
 This is a password protected route, meaning that a password override is required to execute this command, to
 use this the header field X-API-PASSWORD is also required in the request. This password would match your login password.
@@ -782,7 +800,7 @@ use this the header field X-API-PASSWORD is also required in the request. This p
 </x-section>
 <x-section>
 ```
-curl -X POST '/api/v1/clients/{id}/{mergeable_client_hashed_id}/merge' \
+curl -X POST '/api/v1/invoices/{id}/{mergeable_invoice_hashed_id}/merge' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-API-PASSWORD:your_login_password_here" \
 -H "X-Requested-With: XMLHttpRequest";
@@ -793,14 +811,14 @@ curl -X POST '/api/v1/clients/{id}/{mergeable_client_hashed_id}/merge' \
 #### Route Parameters
 ____
 
-id: The client to receive the merging client
-mergeable_client_hashed_id: The hashed id of the client to be merged.
+id: The invoice to receive the merging invoice
+mergeable_invoice_hashed_id: The hashed id of the invoice to be merged.
 
 #### Response
 ____
 
 HTTP response: code 200
-Object response: Client 
+Object response: Invoice 
 
 ```
 {
@@ -808,14 +826,14 @@ Object response: Client
     "id": "wMvbmEAbYA",
     "user_id": "q9wdL84djP",
     "assigned_user_id": "",
-    "name": "Client Name",
+    "name": "Invoice Name",
     "website": "",
     "private_notes": "",
     "shipping_postal_code": "",
     "shipping_country_id": "",
     "settings": {
-        "entity": "App\\Models\\Client",
-        "invoice_terms": "Client Terms",
+        "entity": "App\\Models\\Invoice",
+        "invoice_terms": "Invoice Terms",
         "currency_id": "1"
     },
     "is_deleted": false,
