@@ -23,7 +23,7 @@ The app is divided into three main parts: the backend/API and the two admin port
 
 - Framework: [Laravel](https://laravel.com)
 - Code: [GitHub](https://github.com/invoiceninja/invoiceninja/tree/v5-stable)
-- API Docs: [SwaggerHub](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja)
+- API: [Docs](https://api-docs.invoicing.co/)
 
 ### Admin Portal - Desktop & Mobile
 
@@ -42,7 +42,7 @@ The app is divided into three main parts: the backend/API and the two admin port
 
 ## API Definition
 
-Our full API definition can be found on swagger <a href="https://app.swaggerhub.com/apis/invoiceninja/invoiceninja">here</a>
+Our full API definition can be found <a href="https://api-docs.invoicing.co/">here</a>
 
 ### Base URL for v5
 

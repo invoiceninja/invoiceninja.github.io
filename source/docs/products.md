@@ -12,7 +12,7 @@ There several ways for a product to be created, including:
 * Admin Portal > New Product
 * Admin Portal > Settings > Import | Export > Import .CSV documents for batch product creation or imports.
 * Manually entering new product information on a new line of an invoice or quote.  **Note** that when using this method, the product *quantity* used in the first invoice will be set as the *Default Quantity* for that product.
-* As a developer you can create API calls to create, update, delete, export, or perform bulk actions on products, using API references from the Invoice Ninja [API Documentation](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja/).  Templates for Integratomat and others have not yet been implemented.
+* As a developer you can create API calls to create, update, delete, export, or perform bulk actions on products, using API references from the Invoice Ninja [API Documentation](https://api-docs.invoicing.co/).  Templates for Integratomat and others have not yet been implemented.
 
 Products can also be used to represent services rendered.  For example, you could have a product entry for service calls, with a price set to your hourly rate, and use the product quantity to represent the billable hours.
 

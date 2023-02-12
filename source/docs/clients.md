@@ -17,7 +17,7 @@ There several ways for a client to be created, including:
 * Clients > + Client
 * Settings > Import | Export > Client CSV Import
 * Client Portal (if client registration is enabled on Settings > Client Portal)
-* API Integrator: Zapier, Integromat, APISync, or manual API calls developed using the [API Documentation](https://app.swaggerhub.com/apis/invoiceninja/invoiceninja/).
+* API Integrator: Zapier, Integromat, APISync, or manual API calls developed using the [API Documentation](https://api-docs.invoicing.co/).
 
 A "Client" can either represent a person or a company. If only the contact information is set the contact name will be used as the client's display name. If the client's name is set then it will be used instead.
 
