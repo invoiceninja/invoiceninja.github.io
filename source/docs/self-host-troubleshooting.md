@@ -170,6 +170,14 @@ Don't forget to refresh your cache (not needed for shared hosting!) with php art
 
 When facing errors, first set `APP_DEBUG=true` in `.env` and execute `php artisan optimize` to get more extensive debug information.
 
+### Process has been signaled with signal "5"
+
+This error message is observed when the queue attempts to perform a action where the queue user does not have the correct permissions. You may see this error if you run command line arguments as a user other than the web user.
+
+This is most commonly see in Invoice Ninja where snappdf has been downloaded from the command line as a regular user, the permissions on the binary may prevent the webuser from executing the chrome binary when generating the PDF.
+
+Always ensure that tasks run on the command line are executed by the web user, on Ubuntu this is typically www-data
+
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
 
 <p>The most common cause of this issue is running multiple version of PHP, if the caches are built with a different version of PHP you may see the above error as differing versions of PHP may not be interoperable on the same installation. Ensure you are running the same CLI and Web PHP version to prevent any errors/</p>
