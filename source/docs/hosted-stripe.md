@@ -42,6 +42,7 @@ customer.source.updated
 payment_intent.processing  
 payment_intent.succeeded  
 payment_intent.payment_failed  
+payment_intent.partially_funded
 </x-info>
 
 ![alt text](/assets/images/stripe/stripe_webhook_overview_3.png "Add Events")
