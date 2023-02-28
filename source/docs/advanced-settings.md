@@ -308,7 +308,7 @@ Customize any options here to override the regular settings for each respective 
 
 
 
-<h2 id=payment-links>Payment links</h2>
+<h2 id=payment_links>Payment links</h2>
 
 There are three views to the Payment links panel.  The payment link list, viewing a payment link, and creating or editing a payment link.
 
