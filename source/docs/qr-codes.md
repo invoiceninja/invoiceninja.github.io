@@ -52,7 +52,6 @@ In the body tab, at the bottom add
 
 ```
 <div style="page-break-inside: avoid;">
-<div>
 $swiss_qr
 </div>
 ```
