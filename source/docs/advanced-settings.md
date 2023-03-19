@@ -302,35 +302,35 @@ Customize any options here to override the regular settings for each respective 
 
 * **Templates & Reminders** - Have special rules for templates & reminders for your group, personalize your messages further, or be more or less restrictive about late payments with certain groups.
 
-* **Subscriptions** - View and edit general, and group-specific subscription settings.
+* **Payment links** - View and edit general, and group-specific payment link settings.
 
 * **Workflow Settings** - Change some of the admin portal UI workflow settings when interacting with invoices or quotes from client's group.
 
 
 
-<h2 id=subscriptions>Subscriptions</h2>
+<h2 id=payment_links>Payment links</h2>
 
-There are three views to the Subscriptions panel.  The subscription list, viewing a subscription, and creating or editing a subscription.
+There are three views to the Payment links panel.  The payment link list, viewing a payment link, and creating or editing a payment link.
 
-From the subscription list you can select existing subscriptions to view, or edit them.  You can also add new subscriptions with the "+" character in the top left corner of the subscriptions list panel.
+From the payment link list you can select existing payment links to view, or edit them.  You can also add new payment links with the "+" character in the top left corner of the payment links list panel.
 
-When viewing a subscription you will see the initial cost of the subscription service at the top.  Below it, is a link you can copy and share to clients, or post on your storefront, which prompts clients to pay for, and setup the selected subscription, which creates the invoice and payment records for you when they do that.   Finally you will see links to filtered lists of invoices, or recurring invoices that are directly related to your subscription.   
+When viewing a payment link you will see the initial cost of the payment link service at the top.  Below it, is a link you can copy and share to clients, or post on your storefront, which prompts clients to pay for, and setup the selected payment link, which creates the invoice and payment records for you when they do that.   Finally you will see links to filtered lists of invoices, or recurring invoices that are directly related to your payment link.   
 
-When you *edit a subscription* there are three tabs with unique features to control the subscriptions with.
+When you *edit a payment link* there are three tabs with unique features to control the payment links with.
 
 ### Overview
 
-* **Name** - The name of your monthly subscription, presentable to clients.
+* **Name** - The name of your monthly payment link, presentable to clients.
 
-* **Group** - Assign subscriptions to groups, to allow group members to switch between subscriptions available exclusively to them based on their group membership.  Subscriptions not assigned to a group, will be visible to users who are not in a group only.  Use this to make special subscription models available to certain VIP clients, or etc.
+* **Group** - Assign payment links to groups, to allow group members to switch between payment links available exclusively to them based on their group membership.  Payment links not assigned to a group, will be visible to users who are not in a group only.  Use this to make special payment link models available to certain VIP clients, or etc.
 
-* **Products** - A searchable, and selectable drop down list of available products from the company.  These products are issued as a one-time purchase on the subscription model.  For example, a setup service fee.
+* **Products** - A searchable, and selectable drop down list of available products from the company.  These products are issued as a one-time purchase on the payment link model.  For example, a setup service fee.
 
-* **Recurring Products** - Also a searchable, and selectable drop down list of available products.  These products will appear on recurring invoices, for example, as the regular subscription fee.
+* **Recurring Products** - Also a searchable, and selectable drop down list of available products.  These products will appear on recurring invoices, for example, as the regular payment link fee.
 
 ### Settings
 
-* **Frequency** - A drop down selection list to choose a regular interval to charge the clients for this subscription model.
+* **Frequency** - A drop down selection list to choose a regular interval to charge the clients for this payment link model.
 
 * **Auto bill**
   * *Enabled* - A user a payment will be automatically attempted if a payment method is stored on file.
@@ -342,21 +342,21 @@ When you *edit a subscription* there are three tabs with unique features to cont
 
 * **Promo Discount** - Select from the drop down menu on the right, either "Percent" or "Amount" to discount the client by a flat rate, or percentage of the invoice amount for that period.  On the left, in the text field, enter the rate to discount by.
 
-* **Return URL** - Manually specify a URL to return the clients to when they are finished paying for and setting up their subscription.
+* **Return URL** - Manually specify a URL to return the clients to when they are finished paying for and setting up their payment link.
 
-* **Allow Query Overrides** - This toggle switch enables API calls to the backend to override subscription requests, in order to append additional information to the subscription requests automatically when the client interacts with your storefront's website or app.
+* **Allow Query Overrides** - This toggle switch enables API calls to the backend to override payment link requests, in order to append additional information to the payment link requests automatically when the client interacts with your storefront's website or app.
 
-* **Allow Plan Changes** - Allow clients who are on this subscription, the option to manually switch subscription models.  Different subscriptions available to change to, must be assigned to the same group.  Note, you can allow switching off of subscription A onto subscription B, and disallow switching off of subscription B, by not enabling *Allow Plan Changes* for subscription B only.
+* **Allow Plan Changes** - Allow clients who are on this payment link, the option to manually switch payment link models.  Different payment links available to change to, must be assigned to the same group.  Note, you can allow switching off of payment link A onto payment link B, and disallow switching off of payment link B, by not enabling *Allow Plan Changes* for payment link B only.
 
-* **Allow Cancellation** - Allow clients to manually request subscription cancellations from the client portal.  When enabled, optionally set a time window for clients to qualify for a refund on their subscription.
+* **Allow Cancellation** - Allow clients to manually request payment link cancellations from the client portal.  When enabled, optionally set a time window for clients to qualify for a refund on their payment link.
 
 * **Trial Enabled** - When enabled, the initial "Pay Now" button becomes a "Start Free Trial" button with no demand for payment details at the time of trial beginning.  When enabled, you should select a *Trial Duration* below in the newly spawned drop down menu.  Otherwise the trials will be indefinite.
 
-* **Per Seat Enabled** - Toggle on or off to enable a maximum capacity, or seat limit for the subscription.  When enabled, enter a number on the single text line spawned below, to specify the number of maximum seats.
+* **Per Seat Enabled** - Toggle on or off to enable a maximum capacity, or seat limit for the payment link.  When enabled, enter a number on the single text line spawned below, to specify the number of maximum seats.
 
 ### Webhook
 
-Webhooks allow your web based applications to communicate with each other.   These settings here, govern rules for outgoing webhooks when subscriptions are signed up for by clients.
+Webhooks allow your web based applications to communicate with each other.   These settings here, govern rules for outgoing webhooks when payment links are signed up for by clients.
 
 * **Webhook URL** - Enter the URL of the web service you wish to send your notification to.
 

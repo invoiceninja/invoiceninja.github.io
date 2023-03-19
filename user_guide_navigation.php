@@ -18,7 +18,7 @@ return [
             'Recurring Invoices' => '/docs/recurring-invoices',
             'Reports' => '/docs/reports',
             'Quotes' => '/docs/quotes',
-            'Subscriptions' => '/docs/subscriptions',
+            'Payment Links' => '/docs/payment-links',
             'Tasks' => '/docs/tasks',
             'Transactions' => '/docs/transactions',
             'Vendors' => '/docs/vendors',

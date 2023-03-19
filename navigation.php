@@ -11,7 +11,7 @@ return [
             'Advanced Settings' => '/docs/advanced-settings',
             'PDF customization' => '/docs/custom-fields',
             'Gateways' => '/docs/gateways',
-            'Subscriptions' => '/docs/subscriptions',
+            'Payment Links' => '/docs/payment-links',
             'Migrating to V5' => '/docs/migration',
         ],
     ],

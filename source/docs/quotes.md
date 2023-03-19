@@ -119,4 +119,4 @@ When a quote is archived no further modifications can be made to the quote. To m
 
 Restoring a quote from the archived or deleted state will set the quote back to its previous state prior to archiving.
 
-<x-next url=/docs/subscriptions>Subscriptions</x-next>
+<x-next url=/docs/payment-links>Payment Links</x-next>
