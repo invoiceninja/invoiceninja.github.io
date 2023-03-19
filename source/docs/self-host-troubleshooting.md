@@ -5,6 +5,15 @@ section: content
 
 # Troubleshooting
 
+### General Troubleshooting Steps
+
+If you're experiencing issues with your self-hosted Invoice Ninja instance, follow these general troubleshooting steps before diving into the specific sections:
+
+1. Verify that you meet the [minimum system requirements](https://invoiceninja.github.io/docs/self-hosting/#requirements).
+2. Consult the [Invoice Ninja forum](https://forum.invoiceninja.com/) for community support.
+3. Examine the logs for error messages. You can find the logs in the `storage/logs` directory.
+
+
 ## Cron not running / Queue not running
 
 <x-warning>
@@ -21,7 +30,15 @@ If you are using shared hosting, then will need to add an additional parameter t
 cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
 
-This will force a recheck and if the cron is working the red error triangle will disappear.
+Please note that on some systems the php location may be different, so confirm with your hosting provider which path to PHP you need to use.
+
+To test your changes, navigate your browser to the update URL which is in the following format:
+
+```base
+https://yourdomain.com/update?secret=
+```
+
+The secret variable is located in your .env file until the key `UPDATE_SECRET` , this will force a recheck and if the cron is working the red error triangle will disappear.
 
 ## PDFs don't appear to be updating
 
@@ -68,19 +85,50 @@ MAIL_FROM_NAME="Full Name With Double Quotes"
 
 If you are using gmail smtp relay, then a additional .env variable is required.
 
-```
-SERVER_NAME=
-```
-
-Emails will fail with the message:
+For Gmail SMTP Relay also ensure you have configure this service in Google by using the following steps:
 
 ```
-Expected response code 250 but got an empty response
+Go to [Apps > Google Workspace > Gmail > Routing]
+Next to SMTP relay service, click Configure.
+Set up the SMTP relay service by following the steps in [SMTP relay: Route outgoing non-Gmail messages through Google]
+Then, in your env file, use the following:
+
+Gmail SMTP Relay requires a proper EHLO hostname domain to be sent during the SMTP handshake: [127.0.0.1] doesn’t cut it anymore. For that, Laravel has to check for a host domain variable and send it along with the handshake request.
+
+MAIL_EHLO_DOMAIN="server.domain.com"
+MAIL_MAILER=smtp
+MAIL_HOST=smtp-relay.gmail.com 
+MAIL_PORT=587
+MAIL_USERNAME=xxxx
+MAIL_PASSWORD=xxxx
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=xxxx
+MAIL_FROM_NAME=xxxx
 ```
 
-without this additional field.
+You will also want to make sure you do not have any firewall rules which may be blocking access to the Google servers, just in case, ensure the following IP addresses are whitelisted:
 
-The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, maildriver, smtp - anything that Laravel 8 supports natively is supported in this app.
+```
+142.251.163.28
+172.253.63.28
+172.253.118.28
+74.125.24.28
+142.250.114.28
+142.250.4.28
+142.251.12.28
+172.217.194.28
+142.250.31.28
+142.251.167.28
+172.253.115.28
+```
+
+For more detailed information on Gmail Relay, see this post of our forum by community member charles
+
+https://forum.invoiceninja.com/t/emails-not-sending-yet-another-thread-v5-5-55/12401/9
+
+### Mail Mailer configuration
+
+The ```MAIL_MAILER``` field defines which email driver you wish to use, this could be postmark, mailgun, smtp, log - anything that Laravel 9 supports natively is supported in this app.
 
 If the mail config is correct, the next place to check would be to check the error logs for any errors that are being thrown, the error log is found in ```storage/logs/laravel.log```
 
