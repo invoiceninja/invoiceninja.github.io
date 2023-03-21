@@ -384,6 +384,14 @@ When changes are made to the container this can causes the cache to become stale
 
 The solution is to clear the contents of the folder ```bootstrap/cache```, by either manually deleting files or by running ```/update?secret=``` which will also delete the contents of this directory. 
 
+### Uncaught ErrorException Collection::offsetExists($key)
+
+This error is observed when the system has Composer v1 installed. Update to Composer 2 using the following command
+
+```bash
+sudo -H composer self-update
+```
+
 ### file_exists(): open_basedir restriction in effect
 
 If you aren't able to adjust the open_basedir restrictions the following steps may help:
