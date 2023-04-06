@@ -20,6 +20,7 @@ return [
         'children' => [
             'Installation' => '/docs/self-host-installation',
             'Troubleshooting' => '/docs/self-host-troubleshooting',
+            'Debug Mode' => '/docs/self-host-debug-mode',
             'Updating' => '/docs/self-host-updating',
             '.env Variables' => '/docs/env-variables',
         ],

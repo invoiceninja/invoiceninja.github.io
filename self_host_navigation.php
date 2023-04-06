@@ -9,6 +9,8 @@ return [
             'Troubleshooting' => '/docs/self-host-troubleshooting',
             'Updating' => '/docs/self-host-updating',
             '.env Variables' => '/docs/env-variables',
+            'Debug Mode' => '/docs/self-host-debug-mode',
+
         ],
     ],
     'Legal' => [
