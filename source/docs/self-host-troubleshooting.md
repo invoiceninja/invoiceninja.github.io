@@ -188,13 +188,7 @@ PHANTOMJS_SECRET='your-secret-here'
 
 The `PHANTOMJS_SECRET` can be any random value, it's used to bypass the client portal password.
 
-<p>Once this has been done you'll need to refresh the config cache:</p>
-
-```bash
-php artisan optimize
-```
-
-If you experience errors with PDF generation, such as `500 Server error` or `Failed to load PDF document` or a continuous loading bar, you must get a PhantomJS key [here](https://dashboard.phantomjscloud.com/dash.html#/signup), Replace it with the prefilled key `a-demo-key-with-low-quota-per-ip-address` and run `php artisan optimize` again. (On shared hosting to clear the cache you will need to either empty to contents of /bootstrap/cache/* OR run https://your.website.com/update?secret=secret)
+If you experience errors with PDF generation, such as `500 Server error` or `Failed to load PDF document` or a continuous loading bar, you must get a PhantomJS key [here](https://dashboard.phantomjscloud.com/dash.html#/signup), Replace it with the prefilled key `a-demo-key-with-low-quota-per-ip-address`. 
 
 <x-warning>
 For PhantomJS to work, your Invoice Ninja installation web address must be public; localhost installations or those on private networks won't be able to use PhantomJS Cloud.
@@ -208,15 +202,11 @@ The default PDF generated as of version 5.5.12 is our hosted platform PDF conver
 PDF_GENERATOR=hosted_ninja
 ```  
 
-<x-warning>
-Don't forget to refresh your cache (not needed for shared hosting!) with php artisan optimize.
-</x-warning>
-
 ## Platform specific issues
 
 ### General advice
 
-When facing errors, first set `APP_DEBUG=true` in `.env` and execute `php artisan optimize` to get more extensive debug information.
+When facing errors, first set `APP_DEBUG=true` in `.env`
 
 ### Process has been signaled with signal "5"
 
@@ -259,7 +249,7 @@ If you are experiencing issues with the migration not running as expected please
  * Ensure directories are read/writable by the webuser (ie www-data)
  * Ensure the cron scheduler is running (and working) - You can verify it is working by inspecting the ```jobs``` table in the database, it should be empty
  * Inspect the log file /storage/logs/laravel.log for further information.
- * If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. ```EXPANDED_LOGGING=true``` then optimize with ```php artisan optimize``` . Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
+ * If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. ```EXPANDED_LOGGING=true``` Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
 
 ### libatk.so not loading for Google
 
@@ -278,8 +268,6 @@ To configure the service, you need to add a .env variable
 ```
 WEBCRON_SECRET=password
 ```
-
-Define your own secret password and then re optimize the cache The service will then be activated.
 
 ### Installing in a subdirectory.
 
@@ -375,8 +363,7 @@ In 2021_09_16_115919_update_designs.php line n/a: Cannot declare class UpdateDes
 
 Delete that file and retry the command until it works and runs properly.
 
-7. Once succeeded with step 5, run this command `cd /home/domain.com/public_html/invoiceninja/ && php artisan optimize` or simply `php artisan optimize` whatever works for you
-8. Go to https://domain.com/update?secret=x to be sure the update worked, it should load the login screen and work, you should also be able to edit the company details again.
+6. Go to https://domain.com/update?secret=x to be sure the update worked, it should load the login screen and work, you should also be able to edit the company details again.
 
 ### Unresolvable dependency resolving [Parameter #0 [ array $options ]] in class App\Utils\CssInlinerPlugin
 

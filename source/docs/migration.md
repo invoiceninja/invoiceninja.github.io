@@ -137,7 +137,13 @@ If you are experiencing issues with the migration not running as expected please
 * Ensure directories are read/writable by the webuser (ie www-data)
 * Ensure the cron scheduler is running (and working) - You can verify it is working by inspecting the ```jobs``` table in the database, it should be empty
 * Inspect the log file /storage/logs/laravel.log for further information.
-* If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. EXPANDED_LOGGING=true then optimize with php artisan optimize . Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
+* If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. 
+
+```
+EXPANDED_LOGGING=true 
+
+Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
+
 * If using `https://` ensure you are using a signed SSL certificate, you may get authentication errors if you attempt to use a self signed certificate. Free ssl's are available from [lets encrypt](https://letsencrypt.org)
 * Still having troubles? search the [forum](https://forum.invoiceninja.com) or come and chat with us on [slack](https://invoiceninja.slack.com)
 
