@@ -204,7 +204,7 @@ If you would like to improve the performance of your Invoice Ninja installation,
 
 If you have root access to your system, then simply follow the Laravel [guide](https://laravel.com/docs/8.x/queues#supervisor-configuration) to configure the supervisor service to start and restart your queue.
 
-Forum memory @link470 also has the following guide to configure the Supervisor process on Ubuntu 22.04 using the following steps:
+Forum member @link470 also has the following guide to configure the Supervisor process on Ubuntu 22.04 using the following steps:
 
 #### Supervisor for Invoice Ninja Ubuntu 22.04 LTS
 
