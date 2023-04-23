@@ -204,11 +204,101 @@ If you would like to improve the performance of your Invoice Ninja installation,
 
 If you have root access to your system, then simply follow the Laravel [guide](https://laravel.com/docs/8.x/queues#supervisor-configuration) to configure the supervisor service to start and restart your queue.
 
-You will then need to update the QUEUE_CONNECTION variable in the .env file as follows:
+Forum memory @link470 also has the following guide to configure the Supervisor process on Ubuntu 22.04 using the following steps:
 
+#### Supervisor for Invoice Ninja Ubuntu 22.04 LTS
+
+```bash
+$ sudo apt-get install supervisor
 ```
+
+Next, create a configuration file for Invoice Ninja by navigating to the Supervisor configuration directory and starting up your text editor of choice with the file name to use. You can set any file name here ending in .conf. I’m using vi.
+
+```bash
+$ cd /etc/supervisor/conf.d
+$ sudo vi invoiceninja-worker.conf
+```
+
+In the new invoiceninja-worker.conf file, enter the following:.
+
+```bash
+[program:invoiceninja-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /path/to/invoiceninja/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+user=www-data
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/var/log/invoiceninja-worker.log
+stopwaitsecs=3600
+```
+
+There’s 4 main things to change, shown in bold above:
+
+program: The program name you’ll use for the worker
+command: The path to the artisan file in the root of the Invoice Ninja application directory
+user: The user that’ll be running Supervisor. Typically, this is the web server user (the same user that has ownership over the Invoice Ninja files)
+stdout_logfile: Optionally, include the path to a log file for the Supervisor worker
+Once these changes are made to suit your environment, save the file.
+
+If you chose to set a log file path, ensure the log file is created and that the user account configured has access to it. For this example, the log is stored in /var/log.
+
+```bash
+$ cd /var/log
+$ sudo touch invoiceninja-worker.log
+$ sudo chown www-data:www-data invoiceninja-worker.log
+```
+
+Now that Supervisor is set up, we can read the configuration file:
+
+```bash
+$ sudo supervisorctl reread
+```
+
+This should tell us that the name of our config (invoiceninja-worker) is available. The above command will also need to be re-ran any time that the config file is updated.
+
+Next, add the new config to the process group for Supervisor (this command also needs to be ran any time the configuration is updated)
+
+```bash
+$ sudo supervisorctl update
+```
+Now, start the Supervisor worker
+
+```bash
+$ sudo supervisorctl start invoiceninja-worker:*
+```
+
+Running the following will show worker processes as RUNNING (on my installation, I see 8 worker processes, numbered 00 through 07)
+
+```bash
+$ sudo supervisorctl status
+```
+
+Now that the Supervisor is configured, we need to tell Invoice Ninja to actually use it.
+
+Edit the .env file for Invoice Ninja
+
+```bash
+$ sudo vi /path/to/invoiceninja/.env
+```
+
+Edit the following line to change it from sync to database, and save the file
+
+```bash
 QUEUE_CONNECTION=database
 ```
+Finally, now that everything is set up, reload the config for Invoice Ninja and restart the queue. I’m using www-data for this example as the web server user.
+
+```bash
+$ cd /path/to/invoiceninja/
+$ sudo -u www-data php artisan optimize
+$ sudo -u www-data php artisan queue:restart
+```
+
+That’s it! You should now have a functioning Supervisor setup for Invoice Ninja.
 
 If you are on shared hosting, it is possible to get the queues working by defining a new cron with the following configuration:
 
