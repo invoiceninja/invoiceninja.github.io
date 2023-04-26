@@ -326,15 +326,6 @@ If Ninja Co company id 5
 5_MAIL_ENCRYPTION=null
 ```
 
-And for these configuration, always ensure your cache is never optimized, you'll want to run:
-
-```
-php artisan config:cache
-php artisan config:clear
-```
-
-This last step is extremely important. If your system caches the configuration it will not read in the configuration values and your emails will fail.
-
 ## Currency Conversion
 
 <p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.

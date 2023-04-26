@@ -64,6 +64,10 @@ We have a dedicated repository with detailed instructions on how to get started 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xo6a3KtLC2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+<x-warning>
+If you make changes to your env file, please remember to reboot the container for the changes to take effect!
+</x-warning>
+
 ### Download pre built zip. (Advanced)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -415,15 +419,6 @@ If Ninja Co company id 5
 5_MAIL_PASSWORD=null
 5_MAIL_ENCRYPTION=null
 ```
-
-And for these configuration, always ensure your cache is never optimized, you'll want to run:
-
-```
-php artisan config:cache
-php artisan config:clear
-```
-
-This last step is extremely important. If your system caches the configuration it will not read in the configuration values and your emails will fail.
 
 ## Currency Conversion
 
