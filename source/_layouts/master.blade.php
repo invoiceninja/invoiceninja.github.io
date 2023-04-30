@@ -21,7 +21,6 @@
 
     @yield('before-closing-head')
 
-    <div id="google_translate_element"></div>
         <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
