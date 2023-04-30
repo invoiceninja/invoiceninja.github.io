@@ -19,6 +19,7 @@ return [
             'Reports' => '/docs/reports',
             'Quotes' => '/docs/quotes',
             'Payment Links' => '/docs/payment-links',
+            'Subscriptions' => '/docs/subscriptions',
             'Tasks' => '/docs/tasks',
             'Transactions' => '/docs/transactions',
             'Vendors' => '/docs/vendors',
