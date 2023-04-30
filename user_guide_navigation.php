@@ -18,7 +18,6 @@ return [
             'Recurring Invoices' => '/docs/recurring-invoices',
             'Reports' => '/docs/reports',
             'Quotes' => '/docs/quotes',
-            'Payment Links' => '/docs/payment-links',
             'Subscriptions' => '/docs/subscriptions',
             'Tasks' => '/docs/tasks',
             'Transactions' => '/docs/transactions',
@@ -47,14 +46,5 @@ return [
             'Stripe Integration' => '/docs/hosted-stripe',
         ],
     ],
-    // 'Legal' => [
-    //     'url' => '/docs/legal/license',
-    //     'children' => [
-    //         'License' => '/docs/legal/license',
-    //         'Terms of Service' => '/docs/legal/terms_of_service',
-    //         'Data Privacy' => '/docs/legal/data_privacy',
-    //         'GDPR' => '/docs/legal/gdpr',
-    //     ],        
-    // ]
 
 ];
