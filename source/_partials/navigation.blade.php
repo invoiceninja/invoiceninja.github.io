@@ -1,4 +1,3 @@
-<div id="google_translate_element"></div>
 {{--<nav class="py-4 uppercase bg-white border-b sticky top-0 z-40">--}}
 <nav class="py-4 sticky top-0 z-40 lg:z-50 w-full mx-auto bg-white border-b">
     <div id="navigation-content" class="flex items-center justify-between px-4 md:px-0 md:mx-4 lg:px-4 xl:mx-auto max-w-8xl">
@@ -17,6 +16,7 @@
                 <a target="_blank" href="https://invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go
                     to app</a>
             </div>
+            <div id="google_translate_element"></div>
             <div class="flex flex-col lg:hidden">
                 <button id="mobile-menu-toggle" class="focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -37,6 +37,5 @@
            class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
         <a href="https://invoicing.co" target="_blank"
            class="py-2 border-b border-transparent hover:border-ninja-blue">Go to app</a>
-        
     </div>
 </nav>
