@@ -15,7 +15,7 @@
                    class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
                 <a target="_blank" href="https://invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go
                     to app</a>
-                    <span><div id="google_translate_element"></div></span>
+                    <span id="google_translate_element"></span>
             </div>
             <div class="flex flex-col lg:hidden">
                 <button id="mobile-menu-toggle" class="focus:outline-none">
