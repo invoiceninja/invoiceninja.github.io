@@ -20,7 +20,11 @@ jobs:
         with:
             git_repo_url: https://github.com/invoiceninja/invoiceninja.github.io
             api_key: ${{ secrets.OPENAI_API_KEY }}
-
+            source_language: English
+            target_language: fr-CA
+            i18n_surfix: fr-CA
+            file_types: .md
+            file_path_filter: "source/docs"
       - name: Run GPT Translate
         if: |
           contains(github.event.comment.body, '/gpt-translate') || 
