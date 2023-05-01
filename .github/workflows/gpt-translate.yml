@@ -11,6 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+
+      - name: Commit files
+        if: |
+          contains(github.event.comment.body, '/gpt-translate') || 
+          contains(github.event.comment.body, '/gt')
+        uses: yunwei37/OpenAI-Continuous-Translator@master
+        with:
+            git_repo_url: https://github.com/invoiceninja/invoiceninja.github.io
+            api_key: ${{ secrets.OPENAI_API_KEY }}
+
       - name: Run GPT Translate
         if: |
           contains(github.event.comment.body, '/gpt-translate') || 
