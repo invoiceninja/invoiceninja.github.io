@@ -27,9 +27,6 @@
                     </svg>
                 </button>
             </div>
-
-            <div id="google_translate_element"></div>
-
         </section>
     </div>
     <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
@@ -41,13 +38,6 @@
            class="py-2 border-b border-transparent hover:border-ninja-blue">Go to app</a>
     </div>
 </nav>
-
-
-      <script type="text/javascript">
-        function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-        </script>
-
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-        
+<div class="flex w-full">
+<div id="google_translate_element"></div>
+</div>  
