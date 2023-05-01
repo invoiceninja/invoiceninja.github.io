@@ -1,9 +1,8 @@
 name: Translate
 
 on:
-  push:
-    branches:
-      - v5-rework
+  issue_comment:
+    types: [ created ]
 
 jobs:
   gpt_translate:
@@ -16,6 +15,3 @@ jobs:
         uses: 3ru/gpt-translate@v1.0
         with:
           apikey: ${{ secrets.OPENAI_API_KEY }}
-      - name: Build
-        run: |
-          /gpt-translate source/docs/* fr-CA/* fr-CA
