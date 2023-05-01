@@ -1,0 +1,21 @@
+name: Translate
+
+on:
+  push:
+    branches:
+      - v5-rework
+
+jobs:
+  gpt_translate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run GPT Translate
+        uses: 3ru/gpt-translate@v1.0
+        with:
+          apikey: ${{ secrets.OPENAI_API_KEY }}
+      - name: Build
+        run: |
+          /gpt-translate source/docs/* fr-CA/* fr-CA
