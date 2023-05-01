@@ -28,6 +28,13 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+    <style>
+    .goog-te-combo {
+        width: 200px;
+        height: 50px;
+        font-size: 20px;
+    }
+    </style>
     @yield('before-closing-head')
 </head>
 
