@@ -27,6 +27,17 @@
         }
     </script>
 
+        <style>
+        #google_translate_element {
+        position: absolute;
+        left: 5px;
+        z-index: 1;
+        }
+        #header {
+        margin-top: 10px;
+        }
+        </style>
+
     @yield('before-closing-head')
 </head>
 

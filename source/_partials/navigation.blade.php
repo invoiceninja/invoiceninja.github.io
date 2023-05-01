@@ -1,3 +1,4 @@
+<div id="google_translate_element"></div>
 {{--<nav class="py-4 uppercase bg-white border-b sticky top-0 z-40">--}}
 <nav class="py-4 sticky top-0 z-40 lg:z-50 w-full mx-auto bg-white border-b">
     <div id="navigation-content" class="flex items-center justify-between px-4 md:px-0 md:mx-4 lg:px-4 xl:mx-auto max-w-8xl">
@@ -38,6 +39,3 @@
            class="py-2 border-b border-transparent hover:border-ninja-blue">Go to app</a>
     </div>
 </nav>
-<div class="flex w-full">
-<div id="google_translate_element"></div>
-</div>  
