@@ -27,9 +27,6 @@
                     </svg>
                 </button>
             </div>
-
-            <div id="google_translate_element"></div>
-
         </section>
     </div>
     <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
@@ -41,3 +38,6 @@
            class="py-2 border-b border-transparent hover:border-ninja-blue">Go to app</a>
     </div>
 </nav>
+<div class="flex flex-row">
+    <div id="google_translate_element"></div>
+</div>
