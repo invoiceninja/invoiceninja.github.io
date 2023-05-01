@@ -19,15 +19,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
 
-    <script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', 
-        layout:     google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false, 
-        includedLanguages: ''}, 'google_translate_element');}
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-            
     @yield('before-closing-head')
 </head>
 
