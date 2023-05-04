@@ -11,24 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-
-      - name: Commit files
-        if: |
-          contains(github.event.comment.body, '/gpt-translate') || 
-          contains(github.event.comment.body, '/gt')
-        uses: yunwei37/OpenAI-Continuous-Translator@master
-        with:
-            git_repo_url: https://github.com/invoiceninja/invoiceninja.github.io
-            api_key: ${{ secrets.OPENAI_API_KEY }}
-            source_language: English
-            target_language: fr-CA
-            i18n_surfix: fr-CA
-            file_types: .md
-            file_path_filter: "source/docs"
       - name: Run GPT Translate
         if: |
           contains(github.event.comment.body, '/gpt-translate') || 
           contains(github.event.comment.body, '/gt')
-        uses: 3ru/gpt-translate@v1.0
+        uses: turbo124/gpt-translate@master
         with:
           apikey: ${{ secrets.OPENAI_API_KEY }}
