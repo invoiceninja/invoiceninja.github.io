@@ -124,7 +124,7 @@ Toutes les mises en page sont basées sur la suivante:
 
 ```
 
-{"36":"* authorizeReponse() traite la réponse de la passerelle et si elle est réussie, crée un enregistrement ```ClientGatewayToken``` suivi du retour de l'utilisateur à la route suivante"}
+* authorizeReponse() traite la réponse de la passerelle et si elle est réussie, crée un enregistrement ```ClientGatewayToken``` suivi du retour de l'utilisateur à la route suivante
 
 ```php
 return redirect()->route('client.moyens_de_paiement.index');

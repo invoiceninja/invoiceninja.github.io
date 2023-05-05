@@ -105,7 +105,9 @@ Chaque *client* a une liste de *contacts*, ce qui vous permet d'ajouter autant d
 
 Les champs d'information d'adresse standard sont disponibles ici pour saisir une adresse de facturation pour vos clients. Cette information est généralement également incluse sur toutes les factures et autres documents pour le client.
 
-### Adresse de livraison", "44": "Tout comme l'adresse de facturation, des champs d'information d'adresse standard sont disponibles ici pour saisir une adresse de livraison pour vos clients. De plus, vous pouvez utiliser le bouton *Copier facturation* ci-dessous ces champs, pour simplement copier les informations d'adresse de facturation dans les champs d'adresse de livraison également.
+### Adresse de livraison
+
+Tout comme l'adresse de facturation, des champs d'information d'adresse standard sont disponibles ici pour saisir une adresse de livraison pour vos clients. De plus, vous pouvez utiliser le bouton *Copier facturation* ci-dessous ces champs, pour simplement copier les informations d'adresse de facturation dans les champs d'adresse de livraison également.
 
 ## Contacts et le portail client
 
