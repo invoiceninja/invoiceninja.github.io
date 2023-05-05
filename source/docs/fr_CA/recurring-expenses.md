@@ -53,9 +53,8 @@ Dans la disposition de bureau, modifier ou créer une dépense récurrente vous 
 
 
 <x-warning>
-
 Note: Veuillez ignorer les balises HTML telles que `<x-warning>` lors de la traduction.
-
+</x-warning>
 Notez que lorsque vous consultez vos rapports, les dépenses récurrentes seront catégorisées par la devise de la dépense/fournisseur, et non par la devise sélectionnée sous l'option "Convertir la devise". Si vous souhaitez consolider vos totaux de profits et pertes sous une seule devise, vous devez sélectionner votre propre devise pour chaque dépense récurrente et utiliser le montant converti pour le montant de la dépense, en laissant de côté toute référence à une devise étrangère dans les détails de l'enregistrement.
 
 * **Ajouter des documents à la facture** - Activez cette fonctionnalité pour inclure tous les documents joints à une dépense récurrente, avec les documents joints à la facture lorsque vous créez une facture à partir de l'enregistrement de la dépense récurrente.

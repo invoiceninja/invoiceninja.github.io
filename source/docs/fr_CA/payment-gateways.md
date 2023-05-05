@@ -7,7 +7,7 @@ section: content
 
 **Modèle de pilote de paiement.**
 
-Alors vous voulez créer un pilote de paiement pour Invoice Ninja, mais vous ne savez pas par où commencer? La première étape serait de nous contacter directement sur Slack https:\/\/invoiceninja.slack.com et d'avoir une discussion en temps réel avec nous afin que nous puissions vous aider à démarrer rapidement et à construire votre pilote de la manière la plus efficace possible. Nous contacter au préalable nous permettra également de nous assurer que votre code peut être fusionné avec le dépôt officiel, car nous en assurerons la maintenance à l'avenir.
+Alors vous voulez créer un pilote de paiement pour Invoice Ninja, mais vous ne savez pas par où commencer? La première étape serait de nous contacter directement sur Slack https://invoiceninja.slack.com et d'avoir une discussion en temps réel avec nous afin que nous puissions vous aider à démarrer rapidement et à construire votre pilote de la manière la plus efficace possible. Nous contacter au préalable nous permettra également de nous assurer que votre code peut être fusionné avec le dépôt officiel, car nous en assurerons la maintenance à l'avenir.
 
 Prêt? Allons-y!
 

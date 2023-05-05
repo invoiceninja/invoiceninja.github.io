@@ -52,8 +52,8 @@ Votre navigateur ne supporte pas la balise vidéo.
   * **Référence de la transaction** - Entrez un code ou un numéro de référence de transaction, le cas échéant.
 * **Convertir la devise** - Si la dépense est facturée dans une devise autre que votre devise par défaut, l'activation de cette option vous permet de définir la devise que vous préférez utiliser pour payer, ainsi qu'un taux de change, pour calculer combien la dépense coûte dans votre devise préférée.
 
-Je suis désolé, mais il n'y a pas de texte en anglais à traduire dans cette entrée. Veuillez fournir le texte en anglais pour que je puisse le traduire en fr-CA.
 
+<x-warning>
 Notez que lorsque vous consultez vos rapports, les dépenses seront classées par la devise de la dépense / du fournisseur, et non par la devise sélectionnée sous "Convertir la devise". Si vous souhaitez consolider vos totaux de profit et de perte sous une seule devise, vous devez sélectionner votre propre devise pour chaque enregistrement de dépense et utiliser le montant converti pour le montant de la dépense, en laissant toute référence à une devise étrangère hors des détails de l'enregistrement.
 
 </x-warning>
@@ -86,5 +86,5 @@ Un enregistrement de dépense peut être archivé manuellement, ce qui le cache 
 
 Un enregistrement de dépense peut être supprimé manuellement, ce qui le retirera de la vue et le supprimera également de tous les rapports. Les enregistrements de dépenses supprimés peuvent être consultés en modifiant vos filtres lors de la visualisation du tableau ou de la liste des dépenses, et l'utilisation de la fonction "Restaurer" peut ramener l'enregistrement de dépense supprimé à son état précédent.
 
-<x-next url=/docs/invoices>Factures</x-next>"
+<x-next url=/docs/invoices>Factures</x-next>
 

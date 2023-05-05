@@ -127,7 +127,7 @@ X-Requested-With: XMLHttpRequest
 
 #### Content-Type: application/json
 <x-container>
-<x-sectional>
+<x-section>
 Lors de la soumission des données à l'API, vous devez déclarer le type de contenu
 
 Ceci est un en-tête requis lors de l'utilisation des méthodes POST/PUT.

@@ -36,5 +36,5 @@ La plupart des filtres sont simples, correspondant à des filtres basés sur du 
 
 Il y a trop de façons d'utiliser la personnalisation du module *Rapports* pour toutes les énumérer ici, mais cela devrait vous donner une bonne idée des mécanismes du module et comment l'utiliser pour générer des rapports qui vous aident lors de la saison des impôts, et pour surveiller ou examiner les tendances des ventes de produits, ou la responsabilité de votre personnel pour leur facturation.
 
-<x-next url=\/docs\/basic-settings>Paramètres de base</x-next>
+<x-next url=/docs/basic-settings>Paramètres de base</x-next>
 

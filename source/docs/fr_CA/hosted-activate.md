@@ -21,7 +21,7 @@ Dans la zone de saisie, vous devez entrer l'URL de votre portail client v5. Vous
 
 Si vous voyez un dialogue orange dans la barre latérale gauche, il se peut que votre entreprise ne soit pas encore activée.
 
-![texte alternatif](\/assets\/images\/migration\/inactivated.png "Désactiver")
+![texte alternatif](/assets/images/migration/inactivated.png "Désactiver")
 
 Pour activer, naviguez vers Paramètres > Gestion de compte
 
