@@ -1,6 +1,6 @@
 ---
-extends: _layouts.user_guide
-section: contenu
+extends: _layouts.user_guide 
+section: content
 ---
 
 # Personnalisations PDF

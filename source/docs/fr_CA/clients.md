@@ -1,9 +1,7 @@
-```
 ---
-extends: _layouts.guide_utilisateur
-section: contenu
+extends: _layouts.user_guide 
+section: content
 ---
-```
 
 # Clients
 

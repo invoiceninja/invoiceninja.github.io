@@ -1,6 +1,6 @@
 ---
 extends: _layouts.self_host
-section: contenu
+section: content
 ---
 
 # Pour commencer

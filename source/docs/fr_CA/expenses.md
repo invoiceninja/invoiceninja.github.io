@@ -1,6 +1,6 @@
 ---
 extends: _layouts.user_guide
-section: contenu
+section: content
 ---
 
 # Dépenses

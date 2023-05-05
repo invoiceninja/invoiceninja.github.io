@@ -1,6 +1,6 @@
 ---
 extends: _layouts.developer_resources
-section: contenu
+section: content
 ---
 
 # Ressources pour développeurs
