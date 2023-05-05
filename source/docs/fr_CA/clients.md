@@ -49,7 +49,7 @@ Ce panneau présente une vue des contacts répertoriés dans une entrée de clie
 
 Le panneau *Documents* offre la possibilité de téléverser des documents et de visualiser les documents que vous avez liés au client. Ces fichiers téléversés sont accessibles via le portail administrateur, ou via le portail client pour que vos clients puissent les consulter eux-mêmes. Une façon utile d'utiliser la fonctionnalité de téléversement de documents est de téléverser des documents de conditions d'utilisation, des contrats ou d'autres fichiers que vous aimeriez partager avec le client pour toute autre raison.
 
-**Notez** que les documents téléchargés sont enregistrés dans le répertoire "public\/storage" dans une structure de dossiers utilisant des noms de dossiers hachés pour correspondre à l'entrée du produit, alors sauvegardez ce répertoire avec votre base de données pour préserver vos documents joints.
+**Notez** que les documents téléchargés sont enregistrés dans le répertoire "public/storage" dans une structure de dossiers utilisant des noms de dossiers hachés pour correspondre à l'entrée du produit, alors sauvegardez ce répertoire avec votre base de données pour préserver vos documents joints.
 
 ### Grand livre
 
@@ -140,12 +140,12 @@ $client.personnalisé4
 
 ### Marqueurs de contact
 
-\```
+```
 $contact.personnalisé1
 $contact.personnalisé2
 $contact.personnalisé3
 $contact.personnalisé4
-\```
+```
 
-<x-next url=/docs/credits>Crédits<\/x-next>
+<x-next url=/docs/credits>Crédits</x-next>
 
