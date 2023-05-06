@@ -52,4 +52,3 @@ Si vous préférez envoyer des emails en masse via Mailgun, alors ceci est égal
 ![texte alternatif](/assets/images/user_guide/mailgun_config.png "Écran de configuration pour Mailgun")
 
 Assurez-vous de remplir à la fois votre clé secrète Mailgun et le domaine qui a été configuré.
-
