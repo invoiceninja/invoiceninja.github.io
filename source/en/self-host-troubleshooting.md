@@ -35,7 +35,7 @@ Please note that on some systems the php location may be different, so confirm w
 
 To test your changes, navigate your browser to the update URL which is in the following format:
 
-```base
+```
 https://yourdomain.com/update?secret=
 ```
 
@@ -45,7 +45,7 @@ The secret variable is located in your .env file until the key `UPDATE_SECRET` ,
 
 If you are using Cloudflare, then most likely Cloudflare could be caching your static data. To force cache busting, edit your nginx.conf file and add in the following snippet
 
-```bash
+```
 location ~* \.pdf$ {
     add_header Cache-Control no-store;
 }
@@ -69,7 +69,7 @@ On Apache based servers, open the [/public/.htaccess](https://github.com/invoice
 
 If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 
 
-```bash
+```
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
@@ -153,7 +153,7 @@ We strongly recommend using the built in [snappdf](https://github.com/beganovich
 
 To configure SnapPDF use the following .env vars
 
-```bash
+```
 PDF_GENERATOR=snappdf
 ```
 
@@ -167,7 +167,7 @@ Snappdf is also the default PDF engine in our [Docker](https://github.com/invoic
 
 You can use this command to test Snappdf:
 
-```bash
+```
 ./vendor/bin/snappdf convert --html "<h1>Hello world</h1>" test.pdf
 ```
 
@@ -181,7 +181,7 @@ Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscl
 
 Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.
 
-```bash
+```
 PDF_GENERATOR=phantom
 PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET='your-secret-here'
@@ -225,7 +225,7 @@ Always ensure that tasks run on the command line are executed by the web user, o
 
 <p>You may need to restart the queue like this</p>
 
-```bash
+```
 php artisan queue:restart
 ```
 
@@ -233,7 +233,7 @@ php artisan queue:restart
 
 This error indicated that the client_max_body_size parameter in NGINX is too small, you will need to edit your nginx config and increase the size
 
-```bash
+```
 client_max_body_size 100M;
 ```
 
@@ -376,7 +376,7 @@ The solution is to clear the contents of the folder ```bootstrap/cache```, by ei
 
 This error is observed when the system has Composer v1 installed. Update to Composer 2 using the following command
 
-```bash
+```
 sudo -H composer self-update
 ```
 
@@ -391,25 +391,25 @@ If you aren't able to adjust the open_basedir restrictions the following steps m
 
 If you have command line access, you can reset your password manually by following the following steps. From the command line, navigate to the project directory and run
 
-```bash
+```
 php artisan tinker
 ```
 
 Then find the id of the user for the password reset
 
-```bash
+```
 User::all();
 ```
 
 Retrieve the user
 
-```bash
+```
 $user = User::find(id_of_user_to_find);
 ```
 
 Now lets reset the password
 
-```bash
+```
 $user->password = Hash::make('password');
 $u->save();
 ```
