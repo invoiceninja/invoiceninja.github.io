@@ -90,5 +90,5 @@ return [
     'custom_domain' => 'Domaine personnalisé',
     'mail_servers' => 'Serveurs de messagerie',
     'stripe_integration' => 'Intégration Stripe',
-    
+    'quick_search' => 'Recherche rapide',
 ];

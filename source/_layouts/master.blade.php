@@ -46,7 +46,10 @@
             apiKey: '4816218e8381d5a17beacd84823e9ea3',
             indexName: 'invoiceninja',
             inputSelector: '#topSearchBox',
-            debug: false
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:{{ $locale ?? "en" }}'],
+            },
         });
     </script>
         <script type="text/javascript">
@@ -54,7 +57,10 @@
             apiKey: '4816218e8381d5a17beacd84823e9ea3',
             indexName: 'invoiceninja',
             inputSelector: '#indexSearchBox',
-            debug: false
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:{{ $locale ?? "en" }}'],
+            },
         });
     </script>
 
