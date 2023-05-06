@@ -1,12 +1,12 @@
 ---
 extends: _layouts.developer_resources
 section: content
-locale: en
+locale: fr_CA
 ---
 
-# Static variable reference
+# Référence des variables statiques
 
-## Payment Types:
+## Types de paiement:
 
 | typeID | paymentMethod     |
 |--------|-------------------|
@@ -44,7 +44,7 @@ locale: en
 | 33     | Zelle             |
 | 23     | iZettle           |
 
-## Currencies
+## Devises
 
 | id  | name                                    |
 |-----|-----------------------------------------|
@@ -153,8 +153,7 @@ locale: en
 | 103 | Kazakhstani Tenge                       |
 | 104 | Ethiopian Birr                          |
 
-
-## Languages
+## Langues
 
 | id | name                     |
 |----|--------------------------|
@@ -191,8 +190,8 @@ locale: en
 | 31 | Persian                  |
 | 32 | Latvian                  |
 
+## Fuseaux horaires
 
-## Timezones
 | id  | name                 |
 |-----|----------------------|
 | 1   | Pacific/Midway       |
@@ -309,8 +308,7 @@ locale: en
 | 112 | Pacific/Auckland     |
 | 113 | Pacific/Fiji         |
 
-## Countries
-
+## Pays
 | id  | name                                         | iso_3166_2 | iso_3166_3 |
 |-----|----------------------------------------------|------------|------------|
 | 4   | Afghanistan                                  | AF         | AFG        |

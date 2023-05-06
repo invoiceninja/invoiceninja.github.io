@@ -4,30 +4,28 @@ section: content
 locale: fr_CA
 ---
 
-## License
+## Licence
 
-We receive many queries about the Invoice Ninja sourcecode/application license and what is considered within the license and outside of the license. We feel it is important the community understands our interpretation of the license so there is no confusion about how this software can be used.
+Nous recevons de nombreuses demandes au sujet de la licence d'utilisation de la source/application de Invoice Ninja et ce qui est considéré comme faisant partie ou non de cette licence. Nous pensons qu'il est important que la communauté comprenne notre interprétation de la licence afin qu'il n'y ait pas de confusion sur la façon dont ce logiciel peut être utilisé.
 
-Invoice Ninja uses the Elastic License 2.0, which allows for flexibility in personal use of the software and protection for our commercial use of the code in our Hosted SaaS product. Here are some examples of how the code can and cannot be used:
+Invoice Ninja utilise la licence Elastic License 2.0, qui permet une flexibilité dans l'utilisation personnelle du logiciel et une protection pour notre utilisation commerciale du code dans notre produit SaaS hébergé. Voici quelques exemples de la façon dont le code peut être utilisé ou non :
 
-Here are some examples of how the code can and cannot be used:
+### 1. Bob, fournisseur de services informatiques
 
-### 1. Bob the IT services provider.
+Bob, un fournisseur de services informatiques, utilise Invoice Ninja pour facturer et recevoir des paiements. Il est libre de modifier et d'étendre le code source selon ses besoins, mais ne doit pas supprimer les attributions à Invoice Ninja. Pour supprimer ces attributions, il devrait acheter une licence annuelle Whitelabel.
 
-Bob, an IT services provider, uses Invoice Ninja to invoice and receive payments. He is free to modify and extend the source code as needed, but must not remove the attributions to Invoice Ninja. To remove these attributions, he would need to purchase an annual Whitelabel license.
+### 2. Sally, fournisseur d'hébergement Web
 
-### 2. Sally the WebHost provider.
-
-Sally, a WebHost provider, installs Invoice Ninja for her clients on her own or 3rd party infrastructure and bills them for the service. This is within the license usage of Invoice Ninja.
+Sally, un fournisseur d'hébergement Web, installe Invoice Ninja pour ses clients sur son infrastructure ou sur celle d'un tiers et les facture pour le service. Cela rentre dans l'utilisation de la licence de Invoice Ninja.
 
 ### 3. EvilCorp 3000
 
-EvilCorp 3000 copies the Invoice Ninja repository and wants to resell it as their own SaaS product. This is not within the license of Invoice Ninja and they would need to discuss a commercial license with Invoice Ninja LLC.
+EvilCorp 3000 copie le référentiel de Invoice Ninja et veut le revendre en tant que son propre produit SaaS. Cela ne rentre pas dans l'utilisation de la licence de Invoice Ninja et ils devront discuter avec Invoice Ninja LLC pour obtenir une licence commerciale.
 
 ### 4. Hybrid SaaS Co
 
-Hybrid SaaS Co develops their own CRM SaaS product and wants to add Invoice Ninja as a complimentary offering. Because they are reselling the Invoice Ninja application, they would need to agree to a commercial license with Invoice Ninja LLC to use the code.
+Hybrid SaaS Co développe son propre produit CRM SaaS et veut ajouter Invoice Ninja comme offre complémentaire. Comme ils revendent l'application Invoice Ninja, ils devront convenir d'une licence commerciale avec Invoice Ninja LLC pour utiliser le code.
 
-### Conclusion:
+### Conclusion :
 
-In summary, if you are using the app to bill clients for services, it is free. But if you plan to resell/create a SaaS which also offers invoicing, you need to become a reseller of our application and agree to a commercial license with Invoice Ninja LLC. For further information, please contact contact@invoiceninja.com
+En résumé, si vous utilisez l'application pour facturer des clients pour des services, c'est gratuit. Mais si vous prévoyez de revendre/créer un SaaS qui offre également de la facturation, vous devez devenir un revendeur de notre application et convenir d'une licence commerciale avec Invoice Ninja LLC. Pour plus d'informations, veuillez contacter contact@invoiceninja.com
