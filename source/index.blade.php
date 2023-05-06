@@ -6,7 +6,7 @@
 <div class="container px-8 my-10 md:mx-auto">
 
     <div class="grid place-items-center py-10">
-        <input type="text" placeholder="Recherchez Invoice Ninja" id="indexSearchBox" data-lpignore="true" class="h-12 text-lg border-none focus:outline-none block w-full rounded-mdsm:max-w-xs py-2 px-4">
+        <input type="text" placeholder="Search Invoice Ninja" id="indexSearchBox" data-lpignore="true" class="h-12 text-lg border-none focus:outline-none block w-full rounded-mdsm:max-w-xs py-2 px-4">
     </div>
 
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
