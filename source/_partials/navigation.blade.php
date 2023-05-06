@@ -59,15 +59,10 @@
 
 <script>
 
-    
-// document.addEventListener("DOMContentLoaded", function () {
-// console.log("loaded")
     let element = document.getElementById('locale_mobile');
     element.value = document.querySelector('meta[name="locale"]').content;
 
     let element2 = document.getElementById('locale');
     element2.value = document.querySelector('meta[name="locale"]').content;
-    // console.log("finished")
-// });
 
 </script>
