@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'Migration' => [
-        'url' => '/docs/migration',
+    'migration' => [
+        'url' => '/:locale/migration',
         'children' => [
         ],
     ],

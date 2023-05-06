@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $page->language ?? 'en' }}">
+<html lang="{{ $locale ?? 'en' }}">
 
 <head>
     <title>{{ $page->title }}</title>
@@ -22,7 +22,7 @@
     @yield('before-closing-head')
 </head>
 
-@include('_partials.navigation')
+@include('_partials.navigation', ['locale' => $locale])
 
 <body class="font-sans antialiased text-gray-900 bg-white {{ $bodyClass ?? '' }}">
     @yield('body')

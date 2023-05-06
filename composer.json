@@ -2,6 +2,7 @@
     "require": {
         "tightenco/jigsaw": "^1.6",
         "php": "^8",
-        "scrivo/highlight.php": "v9.18.1.6"
+        "scrivo/highlight.php": "v9.18.1.6",
+        "illuminate/translation": "^9"
     }
 }

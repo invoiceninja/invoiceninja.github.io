@@ -1,4 +1,5 @@
-@extends('_layouts.master')
+@extends('_layouts.master', ['bodyClass' => '', 'locale' => $page->locale])
+
 
 @section('before-closing-head')
     <link rel="stylesheet"
@@ -18,12 +19,12 @@
                @foreach($page->migration_navigation as $section => $props)
                    <div clasS="mb-8">
                        <a class="block hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
-                          href="{{ $props['url'] }}">{{ $section }}</a>
+                          href="{{ str_replace(':locale', $page->locale, $props['url']) }}">{{ $page->__("texts.{$section}", $page->locale) }}</a>
 
                        <div class="mt-2">
                            @foreach($props->children as $child => $url)
                                <a class="block hover:text-ninja-blue py-1 {{ (trimPath($page->getPath()) == trimPath($url)) ? 'text-ninja-blue' : '' }}"
-                                  href="{{ $url }}">{{ $child }}</a>
+                                  href="{{ str_replace(':locale', $page->locale, $url) }}">{{ $page->__("texts.{$child}", $page->locale) }}</a>
                            @endforeach
                        </div>
                    </div>
@@ -43,12 +44,13 @@
                 @foreach($page->migration_navigation as $section => $props)
                     <div clasS="mb-8">
                         <a class="block hover:text-ninja-blue font-semibold uppercase {{ (trimPath($page->getPath()) == trimPath($props['url'])) ? 'text-ninja-blue border-ninja-blue' : '' }}"
-                           href="{{ $props['url'] }}">{{ $section }}</a>
+                          href="{{ str_replace(':locale', $page->locale ?? 'en', $props['url']) }}">{{ $page->__("texts.{$section}", $page->locale) }}</a>
+
 
                         <div class="mt-2">
                             @foreach($props->children as $child => $url)
                                 <a class="block hover:text-ninja-blue py-1 {{ (trimPath($page->getPath()) == trimPath($url)) ? 'text-ninja-blue' : '' }}"
-                                   href="{{ $url }}">{{ $child }}</a>
+                                  href="{{ str_replace(':locale', $page->locale, $url) }}">{{ $page->__("texts.{$child}", $page->locale) }}</a>
                             @endforeach
                         </div>
                     </div>

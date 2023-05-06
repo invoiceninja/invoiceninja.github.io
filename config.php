@@ -1,5 +1,9 @@
 <?php /** @noinspection PhpInconsistentReturnPointsInspection */
 
+use Illuminate\Translation\FileLoader;
+use Illuminate\Translation\Translator;
+use Illuminate\Filesystem\Filesystem;
+
 return [
     'production' => false,
     'baseUrl' => 'https://invoiceninja.github.io',
@@ -22,4 +26,16 @@ return [
         }
     },
     'repositoryUrl' => 'https://github.com/invoiceninja/invoiceninja.github.io',
+    '__' => function ($page, $key, $locale = 'en') {
+        if (is_null($locale)) {
+            $locale = $page->locale;
+        }
+
+        // Prepare the FileLoader
+        $loader = new FileLoader(new Filesystem(), './lang');
+        // Register the Translator
+        $translator = new Translator($loader, $locale);
+        
+        return $translator->get($key);
+    },
 ];

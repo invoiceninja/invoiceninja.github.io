@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'Developer guide' => [
-        'url' => '/docs/developer-guide',
+    'developer_guide' => [
+        'url' => '/:locale/developer-guide',
         'children' => [
-            'Getting Started' => '/docs/developer-guide',
-            'Payment Gateways' => '/docs/payment-gateways',
-            'Static Variables' => '/docs/statics',
-            'API Docs' => 'https://api-docs.invoicing.co/',
+            'getting_started' => '/:locale/developer-guide',
+            'payment_gateways' => '/:locale/payment-gateways',
+            'static_variables' => '/:locale/statics',
+            'api_docs' => 'https://api-docs.invoicing.co/',
         ],
     ],
 

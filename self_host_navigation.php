@@ -1,27 +1,27 @@
 <?php
 
 return [
-    'Self host' => [
-        'url' => '/docs/self-host-installation',
+    'self_host' => [
+        'url' => '/:locale/self-host-installation',
         'children' => [
-            'Overview' => '/docs/getting-started',
-            'Installation' => '/docs/self-host-installation',
-            'Troubleshooting' => '/docs/self-host-troubleshooting',
-            'Updating' => '/docs/self-host-updating',
-            '.env Variables' => '/docs/env-variables',
-            'Debug Mode' => '/docs/self-host-debug-mode',
+            'overview' => '/:locale/getting-started',
+            'installation' => '/:locale/self-host-installation',
+            'troubleshooting' => '/:locale/self-host-troubleshooting',
+            'updating' => '/:locale/self-host-updating',
+            'env_variables' => '/:locale/env-variables',
+            'debug_mode' => '/:locale/self-host-debug-mode',
 
         ],
     ],
-    'Legal' => [
-        'url' => '/docs/legal/license',
+    'legal' => [
+        'url' => '/:locale/legal/license',
         'children' => [
-            'License' => '/docs/legal/license',
-            'Terms of Service' => '/docs/legal/terms_of_service',
-            'Data Privacy' => '/docs/legal/data_privacy',
-            'Selfhost Data Privacy' => '/docs/legal/self_hosting_data',
-            'Selfhost Terms' => '/docs/legal/self_hosting_terms',
-            'GDPR' => '/docs/legal/gdpr',
+            'license' => '/:locale/legal/license',
+            'terms_of_service' => '/:locale/legal/terms_of_service',
+            'data_privacy' => '/:locale/legal/data_privacy',
+            'selfhost_data_privacy' => '/:locale/legal/self_hosting_data',
+            'selfhost_terms' => '/:locale/legal/self_hosting_terms',
+            'gdpr' => '/:locale/legal/gdpr',
         ],        
     ]
 
