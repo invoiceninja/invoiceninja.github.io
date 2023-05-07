@@ -38,11 +38,7 @@ The overview panel presents a quick look at the paid to date, the outstanding ba
 
 You can select from **Groups, Invoices, Payments, Recurring Invoices, Quotes, Credits, Projects, Tasks, or Expenses**.  Hover your mouse over one of these categories and long press (click and hold), this will take you to create a new invoice, quote, payment, etc.  On mobile devices, you can touch and hold anywhere on the button to create new, instead of viewing a client-filtered list.
 
-The **Client Portal** link at the bottom will take you into a new web browser tab or window, to view the client portal directly.
-
-The "Settings" button at the bottom will take you to **Client Settings** where you can edit and configure client-specific rules, templates, behavior, etc.
-
-The kebab menu button in the top right of this panel also has many of these functions, and is available on every tab.
+The top navigation bar has a quick access actions that allow you to quickly perform actions for this client including navigating to the **Client Portal** or the client **Settings** where you can edit and configure client-specific rules, templates, behavior, etc.
 
 ### Details
 
