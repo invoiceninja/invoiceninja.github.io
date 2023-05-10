@@ -48,7 +48,7 @@
             inputSelector: '#topSearchBox',
             debug: false,
             searchParameters: {
-                facetFilters: ['language:{{ $locale ?? "en" }}'],
+                facetFilters: ['language:{{ $locale ?? "en" }}, "version:1.0.1"'],
             },
         });
     </script>
@@ -59,7 +59,7 @@
             inputSelector: '#indexSearchBox',
             debug: false,
             searchParameters: {
-                facetFilters: ['language:{{ $locale ?? "en" }}'],
+                facetFilters: ['language:{{ $locale ?? "en" }}, "version:1.0.1"'],
             },
         });
     </script>
