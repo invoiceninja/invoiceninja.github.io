@@ -4,5 +4,9 @@
         "php": "^8",
         "scrivo/highlight.php": "v9.18.1.6",
         "illuminate/translation": "^9"
+    },
+    "require-dev": {
+        "erusev/parsedown": "^1.7",
+        "phpunit/phpunit": "^10.1"
     }
 }
