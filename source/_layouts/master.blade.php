@@ -10,6 +10,8 @@
     <meta name="referrer" content="always">
     <link rel="canonical" href="{{ $page->getUrl() }}">
     <meta name="description" content="{{ $page->description }}">
+    <meta name="docsearch:language" content="{{ $locale ?? 'en'}}" />
+    <meta name="docsearch:version" content="{{ $page->__version() ?? 'v1.0.0'}}" />
 
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -48,7 +50,7 @@
             inputSelector: '#topSearchBox',
             debug: false,
             searchParameters: {
-                facetFilters: ['language:{{ $locale ?? "en" }}, "version:1.0.1"'],
+                facetFilters: ['language:{{ $locale ?? "en" }}'],
             },
         });
     </script>
@@ -59,7 +61,7 @@
             inputSelector: '#indexSearchBox',
             debug: false,
             searchParameters: {
-                facetFilters: ['language:{{ $locale ?? "en" }}, "version:1.0.1"'],
+                facetFilters: ['language:{{ $locale ?? "en" }}'],
             },
         });
     </script>

@@ -26,6 +26,9 @@ return [
         }
     },
     'repositoryUrl' => 'https://github.com/invoiceninja/invoiceninja.github.io',
+    '__version' => function () {
+        return 'v1.0.1';
+    },
     '__' => function ($page, $key, $locale = 'en') {
         if (is_null($locale)) {
             $locale = $page->locale;
