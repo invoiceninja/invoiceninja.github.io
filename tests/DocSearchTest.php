@@ -1,6 +1,5 @@
 <?php
 
-use Parsedown;
 use PHPUnit\Framework\TestCase;
 
 final class DocSearchTest extends TestCase
@@ -31,8 +30,6 @@ final class DocSearchTest extends TestCase
             
             }
 
-            echo print_r($this->documents,1);
-
             $index = "var documents = " . json_encode($this->documents);
 
             file_put_contents("./tests/{$language}.js", $index);
@@ -55,7 +52,7 @@ final class DocSearchTest extends TestCase
         $file_name = strtolower(basename($file_path));
         $page_slug = str_replace(".md", "", $file_name);
 
-        $parsedown = new Parsedown();
+        $parsedown = new \Parsedown();
         
         $string_body = $parsedown->text($text);
 
