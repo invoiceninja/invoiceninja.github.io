@@ -10,8 +10,10 @@
         <section id="right-side-items" class="text-sm w-8/12 justify-end flex">
             <div class="hidden md:hidden lg:block md:space-x-5">
                 <span>
-                <input type="text" placeholder="{{ $page->__('texts.quick_search', $locale) }}" id="topSearchBox" data-lpignore="true"
-                       class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none">
+                   
+
+                <!-- <input type="text" placeholder="{{ $page->__('texts.quick_search', $locale) }}" id="topSearchBox" data-lpignore="true"
+                       class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
                 </span>
                 <span>
                        <a href="/{{ $locale }}/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> {{ $page->__('texts.user_guide', $locale) }}</a>

@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-## Custom Domain Configuration
+# Custom Domain Configuration
 
 If you are an Enterprise customer, you can configure a custom client portal domain which will point your customer facing links to your own domain.
 

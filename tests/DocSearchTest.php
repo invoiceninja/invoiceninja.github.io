@@ -10,20 +10,47 @@ final class DocSearchTest extends TestCase
         'fr_CA',
     ];
 
+    private array $documents = [];
+
+    private int $counter = 0;
+
     public function testPushAndPop(): void
     {
-        $this->assertEquals(
-            1,
-            1
-        );
-        $this->getMarkdownFiles();
+
+        foreach($this->languages as $language)
+        {
+            $data = [];
+
+            foreach (new \DirectoryIterator("./source/{$language}") as $fileInfo) 
+            {
+                if($fileInfo->isDot() || $fileInfo->getExtension() != 'md') {
+                    continue;
+                }
+            
+                $this->getMarkdownFiles(file_get_contents($fileInfo->getPathname()));
+            
+            }
+
+            echo print_r($this->documents,1);
+
+            $index = "var documents = " . json_encode($this->documents);
+
+            file_put_contents("./tests/{$language}.js", $index);
+            file_put_contents("./tests/{$language}.json", json_encode($this->documents));
+
+            $this->documents = [];
+            $this->counter = 0;
+
+        }
+
+        // file_put_contents("./tests/documents.json", json_encode($parent));
 
     }
 
-    private function getMarkdownFiles()
+    private function getMarkdownFiles($text)
     {
         
-        $text = file_get_contents('/home/david/Development/invoiceninja.github.io/source/en/clients.md');
+        // $text = file_get_contents('/home/david/Development/invoiceninja.github.io/source/en/clients.md');
 
         $parsedown = new Parsedown();
         
@@ -59,7 +86,7 @@ final class DocSearchTest extends TestCase
         }
 
         // Output the result
-        echo print_r($contentByHeading);
+        // echo print_r($contentByHeading);
 
         $data = [];
 
@@ -70,20 +97,20 @@ final class DocSearchTest extends TestCase
             $index = new \stdClass;
 
             $slug = strtolower(str_replace(" ", "-", $key));
-            // echo $key."\n";
-            // echo "/en/{$page_slug}/#{$slug}\n";
-            // echo $value."\n";
-            // echo "-----\n";
-            $index->id = $x;
+
+            $index->id = $this->counter;
             $index->uri = "/en/{$page_slug}/#{$slug}";
             $index->title = $page_title;
             $index->sub_title = $key;
             $index->body = $value;
 
-            $data[] = $index;
-            $x++;
+            $this->documents[] = $index;
+            $this->counter ++;
+
         }
 
-        echo "var documents = " . json_encode($data);
+        return $data;
+
+        //echo "var documents = " . json_encode($data)
     }
 }

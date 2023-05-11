@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-## Hosted Mail Servers
+# Hosted Mail Servers
 
 If you are a pro/enterprise user, you have access to multiple different ways to send emails from Invoice Ninja. We offer OAuth integrations with both Google and Microsoft allowing you to send emails from your own email address. 
 
