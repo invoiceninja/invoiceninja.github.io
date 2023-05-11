@@ -66,7 +66,6 @@ final class DocSearchTest extends TestCase
         $list = $dom->getElementsByTagName("h1");
 
         $page_title = $list->item(0)->nodeValue;
-        // $page_slug = trim(strtolower(str_replace(" ", "-", $page_title)));
 
         $xpath = new DOMXPath($dom);
 
