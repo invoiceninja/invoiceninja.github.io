@@ -44,7 +44,7 @@ final class DocSearchTest extends TestCase
         }
 
         // file_put_contents("./tests/documents.json", json_encode($parent));
-
+        $this->assertNotNull($this->languages);
     }
 
     private function getMarkdownFiles($file_path, $language)
