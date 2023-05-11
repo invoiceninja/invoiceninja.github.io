@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Troubleshooting
+# Self Host Troubleshooting
 
 ### General Troubleshooting Steps
 

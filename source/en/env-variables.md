@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Environment Variables
+# Env Variables
 
 ```
 APP_NAME="Invoice Ninja"

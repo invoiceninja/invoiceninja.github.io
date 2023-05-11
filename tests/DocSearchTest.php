@@ -63,7 +63,7 @@ final class DocSearchTest extends TestCase
         $list = $dom->getElementsByTagName("h1");
 
         $page_title = $list->item(0)->nodeValue;
-        $page_slug = trim(strtolower($page_title));
+        $page_slug = trim(strtolower(str_replace(" ", "-", $page_title)));
 
         $xpath = new DOMXPath($dom);
 
@@ -93,6 +93,9 @@ final class DocSearchTest extends TestCase
         $x = 0;
 
         foreach($contentByHeading as $key => $value) {
+
+            if(str_contains($key, 'extends: _layouts'))
+                continue;
 
             $index = new \stdClass;
 

@@ -4,7 +4,8 @@ section: content
 locale: en
 ---
 
-# Activate v5 / Deactivate v4
+# Hosted activate
+## Activate v5 / Deactivate v4
 
 You've migrated your data. You've checked everything in v5 and it all looks great, awesome!
 

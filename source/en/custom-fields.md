@@ -4,7 +4,9 @@ section: content
 locale: en
 ---
 
-# PDF Customizations
+# Custom Fields
+
+## PDF Customizations
 
 PDF generation in v5 is via an HTML templating system. We provide multiple design templates for you to choose from, or
 you can create your design using any HTML/CSS combinations.

@@ -26,5 +26,5 @@ stdin.on('end', function () {
         }, this)
     })
 
-    stdout.write(JSON.stringify(idx))
+    stdout.write("const data = " + JSON.stringify(idx))
 })

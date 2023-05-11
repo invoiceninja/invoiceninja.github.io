@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Hosted Quick Start Videos
+# Hosted Quick Start
 
 ## Initial Setup
 

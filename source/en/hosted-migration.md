@@ -4,7 +4,9 @@ section: content
 locale: en
 ---
 
-# V4 Hosted to V5 Hosted
+# Hosted migration
+
+## V4 Hosted to V5 Hosted
 
 Migrating to v5 for hosted users should be a straight forward process.
 

@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Static variable reference
+# Statics
 
 ## Payment Types:
 

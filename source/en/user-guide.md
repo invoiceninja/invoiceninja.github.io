@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Getting Started
+# User Guide
 
 ## Overview
 

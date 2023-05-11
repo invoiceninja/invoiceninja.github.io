@@ -1,4 +1,4 @@
-@extends('_layouts.master', ['bodyClass' => '', 'locale' => 'en'])
+@extends('_layouts.master', ['bodyClass' => '', 'locale' => 'en', 'disable_search' => true])
 
 @section('body')
 @include('_partials.header', ['title' => 'Documentation', 'text' => 'What can we help with?'])

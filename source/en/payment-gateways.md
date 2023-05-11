@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Payment Drivers
+# Payment Gateways
 
 ## Adding payment gateways
 

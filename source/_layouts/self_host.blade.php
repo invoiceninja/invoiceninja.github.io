@@ -1,4 +1,4 @@
-@extends('_layouts.master', ['bodyClass' => '','locale' => $page->locale])
+@extends('_layouts.master', ['bodyClass' => '','locale' => $page->locale, 'disable_search' => false])
 
 @section('before-closing-head')
     <link rel="stylesheet"

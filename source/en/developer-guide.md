@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Developer resources
+# Developer guide
 
 ## Getting Started.
 

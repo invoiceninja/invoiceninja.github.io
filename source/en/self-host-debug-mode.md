@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Debug Mode Overview
+# Self Host Debug Mode
 
 ## Overview
 

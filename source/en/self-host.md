@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Installation
+# Self Host
 
 ## Server Requirements
 

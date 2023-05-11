@@ -30,28 +30,29 @@
     @endif
     <style>
       .search-wrapper {
-        position: relative;
+        /* position: relative;
         display: inline-block;
-        width: 50%;
+        max-width: 50%; */
       }
 
         .results-list {
         position: absolute;
         background-color: white;
-        border: 1px solid #ccc;
+        /* border: 1px solid #ccc; */
         padding: 0;
         margin: 0;
         list-style: none;
-        max-height: 200px;
+        max-height: 400px;
+        max-width:800px;
         overflow-y: scroll;
         width: calc(100% - 2px);
         z-index: 10000;
         top: 100%; /* This will pin the dropdown to the bottom of the search input */
         left: 0;
-        border-top-left-radius: 0;
+        border-top-left-radius: 0; 
         border-top-right-radius: 0;
         border-bottom-left-radius: 0.25rem;
-        border-bottom-right-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
         }
 
         .results-list li {
@@ -157,8 +158,7 @@
           e.preventDefault(); // Prevent scrolling the page
           selectResult(selectedIndex + 1);
         } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
-          // Perform an action when the user presses Enter on a selected item
-          // alert('Selected item: ' + resultsList.children[selectedIndex].textContent);
+          
           window.location.href = resultsList.children[selectedIndex].children[0].href;
         }
       });
@@ -195,7 +195,7 @@
 @yield('before-closing-head')
 </head>
 
-@include('_partials.navigation', ['locale' => $locale])
+@include('_partials.navigation', ['locale' => $locale, 'disable_search' => $disable_search])
 
 <body class="font-sans antialiased text-gray-900 bg-white {{ $bodyClass ?? '' }}">
     @yield('body')

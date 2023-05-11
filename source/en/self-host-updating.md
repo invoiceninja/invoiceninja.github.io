@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# Updating Invoice Ninja
+# Self Host Updating
 
 ### Docker
 
