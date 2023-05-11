@@ -4,6 +4,7 @@ section: content
 locale: fr_CA
 ---
 
+# Stripe
 ## Intégration Stripe
 
 Dans la version 5 d'Invoice Ninja, nous avons introduit Stripe Connect en utilisant OAuth. Cette intégration offre un moyen sécurisé d'intégrer votre compte Stripe à Invoice Ninja.

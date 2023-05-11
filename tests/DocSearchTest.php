@@ -58,7 +58,7 @@ final class DocSearchTest extends TestCase
 
         $dom = new \DOMDocument();
 
-        $dom->loadHTML($string_body);
+        $dom->loadHTML(mb_convert_encoding($string_body, 'HTML-ENTITIES', 'UTF-8'));
 
         $list = $dom->getElementsByTagName("h1");
 

@@ -12,6 +12,7 @@
     <meta name="description" content="{{ $page->description }}">
     <meta name="docsearch:language" content="{{ $locale ?? 'en'}}" />
     <meta name="docsearch:version" content="{{ $page->__version() ?? 'v1.0.0'}}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
