@@ -82,7 +82,6 @@
           font-size: 16px;
           font-weight: bold;
           margin-bottom: 4px;
-          max-width: 400px;
         }
 
         .result-description {
