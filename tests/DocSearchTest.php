@@ -27,7 +27,7 @@ final class DocSearchTest extends TestCase
                     continue;
                 }
             
-                $this->getMarkdownFiles(file_get_contents($fileInfo->getPathname()));
+                $this->getMarkdownFiles($fileInfo->getPathname(), $language);
             
             }
 
@@ -47,10 +47,13 @@ final class DocSearchTest extends TestCase
 
     }
 
-    private function getMarkdownFiles($text)
+    private function getMarkdownFiles($file_path, $language)
     {
         
-        // $text = file_get_contents('/home/david/Development/invoiceninja.github.io/source/en/clients.md');
+        $text = file_get_contents($file_path);
+
+        $file_name = strtolower(basename($file_path));
+        $page_slug = str_replace(".md", "", $file_name);
 
         $parsedown = new Parsedown();
         
@@ -63,7 +66,7 @@ final class DocSearchTest extends TestCase
         $list = $dom->getElementsByTagName("h1");
 
         $page_title = $list->item(0)->nodeValue;
-        $page_slug = trim(strtolower(str_replace(" ", "-", $page_title)));
+        // $page_slug = trim(strtolower(str_replace(" ", "-", $page_title)));
 
         $xpath = new DOMXPath($dom);
 
@@ -85,9 +88,6 @@ final class DocSearchTest extends TestCase
             $contentByHeading[$heading->textContent] = $content;
         }
 
-        // Output the result
-        // echo print_r($contentByHeading);
-
         $data = [];
 
         $x = 0;
@@ -102,7 +102,7 @@ final class DocSearchTest extends TestCase
             $slug = strtolower(str_replace(" ", "-", $key));
 
             $index->id = $this->counter;
-            $index->uri = "/en/{$page_slug}/#{$slug}";
+            $index->uri = "/{$language}/{$page_slug}/#{$slug}";
             $index->title = $page_title;
             $index->sub_title = $key;
             $index->body = $value;
@@ -114,6 +114,5 @@ final class DocSearchTest extends TestCase
 
         return $data;
 
-        //echo "var documents = " . json_encode($data)
     }
 }

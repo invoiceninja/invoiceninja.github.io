@@ -22,6 +22,17 @@ jobs:
         run: npm install
       - name: Build Site
         run: npm run production
+      - name: Run Scripts
+        run: vendor/bin/phpunit
+      - name: Run node commands
+        run: |
+          cd tests
+          cat fr_CA.json | node build-index.js > fr_CA_index.js
+          cat en.json | node build-index.js > en_index.js
+          cp fr_CA_index.js ../build_production/
+          cp en_index.js ../build_production/
+          cp fr_CA.js ../build_production/
+          cp en.js ../build_production/
       - name: Copy selfhost.html
         run: cp source/selfhost.html build_production/
       - name: Stage Files

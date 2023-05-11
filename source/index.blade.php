@@ -1,16 +1,9 @@
-@extends('_layouts.master', ['bodyClass' => '', 'locale' => 'en', 'disable_search' => true])
+@extends('_layouts.master', ['bodyClass' => '', 'locale' => 'en', 'disable_search' => false])
 
 @section('body')
 @include('_partials.header', ['title' => 'Documentation', 'text' => 'What can we help with?'])
 
 <div class="container px-8 my-10 md:mx-auto">
-
-    <div class="grid place-items-center py-10 w-1/2">
-        <div class="search-wrapper"  id="search-box">
-            <input type="text" id="search-input" placeholder="Search Invoice Ninja..." class="h-16 text-lg border-2 border-gray-300 focus:outline-none block w-full rounded-mdsm:max-w-xs py-2 px-6">
-        <ul id="results-list" class="results-list"></ul>
-        </div>
-    </div>
 
     <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 

@@ -30,9 +30,9 @@
     @endif
     <style>
       .search-wrapper {
-        /* position: relative;
-        display: inline-block;
-        max-width: 50%; */
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
       }
 
         .results-list {
@@ -48,7 +48,8 @@
         width: calc(100% - 2px);
         z-index: 10000;
         top: 100%; /* This will pin the dropdown to the bottom of the search input */
-        left: 0;
+        left: auto;
+        right: auto;
         border-top-left-radius: 0; 
         border-top-right-radius: 0;
         border-bottom-left-radius: 0.25rem;
@@ -184,6 +185,20 @@
           });
         }
       }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
 
 
     });

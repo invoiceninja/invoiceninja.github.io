@@ -2,7 +2,7 @@
 <meta name="locale" content="{{ $locale }}">
 
 <nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
-    <div id="navigation-content" class="grid grid-cols-12 gap-4">
+    <div id="navigation-content" class="grid grid-cols-12">
         <div class="float-left pl-4 col-span-2">
             <a href="/{{ $locale }}" id=""><img class="object-contain h-10 mt-2	"
                 src="/assets/images/logo-rounded.png"
@@ -10,16 +10,15 @@
             </a>    
         </div>
         @if(!$disable_search)
-        <div class="search-wrapper w-full col-span-6  flex justify-center"  id="search-box">
-                <input type="text" id="search-input" placeholder="Search Invoice Ninja..." class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+        <div class="search-wrapper w-full col-span-5 flex justify-center"  id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
             <ul id="results-list" class="results-list"></ul>
         </div>
         <!-- <input type="text" placeholder="{{ $page->__('texts.quick_search', $locale) }}" id="topSearchBox" data-lpignore="true"
                 class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
         @endif
-        <div id="right-side-items" class="text-smw-full px-5 col-span-4 flex justify-end">
-            <div class="hidden md:hidden lg:block md:space-x-5">
-                
+        <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
                 <span>
                        <a href="/{{ $locale }}/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">{{ $page->__('texts.user_guide', $locale) }}</a>
                 </span>
