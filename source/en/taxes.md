@@ -142,8 +142,26 @@ If you sell goods and services to a client who is tax exempt, you can mark them 
 
 ## Configure EU tax calculations
 
-Currently we only support tax calculations for German based users. Taxes can be calculated for DE -> DE transactions and also DE -> EU countries. You'll want to configure your product categories accordingly to whether they are exempt, reduced or standard tax.
+Currently we only support tax calculations for German based users. Taxes can be calculated for both DE -> DE and also DE -> EU countries. You'll want to configure your product categories accordingly whether they are exempt, reduced or standard tax.
 
-A new feature is the ability of Invoice Ninja to verify a clients VAT number. Where a valid VAT number is present, the tax calculation will take this into consideration and apply or remove the tax depending on the client location.
+A new feature is the ability of Invoice Ninja to verify a clients VAT number. Where a valid VAT number is present, the tax calculation will take this into consideration and apply or remove the tax depending on the client location. Please note that the vat number must pass validation using the VIES validation located [here](https://ec.europa.eu/taxation_customs/vies/)
+
+<x-warning>
+For self host users, you must have the PHP SOAP extension installed for the VAT number validation to work.
+</x-warning>
+
+## Cross border tax calculations
+
+Selling products or services into foreign countries introduces a new set of tax obligations and considerations. Some countries have a sales threshold where taxes must be included when selling to customers in these countries.
+
+For example if your sales into Australia are greater than $75,000 AUD, then you are required to register with the Australian Taxation Office and collect / report and remit GST.
+
+Every country has its own specific requirements which you should investigate with professional advice.
+
+Current we suppose cross border taxes in these Countries.
+
+- USA 
+- EU
+- Australia
 
 <x-next url=/en/transactions>Transactions</x-next>
