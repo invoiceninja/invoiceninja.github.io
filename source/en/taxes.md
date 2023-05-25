@@ -137,6 +137,8 @@ Transaction-based Exemptions: Certain types of sales transactions may be exempt 
 
 If you sell goods and services to a client who is tax exempt, you can mark them as tax exempt by editing their client record and setting the tax exempt switch on.
 
+
 ![Tax Exempt Product](/assets/images/taxes/tax_exempt_client.png)
+
 
 <x-next url=/en/transactions>Transactions</x-next>
