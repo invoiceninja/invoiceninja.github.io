@@ -17,7 +17,7 @@ We support a wide range of devices and have custom applications for all platform
 
 | Device | Link |
 | ----------- | ----------- |
-| Android | [Download](https://play.google.com/store/apps/details?id=com.invoiceninja.app") |
+| Android | [Download](https://play.google.com/store/apps/details?id=com.invoiceninja.app) |
 | iOS | [Download](https://apps.apple.com/us/app/invoice-ninja-v5/id1503970375) |
 | macOS | [Download](https://download.invoiceninja.com/macos) |
 | Linux | [Download](https://snapcraft.io/invoiceninja) |
