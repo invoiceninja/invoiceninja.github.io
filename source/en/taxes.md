@@ -140,5 +140,10 @@ If you sell goods and services to a client who is tax exempt, you can mark them 
 
 ![Tax Exempt Product](/assets/images/taxes/tax_exempt_client.png)
 
+## Configure EU tax calculations
+
+Currently we only support tax calculations for German based users. Taxes can be calculated for DE -> DE transactions and also DE -> EU countries. You'll want to configure your product categories accordingly to whether they are exempt, reduced or standard tax.
+
+A new feature is the ability of Invoice Ninja to verify a clients VAT number. Where a valid VAT number is present, the tax calculation will take this into consideration and apply or remove the tax depending on the client location.
 
 <x-next url=/en/transactions>Transactions</x-next>
