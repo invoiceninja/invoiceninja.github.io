@@ -91,4 +91,6 @@ return [
     'mail_servers' => 'Serveurs de messagerie',
     'stripe_integration' => 'Intégration Stripe',
     'quick_search' => 'Recherche rapide',
+    'taxes' => 'Taxes',
+
 ];

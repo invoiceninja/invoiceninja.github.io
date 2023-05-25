@@ -20,6 +20,7 @@ return [
             'quotes' => '/:locale/quotes',
             'subscriptions' => '/:locale/subscriptions',
             'tasks' => '/:locale/tasks',
+            'taxes' => '/:locale/taxes',
             'transactions' => '/:locale/transactions',
             'vendors' => '/:locale/vendors',
             'basic_settings' => '/:locale/basic-settings',

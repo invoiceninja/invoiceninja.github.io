@@ -3,6 +3,7 @@ extends: _layouts.user_guide
 section: content
 locale: fr_CA
 ---
+# Activer
 
 ## Activer v5 / Désactiver v4
 

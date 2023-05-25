@@ -130,5 +130,6 @@ return [
     'migrate_to_v5' => 'Migrate to v5',
     'activate' => 'Activate',
     'quick_search' => 'Quick search ...',
+    'taxes' => 'Taxes',
 
 ];

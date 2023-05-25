@@ -118,4 +118,4 @@ Les tâches archivées sont masquées de toutes les vues par défaut. Les tâche
 
 Une tâche supprimée est désormais masquée de toutes les vues par défaut et n'est plus considérée comme disponible. Les tâches supprimées ne peuvent pas être ajoutées aux factures, modifiées ou facturées. Vous pouvez changer vos filtres de vue pour voir les tâches supprimées et vous pouvez "Restaurer" un enregistrement de tâche supprimée pour le ramener à son état précédent.
 
-<x-next url=/fr_CA/transactions>Transactions</x-next>
+<x-next url=/fr_CA/taxes>Taxes</x-next>
