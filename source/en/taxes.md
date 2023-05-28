@@ -164,4 +164,8 @@ Current we suppose cross border taxes in these Countries.
 - EU
 - Australia
 
+## Self Host - Taxes
+
+For self host users, it is important to note that US Sales tax calculations are only the State sales tax rates. the surtax (city/district/county) taxes are not calculated as this is a third party service. Please consider this when using the sales tax calculations, as they may not be correct.
+
 <x-next url=/en/transactions>Transactions</x-next>
