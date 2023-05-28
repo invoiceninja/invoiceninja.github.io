@@ -77,6 +77,10 @@ If you make changes to your env file, please remember to reboot the container fo
 
 <p>Unzip this file into the virtual host directory you have created.</p>
 
+<x-warning>
+Please note the release file invoiceninja.tar excludes the .htaccess file, this archive is solely designed for our self host auto updater. Always use the .zip file when installing a fresh installation.
+</x-warning>
+
 #### File Permissions
 
 <x-warning>
