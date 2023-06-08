@@ -12,6 +12,10 @@ Taxes can be configured manually by following the step [here](/en/basic-settings
 
 ## US Sales Tax calculations
 
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/wZfTu2jhIWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 In Invoice Ninja v5.6 we introduce the ability to perform automatic tax calculations, let us provide a brief introduction to help you understand sales tax calculations in the United States.
 
 Sales tax in the U.S. is a consumption tax imposed by the government on the sale of goods and services. It's usually calculated as a percentage and added to the price of a product or service at the point of sale. Unlike some countries where a value-added tax (VAT) is utilized, in the U.S., there is no national sales tax. Instead, sales tax is levied at the state, county, and sometimes even at the municipal level, making it somewhat complex.
