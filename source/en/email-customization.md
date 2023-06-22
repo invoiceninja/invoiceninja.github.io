@@ -109,7 +109,7 @@ $invoices - A comma separate string of invoices and the payment amount received 
 
 <x-info>
 Invoice #123 $5000.00, Invoice #124 $1000.00
-</x-info
+</x-info>
 
 ```bash
 $invoice_references_subject - A custom subject line which includes all of the invoices and their amounts, ie:
@@ -176,6 +176,9 @@ $invoice_numbers - Comma separate raw string of invoice numbers
 123,124,125
 </x-info>
 
-```
+```bash
 $status_logo - Shows a paid stamp on the email if the payment status is completed
 ```
+
+The end
+<x-next url=/en/custom-fields>PDF customization</x-next>

@@ -92,5 +92,5 @@ return [
     'stripe_integration' => 'Intégration Stripe',
     'quick_search' => 'Recherche rapide',
     'taxes' => 'Taxes',
-
+    'email_customization' => 'Email Customization',
 ];
