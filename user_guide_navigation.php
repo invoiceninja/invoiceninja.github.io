@@ -30,6 +30,7 @@ return [
     'advanced_topics' => [
         'url' => '#',
         'children' => [
+            'email_customization' => '/:locale/email-customization',
             'import_export' => '/:locale/import-and-export',
             'pdf_customization' => '/:locale/custom-fields',
             'payment_gateways' => '/:locale/gateways',
