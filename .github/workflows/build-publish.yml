@@ -26,7 +26,6 @@ jobs:
         run: vendor/bin/phpunit
       - name: Run node commands
         run: |
-          mkdir build_production
           cd tests
           cat fr_CA.json | node build-index.js > fr_CA_index.js
           cat en.json | node build-index.js > en_index.js
