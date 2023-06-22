@@ -46,7 +46,6 @@ final class DocSearchTest extends TestCase
 
     private function getMarkdownFiles($file_path, $language)
     {
-        
         $text = file_get_contents($file_path);
 
         $file_name = strtolower(basename($file_path));
