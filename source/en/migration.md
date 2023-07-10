@@ -144,6 +144,7 @@ If you are experiencing issues with the migration not running as expected please
 
 ```
 EXPANDED_LOGGING=true 
+```
 
 Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
 
