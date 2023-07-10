@@ -175,6 +175,8 @@ Version 4 of Invoice Ninja has now entered its Sunset phase. For users still on 
 
 Version 5 has a greater range of functionality and improvements and is actively maintained. We release security and feature releases on a very regular basis which ensures the platform operates as expected. 
 
+You can test drive the new version of Invoice Ninja [here](https://react.invoicing.co/demo) the look and feel of the application should be very similar to v4!
+
 If you have a custom design that you wish to have migrated, please email a PDF example to contact@invoiceninja.com and we'll create a design that matches this for you.
 
 If you have an API integration, you'll want to check our v5 api docs [here](https://api-docs.invoicing.co) as the spec is different to v4. If you have any specific integration queries, you can contact us via email, or using the forum / slack support channels.
