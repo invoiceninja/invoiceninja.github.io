@@ -144,6 +144,7 @@ If you are experiencing issues with the migration not running as expected please
 
 ```
 EXPANDED_LOGGING=true 
+```
 
 Then attempt the migration again and afterwards inspect the log file in storage/logs/invoiceninja.log
 
@@ -167,3 +168,17 @@ If you see this error it indicates that one of your users has already registered
 
 Migration from version 4 to version 5 is only allowed between accounts with the same e-mail address. This is requirement,
 and before starting the migration, make sure you are using the same e-mail address on both version 4 and version 5 for the user.
+
+## v4 Sunset.
+
+Version 4 of Invoice Ninja has now entered its Sunset phase. For users still on the v4 platform, you should start planning _now_ to migrate to v5. 
+
+Version 5 has a greater range of functionality and improvements and is actively maintained. We release security and feature releases on a very regular basis which ensures the platform operates as expected. 
+
+You can test drive the new version of Invoice Ninja [here](https://react.invoicing.co/demo) the look and feel of the application should be very similar to v4!
+
+If you have a custom design that you wish to have migrated, please email a PDF example to contact@invoiceninja.com and we'll create a design that matches this for you.
+
+If you have an API integration, you'll want to check our v5 api docs [here](https://api-docs.invoicing.co) as the spec is different to v4. If you have any specific integration queries, you can contact us via email, or using the forum / slack support channels.
+
+Please do not delay your migration, at some point, it will become necessary to start the forced migration of accounts over to v5, this could be less than ideal for some users, so please engage with us early so that the migration experience is as smooth as possible.
