@@ -183,6 +183,8 @@ If you have an API integration, you'll want to check our v5 api docs [here](http
 
 Please do not delay your migration, at some point, it will become necessary to start the forced migration of accounts over to v5, this could be less than ideal for some users, so please engage with us early so that the migration experience is as smooth as possible.
 
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/47a707f1624d425da74ab2fe33057941?sid=a6367087-9411-4894-b836-7fb5a3352bf2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ## v4 - v5 Migration FAQ:
 
 ### Will i lose any data?  
