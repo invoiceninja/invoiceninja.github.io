@@ -182,3 +182,53 @@ If you have a custom design that you wish to have migrated, please email a PDF e
 If you have an API integration, you'll want to check our v5 api docs [here](https://api-docs.invoicing.co) as the spec is different to v4. If you have any specific integration queries, you can contact us via email, or using the forum / slack support channels.
 
 Please do not delay your migration, at some point, it will become necessary to start the forced migration of accounts over to v5, this could be less than ideal for some users, so please engage with us early so that the migration experience is as smooth as possible.
+
+## v4 - v5 Migration FAQ:
+
+### Will i lose any data?  
+No. The migration only takes a copy of your current v4 data and sends this to the new v5 platform.
+
+### Do you support all of the v4 Payment Gateways?
+We support _most_ of the v4 payment gateways, however there are several that we no longer support. The full supported list of v5 gateways are as follows:
+
+- Stripe
+- WePay
+- Paypal Express
+- Checkout.com
+- Authorize.net (auth.net)
+- Square
+- Mollie
+- GoCardless
+- Payfast
+- PayTrace
+- Razorpay
+- Forte
+- eway
+- Braintree
+
+### What about custom invoice designs?
+
+In v5 we use plain css/html to create invoice designs, v4 designs are therefore not compatible. We offer a free template design so that you can still use your custom design in v5. Simply forward an example PDF to us at contact@invoiceninja.com and we'll replicate this for you.
+
+### How long does the migration take? Is there any downtime.
+
+Depending on the size of your dataset the migration could take anywhere from 1 to 15 minutes. You will receive an email as soon as the migration completes with the next steps.
+
+<x-warning>
+Only start the migration once. If you have a very large account, you may see a timeout in your browser, this is safe to ignore. The migration will continue in the background.
+</x-warning>
+
+### Will existing invoice / quote links continue to work?
+
+Yes! Once you have migrated, you'll just need to activate v5 ( Settings > Account Management) This will trigger forwarding of all v4 links onto the v5 platform.
+
+### Do i need to configure my settings again after the migration?
+
+There are two settings which may need to be readjusted after the migration:
+
+1. If you are an enterprise customer and have multiple users, you'll need to reassign their permissions.
+2. Your user notifications will need to be reenabled in Settings > User Details > Notifications
+
+### I received an email stating that there was an existing migration? What does this mean.
+
+If you receive this email it means that some time in the past you have migrated your data to v5. If you have not yet started to use v5, you'll want to perform the migration again using the _force_ option. This will wipe the old v5 data and replace it with a fresh copy from v4.
