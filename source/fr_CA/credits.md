@@ -10,7 +10,7 @@ Un avoir est un document envoyé au client, l'informant qu'un crédit a été ac
 Les avoirs sont utilisés pour émettre des crédits échangeables pour un *Produit* spécifique ou pour un montant forfaitaire.
 Les crédits peuvent être appliqués aux factures en tant que paiement.
 
-Notez que choisir les bons paramètres de paiement est essentiel pour rendre les crédits intuitifs et utiles à vos clients, voir https://invoiceninja.github.io/docs/basic-settings/#payment_settings.
+Notez que choisir les bons paramètres de paiement est essentiel pour rendre les crédits intuitifs et utiles à vos clients, voir https://invoiceninja.github.io/fr_CA/basic-settings/#payment_settings.
 
 ## Affichage d'un avoir
 

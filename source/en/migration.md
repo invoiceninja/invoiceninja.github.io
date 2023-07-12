@@ -9,7 +9,7 @@ locale: en
 ## Migrating to v5
 
 <x-info>
-If you are a Hosted Invoice Ninja you can skip all of these steps. Just log into your account, click on the Start Migration button in Settings > Account Management and we will take care of the rest. Once you are happy your data is across you can follow the steps in our [Activation](https://invoiceninja.github.io/docs/hosted-activate/) guide
+If you are a Hosted Invoice Ninja you can skip all of these steps. Just log into your account, click on the Start Migration button in Settings > Account Management and we will take care of the rest. Once you are happy your data is across you can follow the steps in our [Activation](https://invoiceninja.github.io/en/hosted-activate/) guide
 </x-info>
 
 <x-warning>
@@ -22,7 +22,7 @@ The first step needed to prepare to migrate your data across to your new v5 inst
 
 ## Installing v5.
 
-Installing v5 is covered in detail [here](/docs/self-host-installation) with resources to cover your needs for Docker / Shared Hosting or Ubuntu/Centos installations.
+Installing v5 is covered in detail [here](/en/self-host-installation) with resources to cover your needs for Docker / Shared Hosting or Ubuntu/Centos installations.
 
 An important detail with your v5 installation is that your initial user login is identical to your v4 installation.
 

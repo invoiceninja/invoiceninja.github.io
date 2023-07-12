@@ -199,7 +199,7 @@ And sometimes it's enough to put `php` instead of `/opt/alt/php73/usr/bin/php` i
 
 If you still encounter errors, it may be helpful to temporarily remove `>> /dev/null 2>&1` from  the cron, this should output the cron to the `cron.log`
 
-If you are having troubles with your crons, have a look at the troubleshooting section [here](https://invoiceninja.github.io/docs/self-host-troubleshooting/#cron-not-running-queue-not-running)
+If you are having troubles with your crons, have a look at the troubleshooting section [here](https://invoiceninja.github.io/en/self-host-troubleshooting/#cron-not-running-queue-not-running)
 
 If you would like to improve the performance of your Invoice Ninja installation, then turning on the queue system will dramatically improve the performance of the application.
 
