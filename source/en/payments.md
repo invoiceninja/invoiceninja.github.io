@@ -30,6 +30,10 @@ These are the fields are available when editing a payment to add detail for your
 
 ## Enter a Payment
 
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/anX9l3MF-Ws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 When manually entering a payment, all of the above fields apply, in addition to these below.
 
 * **Client** - You must specify the client the payment is coming from first.
@@ -37,6 +41,11 @@ When manually entering a payment, all of the above fields apply, in addition to 
 * **Invoice** - Select an invoice from a searchable list of available invoices for the client that have balance owing.
 * **Applied** - Appearing after selecting an invoice, the amount applied to the invoice, generated automatically.  Any overpayment by the client is applied to their client record for future invoices.
 * **Send Email** - Enabled by default, disable to skip sending the client an email notifying them of their payment.
+
+## Using credits as part of a payment.
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/74v04u4Ma1M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ## Lifecycle of a Payment
 
