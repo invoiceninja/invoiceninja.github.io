@@ -14,7 +14,7 @@ These settings govern customization of the standard document design and layout u
 
 #### Customize & Preview
 
-This button takes you to a very advanced template code editor, with a live preview generator.  Instructions for these features can be found under <a href="https://invoiceninja.github.io/docs/custom-fields/">under PDF Customizations</a>.  You can preview the invoice design templates here, before selecting one you like to use permanently.
+This button takes you to a very advanced template code editor, with a live preview generator.  Instructions for these features can be found under <a href="https://invoiceninja.github.io/en/custom-fields/">under PDF Customizations</a>.  You can preview the invoice design templates here, before selecting one you like to use permanently.
 
 #### Template Settings
 

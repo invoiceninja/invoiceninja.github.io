@@ -7,7 +7,7 @@ locale: fr_CA
 # Migration vers v5
 
 <x-info>
-Si vous êtes un utilisateur de Invoice Ninja hébergé, vous pouvez ignorer toutes ces étapes. Connectez-vous simplement à votre compte, cliquez sur le bouton Démarrer la migration dans Paramètres > Gestion du compte et nous nous occuperons du reste. Une fois que vous êtes sûr que vos données ont été transférées, vous pouvez suivre les étapes de notre guide [Activation](https://invoiceninja.github.io/docs/hosted-activate/)
+Si vous êtes un utilisateur de Invoice Ninja hébergé, vous pouvez ignorer toutes ces étapes. Connectez-vous simplement à votre compte, cliquez sur le bouton Démarrer la migration dans Paramètres > Gestion du compte et nous nous occuperons du reste. Une fois que vous êtes sûr que vos données ont été transférées, vous pouvez suivre les étapes de notre guide [Activation](https://invoiceninja.github.io/fr_CA/hosted-activate/)
 </x-info>
 
 <x-warning>
@@ -20,7 +20,7 @@ La première étape nécessaire pour préparer la migration de vos données vers
 
 ## Installation de v5.
 
-L'installation de v5 est expliquée en détail [ici](/docs/self-host-installation) avec des ressources pour couvrir vos besoins pour des installations Docker / Hébergement partagé ou Ubuntu/Centos.
+L'installation de v5 est expliquée en détail [ici](/fr_CA/self-host-installation) avec des ressources pour couvrir vos besoins pour des installations Docker / Hébergement partagé ou Ubuntu/Centos.
 
 Un détail important lors de votre installation v5 est que votre identifiant utilisateur initial est identique à celui de votre installation v4.
 

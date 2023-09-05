@@ -75,7 +75,7 @@ The final step connecting a payment gateway. Invoice Ninja links with all major 
 <iframe class="video" src="https://www.youtube.com/embed/qitfiD6L8rQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-For more information on gateways that we support click [here](/docs/gateways)
+For more information on gateways that we support click [here](/en/gateways)
 
 <x-next url=/en/clients>Clients</x-next>
 

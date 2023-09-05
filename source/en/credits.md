@@ -10,7 +10,7 @@ A credit note is a document sent to the client, notifying that a credit has been
 Credit notes are used to issue redeemable credits for a specific *Product* or for a flat rate.
 Credits can be applied to invoices as a payment.
 
-Note that choosing the right Payment Settings is vital to make credits intuitive and useful to your customers, see https://invoiceninja.github.io/docs/basic-settings/#payment_settings.
+Note that choosing the right Payment Settings is vital to make credits intuitive and useful to your customers, see https://invoiceninja.github.io/en/basic-settings/#payment_settings.
 
 ## Viewing a Credit
 

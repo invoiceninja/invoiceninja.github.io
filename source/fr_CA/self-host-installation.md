@@ -8,7 +8,7 @@ locale: fr_CA
 
 ## Exigences du serveur
 
-<p>Invoice Ninja a quelques exigences système. Construit sur la base de <a href="https://www.laravel.com/docs/">Laravel</a>, il requiert un serveur PHP et MySQL au minimum avec les versions et extensions suivantes installées.</p>
+<p>Invoice Ninja a quelques exigences système. Construit sur la base de <a href="https://www.laravel.com/fr_CA/">Laravel</a>, il requiert un serveur PHP et MySQL au minimum avec les versions et extensions suivantes installées.</p>
 
 <x-warning>
 Vous devez configurer cette version complètement à partir de zéro. N'essayez pas d'écraser votre ancienne version d'Invoice Ninja (4.x.x) avec cette version, car les deux bases de code sont complètement différentes.
@@ -212,11 +212,11 @@ Et parfois, il suffit de mettre `php` au lieu de `/opt/alt/php73/usr/bin/php` da
 
 Si vous rencontrez toujours des erreurs, il peut être utile de supprimer temporairement `>> /dev/null 2>&1` du cron, cela devrait afficher le cron dans le fichier `cron.log`
 
-Si vous rencontrez des problèmes avec vos tâches cron, jetez un coup d'œil à la section de dépannage [ici](https://invoiceninja.github.io/docs/self-host-troubleshooting/#cron-not-running-queue-not-running)
+Si vous rencontrez des problèmes avec vos tâches cron, jetez un coup d'œil à la section de dépannage [ici](https://invoiceninja.github.io/fr_CA/self-host-troubleshooting/#cron-not-running-queue-not-running)
 
 Si vous souhaitez améliorer les performances de votre installation d'Invoice Ninja, activer le système de file d'attente améliorera considérablement les performances de l'application.
 
-Si vous avez un accès root à votre système, suivez simplement le [guide](https://laravel.com/docs/8.x/queues#supervisor-configuration) de Laravel pour configurer le service supervisor afin de démarrer et redémarrer votre file d'attente.
+Si vous avez un accès root à votre système, suivez simplement le [guide](https://laravel.com/fr_CA/8.x/queues#supervisor-configuration) de Laravel pour configurer le service supervisor afin de démarrer et redémarrer votre file d'attente.
 
 Membre du forum @link470 a également le guide suivant pour configurer le processus Supervisor sur Ubuntu 22.04 en utilisant les étapes suivantes :
 

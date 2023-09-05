@@ -115,6 +115,6 @@ Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlappi
 ```
 
 ### Translations
-As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/docs/basic-settings/#localization).
+As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/en/basic-settings/#localization).
 
 <x-next url=/en/reports>Reports</x-next>

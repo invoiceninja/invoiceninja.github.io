@@ -26,7 +26,7 @@ Le prochain écran affichera toutes vos entreprises qui sont disponibles pour la
 
 Une fois que vous avez sélectionné les entreprises à migrer, cliquez sur le bouton Continuer. Cela démarrera automatiquement le processus de migration. Lorsqu'il sera terminé, vous recevrez un courriel avec les prochaines étapes.
 
-Après avoir terminé la migration, vous voudrez désactiver v4 pour éviter qu'il n'envoie des courriels/factures récurrentes et activer v5. Le guide complet pour l'activation se trouve [ici](https://invoiceninja.github.io/docs/hosted-activate/)
+Après avoir terminé la migration, vous voudrez désactiver v4 pour éviter qu'il n'envoie des courriels/factures récurrentes et activer v5. Le guide complet pour l'activation se trouve [ici](https://invoiceninja.github.io/fr_CA/hosted-activate/)
 
 <x-info>Si vous recevez une erreur d'échec de la migration, veuillez nous contacter via contact@invoiceninja.com et nous pourrons vous aider davantage.</x-info>
 

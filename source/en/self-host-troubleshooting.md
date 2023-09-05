@@ -10,7 +10,7 @@ locale: en
 
 If you're experiencing issues with your self-hosted Invoice Ninja instance, follow these general troubleshooting steps before diving into the specific sections:
 
-1. Verify that you meet the [minimum system requirements](https://invoiceninja.github.io/docs/self-hosting/#requirements).
+1. Verify that you meet the [minimum system requirements](https://invoiceninja.github.io/en/self-hosting/#requirements).
 2. Consult the [Invoice Ninja forum](https://forum.invoiceninja.com/) for community support.
 3. Examine the logs for error messages. You can find the logs in the `storage/logs` directory.
 
@@ -23,7 +23,7 @@ It can take up to an hour for the red warning triangle to disappear after correc
 After making any changes to your cron setup you'll want to force a recheck of the cron setting. To do this navigate to http://url/update?secret=
 </x-warning>
 
-If you are faced with your recurring invoices not firing, or your reminders not sending, then most likely your cron job isn't working. The first thing is to make sure you have your cron jobs configured correctly by following the guide [here](https://invoiceninja.github.io/docs/self-host-installation/#cron-configuration-1) 
+If you are faced with your recurring invoices not firing, or your reminders not sending, then most likely your cron job isn't working. The first thing is to make sure you have your cron jobs configured correctly by following the guide [here](https://invoiceninja.github.io/en/self-host-installation/#cron-configuration-1) 
 
 If you are using shared hosting, then will need to add an additional parameter to the cron command which looks like this:
 

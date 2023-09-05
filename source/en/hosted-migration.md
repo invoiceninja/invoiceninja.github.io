@@ -28,7 +28,7 @@ The next screen will display all of your companies which are available for migra
 
 Once you have selected the companies to migrate click the continue button. This will automatically start the migration process. When it has completed, you will receive an email with your next steps.
 
-After completing the migration you will want to deactivate v4 to prevent it from sending emails / recurring invoices and activate v5. The full guide for activating can be found [here](https://invoiceninja.github.io/docs/hosted-activate/)
+After completing the migration you will want to deactivate v4 to prevent it from sending emails / recurring invoices and activate v5. The full guide for activating can be found [here](https://invoiceninja.github.io/en/hosted-activate/)
 
 <x-info>If you receive a migration failed error, please contact us via contact@invoiceninja.com and we can assist further.</x-info>
 

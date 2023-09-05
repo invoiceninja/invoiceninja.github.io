@@ -10,7 +10,7 @@ locale: fr_CA
 
 Si vous rencontrez des problèmes avec votre instance Invoice Ninja auto-hébergée, suivez ces étapes générales de dépannage avant de passer aux sections spécifiques :
 
-1. Vérifiez que vous répondez aux [exigences minimales du système](https://invoiceninja.github.io/docs/self-hosting/#requirements).
+1. Vérifiez que vous répondez aux [exigences minimales du système](https://invoiceninja.github.io/fr_CA/self-hosting/#requirements).
 2. Consultez le [forum Invoice Ninja](https://forum.invoiceninja.com/) pour obtenir une assistance communautaire.
 3. Examinez les journaux pour les messages d'erreur. Vous pouvez trouver les journaux dans le répertoire `storage/logs`.
 
@@ -23,7 +23,7 @@ Il peut prendre jusqu'à une heure pour que le triangle d'avertissement rouge di
 Après avoir apporté des modifications à votre configuration cron, vous voudrez forcer une nouvelle vérification des paramètres cron. Pour cela, accédez à l'URL de mise à jour dans votre navigateur : http://url/update?secret=
 </x-warning>
 
-Si vous êtes confronté à des factures récurrentes qui ne se déclenchent pas ou à des rappels qui ne s'envoient pas, il est fort probable que votre travail cron ne fonctionne pas. La première chose à faire est de vous assurer que vous avez configuré correctement vos travaux cron en suivant le guide [ici](https://invoiceninja.github.io/docs/self-host-installation/#cron-configuration-1)
+Si vous êtes confronté à des factures récurrentes qui ne se déclenchent pas ou à des rappels qui ne s'envoient pas, il est fort probable que votre travail cron ne fonctionne pas. La première chose à faire est de vous assurer que vous avez configuré correctement vos travaux cron en suivant le guide [ici](https://invoiceninja.github.io/fr_CA/self-host-installation/#cron-configuration-1)
 
 Si vous utilisez un hébergement partagé, vous devrez ajouter un paramètre supplémentaire à la commande cron qui ressemble à ceci:
 

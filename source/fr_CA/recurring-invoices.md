@@ -145,7 +145,7 @@ Gardez à l'esprit que la syntaxe **[MONTHYEAR|MONTHYEAR]** se chargera des **da
 
 
 ### Traductions
-Comme vous pouvez le voir, [MONTHYEAR|MONTHYEAR] utilise "à" entre les plages de dates. Ce n'est pas codé en dur, mais il se construit en fonction de [vos paramètres de localisation](/docs/basic-settings/#localization).
+Comme vous pouvez le voir, [MONTHYEAR|MONTHYEAR] utilise "à" entre les plages de dates. Ce n'est pas codé en dur, mais il se construit en fonction de [vos paramètres de localisation](/fr_CA/basic-settings/#localization).
 
 
 <x-next url=/fr_CA/reports>Rapports</x-next>
