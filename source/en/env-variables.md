@@ -174,4 +174,9 @@ This is the default environment setting.
 ```
 WEBCRON_SECRET=secret
 ```
-If using the webcron feature, you'll want to set a password here to prevent unauthorized people accessing this URL                          
+If using the webcron feature, you'll want to set a password here to prevent unauthorized people accessing this URL
+
+```
+ZIP_TAX_KEY=
+```
+The API key from [Zip-Tax](https://zip-tax.com) required to support address based tax rates in the US
