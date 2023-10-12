@@ -32,6 +32,7 @@ If you have installed the application using the precompiled .zip file, then the 
 
 * The directory is owned recursively by the web user.
 * The scheduler cron is running.
+* 1024M for the PHP ```memory_limit``` to run the update
 
 The self updater will pull the latest release from our Github repository, extract and overwrite the system files. Prior to attempting any of this, the system performs a recursive file check to ensure _all_ files are owned by the webuser.
 
