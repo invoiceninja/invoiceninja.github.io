@@ -10,7 +10,7 @@ locale: fr_CA
 
 Si vous rencontrez des problèmes avec votre instance Invoice Ninja auto-hébergée, suivez ces étapes générales de dépannage avant de passer aux sections spécifiques :
 
-1. Vérifiez que vous répondez aux [exigences minimales du système](https://invoiceninja.github.io/fr_CA/self-hosting/#requirements).
+1. Vérifiez que vous répondez aux [exigences minimales du système](https://invoiceninja.github.io/fr_CA/self-host-installation/#exigences-du-serveur).
 2. Consultez le [forum Invoice Ninja](https://forum.invoiceninja.com/) pour obtenir une assistance communautaire.
 3. Examinez les journaux pour les messages d'erreur. Vous pouvez trouver les journaux dans le répertoire `storage/logs`.
 
