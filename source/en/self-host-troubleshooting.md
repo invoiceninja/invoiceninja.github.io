@@ -10,7 +10,7 @@ locale: en
 
 If you're experiencing issues with your self-hosted Invoice Ninja instance, follow these general troubleshooting steps before diving into the specific sections:
 
-1. Verify that you meet the [minimum system requirements](https://invoiceninja.github.io/en/self-hosting/#requirements).
+1. Verify that you meet the [minimum system requirements](https://invoiceninja.github.io/en/self-host-installation/#server-requirements).
 2. Consult the [Invoice Ninja forum](https://forum.invoiceninja.com/) for community support.
 3. Examine the logs for error messages. You can find the logs in the `storage/logs` directory.
 
