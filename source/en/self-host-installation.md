@@ -121,6 +121,10 @@ if (!-e $request_filename) {
     rewrite ^(.+)$ /index.php?q= last;
 }
 
+location ~* /storage/.*\.php$ {
+    return 503;
+}
+
 location ~ \.php$ {
 include snippets/fastcgi-php.conf;
 fastcgi_pass unix:/run/php/php8.2-fpm.sock;
