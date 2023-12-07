@@ -70,6 +70,10 @@ The following is a list of the sections included in various documents, invoices,
 
 <h2 id=custom_fields>Custom Fields</h2>
 
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/fkMmaPSvBLs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 Custom Fields options control up to 4 custom fields to include in all entity records, to describe the entities with that can be shown in your PDF and documented transactions, or kept for admin records only.  You can use these to add details about a liquor license to your own company, details about memberships to clients, or certifications of your employees assigned to tasks, or other details.
 
 There are 5 different options for field types regardless of the type of record the custom field applies to.  In each case, you will select a field type on the right, and the value you enter on the left will represent the name of that custom field in forms and in the admin UI.
