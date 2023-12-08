@@ -211,6 +211,14 @@ These settings govern authorization, accountability, and authentication features
 
 * **Show on PDF** - Show the client's signature on the invoice/quote PDF after it has been signed.
 
+For a demo on how to configure capturing signatures or terms prior to a client paying an invoice (or approving a quote, watch this video)
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/V37vC0jNZIk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+
 ### Messages
 
 These are messages to be presented to clients at various screens of the client portal.  
