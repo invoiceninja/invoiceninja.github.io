@@ -54,3 +54,19 @@ If you prefer to send bulk emails via Mailgun, then this is also supported. We d
 ![alt text](/assets/images/user_guide/mailgun_config.png "Configuration screen for Mailgun")
 
 Ensure to fill in both your Mailgun Secret and Domain that has been configured.
+
+### Handling Spam / Contacts unsubscribing from your emails.
+
+Email delivery is _hard_ the large email providers such as GMail, Yahoo, Microsoft are continuing their fight against unsolicited / spam emails from filling the inboxes that they serve.
+
+In 2024 it will become even harder with additional checks in place on all emails to ensure that only high quality emails arrive to a users inbox.
+
+In particular, their focus is on working unsubscribe links within emails. Previously we have not needed to insert an unsubscribe link into an invoice email, however now it will become a standard part of all outbound emails to include a unsubscribe link.
+
+<x-warning>
+All ourbound emails that are sent from the Invoice Ninja Hosted Mail Service (maildelivery@mail.invoicing.co and maildelivery@invoicing.co) will now contain a working unsubscribe link. If you are sending via your own provider (PostMark / MailGun / GMail / Microsoft) we will not be injecting these unsubscribe links into your emails.
+</x-warning>
+
+If your client clicks on an unsubscribe link, they'll be taken to a page where they can opt out of receiving emails from you. This will mark their client record as "DO NOT SEND" and you will also receive a follow up email advising that this action has been taken by your client.
+
+For more information, you can read this great article from ![Postmark](https://postmarkapp.com/blog/2024-gmail-yahoo-email-requirements "Postmark") 
