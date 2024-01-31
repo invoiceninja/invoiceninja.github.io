@@ -47,6 +47,10 @@ sudo apt install php8.2-bcmath php8.2-gmp php8.2-fileinfo \
 
 Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
 
+### Ubuntu 22.04
+
+Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5.5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-5-on-ubuntu-22-04/13272)
+
 ### Installing on CentOS 8
 
 If CentOS is more your Flavour, community member TechnicallyComputers has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). 
