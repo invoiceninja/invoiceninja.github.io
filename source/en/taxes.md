@@ -49,7 +49,7 @@ Navigate to Settings > Tax Settings and turn the Calculate Taxes switch on. A ne
 
 ![Seller subregion](/assets/images/taxes/seller_subregion.png)
 
-Beneath this is a range of regions where automatic tax calculations are supported. Each section provides additional granularity for where you wish to collect tax. 
+Beneath this is a range of regions where automatic tax calculations are supported. Each section provides additional granularity for where you wish to collect tax.
 
 ![Tax rate configuration](/assets/images/taxes/tax_rate_config.png)
 
@@ -81,7 +81,7 @@ Sales tax on physical goods, also known as tangible personal property, is one of
 
 #### Digital Products
 
-Sales tax on digital products is an evolving area in U.S. tax law, reflecting the increasing shift towards a digital economy. Digital products can include anything from e-books, music and video downloads, to software and digital subscriptions. 
+Sales tax on digital products is an evolving area in U.S. tax law, reflecting the increasing shift towards a digital economy. Digital products can include anything from e-books, music and video downloads, to software and digital subscriptions.
 
 Some states may tax digital goods exactly the same way as physical goods, others may tax only certain types of digital goods, while some states do not tax digital goods at all. For instance, an e-book might be taxed in one state, but could be tax-exempt in another. The tax might also depend on whether the digital good is considered a service or a product, and whether it's delivered on a tangible medium like a DVD or CD.
 
@@ -141,7 +141,6 @@ Transaction-based Exemptions: Certain types of sales transactions may be exempt 
 
 If you sell goods and services to a client who is tax exempt, you can mark them as tax exempt by editing their client record and setting the tax exempt switch on.
 
-
 ![Tax Exempt Product](/assets/images/taxes/tax_exempt_client.png)
 
 ## Configure EU tax calculations
@@ -164,7 +163,7 @@ Every country has its own specific requirements which you should investigate wit
 
 Current we suppose cross border taxes in these Countries.
 
-- USA 
+- USA
 - EU
 - Australia
 
@@ -172,4 +171,4 @@ Current we suppose cross border taxes in these Countries.
 
 For self host users, it is important to note that US Sales tax calculations are only the State sales tax rates. the surtax (city/district/county) taxes are not calculated as this is a third party service. Please consider this when using the sales tax calculations, as they may not be correct.
 
-<x-next url=/en/transactions>Transactions</x-next>
+<x-next url=/en/quotes>Quotes</x-next>

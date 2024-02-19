@@ -50,7 +50,7 @@ Reserved keywords are:
 - :QUARTER
 - :WEEK
 - :WEEK_BEFORE
-- :WEEK_AHEAD 
+- :WEEK_AHEAD
 - :MONTHYEAR
 
 As you may guess, each time invoice (PDF) is generated, keywords will be replaced with actual value, so:
@@ -67,7 +67,7 @@ So this is the pattern for mathematical operations:
 > %KEYWORD% %OPERATION% %VALUE%
 
 Let's see it in practice. Imagine you're sending an invoice for a gym membership every three months. Write this in item
-description & let's see what we get: 
+description & let's see what we get:
 
 > Gym membership: :MONTH to :MONTH+3
 
@@ -80,6 +80,7 @@ description & let's see what we get:
 Nice! Now, each time you send this invoice, you don't have to put the exact month, nor the upcoming month.
 
 ### Supported combinations
+
 ```
 Month: :MONTH
 Year: :YEAR
@@ -93,11 +94,12 @@ Quarter: :QUARTER
 
 ## Reserved keyword for date ranges
 
-Previously listed keywords are *super* cool, but what if we have to generate for example:
+Previously listed keywords are _super_ cool, but what if we have to generate for example:
 
 > Gym membership: February 2021 to February 2023
 
 It's easy as typing following:
+
 > Gym membership: [MONTHYEAR|MONTHYEAR+24]
 
 Gym membership: February 2021 to February 2023 🎉
@@ -105,16 +107,19 @@ Gym membership: February 2021 to February 2023 🎉
 ![alt text](/assets/images/recurring_invoices/reserved-keywords-monthyear-preview.png "Screenshot of PDF")
 
 Another way to do it this:
+
 > Gym membership: :MONTH :YEAR to :MONTH :YEAR+2
 
 Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlapping dates**.
 
 ### Supported combinations
+
 ```
 [MONTHYEAR|MONTHYEAR +, -], [MONTHYEAR|MONTHYEAR+16], [MONTHYEAR|MONTHYEAR-2]
 ```
 
 ### Translations
+
 As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/en/basic-settings/#localization).
 
-<x-next url=/en/reports>Reports</x-next>
+<x-next url=/en/products>Products</x-next>

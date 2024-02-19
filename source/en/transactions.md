@@ -30,17 +30,19 @@ The transactions overview displays all of your transactions and their status.
 
 ![alt text](/assets/images/transactions/transaction_list.png "Transaction Overview")
 
-* **Account Type** - Defines the type of account the transaction is linked to, possible options include Bank, Credit Card, Savings Account.
-* **Status** - Defines the status of the transaction.
- - Unmatched - A new transaction that needs to be matched to a Invoice or Expense
- - Matched - A transaction that (based on predefined rules) has been matched to a Invoice or Expense
- - Completed - A transaction that has been matched AND linked to a Invoice or Expense
-* Deposit - The amount of income for the transaction.
-* Withdrawal - The amount of the expense for the transaction.
-* Date - The Date of the transaction.
-* Description - The description of the transaction.
-* Invoices - The linked invoices (visible when completed)
-* Expenses - The linked expenses (visible when completed)
+- **Account Type** - Defines the type of account the transaction is linked to, possible options include Bank, Credit Card, Savings Account.
+- **Status** - Defines the status of the transaction.
+
+* Unmatched - A new transaction that needs to be matched to a Invoice or Expense
+* Matched - A transaction that (based on predefined rules) has been matched to a Invoice or Expense
+* Completed - A transaction that has been matched AND linked to a Invoice or Expense
+
+- Deposit - The amount of income for the transaction.
+- Withdrawal - The amount of the expense for the transaction.
+- Date - The Date of the transaction.
+- Description - The description of the transaction.
+- Invoices - The linked invoices (visible when completed)
+- Expenses - The linked expenses (visible when completed)
 
 ## Create a manual transaction
 
@@ -50,8 +52,8 @@ To create a manual transaction click on the Create button
 
 Select a Type:
 
- - Deposit for income
- - Withdrawal for expenses
+- Deposit for income
+- Withdrawal for expenses
 
 Enter the Date of the transaction
 The amount
@@ -77,4 +79,4 @@ When matching expenses you are able to assign the Vendor and/or a expense catego
 
 ![alt text](/assets/images/user_guide/expense_match.png "Match a expense")
 
-<x-next url=/en/vendors>Vendors</x-next>
+<x-next url=/en/basic-settings>Basic Settings</x-next>
