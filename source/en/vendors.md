@@ -18,57 +18,56 @@ To view a vendor's details, select it from the table or list view. The preview p
 
 ### Overview
 
-The vendor overview tab shows general information about the vendor.  
+The vendor overview tab shows general information about the vendor.
 
-* The total value of all expenses from this vendor is displayed at the top.  
-* Private and public notes are highlighted, and prefixed with a lock symbol for private notes, and a letter "i" in a small circle for public notes.
-* A list of multifunctional interactive buttons link to the user, expense records, and recurring expense records assigned to the vendor.
+- The total value of all expenses from this vendor is displayed at the top.
+- Private and public notes are highlighted, and prefixed with a lock symbol for private notes, and a letter "i" in a small circle for public notes.
+- A list of multifunctional interactive buttons link to the user, expense records, and recurring expense records assigned to the vendor.
 
 ### Details
 
-The details tab has a list of other specifics about the vendor, such as their website, contact information, billing address, and more.  Clicking on any of these listed items will copy the value of the item to your clipboard.
+The details tab has a list of other specifics about the vendor, such as their website, contact information, billing address, and more. Clicking on any of these listed items will copy the value of the item to your clipboard.
 
 ### Documents
 
-Here you can upload files such as pictures, documents, and more to link to your vendor record.  This will mostly only be for your purposes in the admin portal however.
+Here you can upload files such as pictures, documents, and more to link to your vendor record. This will mostly only be for your purposes in the admin portal however.
 
 ## Creating and Editing a Vendor
 
-Creating and editing a vendor in the desktop layout will take you to a new screen with all available fields presented in one view.  On the mobile layout it is broken down into tabbed sections, similar to the way they appear in desktop layout, as follows:
+Creating and editing a vendor in the desktop layout will take you to a new screen with all available fields presented in one view. On the mobile layout it is broken down into tabbed sections, similar to the way they appear in desktop layout, as follows:
 
 ### Details
 
-* **Name** - Enter the name of your vendor here.
-* **Number** - This is a generated number for your record keeping purposes to identify different vendors in the system.  Customize the number patterns under *Settings* > *Generated Numbers*.
-* **ID Number** - An optional and generic field for business ID numbers wherever applicable.
-* **VAT Number** - An optional field to support recording "Value Added Tax" numbers for countries like those in the European Union which require tracking this for tax purposes.
-* **Website** - The website of your vendor can be entered here.
-* **Phone** - A primary contact phone number for the vendor.
+- **Name** - Enter the name of your vendor here.
+- **Number** - This is a generated number for your record keeping purposes to identify different vendors in the system. Customize the number patterns under _Settings_ > _Generated Numbers_.
+- **ID Number** - An optional and generic field for business ID numbers wherever applicable.
+- **VAT Number** - An optional field to support recording "Value Added Tax" numbers for countries like those in the European Union which require tracking this for tax purposes.
+- **Website** - The website of your vendor can be entered here.
+- **Phone** - A primary contact phone number for the vendor.
 
 ### Contacts
 
 You can add as many contacts as you like to a vendor record, to represent individuals or departments you may need to contact at some point from the vendor.
 
-* **First Name** & **Last Name** - A first and last name for an individual, or simply enter a department name as a first name.
-* **Email** - The preferred email address for the contact.
-* **Phone** - The preferred phone number for the contact.
+- **First Name** & **Last Name** - A first and last name for an individual, or simply enter a department name as a first name.
+- **Email** - The preferred email address for the contact.
+- **Phone** - The preferred phone number for the contact.
 
 ### Notes
 
-* **Currency** - Optionally include a note about what the vendor's preferred currency is.  New expense records linked to the vendor will automatically be populated with this currency choice.
-* **Public Notes** - Public notes may see future implementation, or be included in custom templates for invoices and other records.  This is a good placeholder for general descriptions of a vendor.
-* **Private Notes** - Only viewable by admin portal users, you may use this field to leave private comments about a vendor for yourself and your coworkers.
+- **Currency** - Optionally include a note about what the vendor's preferred currency is. New expense records linked to the vendor will automatically be populated with this currency choice.
+- **Public Notes** - Public notes may see future implementation, or be included in custom templates for invoices and other records. This is a good placeholder for general descriptions of a vendor.
+- **Private Notes** - Only viewable by admin portal users, you may use this field to leave private comments about a vendor for yourself and your coworkers.
 
 ### Address
 
 Billing address details for your vendor can be entered here for record keeping purposes.
 
-* **Street** - The street number, and street name.
-* **Apt/Suite** - Apartment or suite number.
-* **City**
-* **State or Province**
-* **Postal Code**
-* **Country**
+- **Street** - The street number, and street name.
+- **Apt/Suite** - Apartment or suite number.
+- **City**
+- **State or Province**
+- **Postal Code**
+- **Country**
 
-  <x-next url=/en/purchase-orders>Purchase Orders</x-next>
-
+  <x-next url=/en/banking>Banking</x-next>
