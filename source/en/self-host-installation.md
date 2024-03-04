@@ -253,13 +253,13 @@ stdout_logfile=/var/log/invoiceninja-worker.log
 stopwaitsecs=3600
 ```
 
-There’s 4 main things to change, shown in bold above:
+There’s 4 main things to change:
 
-program: The program name you’ll use for the worker
-command: The path to the artisan file in the root of the Invoice Ninja application directory
-user: The user that’ll be running Supervisor. Typically, this is the web server user (the same user that has ownership over the Invoice Ninja files)
-stdout_logfile: Optionally, include the path to a log file for the Supervisor worker
-Once these changes are made to suit your environment, save the file.
+program: The program name you’ll use for the worker  
+command: The path to the artisan file in the root of the Invoice Ninja application directory  
+user: The user that’ll be running Supervisor. Typically, this is the web server user (the same user that has ownership over the Invoice Ninja files)  
+stdout_logfile: Optionally, include the path to a log file for the Supervisor worker  
+Once these changes are made to suit your environment, save the file.  
 
 If you chose to set a log file path, ensure the log file is created and that the user account configured has access to it. For this example, the log is stored in /var/log.
 
