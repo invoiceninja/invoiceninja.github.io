@@ -20,7 +20,7 @@ When you create a subscription a direct link is generated which is available to 
 
 ![alt text](/assets/images/subscriptions/subscription_products.png "Subscription products")
 
-When you create the subscription you are able to combine one time and recurring products into a single subscriptions. For example, lets say you run a hosting business and want to create a subscription which has a single Setup charge as well as a monthly recurring charge for the server. 
+When you create the subscription you are able to combine one time and recurring products into a single subscriptions. For example, lets say you run a hosting business and want to create a subscription which has a single Setup charge as well as a monthly recurring charge for the server.
 
 When your client purchases this, the Setup charge will only be applied to the first invoice, and then a recurring invoice is generated for any recurring products in the subscription.
 
@@ -58,13 +58,13 @@ This request queries the endpoint whether the client/contact is eligible to cont
 ```
 
 #### Parameters
- 
-**context**: (string) The context identifier, `is_eligible`  
-**subscription**: The id of the subscription  
-**contact**: The id of the contact  
-**contact_email**: The contact email  
-**client**: The id of the client  
-**account_key**: A client reference (client.custom_value2)  
+
+**context**: (string) The context identifier, `is_eligible`
+**subscription**: The id of the subscription
+**contact**: The id of the contact
+**contact_email**: The contact email
+**client**: The id of the client
+**account_key**: A client reference (client.custom_value2)
 
 #### Response
 
@@ -102,11 +102,11 @@ If you have configured your subscription to be a trial based subscription. Then 
 
 #### Parameters
 
-**context**: (string) The context identifier, `trial`  
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription  
-**client**: The id of the client  
-**subscription**: The subscription id  
-**account_key**: A client reference (client.custom_value2)  
+**context**: (string) The context identifier, `trial`
+**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
+**client**: The id of the client
+**subscription**: The subscription id
+**account_key**: A client reference (client.custom_value2)
 
 #### Response
 
@@ -146,13 +146,13 @@ When a recurring subscription is created for the first time, a payload is sent t
 
 #### Parameters
 
-**context**: (string) The context identifier, `recurring_purchase`  
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription  
-**invoice**: The id of the invoice that was generated based on the subscription  
-**client**: The id of the client  
-**contact**: The id of the contact  
-**subscription**: The subscription id  
-**account_key**: A client reference (client.custom_value2)  
+**context**: (string) The context identifier, `recurring_purchase`
+**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
+**invoice**: The id of the invoice that was generated based on the subscription
+**client**: The id of the client
+**contact**: The id of the contact
+**subscription**: The subscription id
+**account_key**: A client reference (client.custom_value2)
 
 #### Response
 
@@ -190,11 +190,11 @@ Where your subscription is only for a standard product, and _not_ a recurring pr
 
 #### Parameters
 
-**context**: (string) The context identifier, `single_purchase`  
-**invoice**: The id of the invoice that was generated based on the subscription  
-**client**: The id of the client  
-**subscription**: The subscription id  
-**account_key**: A client reference (client.custom_value2)  
+**context**: (string) The context identifier, `single_purchase`
+**invoice**: The id of the invoice that was generated based on the subscription
+**client**: The id of the client
+**subscription**: The subscription id
+**account_key**: A client reference (client.custom_value2)
 
 #### Response
 
@@ -248,13 +248,13 @@ When a client changes plans, there may be either a credit due, or a payment depe
 
 #### Parameters
 
-**context**: (string) The context identifier, `change_plan`  
-**invoice**: The id of the invoice that was generated based on the subscription  
-**credit**: The id of the credit that was generated based on the subscription **note** this field, _may_ be blank if no credit was generated  
-**client**: The id of the client  
-**contact**: The id of the contact  
-**subscription**: The subscription id  
-**account_key**: A client reference (client.custom_value2)  
+**context**: (string) The context identifier, `change_plan`
+**invoice**: The id of the invoice that was generated based on the subscription
+**credit**: The id of the credit that was generated based on the subscription **note** this field, _may_ be blank if no credit was generated
+**client**: The id of the client
+**contact**: The id of the contact
+**subscription**: The subscription id
+**account_key**: A client reference (client.custom_value2)
 
 #### Response
 
@@ -293,12 +293,12 @@ If you allow subscription cancellations, then the following payload is forwarded
 
 #### Parameters
 
-**context**: (string) The context identifier, `cancellation`  
-**subscription**: The subscription id  
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription  
-**client**: The id of the client  
-**contact**: The id of the contact  
-**account_key**: A client reference (client.custom_value2)  
+**context**: (string) The context identifier, `cancellation`
+**subscription**: The subscription id
+**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
+**client**: The id of the client
+**contact**: The id of the contact
+**account_key**: A client reference (client.custom_value2)
 
 #### Response
 
@@ -335,10 +335,10 @@ A daily check is performed to check if any subscriptions have gone past their du
 
 #### Parameters
 
-**context**: (string) The context identifier, `plan_expired`  
-**subscription**: The subscription id  
-**invoice**: The id of the invoice that was generated based on the subscription  
-**client**: The id of the client  
+**context**: (string) The context identifier, `plan_expired`
+**subscription**: The subscription id
+**invoice**: The id of the invoice that was generated based on the subscription
+**client**: The id of the client
 
 #### Response
 
@@ -378,13 +378,13 @@ When a payment for a subscription is made (ie for a renewal), a Plan Paid webhoo
 
 #### Parameters
 
-**context**: (string) The context identifier, `plan_expired`  
-**subscription**: The subscription id  
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription  
-**invoice**: The id of the invoice that was generated based on the subscription  
-**client**: The id of the client  
-**contact**: The id of the contact  
-**account_key**: A client reference (client.custom_value2)  
+**context**: (string) The context identifier, `plan_expired`
+**subscription**: The subscription id
+**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
+**invoice**: The id of the invoice that was generated based on the subscription
+**client**: The id of the client
+**contact**: The id of the contact
+**account_key**: A client reference (client.custom_value2)
 
 #### Response
 
@@ -406,5 +406,4 @@ A failed request would return the an array like this:
 }
 ```
 
-
-<x-next url=/en/tasks>Tasks</x-next>
+<x-next url=/en/vendors>Vendors</x-next>

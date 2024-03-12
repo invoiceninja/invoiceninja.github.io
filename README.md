@@ -9,11 +9,16 @@
 Documentation is available at [https://invoiceninja.github.io](https://invoiceninja.github.io).
 
 ### Table of contents
+
 - [Invoice Ninja Documentation](#invoice-ninja-documentation)
-    + [Introduction](#introduction)
-        - [Clone the repository](#clone-the-repository)
-        - [Change directory and install dependencies](#change-directory-and-install-dependencies)
-        - [Preview it](#preview-it)
+  - [Table of contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Getting started](#getting-started)
+    - [Clone the repository](#clone-the-repository)
+    - [Change directory and install dependencies](#change-directory-and-install-dependencies)
+    - [Preview it](#preview-it)
+  - [Code of Conduct](#code-of-conduct)
+  - [Licence](#licence)
 
 ### Introduction
 
@@ -42,6 +47,7 @@ npm i
 
 ```bash
 npm run watch
+vendor/bin/jigsaw serve
 ```
 
 Now you should be able to edit & preview your changes in real-time.
@@ -50,7 +56,9 @@ The official repository is configured to build the site on each commit, so there
 locally.
 
 ### Code of Conduct
+
 Code of conduct can be found in our main repository. [Code of Conduct](https://github.com/invoiceninja/invoiceninja/blob/master/CODE_OF_CONDUCT.md).
 
 ### Licence
+
 Licence can be found in our main repository. [Licence](https://github.com/invoiceninja/invoiceninja/blob/master/LICENSE).

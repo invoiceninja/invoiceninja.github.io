@@ -1,5 +1,5 @@
 ---
-extends: _layouts.user_guide 
+extends: _layouts.user_guide
 section: content
 locale: en
 ---
@@ -80,7 +80,7 @@ A transaction that is converted means that either Invoice Ninja or a user has ma
 
 ![alt text](/assets/images/banking/add_edit_transaction.png "Add/Edit a Transaction")
 
-A transaction can be manually created or updated. 
+A transaction can be manually created or updated.
 
 ### Fields
 
@@ -115,7 +115,6 @@ To improve your efficiency, you can build a ruleset to match your incoming trans
 
 Using a rule set will allow Invoice Ninja to performing the matching and/or conversion of transactions for you.
 
-
 ### Create a Bank Transaction Rule
 
 ![alt text](/assets/images/banking/create_bank_rule.png "Create a bank rule")
@@ -149,7 +148,7 @@ When creating a rule there are a number of options available.
 - Operator - Description | when matching text there are several matching options available
 
 * Contains | The description must contain the value assigned
-* Starts with | The description text must start with the value assigned 
+* Starts with | The description text must start with the value assigned
 * Is | The description must exactly match
 * Is Empty | The description must be empty
 
@@ -163,4 +162,4 @@ When creating a rule there are a number of options available.
 
 - Value | The user assigned value used to compare against.
 
-<x-next url=/en/clients>Clients</x-next>
+<x-next url=/en/transactions>Transactions</x-next>
