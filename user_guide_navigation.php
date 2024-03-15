@@ -46,6 +46,8 @@ return [
             'hosted_migration' => '/:locale/hosted-migration',
             'mail_servers' => '/:locale/hosted-mail',
             'stripe_integration' => '/:locale/hosted-stripe',
+            'troubleshooting' => '/:locale/hosted-troubleshooting',
+            'delete_account' => '/:locale/hosted-delete-account',
         ],
     ],
 
