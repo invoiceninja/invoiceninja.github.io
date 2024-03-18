@@ -195,4 +195,4 @@ The number of days that backups are stored. Any backups created after this will 
 ```
 ADDITIONAL_UPLOAD_EXTENSIONS
 ```
-Additional upload extensions that are to be allowed, this should be a comma separated string ie '.mp3,mp4,mkv'
+Additional upload extensions that are to be allowed, this should be a comma separated string ie 'mp3,mp4,mkv'
