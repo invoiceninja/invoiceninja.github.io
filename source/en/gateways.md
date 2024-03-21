@@ -31,8 +31,6 @@ You can easily setup payment gateways within your account under _Settings>Paymen
 
 We no longer support the PayPal _Express API_ integration, we've updated to the "PayPal Platform" and now also support Venmo via PayPal.
 
-We don't support "Test Mode" for payment gateways.
-
 ## Stripe
 
 <p align="center">
