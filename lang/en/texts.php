@@ -132,4 +132,5 @@ return [
     'quick_search' => 'Quick search ...',
     'taxes' => 'Taxes',
     'email_customization' => 'Email Customization',
+    'faq' => 'FAQ',
 ];
