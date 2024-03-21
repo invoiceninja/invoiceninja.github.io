@@ -12,11 +12,11 @@ In v5 of Invoice Ninja we have introduced Stripe Connect using OAuth. This integ
 
 When you migrate your data across, we automatically create your Stripe account, however we need you to authorize via OAuth your Stripe account with Invoice Ninja. 
 
-To do this, navigate to Settings > Payment Settings > Configure Gateways. In the Stripe driver you'll see the following:
+To do this, navigate to Settings > Payment Settings. Click on Stripe Connect you'll see the following:
 
 ![alt text](/assets/images/stripe/stripe1.png "Connect Stripe")
 
-Click on this button and you'll be taken to a page like this:
+Click on <b>Gateway Setup</b> this button and you'll be taken to a page like this:
 
 ![alt text](/assets/images/stripe/stripe2.png "OAuth Stripe")
 
@@ -41,6 +41,7 @@ Enter in your dedicated webhook URL as well as the five event types
 <x-info>
 source.chargeable  
 charge.succeeded  
+charge.failed  
 customer.source.updated  
 payment_intent.processing  
 payment_intent.succeeded  

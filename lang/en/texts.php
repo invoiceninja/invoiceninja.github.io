@@ -133,4 +133,5 @@ return [
     'taxes' => 'Taxes',
     'email_customization' => 'Email Customization',
     'faq' => 'FAQ',
+    'delete_account' => 'Delete Account',
 ];

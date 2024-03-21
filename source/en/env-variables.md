@@ -180,3 +180,19 @@ If using the webcron feature, you'll want to set a password here to prevent unau
 ZIP_TAX_KEY=
 ```
 The API key from [Zip-Tax](https://zip-tax.com) required to support address based tax rates in the US
+
+```
+NORDIGEN_SECRET_ID=
+NORDIGEN_SECRET_KEY=
+```
+Nordigen api keys for bank transaction imports
+
+```
+DELETE_BACKUP_DAYS
+```
+The number of days that backups are stored. Any backups created after this will be purged when system maintenance runs
+
+```
+ADDITIONAL_UPLOAD_EXTENSIONS
+```
+Additional upload extensions that are to be allowed, this should be a comma separated string ie `ADDITIONAL_UPLOAD_EXTENSIONS='mp3,mp4,mkv'`

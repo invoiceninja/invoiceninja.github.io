@@ -93,4 +93,5 @@ return [
     'quick_search' => 'Recherche rapide',
     'taxes' => 'Taxes',
     'email_customization' => 'Email Customization',
+    'delete_account' => 'Delete Account',
 ];

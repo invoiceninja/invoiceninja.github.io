@@ -35,6 +35,9 @@ final class DocSearchTest extends TestCase
             file_put_contents("./tests/{$language}.js", $index);
             file_put_contents("./tests/{$language}.json", json_encode($this->documents));
 
+            file_put_contents("./build_serve/{$language}.js", $index);
+            file_put_contents("./build_serve/{$language}.json", json_encode($this->documents));
+
             $this->documents = [];
             $this->counter = 0;
 

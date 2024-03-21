@@ -33,6 +33,7 @@ return [
             'Custom Domain' => '/:locale/hosted-custom-domain',
             'Hosted Migration' => '/:locale/hosted-migration',
             'Stripe Integration' => '/:locale/hosted-stripe',
+            'Troubleshooting' => '/:locale/hosted-troubleshooting',
         ],
     ],
     'Developer guide' => [
