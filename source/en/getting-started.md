@@ -65,4 +65,4 @@ Tip: You can directly navigate to the relevant section of the docs using the que
 
 If you run into any problems you can contact us directly in the app using the email envelope icon in the bottom left corner of the screen. If you're using the web app you can hit /update?secret=`YOUR-SECRET-HERE` to perform different back-end optimizations. If you're using the mobile app it may help to uninstall the app and then re-install the app.
 
-Your `secret` is part of the .env file.
+Your `UPDATE_SECRET` is part of the .env file (if it's not there you can add: `UPDATE_SECRET=YOUR-SECRET-HERE`)
