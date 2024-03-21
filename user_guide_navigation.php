@@ -5,6 +5,8 @@ return [
         'url' => '#',
         'children' => [
             'getting_started' => '/:locale/user-guide',
+            'faq' => '/:locale/faq',
+            'payment_gateways' => '/:locale/gateways',
             'clients' => '/:locale/clients',
             'invoices' => '/:locale/invoices',
             'recurring_invoices' => '/:locale/recurring-invoices',
@@ -31,9 +33,8 @@ return [
         'url' => '#',
         'children' => [
             'email_customization' => '/:locale/email-customization',
-            'import_export' => '/:locale/import-and-export',
             'pdf_customization' => '/:locale/custom-fields',
-            'payment_gateways' => '/:locale/gateways',
+            'import_export' => '/:locale/import-and-export',
             'qr_codes' => '/:locale/qr-codes',
         ],
     ],

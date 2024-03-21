@@ -1,5 +1,5 @@
 ---
-extends: _layouts.user_guide 
+extends: _layouts.user_guide
 section: content
 locale: en
 ---
@@ -10,7 +10,7 @@ locale: en
 
 You can import data into Invoice Ninja from CSV files or other accounting software.
 
-Our intelligent import system allows you to map columns dynamically. 
+Our intelligent import system allows you to map columns dynamically.
 
 ![alt text](/assets/images/settings/export_csv.png "CSV Imports")
 
@@ -64,5 +64,7 @@ Settings > Import | Export
 
 From the export menu you are able to select two formats:
 
- - JSON - Performs a full company backup which is then emailed to you. This will export your entire company and all information in case you ever need to restore your data.
- - CSV - Allows you to export categories, ie. clients, invoices and also perform Profit & Loss reports
+- JSON - Performs a full company backup which is then emailed to you. This will export your entire company and all information in case you ever need to restore your data.
+- CSV - Allows you to export categories, ie. clients, invoices and also perform Profit & Loss reports
+
+<x-next url=/en/codes>QR Codes</x-next>

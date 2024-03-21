@@ -29,7 +29,15 @@ Of course we also provide a fantastic web application which can be found [here](
 You'll want to do some basic configuration when you log in for the first time, settings up your company name, address and uploading your logo. You can follow the steps with this short video.
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/wuhKJMJsCkM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="video" src="https://www.youtube.com/embed/8H1jO1rtBYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+### Company Defaults
+
+After your initial company setup, you may want to configure additional details about your company. You can follow this video to configure some default settings:
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/CxbfxJlU7KI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ### Company Logo
@@ -53,7 +61,7 @@ Settings > Tax Settings
 Learn how to setup total taxes including line item taxes, and also localize your installation for your region.
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/NKmuB1mOZww" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe class="video" src="https://www.youtube.com/embed/Q-zM-vCjDXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ### Your first invoice
@@ -72,6 +80,6 @@ The final step connecting a payment gateway. Invoice Ninja links with all major 
 <iframe class="video" src="https://www.youtube.com/embed/qitfiD6L8rQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-For more information on gateways that we support click [here](/en/gateways)
+For more information on payment gateways and methods that we support click [here](/en/gateways)
 
 <x-next url=/en/clients>Clients</x-next>

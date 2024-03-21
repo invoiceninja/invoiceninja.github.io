@@ -10,6 +10,14 @@ locale: en
 
 Taxes can be configured manually by following the step [here](/en/basic-settings/#tax_settings) where you can manually define the tax names, rates and how they are applied.
 
+## Video
+
+Learn how to configure taxes in Invoice Ninja:
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/Q-zM-vCjDXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ## US Sales Tax calculations
 
 <div class="video_container">

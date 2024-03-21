@@ -1,5 +1,5 @@
 ---
-extends: _layouts.user_guide 
+extends: _layouts.user_guide
 section: content
 locale: en
 ---
@@ -11,6 +11,7 @@ locale: en
 Customizing the content of you emails should be simple and painfree! By default we include a range of default - translated - templates which should suit most use cases! If you prefer to extend and customize the emails your clients please read on!
 
 ## WYSIWYG Edior
+
 ![alt text](/assets/images/reminders_templates/template_editor.png "Email content editor")
 
 To start editing and customizing your emails navigate to:
@@ -128,7 +129,7 @@ Invoice #123
 Amount $5000.00
 Balance $0
 
---------
+---
 
 Invoice #124
 Amount $1000.00
@@ -138,6 +139,7 @@ Balance $500.00
 ```bash
 $invoice - A comma separate list of invoice numbers
 ```
+
 <x-info>
 Invoice #123,124,125
 </x-info>
@@ -150,7 +152,6 @@ $invoices.amount - A formatted string of invoice amounts
 Invoice #123 $1000 Invoice #124 $2000.00
 </x-info>
 
-
 ```bash
 $invoices.balance - A formatted string of invoice balances
 ```
@@ -158,7 +159,6 @@ $invoices.balance - A formatted string of invoice balances
 <x-info>
 Invoice #123 $1000 Invoice #124 $2000.00
 </x-info>
-
 
 ```bash
 $invoices.due_date - A formatted string of invoice due dates
@@ -181,4 +181,4 @@ $status_logo - Shows a paid stamp on the email if the payment status is complete
 ```
 
 The end
-<x-next url=/en/custom-fields>PDF customization</x-next>
+<x-next url=/en/custom-fields>PDF Customization</x-next>
