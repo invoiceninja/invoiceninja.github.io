@@ -35,7 +35,7 @@ Also available are links to the client portal for each respective contact includ
 
 When you are editing an invoice/quote, the client's contact(s) will show up like this:
 
-![Client contacts on invoice](../assets/images/clients/client_auto_included_on_invoice_example.png "Client contacts on invoice")
+![Client contacts on invoice](/assets/images/clients/client_auto_included_on_invoice_example.png "Client contacts on invoice")
 
 ### Documents
 
@@ -95,11 +95,19 @@ All under one panel in the mobile layout, these options each have their own tabs
 - **Public Notes** - Any text notes to add detail or context to the invoice for you and your client. A good spot for service notes, or a summary of work performed for the client.
 - **Private Notes** - Private text notes, not printed on the invoice PDF or viewable by the client. These notes can only be seen by users of the admin portal.
 
+## Charging Interest/Late Fees
+
+Charging compound interest is currently not a feature.
+
+You can configure late fees for overdue invoices under _Settings > Templates & Reminders_:
+
+![Late fees overdue invoices](/assets/images/settings/late_fees_overdue_invoices.png "Late fees overdue invoices")
+
 ## Lifecycle of an invoice
 
 ### Draft
 
-<p>The Draft status is the first status in the lifecycle of a invoice. In this status, changes can be made to the invoice and the invoice is hidden completely from the client. A draft invoice does not affect the ledger nor does it change the client balance. Draft invoices are inactive until either emailed to the client or marked as sent.</p>
+The Draft status is the first status in the lifecycle of a invoice. In this status, changes can be made to the invoice and the invoice is hidden completely from the client. A draft invoice does not affect the ledger nor does it change the client balance. Draft invoices are inactive until either emailed to the client or marked as sent.
 
 <x-warning>
 Once a draft invoice has been emailed/marked as sent its status cannot be changed back to draft.
