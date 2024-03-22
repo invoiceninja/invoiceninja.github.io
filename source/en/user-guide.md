@@ -82,4 +82,8 @@ The final step connecting a payment gateway. Invoice Ninja links with all major 
 
 For more information on payment gateways and methods that we support click [here](/en/gateways)
 
+## Frequently Asked Questions
+
+Please see our [FAQ](/en/faq) page
+
 <x-next url=/en/clients>Clients</x-next>
