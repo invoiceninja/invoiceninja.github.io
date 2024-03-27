@@ -114,6 +114,8 @@ There will populate using the data stored in Settings > Invoice Designs for each
 
 ## Data Access
 
+### Twig variables
+
 Accessing data using twig would be as follows:
 
 First we'd check to ensure the variable is available
@@ -138,6 +140,20 @@ Accessing data is done using dot notation, for example retrieving a the client n
 
 ```twig
 {{ task.project.client.name }}
+```
+
+### Invoice Ninja variables
+
+Standard $ notation variables are also available within templates, this allows you to use familiar variables such as $invoice.amount - you can also combine twig and ninja variables like this to integrate conditionals into your template. ie
+
+```twig
+
+{% if invoice.balance > 0 %}
+ $invoice.balance is payable!
+{% else %}
+ Invoice has been paid! Thanks!
+{% endif %}
+
 ```
 
 ## Objects
