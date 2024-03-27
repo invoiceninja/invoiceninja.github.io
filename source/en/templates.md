@@ -112,6 +112,34 @@ If you wish to use standard company/client/vendor details, this is super simple 
 
 There will populate using the data stored in Settings > Invoice Designs for each block.
 
+## Data Access
+
+Accessing data using twig would be as follows:
+
+First we'd check to ensure the variable is available
+
+```twig
+{% if tasks|e %}
+{% endif%}
+```
+
+Then we can iterate
+
+```twig
+{% if tasks|e %}
+
+    {% for task in tasks %}
+    {% endfor %}
+
+{% endif %}
+```
+
+Accessing data is done using dot notation, for example retrieving a the client name of a tasks project would be as follows:
+
+```twig
+{{ task.project.client.name }}
+```
+
 ## Objects
 
 ### Invoice
@@ -696,31 +724,3 @@ There will populate using the data stored in Settings > Invoice Designs for each
 | user | The Creating User Object | [User](/en/templates/#user-definition) |
 | client | The Client Object | [Client](/en/templates/#client-definition) |
 | | | |
-
-
-Accessing data using twig would be as follows:
-
-First we'd check to ensure the variable is available
-
-```twig
-{% if tasks|e %}
-{% endif%}
-```
-
-Then we can iterate
-
-```twig
-{% if tasks|e %}
-
-    {% for task in tasks %}
-    {% endfor %}
-
-{% endif %}
-```
-
-Accessing data is done using dot notation, for example retrieving a the client name of a tasks project would be as follows:
-
-
-```twig
-{{ task.project.client.name }}
-```
