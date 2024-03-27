@@ -112,7 +112,9 @@ If you wish to use standard company/client/vendor details, this is super simple 
 
 There will populate using the data stored in Settings > Invoice Designs for each block.
 
-## Invoice
+## Objects
+
+### Invoice
 ```json
 {
     "invoices": [
@@ -130,7 +132,7 @@ There will populate using the data stored in Settings > Invoice Designs for each
             "last_sent_date": "",
             "next_send_date": "",
             "due_date": "",
-            "terms": "<p>Default company invoice terms</p>",
+            "terms": "Default company invoice terms",
             "public_notes": "",
             "private_notes": "",
             "uses_inclusive_taxes": false,
@@ -143,7 +145,7 @@ There will populate using the data stored in Settings > Invoice Designs for each
             "total_taxes": "$1,905.44",
             "total_taxes_raw": "1905.440000",
             "is_amount_discount": false,
-            "footer": "<p>Default invoice footer</p>",
+            "footer": "Default invoice footer",
             "partial": "0.000000",
             "partial_due_date": "",
             "custom_value1": "",
@@ -245,7 +247,57 @@ There will populate using the data stored in Settings > Invoice Designs for each
                 "credit_balance": "0.000000",
                 "vat_number": "373145743"
             },
-            "payments": [],
+            "payments": [
+                {
+                    "status": "Refunded",
+                    "badge": "<h6><span class=\"badge badge-primary\">Refunded<\/span><\/h6>",
+                    "amount": "$104.95",
+                    "applied": "$104.95",
+                    "balance": "-$104.95",
+                    "refunded": "$104.95",
+                    "amount_raw": "104.950000",
+                    "applied_raw": "104.950000",
+                    "refunded_raw": "104.950000",
+                    "balance_raw": -104.95,
+                    "date": "24. March 2024",
+                    "method": "",
+                    "currency": "USD",
+                    "exchange_rate": 1,
+                    "transaction_reference": null,
+                    "is_manual": 1,
+                    "number": "0003",
+                    "custom_value1": "",
+                    "custom_value2": "",
+                    "custom_value3": "",
+                    "custom_value4": "",
+                    "created_at": "25. March 2024",
+                    "updated_at": "25. March 2024",
+                    "refund_activity": ["24. March 2024 Invoice #0029 $104.95 Refunded"],
+                    "client": {
+                        "name": "cypress",
+                        "balance": "0.000000",
+                        "payment_balance": "333.000000",
+                        "credit_balance": "0.000000",
+                        "vat_number": "561724719"
+                    },
+                    "paymentables": [
+                        {
+                            "invoice": "0029",
+                            "amount_raw": "104.9500",
+                            "refunded_raw": "104.9500",
+                            "net_raw": 0,
+                            "amount": "$104.95",
+                            "refunded": "$104.95",
+                            "net": "$0.00",
+                            "is_credit": false,
+                            "date": "24. March 2024",
+                            "created_at": "25. March 2024",
+                            "updated_at": "25. March 2024",
+                            "timestamp": 1711329333
+                        }
+                    ],
+                }
+            ],
             "total_tax_map": [
                 {
                     "name": "GST 10%",
@@ -278,109 +330,51 @@ There will populate using the data stored in Settings > Invoice Designs for each
     ]
 }
 ```
-### Invoice Definition
 
-| Field      | Description | Example |
-| ----------- | ----------- | ----------- |
-| amount | formatted currency | $6,606.30 |
-| balance | formatted currency | $6,606.30 |
-| status_id | integer representation of the status |  2|
-| status | text representation of invoice status | Sent |
-| amount_raw | float | 6606.300000 |
-| balance_raw | float | 6606.300000 |
-| number | invoice number| 0001 |
-| discount | float | 6.000000 |
-| po_number | string | Unde. |
-| date | string | 25. March 2024 |
-| last_sent_date | string | 25. March 2024 |
-| next_send_date | string | 25. March 2024 |
-| due_date | string  | 25. March 2024 |
-| terms | string | <p>Default company invoice terms</p> |
-| public_notes | string | Public Notes |
-| private_notes | string | Private notes |
-| uses_inclusive_taxes | boolean | false |
-| tax_name1 | string | GST |
-| tax_rate1 | float | 1 |
-| tax_name2 | string | VAT |
-| tax_rate2 | float | 17. |
-| tax_name3 | string | THIRDTAX |
-| tax_rate3 | float | 0 |
-| total_taxes | formatted currency | $1,905.44 |
-| total_taxes_raw | float| 1905.440000 |
-| is_amount_discount | bool | false |
-| footer | string | <p>Default invoice footer</p> |
-| partial | float | 0.000000 |
-| partial_due_date | string | 24/1/2024 |
-| custom_value1 | string | Custom Value |
-| custom_value2 | string | Custom Value |
-| custom_value3 | string | Custom Value |
-| custom_value4 | string | Custom Value |
-| custom_surcharge1 | float | 0 |
-| custom_surcharge2 | float | 0 |
-| custom_surcharge3 | float | 0 |
-| custom_surcharge4 | float | 0 |
-| exchange_rate | float  | 1 |
-| custom_surcharge_tax1 | boolean | false |
-| custom_surcharge_tax2 | boolean | false |
-| custom_surcharge_tax3 | boolean | false |
-| custom_surcharge_tax4 | boolean | false |
-| reminder1_sent | string | 25. March 2024 |
-| reminder2_sent | string | 25. March 2024 |
-| reminder3_sent | string | 25. March 2024 |
-| reminder_last_sent |  string | 25. March 2024 |
-| paid_to_date | formatted currency | $0.00 |
-| auto_bill_enabled | booleam| false |
-| line_items | array | See line items definition |
-| client | object | See Client definition |
-| payments | array | See Payment definition |
-| total_tax_map | array | See Tax Map definition |
-| line_tax_map | array | See Line Tax Map definition |
-| | | |
+### Payment
 
-| Line Item Definition | | |
-| ----------- | ----------- | ----------- |
-| quantity | float | 1 |
-| cost | formatted currency | $372.00 |
-| product_key | string | Ut in. |
-| notes | string | Architecto at est. |
-| discount | float| 0 |
-| is_amount_discount | boolean | false |
-| tax_name1 | string | Sales Tax |
-| tax_rate1 | float | 5 |
-| tax_name2 | string |  |
-| tax_rate2 | float | 0 |
-| tax_name3 | string |  |
-| tax_rate3 | float | 0 |
-| sort_id | float | 0 |
-| line_total | formatted currency | $372.00 |
-| gross_line_total | formatted currency | $389.48 |
-| custom_value1 | string | https://picsum.photos/200 |
-| custom_value2 | string  | 75 |
-| custom_value3 | string | Nulla est incidunt. |
-| custom_value4 | string | Consequatur in. |
-| type_id | string | 1 |
-| product_cost | formatted currency | $0.00 |
-| tax_amount | formatted currency | $17.48 |
-| date | string |  24/1/2023 |
-| tax_id | string | 1 |
-| task_id | string |  |
-| expense_id | string |  |
-| _id | string | 358982ee-f062-42f3-9dcf-4068e9347fa0 |
-| cost_raw | float | 372 |
-| discount_raw | float | 0 |
-| line_total_raw | float | 372.00 |
-| gross_line_total_raw | float | 389.48 |
-| tax_amount_raw | float| 17.48 |
-| product_cost_raw | float | 0 |
-| | | |
+```json
+{
+    "payments": [
+        {
+            "status": "Completed",
+            "badge": "<h6><span class=\"badge badge-info\">Completed<\/span><\/h6>",
+            "amount": "$6,723.74",
+            "applied": "$6,723.74",
+            "balance": "$0.00",
+            "refunded": "$0.00",
+            "amount_raw": "6723.740000",
+            "applied_raw": "6723.740000",
+            "refunded_raw": "0.000000",
+            "balance_raw": 0,
+            "date": "22. March 2024",
+            "method": "",
+            "currency": "USD",
+            "exchange_rate": 1,
+            "transaction_reference": "Manual entry",
+            "is_manual": 1,
+            "number": "0002",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "created_at": "22. March 2024",
+            "updated_at": "22. March 2024",
+            "client": {
+                "name": "Kilback-Stoltenberg",
+                "balance": "0.000000",
+                "payment_balance": "0.000000",
+                "credit_balance": "2084.140000",
+                "vat_number": "428950405"
+            },
+            "paymentables": [],
+            "refund_activity": []
+        }
+    ]
+}
+```
 
-| Tax Maps | | |
-| --- | --- | --- |
-| name | string |  GST 10% |
-| total | float|  470.09 |
-| | | |
-
-## Task
+### Task
 
 ```json
 {
@@ -467,6 +461,161 @@ There will populate using the data stored in Settings > Invoice Designs for each
 }
 ```
 
+## Definitions
+
+### Invoice / Quote / Credit / Purchase Order Definition
+
+| Field      | Description | Example |
+| ----------- | ----------- | ----------- |
+| amount | formatted currency | $6,606.30 |
+| balance | formatted currency | $6,606.30 |
+| status_id | integer representation of the status | 2 |
+| status | text representation of invoice status | Sent |
+| amount_raw | float | 6606.300000 |
+| balance_raw | float | 6606.300000 |
+| number | invoice number| 0001 |
+| discount | float | 6.000000 |
+| po_number | string | Unde. |
+| date | string | 25. March 2024 |
+| last_sent_date | string | 25. March 2024 |
+| next_send_date | string | 25. March 2024 |
+| due_date | string  | 25. March 2024 |
+| terms | string | Default company invoice terms |
+| public_notes | string | Public Notes |
+| private_notes | string | Private notes |
+| uses_inclusive_taxes | boolean | false |
+| tax_name1 | string | GST |
+| tax_rate1 | float | 1 |
+| tax_name2 | string | VAT |
+| tax_rate2 | float | 17. |
+| tax_name3 | string | THIRDTAX |
+| tax_rate3 | float | 0 |
+| total_taxes | formatted currency | $1,905.44 |
+| total_taxes_raw | float| 1905.440000 |
+| is_amount_discount | bool | false |
+| footer | string | Default invoice footer |
+| partial | float | 0.000000 |
+| partial_due_date | string | 24/1/2024 |
+| custom_value1 | string | Custom Value |
+| custom_value2 | string | Custom Value |
+| custom_value3 | string | Custom Value |
+| custom_value4 | string | Custom Value |
+| custom_surcharge1 | float | 0 |
+| custom_surcharge2 | float | 0 |
+| custom_surcharge3 | float | 0 |
+| custom_surcharge4 | float | 0 |
+| exchange_rate | float  | 1 |
+| custom_surcharge_tax1 | boolean | false |
+| custom_surcharge_tax2 | boolean | false |
+| custom_surcharge_tax3 | boolean | false |
+| custom_surcharge_tax4 | boolean | false |
+| reminder1_sent | string | 25. March 2024 |
+| reminder2_sent | string | 25. March 2024 |
+| reminder3_sent | string | 25. March 2024 |
+| reminder_last_sent |  string | 25. March 2024 |
+| paid_to_date | formatted currency | $0.00 |
+| auto_bill_enabled | booleam| false |
+| line_items | array | [Line items](/en/templates#line-items-definition) |
+| client | object | [Client](/en/templates#client-definition) |
+| payments | array | [Payment](/en/templates#payment-definition) |
+| total_tax_map | array | [Tax Map](/en/templates#tax-map-definition) |
+| line_tax_map | array | [Tax Map](/en/templates#tax-map-definition) |
+| | | |
+
+### Line items definition
+
+| Field      | Description | Example |
+| ----------- | ----------- | ----------- |
+| quantity | float | 1 |
+| cost | formatted currency | $372.00 |
+| product_key | string | Ut in. |
+| notes | string | Architecto at est. |
+| discount | float| 0 |
+| is_amount_discount | boolean | false |
+| tax_name1 | string | Sales Tax |
+| tax_rate1 | float | 5 |
+| tax_name2 | string |  |
+| tax_rate2 | float | 0 |
+| tax_name3 | string |  |
+| tax_rate3 | float | 0 |
+| sort_id | float | 0 |
+| line_total | formatted currency | $372.00 |
+| gross_line_total | formatted currency | $389.48 |
+| custom_value1 | string | https://picsum.photos/200 |
+| custom_value2 | string  | 75 |
+| custom_value3 | string | Nulla est incidunt. |
+| custom_value4 | string | Consequatur in. |
+| type_id | string | 1 |
+| product_cost | formatted currency | $0.00 |
+| tax_amount | formatted currency | $17.48 |
+| date | string |  24/1/2023 |
+| tax_id | string | 1 |
+| task_id | string |  |
+| expense_id | string |  |
+| _id | string | 358982ee-f062-42f3-9dcf-4068e9347fa0 |
+| cost_raw | float | 372 |
+| discount_raw | float | 0 |
+| line_total_raw | float | 372.00 |
+| gross_line_total_raw | float | 389.48 |
+| tax_amount_raw | float| 17.48 |
+| product_cost_raw | float | 0 |
+| | | |
+
+### Tax map definition
+| Field      | Description | Example |
+| --- | --- | --- |
+| name | string |  GST 10% |
+| total | float|  470.09 |
+| | | |
+
+### Payment definition
+| Field      | Description | Example |
+| ---- | --- | --- |
+| status | string | Refunded |
+| badge | string | Refunded |
+| amount | formatted currency | $104.95 |
+| applied | formatted currency | $104.95 |
+| balance | formatted currency  | -$104.95 |
+| refunded | formatted currency  | $104.95 |
+| amount_raw | float | 104.950000 |
+| applied_raw | float | 104.950000 |
+| refunded_raw | float | 104.950000 |
+| balance_raw | float | -104.95 |
+| date | string| 24. March 2024 |
+| method | string | Visa |
+| currency | string | USD |
+| exchange_rate | float  | 1 |
+| transaction_reference | string | 2sd2fv34 |
+| is_manual | boolean | 1 |
+| number | string | 0003 |
+| custom_value1 | string | Custom Value |
+| custom_value2 | string | Custom Value |
+| custom_value3 | string | Custom Value |
+| custom_value4 | string | Custom Value |
+| created_at | string | 25. March 2024 |
+| updated_at | string | 25. March 2024 |
+| refund_activity | array of string | [24. March 2024 Invoice #0029 $104.95 Refunded] |
+| paymentables | array | [Paymentables](/en/templates#paymentables-definition) |
+| client | object | [Client](/en/templates#client-definition) |
+| | | |
+
+### Paymentables definition
+| Field      | Description | Example |
+| --- | --- | --- |
+| invoice | string  | 0029 |
+| amount_raw | float  | 104.9500 |
+| refunded_raw | float  | 104.9500 |
+| net_raw | float | 0 |
+| amount | formatted currency | $104.95 |
+| refunded | formatted currency | $104.95 |
+| net | formatted currency | $0.00 |
+| is_credit | boolean | false |
+| date | string | 24. March 2024 |
+| created_at | string | 25. March 2024 |
+| updated_at | string | 25. March 2024 |
+| timestamp | unix timestamp | 171132933 |
+| | | |
+
 ### Task Definition
 
 | Field      | Description | Example |
@@ -490,7 +639,7 @@ There will populate using the data stored in Settings > Invoice Designs for each
 | time_log | Array of time log entries | See time_log definition |
 | | | |
 
-### Task Time Log Definition
+### Time Log Definition
 
 | Time Log Array (of objects) | | | 
 | ---- | ---- | ---- | 
@@ -504,7 +653,7 @@ There will populate using the data stored in Settings > Invoice Designs for each
 |duration | formatted duration | 14:53:23 |
 | | | |
 
-### Task User Definition
+### User Definition
 
 | Creating User Object | | | 
 | ---- | ---- | ---- | 
@@ -512,7 +661,7 @@ There will populate using the data stored in Settings > Invoice Designs for each
 | email | The users email | bob@gmail.com |
 | | | |
 
-### Task Client Definition
+### Client Definition
 
 | Client Object | | |
 | ---- | ---- | ---- | 
@@ -523,7 +672,7 @@ There will populate using the data stored in Settings > Invoice Designs for each
 | vat_number | The client VAT Number | 428950405 |
 | | | |
 
-### Task Project Definition
+### Project Definition
 
 | Project Object | | |
 | ---- | ---- | ---- | 
@@ -543,10 +692,11 @@ There will populate using the data stored in Settings > Invoice Designs for each
 | custom_value4 | Project Custom Value 4 | Custom Value |
 | color | The color associated with the project | #fff | 
 | current_hours | The accured hours of the project so far | 100 |
-| tasks | Array of tasks | [tasks] |
-| user | The Creating User Object | See User Property definition |
-| client | The Client Object | See Client Property definition |
+| tasks | Array of tasks | [Task](/en/templates/#task-definition) |
+| user | The Creating User Object | [User](/en/templates/#user-definition) |
+| client | The Client Object | [Client](/en/templates/#client-definition) |
 | | | |
+
 
 Accessing data using twig would be as follows:
 
