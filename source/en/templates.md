@@ -110,7 +110,7 @@ If you wish to use standard company/client/vendor details, this is super simple 
 <div id="shipping-address"></div>
 ```
 
-There will populate using the data stored in Settings > Invoice Designs for each block.
+These will populate using the data stored in Settings > Invoice Designs for each block.
 
 ## Data Access
 
@@ -122,7 +122,7 @@ First we'd check to ensure the variable is available
 
 ```twig
 {% if tasks|e %}
-{% endif%}
+{% endif %}
 ```
 
 Then we can iterate
@@ -136,7 +136,7 @@ Then we can iterate
 {% endif %}
 ```
 
-Accessing data is done using dot notation, for example retrieving a the client name of a tasks project would be as follows:
+Accessing data is done using dot notation, for example retrieving the client name of a tasks project would be as follows:
 
 ```twig
 {{ task.project.client.name }}
@@ -156,7 +156,9 @@ Standard $ notation variables are also available within templates, this allows y
 
 ```
 
-## Objects
+## Object Json Defintions
+
+Here are the object definitions that are available.
 
 ### Invoice
 ```json
