@@ -159,6 +159,12 @@ There will populate using the data stored in Settings > Invoice Designs for each
             "custom_surcharge_tax2": false,
             "custom_surcharge_tax3": false,
             "custom_surcharge_tax4": false,
+            "reminder1_sent": "",
+            "reminder2_sent": "",
+            "reminder3_sent": "",
+            "reminder_last_sent": "",
+            "paid_to_date": "$0.00",
+            "auto_bill_enabled": false,
             "line_items": [
                 {
                     "quantity": 1,
@@ -231,12 +237,7 @@ There will populate using the data stored in Settings > Invoice Designs for each
                     "product_cost_raw": 0
                 },
             ],
-            "reminder1_sent": "",
-            "reminder2_sent": "",
-            "reminder3_sent": "",
-            "reminder_last_sent": "",
-            "paid_to_date": "$0.00",
-            "auto_bill_enabled": false,
+            
             "client": {
                 "name": "Kub, Koepp and Conroy",
                 "balance": "6606.300000",
@@ -277,6 +278,107 @@ There will populate using the data stored in Settings > Invoice Designs for each
     ]
 }
 ```
+### Invoice Definition
+
+| Field      | Description | Example |
+| ----------- | ----------- | ----------- |
+| amount | formatted currency | $6,606.30 |
+| balance | formatted currency | $6,606.30 |
+| status_id | integer representation of the status |  2|
+| status | text representation of invoice status | Sent |
+| amount_raw | float | 6606.300000 |
+| balance_raw | float | 6606.300000 |
+| number | invoice number| 0001 |
+| discount | float | 6.000000 |
+| po_number | string | Unde. |
+| date | string | 25. March 2024 |
+| last_sent_date | string | 25. March 2024 |
+| next_send_date | string | 25. March 2024 |
+| due_date | string  | 25. March 2024 |
+| terms | string | <p>Default company invoice terms</p> |
+| public_notes | string | Public Notes |
+| private_notes | string | Private notes |
+| uses_inclusive_taxes | boolean | false |
+| tax_name1 | string | GST |
+| tax_rate1 | float | 1 |
+| tax_name2 | string | VAT |
+| tax_rate2 | float | 17. |
+| tax_name3 | string | THIRDTAX |
+| tax_rate3 | float | 0 |
+| total_taxes | formatted currency | $1,905.44 |
+| total_taxes_raw | float| 1905.440000 |
+| is_amount_discount | bool | false |
+| footer | string | <p>Default invoice footer</p> |
+| partial | float | 0.000000 |
+| partial_due_date | string | 24/1/2024 |
+| custom_value1 | string | Custom Value |
+| custom_value2 | string | Custom Value |
+| custom_value3 | string | Custom Value |
+| custom_value4 | string | Custom Value |
+| custom_surcharge1 | float | 0 |
+| custom_surcharge2 | float | 0 |
+| custom_surcharge3 | float | 0 |
+| custom_surcharge4 | float | 0 |
+| exchange_rate | float  | 1 |
+| custom_surcharge_tax1 | boolean | false |
+| custom_surcharge_tax2 | boolean | false |
+| custom_surcharge_tax3 | boolean | false |
+| custom_surcharge_tax4 | boolean | false |
+| reminder1_sent | string | 25. March 2024 |
+| reminder2_sent | string | 25. March 2024 |
+| reminder3_sent | string | 25. March 2024 |
+| reminder_last_sent |  string | 25. March 2024 |
+| paid_to_date | formatted currency | $0.00 |
+| auto_bill_enabled | booleam| false |
+| line_items | array | See line items definition |
+| client | object | See Client definition |
+| payments | array | See Payment definition |
+| total_tax_map | array | See Tax Map definition |
+| line_tax_map | array | See Line Tax Map definition |
+| | | |
+
+| Line Item Definition | | |
+| ----------- | ----------- | ----------- |
+| quantity | float | 1 |
+| cost | formatted currency | $372.00 |
+| product_key | string | Ut in. |
+| notes | string | Architecto at est. |
+| discount | float| 0 |
+| is_amount_discount | boolean | false |
+| tax_name1 | string | Sales Tax |
+| tax_rate1 | float | 5 |
+| tax_name2 | string |  |
+| tax_rate2 | float | 0 |
+| tax_name3 | string |  |
+| tax_rate3 | float | 0 |
+| sort_id | float | 0 |
+| line_total | formatted currency | $372.00 |
+| gross_line_total | formatted currency | $389.48 |
+| custom_value1 | string | https://picsum.photos/200 |
+| custom_value2 | string  | 75 |
+| custom_value3 | string | Nulla est incidunt. |
+| custom_value4 | string | Consequatur in. |
+| type_id | string | 1 |
+| product_cost | formatted currency | $0.00 |
+| tax_amount | formatted currency | $17.48 |
+| date | string |  24/1/2023 |
+| tax_id | string | 1 |
+| task_id | string |  |
+| expense_id | string |  |
+| _id | string | 358982ee-f062-42f3-9dcf-4068e9347fa0 |
+| cost_raw | float | 372 |
+| discount_raw | float | 0 |
+| line_total_raw | float | 372.00 |
+| gross_line_total_raw | float | 389.48 |
+| tax_amount_raw | float| 17.48 |
+| product_cost_raw | float | 0 |
+| | | |
+
+| Tax Maps | | |
+| --- | --- | --- |
+| name | string |  GST 10% |
+| total | float|  470.09 |
+| | | |
 
 ## Task
 
