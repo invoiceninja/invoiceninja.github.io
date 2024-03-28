@@ -67,4 +67,4 @@ From the export menu you are able to select two formats:
 - JSON - Performs a full company backup which is then emailed to you. This will export your entire company and all information in case you ever need to restore your data.
 - CSV - Allows you to export categories, ie. clients, invoices and also perform Profit & Loss reports
 
-<x-next url=/en/codes>QR Codes</x-next>
+<x-next url=/en/qr-codes>QR Codes</x-next>
