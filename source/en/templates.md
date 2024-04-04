@@ -162,7 +162,28 @@ Standard $ notation variables are also available within templates, this allows y
 
 ```
 
-## Object Json Defintions
+## Statements
+
+Statements are special objects in templates. Because the input data point is a client/s we need additional information to understand whether a template is a "statement" template or not.
+
+When creating custom statements, you will want to insert a comment within the template so that the system can resolve that it is a statement for processing
+
+```html
+<!doctype html>
+<!-- Statement - TemplateID #TS4 ##statement##-->
+<html>
+<head>
+```
+
+Note the special text 
+
+```
+##statement##
+```
+
+This will allow the system to resolve a custom statement.
+
+## Object Json Definitions
 
 Here are the object definitions that are available.
 
