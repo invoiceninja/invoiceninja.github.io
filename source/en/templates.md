@@ -22,6 +22,12 @@ In our template we have constructed (use the Twig templating engine) a document 
 
 ## Getting Started
 
+### Delivery Note Example
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/kfG5vvcbYes" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 ### Concepts
 
 Templates are simple Html / CSS documents combined with the super powerful [twig](https://twig.symfony.com/) templating engine.
