@@ -19,11 +19,34 @@ Products can also be used to represent services rendered. For example, you could
 
 ## Viewing Products
 
-You can view the products in the Invoice Ninja admin portal by going to the Products module in the left navigation menu. You can also export the products as a CSV file using the API or the Export function under Settings, to analyze them in an external application.
+You can view the products in the Invoice Ninja admin portal by going to the Products module in the left navigation menu and clicking a product name.
 
-### Overview
+You can also export the products as a CSV file using the API or the Export function under Settings, to analyze them in an external application.
 
-The _Overview_ pane presents a very simple layout, with the product price in large text at the top, followed by the product description underneath.
+## Editing a Product
+
+Select the prodct, or select _More Actions>Edit_ to enter the editing view.
+
+![Product more actions](/assets/images/products/products_v5_hoverovermoreactions.png "Product more actions")
+
+### Functions
+
+There are a few functions available from the products _More Actions_ dropdown:
+
+- **Edit** - Edit the product
+- **New Invoice** - This button will take you to a _New Invoice_ page, with the product you're viewing as a line item and the default quantity for that item already entered.
+- **New Purchase Order** - This button will take you to a _New Purchase Order_ page,
+- **Clone** - This button will take you to a _New Product_ screen, with the exactly same product details as the product you are viewing, allowing you to easily clone your product, and make any edits you need to before saving it as a new product.
+
+There are only a few fields that apply to a product:
+
+![Editing product](/assets/images/products/edit_product_withdropdown.png "Editing product")
+
+- **Item** - This is the name of the product itself, which will appear on invoices.
+- **Description** - The product description, which will appear on invoices. **Note** that PDF generation of invoices and quotes will process any HTML formatting you use here. Furthermore, when _Enable Markdown_ is turned on under _Settings>Account Management>Overview_, you will be able to enter markdown text into the product descriptions also, and it will appear formatted in your invoices, quotes, etc.
+- **Price** - The standard price of your product.
+- **Default Quantity** - The default quantity is used automatically when the product is added to an invoice or quote.
+- **Max Quantity** - The maximum quantity for the product when it's being applied to an invoice etc.
 
 ### Documents
 
@@ -31,35 +54,24 @@ The Documents pane allows you to upload and view documents that are linked to th
 
 **Note** that uploaded documents are saved in the "public/storage" directory in a folder structure using hashed folder names to match the product entry, so backup this directory along with your database to preserve your attached documents.
 
-### Functions
+### Custom Fields
 
-There are a few functions available from the product view mode that provide shortcuts to manipulating the product you are viewing.
-
-- **Edit** - The _Edit_ button at the top right corner of the panel will allow you to edit the details of the product, such as the product name, description, price, and default quantity.
-- **New Invoice** - This button at the bottom of the panel will create a new invoice and take you to a _New Invoice_ page, with the product you're viewing as a line item and the default quantity for that item already entered.
-- **Clone** - This button will take you to a _New Product_ screen, with the exactly same product details as the product you are viewing, allowing you to easily clone your product, and make any edits you need to before saving it as a new product.
-
-## Editing a Product
-
-There is only a few fields that apply to a product:
-
-- **Product** - This is the name of the product itself, which will appear on invoices.
-- **Description** - The product description, which will appear on invoices. **Note** that PDF generation of invoices and quotes will process any HTML formatting you use here. Furthermore, when _Enable Markdown_ is turned on under _Settings_ > _Account Management_, you will be able to enter markdown text into the product descriptions also, and it will appear formatted in your invoices, quotes, etc.
-- **Price** - The standard price of your product.
-- **Default Quantity** - The default quantity is used automatically when the product is added to an invoice or quote.
+You can apply advanced custom attributes to products called _Custom Fields_. See: [Custom Fields](/en/custom-fields/#custom-fields)
 
 ## Inventory Tracking
 
-If you run a business which stocks products, tracking inventory levels is an important component of running a business. In Invoive Ninja, tracking inventory is super simple.
+If you run a business which stocks products, tracking inventory levels is an important component of running a business. In Invoice Ninja, tracking inventory is super simple.
 
-![alt text](/assets/images/products/track_inventory_settings.png "Inventory Tracking")
+![Product settings](/assets/images/products/product_settings_v5.png "Product settings")
 
-Simply turn on Track Inventory in the settings panel, you can also add notifications when a product reaches a threshold you will receive an email notifying you of the current stock level. For more fine grained control, you can assign thresholds directory on the product itself.
+Simply turn on Track Inventory in the Product Settings panel. You can also add notifications when a product reaches a threshold, and you will receive an email notifying you of the current stock level. For more fine grained control, you can assign thresholds directory on the product itself.
 
-![alt text](/assets/images/products/inventory_tracking_product.png "Product overview")
+![alt text](/assets/images/products/edit_product_with_inventory_tracking_v5.png "Product overview")
 
 To view the current stock levels, simply viewing the product will show the current level.
 
-You can also combine the Purchase Order module to update your inventory level automatically, see <a href="/docs/purchase_order"> Purchase Orders</a> for more info.
+If you want a spreadsheet of all your prouct's stock levels, you can go to _Reports_, select Report _Product_ and it will download a .csv of all your products including stock levels.
+
+You can also combine the Purchase Order module to update your inventory level automatically, see [Purchase Orders](/en/purchase_orders) for more info.
 
 <x-next url=/en/payments>Payments</x-next>

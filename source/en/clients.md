@@ -168,6 +168,8 @@ When an individual self-registers on the client portal, their name and email wil
 
 Email addresses for _contacts_ are considered authentic. For example, if an individual attempts to self-register while already being included as a _contact_ for another _client_ entry, the self-registration portal will force them to resubmit their personal information using a new email address, or have their email address removed from the other _client_ listing.
 
+See [Client Portal](/en/client-portal)
+
 ## Group Settings for Client Management
 
 If many clients share the same settings, for example, the same currency or email reminder settings, you can create a group on _Settings_ > _Group Settings_ to, apply a standard set of settings to a large group of clients.
@@ -200,4 +202,4 @@ $contact.custom3
 $contact.custom4
 ```
 
-<x-next url=/en/invoices>Invoices</x-next>
+<x-next url=/en/client-portal>Client Portal</x-next>
