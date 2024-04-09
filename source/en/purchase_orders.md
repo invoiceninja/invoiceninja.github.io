@@ -12,22 +12,22 @@ Once a supplier accepts the PO, it becomes a binding contract between the buyer 
 
 ## Creating a Purchase Order
 
-![alt text](/assets/images/purchase_orders/purchase_order1.png "Creating purchase order.")
+<video width="100%" controls>
+  <source src="../assets/videos/purchase_orders/create_purchase_order.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
-Creating a purchase order has a similar work flow as when creating an invoice. Prior to creating a Purchase Order a Vendor needs to be present in the system. A Vendor can be created directly from the Purchase Order page, or via the Vendor tab.
+Creating a purchase order has a similar work flow as when creating an invoice. Prior to creating a Purchase Order, a Vendor needs to be present in the system. A Vendor can be created directly from the Purchase Order page, or via the Vendors tab.
 
 ### Details
 
 The _Details_ panel includes the most basic information about the purchase order:
 
 - **Vendor** - You must select a vendor from the list to apply your purchase order to.
-- **Date** - Automatically generated with today's date, is simply the date of the purchase order.
-- **Valid Until** - Optionally, you may specify an end date that the purchase order is valid until, to limit how long you will honor it.
+- **Purchase Order Date** - Automatically generated with today's date, is simply the date of the purchase order.
+- **Due Date** - Optionally, you may specify an end date that the purchase order is valid until, to limit how long you will honor it.
 - **Partial/Deposit** - Optionally, specify a required partial payment or deposit on the purchase order, with its own due date, separate from, and owed before the purchase order due date for the purchase order's full amount.
 - **Discount** - Enter a discount amount to apply to the purchase order, either as a percentage, or a flat rate.
-- **Design** - Choose a template design from one of the premade templates, or one of your own custom designs. This option is found under the _Settings_ tab in the desktop purchase order view.
-
-The Purchase order can be decorated with additional terms in the Terms section.
 
 ### Items
 
@@ -38,18 +38,41 @@ Here you see a list of the line items included on the purchase order. You can ad
 - **Unit Cost** - The cost of a single product for the line item.
 - **Quantity** - The number of products to be multiplied by the unit cost of that line item.
 
-### Notes
+### Bottom Tabs
 
-All under one panel in the mobile layout, these options each have their own tabs at the bottom of the purchase order screen when in desktop layout:
+The Purchase order can be decorated with additional terms, footer, and notes below.
 
-- **Purchase Order Terms** - Describe any terms or conditions for your vendor, as they relate to the purchase order.
-- **Purchase Order Footer** - Any text notes to be included at the bottom of the purchase order. A good spot for less important disclaimers.
-- **Public Notes** - Any text notes to add detail or context to the purchase order for you and your vendor. A good spot for service notes, or a summary of work performed for the vendor.
-- **Private Notes** - Private text notes, not printed on the purchase order PDF or viewable by the vendor. These notes can only be seen by users of the admin portal.
+![Bottom Tabs](/assets/images/purchase_orders/purchase_order_bottom_tabs.png "Bottom Tabs")
 
-### Documents
+#### Terms
 
-Upload pictures or documents to your purchase ordser, to include for your vendor. These can be attached in the email that is sent to the Vendor.
+Describe any terms or conditions for your vendor, as they relate to the Purchase Order, and optionally _Save as default terms_.
+
+#### Footer
+
+Any text notes to be included at the bottom of the Purchase Order. A good spot for less important disclaimers. Optionally _Save as default footer_.
+
+#### Public Notes
+
+Any text notes to add detail or context to the purchase order for you and the vendor.
+
+#### Private Notes
+
+Private text notes, not printed on the Purchase Order PDF or viewable by the vendor. These notes can only be seen by users of the admin portal.
+
+#### Settings
+
+The _Settings_ panel includes some additional options for the Purchase Order:
+
+- **User** - Optionally change the user who is marked as creator of the Purchase Order.
+- **Project** - Optionally link the Purchase Order to a _Project_
+- **Client** - Optionally assign a _Client_ to the Purchase Order
+- **Exchange Rate** - Optionally, for when your vendor has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what you will owe in their own default currency.
+- **Design** - Choose a template design from one of the premade templates, or one of your own custom designs. You can customize Purchase Order designs under _Settings>Invoice Design_
+
+#### Documents
+
+Upload pictures or documents to your Purchase Order, to include for your vendor.
 
 ## Lifecycle of a purchase order
 
@@ -69,7 +92,7 @@ A purchase order is marked as sent when it has been emailed to the vendor or mar
 
 ![alt text](/assets/images/purchase_orders/purchase_order2.png "Creating purchase order.")
 
-When a purchase order is **accepted** by the vendor the status of the purchase order changes to accepted. The vendor is able to perform this via the Vendor Portal. The vendor can also be asked to agree to additional terms and place a signature on file for this purchase order during the acceptance process.
+When a purchase order is **accepted** by the vendor, the status of the purchase order changes to accepted. The vendor is able to perform this via the Vendor Portal. The vendor can also be asked to agree to additional terms and place a signature on file for this purchase order during the acceptance process.
 
 ### Received
 

@@ -8,6 +8,7 @@ return [
             'faq' => '/:locale/faq',
             'payment_gateways' => '/:locale/gateways',
             'clients' => '/:locale/clients',
+            'client_portal' => '/:locale/client-portal',
             'invoices' => '/:locale/invoices',
             'recurring_invoices' => '/:locale/recurring-invoices',
             'products' => '/:locale/products',

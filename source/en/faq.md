@@ -13,13 +13,14 @@ Here you will find answers to many frequently asked questions about Invoice Ninj
 - When you send a client an invoice, the email contains a link to view the invoice online in the client portal.
 - The client portal is an online self-serve dashboard for your client to see their invoices, make payments, download statements, manage subscriptions, payment methods, and more.
 - Client portal access is available for all your clients. You can optionally allow anyone to register as a new client under Settings>Client Portal>Registration.
-- If you enable "Client Initiated Payments" under Settings>Online Payments, you can even allow your clients to make a payment online without you having to send an invoice (you can also set the "Minimum Payment Amount" for client-initiated payments)
-- Only the enabled modules in Invoice Ninja will show in the client portal. For example, if you turn off Quotes, that option won't be visible to clients anymore. See: [Enabled Modules](/en/basic-settings/#enabled-modules)
+- If you enable "Client Initiated Payments" under Settings>Payment Settings, you can even allow your clients to make a payment online without you having to send an invoice (you can also set the "Minimum Payment Amount" for client-initiated payments)
 - You can see how the client portal looks for your clients by clicking the "Client Portal" option:
 
 ![Edit Client portal dropdown hilighted](/assets/images/clients/editclient_clientportalhilighted.png "Edit Client portal dropdown hilighted")
 
 ![Client portal](/assets/images/clients/client_portal.png "Client portal")
+
+See [Client Portal](/en/client-portal)
 
 ### What is a subdomain?
 

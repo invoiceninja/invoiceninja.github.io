@@ -39,4 +39,4 @@ You will also see in the next screenshot example below, that some options like _
 
 There are too many ways to use the customization of the _Reports_ module to list here, but this should give you a good idea of the mechanics of the module and how to use it to generate reports that help you when it is tax season, and to monitor or review trends for product sales, or the accountability of your staff for their billing.
 
-<x-next url=/en/subscriptions>Subscriptions</x-next>
+<x-next url=/en/vendors>Vendors</x-next>

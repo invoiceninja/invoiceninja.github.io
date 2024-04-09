@@ -135,4 +135,5 @@ return [
     'faq' => 'FAQ',
     'delete_account' => 'Delete Account',
     'templates' => 'Templates',
+    'client_portal' => 'Client Portal',
 ];
