@@ -769,3 +769,44 @@ Here are the object definitions that are available.
 | user | The Creating User Object | [User](/en/templates/#user-definition) |
 | client | The Client Object | [Client](/en/templates/#client-definition) |
 | | | |
+
+## Sample Templates
+
+### Statements
+|Name | Description| Preview | |
+|---- | ---- | ---- | ---- |
+|TS1 |  Plain Statement | [<img src="/assets/images/templates/ts1.png" width="200"/>](/assets/images/templates/ts1.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts1.html "download") |  
+|TS2 |  Color Statement | [<img src="/assets/images/templates/ts2.png" width="200"/>](/assets/images/templates/ts2.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts2.html "download") |
+|TS3 | Vertical Statement | [<img src="/assets/images/templates/ts3.png" width="200"/>](/assets/images/templates/ts3.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts3.html "download") |
+|TS4 |  Logo Statement | [<img src="/assets/images/templates/ts4.png" width="200"/>](/assets/images/templates/ts4.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts4.html "download") |
+| | | | |
+
+### Delivery Notes
+|Name | Description| Preview | |
+|---- | ---- | ---- | ---- |
+|TD4 | 3 Column | [<img src="/assets/images/templates/td4.png" width="200"/>](/assets/images/templates/td4.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td4.html "download") |  
+|TD5 | 2 Column / Footer | [<img src="/assets/images/templates/td5.png" width="200"/>](/assets/images/templates/td5.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td5.html "download") |  
+|TD12 | 2 Column | [<img src="/assets/images/templates/td12.png" width="200"/>](/assets/images/templates/td12.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td12.html "download") |  
+|TD13 | 2 Column Mono | [<img src="/assets/images/templates/td13.png" width="200"/>](/assets/images/templates/td13.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td13.html "download") |  
+|||||
+
+### Payment Receipts
+|Name | Description| Preview | |
+|---- | ---- | ---- | ---- |
+|TP6 | Standard | [<img src="/assets/images/templates/tp6.png" width="200"/>](/assets/images/templates/tp6.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tp6.html "download") |  
+|TP7 | Horizontal | [<img src="/assets/images/templates/tp7.png" width="200"/>](/assets/images/templates/tp7.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tp7.html "download") |  
+|||||
+
+### Refund Receipts
+|Name | Description| Preview | |
+|---- | ---- | ---- | ---- |
+|TR8 | Horizontal | [<img src="/assets/images/templates/tr8.png" width="200"/>](/assets/images/templates/tr8.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tr8.html "download") |  
+|TR9 | Standard | [<img src="/assets/images/templates/tr9.png" width="200"/>](/assets/images/templates/tr9.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tr9.html "download") |  
+|||||
+
+### Project/Tasks
+|Name | Description| Preview | |
+|---- | ---- | ---- | ---- |
+|TP11 | Project Outline | [<img src="/assets/images/templates/tp11.png" width="200"/>](/assets/images/templates/tp11.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/projects/tp11.html "download") |
+|TT10 | Task | [<img src="/assets/images/templates/tt10.png" width="200"/>](/assets/images/templates/tt10.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/tasks/tt10.html "download") |  
+|||||
