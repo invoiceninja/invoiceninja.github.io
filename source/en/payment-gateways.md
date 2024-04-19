@@ -12,6 +12,13 @@ Payment Driver Template.
 
 So you want to make a payment driver for invoice ninja, but don't know where to start? The first step would be to reach out to us directly on Slack https://invoiceninja.slack.com and have a chat to us in real time so that we can help you hit the ground running and build your driver in the most efficient way possible. Contacting us prior will also ensure that your code can be merged back into the official repository as we will be maintaining this code into the future.
 
+The second step is to understand that there are two components to building the driver:
+
+1. The backend implementation that communicates with the Payment Gateway.
+2. The front end implementation that allows the end user to configure the payment gateway itself with api credentials / payment method selections.
+
+This guide focuses on the backend implementation, after you have completed this, you can communicate with our front end teams for the next steps in how to show the gateway in the React/Flutter interface .
+
 Ready? Lets go!
 
 ### Step 1. Setup environment
@@ -260,3 +267,21 @@ Along with this exception, it is also required that you dispatch a PaymentFailur
 PaymentFailureMailer::dipatch($client, $error, $company, $payment_hash)
 ```
 
+### Environment Setup
+
+#### Stub Gateway Configuration
+
+When building the driver, you will want a way to preconfigure a gateway with the required testing credentials. As the UI for this is not built, you will want to manually create a company gateway record using the following schema:
+
+```php
+$cg = new CompanyGateway();
+$cg->company_id = $company->id;
+$cg->user_id = $user->id;
+$cg->gateway_key = 'insert_your_gateway_hash_here';
+$cg->require_cvv = true;
+$cg->require_billing_address = true;
+$cg->require_shipping_address = true;
+$cg->update_details = true;
+$cg->config = encrypt('{"apiKey":"api_key_value","anotherKey":"another_value"}');
+$cg->save();
+```
