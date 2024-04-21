@@ -170,7 +170,7 @@ You can accidentally double charge taxes if you apply tax rates on the flat bala
     Exclusive: 100 + 10% = 100 + 10
     Inclusive: 100 + 10% = 90.91 + 9.09
 
-**Configure Rates** - A simple _Tax Rates_ settings panel to manage tax rates applicable to your company. Tax rates configured here are selectable from the _Tax_ and _Tax Rate_ drop down menus on invoices and products. You add a tax rate with the "+" button in the top left of this panel, and simply add a name, and tax rate expressed in percent only.
+**Configure Rates** - A simple _Tax Rates_ settings panel to manage tax rates applicable to your company. Tax rates configured here are selectable from the _Tax_ and _Tax Rate_ drop down menus on invoices and products. You add a tax rate with the "+" button in the bottom right panel, and simply add a name, and tax rate expressed in percent only.
 
 <h2 id=product_settings>Product Settings</h2>
 

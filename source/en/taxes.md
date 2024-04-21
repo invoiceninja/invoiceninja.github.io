@@ -55,11 +55,14 @@ Settings > Tax Settings
 
 Navigate to Settings > Tax Settings and turn the Calculate Taxes switch on. A new section will appear for further configuration. It is important to select the Seller (your) subregion, this will be a US state where your business is registered for tax purposes.
 
-![Seller subregion](/assets/images/taxes/seller_subregion.png)
+**Your company's country in Invoice Ninja must be set to either United States, Australia, or an EU country for the Calculate Taxes option to appear.** (set under Company Details > Address).
+
+<video width="100%" controls>
+  <source src="/assets/videos/taxes/tax_settings_calculate_taxes_subregions.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
 
 Beneath this is a range of regions where automatic tax calculations are supported. Each section provides additional granularity for where you wish to collect tax.
-
-![Tax rate configuration](/assets/images/taxes/tax_rate_config.png)
 
 There are essentially two options here, the first is to collect taxes in all states (Tax All), or you can choose Tax Selected and select which states to collect tax by clicking on the Show option which will expose all states. Mark the checkboxes of the states you wish to collect taxes from and then save.
 
@@ -177,6 +180,6 @@ Current we suppose cross border taxes in these Countries.
 
 ## Self Host - Taxes
 
-For self host users, it is important to note that US Sales tax calculations are only the State sales tax rates. the surtax (city/district/county) taxes are not calculated as this is a third party service. Please consider this when using the sales tax calculations, as they may not be correct.
+For self host users, it is important to note that US Sales tax calculations are only the State sales tax rates. The surtax (city/district/county) taxes are not calculated as this is a third party service. Please consider this when using the sales tax calculations, as they may not be correct.
 
 <x-next url=/en/quotes>Quotes</x-next>
