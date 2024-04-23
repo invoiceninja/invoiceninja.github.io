@@ -67,19 +67,6 @@ On Apache based servers, open the [/public/.htaccess](https://github.com/invoice
 
 ## Email not sending
 
-If you are experiencing issues sending emails be sure to double check your .env file contains the correct fields configured. 
-
-```
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME="your_email_address@gmail.com"
-MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS="your_email_address@gmail.com"
-MAIL_FROM_NAME="Full Name With Double Quotes"
-```
-
 <x-warning>
 If you are using Gmail - Use an [app specific password](https://support.google.com/accounts/answer/185833?hl=en) or ensure you have less secure apps turned on.
 </x-warning>
