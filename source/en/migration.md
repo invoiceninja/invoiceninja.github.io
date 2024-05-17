@@ -194,7 +194,6 @@ No. The migration only takes a copy of your current v4 data and sends this to th
 We support _most_ of the v4 payment gateways, however there are several that we no longer support. The full supported list of v5 gateways are as follows:
 
 - Stripe
-- WePay
 - Paypal Express
 - Checkout.com
 - Authorize.net (auth.net)
