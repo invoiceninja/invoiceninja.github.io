@@ -51,11 +51,11 @@ If you are a hosted Invoice Ninja client with a Pro or Enterprise plan, you can 
 Settings > Tax Settings
 ```
 
-![Turn on tax calculations](/assets/images/taxes/enable_taxes.png)
+**Your company's country in Invoice Ninja must be set to either United States, Australia, or an EU country for the Calculate Taxes option to appear.** (set under Company Details > Address).
+
+![Turn on tax calculations](/assets/images/taxes/enable_calculate_taxes_react.png)
 
 Navigate to Settings > Tax Settings and turn the Calculate Taxes switch on. A new section will appear for further configuration. It is important to select the Seller (your) subregion, this will be a US state where your business is registered for tax purposes.
-
-**Your company's country in Invoice Ninja must be set to either United States, Australia, or an EU country for the Calculate Taxes option to appear.** (set under Company Details > Address).
 
 <video width="100%" controls>
   <source src="/assets/videos/taxes/tax_settings_calculate_taxes_subregions.webm" type="video/webm">

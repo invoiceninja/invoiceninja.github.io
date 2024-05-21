@@ -208,11 +208,28 @@ These rules govern default settings and behaviors of your company's expense reco
 
 Each of these settings below can be configured on a per-expense record basis, when creating or editing an expense. Changing these settings here will change the default configuration for new expense records.
 
-- **Should be Invoiced** - When enabled, an expense will indicate PENDING status as it waits to get put on a client invoice.
-- **Mark Paid** - Each individual expense record has its own _Mark Paid_ setting.
-- **Add Documents to Invoice** - Make the documents attached to an expense record visible to the client whose invoice it is being attached to.
+- **Should be Invoiced** - Enable this to mark an expense as billable to a client. Expenses with invoicing enabled can be included on client invoices, and when you create an invoice from a project that the invoicable expense is linked to. When an expense record has invoicing enabled, it's lifecycle status will change to _Pending_ until it is invoiced, and paid for, after which it will be changed automatically again to _Paid_.
+- **Mark Paid** - Enable this to indicate that your organization has paid the vendor for this expense. This is _not_ to indicate a payment from a client.
+  - **Payment Type** - Select the payment type your organization used to pay the vendor with.
+  - **Date** - Enter the date your organization paid the vendor.
+  - **Transaction Reference** - Enter a transaction reference code or number if applicable.
+- **Convert Currency** - If the expense is billed in a currency other than your own default currency, enabling this allows you to set the currency you prefer to pay with, and an exchange rate, to calculate how much the expense cost in your preferred currency.
 
-**Configure Categories** - This button enters a subsetting panel for "_Expense Categories_". Here, you can manage a simple list (Name, and Color fields only) for expense categories. This can help you organize your expenses more effectively, by assigning an expense category to each of your expenses.
+<x-warning>
+
+Note that when you view your reports, expenses will be categorized by the currency of the expense/vendor, not the currency selected under "Convert Currency". If you wish to consolidate your profit and loss totals under one currency, you should select your own currency for each expense record, and use the converted amount for the expense amount, leaving any reference to a foreign currency out of the record details.
+
+</x-warning>
+
+- **Add Documents to Invoice** - Enable this feature to include any documents attached to an expense, with the documents attached to the invoice when you create an invoice out of the expense record.
+- **Enter Taxes** - Configure how the expense is taxed to you in more detail. Change between rate or amount to change the _Tax_ field (under the details tab) from a percent based tax, to a custom flat tax.
+  - **By Rate** - this is selected by default. You can select a tax rate under _Details_ to apply to the expense.
+  - **By Amount** - allows you to manually enter a _Tax Name_ and _Tax Amount_ under _Details_ to apply to the expense. Note that you can apply up to three tax rates/amounts to an expense, based on the settting _Settings > Tax Settings > Expense Tax Rates_ where you can select _Disabled, One Tax Rate, Two Tax Rates,_ or _Three Tax Rates_. For example, if you have _Three Tax Rates_ as the enabled option, you will see three _Tax_ options on the left.
+- **Inclusive Taxes** - Enable this option if the taxes are inclusive to the cost of the expense, rather than exclusive. For example:
+  - Exclusive tax is applied on top of the expense cost, like so: 100 + 10% = $110 total (100 + 10).
+  - Inclusive tax is when taxes are deducted from the amount the vendor bills you, and included in your expense amount, rather than tacked on top of what you pay the vendor, like so: 100 + 10% = $100 total (90.91 +9.09).
+
+**Configure Categories** - This table below the Expense Settings allows you to manage the _Expense Categories_". Here, you can manage a simple list (Name, and Color fields only) for expense categories. This can help you organize your expenses more effectively, by assigning an expense category to each of your expenses.
 
 <h2 id=import_export>Import | Export</h2>
 

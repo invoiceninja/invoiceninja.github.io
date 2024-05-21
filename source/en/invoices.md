@@ -23,7 +23,7 @@ On desktop if you click on an invoice row (not the invoice number), it will open
 
 ![Invoice overview](/assets/images/invoices/invoice_right_overview_panel.png "Invoice overview")
 
-From the overview panel, you will see general information about the invoice. The amount of the invoice, balance owing, any amount paid, which client it is assigned to, the date of the invoice, and any products or tasks included in the invoice.
+From the overview panel, you will see general information about the invoice. The amount of the invoice, balance owing, any amount paid, which client it is assigned to, the date of the invoice, status...
 
 #### History
 
@@ -39,11 +39,8 @@ This panel presents a log of every time the invoice was emailed.
 
 ### Invoice More Actions Dropdown
 
-![Invoice More Actions dropdown](/assets/images/invoices/invoice_more_actions_dropdown.png "Invoice more actions dropdown")
-
 The _More Actions_ dropdown has many frequently used options:
 
-- Edit
 - Email Invoice
 - View PDF: View the PDF version of the invoice
 - Print PDF: Brings up the printer dialog to print the invoice PDF
@@ -51,6 +48,7 @@ The _More Actions_ dropdown has many frequently used options:
 - Delivery Note (PDF): Goes to the View PDF screen and checks the 'Delivery Note' toggle to include delivery note
 - Download: Downloads the invoice PDF
 - Download E-Invoice: Downloads the electronic invoice document file (for jurisdictions using E-Invoice)
+- Mark Sent: Mark invoice as sent (ex. if you sent manually by printing PDF...)
 - Mark Paid: Mark invoice as fully paid
 - Client Portal: View the invoice as the client in the client portal
 - Reverse: See [Reversed](#reversed)
@@ -73,6 +71,7 @@ You must select a client from the list to apply your invoice to.
 - **Invoice Date** - Automatically generated with today's date, is simply the date of the invoice.
 - **Due Date** - Optionally, you may include a later due date for payment of the invoice. If no due date is specified, the full amount is due immediately.
 - **Partial/Deposit** - Optionally, specify a required partial payment or deposit on the invoice, with its own due date, separate from, and owed before the invoice due date for the invoice's full amount.
+- **Invoice #** - The invoice number is auto generated as per _Settings > Advanced Settings > Generated Numbers_
 - **PO Number** - Optionally, typically for when you client has a product order number to provide for you, for their own recordkeeping purposes.
 - **Discount** - Enter a discount amount to apply to the invoice, either as a percentage, or a flat rate.
 
@@ -97,7 +96,7 @@ This is the main part of the invoice. You see a list of the line items included 
 
 ### Bottom Tabs
 
-![Bottom Tabs](/assets/images/invoices/invoice_bottom_tabs_react.png "Bottom Tabs")
+![Bottom Tabs](../assets/images/invoices/invoice_bottom_tabs_react.png "Bottom Tabs")
 
 #### Public Notes
 

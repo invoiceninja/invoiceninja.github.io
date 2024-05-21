@@ -164,3 +164,7 @@ See [Client Portal](/en/client-portal)
 - Designs can be further tailored to individual clients or groups of clients by using the Client Settings and Groups features
   - See: [Custom Settings Per Client](/en/clients)
   - See: [Group Settings](/en/clients/#group-settings-for-client-management)
+
+### What is the purpose of the User dropdown in invoices/quotes/expenses?
+
+- The _User_ dropdown can be used in multiple ways. It can be used in the reports for tracking (ex. how many expenses assigned to each user), but it can also be used to give a user permission to view/edit an individual record.
