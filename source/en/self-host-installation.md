@@ -14,14 +14,15 @@ locale: en
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-* PHP 8.1 with following extensions
+* PHP 8.2 with following extensions
     * bcmath
     * ctype
-    * fileinfo
+    * imagick
+    * soap
     * gd
     * mbstring
     * openssl
-    * PDO
+    * common
     * tokenizer
     * xml
     * curl
@@ -36,9 +37,10 @@ You need to setup this version completely from scratch. Do not attempt to overwr
 On ubuntu this should be as simple as running:
 
 ```bash
-sudo apt install php8.2-bcmath php8.2-gmp php8.2-fileinfo \
-    php8.2-gd php8.2-mbstring php8.2-pdo php8.2-xml \
-    php8.2-curl php8.2-zip php8.2-gmp php8.2-mysql php8.2-fpm
+sudo apt install php8.2-bcmath php8.2-gmp \
+    php8.2-gd php8.2-mbstring php8.2-xml \
+    php8.2-curl php8.2-zip php8.2-gmp php8.2-mysql php8.2-fpm \ 
+    php8.2-imagick php8.2-soap php8.2-common
 ```
 
 ## Installing Invoice Ninja
