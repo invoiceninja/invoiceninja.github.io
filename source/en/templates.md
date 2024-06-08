@@ -743,6 +743,8 @@ Here are the object definitions that are available.
 | payment_balance | The client payment balance | 0.000000 |
 | credit_balance | Thje client credit balance | 2084.140000 |
 | vat_number | The client VAT Number | 428950405 |
+| currency | The client currency code | USD | 
+| locale | The client locale | en |
 | | | |
 
 ### Project Definition
