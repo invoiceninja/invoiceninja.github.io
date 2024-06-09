@@ -320,6 +320,7 @@ $ sudo -u www-data php artisan queue:restart
 
 That’s it! You should now have a functioning Supervisor setup for Invoice Ninja.
 
+#### Alternative for queues on shared hosting
 If you are on shared hosting, it is possible to get the queues working by defining a new cron with the following configuration:
 
 ```
