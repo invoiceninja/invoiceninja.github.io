@@ -10,10 +10,6 @@ locale: en
 
 <p>Invoice Ninja has a few system requirements. Built on top of <a href="https://www.laravel.com/docs/">Laravel</a> it requires a PHP and MySQL server at a minimum with the following version and extensions installed.</p>
 
-<x-warning>
-You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
-</x-warning>
-
 * PHP 8.2 with following extensions
     * bcmath
     * ctype
@@ -43,6 +39,14 @@ sudo apt install php8.2-bcmath php8.2-gmp \
     php8.2-curl php8.2-zip php8.2-gmp php8.2-mysql php8.2-fpm \ 
     php8.2-imagick php8.2-soap php8.2-common php8.2-intl
 ```
+
+<x-warning>
+You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
+</x-warning>
+
+<x-warning>
+Invoice Ninja does not support installation into a subdirectory. You will need a Domain or Subdomain for installation in its root location. ie https://domain.com not https://domain.com/subdirectory
+</x-warning>
 
 ## Installing Invoice Ninja
 

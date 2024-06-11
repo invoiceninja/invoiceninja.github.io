@@ -171,6 +171,8 @@ These settings govern the behavior, appearance, and other settings for emails se
 
 * **Attach UBL** - International standard Universal Business Language (UBL).   UBL documents are XML business documents such as purchase orders and invoices.  Enabling this feature attaches an XML document along with the PDF invoice.  Normally all the XML information is embedded in the PDF but some users prefer or cannot read the embedded XML data in a PDF. 
 
+* **Enable E-invoice** - If you wish to produce e-invoices compatible with your region, you can enable this setting, and select the standard you wish to support.
+
 <h2 id=client_portal>Client Portal</h2>
 
 These settings govern the behavior, function, and presentation of the Client Portal.
