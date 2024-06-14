@@ -74,7 +74,7 @@ Si vous apportez des modifications à votre fichier env, n'oubliez pas de redém
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>Un fichier zip préconstruit peut être téléchargé depuis notre page de versions GitHub <a href="https://github.com/invoiceninja/invoiceninja/releases">ici</a>. Vous devrez télécharger le package nommé <b>jinvoiceninja.tar</b></p>
+<p>Un fichier zip préconstruit peut être téléchargé depuis notre page de versions GitHub <a href="https://github.com/invoiceninja/invoiceninja/releases">ici</a>. Vous devrez télécharger le package nommé <b>invoiceninja.tar</b></p>
 
 <p>Décompressez ce fichier dans le répertoire de l'hôte virtuel que vous avez créé.</p>
 
@@ -363,9 +363,9 @@ Créez une base de données compatible MySQL dans le panneau de contrôle de vot
 
 #### Télécharger l'élément de la version
 
-Téléchargez la dernière version depuis notre page des <a href="https://github.com/invoiceninja/invoiceninja/releases">Versions</a>. Notez que vous voudrez trouver la dernière version qui contiendra 3 fichiers, celui dont vous avez besoin sera annoté comme jinvoiceninja.tar.
+Téléchargez la dernière version depuis notre page des <a href="https://github.com/invoiceninja/invoiceninja/releases">Versions</a>. Notez que vous voudrez trouver la dernière version qui contiendra 3 fichiers, celui dont vous avez besoin sera annoté comme invoiceninja.tar.
 
-Téléchargez ce fichier sur votre hébergeur partagé, généralement si votre hébergeur utilise le standard de l'industrie cPanel, vous voudrez télécharger le fichier **jinvoiceninja.tar** dans le répertoire **public_html**. Une fois le téléchargement terminé, utilisez le gestionnaire de fichiers pour décompresser le fichier.
+Téléchargez ce fichier sur votre hébergeur partagé, généralement si votre hébergeur utilise le standard de l'industrie cPanel, vous voudrez télécharger le fichier **invoiceninja.tar** dans le répertoire **public_html**. Une fois le téléchargement terminé, utilisez le gestionnaire de fichiers pour décompresser le fichier.
 
 Vous devrez également copier/renommer le fichier .env.example en .env
 
@@ -373,7 +373,7 @@ Vous devrez également copier/renommer le fichier .env.example en .env
 
 Naviguez vers https://your.url.com/setup et remplissez le formulaire. Le processus de configuration effectuera quelques vérifications préalables, puis tentera d'exécuter la configuration. Si cela réussit, vous serez redirigé vers le portail administrateur. Si la configuration échoue pour une raison quelconque, vous serez renvoyé à l'écran de configuration avec un message d'erreur, il se peut que des erreurs supplémentaires soient signalées dans **storage/logs/laravel.log** qui fourniront plus d'informations sur l'échec de la configuration.
 
-Si vous voyez une **erreur de serveur web 404** et utilisez **sub.domain.com**, assurez-vous de pointer le chemin pour le sous-domaine vers le dossier `/public` à partir du fichier extrait jinvoiceninja.tar, par exemple: ``/domains/domain.com/public_html/invoices2/public/``
+Si vous voyez une **erreur de serveur web 404** et utilisez **sub.domain.com**, assurez-vous de pointer le chemin pour le sous-domaine vers le dossier `/public` à partir du fichier extrait invoiceninja.tar, par exemple: ``/domains/domain.com/public_html/invoices2/public/``
 
 ##### Ajouter la tâche cron
 

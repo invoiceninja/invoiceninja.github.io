@@ -366,7 +366,7 @@ Un [rapport](https://forum.invoiceninja.com/t/500-error-when-editing-pdf-invoice
 
 Essayez ces étapes pour résoudre l'erreur 500 du serveur lors de la tentative de connexion ou de la modification des détails de l'entreprise.
 
-1. Téléchargez la dernière mise à jour depuis les [versions publiées sur Github](https://github.com/invoiceninja/invoiceninja/releases) (pas `jinvoiceninja.tar`, mais `Source code (zip)`)
+1. Téléchargez la dernière mise à jour depuis les [versions publiées sur Github](https://github.com/invoiceninja/invoiceninja/releases) (pas `invoiceninja.tar`, mais `Source code (zip)`)
 2. Téléchargez le zip, extrayez les fichiers et remplacez-les dans votre /public_html/ (Attention à ne pas remplacer le fichier .env ou tout sera supprimé)
 3. Connectez-vous à votre racine et assurez-vous tout d'abord que tous les fichiers sont possédés de manière récursive par l'utilisateur, ex. `sudo chown -R www-data:www-data dir/`
 4. Exécutez cette commande `cd /home/domain.com/public_html/invoiceninja/ && php artisan migrate` ou simplement `php artisan migrate`, sélectionnez "YES"

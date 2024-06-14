@@ -69,7 +69,7 @@ We have a dedicated repository with detailed instructions on how to get started 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>jinvoiceninja.tar</b></p>
+<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>invoiceninja.tar</b></p>
 
 <p>Unzip this file into the virtual host directory you have created.</p>
 
@@ -253,9 +253,9 @@ Create a MySQL compatible database in your shared host control panel along with 
 
 #### Upload release asset
 
-Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as jinvoiceninja.tar.
+Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.tar.
 
-Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **jinvoiceninja.tar** file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
+Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **invoiceninja.tar** file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
 
 You will also need to copy/rename the .env.example file to .env
 
@@ -263,7 +263,7 @@ You will also need to copy/rename the .env.example file to .env
 
 Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some pre flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in **storage/logs/laravel.log** that will provide more information where the setup has failed.
 
-If you see a **404 webserver error** and use **sub.domain.com** make sure to point the path for the subdomain towards the `/public` folder from the extracted jinvoiceninja.tar file, for example: ``/domains/domain.com/public_html/invoices2/public/``
+If you see a **404 webserver error** and use **sub.domain.com** make sure to point the path for the subdomain towards the `/public` folder from the extracted invoiceninja.tar file, for example: ``/domains/domain.com/public_html/invoices2/public/``
 
 ##### Add the cron job
 

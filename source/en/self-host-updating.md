@@ -36,10 +36,10 @@ If you have installed the application using the precompiled .zip file, then the 
 
 The self updater will pull the latest release from our Github repository, extract and overwrite the system files. Prior to attempting any of this, the system performs a recursive file check to ensure _all_ files are owned by the webuser.
 
-If the update button does not work, you can alternatively download the jinvoiceninja.tar file and overwrite the folder of your installation, note that there are 3 files always:  https://github.com/invoiceninja/invoiceninja/releases
+If the update button does not work, you can alternatively download the invoiceninja.tar file and overwrite the folder of your installation, note that there are 3 files always:  https://github.com/invoiceninja/invoiceninja/releases
 
 ```
-jinvoiceninja.tar - 170 MB or 500 MB roughly
+invoiceninja.tar - 170 MB or 500 MB roughly
 Source code (zip) - 15 MB roughly
 Source code (tar.gz) - 14 MB roughly
 ```
