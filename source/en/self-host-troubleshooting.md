@@ -342,7 +342,7 @@ from the user who solved 500 error on their server by disabling ModSecurity.
 
 Try these steps to fix the 500 server error when trying to login or editing company details
 
-1. Download the latest update from the [github releases](https://github.com/invoiceninja/invoiceninja/releases) (not `invoiceninja.zip` but `Source code (zip)`)
+1. Download the latest update from the [github releases](https://github.com/invoiceninja/invoiceninja/releases) (not `jinvoiceninja.tar` but `Source code (zip)`)
 2. Upload the zip, extract the files and override them in your /public_html/ (Be careful to not override the .env file or all will be gone)
 3. Login to your root and make sure first of all that all files are owned recursively by the user, ex. `sudo chown -R www-data:www-data dir/`
 4. Run this command `cd /home/domain.com/public_html/invoiceninja/ && php artisan migrate` or simply `php artisan migrate` whatever works for you, select "YES"

@@ -35,10 +35,10 @@ Si vous avez installé l'application en utilisant le fichier .zip précompilé, 
 
 L'auto-updater va récupérer la dernière version depuis notre dépôt Github, extraire et écraser les fichiers système. Avant de tenter tout cela, le système effectue une vérification récursive des fichiers pour s'assurer que _tous_ les fichiers appartiennent à l'utilisateur web.
 
-Si le bouton de mise à jour ne fonctionne pas, vous pouvez alternativement télécharger le fichier invoiceninja.zip et écraser le dossier de votre installation, notez qu'il y a toujours 3 fichiers : https://github.com/invoiceninja/invoiceninja/releases
+Si le bouton de mise à jour ne fonctionne pas, vous pouvez alternativement télécharger le fichier jinvoiceninja.tar et écraser le dossier de votre installation, notez qu'il y a toujours 3 fichiers : https://github.com/invoiceninja/invoiceninja/releases
 
 ```bash
-invoiceninja.zip - environ 170 Mo ou 500 Mo
+jinvoiceninja.tar - environ 170 Mo ou 500 Mo
 Code source (zip) - environ 15 Mo
 Code source (tar.gz) - environ 14 Mo
 ```
