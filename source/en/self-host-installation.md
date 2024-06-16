@@ -120,25 +120,24 @@ gzip_types      application/javascript application/x-javascript text/javascript 
 gzip_proxied    no-cache no-store private expired auth;
 gzip_min_length 1000;
 
-location / {
-    try_files $uri $uri/ =404;
+# Allow access to index.php
+location = /index.php {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/run/php/php8.2-fpm.sock;
 }
 
-location ~* \.pdf$ {
-    add_header Cache-Control no-store;
-}
-
-if (!-e $request_filename) {
-    rewrite ^(.+)$ /index.php?q= last;
-}
-
-location ~* /storage/.*\.php$ {
-    return 503;
-}
-
+# Block all other .php requests
 location ~ \.php$ {
-include snippets/fastcgi-php.conf;
-fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+    return 403;
+}
+
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+
+    # Add your rewrite rule for non-existent files
+    if (!-e $request_filename) {
+        rewrite ^(.+)$ /index.php?q=$1 last;
+    }
 }
 
 location ~ /\.ht {
