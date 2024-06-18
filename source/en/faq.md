@@ -113,6 +113,12 @@ See [Client Portal](/en/client-portal)
 - If you have a group of clients that you'd like to bill in a specific currency, or apply other settings to a group of clients, you can use the Groups feature in Invoice Ninja – see: [Group Settings for Client Management](/en/clients/#group-settings-for-client-management)
   - Groups lets you customize any setting or templates (ex. invoice templates) to tailor to your group of clients. For example, if you want a different invoice design or email for your "USD Clients" you can configure that easily with Groups.
 
+### How can I show the currency symbol on invoices/quotes?
+
+- Under _Settings>Localization>Currency Format_, select _Code_. Your currency symbol will show on quotes/invoices (ex. _1,000.00 USD_)
+
+![Currency localization](/assets/images/settings/localization_currency_format_code.png)
+
 ### How to Setup Taxes?
 
 - Invoice Ninja supports virtually all forms of charging/recording tax.
@@ -120,7 +126,7 @@ See [Client Portal](/en/client-portal)
 - Taxes can be setup for invoices and expenses
   - Invoice tax is tax you charge a client
   - Expense tax is tax you recorded that you paid on an expense to a vendor (Ex. purchased equipment and X % was spent on Y tax)
-- You'll first want to go to Settings>Tax Settings>New Tax Rate, and add your tax name and percentage.
+- You'll first want to go to _Settings>Tax Settings>New Tax Rate_, and add your tax name and percentage.
 - Then you select the way in which you wish to apply the tax rate to your invoices/expenses by default:
   - Invoice Tax Rates
   - If you do not select a tax rate to apply by default, you will have to select the tax rate manually when creating an invoice/expense.

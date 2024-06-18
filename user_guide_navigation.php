@@ -28,6 +28,7 @@ return [
             'transactions' => '/:locale/transactions',
             'basic_settings' => '/:locale/basic-settings',
             'advanced_settings' => '/:locale/advanced-settings',
+            'tax_accounting_tips' => '/:locale/tax-accounting-tips',
         ],
     ],
     'advanced_topics' => [

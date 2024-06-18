@@ -96,7 +96,7 @@ This is the main part of the invoice. You see a list of the line items included 
 
 ### Bottom Tabs
 
-![Bottom Tabs](../assets/images/invoices/invoice_bottom_tabs_react.png "Bottom Tabs")
+![Bottom Tabs](/assets/images/invoices/invoice_bottom_tabs_react.png "Bottom Tabs")
 
 #### Public Notes
 
@@ -123,7 +123,7 @@ Upload pictures or documents to your invoice, to include for your client. Upload
 The _Settings_ panel includes some additional options for the invoice:
 
 - **Project** - Optionally link the invoice to a _Project_
-- **User** - Optionally change the user who is marked as creator of the invoice.
+- **User** - Optionally change the user who is marked as creator of the invoice. The User option can be used in the reports for tracking, but can also be used to give a specific user permission to view/edit an individual record.
 - **Exchange Rate** - Optionally, for when your client record has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what they will owe in their own default currency.
 - **Vendor** - Optionally assign a _Vendor_ to the invoice
 - **Auto Bill Enabled** - When enabled, the client contact(s) will automatically be emailed for payment of their invoice. By default, auto bill actions will be performed on the invoice due date, as specified under _Settings>Payment Settings_.
