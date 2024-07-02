@@ -162,6 +162,43 @@ Standard $ notation variables are also available within templates, this allows y
 
 ```
 
+#### Allowed Tags
+* if
+* for
+* set
+* filter
+
+#### Allowed Filters
+* escape
+* e
+* upper
+* lower
+* capitalize
+* filter
+* length
+* merge
+* format_currency
+* format_number
+* format_percent_number
+* map
+* join
+* first
+* date
+* sum
+
+#### Allowed Functions
+* range
+* cycle
+* constant
+* date
+
+#### Allowed Properties
+* type_id
+
+#### Allowed Methods
+* img
+* t
+
 ## Statements
 
 Statements are special objects in templates. Because the input data point is a client/s we need additional information to understand whether a template is a "statement" template or not.
