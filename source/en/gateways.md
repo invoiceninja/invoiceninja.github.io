@@ -82,6 +82,7 @@ Our Stripe integration includes a wide range of payment options including:
 - ACSS
 - BECS
 - FPX
+- BTCPay
 
 Our Stripe integration also includes token billing and refunds
 
@@ -190,6 +191,8 @@ Our [eWAY](https://www.eway.com.au/) integration includes Credit Card payment op
 
 Our [PayTrace](https://www.paytrace.net/) integration includes Credit Card payment options, including token billing and refunds. To setup PayTrace you will need your PayTrace account API user credentials and API key, which can be found after successfully setting up an account with PayTrace. There is a process to go through with PayTrace involving testing a sandbox account first, before setting up live payments, make sure you use the _Test Mode_ checkbox when going through this process with sandbox API credentials. For more information visit the [PayTrace support website](https://developers.paytrace.com/support/home).
 
+Our PayTrace integration includes Credit Card payment options, including token billing and refunds.
+
 <hr>
 
 ## Digital Wallets
@@ -219,4 +222,12 @@ As of this moment, to pay with Apple or Google Pay a credit card needs to alread
 - Microsoft Edge 16.16299 or newer
 - [A saved credit card](https://support.microsoft.com/en-us/help/4026594/microsoft-account-add-update-remove-credit-cards-and-other-ways-to-pay)
 
-Our PayTrace integration includes Credit Card payment options, including token billing and refunds.
+<hr>
+
+## Crypto
+
+### BTCPay
+
+The integration of BTCPay Server with Invoice Ninja enables you to accept bitcoin as a payment method, without fees, intermediaries with payments going directly to your bitcoin wallet.
+
+- [Instructions for BTCPay payment gateway setup](https://docs.btcpayserver.org/InvoiceNinja/)

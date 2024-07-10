@@ -66,15 +66,6 @@ Here are some options you will see when creating or editing an invoice.
 
 You must select a client from the list to apply your invoice to.
 
-### Invoice Details
-
-- **Invoice Date** - Automatically generated with today's date, is simply the date of the invoice.
-- **Due Date** - Optionally, you may include a later due date for payment of the invoice. If no due date is specified, the full amount is due immediately.
-- **Partial/Deposit** - Optionally, specify a required partial payment or deposit on the invoice, with its own due date, separate from, and owed before the invoice due date for the invoice's full amount.
-- **Invoice #** - The invoice number is auto generated as per _Settings > Advanced Settings > Generated Numbers_
-- **PO Number** - Optionally, typically for when you client has a product order number to provide for you, for their own recordkeeping purposes.
-- **Discount** - Enter a discount amount to apply to the invoice, either as a percentage, or a flat rate.
-
 ### Contacts
 
 ![Client contacts on invoice](/assets/images/clients/client_auto_included_on_invoice_example.png "Client contacts on invoice")
@@ -85,6 +76,15 @@ The checkbox next to each client defines whether they will receive the email not
 
 Also available are links to the client portal for each respective contact included.
 
+### Invoice Details
+
+- **Invoice Date** - Automatically generated with today's date, is simply the date of the invoice.
+- **Due Date** - Optionally, you may include a later due date for payment of the invoice. If no due date is specified, the full amount is due immediately.
+- **Partial/Deposit** - Optionally, specify a required partial payment or deposit on the invoice, with its own due date, separate from, and owed before the invoice due date for the invoice's full amount.
+- **Invoice #** - The invoice number is auto generated as per _Settings > Advanced Settings > Generated Numbers_
+- **PO Number** - Optionally, typically for when you client has a product order number to provide for you, for their own recordkeeping purposes.
+- **Discount** - Enter a discount amount to apply to the invoice, either as a percentage, or a flat rate.
+
 ## Items
 
 This is the main part of the invoice. You see a list of the line items included on the invoice. You can add _Products_, _Tasks_, or _Expenses_ to the invoice to bill your client for. Each item on the list will have these fields available:
@@ -94,31 +94,31 @@ This is the main part of the invoice. You see a list of the line items included 
 - **Unit Cost** - The cost of a single product or expense, or the hourly rate of a task for the line item.
 - **Quantity** - The number of products, expenses, or billable hours for a task, to be multiplied by the unit cost of that line item.
 
-### Bottom Tabs
+## Bottom Tabs
 
 ![Bottom Tabs](/assets/images/invoices/invoice_bottom_tabs_react.png "Bottom Tabs")
 
-#### Public Notes
+### Public Notes
 
 Any text notes to add detail or context to the invoice for you and your client. A good spot for service notes, or a summary of work performed for the client.
 
-#### Private Notes
+### Private Notes
 
 Private text notes, not printed on the invoice PDF or viewable by the client. These notes can only be seen by users of the admin portal.
 
-#### Terms
+### Terms
 
 Describe any terms or conditions for your client, as they relate to the invoice, and optionally _Save as default terms_.
 
-#### Footer
+### Footer
 
 Any text notes to be included at the bottom of the invoice. A good spot for less important disclaimers. Optionally _Save as default footer_.
 
-#### Documents
+### Documents
 
 Upload pictures or documents to your invoice, to include for your client. Uploaded files can be viewed and accessed by the client through the client portal.
 
-#### Settings
+### Settings
 
 The _Settings_ panel includes some additional options for the invoice:
 
