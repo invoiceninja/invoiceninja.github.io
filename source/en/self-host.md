@@ -14,7 +14,7 @@ locale: en
 You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.
 </x-warning>
 
-* PHP 8.1 with following extensions
+* PHP 8.2 with following extensions
     * bcmath
     * ctype
     * fileinfo
@@ -65,13 +65,13 @@ We have a dedicated repository with detailed instructions on how to get started 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xo6a3KtLC2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### Download pre built zip. (Advanced)
+### Download pre built tar. (Advanced)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>invoiceninja.tar</b></p>
+<p>A prebuilt tar can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>invoiceninja.tar</b></p>
 
-<p>Unzip this file into the virtual host directory you have created.</p>
+<p>Untar this file into the virtual host directory you have created.</p>
 
 #### File Permissions
 
@@ -255,7 +255,7 @@ Create a MySQL compatible database in your shared host control panel along with 
 
 Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.tar.
 
-Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **invoiceninja.tar** file to the **public_html** directory. Once the upload has completed, using the file manager unzip the file.
+Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the **invoiceninja.tar** file to the **public_html** directory. Once the upload has completed, using the file manager untar the file.
 
 You will also need to copy/rename the .env.example file to .env
 
