@@ -80,16 +80,16 @@ We have a dedicated repository with detailed instructions on how to get started 
 If you make changes to your env file, please remember to reboot the container for the changes to take effect!
 </x-warning>
 
-### Download pre built zip. (Advanced)
+### Download pre built archive. (Advanced)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p>A prebuilt zip can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>invoiceninja.tar</b></p>
+<p>A prebuilt archive can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>invoiceninja.tar</b></p>
 
-<p>Unzip this file into the virtual host directory you have created.</p>
+<p>Unpack this file into the virtual host directory you have created.</p>
 
 <x-warning>
-Please note the release file invoiceninja.tar excludes the .htaccess file, this archive is solely designed for our self host auto updater. Always use the .zip file when installing a fresh installation.
+Please note the release file invoiceninja.tar excludes the .htaccess file, this archive is solely designed for our self host auto updater.
 </x-warning>
 
 #### File Permissions
