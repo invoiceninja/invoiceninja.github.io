@@ -174,3 +174,17 @@ See [Client Portal](/en/client-portal)
 ### What is the purpose of the User dropdown in invoices/quotes/expenses?
 
 - The _User_ dropdown can be used in multiple ways. It can be used in the reports for tracking (ex. how many expenses assigned to each user), but it can also be used to give a user permission to view/edit an individual record.
+
+### How can I change which columns show in the different modules?
+
+- Every module in Invoice Ninja that stores many records has a table structure (ex. clients, products, invoices, payments, quotes, credits, expenses...), and you can change the number of rows shown per page as well as the columns.
+- There is a 'Columns' button at the bottom of the table where you can adjust the columns shown.
+- For example, if you want the expense category column to show in the expenses list:
+
+<video width="100%" controls>
+  <source src="/assets/videos/faq/add_category_column_to_expenses.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+- The column change to Expenses (showing Category column) also takes effect in every client's Expenses list page (expenses linked to the client):
+  ![Client's expenses](/assets/images/faq/client_example_expenses_linked.png)

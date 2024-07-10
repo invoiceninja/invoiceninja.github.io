@@ -10,42 +10,32 @@ A credit note is a document sent to the client, notifying that a credit has been
 Credit notes are used to issue redeemable credits for a specific _Product_ or for a flat rate.
 Credits can be applied to invoices as a payment.
 
-Note that choosing the right Payment Settings is vital to make credits intuitive and useful to your customers, see https://invoiceninja.github.io/en/basic-settings/#payment_settings.
+![Credits homepage](/assets/images/credits/credits_homepage_table.png)
+
+Note that choosing the right Payment Settings is vital to make credits intuitive and useful to your customers, see [Payment Settings](/en/basic-settings/#payment_settings).
 
 ## Viewing a Credit
 
-Simply select a credit from the list to see its details.
-In the mobile layout you will be taken directly to the credit view.
-When you select a credit from the list in a desktop layout the credit preview will appear on the left hand side.
+Simply select a credit number from the list to see its details.
 
-You can _Edit_ the credit from anywhere in the credit view via a button in the top right of the viewing panel.
-Ther are two buttons at the bottom of the view panel: _View PDF_ in order to load a PDF of the credit directly from the admin portal, or _Email Credit_ to email the client contacts a link to view the PDF for their available credit from the client portal.
+The credit view/edit screen is almost the same as with invoices or quotes.
 
-The Kebab menu in the uppermost right corner of the credit view presents many functions to work with or manipulate the credit, which can vary based on the state of the credit. You can change the status of the credit's lifecycle manually, clone the credit, _Enter a Payment_ against an invoice with the selected credit, and more.
+### Credit More Actions Dropdown
 
-### Overview
+The _More Actions_ dropdown has many frequently used options:
 
-General information about the credit can be found in the overview panel.
-The full amount of the credit, credit remaining, which client it is assigned to, the date of the credit, and the line items describing what the credit is for.
-
-### Contacts
-
-Here you see the contacts from your client that are marked as included in the credit.
-Included contacts will get a copy of the emails sent, and will be able to view the credit from the client portal when they sign in.
-
-Also available are links to the client portal for each respective contact included.
-
-### Documents
-
-Upload pictures or documents to your credit, to include for your client. Uploaded files can be viewed and accessed by the client through the client portal.
-
-### History
-
-The _History_ panel presents a chronological overview of transactions related to the credit, and shows you any changes made to the credit total amount, and by which users.
-
-### Activity
-
-The _Activity_ panel presents a chronological overview of any actions performed against the credit, including when it was created, edited, deleted, etc, and which user performed the action.
+- View PDF: View the PDF version of the credit
+- Print PDF: Brings up the printer dialog to print the credit PDF
+- Download PDF: Downloads the credit PDF
+- Schedule: Schedule the credit to be sent at a later date/time
+- Client Portal: View the credit as the client in the client portal
+- Apply Credit: Apply the credit
+  - This brings up the _Enter Payment_ screen applying the credit amount to the selected client.
+- Run Template: Brings up the screen to run the credit as a [Template](/en/templates) by selecting a design (Advanced feature)
+- Clone to Credit: clone the credit
+- Clone to Other: Lets you choose whether to clone to an _Invoice_, _Quote_, _Recurring Invoice_, or _Purchase Order_ (the items from the credit will be copied)
+- Archive
+- Delete
 
 ## Creating or Editing a Credit
 
@@ -63,41 +53,84 @@ You can also create a credit directly from a invoice. For instance if you need t
 Your browser does not support the video tag.
 </video>
 
-### Details
+**Here are some options you will see when creating or editing a credit:**
 
-The _Details_ panel includes the most basic information about the credit:
+### Client
 
-- **Client** - You must select a client from the list to assign the credit to.
-- **Credit Date** - Automatically generated with today's date, is simply the date of the credit.
-- **Valid Until** - Optionally, you may specify an end date that the credit is valid until, to limit how long you will honor it.
-- **PO Number** - Optionally, typically for when you client has a product order number to provide for you, for their own recordkeeping purposes.
-- **Design** - Choose a template design from one of the premade templates, or one of your own custom designs. This option is found under the _Settings_ tab in the desktop credit view.
-- **Tax** - Available tax rate fields and options are configured under _Settings_ > _Tax Settings_. Here you can manually specify the tax rate(s) applied to your credit, or remove it altogether. If you are manually creating flat rate credit for someone, you may want to consider changing the tax rate to nothing, a blank selection.
-- **Exchange Rate** - Optionally, for when your client record has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what they will owe in their own default currency. This option is found under the _Settings_ tab in the desktop credit view.
+You must select a client from the list to apply your credit to.
 
 ### Contacts
 
-_Contacts_ has it's own panel in the mobile view, while in desktop view this is shown directly under the _Client_ field after you have selected a client.
+![Client contacts on credit](/assets/images/credits/client_auto_included_on_credit_example.png "Client contacts on credit")
 
-This section simply presents a list of contacts available from a client record, and allows you to check or uncheck any contacts, to include or exclude them from the credit. Included contacts will be able to access the credit from the client portal, and will receive emails about the credit when they are sent.
+Here you see the contacts from your client that are marked as included in the credit.
 
-### Items
+The checkbox next to each client defines whether they will receive the email notification. Contacts with the option _Add to Invoices_ selected in Client Edit, will automatically be checked to receive emails.
 
-Here you see a list of the line items included on the credit. You can add a _Product_ to the credit for your client, or a simple line item for a flat rate credit. When you simply want to give a flat rate credit for whatever reason, just leave the _Product_ field empty, and only add a line item _Description_ and _Unit Cost_. Each item on the list will have these fields available:
+Also available are links to the client portal for each respective contact included.
 
-- **Product** - The name of the product / line item being applied. When you want to apply a flat rate to a credit, without creating a new product, simply leave the product field empty.
+### Credit Details
+
+- **Credit Date** - Automatically generated with today's date, is simply the date of the credit.
+- **Valid Until** - Optionally, you may specify an end date that the credit is valid until, to limit how long you will honor it.
+- **Credit Number** - The credit number is auto generated as per _Settings > Advanced Settings > Generated Numbers_
+- **PO #** - Optionally, typically for when you client has a product order number to provide for you, for their own recordkeeping purposes.
+- **Discount** - Enter a discount amount to apply to the credit, either as a percentage, or a flat rate. Usually only used if the credit is cloned from an invoice.
+
+## Items
+
+This is the main part of the credit. You see a list of the line items included on the credit, similar to an invoice. You can add _Products_, _Tasks_, or _Expenses_ to the credit to credit your client for. Each item on the list will have these fields available:
+
+- **Product** - The name of the product, task, or expense line item being applied.
 - **Description** - A description of the line item. Descriptions can include HTML code, or Markdown code formatting (When enabled under _Settings_ > _Account Management_).
-- **Unit Cost** - The cost of a single product for the line item.
+- **Unit Cost** - The cost of a single product or expense, or the hourly rate of a task for the line item.
 - **Quantity** - The number of products, expenses, or billable hours for a task, to be multiplied by the unit cost of that line item.
 
-### Notes
+## Bottom Tabs
 
-All under one panel in the mobile layout, these options each have their own tabs at the bottom of the credit screen when in desktop layout:
+![Bottom Tabs](/assets/images/credits/credit_bottom_tabs_nav.png "Bottom Tabs")
 
-- **Credit Terms** - Describe any terms or conditions for your client, as they relate to the credit.
-- **Credit Footer** - Any text notes to be included at the bottom of the credit. A good spot for disclaimers.
-- **Public Notes** - Any text notes to add detail or context to the credit for you and your client. A good spot to describe the applicable service their credit is intended to be applied to, for example.
-- **Private Notes** - Private text notes, not printed on the credit PDF or viewable by the client. These notes can only be seen by users of the admin portal.
+### Public Notes
+
+Any text notes to add detail or context to the credit for you and your client. A good spot for a reason for the credit.
+
+### Private Notes
+
+Private text notes, not printed on the credit PDF or viewable by the client. These notes can only be seen by users of the admin portal.
+
+### Terms
+
+Describe any terms or conditions for your client, as they relate to the credit, and optionally _Save as default terms_.
+
+### Footer
+
+Any text notes to be included at the bottom of the credit. A good spot for less important disclaimers. Optionally _Save as default footer_.
+
+### Documents
+
+Upload pictures or documents to your credit, to include for your client. Uploaded files can be viewed and accessed by the client through the client portal.
+
+### Settings
+
+The _Settings_ panel includes some additional options for the credit:
+
+- **Project** - Optionally link the credit to a _Project_
+- **User** - Optionally change the user who is marked as creator of the credit. The User option can be used in the reports for tracking, but can also be used to give a specific user permission to view/edit an individual record.
+- **Exchange Rate** - Optionally, for when your client record has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what the total will be in their own default currency.
+- **Vendor** - Optionally assign a _Vendor_ to the credit
+- **Inclusive Taxes** - When enabled, credit tax will be marked as inclusive.
+- **Design** - Choose a template design from one of the premade templates, or one of your own custom designs. You can customize designs under _Settings>Invoice Design_
+
+## Applying a Credit
+
+A credit is an amount on the customer's account that can be substracted from due invoice balances.
+
+After selecting _Apply Credit_, you will be taken to the payment entry screen with the client pre-selected and credit total amount entered. You will need to select one or more of the client's invoices to apply the credit to and save the payment.
+
+<video width="100%" controls>
+  <source src="/assets/videos/credits/applying_credit_to_invoice.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ## Lifecycle of a credit
 
