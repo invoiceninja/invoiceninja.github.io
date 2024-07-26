@@ -50,27 +50,15 @@ Invoice Ninja does not support installation into a subdirectory. You will need a
 
 ## Installing Invoice Ninja
 
-### Ubuntu 20.04 (Recommended)
+### CLI script
 
-Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
+If your webserver is already configured and you have credentials to your database, community member Dros has created a CLI management and maintenance script for you. 
 
-### Ubuntu 22.04
+[CLI - install | update | backup ](https://github.com/DrDBanner/inmanage)
 
-Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5.5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-5-on-ubuntu-22-04/13272)
+*This script complements the excellent [Distribution based server configurations](#distribution-based-server-configurations) below. Once your server meets the prerequisites (webserver configured & database accessible), this script makes the rest of the setup a breeze.*
 
-### Installing on CentOS 8
-
-If CentOS is more your Flavour, community member TechnicallyComputers has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). 
-
-### Installing on Arch
-
-If Arch Linux is more your flavour, community member brackenhill-mob has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
-
-### Installing on Enterprise Linux
-
-TechnicallyComputers also has a guide for installation Invoice Ninja on Enterprise Linux [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293)
-
-### Installing using Docker
+### Docker
 
 We have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>.
 
@@ -80,17 +68,40 @@ We have a dedicated repository with detailed instructions on how to get started 
 If you make changes to your env file, please remember to reboot the container for the changes to take effect!
 </x-warning>
 
-### Download pre built archive. (Advanced)
+### Distribution based server configurations
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+If you need to configure your server from scratch, you'll find some excellent tutorials below.
 
-<p>A prebuilt archive can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <b>invoiceninja.tar</b></p>
+#### Ubuntu 20.04 (Recommended)
+
+Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
+
+#### Ubuntu 22.04
+
+Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5.5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-5-on-ubuntu-22-04/13272)
+
+#### Installing on CentOS 8
+
+If CentOS is more your Flavour, community member TechnicallyComputers has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). 
+
+#### Installing on Arch
+
+If Arch Linux is more your flavour, community member brackenhill-mob has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
+
+#### Installing on Enterprise Linux
+
+TechnicallyComputers also has a guide for installation Invoice Ninja on Enterprise Linux [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293)
+
+
+### Pre built archive (Advanced)
+
+<!-- Video unavailable ATM "private" <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+A prebuilt archive can be downloaded from our GitHub release page [here](https://github.com/invoiceninja/invoiceninja/releases). You will need to download the package named **invoiceninja.tar**
 
 <p>Unpack this file into the virtual host directory you have created.</p>
 
-<x-warning>
-Please note the release file invoiceninja.tar excludes the .htaccess file, this archive is solely designed for our self host auto updater.
-</x-warning>
+This option is suited for advanced users. If you prefer a more convenient installation option, consider the [CLI script](#cli-script). 
 
 #### File Permissions
 
@@ -103,7 +114,7 @@ sudo chown -R www-data:www-data /var/www/html
 sudo find ./ -type d -exec chmod 755 {} \;
 ```
 
-##### Web server configuration
+#### Web server configuration
 <p>A sample NGINX configuration is provided below, it assumes you have PHP 8.1 installed with the PHP FPM extension installed</p>
 
 ```bash
@@ -153,23 +164,23 @@ Performance hint!
 Enable gzip in your webserver configuration, this will dramatically improve the loading time of the application! Please see the above nginx configuration for a sample of how to load the components of the application with gzip.
 </x-warning>
 
-##### Database server configuration
+#### Database server configuration
 
 <p>Create a database on your MySQL compatible server and add a user that has full access to the database. Database configuration is out of the scope of this article, more information can be found <a href="https://dev.mysql.com/doc/refman/8.0/en/creating-database.html">here</a></p>
 
-##### Cron configuration
+#### Cron configuration
 
 <x-warning>
 Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
 </x-warning>
 
-<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record.</p>
+Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record.
 
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-<p>If you are using shared hosting, then you will need to add an additional parameter to the cron command which looks like this:</p>
+If you are using shared hosting, then you will need to add an additional parameter to the cron command which looks like this:
 
 ```
 * * * * * cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
@@ -177,7 +188,7 @@ Ensure you set the scheduler under the web server user i.e. `sudo -u www-data cr
 
 ### Installation from git (Advanced)
 
-<p>For power users installing the app from Github can be done with the following two steps</p>
+For power users installing the app from Github can be done with the following two steps
 
 ```bash
 git clone -b v5-stable --single-branch https://github.com/invoiceninja/invoiceninja.git
@@ -185,9 +196,11 @@ git clone -b v5-stable --single-branch https://github.com/invoiceninja/invoiceni
 composer create-project --no-dev
 ```
 
+*Be aware, at the time of writing the react frontend is not included by default if you clone this repository. Refer to the configured githubb workflow for additional information.*
+
 ### Final setup steps
 
-<p>Once you have configured your virtual host, copy the same .env file </p>
+Once you have configured your virtual host, copy the same .env file
 
 
 ```bash
@@ -200,12 +213,13 @@ to
 .env
 
 ``` 
-<p>
-then create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page</p>
+
+then create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page
 
 
 #### Cron configuration
-<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
+
+Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record
 
 <x-warning>
 Ensure you set the scheduler under the web server user i.e. `sudo -u www-data crontab -e`
