@@ -196,7 +196,7 @@ git clone -b v5-stable --single-branch https://github.com/invoiceninja/invoiceni
 composer create-project --no-dev
 ```
 
-*Be aware, at the time of writing the react frontend is not included by default if you clone this repository. Refer to the configured githubb workflow for additional information.*
+*Be aware, at the time of writing the react frontend is not included by default if you clone this repository. Refer to the configured Github workflow for additional information.*
 
 ### Final setup steps
 
