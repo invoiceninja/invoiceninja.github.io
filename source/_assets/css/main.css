@@ -13,3 +13,18 @@
     font-size: 15px;
   }
 }
+
+.prose {
+  width: 100%;
+  max-width: 100vw;
+  /* Ensure it doesn't exceed viewport width */
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .prose {
+    padding: 0;
+  }
+}
