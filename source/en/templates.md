@@ -782,6 +782,12 @@ Here are the object definitions that are available.
 | vat_number | The client VAT Number | 428950405 |
 | currency | The client currency code | USD | 
 | locale | The client locale | en |
+| address | The formatted billing address | 1 Wallaby Way, Sydney |
+| shipping_address | The formatted shipping address | 2 Wallaby Way, Sydney | 
+| custom_value1 | The first client custom value | Bob |
+| custom_value2 | The second client custom value | Blue |
+| custom_value3 | The third client custom value | Batman |
+| custom_value4 | The fourth client custom value | Pistachio |
 | | | |
 
 ### Project Definition
