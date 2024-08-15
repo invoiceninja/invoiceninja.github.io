@@ -145,7 +145,7 @@ A running task is any task that is currently tracking billable hours on the cloc
 - A task automatically enters a _Running_ status when it contains a line for date/time with a start time entered, but no duration or end time yet entered.
 
 - A running task will always show a moving time for it's _Duration_ to help track the active work being performed for that task.
-- When a task is in the running state, it will be presented in the table as "Running" but it technically still has the manually set task status, and when you look at the tasks kanban view, you will see it sorted as such, with a "Start" icon next to it to represent it is in a running state.
+- When a task is in the running state, it will be presented in the table as "Running" but it technically still has the manually set task status, and when you look at the tasks kanban view, you will see it sorted as such, with a "play" icon next to it to represent it is in a running state.
 - Whether you manually populate the _End Time_ or _Duration_ of the open ended line on a task record, or stop the task to automatically populate those fields, the running task will return to a _Logged_ state, and appear in the table with the manually set task status.
 
 ### Invoiced
