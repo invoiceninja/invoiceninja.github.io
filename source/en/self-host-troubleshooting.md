@@ -14,6 +14,31 @@ If you're experiencing issues with your self-hosted Invoice Ninja instance, foll
 2. Consult the [Invoice Ninja forum](https://forum.invoiceninja.com/) for community support.
 3. Examine the logs for error messages. You can find the logs in the `storage/logs` directory.
 
+## Incomplete / Unsuccessful in app updates
+
+If you application failed to update to the latest installation there are several reasons why this may happen:
+
+1. Timeout: Your system timed out during the upgrade process
+2. System requirements may have changed. Prior to upgrading if the version is changing its minor release variable (v5.XXX.1) then you should check the system requirements / release notes to ensure your system is prepared prior to the upgrade. You may need to add a PHP extension or there may be a change to the minimum PHP version required. Patch versions (v5.10.XXX) do not require have any changes to system requirements.
+
+In order to recover from a failed/incomplete update, you may attempt to run the self update again within the application else you will want to follow these steps:
+
+1. Navigate to the releases page on [Github](https://github.com/invoiceninja/invoiceninja/releases)
+2. Download the file labelled invoiceninja.tar
+3. Unpack this file and overwrite your existing file structure
+4. Then either of these two steps:
+ a) From the command line at the project root: 
+
+ ```bash
+ composer i -o --no-dev
+ php artisan migrate
+ php artisan optimize:clear
+ ```
+
+ b) From a browser window 
+
+ https://yourdomain.com/update?secret=UPDATE_SECRET_VALUE_FROM_ENV_FILE
+
 ## SQLSTATE[42S22]: Column not found: 
 
 If you see in your error logs a message such as "Column not found" this indicates that your migrations are not up to date and need to be run there are two ways to force the migrations to run:
