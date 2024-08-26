@@ -14,6 +14,18 @@ If you're experiencing issues with your self-hosted Invoice Ninja instance, foll
 2. Consult the [Invoice Ninja forum](https://forum.invoiceninja.com/) for community support.
 3. Examine the logs for error messages. You can find the logs in the `storage/logs` directory.
 
+## SQLSTATE[42S22]: Column not found: 
+
+If you see in your error logs a message such as "Column not found" this indicates that your migrations are not up to date and need to be run there are two ways to force the migrations to run:
+
+1. http://yourdomain.com/update?secret=insert_your_UPDATE_SECRET_variable_here
+2. From the project root run the following command:
+
+```bash
+
+php artisan migrate
+
+```
 
 ## Cron not running / Queue not running
 
