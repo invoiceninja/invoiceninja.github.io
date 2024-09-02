@@ -405,3 +405,5 @@ A failed request would return the an array like this:
 	"status_code" : "403" / HTTP status code 4xx/5xx
 }
 ```
+
+<x-next url=/en/vendors>Vendors</x-next>

@@ -81,30 +81,7 @@ If you consistently entered all your expenses and payments received in Invoice N
 
 ### Profit and Loss Report
 
-This is the most common year-end report which sums up your revenues, expenses, profits, and taxes collected.
-
-![Profit and loss Report](/assets/images/reports/profit_and_loss_report.png)
-
-- Expensed reporting: This works similar to accrual accounting. When expense reporting is disabled: it means we tally up all expenses for that period, regards whether they were marked as paid or not.
-  - When toggled off, we only tally up the expenses that have been marked as **paid**.
-- Accrual accounting: When accrual accounting is disabled: it means we tally up all invoiced totals for that period, regards whether they were marked as paid or not.
-  - When toggled off, we only tally up the payments that have been marked as **paid**.
-
-### Example
-
-![Profit and loss report example](/assets/images/reports/profit_and_loss_report_result_csv_example.png)
-
-The Profit and Loss report also breaks down the expenses by category.
-
-In the example above there was a total of $830.60 in payments received, minus a total of $452.91 expenses for a total profit of $377.69. The taxes that were paid on expenses was $51.09.
-
-There are other reports for details such as types of taxes collected, and for a list of payments/expenses/etc.
-
-Note that we convert all payment amounts to the company currency as set in _Settings>Localization_.
-
-For example if you recorded payments in CAD and USD but your company currency is USD, the totals displayed in the Profit and Loss report will all be converted to USD.
-
-There is also a breakdown of revenue, expenses, and currencies at the base of the report.
+See [Reports: Profit and Loss Report](/en/reports#profit_and_loss_report)
 
 ### Manual Calculations
 
