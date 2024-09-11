@@ -7,22 +7,19 @@ locale: en
 # e-invoices
 
 ## Intro
-
-e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has supported UBL format invoices for some time, and now we also support a range of e-invoice formats including direct delivery of e-invoices over the PEPPOL network.
+e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has supported UBL format invoices for some time and now we also support a range of e-invoice formats including direct delivery of e-invoices over the PEPPOL network.
 
 ## e-invoice standards
-
-The list of supported einvoice formats are as follows:
+The list of supported e-invoice formats include:
 
 - Facturae (Spain)
 - FatturaPA (Italy)
 - FACT1 (Romania)
 - Zugferd - XRechung (Germany)
 - EN16931 (Generic)
-- PEPPOL (Universal - Cross industry / border format)
+- PEPPOL (Universal - Cross industry / border)
 
 ## How does it work?
-
 All of the supported e-invoice standards can be downloaded directly after creating a standard invoice in Invoice Ninja. In some jurisdictions you are able to forward the e-invoice directly to your customer, however in some regions (ie, Italy) the invoice is sent through the government and then forwarded onto the customer. This introduces a number of complexities including both parties being registered with the government body (SDI for Italy). If you are in one of these jurisdictions, you will need to start the process (if you have not already) in acquiring a government routing ID.
 
 Invoice Ninja will be rolling out a PEPPOL access point which will be available for both self hosted and hosted users to route their e-invoices through the PEPPOL network. 
