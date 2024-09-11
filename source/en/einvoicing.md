@@ -172,7 +172,9 @@ The payment means contains information on how the seller wishes to be paid. Use 
 PaymentMeansCode = 30 => Credit Transfer
 PaymentID = The billing reference ie Invoice-2024-01
 PayeeFinancialAccount
-    ID = IBAN
+    ID = IBAN / Bank Account Number
 FinancialInstitutionBranch
     ID = BIC number
+
+    
 <x-next url=/en/invoices>Invoices</x-next>
