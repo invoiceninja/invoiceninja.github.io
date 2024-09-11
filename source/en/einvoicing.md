@@ -14,12 +14,12 @@ e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has su
 
 The list of supported einvoice formats are as follows:
 
-    - Facturae (Spain)
-    - FatturaPA (Italy)
-    - FACT1 (Romania)
-    - Zugferd - XRechung (Germany)
-    - EN16931 (Generic)
-    - PEPPOL (Universal - Cross industry / border format)
+- Facturae (Spain)
+- FatturaPA (Italy)
+- FACT1 (Romania)
+- Zugferd - XRechung (Germany)
+- EN16931 (Generic)
+- PEPPOL (Universal - Cross industry / border format)
 
 ## How does it work?
 
