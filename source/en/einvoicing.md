@@ -6,7 +6,7 @@ locale: en
 
 # e-invoices
 
-## Intro
+## Introduction
 e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has supported UBL format invoices for some time and now we also support a range of e-invoice formats including direct delivery of e-invoices over the PEPPOL network.
 
 ## e-invoice standards
@@ -63,4 +63,116 @@ Yes, in an upcoming version we will also support the delivery of e-invoicing via
  - Enable e-invoicing (Settings > E Invoice - select e invoice type => PEPPOL)
  - Generate and send e-invoices!
 
+## Code lists / values
+
+<a id="payment-means-codelist"></a>
+<details>
+<summary>Payment Means Codelist</summary>
+
+1 - Instrument not defined<br>
+2 - Automated clearing house credit<br>
+3 - Automated clearing house debit <br>
+4 - ACH demand debit reversal <br>
+5 - ACH demand credit reversal <br>
+6 - ACH demand credit <br>
+7 - ACH demand debit <br>
+8 - Hold <br>
+9 - National or regional clearing <br>
+10 - In cash <br>
+11 - ACH savings credit reversal <br>
+12 - ACH savings debit reversal <br>
+13 - ACH savings credit <br>
+14 - ACH savings debit <br>
+15 - Bookentry credit <br>
+16 - Bookentry debit <br>
+17 - ACH demand cash concentration/disbursement (CCD) credit <br>
+18 - ACH demand cash concentration/disbursement (CCD) debit <br>
+19 - ACH demand corporate trade payment (CTP) credit <br>
+20 - Cheque <br>
+21 - Banker\'s draft <br>
+22 - Certified banker\'s draft <br>
+23 - Bank cheque (issued by a banking or similar establishment) <br>
+24 - Bill of exchange awaiting acceptance <br>
+25 - Certified cheque <br>
+26 - Local cheque <br>
+27 - ACH demand corporate trade payment (CTP) debit <br>
+28 - ACH demand corporate trade exchange (CTX) credit <br>
+29 - ACH demand corporate trade exchange (CTX) debit <br>
+30 - Credit transfer <br>
+31 - Debit transfer <br>
+32 - ACH demand cash concentration/disbursement plus (CCD+) credit <br>
+33 - ACH demand cash concentration/disbursement plus (CCD+) debit <br>
+34 - ACH prearranged payment and deposit (PPD) <br>
+35 - ACH savings cash concentration/disbursement (CCD) credit <br>
+36 - ACH savings cash concentration/disbursement (CCD) debit <br>
+37 - ACH savings corporate trade payment (CTP) credit <br>
+38 - ACH savings corporate trade payment (CTP) debit <br>
+39 - ACH savings corporate trade exchange (CTX) credit <br>
+40 - ACH savings corporate trade exchange (CTX) debit <br>
+41 - ACH savings cash concentration/disbursement plus (CCD+) credit <br>
+42 - Payment to bank account <br>
+43 - ACH savings cash concentration/disbursement plus (CCD+) debit <br>
+44 - Accepted bill of exchange <br>
+45 - Referenced home-banking credit transfer <br>
+46 - Interbank debit transfer <br>
+47 - Home-banking debit transfer <br>
+48 - Bank card <br>
+49 - Direct debit <br>
+50 - Payment by postgiro <br>
+51 - FR, norme 6 97-Telereglement CFONB (French Organisation for Banking Standards)  - Option A <br>
+52 - Urgent commercial payment <br>
+53 - Urgent Treasury Payment <br>
+60 - Promissory note <br>
+61 - Promissory note signed by the debtor <br>
+62 - Promissory note signed by the debtor and endorsed by a bank <br>
+63 - Promissory note signed by the debtor and endorsed by a third party <br>
+64 - Promissory note signed by a bank <br>
+65 - Promissory note signed by a bank and endorsed by another bank <br>
+66 - Promissory note signed by a third party <br>
+67 - Promissory note signed by a third party and endorsed by a bank <br>
+70 - Bill drawn by the creditor on the debtor <br>
+74 - Bill drawn by the creditor on a bank <br>
+75 - Bill drawn by the creditor, endorsed by another bank <br>
+76 - Bill drawn by the creditor on a bank and endorsed by a third party <br>
+77 - Bill drawn by the creditor on a third party <br>
+78 - Bill drawn by creditor on third party, accepted and endorsed by bank <br>
+91 - Not transferable banker\'s draft <br>
+92 - Not transferable local cheque <br>
+93 - Reference giro <br>
+94 - Urgent giro <br>
+95 - Free format giro <br>
+96 - Requested method for payment was not used <br>
+97 - Clearing between partners <br>
+ZZZ - Mutually defined <br>
+
+</details>
+
+
+## Jurisdiction specific requirements
+
+### DE - Germany
+
+#### Payment Means - Mandatory
+
+The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) list to deterine the correct code required. For example, to display your bank account details the following would be required
+
+```php
+   <cac:PaymentMeans>
+      <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+      <cbc:PaymentID>DE-23649</cbc:PaymentID>
+      <cac:PayeeFinancialAccount>
+         <cbc:ID>DE89370400440532013000</cbc:ID>
+         <cac:FinancialInstitutionBranch>
+            <cbc:ID>DEUTDEMMXXX</cbc:ID>
+         </cac:FinancialInstitutionBranch>
+      </cac:PayeeFinancialAccount>
+   </cac:PaymentMeans>
+```
+
+PaymentMeansCode = 30 => Credit Transfer
+PaymentID = The billing reference ie Invoice-2024-01
+PayeeFinancialAccount
+    ID = IBAN
+FinancialInstitutionBranch
+    ID = BIC number
 <x-next url=/en/invoices>Invoices</x-next>
