@@ -147,26 +147,24 @@ ZZZ - Mutually defined <br>
 
 </details>
 
-
 ## Jurisdiction specific requirements
 
 ### AT - Austria
 
-
 #### CustomerAssignedAccountID - Mandatory for GOV clients
-
 If you are sending an e-invoice to a government body, then you must include in the object
 
 AccountingSupplierParty > CustomerAssignedAccountID
 
 This is the ID of the department within the government that the e-invoice will be routed to
 
+### BE - Belgium
+No additional requirements, when your legal entity id is created this is automatically sync'd with HERMES
 
-### DE - Germany
+### CH - Switzerland
 
 #### Payment Means - Mandatory
-
-The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) list to deterine the correct code required. For example, to display your bank account details the following would be required
+The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) you must have at least ONE payment means that is a Credit Transfer type
 
 ```php
    <cac:PaymentMeans>
@@ -179,5 +177,82 @@ The payment means contains information on how the seller wishes to be paid. Use 
       </cac:PayeeFinancialAccount>
    </cac:PaymentMeans>
 ```
+
+### DE - Germany
+
+#### Payment Means - Mandatory
+The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) list to determine the correct code required. For example, to display your bank account details the following would be required
+
+```php
+   <cac:PaymentMeans>
+      <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode> <!-- code from payment means code list Credit Transfer-->
+      <cac:PayeeFinancialAccount>
+         <cbc:ID>DE89370400440532013000</cbc:ID> <!-- IBAN CODE -->
+         <cac:FinancialInstitutionBranch>
+            <cbc:ID>DEUTDEMMXXX</cbc:ID> <!-- BIC CODE -->
+         </cac:FinancialInstitutionBranch>
+      </cac:PayeeFinancialAccount>
+   </cac:PaymentMeans>
+```
+
+### ES - Spain
+
+*** Government registration required ***
+
+#### Payment Means - Mandatory
+The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) you must have at least ONE payment means that is a Credit Transfer type
+
+```php
+   <cac:PaymentMeans>
+      <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode> <!-- code from payment means code list Credit Transfer-->
+      <cac:PayeeFinancialAccount>
+         <cbc:ID>DE89370400440532013000</cbc:ID> <!-- IBAN CODE -->
+         <cac:FinancialInstitutionBranch>
+            <cbc:ID>DEUTDEMMXXX</cbc:ID> <!-- BIC CODE -->
+         </cac:FinancialInstitutionBranch>
+      </cac:PayeeFinancialAccount>
+   </cac:PaymentMeans>
+```
+
+#### Due Date - Mandatory
+The invoice MUST have a due date set.
+
+#### Government bound e-invoices
+If sending to a Spanish government body the property
+
+AccountingCustomerParty > PublicIdentifiers
+
+Must be set
+
+### FI - Finland
+No special requirements
+
+### FR - France
+The SIRET / 0009 identifier of the final recipient is to be included in the invoice.accountingCustomerParty.publicIdentifiers array.
+
+### IT - Italy
+No special requirements
+
+### NL - Netherlands
+When sending to government bodies the following property must be configured
+
+accountingSupplierParty > party > contact >email 
+
+### PL -Poland
+
+*** Government registration required ***
+
+### RO -Romania
+
+*** Government registration required ***
+
+#### Special codes for county
+The county field for a Romania address must use the ISO3166-2:RO codes, e.g. "RO-AB, RO-AR". Don’t omit the country prefix!
+
+#### Special codes for city
+The city field for county RO-B must be SECTOR1 - SECTOR6.
+
+### SE - Sweden
+Receiver needs to be registered with Svefaktura to receive the e-invoice
 
 <x-next url=/en/invoices>Invoices</x-next>
