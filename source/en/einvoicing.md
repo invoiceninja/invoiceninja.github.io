@@ -150,6 +150,18 @@ ZZZ - Mutually defined <br>
 
 ## Jurisdiction specific requirements
 
+### AT - Austria
+
+
+#### CustomerAssignedAccountID - Mandatory for GOV clients
+
+If you are sending an e-invoice to a government body, then you must include in the object
+
+AccountingSupplierParty > CustomerAssignedAccountID
+
+This is the ID of the department within the government that the e-invoice will be routed to
+
+
 ### DE - Germany
 
 #### Payment Means - Mandatory
@@ -158,23 +170,14 @@ The payment means contains information on how the seller wishes to be paid. Use 
 
 ```php
    <cac:PaymentMeans>
-      <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
-      <cbc:PaymentID>DE-23649</cbc:PaymentID>
+      <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode> <!-- code from payment means code list Credit Transfer-->
       <cac:PayeeFinancialAccount>
-         <cbc:ID>DE89370400440532013000</cbc:ID>
+         <cbc:ID>DE89370400440532013000</cbc:ID> <!-- IBAN CODE -->
          <cac:FinancialInstitutionBranch>
-            <cbc:ID>DEUTDEMMXXX</cbc:ID>
+            <cbc:ID>DEUTDEMMXXX</cbc:ID> <!-- BIC CODE -->
          </cac:FinancialInstitutionBranch>
       </cac:PayeeFinancialAccount>
    </cac:PaymentMeans>
 ```
 
-PaymentMeansCode = 30 => Credit Transfer
-PaymentID = The billing reference ie Invoice-2024-01
-PayeeFinancialAccount
-    ID = IBAN / Bank Account Number
-FinancialInstitutionBranch
-    ID = BIC number
-
-    
 <x-next url=/en/invoices>Invoices</x-next>
