@@ -154,5 +154,36 @@ The following settings are available:
 - Blocked Email Addresses (A comma separated list of domains which are blocked from sending emails to the configured expense mailbox)
 
 
+### Inbound Providers
+
+#### Mailgun
+To ensure delivery, you have to configure all used mailgun regions with a recieving configuration using store & notify.
+
+Create and setup your mailgun account
+Prepare your DNS settings for inbound mail processing, by setting up necessary MX records
+Create a receiving route using store and notify
+3a. Go to Receiving Section and click on "Create Route"
+3b. Create your route by selecting your mailbox configured in invoiceninja and add notify endpoint /api/v1/mailgun_inbound_webhook
+
+
+#### Brevo
+To ensure delivery you have to configure brevo inbound parsing according to: https://developers.brevo.com/docs/inbound-parse-webhooks
+
+Create and setup your brevo account
+Prepare your DNS settings for inbound mail processing, by setting up necessary MX records
+Register the webhook via the brevo api to the following notify endpoint: /api/v1/brevo_inbound_webhook?token=brevo-api-token
+SetUp Postmark
+To ensure delivery you have to configure brevo inbound parsing according to: https://developers.brevo.com/docs/inbound-parse-webhooks
+
+#### SetUp with Own MailServer
+If you want to use your own mailbox, you have to either redirect the mail to a mailbox of one of the providers above or use a provider for inbound directly.
+We recommend to use one of these providers hosted on a subdomain f.ex. invoicing.xxx.com directly or to use the auto-generated mailbox of postmark when you are using redirect.
+
+#### SetUp Mindee OCR
+To parse a document IN can use OCR solutions like Mindee. Mindee offers to process documents and guess the contents using AI. Each account has 250 pages for free, which makes it very suiteable for small busineses using self-hosted.
+
+Use the following .env variable to configure your mindee api key:
+
+MINDEE_API_KEY=your-api-key
 
 <x-next url=/en/credits>Credits</x-next>
