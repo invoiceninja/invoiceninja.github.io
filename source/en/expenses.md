@@ -137,4 +137,22 @@ An expense record can manually be deleted, which will remove it from view, and r
 - You can see all expenses attached to a specific client: _Client Details > Expenses_
 - Expenses can have default options configured under _Settings > Expense Settings_. See [Expense Settings](/en/basic-settings#expense_settings)
 
+## Expense Inbound Email (Self Host Only)
+
+This feature allows you to configure an e-mail address to accept attachments from vendors, clients and internal users which can then be processed using Mindee to perform data extraction and create expense records. Zugferd xml files are also supported and are able to be automatically parsed and converted into an expense.
+
+The system works by configuring an e-mail address to accept attachments, the attachments (and the email body text) are stored on file and an expense record is created. The system will attempt to extract data from the document and insert it into the expense record.
+
+The following settings are available:
+
+- Enable Expense Mailbox (Enabled/Disables the processing of emails)
+- Expense Mailbox E-Mail (The e-mail address to process which will be receiving the emails)
+- Allow Company Users (Toggles whether internal users can send emails to the configured expense mailbox)
+- Allow Vendors (Toggles whether vendors can send emails to the configured expense mailbox)
+- Allow Unknown Senders (Toggles whether unknown semders can send emails to the configured expense mailbox)
+- Allowed Email Addresses (A comma separated list of domains which are allowed to send emails to the configured expense mailbox)
+- Blocked Email Addresses (A comma separated list of domains which are blocked from sending emails to the configured expense mailbox)
+
+
+
 <x-next url=/en/credits>Credits</x-next>
