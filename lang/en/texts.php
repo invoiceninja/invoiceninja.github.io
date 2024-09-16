@@ -43,6 +43,7 @@ return [
     'credits' => 'Credits',
     'expenses' => 'Expenses',
     'invoices' => 'Invoices',
+    'einvoicing' => 'E-invoices',
     'payments' => 'Payments',
     'products' => 'Products',
     'projects' => 'Projects',

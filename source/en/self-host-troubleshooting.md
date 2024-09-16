@@ -39,6 +39,10 @@ In order to recover from a failed/incomplete update, you may attempt to run the 
 
  https://yourdomain.com/update?secret=UPDATE_SECRET_VALUE_FROM_ENV_FILE
 
+### ERROR: Target class [view] does not exist
+
+This error can usually be resolved by deleting the contents of the bootstrap/cache folder.
+
 ## SQLSTATE[42S22]: Column not found: 
 
 If you see in your error logs a message such as "Column not found" this indicates that your migrations are not up to date and need to be run there are two ways to force the migrations to run:

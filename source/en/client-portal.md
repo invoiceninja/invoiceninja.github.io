@@ -106,4 +106,4 @@ Pre-payments made by clients will show up in the Payments section of the Invoice
 
 ![Apply payment](/assets/images/payments/unapplied_payment.png "Apply payment")
 
-<x-next url=/en/invoices>Invoices</x-next>
+<x-next url=/en/einvoicing>E Invoicing</x-next>

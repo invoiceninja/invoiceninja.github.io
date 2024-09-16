@@ -42,6 +42,7 @@ return [
     'clients' => 'Clients',
     'credits' => 'Crédits',
     'expenses' => 'Dépenses',
+    'einvoicing' => 'E-invoices',
     'invoices' => 'Factures',
     'payments' => 'Paiements',
     'products' => 'Produits',

@@ -185,7 +185,7 @@ The API key from [Zip-Tax](https://zip-tax.com) required to support address base
 NORDIGEN_SECRET_ID=
 NORDIGEN_SECRET_KEY=
 ```
-Nordigen api keys for bank transaction imports
+The API id and key from [GoCardless/Nordigen](https://bankaccountdata.gocardless.com/user-secrets/) required for bank transaction imports
 
 ```
 DELETE_BACKUP_DAYS
