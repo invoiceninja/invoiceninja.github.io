@@ -8,9 +8,7 @@ locale: en
 
 ## Import Data
 
-You can import data into Invoice Ninja from CSV files or other accounting software from anywhere in the application.
-
-Our intelligent import system allows you to map columns dynamically.
+You can import data into Invoice Ninja from CSV files or other accounting software from anywhere in the application using the green Import Button.
 
 ![alt text](/assets/images/settings/import_overview.png "CSV Imports")
 
@@ -25,6 +23,15 @@ This will upload the file and we will perform column matching and return you to 
 Here we match the column from the CSV (left column) with the matching Invoice Ninja columns (right columns). From here you can adjust the mappings and when they look correct, click on Import.
 
 The system will then process the CSV file and email you the results of the import.
+
+## Importing Invoices
+
+There are some special considerations when importing invoices.
+
+1. A invoice number must be included in the file and must be unique.
+2. If you have multiple line items you wish to include within the same invoice, use the same invoice number for each line.
+3. Each line item MUST include a quantity and cost column for the calculations of the invoice total.
+4. If you wish to include a payment on the invoice, add a payment amount column and reference the amount paid.
 
 ## Third Party Import
 

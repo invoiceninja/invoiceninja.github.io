@@ -8,7 +8,7 @@ locale: fr_CA
 
 ## Importer des données
 
-Vous pouvez importer des données dans Invoice Ninja à partir de fichiers CSV ou d'autres logiciels de comptabilité depuis n'importe où dans l'application.
+Vous pouvez importer des données dans Invoice Ninja à partir de fichiers CSV ou d'autres logiciels de comptabilité depuis n'importe où dans l'application en utilisant le bouton vert Importer.
 
 Notre système d'importation intelligent vous permet de mapper dynamiquement les colonnes.
 
