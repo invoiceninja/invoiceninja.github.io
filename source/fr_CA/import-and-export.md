@@ -24,6 +24,10 @@ Ici, nous faisons correspondre la colonne du CSV (colonne de gauche) avec les co
 
 Le système traitera alors le fichier CSV et vous enverra les résultats de l'importation par e-mail.
 
+<x-warning>
+Si vous importez régulièrement le même format de fichier, l'application vous offrira la possibilité d'enregistrer les colonnes d'importation comme modèle. Vous pourrez sélectionner le modèle dans le menu déroulant lors de l'importation.
+</x-warning>
+
 ## Importation de factures
 
 Il y a quelques considérations particulières à prendre en compte lors de l'importation de factures.
