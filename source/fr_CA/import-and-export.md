@@ -8,17 +8,19 @@ locale: fr_CA
 
 ## Importer des données
 
-Vous pouvez importer des données dans Invoice Ninja à partir de fichiers CSV ou d'autres logiciels comptables.
+Vous pouvez importer des données dans Invoice Ninja à partir de fichiers CSV ou d'autres logiciels de comptabilité depuis n'importe où dans l'application.
 
 Notre système d'importation intelligent vous permet de mapper dynamiquement les colonnes.
 
-![texte alternatif](/assets/images/settings/export_csv.png "Importations CSV")
+![alt text](/assets/images/settings/import_overview.png "Importations CSV")
 
-Commencez d'abord par télécharger votre fichier dans la catégorie appropriée et cliquez sur Importer.
+Commencez par téléverser votre fichier CSV dans la zone de dépôt.
+
+![alt text](/assets/images/settings/import_column_matching.png "Mappage CSV")
 
 Cela téléchargera le fichier et nous effectuerons la correspondance des colonnes et vous renverrons vers une nouvelle page.
 
-![texte alternatif](/assets/images/settings/import_column_matching.png "Mappage CSV")
+![alt text](/assets/images/settings/import_column_matching2.png "Mappage CSV")
 
 Ici, nous faisons correspondre la colonne du CSV (colonne de gauche) avec les colonnes correspondantes d'Invoice Ninja (colonnes de droite). D'ici, vous pouvez ajuster les correspondances et, lorsqu'elles semblent correctes, cliquez sur Importer.
 
@@ -54,15 +56,22 @@ Il existe plusieurs façons d'exporter des données hors d'Invoice Ninja.
 
 En utilisant le [rapport](/fr_CA/reports), vous pouvez générer des rapports et les filtrer. Lorsque vous êtes prêt, il y a un bouton Exporter qui exportera les données en CSV pour des téléchargements instantanés.
 
-## Fonction d'exportation
+## Fonction d'exportation à l'aide des rapports
 
 ```
-Paramètres > Importer | Exporter
+Rapports 
 ```
 
-![texte alternatif](/assets/images/settings/export_csv.png "Exportations CSV")
+![texte alternatif](/assets/images/settings/export_report.png "Exportations CSV")
 
-Depuis le menu d'exportation, vous pouvez sélectionner deux formats :
+À partir du menu des rapports, vous pouvez créer des rapports personnalisés, y compris la possibilité de personnaliser les colonnes que vous souhaitez exporter.
 
- - JSON - Effectue une sauvegarde complète de l'entreprise qui vous est ensuite envoyée par e-mail. Cela exportera l'ensemble de votre entreprise et toutes les informations au cas où vous auriez besoin de restaurer vos données.
- - CSV - Vous permet d'exporter des catégories, c'est-à-dire des clients, des factures et d'effectuer également des rapports de profits et pertes.
+Vous pouvez également utiliser l'action Planifier pour envoyer automatiquement un rapport par courriel à une adresse électronique sélectionnée sur une base régulière.
+
+```bash
+Paramètres > Sauvegarde | Restauration
+```
+
+![alt text](/assets/images/settings/export_backup.png "CSV Exports")
+
+Les sauvegardes et restaurations complètes du système peuvent être effectuées à partir de cette section de l'application. Vous pouvez créer une sauvegarde complète qui sera envoyée par courriel à vous pour conservation.

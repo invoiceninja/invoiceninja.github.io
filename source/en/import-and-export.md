@@ -8,17 +8,19 @@ locale: en
 
 ## Import Data
 
-You can import data into Invoice Ninja from CSV files or other accounting software.
+You can import data into Invoice Ninja from CSV files or other accounting software from anywhere in the application.
 
 Our intelligent import system allows you to map columns dynamically.
 
-![alt text](/assets/images/settings/export_csv.png "CSV Imports")
+![alt text](/assets/images/settings/import_overview.png "CSV Imports")
 
-First start by uploading your file to the correct category and click Import.
+First start by uploading your CSV file to the dropzone.
+
+![alt text](/assets/images/settings/import_column_matching.png "CSV Mapping")
 
 This will upload the file and we will perform column matching a return you to a new page.
 
-![alt text](/assets/images/settings/import_column_matching.png "CSV Mapping")
+![alt text](/assets/images/settings/import_column_matching2.png "CSV Mapping")
 
 Here we match the column from the CSV (left column) with the matching Invoice Ninja columns (right columns). From here you can adjust the mappings and when they look correct, click on Import.
 
@@ -54,17 +56,27 @@ There are several ways to export data out of Invoice Ninja.
 
 Using the [report](/en/reports) you are able to generate reports and filter them down. When you are ready, there is an Export button which will export the data to csv for instant downloads.
 
-## Export Function
+## Export Function using Reports
 
 ```bash
-Settings > Import | Export
+Reports 
 ```
 
-![alt text](/assets/images/settings/export_csv.png "CSV Exports")
+![alt text](/assets/images/settings/export_report.png "CSV Exports")
 
-From the export menu you are able to select two formats:
+From the reports  menu you are able to curate custom reports including the ability to customize the columns that you wish to export.
 
-- JSON - Performs a full company backup which is then emailed to you. This will export your entire company and all information in case you ever need to restore your data.
-- CSV - Allows you to export categories, ie. clients, invoices and also perform Profit & Loss reports
+You are also able to use the Schedule action to automatically email a report to a selected email address on a regular basis.
+
+## Backup Function
+
+```bash
+Settings > Backup | Restore
+```
+
+Full system backups and restores can be performed from this section of the application. You can create a full backup which will be emailed to you for safe keeping.
+
+![alt text](/assets/images/settings/export_backup.png "CSV Exports")
+
 
 <x-next url=/en/qr-codes>QR Codes</x-next>
