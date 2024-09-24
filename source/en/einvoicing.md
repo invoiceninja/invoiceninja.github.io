@@ -4,7 +4,7 @@ section: content
 locale: en
 ---
 
-# e-invoices
+# e-invoices ***ALPHA RELEASE - NOT FOR PRODUCTION USE***
 
 ## Introduction
 e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has supported UBL format invoices for some time and now we also support a range of e-invoice formats including direct delivery of e-invoices over the PEPPOL network.
