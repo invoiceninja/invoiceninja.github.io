@@ -57,19 +57,13 @@ From the Import page, select Zoho and then upload your contacts and invoices fil
 
 # Export Data
 
-There are several ways to export data out of Invoice Ninja.
-
-## Reports
-
-Using the [report](/en/reports) you are able to generate reports and filter them down. When you are ready, there is an Export button which will export the data to csv for instant downloads.
+There are several ways to export data out of Invoice Ninja:
 
 ## Export Function using Reports
 
-```bash
-Reports 
-```
+Using the [report](/en/reports) you are able to generate reports and filter them down. When you are ready, there is an Export button which will export the data to csv for instant downloads.
 
-![alt text](/assets/images/settings/export_report.png "CSV Exports")
+![alt text](/assets/images/settings/export_report.png "Exports")
 
 From the reports  menu you are able to curate custom reports including the ability to customize the columns that you wish to export.
 
@@ -83,7 +77,7 @@ Settings > Backup | Restore
 
 Full system backups and restores can be performed from this section of the application. You can create a full backup which will be emailed to you for safe keeping.
 
-![alt text](/assets/images/settings/export_backup.png "CSV Exports")
+![alt text](/assets/images/settings/export_backup.png "Backup Exports")
 
 
 <x-next url=/en/qr-codes>QR Codes</x-next>

@@ -10,8 +10,6 @@ locale: fr_CA
 
 Vous pouvez importer des données dans Invoice Ninja à partir de fichiers CSV ou d'autres logiciels de comptabilité depuis n'importe où dans l'application en utilisant le bouton vert Importer.
 
-Notre système d'importation intelligent vous permet de mapper dynamiquement les colonnes.
-
 ![alt text](/assets/images/settings/import_overview.png "Importations CSV")
 
 Commencez par téléverser votre fichier CSV dans la zone de dépôt.
@@ -57,21 +55,15 @@ Depuis la page d'importation, sélectionnez Wave Account, puis téléchargez vos
 
 Depuis la page d'importation, sélectionnez Zoho, puis téléchargez vos fichiers contacts et factures, nous ferons le reste !
 
-# Exporter des données
+# Exporter des données:
 
 Il existe plusieurs façons d'exporter des données hors d'Invoice Ninja.
 
-## Rapports
+## Fonction d'exportation à l'aide des rapports
 
 En utilisant le [rapport](/fr_CA/reports), vous pouvez générer des rapports et les filtrer. Lorsque vous êtes prêt, il y a un bouton Exporter qui exportera les données en CSV pour des téléchargements instantanés.
 
-## Fonction d'exportation à l'aide des rapports
-
-```
-Rapports 
-```
-
-![texte alternatif](/assets/images/settings/export_report.png "Exportations CSV")
+![texte alternatif](/assets/images/settings/export_report.png "Exportations")
 
 À partir du menu des rapports, vous pouvez créer des rapports personnalisés, y compris la possibilité de personnaliser les colonnes que vous souhaitez exporter.
 
@@ -81,6 +73,6 @@ Vous pouvez également utiliser l'action Planifier pour envoyer automatiquement 
 Paramètres > Sauvegarde | Restauration
 ```
 
-![alt text](/assets/images/settings/export_backup.png "CSV Exports")
+![alt text](/assets/images/settings/export_backup.png "Sauvegarde")
 
 Les sauvegardes et restaurations complètes du système peuvent être effectuées à partir de cette section de l'application. Vous pouvez créer une sauvegarde complète qui sera envoyée par courriel à vous pour conservation.
