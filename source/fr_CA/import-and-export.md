@@ -26,6 +26,15 @@ Ici, nous faisons correspondre la colonne du CSV (colonne de gauche) avec les co
 
 Le système traitera alors le fichier CSV et vous enverra les résultats de l'importation par e-mail.
 
+## Importation de factures
+
+Il y a quelques considérations particulières à prendre en compte lors de l'importation de factures.
+
+1. Un numéro de facture doit être inclus dans le fichier et doit être unique.
+2. Si vous avez plusieurs articles que vous souhaitez inclure dans la même facture, utilisez le même numéro de facture pour chaque ligne.
+3. Chaque article DOIT inclure une colonne pour la quantité et le coût afin de permettre le calcul du total de la facture.
+4. Si vous souhaitez inclure un paiement sur la facture, ajoutez une colonne pour le montant du paiement et indiquez le montant payé.
+
 ## Importation tierce
 
 ### Freshbooks

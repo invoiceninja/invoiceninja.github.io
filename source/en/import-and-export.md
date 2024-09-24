@@ -18,7 +18,7 @@ First start by uploading your CSV file to the dropzone.
 
 ![alt text](/assets/images/settings/import_column_matching.png "CSV Mapping")
 
-This will upload the file and we will perform column matching a return you to a new page.
+This will upload the file and we will perform column matching and return you to a new page.
 
 ![alt text](/assets/images/settings/import_column_matching2.png "CSV Mapping")
 
