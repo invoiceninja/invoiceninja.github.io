@@ -108,9 +108,49 @@ Each of these 5 field types can be assigned to up to 4 custom fields per entity 
 
 * **Users** - These custom fields add detail to your user account records for registered users of the admin portal.  This would be a good place to put employee details if you plan to use the tasks system or have many users to manage.
 
-<h2 id=generated_numbers>Generated Numbers</h2>
+<h2 id=generated_numbers>mbers</h2>
 
-Generated numbers contain a collection of variables that allow very fine grained customization of generated numbers for any entity in the application.
+mbers contain a collection of variables that allow very fine grained customization of mbers for any entity in the application.
+
+### Available Variables
+
+| Variable | Description |
+|----------|----------|
+| $counter | The current count of the entity |
+| $client_counter | The current count of the client entity |
+| $group_counter | The current count of the group entity |
+| $date:Y-m-d | The current date in the defined format ie Y-m-d |
+| $year | The current year |
+| $user_id | The user id of the creator of the entity |
+| $client_custom1 | The value of the first custom field of the client entity |
+| $client_custom2 | The value of the second custom field of the client entity |
+| $client_custom3 | The value of the third custom field of the client entity |
+| $client_custom4 | The value of the fourth custom field of the client entity |
+| $client_id_number | The Client ID number |
+| $client_number | The Client number |
+| $vendor_custom1 | The value of the first custom field of the vendor entity |
+| $vendor_custom2 | The value of the second custom field of the vendor entity |
+| $vendor_custom3 | The value of the third custom field of the vendor entity |
+| $vendor_custom4 | The value of the fourth custom field of the vendor entity |
+| $vendor_id_number | The Vendor ID number |
+| $vendor_number | The Vendor number |
+| $expense_id_number | The matching Client or Vendor ID number |
+| $user_custom1 | The value of the first custom field of the user entity |
+| $user_custom2 | The value of the second custom field of the user entity |
+| $user_custom3 | The value of the third custom field of the user entity |
+| $user_custom4 | The value of the fourth custom field of the user entity |
+
+To use these variables in your number patterns, you can add them like this:
+
+```bash
+{$date:y}-{$counter}-{$user_custom1}
+```
+
+<x-warning>
+    <p>
+        <strong>Note:</strong> The patterns must resolve to a UNIQUE number, duplicates are not allowed and the generated number will not be applied - or - will be modified to be unique.
+    </p>
+</x-warning>
 
 ### Settings
 
@@ -132,11 +172,11 @@ The settings tab contains the most general options that apply to number generati
 
 ### Clients, Invoices, Recurring Invoices, Payments, etc.
 
-![alt text](/assets/images/settings/generated_numbers/generated_numbers_client.png "Client generated numbers")
+![alt text](/assets/images/settings/generated_numbers/generated_numbers_client.png "Client mbers")
 
-The various entity records available that generated numbers apply to, are all listed with their own tabs at the top, for you to customize the behaviours of the number generation for each respective entity type.
+The various entity records available that mbers apply to, are all listed with their own tabs at the top, for you to customize the behaviours of the number generation for each respective entity type.
 
-* **Number Pattern** - Single line text field you can manually edit to finely tune your generated numbers.  Create a rule that outlines how new numbers will be generated.
+* **Number Pattern** - Single line text field you can manually edit to finely tune your mbers.  Create a rule that outlines how new numbers will be generated.
 
 ```bash
 {$date:y}-{$counter}
@@ -309,7 +349,7 @@ Customize any options here to override the regular settings for each respective 
 
 * **Invoice Design** - Custom invoice design templates, specific to the group.
 
-* **Generated Numbers** - Use a unique number counter and set of numbering rules for the group, apart from the rest of your clients.
+* **mbers** - Use a unique number counter and set of numbering rules for the group, apart from the rest of your clients.
 
 * **Email Settings** - Change the default generic settings for emails sent out to group members by Invoice NInja.
 
