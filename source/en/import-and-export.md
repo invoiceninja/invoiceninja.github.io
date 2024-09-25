@@ -24,6 +24,10 @@ Here we match the column from the CSV (left column) with the matching Invoice Ni
 
 The system will then process the CSV file and email you the results of the import.
 
+<x-warning>
+If you regularly import the same file format, the application will offer you the ability to save the import columns as a template. You can select the template from the dropdown when importing.
+</x-warning>
+
 ## Importing Invoices
 
 There are some special considerations when importing invoices.
