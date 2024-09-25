@@ -108,9 +108,9 @@ Each of these 5 field types can be assigned to up to 4 custom fields per entity 
 
 * **Users** - These custom fields add detail to your user account records for registered users of the admin portal.  This would be a good place to put employee details if you plan to use the tasks system or have many users to manage.
 
-<h2 id=generated_numbers>mbers</h2>
+<h2 id=generated_numbers>Generated Numbers</h2>
 
-mbers contain a collection of variables that allow very fine grained customization of mbers for any entity in the application.
+Generated numbers contain a collection of variables that allow very fine grained customization of generated numbers for any entity in the application.
 
 ### Available Variables
 
@@ -152,6 +152,7 @@ To use these variables in your number patterns, you can add them like this:
     </p>
 </x-warning>
 
+
 ### Settings
 
 ![alt text](/assets/images/settings/generated_numbers/generated_numbers_settings_pane.png "Generated Numbers Settings")
@@ -172,11 +173,11 @@ The settings tab contains the most general options that apply to number generati
 
 ### Clients, Invoices, Recurring Invoices, Payments, etc.
 
-![alt text](/assets/images/settings/generated_numbers/generated_numbers_client.png "Client mbers")
+![alt text](/assets/images/settings/generated_numbers/generated_numbers_client.png "Client generated numbers")
 
-The various entity records available that mbers apply to, are all listed with their own tabs at the top, for you to customize the behaviours of the number generation for each respective entity type.
+The various entity records available that generated numbers apply to, are all listed with their own tabs at the top, for you to customize the behaviours of the number generation for each respective entity type.
 
-* **Number Pattern** - Single line text field you can manually edit to finely tune your mbers.  Create a rule that outlines how new numbers will be generated.
+* **Number Pattern** - Single line text field you can manually edit to finely tune your generated numbers.  Create a rule that outlines how new numbers will be generated.
 
 ```bash
 {$date:y}-{$counter}
@@ -349,7 +350,7 @@ Customize any options here to override the regular settings for each respective 
 
 * **Invoice Design** - Custom invoice design templates, specific to the group.
 
-* **mbers** - Use a unique number counter and set of numbering rules for the group, apart from the rest of your clients.
+* **Generated Numbers** - Use a unique number counter and set of numbering rules for the group, apart from the rest of your clients.
 
 * **Email Settings** - Change the default generic settings for emails sent out to group members by Invoice NInja.
 
