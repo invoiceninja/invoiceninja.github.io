@@ -13,7 +13,7 @@ Once a supplier accepts the PO, it becomes a binding contract between the buyer 
 ## Creating a Purchase Order
 
 <video width="100%" controls>
-  <source src="../assets/videos/purchase_orders/create_purchase_order.mp4" type="video/mp4">
+  <source src="../../assets/videos/purchase_orders/create_purchase_order.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 
