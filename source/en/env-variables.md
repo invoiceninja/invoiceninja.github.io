@@ -196,3 +196,9 @@ The number of days that backups are stored. Any backups created after this will 
 ADDITIONAL_UPLOAD_EXTENSIONS
 ```
 Additional upload extensions that are to be allowed, this should be a comma separated string ie `ADDITIONAL_UPLOAD_EXTENSIONS='mp3,mp4,mkv'`
+
+```
+PDF_PAGE_NUMBER_X=0
+PDF_PAGE_NUMBER_Y=-6
+```
+Controls the x/y coordinates of the PDF page numbering (if enabled)
