@@ -10,6 +10,10 @@ locale: en
 
 You can import data into Invoice Ninja from CSV files or other accounting software from anywhere in the application using the green Import Button.
 
+<x-warning>
+  **Note** Numbers are imported based on your company currency format. ie  USD currency will parse a period (.) as the decimal, EUR with parse a comma (,) as the decimal separator.
+</x-warning>
+
 ![alt text](/assets/images/settings/import_overview.png "CSV Imports")
 
 First start by uploading your CSV file to the dropzone.
