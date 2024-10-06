@@ -90,7 +90,16 @@ Our Stripe integration also includes token billing and refunds
 
 ## Square
 
-Our [Square](https://squareup.com/) integration includes Credit Card payment options, including token billing, and refunds. Once you sign up for a Square developer account and configure your application in the Square Developer Dashoard, you will need to provide the _Application ID_, _Access Token_, and _Location ID_ to Invoice Ninja. The _Application ID_ and _Access Token_ can be found under _OAuth_ in the left hand sidebar, and the _Location ID_ can be found under _Location_ in the sidebar. More information can be found in the [Square developer documentation](https://developer.squareup.com/docs/square-get-started). The test mode checkbox is available for testing Square integration with Square sandbox credentials.
+Our [Square](https://squareup.com/) integration includes Credit Card payment options, including token billing, and refunds. Once you sign up for a Square developer account and configure your application in the Square Developer Dashoard, you will need to provide the following credentials:  
+
+- **Application ID** 
+- **Access Token** 
+- **Location ID**
+```
+
+The _Application ID_ and _Access Token_ can be found under _OAuth_ in the left hand sidebar, and the _Location ID_ can be found under _Location_ in the sidebar. More information can be found in the [Square developer documentation](https://developer.squareup.com/docs/square-get-started). 
+
+The test mode checkbox is available for testing Square integration with Square sandbox credentials.
 
 <hr>
 
@@ -231,3 +240,47 @@ As of this moment, to pay with Apple or Google Pay a credit card needs to alread
 The integration of BTCPay Server with Invoice Ninja enables you to accept bitcoin as a payment method, without fees, intermediaries with payments going directly to your bitcoin wallet.
 
 - [Instructions for BTCPay payment gateway setup](https://docs.btcpayserver.org/InvoiceNinja/)
+
+<hr>
+
+## CBA PowerBoard
+
+To integrate with the Commonwealth Banks PowerBoard gateway you can use the following steps:
+
+### API Credentials
+
+The first step will be to log into your [PowerBoard](https://powerboard.commbank.com.au/v2/auth/sign-in) portal and retrieve your API credentials.
+
+<img class="" src="/assets/images/gateways/powerboard1.png" alt="CBA PowerBoard"/>
+
+Then navigate to the My Company link and click on API & Settings
+
+<img class="" src="/assets/images/gateways/powerboard2.png" alt="CBA PowerBoard"/>
+
+You'll want to copy the API Secret Key and API Public Key values and then click on the Services sidebar menu option to find your Credit Card Gateway ID.
+
+<img class="" src="/assets/images/gateways/powerboard3.png" alt="CBA PowerBoard"/>
+
+You'll want to copy the ID value highlighted adjacent to your Credit Card Service Provider.
+
+<img class="" src="/assets/images/gateways/powerboard4.png" alt="CBA PowerBoard"/>
+
+### Invoice Ninja + PowerBoard
+
+Back in Invoice Ninja, navigate to Settings > Payment Settings; create a new Payment Gateway and select CBA PowerBoard from the drop down.
+
+<img class="" src="/assets/images/gateways/powerboard5.png" alt="CBA PowerBoard"/>
+
+In The Credentials tab, you can copy in the Secret Key / Public key and the Gateway ID from the previous step.
+
+Further down, you will see some toggles which can control the card types you would like to accept payments from, you can enable/disable these as needed.
+
+### Advanced Settings
+
+Now that your PowerBoard gateway is configured, you can explore a range of features / options you can use with this gateway!
+
+More reading:
+
+- [Set Gateway Fees](https://invoiceninja.github.io/en/gateways/#limits-fees)
+- [Payment Links](https://invoiceninja.github.io/en/advanced-settings/#payment_links)
+- [Custom Email Servers](https://invoiceninja.github.io/en/hosted-mail/)
