@@ -18,12 +18,11 @@ documentation.
 
 ### Getting all available selectors on the design
 
-To make sure we can target all elements easily & make changes available faster to you, we introduced the "Draft" mode.
-To turn on "Draft" mode, make sure you toggle:
+To make sure we can target all elements easily & make changes available faster to you, turn on "HTML Mode":
 
-Settings (Advanced settings) > Invoice Design > Customize & preview > Draft mode:
+Settings (Advanced settings) > Invoice Design > Custom Designs (edit) > HTML Mode:
 
-![alt text](/assets/images/pdf_customization/draft-mode.png "Toggling draft mode")
+![alt text](/assets/images/pdf_customization/custom_design_html_mode.png "Toggling HTML mode")
 
 Let's select the item column:
 
@@ -67,44 +66,88 @@ or just curious about understanding how templates work.
 
 ### Creating a design entry
 
-Let's start by cloning the existing design.
-To do so, open the admin panel and navigate to **Settings > Invoice Design > Customize & Preview**.
+Let's start by cloning an existing design. To do so, open the admin panel and navigate to **Settings > Invoice Design > Custom Designs > New Design**.
+
+From this list you can create, edit, archive and delete custom designs.
+
+![alt text](/assets/images/creating-custom-design/custom_designs_list.png)
+
+Creating a new design:
+
+![alt text](/assets/images/creating-custom-design/new_tutorial_design.png "Creating a design entry")
+
+We will name ours **Tutorial** and base it off of the "Clean" existing design.
 
 The base design isn't important if you have a completely new design in mind. Name your design and click **Save**.
 
-![alt text](/assets/images/creating-custom-design/01-creating-design-entry.png "Creating a design entry")
-
-We will name ours **Tutorial** and turn on **HTML Mode** to see changes more quickly.
-
 ### Design structure
 
-On the top of the page we should see tabs such as, **Body**, **Header**, **Footer**, **Products**, **Includes**.
+On the top of the page we should see tabs such as, **Settings**, **Body**, **Header**, **Footer**, **Includes**, **Variables**.
 This is how design is structured and for the most part, you can leave at is.
 
 We will spend most of our time in **Includes** and **Body** sections.
 
+#### Settings
+
+![alt text](/assets/images/creating-custom-design/create_edit_design_settings_page.png "Design Edit or Create - Settings Page")
+
+On the settings page, you can control how your design behaves while developing.
+
+- Name: This is the name of your design
+- Design: This is a dropdown list of existing designs; selecting an option will override your current design with the selected one.
+- Entity: Select the type of item the design is for; Invoice, Quote, Credit, or Purchase Order.
+- Invoice: In this example, the dropdown below the Entity dropdown is titled "Invoice" because we have selected the entity as Invoice. This will provide a list of recent items that are the type of entity you selected, so you can preview how your design would look based on the selected item.
+  - Ex. We could select invoice #0027 to see that invoice's data (client, items, etc.) populated on the preview in real time as we are changing the design. Note: Changing the design doesn't modify the invoice itself; this only serves as a preview tool to see how it would apply to the selected invoice.
+  - ![alt text](/assets/images/creating-custom-design/design_selecting_invoice_entity_example.png "Selecting invoice entity example")
+- View Docs: This is a link which opens the current page you are reading (documentation on custom designs).
+- Import: This allows you to paste the code of a design you wish to import. The code to paste is obtained from selecting "Export" in the source design you're copying.
+  - ![alt text](/assets/images/creating-custom-design/design_import_popup.png)
+- Export: This button will copy the code of the design to your clipboard. You can use this to import to another design.
+
 #### Body
 
-As the name suggests this is the heart of the design. This is where we will organize
-our elements.
+As the name suggests this is the heart of the design. This is where we will organize our elements. The HTML code of the body is all here.
 
 #### Header
 
-If you want to be fully semantic & fully follow HTML standards, this is where
-you should place your header content.
+If you want to be fully semantic & fully follow HTML standards, this is where you should place your header content.
 
 #### Footer
 
 Just like the header, this is a more semantic section for footer content.
 
-#### Products
-
-<x-warning>At the moment of the writing, this is **unsupported** feature. In the future,
-it will allow you to dynamically allocate table columns.</x-warning>
-
 #### Includes
 
 This is where your styles go.
+
+#### Variables
+
+This is a list of some of the variables which are available to the current design. Clicking on a variable will copy it to the clipboard, so it can be pasted in the design.
+
+### Other Tabs
+
+You will see several additional tabs under Settings>Invoice Design.
+
+- General Settings
+  - This is where you can customize general settings for the _selected_ design. Toggling "Update all records" will apply your changes to all past records that were created with that design.
+  - Ex. Page Layout, Page Size, Font Size, Logo Size, Fonts, Colors, Page Numbering...
+  - Note that changing a design does not change invoices/records that were previously created using that design; to apply changes to all existing records, select "Update all records" after making a change.
+- Custom Designs
+  - This is where you can create & edit custom designs.
+
+The remaining tabs listed below control which fields/variables/columns display on **all designs** that contain the data. For example, to include the client's VAT Number, you would add that field under the Client tab, and it would show on all invoices.
+
+- Client
+- Company
+- Company Address
+- Invoice
+- Quote
+- Credit
+- Vendor
+- Purchase Order
+- Product Columns
+- Task Columns
+- Total Fields
 
 ### Requirements
 
@@ -125,11 +168,7 @@ They are specific IDs for contents.
 
 To get specific selectors, please refer to [Getting all available selectors on the design](#getting-all-available-selectors-on-the-design).
 
-If it's easier for you to develop a static template first, you can always copy the source code provided
-under Settings tab and develop locally, copying changes into Invoice Ninja once you're happy
-with the design.
-
-![alt text](/assets/images/creating-custom-design/02-showing-the-source-code.png "Grabbing the source PDFs' source code")
+If it's easier for you to develop a static template first, you can always copy the source code provided under Settings tab and develop locally, copying changes into Invoice Ninja once you're happy with the design.
 
 ### Selectors
 
