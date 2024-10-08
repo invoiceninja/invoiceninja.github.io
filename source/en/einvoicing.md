@@ -4,24 +4,25 @@ section: content
 locale: en
 ---
 
-# e-invoices ***ALPHA RELEASE - NOT FOR PRODUCTION USE***
-
 ## Introduction
 e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has supported UBL format invoices for some time and now we also support a range of e-invoice formats including direct delivery of e-invoices over the PEPPOL network.
+
+All of the supported e-invoice standards can be downloaded directly after creating a standard invoice in Invoice Ninja. In some jurisdictions you are able to forward the e-invoice directly to your customer, however in some regions (ie, Italy) the invoice is sent through the government and then forwarded onto the customer. This introduces a number of complexities including both parties being registered with the government body (SDI for Italy). If you are in one of these jurisdictions, you will need to start the process (if you have not already) in acquiring a government routing ID.
 
 ## e-invoice standards
 The list of supported e-invoice formats include:
 
-- Facturae (Spain)
-- FatturaPA (Italy)
-- FACT1 (Romania)
-- Zugferd - XRechung (Germany)
-- EN16931 (Generic)
-- PEPPOL (Universal - Cross industry / border)
+- [PEPPOL (Universal - Cross industry / border)](#peppol)
+- [ZUGFeRD - XRechung (Germany)](#zugferd)
+- [Facturae (Spain)](#facturae)
+- [FatturaPA (Italy)](#fatturapa)
+- [FACT1 (Romania)](#fact1)
+- [EN16931 (Generic)](#en16931)
+
+## PEPPOL 
+***ALPHA RELEASE - NOT FOR PRODUCTION USE***
 
 ## How does it work?
-All of the supported e-invoice standards can be downloaded directly after creating a standard invoice in Invoice Ninja. In some jurisdictions you are able to forward the e-invoice directly to your customer, however in some regions (ie, Italy) the invoice is sent through the government and then forwarded onto the customer. This introduces a number of complexities including both parties being registered with the government body (SDI for Italy). If you are in one of these jurisdictions, you will need to start the process (if you have not already) in acquiring a government routing ID.
-
 Invoice Ninja will be rolling out a PEPPOL access point which will be available for both self hosted and hosted users to route their e-invoices through the PEPPOL network. 
 
 ## How do I get started?
@@ -254,5 +255,31 @@ The city field for county RO-B must be SECTOR1 - SECTOR6.
 
 ### SE - Sweden
 Receiver needs to be registered with Svefaktura to receive the e-invoice
+
+## ZUGFeRD
+
+<img class="" src="/assets/images/einvoices/zugferd.png" alt="CBA PowerBoard"/>
+
+Enabling ZUGFeRD is as simple as enabling e-invoicing in Settings > E-Invoice, selecting the appropriate X format you wish to generate and save! As the ZUGFeRD is very comprehensive, you can also embed the einvoice within the PDF document itself, simply toggle on the Merge E-Invoice and PDF switch and then save.
+
+** NOTE **
+
+The ZUGFeRD standard does not accept negative valued invoices. Historically some users may have used a negative invoice to indicate a Credit Note, this is no longer possible. Instead a dedicated Credit Note should be generated with matching POSTIVE values which reflect the credit you wish to assign.
+
+## Facturae
+
+Spanish e-invoice documents are supported and generate valid documents. these can be uploaded into the FACe system.
+
+## FatturaPA
+
+Italian e-invoices can be generated, however as there is no connection in the SDI as yet. This format is not currently production ready.
+
+## FACT1
+
+Romanian e-invoices can be generated, however as there is no delivery connection as yet. This format is not currently production ready.
+
+## EN16931
+
+Standard EN16931 documents can be generated and downloaded as needed.
 
 <x-next url=/en/invoices>Invoices</x-next>
