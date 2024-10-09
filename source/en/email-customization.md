@@ -10,17 +10,20 @@ locale: en
 
 Customizing the content of you emails should be simple and painfree! By default we include a range of default - translated - templates which should suit most use cases! If you prefer to extend and customize the emails your clients please read on!
 
-## WYSIWYG Edior
+## WYSIWYG Editor
+
+(What You See Is What You Get)
 
 ![alt text](/assets/images/reminders_templates/template_editor.png "Email content editor")
 
 To start editing and customizing your emails navigate to:
 
 ```bash
-Settings > Templates & Reminmders
+Settings > Templates & Reminders
 ```
 
-From here you'll see the first panel with a dropdown selector where you can select each of your email templates. In Invoice Ninja there are templates for Invoices, Quotes, Credits, Statements, Reminders, Purchase Orders and also up to 3 custom templates where you can curate your own templates.
+From here you'll see the first panel with a dropdown selector where you can select each of your email templates. In Invoice Ninja there are templates for Invoices, Quotes, Payments, Credits, Statements, Reminders, Purchase Orders and also up to 3 custom templates where you can curate your own templates.
+
 Selecting a template will replace the content in the panel beneath it where it can be updated and saved.
 
 ## Invoice Email Customization
@@ -29,7 +32,7 @@ The custom fields available for Invoices / Quotes and Credits are the same ones 
 
 ## Payment Email Customization
 
-The following are a basic list of support $variables that are supported in a payment email:
+The following are a basic list of $variables that are supported in a payment email:
 
 ```bash
 $view_link - A plain html link to view the payment ie https://invoice.ninja/client/payment/123

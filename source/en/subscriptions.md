@@ -4,37 +4,37 @@ section: content
 locale: en
 ---
 
-# Subscriptions
+# Payment Links
 
 ## Introduction
 
-Subscriptions are a supercharged version of our Buy Now links from version 4.
+Payment Links (previously known as Subscriptions) are a supercharged version of our Buy Now links from version 4.
 
-In version 5 subscriptions allow you to build an instant shop front where you can bundle your existing products into direct link purchases.
+In version 5, payment links allow you to build an instant shop front where you can bundle your existing products into direct link purchases.
 
-![alt text](/assets/images/subscriptions/subscription_list.png "Subscription list")
+![alt text](/assets/images/subscriptions/payment_links_list.png "Payment Links list")
 
-![alt text](/assets/images/subscriptions/subscription_overview.png "Subscription overview")
+![alt text](/assets/images/subscriptions/payment_link_overview.png "Payment Link overview")
 
-When you create a subscription a direct link is generated which is available to use to directly purchase the given subscription. It is important to note that even thou we have termed this functionality subscriptions, you can still generate direct links to one time purchases. This could be suitable for digital sales that are one time rather than recurring.
+When you create a payment link, a direct link is generated which is available to use to directly purchase the given product(s). This could be suitable for digital sales that are one time, or recurring, or even both at once.
 
-![alt text](/assets/images/subscriptions/subscription_products.png "Subscription products")
+![alt text](/assets/images/subscriptions/payment_link_products_dropdown.png "Subscription products")
 
-When you create the subscription you are able to combine one time and recurring products into a single subscriptions. For example, lets say you run a hosting business and want to create a subscription which has a single Setup charge as well as a monthly recurring charge for the server.
+When you create the payment link you are able to combine one time and recurring products into a single payment link. For example, lets say you run a hosting business and want to create a payment link which has a single Setup charge as well as a monthly recurring charge for the server.
 
-When your client purchases this, the Setup charge will only be applied to the first invoice, and then a recurring invoice is generated for any recurring products in the subscription.
+When your client purchases this, the Setup charge will only be applied to the first invoice, and then a recurring invoice is generated for any recurring products in the payment link.
 
-If you want to allow your clients to move between subscriptions then this is possible by creating a Group and adding each subscription to the group. This bundles all of the subscriptions tagged with the same group together!
+If you want to allow your clients to move between subscriptions then this is possible by creating a Group and adding each payment link to the group. This bundles all of the payment links tagged with the same group together!
 
-![alt text](/assets/images/subscriptions/subscription_settings.png "Subscription settings")
+![alt text](/assets/images/subscriptions/payment_link_settings.png "Subscription settings")
 
 The settings pane allows you to define the frequency / auto billing and also promo codes/discounts. We also have integrated the ability for end user self service to change between subscriptions or even cancel these subscriptions. We also handle the accounting for you for refunds if they are defined.
 
-![alt text](/assets/images/subscriptions/subscription_webhooks.png "Subscription webhooks")
-
-The final piece of the subscriptions puzzle is integrating with third party services. When a subscription is purchased / cancelled / upgraded we can notify a third party end point!
-
 ## Webhook configuration
+
+The final piece of the payment links puzzle is integrating with third party services. When a subscription is purchased / cancelled / upgraded we can notify a third party endpoint!
+
+![alt text](/assets/images/subscriptions/payment_link_webhook.png "Subscription webhooks")
 
 If you need to control events that occur outside of Invoice Ninja, you can configure the webhook endpoints to receive information as the user is stepping through the checkout process. All endpoints must be supported if you activate this feature of the application as the app will fail to proceed without a successful response from each of the following:
 
@@ -60,7 +60,7 @@ This request queries the endpoint whether the client/contact is eligible to cont
 #### Parameters
 
 **context**: (string) The context identifier, `is_eligible`
-**subscription**: The id of the subscription
+**subscription**: The id of the subscription (payment link)
 **contact**: The id of the contact
 **contact_email**: The contact email
 **client**: The id of the client
@@ -88,7 +88,7 @@ A failed request would return the an array like this:
 
 ### Start Trial
 
-If you have configured your subscription to be a trial based subscription. Then after the eligibility check, the system will attempt to start the trial, your endpoint will receive a payload like this:
+If you have configured your payment link to be a trial based subscription. Then after the eligibility check, the system will attempt to start the trial, your endpoint will receive a payload like this:
 
 ```
 {
@@ -103,7 +103,7 @@ If you have configured your subscription to be a trial based subscription. Then 
 #### Parameters
 
 **context**: (string) The context identifier, `trial`
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
+**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
 **client**: The id of the client
 **subscription**: The subscription id
 **account_key**: A client reference (client.custom_value2)
@@ -147,8 +147,8 @@ When a recurring subscription is created for the first time, a payload is sent t
 #### Parameters
 
 **context**: (string) The context identifier, `recurring_purchase`
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
-**invoice**: The id of the invoice that was generated based on the subscription
+**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
+**invoice**: The id of the invoice that was generated based on the payment link
 **client**: The id of the client
 **contact**: The id of the contact
 **subscription**: The subscription id
@@ -176,7 +176,7 @@ A failed request would return the an array like this:
 
 ### Single Purchase
 
-Where your subscription is only for a standard product, and _not_ a recurring product, then your endpoint will receive a single purchase webhook with the following configuration:
+Where your payment link is only for a standard product, and _not_ a recurring product, then your endpoint will receive a single purchase webhook with the following configuration:
 
 ```
 {
@@ -191,7 +191,7 @@ Where your subscription is only for a standard product, and _not_ a recurring pr
 #### Parameters
 
 **context**: (string) The context identifier, `single_purchase`
-**invoice**: The id of the invoice that was generated based on the subscription
+**invoice**: The id of the invoice that was generated based on the payment link
 **client**: The id of the client
 **subscription**: The subscription id
 **account_key**: A client reference (client.custom_value2)
@@ -249,8 +249,8 @@ When a client changes plans, there may be either a credit due, or a payment depe
 #### Parameters
 
 **context**: (string) The context identifier, `change_plan`
-**invoice**: The id of the invoice that was generated based on the subscription
-**credit**: The id of the credit that was generated based on the subscription **note** this field, _may_ be blank if no credit was generated
+**invoice**: The id of the invoice that was generated based on the payment link
+**credit**: The id of the credit that was generated based on the payment link **note** this field, _may_ be blank if no credit was generated
 **client**: The id of the client
 **contact**: The id of the contact
 **subscription**: The subscription id
@@ -295,7 +295,7 @@ If you allow subscription cancellations, then the following payload is forwarded
 
 **context**: (string) The context identifier, `cancellation`
 **subscription**: The subscription id
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
+**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
 **client**: The id of the client
 **contact**: The id of the contact
 **account_key**: A client reference (client.custom_value2)
@@ -337,7 +337,7 @@ A daily check is performed to check if any subscriptions have gone past their du
 
 **context**: (string) The context identifier, `plan_expired`
 **subscription**: The subscription id
-**invoice**: The id of the invoice that was generated based on the subscription
+**invoice**: The id of the invoice that was generated based on the payment link
 **client**: The id of the client
 
 #### Response
@@ -380,8 +380,8 @@ When a payment for a subscription is made (ie for a renewal), a Plan Paid webhoo
 
 **context**: (string) The context identifier, `plan_expired`
 **subscription**: The subscription id
-**recurring_invoice**: The id of the recurring invoice that was generated based on the subscription
-**invoice**: The id of the invoice that was generated based on the subscription
+**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
+**invoice**: The id of the invoice that was generated based on the payment link
 **client**: The id of the client
 **contact**: The id of the contact
 **account_key**: A client reference (client.custom_value2)

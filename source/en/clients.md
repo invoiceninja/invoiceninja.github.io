@@ -101,6 +101,10 @@ Most of the information in a client entry or edit form is entirely optional, and
 - **VAT Number** - The VAT number field is a Value Added Tax ID number which applies mostly to countries from the European Union who need to track this sometimes for tax purposes.
 - **Website** - Your client's website, optional, and for reference.
 - **Phone** - Primary phone contact number for the client, organization, or business, separate from any individual contact's phone number within the client entry.
+- **Routing ID** - Used for storing the eInvoice routing number which is assigned as an address to locate this client when delivering eInvoices.
+- **Valid VAT Number** - Check this if a valid VAT number is supplied because in some jurisdictions, this may change the way tax is applied to the client (only works when "Calculate Taxes" is turned on under _Settings>Tax Settings_.)
+- **Tax Exempt** - This only works when "Calculate Taxes" is turned on under _Settings>Tax Settings_. It will result in no taxes being applied by default for invoices created for this client.
+- **Classification** - This is for optionally storing the type of customer this is for your own purposes. Options in the dropdown list are: Individual, Business, Partnership, Trust, Charity, Government, Other.
 
 ### Contacts
 
