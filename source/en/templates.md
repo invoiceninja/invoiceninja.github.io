@@ -312,7 +312,84 @@ Here are the object definitions that are available.
                     "line_total_raw": "372.00",
                     "gross_line_total_raw": 389.48,
                     "tax_amount_raw": 17.48,
-                    "product_cost_raw": 0
+                    "product_cost_raw": 0,
+                    "task": {
+                        "number": "0007",
+                        "description": "The task description",
+                        "duration": 726023,
+                        "rate": "$0.00",
+                        "rate_raw": "0.000000",
+                        "created_at": "21. March 2024",
+                        "updated_at": "27. March 2024",
+                        "date": "21. March 2024",
+                        "project": {
+                            "name": "Date App",
+                            "number": "0006",
+                            "created_at": "22. March 2024",
+                            "updated_at": "22. March 2024",
+                            "task_rate": "$0.00",
+                            "task_rate_raw": "0.000000",
+                            "due_date": "",
+                            "private_notes": "",
+                            "public_notes": "",
+                            "budgeted_hours": 1200,
+                            "custom_value1": "",
+                            "custom_value2": "",
+                            "custom_value3": "",
+                            "custom_value4": "",
+                            "color": "",
+                            "current_hours": 0,
+                            "client": {
+                                "name": "Kilback-Stoltenberg",
+                                "balance": "0.000000",
+                                "payment_balance": "0.000000",
+                                "credit_balance": "2084.140000",
+                                "vat_number": "428950405"
+                            },
+                            "user": {
+                                "name": "Glennie Schaefer Dr. Corbin Rowe",
+                                "email": "small@example.com"
+                            }
+                        },
+                        "time_log": [
+                            {
+                                "start_date_raw": 1711012404,
+                                "start_date": "20. March 2024 22:13:24",
+                                "end_date_raw": 1711095351,
+                                "end_date": "21. March 2024 21:15:51",
+                                "description": "Consequatur voluptas aperiam sapiente optio non dolores quaerat.",
+                                "billable": true,
+                                "duration_raw": 82947,
+                                "duration": "23:02:27"
+                            },
+                            {
+                                "start_date_raw": 1711095651,
+                                "start_date": "21. March 2024 21:20:51",
+                                "end_date_raw": 1711149254,
+                                "end_date": "22. March 2024 12:14:14",
+                                "description": "Aut iusto ducimus molestiae reprehenderit fugiat cum.",
+                                "billable": true,
+                                "duration_raw": 53603,
+                                "duration": "14:53:23"
+                            },
+                        ],
+                        "custom_value1": "",
+                        "custom_value2": "",
+                        "custom_value3": "",
+                        "custom_value4": "",
+                        "status": "Ready to do",
+                        "user": {
+                            "name": "Glennie Schaefer Dr. Corbin Rowe",
+                            "email": "small@example.com"
+                        },
+                        "client": {
+                            "name": "Kilback-Stoltenberg",
+                            "balance": "0.000000",
+                            "payment_balance": "0.000000",
+                            "credit_balance": "2084.140000",
+                            "vat_number": "428950405"
+                        }
+                    }
                 },
                 {
                     "quantity": 1,
@@ -662,6 +739,7 @@ Here are the object definitions that are available.
 | date | string |  24/1/2023 |
 | tax_id | string | 1 |
 | task_id | string |  |
+| task | object | [Task](/en/templates#task-definition)
 | expense_id | string |  |
 | _id | string | 358982ee-f062-42f3-9dcf-4068e9347fa0 |
 | cost_raw | float | 372 |
