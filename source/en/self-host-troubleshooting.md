@@ -249,6 +249,15 @@ This is most commonly see in Invoice Ninja where snappdf has been downloaded fro
 
 Always ensure that tasks run on the command line are executed by the web user, on Ubuntu this is typically www-data
 
+
+<x-warning>
+  In a recent update, chromium/chrome uses the crashpad handler to write to the users home directory .local .config 
+
+  When running snappdf as a user such as www-data this users directory - typically /var/www - may not be writable OR the www-data user may not be able to create the .local / .config directories required to support SnapPDF / Chrome.
+
+  It is advised to chown the home dir of the www user to ensure that crashpad can write to this temp directory and allow PDFs to be generated.
+</x-warning>
+
 ### Erroneous data format for unserializing 'Symfony\Component\Routing\CompiledRoute'
 
 <p>The most common cause of this issue is running multiple version of PHP, if the caches are built with a different version of PHP you may see the above error as differing versions of PHP may not be interoperable on the same installation. Ensure you are running the same CLI and Web PHP version to prevent any errors/</p>
