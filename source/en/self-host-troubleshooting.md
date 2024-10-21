@@ -205,6 +205,15 @@ You can use this command to test Snappdf:
 
 A complete list of required dependencies is available [here](https://github.com/beganovich/snappdf#headless-chrome-doesnt-launch-on-unix).
 
+
+<x-warning>
+  In a recent update, chromium/chrome uses the crashpad handler to write to the users home directory .local .config 
+
+  When running snappdf as a user such as www-data this users directory - typically /var/www - may not be writable OR the www-data user may not be able to create the .local / .config directories required to support SnapPDF / Chrome.
+
+  It is advised to chown the home dir of the www user to ensure that crashpad can write to this temp directory and allow PDFs to be generated.
+</x-warning>
+
 If you are on shared hosting, snappdf probably will be impossible for you to use as you do not have access to the subsystem to install the required packages. Instead, you will need to use a hosted PDF service, the two that Invoice Ninja v5 supports is [PhantomJS Cloud](https://phantomjscloud.com/) and our own hosted PDF generator which can use for _free_ to generate _unlimited_ PDFs.
 
 ### Phantom JS
