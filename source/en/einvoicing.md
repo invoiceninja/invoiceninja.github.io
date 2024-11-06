@@ -54,7 +54,6 @@ Yes, in an upcoming version we will also support the delivery of e-invoicing via
 ### Hosted Users
  - Register with your government body if e-invoices are to be routed via government portal.
  - Enable e-invoicing (Settings > E Invoice - select e invoice type => PEPPOL)
- - Enable e-invoicing (Settings > E Invoice - select e invoice type => PEPPOL)
  - Ensure your company details pass validation (Settings > E-Invoicing - Validation)
  - Generate and send e-invoices!
 
