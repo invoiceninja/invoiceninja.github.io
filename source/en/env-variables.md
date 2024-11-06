@@ -7,6 +7,11 @@ locale: en
 # Env Variables
 
 ```
+LICENSE_KEY="your_white_label_license"
+```
+Your white label license key - required if using e-invoicing where you are proxying your einvoices via Invoice Ninja onto the PEPPOL network.
+
+```
 APP_NAME="Invoice Ninja"
 ```
 Your application name - used in client portal title banner
