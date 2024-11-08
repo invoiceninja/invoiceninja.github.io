@@ -43,3 +43,10 @@ Step through the process of creating your first invoice. Includes creating custo
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dU48fu3tmS0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Learn how to setup sending emails using your own Gmail account.
+
+
+## Easily embed images onto invoices
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/alGp17kfyjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Learn how to configure Invoice Ninja to embed images directly onto invoices/quotes!
