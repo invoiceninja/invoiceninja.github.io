@@ -157,6 +157,12 @@ PDF_GENERATOR=snappdf
 Configures the PDF engine to be used. SnapPDF is the recommended way to generate PDFs however does require direct access to the server to install some required packages.
 
 ```
+PDF_PAGE_NUMBER_X=
+PDF_PAGE_NUMBER_Y=
+```
+Override the default x/y coordinates of page numbering on PDFs. 
+
+```
 TRUSTED_PROXIES=*
 ```
 If your server sit behind a proxy, you may need to enable trusted_proxies else you will get SSL errors
