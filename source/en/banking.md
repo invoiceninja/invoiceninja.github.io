@@ -10,7 +10,7 @@ locale: en
 
 For enterprise users on our hosted platform, we have integrated with [Yodlee](https://www.yodlee.com), a leading data aggregration platform.
 
-The Yodlee integration is with most of the major global banks, allowing you to link your bank accounts with Invoice Ninja to import your bank transactions for reconciliation.
+The Yodlee integration links primarily with most of the major US banks, allowing you to link your bank accounts with Invoice Ninja to import your bank transactions for reconciliation.
 
 <div class="video_container">
 <iframe class="video" src="https://www.youtube.com/embed/_sIfIr7QUHA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -20,7 +20,7 @@ The Yodlee integration is with most of the major global banks, allowing you to l
 
 We have integrated with [GoCardless](https://gocardless.com), a payments integration platform.
 
-The GoCardless integration allows you to link a credit card account from many global banks to import transactions for reconciliation.
+The GoCardless integration allows you to link a credit card account from primarily with most of the major EU banks to import transactions for reconciliation.
 
 ## Connecting your accounts
 
