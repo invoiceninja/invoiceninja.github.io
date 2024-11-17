@@ -204,7 +204,11 @@ These settings govern the behavior, appearance, and other settings for emails se
 
 * **Email Signature** - Include a signature message along with all of your company email messages.  Multiple lines of text here for you to enter your custom signature.  HTML tags are respected here for formatting your email signature.
 
-* **Send Time** - Any scheduled reminders for the day will get sent at this time.
+* **Send Time** - You can configure emails to be sent at a time of day localized to the clients timezone. For example, setting Send Time of 9 will send all scheduled documents at 9am localized to the clients timezone.
+
+<x-warning>
+**NOTE** If you are selecting Hour 24, 12:00am is technically the next day, in order to prevent emails from being dispatched technically a day later, this system will adjust the send time slightly so that it is scheduled to send just before midnight.
+</x-warning>
 
 * **Attach PDF** - Turning on this switch will send invoices as PDFs attached to your emails.  By default, your emails all have links to view the documents on the client portal, but it may be preferable to send the PDF directly.
 
