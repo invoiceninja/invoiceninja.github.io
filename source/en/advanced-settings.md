@@ -486,5 +486,21 @@ Enable email notifications to the user for any number of these events.  Choose a
 * **Administrator** - an on/off switch to elevate the user to Administrator level privileges.
   * When disabled, a list of permission categories appears below, which the user will be subjected to.  Grant, or deny permissions to create, edit, or view any record category here; clients, invoices, quotes, tasks, vendors, products, etc.
 
+### Archive/Delete User
+
+   - The user's account becomes inactive but all their data is preserved
+   - The user can no longer log in
+   - Their historical data remains linked to records they created
+   - Can be restored later if needed
+
+### **Remove User**
+   - Permanently removes the users access to the company.
+   - All their data remains and is still assigned to them, but they no longer can access the company they have been removed from.
+
+<x-warning>
+Archive/Delete/Remove actions effectively disable the users access to the company. The user can later be reattached to any company within the account.
+</x-warning>
+
+
 
 <x-next url=/en/custom-fields>PDF customization</x-next>
