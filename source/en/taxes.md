@@ -156,30 +156,86 @@ If you sell goods and services to a client who is tax exempt, you can mark them 
 
 ## Configure EU tax calculations
 
-Currently we only support tax calculations for German based users. Taxes can be calculated for both DE -> DE and also DE -> EU countries. You'll want to configure your product categories accordingly whether they are exempt, reduced or standard tax.
+### Settings.
 
-A new feature is the ability of Invoice Ninja to verify a clients VAT number. Where a valid VAT number is present, the tax calculation will take this into consideration and apply or remove the tax depending on the client location. Please note that the vat number must pass validation using the VIES validation located [here](https://ec.europa.eu/taxation_customs/vies/)
+The calculation engine for the EU has recently been updated to support EU wide tax calculations! This can be enabled in:
+
+```bash
+Settings > Tax Settings
+```
+
+When enabling the Calculate Taxes feature it is important to note that the way your system calculates taxes will be configured in a very specific way:
+
+- Invoice level taxes are disabled
+- Line item taxes are enabled
+- Tax calculations are set to exclusive, i.e.: 100 x 19% tax = 119 total 
+
+![Tax Settings](/assets/images/taxes/eu_calculate_taxes.png)
+
+Note that you will need to select your seller subregion, this is the region considered to be _your_ nexus for tax calculations. 
+
+### EU VAT Thresholds
+
+The current EU-wide threshold for distance selling is €10,000. Once your cross-border sales exceed this amount, you must:
+- Register for VAT in the destination country
+- Charge VAT at the destination country's rate
+- Submit VAT returns in that country
+
+You can use the "(EU) Sales above threshold" toggle in settings to automatically apply the appropriate rules.
+
+<x-info>
+ If using our Peppol integration, these additional VAT numbers can be added into Invoice Ninja, the system will gracefully use the necessary VAT identifier in your e-invoices when sending to your client.
+ </x-info>
+
+### One-Stop Shop (OSS)
+
+The EU One-Stop Shop (OSS) system allows businesses to:
+- Register for VAT in a single EU country
+- Submit VAT returns for all EU sales through that country
+- Apply the correct VAT rates for each destination country
+
+Invoice Ninja supports OSS by automatically calculating the correct VAT rates based on your client's location.
+
+### Setup product tax categories
+
+Configuration of taxes categories can now be done at the product level where you can configure the tax category of the product from one of thes following options
+
+| Tax Category | Description |
+|-------------|-------------|
+|Physical | A physical product for sale ie. Car |
+|Service | A service product such as Bricklaying |
+|Digital | A digital product such as a software service | 
+|Shipping | A charge relating to shipment |
+|Exempt | A product which is tax exempt |
+|Reduced | A special product category which attracts a reduced rate |
+|Override | A product which does not fit into a tax category and a custom tax name and rate is applied |
+|Zero Rated | A product which attracts a tax rate of 0% |
+|Reverse Tax | A product which is not chargeable in the origin region, but tax is payable by the buyer at their origin |
+|Intra Community | A product which is a cross border sale and attracts no tax due to intra community supply regulations |
+
+From the create/edit product view you can set a tax category, this will then be used when the product is selected in the Invoice.
+
+![Product Tax Category](/assets/images/taxes/eu_product_tax_category.png)
+
+### Client setup
+
+Some important considerations when adding/editing a client record.
+
+![Client Tax Settings](/assets/images/taxes/eu_tax_client_setup.png)
+
+- VAT Number: must be populated if the client has a one. EU requires businesses with VAT numbers to supply or else taxes may be applied.
+- Valid VAT number switch: toggling this on/off will force the configuration to follow this setting, regardless of the value in the VAT Number field. 
+- Tax Exempt: if the client is tax exempt, then toggling this switch on will enforce no taxes on this client.
+- Classification: the client classification is an important setting which is used in the tax calculator, for instance, in some regions, government agencies are not taxable entities, therefore setting the classification allow the engine another parameter to determine taxabilty.
+
+Where a valid VAT number is present, the tax calculation will take this into consideration and apply or remove the tax depending on the client location. Please note that the VAT number must pass validation using the VIES validation located [here](https://ec.europa.eu/taxation_customs/vies/)
 
 <x-warning>
 For self host users, you must have the PHP SOAP extension installed for the VAT number validation to work.
 </x-warning>
 
-## Cross border tax calculations
+### Confirm taxes prior to sending!
 
-Selling products or services into foreign countries introduces a new set of tax obligations and considerations. Some countries have a sales threshold where taxes must be included when selling to customers in these countries.
-
-For example if your sales into Australia are greater than $75,000 AUD, then you are required to register with the Australian Taxation Office and collect / report and remit GST.
-
-Every country has its own specific requirements which you should investigate with professional advice.
-
-Current we suppose cross border taxes in these Countries.
-
-- USA
-- EU
-- Australia
-
-## Self Host - Taxes
-
-For self host users, it is important to note that US Sales tax calculations are only the State sales tax rates. The surtax (city/district/county) taxes are not calculated as this is a third party service. Please consider this when using the sales tax calculations, as they may not be correct.
+Always ensure the taxes applied to your invoices appear in order. The tax calculator requires the client / company / product data to be correct to ensure the correct calculation of taxes.
 
 <x-next url=/en/quotes>Quotes</x-next>
