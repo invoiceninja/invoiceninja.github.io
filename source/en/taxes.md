@@ -190,9 +190,9 @@ You can use the "(EU) Sales above threshold" toggle in settings to automatically
 ### One-Stop Shop (OSS)
 
 The EU One-Stop Shop (OSS) system allows businesses to:
-- Register for VAT in a single EU country
-- Submit VAT returns for all EU sales through that country
-- Apply the correct VAT rates for each destination country
+- Register for VAT in a single EU country  
+- Submit VAT returns for all EU sales through that country  
+- Apply the correct VAT rates for each destination country  
 
 Invoice Ninja supports OSS by automatically calculating the correct VAT rates based on your client's location.
 
@@ -223,10 +223,10 @@ Some important considerations when adding/editing a client record.
 
 ![Client Tax Settings](/assets/images/taxes/eu_tax_client_setup.png)
 
-- VAT Number: must be populated if the client has a one. EU requires businesses with VAT numbers to supply or else taxes may be applied.
-- Valid VAT number switch: toggling this on/off will force the configuration to follow this setting, regardless of the value in the VAT Number field. 
-- Tax Exempt: if the client is tax exempt, then toggling this switch on will enforce no taxes on this client.
-- Classification: the client classification is an important setting which is used in the tax calculator, for instance, in some regions, government agencies are not taxable entities, therefore setting the classification allow the engine another parameter to determine taxabilty.
+- VAT Number: must be populated if the client has a one. EU requires businesses with VAT numbers to supply or else taxes may be applied.  
+- Valid VAT number switch: toggling this on/off will force the configuration to follow this setting, regardless of the value in the VAT Number field.   
+- Tax Exempt: if the client is tax exempt, then toggling this switch on will enforce no taxes on this client.  
+- Classification: the client classification is an important setting which is used in the tax calculator, for instance, in some regions, government agencies are not taxable entities, therefore setting the classification allow the engine another parameter to determine taxabilty.  
 
 Where a valid VAT number is present, the tax calculation will take this into consideration and apply or remove the tax depending on the client location. Please note that the VAT number must pass validation using the VIES validation located [here](https://ec.europa.eu/taxation_customs/vies/)
 
