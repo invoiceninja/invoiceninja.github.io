@@ -22,7 +22,7 @@ We support a wide range of devices and have custom applications for all platform
 | Linux   | [Download](https://snapcraft.io/invoiceninja)                                  |
 | Windows | [Download](https://www.microsoft.com/en-us/p/invoice-ninja/9n3f2bbcfdr6)       |
 
-Of course we also provide a fantastic web application which can be found [here](https://invoicing.co). If you prefer a interface similar to our V4, you can use our React application [here](https://app.invoicing.co). No matter which device you use, your data will be kept in sync and up to date!
+Of course we also provide a fantastic web application which can be found [here](https://app.invoicing.co). No matter which device you use, your data will be kept in sync and up to date!
 
 ## Initial setup
 
@@ -31,6 +31,36 @@ You'll want to do some basic configuration when you log in for the first time, s
 <div class="video_container">
 <iframe class="video" src="https://www.youtube.com/embed/8H1jO1rtBYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
+
+## Currency Precision, Unit Costs, Quantities and Tax Calculations.
+
+### Unit Costs
+
+Invoice Ninja accepts values denominated in the currency you are invoicing in. For unit costs greater than 1, the application will perform all calculations based on the currency in use, ie $41.644431 will use $41.64 in its base calculation where the currency precision is 2 decimal places. Where the unit cost value is less than 1, ie. 0.1254 precision up to 6 decimal places is supported, precision beyond this will be rounded to the nearest value. ie
+
+$0.123456 Supported!
+$0.1234567 Not Supported, will round to $0.123456
+
+### Quantity values
+
+Quantity values have a precision of up to 6 decimal places for all values
+
+### Tax Calculations - Line Level / Invoice Level taxes
+
+There can be small differences in the tax calculations depending if you are using Line Level or Invoice Level taxes.
+
+Line level taxes are always calculated on the line level amount and then summed together.
+
+Invoice level taxes are calculated on the sum of the line level amounts for example
+
+| Description | Line Level Tax Calculation | Invoice Level Tax Calculation |
+|------------|---------------------------|------------------------------|
+| Item 1: $10.33 | $10.33 × 10% = $1.033 → $1.03 | - |
+| Item 2: $10.33 | $10.33 × 10% = $1.033 → $1.03 | - |
+| Item 3: $10.34 | $10.34 × 10% = $1.034 → $1.03 | - |
+| Subtotal | $31.00 | $31.00 |
+| Tax Calculation | Sum of rounded individual taxes:<br>$1.03 + $1.03 + $1.03 = $3.09 | Total × Tax Rate:<br>$31.00 × 10% = $3.10 |
+| Total | $34.09 | $34.10 |
 
 ### Company Defaults
 

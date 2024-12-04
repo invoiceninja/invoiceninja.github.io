@@ -177,6 +177,7 @@ Note that you will need to select your seller subregion, this is the region cons
 ### EU VAT Thresholds
 
 The current EU-wide threshold for distance selling is €10,000. Once your cross-border sales exceed this amount, you must:
+
 - Register for VAT in the destination country
 - Charge VAT at the destination country's rate
 - Submit VAT returns in that country
@@ -190,6 +191,7 @@ You can use the "(EU) Sales above threshold" toggle in settings to automatically
 ### One-Stop Shop (OSS)
 
 The EU One-Stop Shop (OSS) system allows businesses to:
+
 - Register for VAT in a single EU country  
 - Submit VAT returns for all EU sales through that country  
 - Apply the correct VAT rates for each destination country  
