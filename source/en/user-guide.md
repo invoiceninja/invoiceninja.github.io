@@ -39,7 +39,7 @@ You'll want to do some basic configuration when you log in for the first time, s
 Invoice Ninja accepts values denominated in the currency you are invoicing in. For unit costs greater than 1, the application will perform all calculations based on the currency in use, ie $41.644431 will use $41.64 in its base calculation where the currency precision is 2 decimal places. Where the unit cost value is less than 1, ie. 0.1254 precision up to 6 decimal places is supported, precision beyond this will be rounded to the nearest value. ie
 
 $0.123456 Supported!
-$0.1234567 Not Supported, will round to $0.123456
+$0.1234567 Not Supported, will round to $0.123457
 
 ### Quantity values
 
