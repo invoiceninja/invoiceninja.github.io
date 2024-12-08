@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/tasks">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Tasks</h1>
+
+<p><em>Tasks</em> represent small to medium sized jobs or services performed for a client, and are suited perfectly for services rendered with an hourly rate. Tasks enable you to track your time on the job, with stopwatch-like functions baked into your tasks, and you can track and record hours across as many date and time periods as you need to.</p>
+
+<p>You can assign tasks to a project, in order to keep track of the various jobs involved in it, or leave them as standalone small jobs.</p>
+
+<p>Tasks can be added to a client's invoice independently, or in bulk when you create an invoice out of the project record itself.</p>
+
+<p>Tasks also allow you to assign an admin portal User to them, to maintain accountability and responsibility for the work associated with them.</p>
+
+<p>The <em>Tasks</em> module is powerful, especially when used in combination with Projects and Expenses, and very useful to any service-based business.</p>
+
+<h2>Overview</h2>
+
+<p>With the Tasks module, you can easily manage your work and stay organized. Try it out today!</p>
+
+<video width="100%" controls>
+  <source src="/assets/videos/tasks/tasks_demo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<h3>Table View</h3>
+
+<ul>
+<li>By default, the Tasks module opens to the table view, where you can see all available tasks.</li>
+<li>Filter tasks by their status: "Invoiced", "Uninvoiced", "Backlog", "Ready to do", "In progress", "Done"</li>
+<li>Customize the columns and sort the tasks in the list to suit your needs.
+
+<ul>
+<li>Use the 'Columns' button at the bottom right corner of the screen to add or remove columns from the table (ex. to display the assigned user, rate...)</li>
+</ul></li>
+<li>Click on a task's status text in the row to change it or add a New Task Status.</li>
+</ul>
+
+<h3>Kanban View</h3>
+
+<ul>
+<li>The Tasks module also offers an alternative viewing mode, the kanban view.</li>
+<li>Use the kanban view to visualize your active tasks in a highly visual way, grouped into statuses.</li>
+<li>Tasks are sorted into vertical lists by their status, and appear like notes stuck to a board.</li>
+<li>Hover over a task 'note' to see options to view, edit, or start/stop the task.</li>
+<li>Drag and drop tasks into other columns to change the status of the task quickly and easily.</li>
+<li>You can use the <em>Project</em> selection to see tasks linked to a specific project.</li>
+<li>Press the "<strong>+</strong>" to the right of a task column to quickly add a task with that status.</li>
+</ul>
+
+<video width="100%" controls>
+  <source src="/assets/videos/tasks/tasks_kanban_operations.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<h3>Custom Task Status</h3>
+
+<p>You can add custom task statuses from the table view by clicking a status text and selecting "New Task Status", or from the Kanban view by scrolling to the right and selecting the "<strong>+</strong>".</p>
+
+<p>The "New Task Status" window will appear where you will enter a name for the status as well as a color.</p>
+
+<h4>From Table view</h4>
+
+<p><img src="/assets/images/tasks/tasks_table_view_status_options.png" alt="New task status from table" /></p>
+
+<h4>From Kanban view</h4>
+
+<p><img src="/assets/images/tasks/new_task_status_from_kanban.png" alt="New task status from kanban" /></p>
+
+<h4>Manage Task Statuses</h4>
+
+<p>Task statuses can be edited/added from <em>Settings>Task Settings</em></p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Note that the <em>Tasks</em> kanban view does not present invoiced and paid tasks, it is more like a "to do list" kanban for visualizing and managing your current work, rather than a full history view, which the table view is better suited for.</span>
+</div></p>
+
+<h2>Viewing a Task</h2>
+
+<ul>
+<li>Select some whitespace on the tasks's row from the table view, or click on "View" for a task in the task kanban view to bring up the Tasks panel on the right.</li>
+<li>At the top of the Tasks overview panel and on the right of the table view, you will see a "More Actions" dropdown menu.</li>
+</ul>
+
+<h3>More Actions Dropdown Menu</h3>
+
+<p><img src="/assets/images/tasks/tasks_more_actions_dropdown.png" alt="More actions" /></p>
+
+<ul>
+<li>"Edit" allows you to edit the task</li>
+<li>The "Start"/"Stop" button changes depending on the state of the task, which will respectively start and create a date/time line in the task record to begin tracking billable hours for the work, or stop the timer and fill in the end time with the current time.</li>
+<li>"Invoice Task" will create a new invoice record automatically filled with the current task for the assigned client of that task. Note: this option is only shown when "More Actions" is selected from the task's table view.</li>
+<li>"Add to Invoice" will prompt you to select one of the client's active invoices to add the task to.</li>
+<li>"Clone" will bring up the New Task screen pre-filled with the same information from the selected task.</li>
+<li>"Run Template" allows you to run a template for the selected task.</li>
+<li>"Archive" archives the task.</li>
+<li>"Delete" deletes the task.</li>
+</ul>
+
+<h3>Overview</h3>
+
+<p>The Overview tab in the Tasks panel provides you with all the general information about a task, including duration, value, and status.</p>
+
+<ul>
+<li>View the "Amount" or value of the work logged so far (Total Duration &#42; Rate)</li>
+<li>See the task's status ("state")</li>
+<li>A breakdown of dates and times of work entered in the task record is also displayed.</li>
+<li>Click on the interactive links to access filtered lists or views of linked clients, projects, task status, or users.</li>
+</ul>
+
+<h2>Editing/Creating a Task</h2>
+
+<h3>Details</h3>
+
+<ul>
+<li><strong>Client</strong> - Assign a client to link to the task. When you invoice the task, it will automatically assign the invoice to that client.</li>
+<li><strong>Project</strong> - Optionally assign the task to an available project. Doing this will automatically assign the task to the same client as the project, and when you select a client, it will filter the available projects by those which are assigned to the client you've selected. Selecting a project will override the default task rate with the task rate defined in the project record.</li>
+<li><strong>User</strong> - Optionally assign an admin portal User to the task, to maintain accountability and responsibility for the work associated with it.</li>
+<li><strong>Task Number</strong> - While you can manually edit this, the best practice is to leave this field blank and allow Generated Numbers policies to populate the Task Number.</li>
+<li><strong>Rate</strong> - Automatically this field will use the default global task rate, or more authoritatively, the default task rate of the project it was assigned to. You may also manually specify a task rate by filling in the field yourself.</li>
+<li><strong>Status</strong> - Select a task status. Task statuses are a small part of the task lifecycle and help sort your tasks for organizational purposes. You can select one of the prebuilt task statuses, or create your own task statuses under <em>Settings</em> > <em>Task Settings</em>.</li>
+<li><strong>Description</strong> - Create a description/note for your task, which will be included within the line item description of the task when you create an invoice out of your tasks or projects.</li>
+</ul>
+
+<h3>Documents</h3>
+
+<p>Here you are able to upload files such as pictures, documents, and more in order to give your client access to these files from the client portal.</p>
+
+<p>Note: To download all documents linked to one or more tasks, you can select the checkboxes for the tasks (from the table view), then <em>More Options>Documents</em> which will email you a download link to retrieve the files.</p>
+
+<h2>Time Tracking</h2>
+
+<p>The time tracking feature allows you to easily track billable hours for your work on a task for the client.</p>
+
+<h3>Time Entries</h3>
+
+<ul>
+<li>View a mostly self-explanatory list of date and times.</li>
+<li>Manually enter or edit date and time entries.</li>
+<li>Use the start/stop button to start and stop the timer.</li>
+<li>Starting the timer creates a new line in the list with the current Date and Start Time.</li>
+<li>Stopping the timer will populate the "End Time", which calculates the Duration.</li>
+<li>Alternatively, you can manually set the Duration, which will calculate your end time for you.</li>
+<li><em>TIP: tab through the columns for quick entry.</em></li>
+<li>If an entry in the times list has no end time yet, the task record is considered to have the Running status and you will see the Duration of the task change every second when viewing the task, while it tracks the progress.</li>
+</ul>
+
+<h2>Lifecycle of a Task</h2>
+
+<p>Tasks have a unique lifecycle, with the option to create custom statuses and support for multiple statuses to aid in sorting and managing tasks while reflecting their current states.</p>
+
+<h3>Manual Task Status or <em>Logged</em></h3>
+
+<p>A manually set task status is one that you select or configure, such as one of the pre-configured task statuses (Backlog, Done, In progress, or Ready to do) or a custom status you've created in <em>Settings</em> > <em>Task Settings</em>. These statuses serve primarily as recordkeeping and help sort and visualize your active tasks. Tasks with a manually set status are considered <em>Logged</em> if they have not been invoiced and are not currently in a <em>Running</em> state.</p>
+
+<h3>Running</h3>
+
+<p>A running task is any task that is currently tracking billable hours on the clock.</p>
+
+<ul>
+<li><p>A task automatically enters a <em>Running</em> status when it contains a line for date/time with a start time entered, but no duration or end time yet entered.</p></li>
+<li><p>A running task will always show a moving time for it's <em>Duration</em> to help track the active work being performed for that task.</p></li>
+<li>When a task is in the running state, it will be presented in the table as "Running" but it technically still has the manually set task status, and when you look at the tasks kanban view, you will see it sorted as such, with a "play" icon next to it to represent it is in a running state.</li>
+<li>Whether you manually populate the <em>End Time</em> or <em>Duration</em> of the open ended line on a task record, or stop the task to automatically populate those fields, the running task will return to a <em>Logged</em> state, and appear in the table with the manually set task status.</li>
+</ul>
+
+<h3>Invoiced</h3>
+
+<p>A task is in an invoiced state after the task has been added to an invoice. A task in the invoice state no longer appears in the kanban view, because it is considered completed. When viewing a task that has been invoiced, there will be a link to the invoice it has been assigned to.</p>
+
+<h3>Archived</h3>
+
+<p>Archived tasks are hidden from all views by default. Archived tasks are still considered available, and can be invoiced and billed for. You can change your view filters to see archived tasks, and you can "Restore" an archived task to return it to its former state.</p>
+
+<h3>Deleted</h3>
+
+<p>A deleted task is no hidden from all views by default, and is no longer considered available. Deleted tasks can not be added to invoices, edited, or billed for. You can change your view filters to see deleted tasks, and you can "Restore" a deleted task record to return it to its former state.</p>
+
+<p><div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/en/purchase_orders">
+        <span>Purchase Orders</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div></p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/tasks.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/gateways">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Payment Gateways</h1>
+
+<p>Invoice Ninja integrates​ with many "payment gateways" (AKA, merchant processors). A payment gateway allows merchants (that's you!) to accept credit cards and other electronic payments online directly from invoices you email out to your clients.</p>
+
+<p>See our <a href="https://invoiceninja.com/payments/">Payment Gateway Integrations</a></p>
+
+<ul>
+<li>Invoice Ninja includes deep integration with a range of high quality payment gateways, allowing you to get paid fast and across many different gateways.</li>
+<li>Payment gateways can be setup in <em>Settings>Payment Settings>New Gateway</em>. From there, you will choose your payment gateway and click Setup.
+
+<ul>
+<li>When you create or edit a payment gateway there are three tabs of settings to configure. <strong>Credentials</strong>, <strong>Settings</strong>, and <strong>Limits/Fees</strong>.</li>
+</ul></li>
+<li>You cannot accept online invoice payments without first setting up a payment gateway.</li>
+<li>The easiest way to start accepting online payments is via Stripe. Stripe is the largest online payment gateway provider with the most currencies.
+
+<ul>
+<li>Simply select "New Gateway," Stripe Setup, then you will be taken to the Stripe login screen to link your account. If you do not have a Stripe account already, Stripe will guide you to create an account right away.</li>
+</ul></li>
+</ul>
+
+<p>You can easily setup payment gateways within your account under <em>Settings>Payment Settings>"New Gateway"</em></p>
+
+<p><img src="/assets/images/gateways/PaymentSettingsGatewaysBlankList_1.png" alt="Payment Gateways List - Blank" title="Payment Gateways List - Blank" /></p>
+
+<p><img src="/assets/images/gateways/AddPaymentGatewayHomePage.png" alt="Add Payment Gateway Home Page" title="Add Payment Gateway Home Page" /></p>
+
+<p><img src="/assets/images/gateways/AddPaymentGatewayDropdownList.png" alt="Add Payment Gateway dropdown list" title="Add Payment Gateway dropdown list" /></p>
+
+<ul>
+<li>You can also integrate multiple gateways for different payment types. For example, you can configure Stripe for your ACH payments, Auth.net for you credit card payments and also PayPal. Gateways can also be configured based on a minimum or maximum amount, giving you maximum flexibility.</li>
+<li>Gateway fees can also be configured and passed on to the client when they perform transactions. For Stripe, Invoice Ninja can even auto calculate the fee amount to pass on to the customer if you enable this option.</li>
+</ul>
+
+<h3>Credentials</h3>
+
+<p>In this first most important pane, you define the necessary values in order to facilitate communication between Invoice Ninja and your payment gateway's API.</p>
+
+<h3>Settings</h3>
+
+<p>These settings govern some of the behaviors within Invoice Ninja's client portal, or admin portal, when looking at and interacting with your configured payment gateways. Some of these options may or may not appear depending on your payment gateway type.</p>
+
+<ul>
+<li><strong>Label</strong> - This label is for internal reference purposes only, and applies to the payment gateway list on the admin portal.</li>
+<li><strong>Capture Card</strong> - Setting to save client credit card details for next time or not. Enabled, or disabled. Otherwise set to "Enabled by Default" or "Disabled by Default" to give the client an option at checkout to "Save payment method details" for later.</li>
+<li><strong>Available Payment Types</strong> - You will see a different list of supported payment methods, depending on the payment gateway service provider you chose. Eg. Credit Card, Bank Transfer, Alipay, Apple Pay, PayPal, etc. Enable or disable these options to give clients access to those payment methods at checkout.</li>
+<li><strong>Required Fields</strong> - Tick the box for any field you wish to request the client to fill out for the payment records. Optionally, update the client record in Invoice Ninja with the client's additional information you requested.</li>
+<li><strong>Accepted Card Logos</strong> - Determines which logos are displayed during checkout. Enable your accepted card logos to advertise support to your clients.</li>
+</ul>
+
+<h3>Limits/Fees</h3>
+
+<p>Here we manage any payment limits, or fees we wish to apply to any transactions. Fees and limits applied are specific to the payment type you have selected.</p>
+
+<ul>
+<li><strong>Payment Type</strong> - Only the payment methods that are enabled in your payment gateway <em>Settings</em> pane are available to select from here. Choose one, and any fees or limits you set will be associated specifically with that payment method only.</li>
+<li><strong>Min Limit &amp; Max Limit</strong> - Enter a dollar value for the desired minimum, or maximum payment limits, and check the "Enable Min" or "Enable Max" boxes to enforce the minimum and maximum values.</li>
+<li><strong>Fee Percent</strong> - Set a fee on transactions with this payment method, based on a % of the amount paid.</li>
+<li><strong>Fee Amount</strong> - Set a flat rate fee for any transactions with this payment method. Can be charged in addition to the Fee Percent, if both values are set.</li>
+<li><strong>Fee Cap</strong> - Set a maximum value for payment method fees charged to a client.</li>
+<li><strong>Tax</strong> - When one, two, or three <em>Item Tax Rates</em> are enabled (Basic Settings > Tax Settings) you will see one <em>Tax</em> field here for each tax rate. These taxes are applied to the payment gateway fees you charge the customer.</li>
+<li><strong>Adjust Fee Percent</strong> - Use the toggle switch to enable this feature. Use this when you intent to forward along the payment gateway fees to the customer. For example, if the payment processing fee for your Stripe account is 30 cents flat, and 1%, and you wanted to pass that to the customer, you would enter a 0.30 flat <em>Fee Amount</em>, and 1 for <em>Fee Percent</em>, and enable the <em>Adjust Fee Percent</em>. Because the total with fees will be higher, the <em>actual</em> fees Stripe charges will be higher also. With this feature, Invoice Ninja will calculate and adjust the fee to charge the customer the expected fee amount, after the final invoice price is changed.
+
+<ul>
+<li><strong><em>Note</em></strong> - When attempting to perfectly capture the payment gateway fee 100% and apply it to the client's payment using <em>Adjust Fee Percent</em>, you must disable <em>Invoice Tax Rates</em> and exclusively use <em>Item Tax Rates</em> (Basic Settings > Tax Settings). When a payment fee is applied to a customer invoice, it is entered as a line item, and any invoice tax rates will be applied to the fee, which will throw off the formula to calculate the new fee percent correctly.</li>
+<li>You are responsible for verifying that your tax and fee settings comply with any laws that apply. Seek legal counsel if you require direction on fee and tax policies for your organization.</li>
+</ul></li>
+</ul>
+
+<h2>Notes</h2>
+
+<p>We no longer support the PayPal <em>Express API</em> integration, we've updated to the "PayPal Platform" and now also support Venmo via PayPal.</p>
+
+<h2>Stripe</h2>
+
+<p align="center">
+    <img class="h-40" src="/assets/images/gateways/stripe.svg" alt="Stripe"/>
+</p>
+
+<p>Our Stripe integration includes a wide range of payment options including:</p>
+
+<ul>
+<li>Card</li>
+<li>ACH</li>
+<li>SOFORT</li>
+<li>Alipay</li>
+<li>Pay</li>
+<li>SEPA</li>
+<li>Bancontact</li>
+<li>iDEAL</li>
+<li>Giropay</li>
+<li>Przelewy24</li>
+<li>EPS</li>
+<li>ACSS</li>
+<li>BECS</li>
+<li>FPX</li>
+<li>BTCPay</li>
+</ul>
+
+<p>Our Stripe integration also includes token billing and refunds</p>
+
+<hr>
+
+<h2>Square</h2>
+
+<p>Our <a href="https://squareup.com/">Square</a> integration includes Credit Card payment options, including token billing, and refunds. Once you sign up for a Square developer account and configure your application in the Square Developer Dashoard, you will need to provide the following credentials:</p>
+
+<ul>
+<li><strong>Application ID</strong></li>
+<li><strong>Access Token</strong></li>
+<li><strong>Location ID</strong>
+```</li>
+</ul>
+
+<p>The <em>Application ID</em> and <em>Access Token</em> can be found under <em>OAuth</em> in the left hand sidebar, and the <em>Location ID</em> can be found under <em>Location</em> in the sidebar. More information can be found in the <a href="https://developer.squareup.com/docs/square-get-started">Square developer documentation</a>.</p>
+
+<p>The test mode checkbox is available for testing Square integration with Square sandbox credentials.</p>
+
+<hr>
+
+<h2>Checkout.com</h2>
+
+<p align="center">
+    <img class="h-50" src="/assets/images/gateways/checkout.jpg" alt="Checkout.com"/>
+</p>
+
+<p>Our Checkout integration includes Credit Card payment options, including token billing and refunds. Enter your API public key and API secret key, provided by Checkout.com. To acquire these, sign in to or create a "The Hub" account on the Checkout.com website. Once signed into "The Hub" click on <em>Settings</em> from the left side menu, and then click <em>Channels</em>. Here you find a list of your businesses registered on Checkout.com, select the appropriate business (if you have multiple here) and you will find the API keys on this screen. For more information about Checkout.com API credentials, visit <a href="https://api-reference.checkout.com/#section/Authentication">Checkout.com Docs</a>.</p>
+
+<ul>
+<li><strong>Test Mode</strong> - Enable for use when your checkout.com account/channel is running in test mode, not for live transactions or production use.</li>
+<li><strong>Threeds</strong> - "threeds" is an API feature to use 3D Secure payments on Checkout.com with Invoice Ninja. 3D Secure payments add an extra step of authentication for customers when processing a card transaction. This feature reduces fraud risk, and also shifts liability in payment processing, to reduce transaction dispute claims.</li>
+</ul>
+
+<hr>
+
+<h2>Mollie</h2>
+
+<p align="center">
+    <img class="h-20" src="/assets/images/gateways/mollie.png" alt="Mollie"/>
+</p>
+
+<p>Our Mollie integration includes a wide range of payment options including:</p>
+
+<ul>
+<li>Credit Card (including token billing)</li>
+<li>Bank Transfer</li>
+<li>KBC</li>
+<li>Bancontact</li>
+<li>iDEAL</li>
+</ul>
+
+<p>To setup Mollie as a payment method, you will need your profile ID #, and your website API Key. Your profile ID # can be found in the top left corner of the screen when you log in to the Mollie dashboard, and you can find a list of your API keys by clicking the <em>Developers</em> expanding menu on the left sidebar, and then clicking <em>API Keys</em>, as described on the <a href="https://help.mollie.com/hc/en-us/articles/115000328205-Where-can-I-find-the-live-API-key-">Mollie knowledgebase</a>. After approving your website, you will find your live, and test API keys here. There is a checkbox in the Invoice Ninja admin portal when configuring the Mollie payment gateway, to enable test mode if you are going to use a <em>Test API Key</em> from Mollie.</p>
+
+<h3>Error executing API call (422: Unprocessable Entity): No suitable payment methods found.</h3>
+
+<p>This error will occur when you don't have enabled payment methods in the Mollie dashboard.
+Navigate to <a href="https://mollie.com/dashboard">Mollie</a> > Settings > Website profiles > <em>Select your profile</em> > Payment methods and enable Credit card.</p>
+
+<hr>
+
+<h2>PayTrace</h2>
+
+<p align="center">
+    <img class="h-20" src="/assets/images/gateways/paytrace.svg" alt="PayTrace"/>
+</p>
+
+<p>Our PayTrace integration includes Credit Card payment options, including token billing and refunds.</p>
+
+<hr>
+
+<h2>PayFast</h2>
+
+<p align="center">
+    <img class="h-25" src="/assets/images/gateways/payfast.png" alt="PayFast"/>
+</p>
+
+<p>Our PayFast integration includes Credit Card payment options. Here is a quick guide to help setup receiving credit card payments with PayFast</p>
+
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SOQhEidfwdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
+<hr>
+
+<h2>Authorize.net</h2>
+
+<p align="center">
+    <img class="h-20" src="/assets/images/gateways/authorize.png" alt="Authorize.net"/>
+</p>
+
+<p>Our <a href="https://www.authorize.net/">Authorize.net</a> integration includes Credit Card payment options, including token billing and refunds. Enter your API Login ID and Transaction Key, provided by Authorize.net. To acquire these, sign in to or create a merchant account on the Authorize.net website. After signing in, click <em>Settings</em> on the left side menu, then click <em>API Credentials &amp; Keys</em>. From here you can view and manage new and existing API credentials. For more information about these Authorize.net API credentials, visit <a href="https://support.authorize.net/s/article/How-do-I-obtain-my-API-Login-ID-and-Transaction-Key">Authorize.net Docs</a>.</p>
+
+<ul>
+<li><strong>Test Mode</strong> - Enable for testing transactions only, use if your account is running in "test mode". For more information about test mode, visit <a href="https://support.authorize.net/s/article/What-Is-Test-Mode-and-How-Do-I-Turn-It-off-and-On">Authorize.net Docs</a>.</li>
+<li><strong>Developer Mode</strong> - Enable for use with sandbox accounts for developers only. This is a separate account type, with no billing, and no <em>real</em> live transactions, and will have unique API credentials associated with it. For more information, visit <a href="https://sandbox.authorize.net/">sandbox.authorize.net</a>.</li>
+<li><strong>Live Endpoint</strong> - Default value is the correct HTTP address for Authorize.net API calls to a live merchant account.</li>
+<li><strong>Developer Endpoint</strong> - Default value is the correct HTTP address for Authorize.net API calls to a sandbox account. For more information about API endpoints, visit <a href="https://developer.authorize.net/api/reference/index.html#gettingstarted-section-section-header">Authorize.net Docs</a>.</li>
+</ul>
+
+<hr>
+
+<h2>Braintree</h2>
+
+<p>With <a href="https://www.braintreegateway.com/">Braintree</a> you can integrate payment support through PayPal, credit card, and debit/bank transfer. Enter your merchant ID, public key, and private key, provided by Braintree. To acquire these, sign in or create a production account on the Braintree website, and click the "gear" icon in the top right corner, which expands a drop down list. To find your public and private keys, visit <em>API</em> in the list, and to find your merchant ID, visit <em>Business</em> in the list. For more information about Braintree gateway credentials, visit <a href="https://developer.paypal.com/braintree/articles/control-panel/important-gateway-credentials">Braintree Docs</a>.</p>
+
+<hr>
+
+<h2>Custom</h2>
+
+<p>This is a developer feature (self-hosted), where you can write in your own PHP code with custom API references for your own payment gateway service provider.</p>
+
+<hr>
+
+<h2>Eway Rapid</h2>
+
+<p>Our <a href="https://www.eway.com.au/">eWAY</a> integration includes Credit Card payment options, including token billing, and refunds. Once you have setup your business in the eWAY portal, you can find your API details under the top menu, by hovering over <em>My Account</em> and then clicking <em>API Keys</em>. Your <em>API Key</em> and <em>Password</em> for Invoice Ninja are listed near the top under <em>Rapid API Key</em> and your <em>Public API Key</em> can be found just below that under the section <em>Pay Now Button</em>. You can find more detailed instructions from the <a href="https://go.eway.io/s/article/How-do-I-setup-my-Live-eWAY-API-Key-and-Password">eWAY knowledgebase</a>. The Test Mode checkbox will enable use with the eWAY sandbox account for payment gateway testing.</p>
+
+<hr>
+
+<h2>PayTrace</h2>
+
+<p>Our <a href="https://www.paytrace.net/">PayTrace</a> integration includes Credit Card payment options, including token billing and refunds. To setup PayTrace you will need your PayTrace account API user credentials and API key, which can be found after successfully setting up an account with PayTrace. There is a process to go through with PayTrace involving testing a sandbox account first, before setting up live payments, make sure you use the <em>Test Mode</em> checkbox when going through this process with sandbox API credentials. For more information visit the <a href="https://developers.paytrace.com/support/home">PayTrace support website</a>.</p>
+
+<p>Our PayTrace integration includes Credit Card payment options, including token billing and refunds.</p>
+
+<hr>
+
+<h2>Digital Wallets</h2>
+
+<p>The below are NOT payment gateways, but rather some information on how your clients can pay an invoice via the client portal using these digital wallets. Support for this depends on your payment gateway (ex. some gateways don't support Apple Pay or Google Pay, etc.)</p>
+
+<h3>Apple Pay &amp; Google Pay</h3>
+
+<p>As of this moment, to pay with Apple or Google Pay a credit card needs to already be configured in your browser. This is not Invoice Ninja preference, but a platform choice.</p>
+
+<p><strong>Safari on desktop</strong>:</p>
+
+<ul>
+<li>Safari on Mac running macOS Sierra or later</li>
+<li>A iPhone (iPad isn't supported yet) with a credit card configured in Wallet. More info can be found on <a href="https://support.apple.com/en-us/HT204681">Apple's support site</a>.</li>
+</ul>
+
+<p><strong>Safari on mobile</strong>:</p>
+
+<ul>
+<li>iOS 10.1 or later</li>
+<li>A card configured in the Wallet app</li>
+</ul>
+
+<p><strong>Google Chrome</strong>:</p>
+
+<ul>
+<li><a href="https://support.google.com/chrome/answer/142893?co=GENIE.Platform%3DDesktop&amp;hl=en">A saved credit card</a></li>
+</ul>
+
+<p><strong>Microsoft Edge</strong>:</p>
+
+<ul>
+<li>Microsoft Edge 16.16299 or newer</li>
+<li><a href="https://support.microsoft.com/en-us/help/4026594/microsoft-account-add-update-remove-credit-cards-and-other-ways-to-pay">A saved credit card</a></li>
+</ul>
+
+<hr>
+
+<h2>Crypto</h2>
+
+<h3>BTCPay</h3>
+
+<p>The integration of BTCPay Server with Invoice Ninja enables you to accept bitcoin as a payment method, without fees, intermediaries with payments going directly to your bitcoin wallet.</p>
+
+<ul>
+<li><a href="https://docs.btcpayserver.org/InvoiceNinja/">Instructions for BTCPay payment gateway setup</a></li>
+</ul>
+
+<hr>
+
+<h2>CBA PowerBoard</h2>
+
+<p>To integrate with the Commonwealth Banks PowerBoard gateway you can use the following steps:</p>
+
+<h3>API Credentials</h3>
+
+<p>The first step will be to log into your <a href="https://powerboard.commbank.com.au/v2/auth/sign-in">PowerBoard</a> portal and retrieve your API credentials.</p>
+
+<p><img class="" src="/assets/images/gateways/powerboard1.png" alt="CBA PowerBoard"/></p>
+
+<p>Then navigate to the My Company link and click on API &amp; Settings</p>
+
+<p><img class="" src="/assets/images/gateways/powerboard2.png" alt="CBA PowerBoard"/></p>
+
+<p>You'll want to copy the API Secret Key and API Public Key values and then click on the Services sidebar menu option to find your Credit Card Gateway ID.</p>
+
+<p><img class="" src="/assets/images/gateways/powerboard3.png" alt="CBA PowerBoard"/></p>
+
+<p>You'll want to copy the ID value highlighted adjacent to your Credit Card Service Provider.</p>
+
+<p><img class="" src="/assets/images/gateways/powerboard4.png" alt="CBA PowerBoard"/></p>
+
+<h3>Invoice Ninja + PowerBoard</h3>
+
+<p>Back in Invoice Ninja, navigate to Settings > Payment Settings; create a new Payment Gateway and select CBA PowerBoard from the drop down.</p>
+
+<p><img class="" src="/assets/images/gateways/powerboard5.png" alt="CBA PowerBoard"/></p>
+
+<p>In The Credentials tab, you can copy in the Secret Key / Public key and the Gateway ID from the previous step.</p>
+
+<p>Further down, you will see some toggles which can control the card types you would like to accept payments from, you can enable/disable these as needed.</p>
+
+<h3>Advanced Settings</h3>
+
+<p>Now that your PowerBoard gateway is configured, you can explore a range of features / options you can use with this gateway!</p>
+
+<p>More reading:</p>
+
+<ul>
+<li><a href="https://invoiceninja.github.io/en/gateways/#limits-fees">Set Gateway Fees</a></li>
+<li><a href="https://invoiceninja.github.io/en/advanced-settings/#payment_links">Payment Links</a></li>
+<li><a href="https://invoiceninja.github.io/en/hosted-mail/">Custom Email Servers</a></li>
+</ul>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/gateways.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

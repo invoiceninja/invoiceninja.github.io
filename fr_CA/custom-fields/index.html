@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr_CA">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/fr_CA/custom-fields">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="fr_CA" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/fr_CA.js"></script>
+    <script type="text/javascript" src="/fr_CA_index.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="fr_CA">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/fr_CA" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Recherche rapide" id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/fr_CA/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">Guide de l&#039;utilisateur</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation API</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Accéder à l&#039;application</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/fr_CA/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> Guide de l&#039;utilisateur </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Documentation API </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Accéder à l&#039;application</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Guide de l&#039;utilisateur</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/user-guide">Premiers pas</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/faq">texts.faq</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/gateways">Passerelles de paiement</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/client-portal">texts.client_portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/invoices">Factures</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/recurring-invoices">Factures récurrentes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/products">Produits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/payments">Paiements</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/quotes">Devis</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/expenses">Dépenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/credits">Crédits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/projects">Projets</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/tasks">Tâches</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/purchase_orders">Commandes d&#039;achat</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/recurring-expenses">Dépenses récurrentes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/reports">Rapports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/subscriptions">Abonnements</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/vendors">Fournisseurs</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/banking">Banque</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/basic-settings">Paramètres de base</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/advanced-settings">Paramètres avancés</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/tax-accounting-tips">texts.tax_accounting_tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Sujets avancés</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/custom-fields">Personnalisation PDF</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/import-and-export">Importer/Exporter</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/qr-codes">Codes QR</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hébergé</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-quickstart">Démarrage rapide</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-activate">Activer</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-custom-domain">Domaine personnalisé</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-migration">Migration hébergée</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-mail">Serveurs de messagerie</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-stripe">Intégration Stripe</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-troubleshooting">Dépannage</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Guide de l&#039;utilisateur</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/user-guide">Premiers pas</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/faq">texts.faq</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/gateways">Passerelles de paiement</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/client-portal">texts.client_portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/invoices">Factures</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/recurring-invoices">Factures récurrentes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/products">Produits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/payments">Paiements</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/quotes">Devis</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/expenses">Dépenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/credits">Crédits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/projects">Projets</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/tasks">Tâches</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/purchase_orders">Commandes d&#039;achat</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/recurring-expenses">Dépenses récurrentes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/reports">Rapports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/subscriptions">Abonnements</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/vendors">Fournisseurs</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/banking">Banque</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/basic-settings">Paramètres de base</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/advanced-settings">Paramètres avancés</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/tax-accounting-tips">texts.tax_accounting_tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Sujets avancés</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/custom-fields">Personnalisation PDF</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/import-and-export">Importer/Exporter</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/qr-codes">Codes QR</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hébergé</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-quickstart">Démarrage rapide</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-activate">Activer</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-custom-domain">Domaine personnalisé</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-migration">Migration hébergée</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-mail">Serveurs de messagerie</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-stripe">Intégration Stripe</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-troubleshooting">Dépannage</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Personnalisations PDF</h1>
+
+<p>La génération de PDF dans la v5 se fait via un système de modèles HTML. Nous fournissons plusieurs modèles de conception parmi lesquels vous pouvez choisir, ou\nvous pouvez créer votre propre conception en utilisant n'importe quelle combinaison HTML/CSS.</p>
+
+<h2>Extraits</h2>
+
+<p>Ces extraits ont été recueillis au fil du temps, certains pourraient les trouver utiles. Nous avons donc décidé de les rassembler dans la documentation officielle.</p>
+
+<h3>Obtenir tous les sélecteurs disponibles sur le design</h3>
+
+<p>Pour nous assurer de pouvoir cibler tous les éléments facilement et rendre les modifications disponibles plus rapidement pour vous, nous avons introduit le mode "Brouillon".
+Pour activer le mode "Brouillon", assurez-vous d'activer l'option :</p>
+
+<p>Paramètres (Paramètres avancés) > Conception de facture > Personnaliser &amp; prévisualiser > Mode brouillon :</p>
+
+<p><img src="/assets/images/pdf_customization/draft-mode.png" alt="texte alternatif" title="Basculer en mode brouillon" /></p>
+
+<p>Sélectionnons la colonne de l'article :</p>
+
+<p><img src="/assets/images/pdf_customization/1-selecting-element-in-draft.png" alt="texte alternatif" title="Sélection de l'élément en mode brouillon" /></p>
+
+<p>Maintenant, vous pouvez sélectionner un élément et inspecter son sélecteur :</p>
+
+<p><img src="/assets/images/pdf_customization/2-inspecting-data-ref-of-element.png" alt="texte alternatif" title="Inspecter data-ref dans le code source" /></p>
+
+<p>La partie importante pour nous est <strong>data-ref</strong>.</p>
+
+<h3>Affichage d'une colonne de tableau sur un design et masquage sur les autres</h3>
+
+<p>Cela masquera les colonnes et les rangées entièrement liées. Dans cet exemple, nous masquons le champ de produit personnalisé.</p>
+
+<pre><code class="language-css">/* CSS (inclut) */
+</code></pre>
+
+<p>[data-ref="product_table-product.product1-th"],
+[data-ref="product_table-product.product1-td"] { display: none; }</p>
+
+<pre><code><br />### Remplacer la propriété "hidden" sur un élément
+Certains éléments ont une propriété "hidden" sur l'élément. Vous pouvez écraser cela avec CSS.
+
+</code></pre>
+
+<p>css
+[data-ref="totals_table-subtotal-label"] {
+    display: inline; /* ou block */
+}</p>
+
+<pre><code><br /><br />## Création d'un design personnalisé
+Voici une section pour vous qui souhaitez créer un nouveau design entièrement à partir de zéro
+ou simplement curieux de comprendre comment fonctionnent les modèles.
+
+</code></pre>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-blue-500">
+    <span>Gardez à l'esprit que pour créer des conceptions, une connaissance en HTML et CSS est obligatoire.</span>
+</div></p>
+
+<pre><code><br />### Création d'une entrée de conception
+
+Commençons par cloner le design existant.
+Pour ce faire, ouvrez le panneau d'administration et accédez à **Paramètres &gt; Conception de facture &gt; Personnaliser &amp; Prévisualiser**.
+
+Le design de base n'est pas important si vous avez une nouvelle conception en tête. Nommez votre design et cliquez sur **Enregistrer**."}
+
+![texte alternatif](/assets/images/creating-custom-design/01-creating-design-entry.png "Création d'une entrée de design")
+
+Nous allons nommer le nôtre **Tutoriel** et activer le **Mode HTML** pour voir les changements plus rapidement.
+
+### Structure de conception
+En haut de la page, nous devrions voir des onglets tels que **Corps**, **En-tête**, **Pied de page**, **Produits**, **Inclus**.  
+C'est ainsi que la conception est structurée et, pour la plupart, vous pouvez la laisser telle quelle.
+
+Nous passerons la plupart de notre temps dans les sections **Includes** et **Body**.
+
+#### Corps
+Comme le suggère le nom, c'est le cœur de la conception. C'est ici que nous allons organiser
+nos éléments.
+
+#### En-tête
+Si vous voulez être entièrement sémantique et respecter pleinement les normes HTML, c'est ici
+que vous devriez placer le contenu de votre en-tête.
+
+#### Pied de page
+Tout comme l'en-tête, il s'agit d'une section plus sémantique pour le contenu du pied de page.
+
+#### Produits
+&lt;x-warning&gt; Au moment de la rédaction, cette fonctionnalité est **non prise en charge**. À l'avenir, elle vous permettra d'allouer dynamiquement des colonnes de table. &lt;/x-warning&gt;
+
+#### Inclusions
+C'est ici que vos styles vont.
+
+### Exigences
+
+Avant de commencer à personnaliser/coder notre propre design, gardez à l'esprit que Invoice Ninja a certaines exigences.
+Ce sont des identifiants spécifiques pour les contenus.
+
+#### Éléments cibles:
+- #détails-entreprise
+- #adresse-entreprise
+- #détails-client
+- #détails-entité
+- #tableau-bon-livraison
+- #tableau-produits
+- #tableau-tâches
+- #tableau-totaux
+- #pied-de-page
+
+Pour obtenir des sélecteurs spécifiques, veuillez vous référer à [Obtenir tous les sélecteurs disponibles sur le design](#obtenir-tous-les-sélecteurs-disponibles-sur-le-design).
+
+Si c'est plus facile pour vous de développer un modèle statique en premier, vous pouvez toujours copier le code source fourni
+sous l'onglet Paramètres et développer localement, en copiant les modifications dans Invoice Ninja une fois que vous êtes satisfait
+du design.
+
+![texte alternatif](/assets/images/creating-custom-design/02-showing-the-source-code.png "Saisir le code source des PDF sources")
+
+### Sélecteurs
+&lt;x-info&gt;Tous les sélecteurs suivants sont marqués à l'aide de l'attribut `data-ref`.&lt;/x-info&gt;
+
+Pour interroger `client_details-client.name` par exemple, utilisez ce qui suit :
+
+
+```css
+[data-ref="client_details-client.name"] {
+    background-color: rouge;
+}
+</code></pre>
+
+<h4>Détails du client</h4>
+
+<ul>
+<li>client_details-client.name</li>
+<li>client_details-client.number</li>
+<li>client_details-client.vat_number</li>
+<li>client_details-client.address1</li>
+<li>client_details-client.address2</li>
+<li>client_details-client.city_state_postal</li>
+<li>client_details-client.country</li>
+<li>client_details-client.phone</li>
+<li>client_details-client.email</li>
+</ul>
+
+<h4>Détails de l'entreprise</h4>
+
+<ul>
+<li>company_details-company.nom</li>
+<li>company_details-company.numéro d'identification</li>
+<li>company_details-company.numéro TVA</li>
+<li>company_details-company.site_web</li>
+<li>company_details-company.email</li>
+<li>company_details-company.téléphone</li>
+</ul>
+
+<h4>Adresse de l'entreprise</h4>
+
+<ul>
+<li>company_address-company.address1</li>
+<li>company_address-company.address2</li>
+<li>company_address-company.city_state_postal</li>
+<li>company_address-company.country</li>
+</ul>
+
+<h4>Détails de la facture</h4>
+
+<ul>
+<li>entity_details-invoice.number_label</li>
+<li>entity_details-invoice.number</li>
+<li>entity_details-invoice.po_number_label</li>
+<li>entity_details-invoice.po_number</li>
+<li>entity_details-invoice.date_label</li>
+<li>entity_details-invoice.date</li>
+<li>entity_details-invoice.due_date_label</li>
+<li>entity_details-invoice.due_date</li>
+<li>entity_details-invoice.total_label</li>
+<li>entity_details-invoice.total</li>
+<li>entity_details-invoice.balance_due_label</li>
+<li>entity_details-invoice.balance_due</li>
+</ul>
+
+<h4>Détails du devis\n- entity_details-quote.number_label\n- entity_details-quote.number\n- entity_details-quote.po_number_label\n- entity_details-quote.po_number\n- entity_details-quote.date_label\n- entity_details-quote.date\n- entity_details-quote.valid_until_label\n- entity_details-quote.valid_until\n- entity_details-quote.total_label\n- entity_details-quote.total</h4>
+
+<h4>Détails du crédit</h4>
+
+<ul>
+<li>entity_details-quote.number_label</li>
+<li>entity_details-quote.number</li>
+<li>entity_details-quote.po_number_label</li>
+<li>entity_details-quote.po_number</li>
+<li>entity_details-quote.date_label</li>
+<li>entity_details-quote.date</li>
+<li>entity_details-quote.balance_label</li>
+<li>entity_details-quote.balance</li>
+<li>entity_details-quote.total_label</li>
+<li>entity_details-quote.total</li>
+</ul>
+
+<h4>Tableau des produits</h4>
+
+<ul>
+<li>tableau_des_produits-produit.item-th</li>
+<li>tableau_des_produits-produit.description-th</li>
+<li>tableau_des_produits-produit.coût_unitaire-th</li>
+<li>tableau_des_produits-produit.quantité-th</li>
+<li>tableau_des_produits-produit.rabais-th</li>
+<li>tableau_des_produits-produit.taxe-th</li>
+<li>tableau_des_produits-produit.total_ligne-th</li>
+</ul>
+
+<h4>Tableau des tâches</h4>
+
+<ul>
+<li>task_table-task.service-th</li>
+<li>task_table-task.description-th</li>
+<li>task_table-task.rate-th</li>
+<li>task_table-task.hours-th</li>
+<li>task_table-task.discount-th</li>
+<li>task_table-task.tax-th</li>
+<li>task_table-task.line_total-th</li>
+</ul>
+
+<h4>Colonnes totales</h4>
+
+<ul>
+<li>totals_table-net_subtotal-label</li>
+<li>totals_table-net_sous_total</li>
+<li>totals_table-subtotal-label</li>
+<li>totals_table-sous_total</li>
+<li>totals_table-remise-label</li>
+<li>totals_table-remise</li>
+<li>totals_table-custom_surcharge1-label</li>
+<li>totals_table-surtaxe_personnalisée1</li>
+<li>totals_table-custom_surcharge2-label</li>
+<li>totals_table-surtaxe_personnalisée2</li>
+<li>totals_table-custom_surcharge3-label</li>
+<li>totals_table-surtaxe_personnalisée3</li>
+<li>totals_table-custom_surcharge4-label</li>
+<li>totals_table-surtaxe_personnalisée4</li>
+<li>totals_table-versé_à_ce_jour-label</li>
+<li>totals_table-versé_à_ce_jour</li>
+<li>totals_table-en_attente-label</li>
+<li>totals_table-en_attente</li>
+</ul>
+
+<h2>Champs personnalisés</h2>
+
+<pre><code class="language-bash">$tax - Étiquette de taxe  
+$app_url - L'URL complète de l'application  
+$from - Étiquette de l'expéditeur  
+$to - Étiquette du destinataire  
+$total_tax_labels - Carte des étiquettes de taxe  
+$total_tax_values - Carte des valeurs de taxe  
+$line_tax_labels - Carte des étiquettes de taxe de ligne  
+$line_tax_values - Carte des valeurs de taxe de ligne  
+$date - Étiquette/valeur de la date de l'entité  
+$invoice.date - Alias de l'étiquette $date  
+$due_date - Étiquette/valeur de la date d'échéance de l'entité (ou date d'échéance du paiement partiel si défini sur la facture ou le devis)
+$invoice.due_date - Alias de la date d'échéance  
+$payment_due - Étiquette/valeur du paiement dû  
+$invoice.number - Étiquette/valeur du numéro de facture  
+$invoice.po_number - Étiquette/valeur du numéro de bon de commande de la facture  
+$entity.datetime - Étiquette/valeur de la date et de l'heure de l'entité  
+$invoice.datetime - Alias de $entity.datetime  
+$quote.datetime - Alias de $entity.datetime  
+$credit.datetime - Alias de $entity.datetime
+</code></pre>
+
+<p>$entity - L'étiquette d'entité, par exemple. Facture / Avoir / Devis<br />
+$number - L'étiquette du numéro, par exemple. Numéro de Facture<br />
+$entity.terms - L'étiquette/valeur des conditions de l'entité, par exemple. Conditions de Facturation:<br />
+$terms - Alias de $entity.terms<br />
+$view_link - Lien de visualisation de l'entité, par exemple. <a href="/link/to/entity">Voir la facture</a><br />
+$view_url - L'URL de visualisation de l'entité, par exemple. https://lien.vers.la.ressource</p>
+
+<p>$project.name - Nom du projet étiquette/valeur<br />
+$project.number - Numéro du projet /valeur</p>
+
+<p>$entity_number - Alias de $number<br />
+$invoice.discount - Étiquette/valeur de la réduction de la facture<br />
+$discount - Alias de $invoice.discount<br />
+$subtotal - Étiquette/valeur du sous-total<br />
+$invoice.subtotal - Alias de $subtotal</p>
+
+<p>$balance_due - Libellé/valeur du solde dû formaté en devise<br />
+$balance_due_raw - Libellé/valeur du solde dû non formaté<br />
+$quote.balance_due - Alias de $balance_due<br />
+$invoice.balance_due - Alias de $balance_due<br />
+$outstanding - Alias de $balance_due</p>
+
+<p>$partial_due - étiquette/valeur de la partie due<br />
+$total - étiquette/valeur totale<br />
+$amount - Alias de $total<br />
+$amount_raw - Alias non formaté de $total<br />
+$amount_due - Alias de $total<br />
+$quote.total - Alias de $total</p>
+
+<p>$invoice.total - Alias de $total<br />
+$invoice_total_raw - Alias non formaté de $total
+$invoice.amount - Alias de $total<br />
+$quote.amount - Alias de $total<br />
+$credit.total - Alias de $total<br />
+$credit.number - Alias de $number<br />
+$credit.total - Alias de $total<br />
+$credit.po_number - Alias de $invoice.po_number<br />
+$credit.date - Étiquette/valeur de la date du crédit<br />
+$balance - Alias de $balance<br />
+$credit.balance - Alias de $balance<br />
+$invoice.balance - Alias de $balance<br />
+$taxes - Étiquette/valeur des taxes totales<br />
+$invoice.taxes - Alias de $taxes</p>
+
+<p>$invoice.custom1 - Étiquette/valeur personnalisée de la facture 1<br />
+$invoice.custom2 - Étiquette/valeur personnalisée de la facture 2<br />
+$invoice.custom3 - Étiquette/valeur personnalisée de la facture 3<br />
+$invoice.custom4 - Étiquette/valeur personnalisée de la facture 4</p>
+
+<p>$invoice.public_notes - Étiquette/valeur des notes publiques de la facture<br />
+$entity.public_notes - Alias de $invoice.public_notes<br />
+$public_notes - Alias de $invoice.public_notes</p>
+
+<p>$entity_issued_to - Étiquette "Émis à"<br />
+$your_entity - Étiquette "Votre <code>entité</code>"</p>
+
+<p>$quote.date - Alias de $date<br />
+$quote.number - Alias de $number<br />
+$quote.po_number - Alias de $invoice.po_number<br />
+$quote.quote_number - Alias de $quote.number<br />
+$quote_no - Alias de $quote.number<br />
+$quote.quote_no - Alias de $quote.number<br />
+$quote.valid_until - Étiquette/valeur valable jusqu'à<br />
+$credit_amount - Alias de $amount<br />
+$credit_balance - Alias de $balance</p>
+
+<p>$credit_number - Alias de $number<br />
+$credit_no - Alias de $number<br />
+$credit.credit_no - Alias de $number</p>
+
+<p>$invoice_no - Alias de $number<br />
+$invoice.invoice_no - Alias de $number</p>
+
+<p>$client1 - Étiquette/valeur personnalisée 1 du client<br />
+$client2 - Étiquette/valeur personnalisée 2 du client<br />
+$client3 - Étiquette/valeur personnalisée 3 du client<br />
+$client4 - Étiquette/valeur personnalisée 4 du client</p>
+
+<p>$client.currency - Code de devise du client, par exemple. AUD, USD</p>
+
+<p>$client.lang_2 - Paramètre régional de la langue du client, par exemple 'fr'</p>
+
+<pre><code>$client.balance - Étiquette/valeur du solde du client  
+$outstanding - Alias de $client.balance  
+$client_balance - Alias de $client.balance  
+$paid_to_date - Étiquette/valeur du montant payé à ce jour par le client  
+</code></pre>
+
+<p>$contact.full_name - Nom complet du contact (étiquette/valeur)<br />
+$contact.email - Courriel du contact (étiquette/valeur)<br />
+$contact.phone - Téléphone du contact (étiquette/valeur)</p>
+
+<p>$contact.name - Étiquette/valeur du nom du contact<br />
+$contact.first_name - Étiquette/valeur du prénom du contact<br />
+$contact.last_name - Étiquette/valeur du nom de famille du contact</p>
+
+<p>$contact.custom1 - Étiquette/valeur personnalisée du contact 1<br />
+$contact.custom2 - Étiquette/valeur personnalisée du contact 2<br />
+$contact.custom3 - Étiquette/valeur personnalisée du contact 3<br />
+$contact.custom4 - Étiquette/valeur personnalisée du contact 4</p>
+
+<p>$company.city_state_postal - Étiquette/valeur de la combinaison ville_province_code postal de l'entreprise<br />
+$company.postal_city_state - Étiquette/valeur de la combinaison ville_province de l'entreprise<br />
+$company.name - Étiquette/valeur du nom de l'entreprise<br />
+$company.address1 - Étiquette/valeur de la première ligne d'adresse de l'entreprise<br />
+$company.address2 - Étiquette/valeur de la deuxième ligne d'adresse de l'entreprise<br />
+$company.city - Étiquette/valeur de la ville de l'entreprise<br />
+$company.state - Étiquette/valeur de la province de l'entreprise<br />
+$company.postal_code - Étiquette/valeur du code postal de l'entreprise<br />
+$company.country - Étiquette/valeur du pays de l'entreprise<br />
+$company.phone - Étiquette/valeur du téléphone de l'entreprise<br />
+$company.email - Étiquette/valeur du courriel de l'entreprise<br />
+$company.vat_number - Étiquette/valeur du numéro de TVA de l'entreprise<br />
+$company.id_number - Étiquette/valeur du numéro d'identification de l'entreprise<br />
+$company.website - Étiquette/valeur du site web de l'entreprise<br />
+$company.address - Étiquette/valeur de l'adresse complète de l'entreprise</p>
+
+<p><code>$code_qr_spc</code> - Code QR formaté SPC</p>
+
+<p>$logo - URL complète du logo de l'entreprise<br />
+$company.logo - Alias de $logo<br />
+$company_logo - Alias de $logo<br />
+$company1 - Étiquette/valeur personnalisée de l'entreprise 1<br />
+$company2 - Étiquette/valeur personnalisée de l'entreprise 2<br />
+$company3 - Étiquette/valeur personnalisée de l'entreprise 3<br />
+$company4 - Étiquette/valeur personnalisée de l'entreprise 4</p>
+
+<p>$custom_surcharge1 - Étiquette/valeur de surcharge personnalisée 1<br />
+$custom_surcharge2 - Étiquette/valeur de surcharge personnalisée 2<br />
+$custom_surcharge3 - Étiquette/valeur de surcharge personnalisée 3<br />
+$custom_surcharge4 - Étiquette/valeur de surcharge personnalisée 4</p>
+
+<p>$product.item - Étiquette de l'élément du produit<br />
+$product.date - Étiquette de la date du produit<br />
+$product.discount - Étiquette de remise du produit<br />
+$product.product_key - Étiquette de la clé du produit<br />
+$product.description - Étiquette de description du produit<br />
+$product.unit_cost - Étiquette du coût unitaire du produit<br />
+$product.quantity - Étiquette de la quantité du produit<br />
+$product.tax - Étiquette de la taxe<br />
+$product.tax_name1 - Étiquette du nom de la taxe 1 du produit<br />
+$product.tax_name2 - Étiquette du nom de la taxe 2 du produit<br />
+$product.tax_name3 - Étiquette du nom de la taxe 3 du produit<br />
+$product.line_total - Étiquette du total de la ligne du produit<br />
+$product.product1 - Étiquette personnalisée du produit 1<br />
+$product.product2 - Étiquette personnalisée du produit 2<br />
+$product.product3 - Étiquette personnalisée du produit 3<br />
+$product.product4 - Étiquette personnalisée du produit 4</p>
+
+<p>$task.date - Étiquette de date de tâche<br />
+$task.discount - Étiquette de réduction de tâche<br />
+$task.service - Étiquette de service de tâche<br />
+$task.description - Étiquette de description de tâche<br />
+$task.rate - Étiquette de tarif de tâche<br />
+$task.hours - Étiquette d'heures de tâche<br />
+$task.tax - Étiquette d'impôt<br />
+$task.tax_name1 - Étiquette de nom d'impôt 1 de tâche<br />
+$task.tax_name2 - Étiquette de nom d'impôt 2 de tâche<br />
+$task.tax_name3 - Étiquette de nom d'impôt 3 de tâche<br />
+$task.line_total - Étiquette de total de ligne de tâche</p>
+
+<p><code>$contact.signature</code> - L'image de la signature du contact.</p>
+
+<p>$thanks - Étiquette de remerciement<br />
+$from - Étiquette d'expéditeur<br />
+$to - Étiquette de destinataire<br />
+$details - Étiquette de détails<br />
+$item - Étiquette d'article<br />
+$description - Étiquette de description<br />
+$entity_footer - Étiquette/valeur de pied de page d'entité<br />
+```</p>
+
+<p><div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/fr_CA/gateways">
+        <span>Passerelles</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div></p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/fr_CA/custom-fields.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

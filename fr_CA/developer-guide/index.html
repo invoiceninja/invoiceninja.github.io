@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr_CA">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/fr_CA/developer-guide">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="fr_CA" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/fr_CA.js"></script>
+    <script type="text/javascript" src="/fr_CA_index.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="fr_CA">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/fr_CA" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Recherche rapide" id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/fr_CA/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">Guide de l&#039;utilisateur</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation API</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Accéder à l&#039;application</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/fr_CA/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> Guide de l&#039;utilisateur </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Documentation API </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Accéder à l&#039;application</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide"></a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide">Guide du développeur</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Ressources pour développeurs</h1>
+
+<h2>Pour commencer.</h2>
+
+<p>L'API Invoice Ninja est construite sur le <a href="https://laravel.com">Framework Laravel</a>, il s'agit d'un framework PHP extrêmement populaire avec une documentation et des tutoriels de grande qualité, disponibles partout sur le Web. Pour commencer à personnaliser et/ou étendre Invoice Ninja, vous devrez vous familiariser avec la dernière version de Laravel et toutes ses fonctionnalités. L'espace de noms URL pour l'api est <strong>/api/v1</strong> Le Portail Client est une application Web traditionnelle également construite avec Laravel ainsi qu'avec des composants Livewire et Tailwind. L'espace de noms URL pour les URL orientées client est <strong>/client/</strong></p>
+
+<p>Si vous prévoyez de créer une nouvelle fonctionnalité dans Invoice Ninja, par exemple un module d'inventaire, plutôt que de l'intégrer directement dans la base de code, nous vous recommandons fortement d'utiliser la bibliothèque <a href="https://github.com/nwidart/laravel-modules">Laravel Modules</a>. Cette bibliothèque fait déjà partie du noyau d'Invoice Ninja, vous pouvez donc vous lancer directement et commencer à construire.</p>
+
+<p>Si vous prévoyez de contribuer avec votre code au dépôt officiel d'Invoice Ninja, veuillez vous assurer d'avoir une couverture de test pour votre fonctionnalité. Nous utilisons <a href="https://phpunit.de/">PhpUnit</a> pour nos tests d'API, et <a href="https://www.cypress.io/">Cypress</a> pour nos tests d'interface utilisateur du portail client.</p>
+
+<h2>Architecture</h2>
+
+<p>L'application est divisée en trois parties principales : le backend/API et les deux portails d'administration.</p>
+
+<h3>Backend - API</h3>
+
+<h4>Développeur principal : <a href="https://twitter.com/deadbeefx0">David Bomba</a></h4>
+
+<ul>
+<li>Cadre : <a href="https://laravel.com">Laravel</a></li>
+<li>Code : <a href="https://github.com/invoiceninja/invoiceninja/tree/v5-stable">GitHub</a></li>
+<li>API : <a href="https://api-docs.invoicing.co/">Docs</a></li>
+</ul>
+
+<h3>Portail administrateur - Bureau &amp; Mobile</h3>
+
+<h4>Développeur principal : <a href="https://twitter.com/hillelcoren">Hillel Coren</a></h4>
+
+<ul>
+<li>Cadre de travail : <a href="https://flutter.dev">Flutter</a></li>
+<li>Code : <a href="https://github.com/invoiceninja/admin-portal">GitHub</a></li>
+<li>Démo : <a href="https://demo.invoiceninja.com">demo.invoiceninja.com</a></li>
+</ul>
+
+<h3>Portail administratif - Web</h3>
+
+<h4>Développeur principal : <a href="https://twitter.com/beganovichhh">Benjamin Beganović</a></h4>
+
+<ul>
+<li>Cadre d'application : <a href="https://reactjs.org">React</a></li>
+<li>Code : <a href="https://github.com/invoiceninja/ui">GitHub</a></li>
+</ul>
+
+<h2>Définition de l'API</h2>
+
+<p>Notre définition complète de l'API se trouve <a href="https://api-docs.invoicing.co/">ici</a></p>
+
+<h3>URL de base pour v5</h3>
+
+<p>L'url de base pour la v5 est :</p>
+
+<pre><code>https://invoicing.co
+</code></pre>
+
+<h3>Migration de v4</h3>
+
+<p>Invoice Ninja v4 a été initialement construit comme une application web avec une API ajoutée par la suite pour prendre en charge les cas d'utilisation courants et la fonctionnalité limitée de l'application mobile v4. Avec la v5, nous avons plutôt construit une application API-first, toutes les fonctionnalités des applications web/mobile/bureau sont alimentées par l'API.</p>
+
+<p>Par exemple, dans la v4, les <a href="https://github.com/invoiceninja/invoiceninja/blob/master/app/Ninja/Transformers/ClientTransformer.php#L51">inclusions de clients</a> sont limitées aux contacts, factures, crédits et activités, alors que dans la v5, <a href="https://github.com/invoiceninja/invoiceninja/blob/v5-develop/app/Transformers/ClientTransformer.php#L32">toutes les options</a> sont disponibles. Cela inclut : contacts, documents, gateway_tokens, documents, gateway_tokens, activités, grand livre et journaux système.</p>
+
+<p>Un autre inconvénient majeur de l'API v4 est la documentation, même si les fonctionnalités sont limitées, ce qui est disponible n'est pas nécessairement documenté. Dans la v5, nous nous sommes assurés de documenter chaque aspect de l'API.</p>
+
+<p>Les APIs v4 et v5 sont principalement les mêmes, mais il y a quelques changements clés dont il est important d'être conscient.</p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Le nom de l'en-tête pour le jeton API a changé de X-Ninja-Token dans la v4 à X-API-Token dans la v5.</span>
+</div></p>
+
+<p>Le type de données des champs d'identifiant a été modifié de entier à chaîne de caractères pour prendre en charge le nouveau format d'identifiant.</p>
+
+<p>La route pour téléverser des documents a changé, voici un exemple cURL v5 :</p>
+
+<pre><code>curl -X POST https://invoicing.co/api/v1/invoices/&lt;invoice_id&gt;/upload \\
+  -H 'Content-Type: multipart/form-data' \\
+  -H 'X-API-TOKEN: TOKEN' \\
+  -H 'X-Requested-With: XMLHttpRequest' \\
+  -F _method=PUT \\
+  -F 'documents[]=@nomdufichier.png'
+</code></pre>
+
+<h3>Entêtes de l'API</h3>
+
+<h4>X-API-SECRET</h4>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    Le X-API-SECRET peut être utilisé comme une autre couche de protection pour votre API.</p>
+
+<p>Le X-API-SECRET nécessite que vous configuriez une variable .env <code>API_SECRET=</code>" }</p>
+
+<p>Ceci est un en-tête facultatif, et n'est évalué que sur la route /api/v1/login.\n
+</div>
+\n<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>X-API-SECRET: valeur
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>X-API-TOKEN</h4>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    Le X-API-TOKEN est le jeton d'authentification et est requis pour toutes les demandes de l'API</p>
+
+<p>Ceci est un en-tête obligatoire.
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>X-API-TOKEN: valeur
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>X-Requested-With;</h4>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    Le en-tête X-Requested-With est un en-tête axé sur la sécurité, il n'accepte qu'une seule valeur.</p>
+
+<p>Ceci est un en-tête obligatoire.
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>X-Requested-With: XMLHttpRequest
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Content-Type: application/json</h4>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    Lors de la soumission des données à l'API, vous devez déclarer le type de contenu</p>
+
+<p>Ceci est un en-tête requis lors de l'utilisation des méthodes POST/PUT.
+</div>
+</p>
+
+<p><div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>Content-Type: application/json\nContent-Type: multipart/form-data
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h3>Clés primaires</h3>
+
+<p>Dans la version 5 de Invoice Ninja, nous passons des clés primaires basées sur des entiers aux hashed_id's, ce sont des représentations de chaînes de caractères obscurcies de la clé primaire pour tous les enregistrements d'entités.</p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/fr_CA/developer-guide.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>
