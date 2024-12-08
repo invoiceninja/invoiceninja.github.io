@@ -21,10 +21,10 @@ The list of supported e-invoice formats include:
 - [EN16931 (Generic)](#en16931)
 
 ## PEPPOL 
-***ALPHA RELEASE - NOT FOR PRODUCTION USE***
+***BETA RELEASE***
 
+Invoice Ninja has now rolled out a PEPPOL access point which will be available for both self hosted and hosted users to route their e-invoices through the PEPPOL network. 
 ## How does it work?
-Invoice Ninja will be rolling out a PEPPOL access point which will be available for both self hosted and hosted users to route their e-invoices through the PEPPOL network. 
 
 ## How do I get started?
 
