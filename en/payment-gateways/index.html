@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/payment-gateways">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/developer-guide"></a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninjaDeveloper Guide-blue py-1 "
+                                  href="/en/developer-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninjaDeveloper Guide-blue py-1 "
+                                  href="/en/payment-gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninjaDeveloper Guide-blue py-1 "
+                                  href="/en/statics">Static Variables</a>
+                                                          <a class="block hover:text-ninjaDeveloper Guide-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">API Docs</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/developer-guide">Developer Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/developer-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payment-gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/statics">Static Variables</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">API Docs</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Payment Gateways</h1>
+
+<h2>Adding payment gateways</h2>
+
+<p>Payment Driver Template.</p>
+
+<p>So you want to make a payment driver for invoice ninja, but don't know where to start? The first step would be to reach out to us directly on Slack https://invoiceninja.slack.com and have a chat to us in real time so that we can help you hit the ground running and build your driver in the most efficient way possible. Contacting us prior will also ensure that your code can be merged back into the official repository as we will be maintaining this code into the future.</p>
+
+<p>The second step is to understand that there are two components to building the driver:</p>
+
+<ol>
+<li>The backend implementation that communicates with the Payment Gateway.</li>
+<li>The front end implementation that allows the end user to configure the payment gateway itself with api credentials / payment method selections.</li>
+</ol>
+
+<p>This guide focuses on the backend implementation, after you have completed this, you can communicate with our front end teams for the next steps in how to show the gateway in the React/Flutter interface .</p>
+
+<p>Ready? Lets go!</p>
+
+<h3>Step 1. Setup environment</h3>
+
+<p>You should update your code to be up to date with the <a href="https://github.com/invoiceninja/invoiceninja/tree/v5-develop">v5-develop</a> branch.</p>
+
+<p>You will then want to create your own branch for for your driver ie.</p>
+
+<pre><code>git branch my_payment_driver
+</code></pre>
+
+<h3>Step 2. Adding the gateway into the gateways table</h3>
+
+<p>Lets create a migration file which will insert a record identifying the gateway.</p>
+
+<pre><code>php artisan make:migration my_new_gateway
+</code></pre>
+
+<p>Let open this file and in the up() method create our new gateway record</p>
+
+<p>Init a new gateway instance</p>
+
+<pre><code>$gateway = new Gateway;
+$gateway-&gt;name = 'Fancy Gateway'; 
+$gateway-&gt;key = Str::lower(Str::random(32)); 
+$gateway-&gt;provider = ‘FancyGateway’;
+$gateway-&gt;is_offsite = true;
+$gateway-&gt;fields = new \stdClass;
+$gateway-&gt;visible = true;
+$gateway-&gt;site_url = ‘https://stripe.com’;
+$gateway-&gt;default_gateway_type_id = 1;
+$gateway-&gt;save();
+</code></pre>
+
+<h4>Gateway Properties</h4>
+
+<ul>
+<li>name: The name of your gateway</li>
+<li>key: A random 32 alphanumeric gateway key (Type: string)</li>
+<li>provider: This is a camel cased string which is used to initialize your payment driver. We append the string Driver to this class, so if you payment driver is FancyGatewayDriver, then your provider will be FancyGateway. (Type: string)</li>
+<li>is_offsite: Specifies is this payment driver redirects the user to another page to complete the payment. Paypal Express for instance redirects to Paypal, and then returns the user once the payment is completed (Type: bool)</li>
+<li>fields: A stdClass object of key values which defines the user settings required for the gateway, ie, Api Keys, Secrets etc. All of these fields are strings except for testMode which is a boolean and indicates whether the gateway is set to test mode. (Type stdClass)</li>
+<li>visible: Defines whether the gateway should be visible in the UI (Type: bool)</li>
+<li>site_url: A URL field which allows the user to go directly to the gateway page for further information (Type: string, url)</li>
+<li>default_gateway_type_id: If your gateway has multiple ways to pay, ie Credit Card, Bank Transfer etc, then you’ll want to select a default method. The list of defined methods are found on the GatewayType model as follows:</li>
+</ul>
+
+<pre><code>const CREDIT_CARD = 1;
+const BANK_TRANSFER = 2;
+const PAYPAL = 3;
+const CRYPTO = 4;
+const CUSTOM = 5;
+const ALIPAY = 6;
+const SOFORT = 7;
+const APPLE_PAY = 8;
+const SEPA = 9;
+const CREDIT = 10;
+</code></pre>
+
+<h3>Step 3. App\Models\Gateway.php Model Getters and Setters</h3>
+
+<p>Two methods need to be appended to:</p>
+
+<ol>
+<li><code>getHelp()</code> returns a link to the gateways help page, we display a link in the UI for the user to open a direct webpage to the gateway.</li>
+<li><code>getMethods()</code> returns an array of the supported gateway types (ie payment methods), whether the gateway supports refunds and token billing and also webhook meta data. The structure of the array looks like this:</li>
+</ol>
+
+<pre><code class="language-php">[
+  [GatewayType::CREDIT_CARD =&gt; ['refund' =&gt; true, 'token_billing' =&gt; true]],
+  [GatewayType::BANK_TRANSFER =&gt; ['refund' =&gt; true, 'token_billing' =&gt; true, 'webhooks' =&gt; ['source.chargeable']]]
+];
+</code></pre>
+
+<p>The array is stored in a case/switch block, which switches on the gateway->id property.</p>
+
+<h3>Step 4. Starting work on the Payment Driver</h3>
+
+<p>All payment drivers must extend the BaseDriver class which itself extends the abstract class AbstractPaymentDriver which enforces the following required methods. We have stubbed an example payment driver class and view files which can be downloaded <a href="/assets/files/PaymentDriver.zip">here</a></p>
+
+<pre><code class="language-php">abstract public function authorizeView(array $data);
+
+abstract public function authorizeResponse(Request $request);
+
+abstract public function processPaymentView(array $data);
+
+abstract public function processPaymentResponse(Request $request);
+
+abstract public function refund(Payment $payment, $refund_amount, $return_client_response = false);
+
+abstract public function tokenBilling(ClientGatewayToken $cgt, PaymentHash $payment_hash);
+
+abstract public function setPaymentMethod($payment_method_id);
+</code></pre>
+
+<ul>
+<li>authorizeView() returns a view which enables capture of a token for a particular payment method, ie Credit Card or Bank Transfer</li>
+</ul>
+
+<p>To understand the layouts of the UI, it is worthwhile inspecting the other payment driver layouts in resources/views/portal/ninja2020/gateways.</p>
+
+<p>All layouts extend from the following</p>
+
+<pre><code class="language-php">@extends('portal.ninja2020.layout.payments', ['gateway_title' =&gt; ctrans('texts.credit_card'), 'card_title' =&gt; ctrans('texts.credit_card')])
+</code></pre>
+
+<ul>
+<li>authorizeReponse() processes the gateway response and if successful creates a <code>ClientGatewayToken</code> record followed by returning the user to the following route</li>
+</ul>
+
+<pre><code class="language-php">return redirect()-&gt;route('client.payment_methods.index');
+</code></pre>
+
+<ul>
+<li><p>processPaymentView() returns a view which enables capture of a payment</p></li>
+<li><p>processPaymentResponse() processes the gateway response and if successful creates a <code>Payment</code> record followed by returning the user to the payment route here:</p></li>
+</ul>
+
+<pre><code class="language-php">return redirect()-&gt;route('client.payments.show', ['payment' =&gt; $this-&gt;stripe-&gt;encodePrimaryKey($payment-&gt;id)]);
+</code></pre>
+
+<ul>
+<li>refund() attempts to refund a payment and takes three parameters,</li>
+</ul>
+
+<ol>
+<li>The Payment Model (Collection)</li>
+<li>The Refund amount (Float)</li>
+<li>Whether the response requires a client response (Boolean)</li>
+</ol>
+
+<ul>
+<li><p>tokenBilling() attempts to process a token charge for a given amount</p></li>
+<li><p>setPaymentMethod() this method is used to set the payment method on the driver class, this is needed in gateway classes where there are multiple payment method options in the gateway ie. Credit Card, Bank Transfer.</p></li>
+</ul>
+
+<p>The BaseDriver class itself contains several helper methods which allow the creation of Payment records in Invoice Ninja, these are defined as follows:</p>
+
+<pre><code class="language-php">public function storeGatewayToken(array $data, array $additional = []): ?ClientGatewayToken
+</code></pre>
+
+<p>This method is used to store a token generated by a payment gateway, it requires an array of parameters with the following definition:</p>
+
+<pre><code class="language-php">[
+    'token', // (string),
+    'payment_method_id', // (ie GatewayType::CREDIT_CARD), 
+    'payment_meta', // stdClass object as defined below
+]
+
+$payment_meta = new \stdClass;
+$payment_meta-&gt;exp_month = (string) $method-&gt;card-&gt;exp_month;
+$payment_meta-&gt;exp_year = (string) $method-&gt;card-&gt;exp_year;
+$payment_meta-&gt;brand = (string) $method-&gt;card-&gt;brand;
+$payment_meta-&gt;last4 = (string) $method-&gt;card-&gt;last4;
+$payment_meta-&gt;type = GatewayType::CREDIT_CARD;
+</code></pre>
+
+<p>To improve abstraction, we encourage the development of the actual payment gateway implementation into its own namespace. Once you have completed processing a gateway response, you'll need to perform some additional work this could include:</p>
+
+<ol>
+<li>Returning a successful payment response to the end user</li>
+<li>Process a refund</li>
+<li>Store a client gateway token</li>
+<li>Process a failed payment response to the end user</li>
+</ol>
+
+<p>Invoice ninja provides the entry point for these in the BaseDriver class, the exact data required in specified as above, the rest is merged from data already within the driver itself.</p>
+
+<h4>1. Handling a successful payment response</h4>
+
+<p>Invoice ninja uses a small glue class called a PaymentHash, which links the payment meta data with a hash, once you have returned from your gateway, you'll need to rehydrate the payment hash object, it will be returned by the gateway in the request variable <code>payment_hash</code> using a binary search as follows</p>
+
+<pre><code class="language-php">$payment_hash = PaymentHash::whereRaw('BINARY `hash`= ?', [$request-&gt;input('payment_hash')])-&gt;firstOrFail();
+</code></pre>
+
+<p>At this point you will need to create a payment record, this can be passed directly to the BaseDriver method defined below</p>
+
+<pre><code class="language-php">public function createPayment(array $data, $status = Payment::STATUS_COMPLETED): Payment
+</code></pre>
+
+<p>The data array here requires the following properties to be passed in from you custom payment driver</p>
+
+<pre><code class="language-php">[
+    'gateway_type_id', // (ie GatewayType::CREDIT_CARD) 
+    'amount', // (float) see below
+    'payment_type', // (ie PaymentType::CREDIT_CARD_OTHER)
+    'transfaction_reference',
+]
+</code></pre>
+
+<p>The amount key is hydrated from the payment hash the follow query should be used to determine the amount</p>
+
+<pre><code class="language-php">array_sum(array_column($payment_hash-&gt;invoices(), 'amount')) + $payment_hash-&gt;fee_total;
+</code></pre>
+
+<p>In addition to creating the Payment record, we highly recommend logging the full output from the gateway to enable debugging for future purpose, this is done via the SystemLogger::job() which is defined as follows</p>
+
+<pre><code class="language-php">public function __construct(array $log, int $category_id, int $event_id, int $type_id, ?Client $client)
+</code></pre>
+
+<p>The array is the gateway response, bundled with any other metadata you would like to add, the remaining properties are the const values defined in SystemLog, these define the category, event and type of log. Feel free to create additional categories using the template in the SystemLog model class.</p>
+
+<h4>2. Process a refund</h4>
+
+<p>The refund method is implemented in your PaymentDriver class with the following method</p>
+
+<pre><code class="language-php">public function refund(Payment $payment, $refund_amount, $return_client_response = false);
+</code></pre>
+
+<p>You may need the $payment class to pass in the transaction_reference to your gateway, along with the refund_amount, the return object here is a simple array of data on success, or throw an exception with an appropriate message.</p>
+
+<h4>3. Store a client gateway token</h4>
+
+<p>Once you have generated a gateway token, you'll need to store this, a helper method in the BaseDriver is defined here:</p>
+
+<pre><code class="language-php">public function storeGatewayToken(array $data, array $additional = []): ?ClientGatewayToken
+</code></pre>
+
+<p>The properties required for the data array are as follows:</p>
+
+<pre><code class="language-php">[
+  'token',
+  'payment_method_id',
+  'payment_meta',
+  'payment_method_id', // ie. GatewayType::CREDIT_CARD
+  'gateway_customer_reference', // optional
+]
+</code></pre>
+
+<h4>4. Process a failed payment response to the end user</h4>
+
+<p>A generic expection is provided when you encounter a fatal gateway error whilst processing a payment</p>
+
+<pre><code class="language-php">throw new PaymentFailed('Failed to process the payment.', 500);
+</code></pre>
+
+<p>Along with this exception, it is also required that you dispatch a PaymentFailureMailer::job() defined as follows</p>
+
+<pre><code class="language-php">PaymentFailureMailer::dipatch($client, $error, $company, $payment_hash)
+</code></pre>
+
+<h3>Environment Setup</h3>
+
+<h4>Stub Gateway Configuration</h4>
+
+<p>When building the driver, you will want a way to preconfigure a gateway with the required testing credentials. As the UI for this is not built, you will want to manually create a company gateway record using the following schema:</p>
+
+<pre><code class="language-php">$cg = new CompanyGateway();
+$cg-&gt;company_id = $company-&gt;id;
+$cg-&gt;user_id = $user-&gt;id;
+$cg-&gt;gateway_key = 'insert_your_gateway_hash_here';
+$cg-&gt;require_cvv = true;
+$cg-&gt;require_billing_address = true;
+$cg-&gt;require_shipping_address = true;
+$cg-&gt;update_details = true;
+$cg-&gt;config = encrypt('{"apiKey":"api_key_value","anotherKey":"another_value"}');
+$cg-&gt;save();
+</code></pre>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/payment-gateways.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

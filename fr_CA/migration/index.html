@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr_CA">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/fr_CA/migration">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="fr_CA" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/fr_CA.js"></script>
+    <script type="text/javascript" src="/fr_CA_index.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="fr_CA">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/fr_CA" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Recherche rapide" id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/fr_CA/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">Guide de l&#039;utilisateur</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation API</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Accéder à l&#039;application</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/fr_CA/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> Guide de l&#039;utilisateur </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Documentation API </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Accéder à l&#039;application</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/migration">Migration</a>
+
+                       <div class="mt-2">
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/migration">Migration</a>
+
+
+                        <div class="mt-2">
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Migration vers v5</h1>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-blue-500">
+    <span>Si vous êtes un utilisateur de Invoice Ninja hébergé, vous pouvez ignorer toutes ces étapes. Connectez-vous simplement à votre compte, cliquez sur le bouton Démarrer la migration dans Paramètres > Gestion du compte et nous nous occuperons du reste. Une fois que vous êtes sûr que vos données ont été transférées, vous pouvez suivre les étapes de notre guide <a href="https://invoiceninja.github.io/fr_CA/hosted-activate/">Activation</a></span>
+</div></p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Vous devez configurer cette version (v5) complètement à partir de zéro. N'essayez pas de remplacer votre ancienne version d'Invoice Ninja (4.x.x) avec cette version car les deux bases de code sont complètement différentes.</span>
+</div></p>
+
+<h2>Préparation v4.</h2>
+
+<p>La première étape nécessaire pour préparer la migration de vos données vers votre nouvelle installation v5 est de mettre à jour votre installation v4 vers la <a href="https://download.invoiceninja.com">dernière version</a> disponible. C'est une étape cruciale et vous rencontrerez des problèmes lors de la migration de vos données si vous ne mettez pas à jour vers la dernière version v4.</p>
+
+<h2>Installation de v5.</h2>
+
+<p>L'installation de v5 est expliquée en détail <a href="/fr_CA/self-host-installation">ici</a> avec des ressources pour couvrir vos besoins pour des installations Docker / Hébergement partagé ou Ubuntu/Centos.</p>
+
+<p>Un détail important lors de votre installation v5 est que votre identifiant utilisateur initial est identique à celui de votre installation v4.</p>
+
+<p>La migration repose fortement sur le système de file d'attente Laravel, vous devez donc vous assurer d'avoir configuré le planificateur cron qui démarre la file d'attente Laravel pour vous. Si vous ne configurez pas le planificateur cron, la migration ne fonctionnera pas et vous vous retrouverez avec une entreprise vide sans contenu.</p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Veuillez noter que la version 5.3.0 nécessite désormais PHP 7.4. Pour certains environnements, vous devrez peut-être envisager d'utiliser une plateforme vous permettant d'utiliser plusieurs versions de PHP. La plupart des hébergeurs Web réputés offrent cPanel avec MultiPHP switcher</span>
+</div></p>
+
+<h2>Démarrage de la migration</h2>
+
+<p><img src="/assets/images/migration/migration_step_1.png" alt="texte alternatif" title="Commencer la migration" /></p>
+
+<p>Accédez à Paramètres > Gestion des comptes et faites défiler jusqu'à ce que vous voyez le bouton Démarrer la migration.</p>
+
+<p><img src="/assets/images/migration/migration_step_2.png" alt="texte alternatif" title="Sélectionnez auto-hébergé" /></p>
+
+<p>Après avoir cliqué sur <code>Démarrer la migration</code>, vous obtiendrez un autre écran, sélectionnez simplement le bouton radio d'auto-hébergement et continuez.</p>
+
+<p><img src="/assets/images/migration/migration_step_3.png" alt="texte alternatif" title="Entrer l'URL" /></p>
+
+<p>Le prochain écran demande le nom de domaine complet qualifié de votre installation v5, entrez ceci en incluant le http:// ou https:// dans votre URL, c'est-à-dire</p>
+
+<pre><code>http:://ninja.test
+</code></pre>
+
+<p><img src="/assets/images/migration/migration_step_4.png" alt="texte alternatif" title="Authentifier" /></p>
+
+<p>L'écran suivant vous demande de saisir vos identifiants de connexion, en gardant à l'esprit que ceux-ci doivent être identiques entre votre installation v4 et v5. Vous remarquerez également un champ supplémentaire <code>API_SECRET</code> ; vous pouvez l'ignorer si vous n'avez pas de valeur définie pour cela dans votre fichier <code>.env</code>.</p>
+
+<p>Si vous rencontrez une erreur à ce stade, il est fort probable que vos identifiants sont incorrects ou que l'URL que vous avez saisie n'est pas correcte.</p>
+
+<p><img src="/assets/images/migration/migration_step_5.png" alt="texte alternatif" title="Sélectionner une entreprise" /></p>
+
+<p>Si vous vous authentifiez avec succès, vous verrez l'écran suivant qui vous permet de sélectionner les entreprises que vous souhaitez migrer.</p>
+
+<p><strong>Points importants à ce stade :</strong></p>
+
+<ul>
+<li>La migration forcée écrasera une entreprise existante qui a déjà été migrée vers la v5, c'est destructeur et irréversible.
+<br><strong>NOTE :</strong> Si la 1ère migration échoue et que seulement une partie des données a été transférée, PURGEZ et SUPPRIMEZ les données/l'entreprise et recommencez le processus avec "Migration forcée" coché.</li>
+<li>Il suffit de cocher la case à côté du nom de l'entreprise pour tenter une migration si l'entreprise n'a jamais été migrée vers l'installation v5. C'est une migration non-destructive, c'est-à-dire qu'elle n'écrasera pas une entreprise correspondante.</li>
+</ul>
+
+<p><img src="/assets/images/migration/migration_step_6.png" alt="texte alternatif" title="Migration commencée" /></p>
+
+<h2>Processus de migration v5</h2>
+
+<p>Avec un peu de chance, vous devriez avoir déjà reçu une notification par courriel vous informant que la migration est terminée !</p>
+
+<p>Il y a quelques éléments que vous voudrez vérifier pour vous assurer que les données ont été transmises correctement :</p>
+
+<ul>
+<li>Assurez-vous que le logo de votre entreprise a été transféré (Paramètres > Détails de l'entreprise > Logo)</li>
+<li>Assurez-vous que les données transférées passent notre contrôle de qualité des données en exécutant</li>
+</ul>
+
+<pre><code class="language-php">php artisan ninja:verifier-donnees
+</code></pre>
+
+<p>Une série de vérifications sont effectuées et si vous voyez 0 problème, cela signifie que vos données ont été transférées correctement.</p>
+
+<ul>
+<li>Vous voudrez également inspecter les journaux situés dans :</li>
+</ul>
+
+<pre><code class="language-bash">storage/logs/laravel.log
+</code></pre>
+
+<p>À l'intérieur, vous verrez une sortie comme celle-ci :</p>
+
+<h2>Transfert des utilisateurs de v4 à v5</h2>
+
+<p>Lorsque vous avez terminé la migration et que vous êtes satisfait de la configuration de votre installation v4, il est temps de rediriger vos utilisateurs ayant déjà des invitations v4 vers votre installation v5.</p>
+
+<p>Dans la v4, accédez à Réglages > Gestion de compte - Rediriger les clients vers la v5.</p>
+
+<p>Entrez l'URL de votre installation v5 et cliquez sur enregistrer. Lorsque vos utilisateurs utiliseront des liens v4 existants, ils seront redirigés en toute transparence vers votre installation v5.</p>
+
+<p>Pour les utilisateurs hébergés, vous pouvez découvrir votre URL complète en naviguant dans la v5 vers Paramètres > Portail Client. Le champ Sous-domaine sera la valeur du sous-domaine avec invoicing.co à la fin. c'est-à-dire.</p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Attention ! Une fois la redirection activée, votre compte v4 sera désactivé. Cela signifie que vos factures récurrentes et les rappels / facturation automatique ne seront plus effectués à partir de cette installation.</span>
+</div></p>
+
+<p>https://subdomain.invoicing.co"</p>
+
+<h2>Dépannage</h2>
+
+<p>Si vous rencontrez des problèmes avec la migration qui ne se déroule pas comme prévu, veuillez suivre la liste de vérification suivante :</p>
+
+<ul>
+<li>Assurez-vous que les répertoires sont accessibles en lecture/écriture par l'utilisateur web (c.-à-d. www-data)</li>
+<li>Assurez-vous que le planificateur cron fonctionne (et travaille) - Vous pouvez vérifier s'il fonctionne en inspectant la table <code>jobs</code> dans la base de données, elle doit être vide</li>
+<li>Inspectez le fichier journal /storage/logs/laravel.log pour plus d'informations.</li>
+<li>Si vous rencontrez toujours des problèmes, activez la journalisation avancée en ajoutant la variable suivante à votre fichier .env.</li>
+</ul>
+
+<pre><code>EXPANDED_LOGGING=vrai
+</code></pre>
+
+<p>Ensuite, tentez à nouveau la migration et, par la suite, inspectez le fichier journal dans storage/logs/invoiceninja.log</p>
+
+<ul>
+<li>Si vous utilisez <code>https://</code>, assurez-vous d'utiliser un certificat SSL signé, vous pourriez rencontrer des erreurs d'authentification si vous essayez d'utiliser un certificat auto-signé. Des certificats SSL gratuits sont disponibles auprès de <a href="https://letsencrypt.org">lets encrypt</a></li>
+<li>Vous rencontrez toujours des problèmes ? Recherchez sur le <a href="https://forum.invoiceninja.com">forum</a> ou venez discuter avec nous sur <a href="https://invoiceninja.slack.com">slack</a></li>
+</ul>
+
+<h2>Notifications d'échec de migration","52":"L'application fera de son mieux pour rapporter une erreur lisible par l'humain si la migration échoue pour une raison quelconque.</h2>
+
+<p>Quelques problèmes connus lors de la migration vers notre plateforme hébergée incluent :</p>
+
+<pre><code>"Cet utilisateur ne peut pas être associé à cette entreprise. Peut-être ont-ils déjà enregistré un utilisateur sur un autre compte?"
+</code></pre>
+
+<p>Si vous voyez cette erreur, cela indique que l'un de vos utilisateurs a déjà enregistré son propre compte sur la plateforme hébergée. Nous ne prenons pas en charge les utilisateurs multi-comptes pour des raisons de sécurité. Vous devrez changer l'adresse e-mail de l'utilisateur dans votre installation v4 à une adresse e-mail différente pour que la migration réussisse.</p>
+
+<h2>Migration entre comptes</h2>
+
+<p>La migration de la version 4 à la version 5 n'est autorisée qu'entre les comptes ayant la même adresse e-mail. Il s'agit d'une exigence,
+et avant de commencer la migration, assurez-vous d'utiliser la même adresse e-mail sur la version 4 et la version 5 pour l'utilisateur.</p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/fr_CA/migration.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

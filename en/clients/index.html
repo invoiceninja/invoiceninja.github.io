@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/clients">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Clients</h1>
+
+<p>Video on adding a client:</p>
+
+<video width="100%" controls>
+
+  <source src="/assets/videos/clients/create_client.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<h2>Creating Clients</h2>
+
+<p>There several ways for a client to be created, including:</p>
+
+<ul>
+<li>Clients > + Client</li>
+<li>Settings > Import | Export > Client CSV Import</li>
+<li>Client Portal (if client registration is enabled on Settings > Client Portal)</li>
+<li>API Integrator: Zapier, Integromat, APISync, or manual API calls developed using the <a href="https://api-docs.invoicing.co/">API Documentation</a>.</li>
+</ul>
+
+<p>A "Client" can either represent a person or a company. If only the contact information is set the contact name will be used as the client's display name. If the client's name is set then it will be used instead.</p>
+
+<p>There are three different client id fields:</p>
+
+<ul>
+<li><strong>$client.id</strong> : Autogenerated and used by the API (ie, 7WR07SC)</li>
+<li><strong>$client.number</strong>: Autogenerated and can be configured on Settings > Generated -Numbers (ie, 0001)</li>
+<li><strong>$client.id_number</strong>: Standard field which can be used to store the client’s number from a different system</li>
+</ul>
+
+<h3>Quickly Create a Client</h3>
+
+<p>The simplest way to add a new client is to click the <strong>+</strong> in the navigation:</p>
+
+<p><img src="/assets/images/clients/add_client_plus_button_leftnav.png" alt="Add client button" title="Add client button" /></p>
+
+<h2>Viewing Clients</h2>
+
+<p>To view a client, select one from the list of clients on the client panel, or by linking to it from a related invoice, project, task or transaction.</p>
+
+<h3>Overview</h3>
+
+<p>The overview panel presents a quick look at the client's company details, address, contacts, paid to date, the outstanding balance of a client, public and private notes about the client, followed by a list of interactive buttons to see a client-filtered list of any category.</p>
+
+<p><img src="/assets/images/clients/client_overview.png" alt="Client overview" title="Client overview" /></p>
+
+<p>You can select from <strong>Invoices, Quotes, Payments, Recurring Invoices, Credits, Tasks, Expenses, Recurring Expenses, or Activity</strong>.</p>
+
+<h4>Creating Item Under a Client</h4>
+
+<p><strong>React:</strong></p>
+
+<p>Select the category, and the <strong>New x</strong> button, ex. <strong><em>New Invoice</em></strong>. For example, to create a new invoice for the current client:</p>
+
+<p><img src="/assets/images/clients/react_add_item_to_client.png" alt="Client categories add item React" title="Client categories add item React" /></p>
+
+<p><strong>Flutter:</strong></p>
+
+<p>Hover your mouse over one of these categories and long press (click and hold), this will take you to create a new invoice, quote, payment, etc. On mobile devices, you can touch and hold anywhere on the button to create new, instead of viewing a client-filtered list.</p>
+
+<p><img src="/assets/images/clients/flutter_client_categories_hover.png" alt="Client categories Flutter" title="Client categories Flutter" /></p>
+
+<h4>Quick Access Menu</h4>
+
+<p><img src="/assets/images/clients/client_quick_access_menu.png" alt="Client quick access menu" title="Client quick access menu" /></p>
+
+<p>The top-right of the navigation bar has a quick access dropdown that allow you to quickly perform actions for this client including navigating to the <strong>Client Portal</strong> or the client <strong>Settings</strong> where you can edit and configure client-specific rules, templates, behavior, etc.</p>
+
+<h3>Activity</h3>
+
+<p><img src="/assets/images/clients/client_activity_react.png" alt="Client activity React" title="Client activity React" /></p>
+
+<p>The <em>Activity</em> panel provides a chronological overview of transactional and non-transactional activities related to the client. It tracks history of debits and credits on the client's account, new records or record modifications to the client record, or invoices, quotes, etc. that are connected to the client, and which users performed those actions. The <em>Activity</em> panel is useful for accountability within your business, and monitoring who did what, and when.</p>
+
+<p>Objects in the <em>Activity</em> panel are shortcut links, and clicking on them will bring you to the record or transaction that they describe.</p>
+
+<h2>Editing Clients</h2>
+
+<video width="100%" controls>
+
+  <source src="/assets/videos/clients/get_to_edit_client.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<p>There are two ways to edit a client:</p>
+
+<ul>
+<li>If you're on the Client Overview screen: use the <em>Edit</em> button in the top right corner of the panel</li>
+<li>If you're on the list of all clients: scroll to the right and select <em>Edit</em> from the <em>More Actions</em> dropdown (or the Edit pencil icon if appears)</li>
+</ul>
+
+<p>On mobile you will see a list of tabs at the top menu, for different sections to edit client data.</p>
+
+<p>Most of the information in a client entry or edit form is entirely optional, and some is automatically generated. Your own business practices should dictate what sort of data you gather from your clients.</p>
+
+<h3>Company Details</h3>
+
+<ul>
+<li><strong>Name</strong> - Client name, can be the name of an individual, group, organization, or business. If a name is not chosen, but a contact entry with first/last name is provided, the first contact's name will be used as the client name.</li>
+<li><strong>Number</strong> - This number is automatically generated by Invoice Ninja, for tracking purposes. Rather than editing the numbers manually, we would suggest to edit the behavior of generated numbers under <em>Settings</em> > <em>Generated Numbers</em> > <em>Clients</em>.</li>
+<li><strong>ID Number</strong> - The ID number field is optional. You can use this to reference a client's ID number as it pertains to your business, such as a membership ID number.</li>
+<li><strong>VAT Number</strong> - The VAT number field is a Value Added Tax ID number which applies mostly to countries from the European Union who need to track this sometimes for tax purposes.</li>
+<li><strong>Website</strong> - Your client's website, optional, and for reference.</li>
+<li><strong>Phone</strong> - Primary phone contact number for the client, organization, or business, separate from any individual contact's phone number within the client entry.</li>
+<li><strong>Routing ID</strong> - Used for storing the eInvoice routing number which is assigned as an address to locate this client when delivering eInvoices.</li>
+<li><strong>Valid VAT Number</strong> - Check this if a valid VAT number is supplied because in some jurisdictions, this may change the way tax is applied to the client (only works when "Calculate Taxes" is turned on under <em>Settings>Tax Settings</em>.)</li>
+<li><strong>Tax Exempt</strong> - This only works when "Calculate Taxes" is turned on under <em>Settings>Tax Settings</em>. It will result in no taxes being applied by default for invoices created for this client.</li>
+<li><strong>Classification</strong> - This is for optionally storing the type of customer this is for your own purposes. Options in the dropdown list are: Individual, Business, Partnership, Trust, Charity, Government, Other.</li>
+</ul>
+
+<h3>Contacts</h3>
+
+<p>Every <em>client</em> has a <em>contacts</em> list, allowing you to add as many <em>contacts</em> as you like to represent any given <em>client</em>. When viewing a client, you can see existing contacts under "Details" panel. When editing a contact they will be listed under the <em>Contacts</em> panel.</p>
+
+<p>From the admin portal, you will see the button <em>Add Second Contact</em> to expand the contact list with a new contact entry. You can only add new <em>contacts</em> to a <em>client</em> from the admin portal. Customers cannot add more <em>contacts</em> to their <em>client</em> entry from the client portal themselves.</p>
+
+<ul>
+<li><strong>First and Last Name</strong> - Name details for the individual contact. Invoice Ninja automatically uses the first contact's name information to populate the client name if one is not provided.</li>
+<li><strong>Email</strong> - Email address associated with the client, and used as their log in credential for the client portal.</li>
+<li><strong>Phone</strong> - For reference, phone number contact information for the individual contact.</li>
+<li><strong>Add to Invoices</strong> - Whether to include this contact on invoices and quotes by default.</li>
+</ul>
+
+<p>When making an invoice or quote, you have the ability to email it to multiple contacts at the same time. The client's contacts who have <strong>Add to Invoices</strong> checked will be automatically included on new invoices/quotes, like this example:</p>
+
+<p><img src="/assets/images/clients/client_auto_included_on_invoice_example.png" alt="Client's contacts auto included on invoice example" title="Client's auto included on invoice example" /></p>
+
+<h3>Address</h3>
+
+<h4>Billing Address</h4>
+
+<p>Standard address information fields are available here to enter a billing address for your clients with. This information is usually also included on any invoices and other documents for the client.</p>
+
+<h4>Shipping Address</h4>
+
+<p>Just like the billing address, standard address information fields are available here to enter a shipping address for your clients with. Additionally, you can use the <em>Copy Billing</em> button below these fields, to simply copy the billing address information into the shipping address fields as well.</p>
+
+<h3>Settings</h3>
+
+<ul>
+<li><p>By clicking Settings from the edit client dropdown, you can tailor any setting to the client, including payment settings, tax, currency, invoice design, email templates, and more:</p>
+
+<p><img src="/assets/images/clients/client_settings_overrides.png" alt="Client Settings Overrides" title="Client Settings Overrides" /></p></li>
+</ul>
+
+<h3>Additional Info</h3>
+
+<h4>Settings</h4>
+
+<ul>
+<li><strong>Currency</strong> - Default currency to apply to invoices and payments for this client.</li>
+<li><strong>Language</strong> - The preferred language of your client. Invoices and other documents will be generated in the client's preferred language.</li>
+<li><strong>Payment Terms</strong> - Set a default invoice payment term length, if you have agreed on payment arrangements with your client on a regular basis.</li>
+<li><strong>Quote Valid Until</strong> - Set a default term length for quotes given to your customer that you will honor the price in your quotes for.</li>
+<li><strong>Task Rate</strong> - Set a default hourly rate for <em>Tasks</em> that are performed for the client.</li>
+<li><strong>Send Reminders</strong> - Enable or disable email reminders to the client for things such as unpaid invoices. Set fine tuned rules for the behavior of email reminders under <em>Settings</em> > <em>Templates &amp; Reminders</em>.</li>
+</ul>
+
+<h4>Notes</h4>
+
+<ul>
+<li><strong>Public Notes</strong> - Any public notes about the client, public notes are typically included on any future invoices, quotes, or other documents generated for the client.</li>
+<li><strong>Private Notes</strong> - Private notes are any comments about the client that will only ever be viewable by users on the admin portal.</li>
+</ul>
+
+<h4>Classify</h4>
+
+<ul>
+<li><strong>Size</strong> - Used to describe the size of a client that represents an organization, school, or business.</li>
+<li><strong>Industry</strong> - Add further description to your clients to describe the type of industry they are involved in.</li>
+</ul>
+
+<h4>Documents</h4>
+
+<p>The <em>Documents</em> panel provides the ability to upload documents and view documents you have linked to the client. These uploaded files are accessible through the admin portal, or through the client portal for your clients to view themselves. A useful way to employ the document uploads feature, is by uploading terms of service documents, contracts, or other files you would like to share with the client for any other reason.</p>
+
+<p><strong>Note for self-hosted users:</strong> that uploaded documents are saved in the "public/storage" directory in a folder structure using hashed folder names to match the product entry, so backup this directory along with your database to preserve your attached documents.</p>
+
+<h2>Contacts and the Client Portal</h2>
+
+<p><em>Contacts</em> are each given their own profiles in the client portal, logging in with the emails you assign them, allowing each contact to set their own password and personal settings or details on the client portal, regardless of which <em>client</em> they represent.</p>
+
+<p>When an individual self-registers on the client portal, their name and email will be added as <em>contact</em> data under a new <em>client</em>. After signing in, they will have the opportunity to edit their <em>client</em> details in the "Profile" menu, such as company name and contact information.</p>
+
+<p>Email addresses for <em>contacts</em> are considered authentic. For example, if an individual attempts to self-register while already being included as a <em>contact</em> for another <em>client</em> entry, the self-registration portal will force them to resubmit their personal information using a new email address, or have their email address removed from the other <em>client</em> listing.</p>
+
+<p>See <a href="/en/client-portal">Client Portal</a></p>
+
+<h2>Group Settings for Client Management</h2>
+
+<p>If many clients share the same settings, for example, the same currency or email reminder settings, you can create a group on <em>Settings</em> > <em>Group Settings</em> to, apply a standard set of settings to a large group of clients.</p>
+
+<p>For most settings, the app will first check if the client has a value in place, if not it will check if the client belongs to a group and if that group defines a value. Finally, it will use the default value set at the company level.</p>
+
+<p>The benefit of using groups is that if in the future you need to change the setting you can change it one place rather than having to update multiple clients individually. Without groups, bulk updating client settings would require using the API or an integrator.</p>
+
+<h2>Custom Fields</h2>
+
+<p>Sometimes you need extra fields to populate additional information for your clients. With Invoice Ninja you can add up to 4 custom fields for both the client and also each contact of the client.</p>
+
+<p>To create a custom field navigate to Settings > Custom fields. Advanced features including being able to include these custom fields on the invoice PDF by using the placeholders:</p>
+
+<h3>Client placeholders</h3>
+
+<pre><code>$client.custom1
+$client.custom2
+$client.custom3
+$client.custom4
+</code></pre>
+
+<h3>Contact placeholders</h3>
+
+<pre><code>$contact.custom1
+$contact.custom2
+$contact.custom3
+$contact.custom4
+</code></pre>
+
+<p><div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/en/client-portal">
+        <span>Client Portal</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div></p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/clients.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>
