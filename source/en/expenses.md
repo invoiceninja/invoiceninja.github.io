@@ -186,4 +186,49 @@ Use the following .env variable to configure your mindee api key:
 
 MINDEE_API_KEY=your-api-key
 
+#### 1. (Optional) SetUp Mindee Account and Update ENV
+First of All, you have to create your Mindee Account (if you wanna use OCR), without it IN will only use standards like ZUGFeRD if the document supports it. Create an API Key and save it to the env file of your IN instance:
+MINDEE_API_KEY=API-KEY
+I suggest checking how many free pages are included in your free mindee subscription. Default should be 250, but this may varry.
+I you wanna change your local tracked contingent per month to avoid unnecessary payments to mindee, you can use the following envs to customize the behavior:
+
+MINDEE_MONTHLY_LIMIT
+MINDEE_DAILY_LIMIT
+MINDEE_ACCOUNT_MONTHLY_LIMIT
+MINDEE_ACCOUNT_DAILY_LIMIT
+if the limit is exceeded mindee is treated as not configured. (ignored)
+
+#### 2. SetUp your Inboud Mail Provider
+SetUp your account at mailgun/postmark/brevo and follow the steps to setup inbound mail parsing (each service does it differently)
+You can look at the original PR (#9042) , where I have documented more informations about each provider. I will now describe how I did it with brevo:
+a) Set an API-Key for the brevo endpoint within your env:
+INBOUND_WEBHOOK_TOKEN=XXX
+you can use somthing like: https://generate-random.org/api-key-generator
+b) Read and do this (setup your DNS and infos about it): https://developers.brevo.com/docs/inbound-parse-webhooks
+c) Create an API key in the Console
+d) Use this api-documentation to send the needed requests to setup your webhook: https://developers.brevo.com/reference/getwebhooks-1 => please append the following at the end of your url ?token=XXX (this is the api token from a)
+I highly suggest trying it first out if the webhook is working by using an url from https://webhook.site. This website will show you the contents of the webhooks beeing send, after you sended an email to the inbound webhook email. You can use the recieving url as the target for the webhooks created in d)
+
+#### 3. (Optional) Prepare your current email mailbox
+I am using gmail with google workspace, so i created a forward rules within admin.google.com to redirect all emails from xxx@my-domain.de to my internal email at brevo for recieving email at brevo and dont publishing the brevo email. You can also use the rules for redirect within the mailbox itself
+
+#### 4. SetUp IN
+a) Go To Settings->Expenses and enable the Inbound Mailbox
+b) Paste your brevo email into the reciever field (this has to be unique regarding the whole IN instance)
+c) Allow the senders you want to be able to send you expenses via mail.
+=> I use enable my vendors and from my own company and added as whitelist also my personal email from my phone
+
+#### 5. Test the system
+a) Send an Email to the brevo inbound email
+b) Check if an expense got created
+c) If not: check if the request from brevo is present => this sometimes takes up to 5min
+d) If yes: check the logs for any errors and report them as an issue if you have any trouble resolving them
+
+
+
+
+
+
+
+
 <x-next url=/en/credits>Credits</x-next>
