@@ -28,6 +28,7 @@ locale: en
     * mysqli
     * intl
     * fpm (if using NGINX)
+    * saxon (for e invoice validation)
 * MySQL 5.7+ or MariaDB 10.3+
 * NGINX or Apache
 
@@ -465,3 +466,11 @@ OPENEXCHANGE_APP_ID=your_open_exchange_api_key_here
 ```
 
 Currencies are updated automatically by using the scheduler. In case the currencies are not available within the UI please double check the database table `currencies` and ensure that `exchange_rate` fields contains realistic values.
+
+## Lib Saxon
+
+If using e invoicing, you may want to install the saxon extension. The saxon extension provides XSLT2 validation of e invoice schema's and provides additional confidence that your einvoice will be accepted by third party systems. 
+
+We have a short video showing the installation steps here:
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=s21ewzAeYjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
