@@ -473,4 +473,4 @@ If using e invoicing, you may want to install the saxon extension. The saxon ext
 
 We have a short video showing the installation steps here:
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=s21ewzAeYjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s21ewzAeYjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
