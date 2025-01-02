@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fr_CA">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/fr_CA/self-host-troubleshooting">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="fr_CA" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/fr_CA.js"></script>
+    <script type="text/javascript" src="/fr_CA_index.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="fr_CA">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/fr_CA" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Recherche rapide" id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/fr_CA/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">Guide de l&#039;utilisateur</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation API</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Accéder à l&#039;application</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/fr_CA/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> Guide de l&#039;utilisateur </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Documentation API </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Accéder à l&#039;application</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/self-host-installation">Auto-hébergement</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/getting-started">Aperçu</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-installation">Installation</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-troubleshooting">Dépannage</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-updating">Mise à jour</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/env-variables">Variables .env</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-debug-mode">Mode débogage</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/legal/license">Légal</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/license">Licence</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/terms_of_service">Conditions d&#039;utilisation</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/data_privacy">Protection des données</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/self_hosting_data">Protection des données auto-hébergées</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/self_hosting_terms">Conditions d&#039;utilisation auto-hébergées</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/gdpr">RGPD</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/self-host-installation">Auto-hébergement</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/getting-started">Aperçu</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-installation">Installation</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-troubleshooting">Dépannage</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-updating">Mise à jour</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/env-variables">Variables .env</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/self-host-debug-mode">Mode débogage</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/legal/license">Légal</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/license">Licence</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/terms_of_service">Conditions d&#039;utilisation</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/data_privacy">Protection des données</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/self_hosting_data">Protection des données auto-hébergées</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/self_hosting_terms">Conditions d&#039;utilisation auto-hébergées</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/legal/gdpr">RGPD</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Dépannage</h1>
+
+<h3>Étapes générales de dépannage</h3>
+
+<p>Si vous rencontrez des problèmes avec votre instance Invoice Ninja auto-hébergée, suivez ces étapes générales de dépannage avant de passer aux sections spécifiques :</p>
+
+<ol>
+<li>Vérifiez que vous répondez aux <a href="https://invoiceninja.github.io/fr_CA/self-host-installation/#exigences-du-serveur">exigences minimales du système</a>.</li>
+<li>Consultez le <a href="https://forum.invoiceninja.com/">forum Invoice Ninja</a> pour obtenir une assistance communautaire.</li>
+<li>Examinez les journaux pour les messages d'erreur. Vous pouvez trouver les journaux dans le répertoire <code>storage/logs</code>.</li>
+</ol>
+
+<h2>Cron ne fonctionne pas / Queue ne fonctionne pas</h2>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Il peut prendre jusqu'à une heure pour que le triangle d'avertissement rouge disparaisse après avoir correctement configuré votre Cron.</p>
+
+<p>Après avoir apporté des modifications à votre configuration cron, vous voudrez forcer une nouvelle vérification des paramètres cron. Pour cela, accédez à l'URL de mise à jour dans votre navigateur : http://url/update?secret=</span>
+</div></p>
+
+<p>Si vous êtes confronté à des factures récurrentes qui ne se déclenchent pas ou à des rappels qui ne s'envoient pas, il est fort probable que votre travail cron ne fonctionne pas. La première chose à faire est de vous assurer que vous avez configuré correctement vos travaux cron en suivant le guide <a href="https://invoiceninja.github.io/fr_CA/self-host-installation/#cron-configuration-1">ici</a></p>
+
+<p>Si vous utilisez un hébergement partagé, vous devrez ajouter un paramètre supplémentaire à la commande cron qui ressemble à ceci:</p>
+
+<pre><code>cd /chemin/vers/le/dossier/racine &amp;&amp; /usr/bin/php -d register_argc_argv=On artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre>
+
+<p>Veuillez noter que sur certains systèmes, l'emplacement de PHP peut être différent, alors confirmez avec votre fournisseur d'hébergement le chemin à utiliser pour PHP.</p>
+
+<p>Pour tester vos modifications, accédez à l'URL de mise à jour suivante dans votre navigateur :</p>
+
+<pre><code>https://votredomaine.com/update?secret=
+</code></pre>
+
+<p>La variable secrète est située dans votre fichier .env, sous la clé UPDATE_SECRET, cela forcera une nouvelle vérification et si le cron fonctionne, le triangle d'erreur rouge disparaîtra.</p>
+
+<h2>Les PDF ne semblent pas être mis à jour</h2>
+
+<p>Si vous utilisez Cloudflare, il est probable que Cloudflare mette en cache vos données statiques. Pour forcer la suppression du cache, éditez votre fichier nginx.conf et ajoutez le snippet suivant :</p>
+
+<pre><code>location ~* \.pdf$ {
+    add_header Cache-Control no-store;
+}
+</code></pre>
+
+<p>Sur les serveurs basés sur Apache, ouvrez le fichier /public/.htaccess et mettez à jour le bloc mod_headers :</p>
+
+<pre><code class="language-apacheconf">&lt;IfModule mod_headers.c&gt;
+    # Blocks Search Engine Indexing
+    Header set X-Robots-Tag "noindex, nofollow"
+
+    # Prevents PDF File Caching
+    &lt;FilesMatch ".pdf$"&gt;
+        Header set Cache-Control no-store
+    &lt;/FilesMatch&gt;
+&lt;/IfModule&gt;
+</code></pre>
+
+<h2>Les e-mails ne sont pas envoyés</h2>
+
+<p>Si vous rencontrez des problèmes d'envoi d'e-mails, assurez-vous de vérifier que votre fichier .env contient les champs correctement configurés.</p>
+
+<pre><code>MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="votre_adresse_e-mail@gmail.com"
+MAIL_PASSWORD="votre_mot_de_passe_n'oubliez_pas_les_guillemets!"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="votre_adresse_e-mail@gmail.com"
+MAIL_FROM_NAME="Nom complet entre guillemets"
+</code></pre>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Si vous utilisez Gmail - Utilisez un <a href="https://support.google.com/accounts/answer/185833?hl=fr">mot de passe spécifique à l'application</a> ou assurez-vous que les applications moins sécurisées sont activées.</span>
+</div></p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Si vous utilisez Office 365 - Vous devrez peut-être <a href="https://docs.microsoft.com/fr-fr/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission">activer SMTP AUTH</a>.</span>
+</div></p>
+
+<p>Si vous utilisez Gmail SMTP Relay, une variable .env supplémentaire est requise.</p>
+
+<p>Pour Gmail SMTP Relay, assurez-vous également d'avoir configuré ce service dans Google en suivant les étapes suivantes :</p>
+
+<pre><code>Accédez à [Applications &gt; Google Workspace &gt; Gmail &gt; Routage]
+À côté du service de relais SMTP, cliquez sur Configurer.
+Configurez le service de relais SMTP en suivant les étapes décrites dans [Relais SMTP : Faites passer les messages sortants non Gmail par Google]
+Ensuite, dans votre fichier env, utilisez ce qui suit :
+
+Le relais SMTP de Gmail nécessite un nom de domaine EHLO correct à envoyer pendant la poignée de main SMTP : [127.0.0.1] ne suffit plus. Pour cela, Laravel doit vérifier une variable de domaine d'hôte et l'envoyer avec la demande de poignée de main.
+
+MAIL_EHLO_DOMAIN="server.domain.com"
+MAIL_MAILER=smtp
+MAIL_HOST=smtp-relay.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=xxxx
+MAIL_PASSWORD=xxxx
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=xxxx
+MAIL_FROM_NAME=xxxx
+</code></pre>
+
+<p>Vous voudrez également vous assurer de ne pas avoir de règles de pare-feu qui pourraient bloquer l'accès aux serveurs Google. Juste au cas où, assurez-vous que les adresses IP suivantes sont sur liste blanche :</p>
+
+<pre><code>142.251.163.28
+172.253.63.28
+172.253.118.28
+74.125.24.28
+142.250.114.28
+142.250.4.28
+142.251.12.28
+172.217.194.28
+142.250.31.28
+142.251.167.28
+172.253.115.28
+</code></pre>
+
+<p>Pour plus d'informations détaillées sur Gmail Relay, consultez ce post de notre forum par le membre de la communauté charles :</p>
+
+<p>https://forum.invoiceninja.com/t/emails-not-sending-yet-another-thread-v5-5-55/12401/9</p>
+
+<h3>Configuration du mailer</h3>
+
+<p>Le champ <code>MAIL_MAILER</code> définit le pilote de messagerie que vous souhaitez utiliser : cela peut être Postmark, Mailgun, SMTP, Log... Tout ce que Laravel 9 prend en charge nativement est pris en charge dans cette application.</p>
+
+<p>Si la configuration du mail est correcte, le prochain endroit à vérifier serait les journaux d'erreurs pour toutes les erreurs qui sont en cours, le journal d'erreurs se trouve dans <code>storage/logs/laravel.log</code>.</p>
+
+<p>La dernière source d'informations pour diagnostiquer les problèmes de courrier électronique consiste à inspecter l'onglet <code>Journaux système</code> dans le tableau de bord de l'application. Ici, nous enregistrons tous les messages du serveur de messagerie lui-même qui peuvent être instructifs quant à la cause de vos problèmes.</p>
+
+<p>Si vous utilisez le système de file d'attente, c'est-à-dire QUEUE_CONNECTION=database, vous voudrez peut-être également vérifier la table des emplois dans la base de données. Il ne devrait y avoir <em>aucun</em> enregistrement dans cette table... S'il y a des enregistrements dans la table, cela signifie que votre file d'attente ne fonctionne pas et donc aucune tâche de messagerie n'est traitée.</p>
+
+<p>Il est possible que les e-mails soient envoyés mais bloqués pour des raisons DNS, SPF, DKIM ou autres. Dans ces cas, l'envoi d'une facture de test à <a href="https://mail-tester.com">mail-tester.com</a> peut aider à résoudre certains problèmes.</p>
+
+<p>De plus, si vous voyez dans /storage/logs/invoiceninja.log cette ligne <code>error failed with stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:14090086:SSL routines:ssl3_get_server_certificate:certificate verify failed</code>, essayez d'exécuter <code>yum update</code> sur votre serveur Web, cela devrait résoudre le problème de ca-certificates.</p>
+
+<h2>Problèmes d'envoi d'e-mails avec GoDaddy</h2>
+
+<p>GoDaddy n'autorise pas l'envoi d'e-mails via des serveurs <a href="https://my.godaddy.com/help/send-form-mail-using-an-smtp-relay-server-953">SMTP</a> tiers. Ils exigent que tous les e-mails soient envoyés via leurs propres serveurs. Si vous devez utiliser GoDaddy, nous vous suggérons d'utiliser un service d'e-mails transactionnels tel que PostMark pour contourner ce problème.</p>
+
+<h2>Problèmes de conversion de PDF</h2>
+
+<p>Nous recommandons fortement d'utiliser le package <a href="https://github.com/beganovich/snappdf">snappdf</a> intégré, qui est un générateur de PDF très performant basé sur le binaire headless chrome/chromium. Ce package est parfait pour les utilisateurs qui ont un accès root à leur serveur et qui sont capables d'installer les dépendances requises si nécessaire.</p>
+
+<p>Pour configurer SnapPDF, utilisez les variables d'environnement suivantes :</p>
+
+<pre><code>PDF_GENERATOR=snappdf
+</code></pre>
+
+<p>À partir de la version 5.5.12, nous ne pré-intégrons plus snappdf dans les fichiers de la version, donc si vous avez une nouvelle installation, vous devrez manuellement invoquer le téléchargement du binaire chromium. À partir de la racine du projet, exécutez la commande suivante :</p>
+
+<pre><code>vendor/bin/snappdf download
+</code></pre>
+
+<p>Snappdf est également le moteur PDF par défaut de notre image <a href="https://github.com/invoiceninja/dockerfiles">Docker</a>, donc si vous préférez une installation très simple, veuillez envisager notre configuration Docker, car elle est très rapide à mettre en place !</p>
+
+<p>Vous pouvez utiliser cette commande pour tester Snappdf :</p>
+
+<pre><code>./vendor/bin/snappdf convert --html "
+
+<h1>Bonjour, monde</h1>
+
+" test.pdf
+</code></pre>
+
+<p>Une liste complète des dépendances requises est disponible <a href="https://github.com/beganovich/snappdf#headless-chrome-doesnt-launch-on-unix">ici</a>.</p>
+
+<p>Si vous utilisez un hébergement mutualisé, il vous sera probablement impossible d'utiliser snappdf car vous n'avez pas accès au sous-système pour installer les packages requis. Au lieu de cela, vous devrez utiliser un service de PDF hébergé. Les deux services PDF pris en charge par Invoice Ninja v5 sont <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> et notre propre générateur PDF hébergé, que vous pouvez utiliser gratuitement pour générer des PDFs de manière <em>illimitée</em>.</p>
+
+<h3>Phantom JS</h3>
+
+<p>Phantom JS Cloud est le moteur PDF par défaut utilisé <a href="https://phantomjscloud.com/">PhantomJS Cloud</a> pour générer vos PDF. La clé d'API par défaut qui accompagne une installation propre ne générera pas de PDF de manière fiable. Pour vous assurer que vous pouvez générer des PDF, vous devriez vous inscrire pour une clé d'API sur le site phantomjscloud et utiliser cette clé dans le fichier .env.</p>
+
+<p>Phantom JS peut être activé ou désactivé en définissant PHANTOMJS_PDF_GENERATOR sur TRUE ou FALSE. Les variables d'environnement suivantes sont disponibles pour configurer PhantomJS.</p>
+
+<pre><code>PDF_GENERATOR=phantom
+PHANTOMJS_KEY='une-clé-de-demo-avec-un-quota-faible-par-adresse-ip'
+PHANTOMJS_SECRET='votre-secret-ici'
+</code></pre>
+
+<p>Le <code>PHANTOMJS_SECRET</code> peut être une valeur aléatoire quelconque, il est utilisé pour contourner le mot de passe du portail client.</p>
+
+<p>Si vous rencontrez des erreurs lors de la génération de PDF, telles que <code>500 Server error</code> ou <code>Failed to load PDF document</code> ou une barre de chargement continue, vous devez obtenir une clé PhantomJS <a href="https://dashboard.phantomjscloud.com/dash.html#/signup">ici</a> et la remplacer par la clé préremplie <code>a-demo-key-with-low-quota-per-ip-address</code>.</p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Pour que PhantomJS fonctionne, l'adresse Web de votre installation d'Invoice Ninja doit être publique ; les installations localhost ou celles sur des réseaux privés ne pourront pas utiliser PhantomJS Cloud.</span>
+</div></p>
+
+<h3>Génération de PDF hébergée par Invoice Ninja</h3>
+
+<p>Le PDF par défaut généré à partir de la version 5.5.12 est notre système de conversion de PDF hébergé sur notre plateforme. Le générateur PDF hébergé par Invoice Ninja est un générateur de PDF hors site hébergé par Invoice Ninja, qui fonctionne de manière similaire à PhantomJS. Il est important de noter que nous ne stockons aucune information avec ce service, nous convertissons simplement le HTML que votre système envoie en un fichier PDF qui est renvoyé à la volée.</p>
+
+<pre><code>PDF_GENERATOR=hosted_ninja
+</code></pre>
+
+<h2>Problèmes spécifiques à la plateforme</h2>
+
+<h3>Conseils généraux</h3>
+
+<p>En cas d'erreurs, commencez par définir <code>APP_DEBUG=true</code> dans <code>.env</code></p>
+
+<h3>Processus signalé avec le signal "5"</h3>
+
+<p>Ce message d'erreur est observé lorsque la file d'attente tente d'effectuer une action pour laquelle l'utilisateur de la file d'attente n'a pas les autorisations correctes. Vous pouvez voir cette erreur si vous exécutez des arguments en ligne de commande en tant qu'utilisateur autre que l'utilisateur Web.</p>
+
+<p>Cela se voit le plus souvent dans Invoice Ninja lorsque snappdf a été téléchargé depuis la ligne de commande en tant qu'utilisateur régulier, les autorisations sur le binaire peuvent empêcher l'utilisateur Web d'exécuter le binaire chrome lors de la génération du PDF.</p>
+
+<p>Assurez-vous toujours que les tâches exécutées en ligne de commande sont exécutées par l'utilisateur Web. Sur Ubuntu, il s'agit généralement de www-data.</p>
+
+<h3>Format de données erroné pour la désérialisation de 'Symfony\Component\Routing\CompiledRoute'</h3>
+
+<p>La cause la plus courante de ce problème est l'exécution de plusieurs versions de PHP. Si les caches sont construits avec une version différente de PHP, vous pouvez voir l'erreur ci-dessus, car des versions différentes de PHP peuvent ne pas être interopérables sur la même installation. Assurez-vous d'exécuter la même version de PHP CLI et Web pour éviter toute erreur.</p>
+
+<h3>Impossible de se connecter à la base de données après l'installation</h3>
+
+<p>Vous devrez peut-être redémarrer la file d'attente de cette manière</p>
+
+<pre><code>php artisan queue:restart
+</code></pre>
+
+<h3>Nginx: 413 – Request Entity Too Large</h3>
+
+<p>Cette erreur indique que le paramètre client_max_body_size de NGINX est trop petit. Vous devrez modifier votre configuration nginx et augmenter la taille.</p>
+
+<h3>Nginx: 413 – Request Entity Too Large</h3>
+
+<p>Cette erreur indique que le paramètre client_max_body_size de NGINX est trop petit. Vous devrez modifier votre configuration nginx et augmenter la taille.</p>
+
+<pre><code>client_max_body_size 100M;
+</code></pre>
+
+<h3>Configuration du proxy.</h3>
+
+<p>Pour les utilisateurs qui comptent sur la configuration d'un proxy inverse, veuillez consulter ce post sur notre forum qui détaille les étapes qui peuvent aider à configurer un proxy inverse.</p>
+
+<p><a href="https://forum.invoiceninja.com/t/selfhosting-setup-failing/5651/8">Reverse Proxy Invoice Ninja</a></p>
+
+<h3>Problèmes de migration</h3>
+
+<p>Si vous rencontrez des problèmes avec la migration qui ne se déroule pas comme prévu, veuillez passer en revue la liste de contrôle suivante :</p>
+
+<ul>
+<li>Assurez-vous que les répertoires sont lisibles/inscriptibles par l'utilisateur Web (ie www-data)</li>
+<li>Assurez-vous que l'ordonnanceur cron est en cours d'exécution (et fonctionne) - Vous pouvez vérifier s'il fonctionne en inspectant la table <code>jobs</code> dans la base de données, elle doit être vide.</li>
+<li>Inspectez le fichier journal /storage/logs/laravel.log pour obtenir des informations supplémentaires.</li>
+<li>Si vous rencontrez toujours des problèmes, activez la journalisation avancée en ajoutant la variable suivante à votre fichier .env. <code>EXPANDED_LOGGING=true</code> Ensuite, essayez à nouveau la migration et inspectez le fichier journal dans storage/logs/invoiceninja.log</li>
+</ul>
+
+<h3>libatk.so ne se charge pas pour Google</h3>
+
+<p>La génération de PDF ne fonctionnera pas avec le moteur PDF intégré sans certaines dépendances du sous-système. Veuillez consulter cette ressource pour la liste des bibliothèques nécessaires pour chaque plateforme prise en charge : <a href="https://github.com/beganovich/snappdf#headless-chrome-doesnt-launch-on-unix">Snappdf required libraries</a></p>
+
+<h3>Configuration de WebCron</h3>
+
+<p>Certains systèmes n'autorisent pas les configurations cron, un contournement consiste à utiliser un service de cron Web qui peut frapper un point final défini qui exécute l'ordonnanceur via une requête HTTP GET. Invoice Ninja a mis en place un petit service pour permettre à un service de cron Web de frapper le point final :</p>
+
+<pre><code>https://domaine.com/webcron?secret=
+</code></pre>
+
+<p>Pour configurer le service, vous devez ajouter une variable .env</p>
+
+<pre><code>WEBCRON_SECRET=password
+</code></pre>
+
+<h1>Installer dans un sous-répertoire.</h1>
+
+<p>Il est possible d'installer Invoice Ninja dans un sous-répertoire en dehors de la racine du document. Pour cela, vous devrez mettre à jour le fichier .htaccess (uniquement si vous utilisez le serveur web Apache),</p>
+
+<pre><code>RewriteRule ^(.*)$ public/$1 [L]
+</code></pre>
+
+<p>devrait être mis à jour en</p>
+
+<pre><code>RewriteRule ^(.*)$ subdirectoryname/public/$1 [L]
+</code></pre>
+
+<h1>Boucle de configuration sans fin</h1>
+
+<p>Si vous trouvez que toutes vos vérifications de pré-configuration passent mais que vous retombez constamment sur l'écran de configuration, cela peut indiquer que vous manquez de la bibliothèque <code>mysql-client</code> nécessaire pour effectuer la migration initiale. Si vous ne pouvez pas l'installer pour une raison quelconque (par exemple XAMPP), vous devrez exécuter les migrations manuellement en saisissant ce qui suit à l'invite de commande</p>
+
+<h1>Boucle de configuration sans fin</h1>
+
+<p>Si vous trouvez que toutes vos vérifications de pré-configuration passent mais que vous retombez constamment sur l'écran de configuration, cela peut indiquer que vous manquez de la bibliothèque <code>mysql-client</code> nécessaire pour effectuer la migration initiale. Si vous ne pouvez pas l'installer pour une raison quelconque (par exemple XAMPP), vous devrez exécuter les migrations manuellement en saisissant ce qui suit à l'invite de commande</p>
+
+<pre><code>php artisan migrate:fresh --seed
+</code></pre>
+
+<h1>flock() attend en paramètre 1 une ressource, bool donné</h1>
+
+<p>Cette erreur est déclenchée en profondeur dans PHP et indique un problème de permissions - le répertoire <code>public/storage</code> et/ou <code>storage/</code> n'est probablement pas accessible en écriture par l'utilisateur web. Selon votre plate-forme, vous devrez exécuter quelque chose comme ceci :</p>
+
+<pre><code>sudo chown -R www-data:www-data public/storage
+
+sudo find ./ -type d -exec chmod 755 {} ;
+</code></pre>
+
+<p>et/ou</p>
+
+<pre><code>sudo chown -R www-data:www-data storage/
+
+sudo find ./ -type d -exec chmod 755 {} ;
+</code></pre>
+
+<h1>Interface utilisateur non réactive</h1>
+
+<p>Si pour une raison quelconque l'interface utilisateur devient non réactive, vous devrez peut-être vider certaines configurations de sous-système et les reconstruire. Il est possible de le faire en naviguant jusqu'à la route <code>/update?secret=</code>, c'est-à-dire https://invoiceninja.test/update?secret=. Cela effectuera plusieurs nettoyages système et peut résoudre les problèmes résultant d'une mise à niveau incomplète. Pour protéger cette route, vous êtes invité à ajouter une variable .env <code>UPDATE_SECRET=a_secret_passcode</code> qui restreindra la route aux utilisateurs ayant le code secret UPDATE_SECRET.</p>
+
+<h3>Le logo ne s'affiche pas dans le PDF</h3>
+
+<p>Il peut être utile d'ajouter <code>LOCAL_DOWNLOAD=true</code> au fichier .env, cela incorporera l'image dans le PDF plutôt que de la demander via le réseau.</p>
+
+<h3>Erreur de liaison de communication : 1153 un paquet plus grand que 'max_allowed_packet' a été reçu</h3>
+
+<p>Si vous utilisez la base de données pour vos files d'attente, il peut arriver que vous voyiez une erreur provenant de MySQL</p>
+
+<pre><code>1153 Got a packet bigger than 'max_allowed_packet'
+</code></pre>
+
+<p>Ceci indique que la charge utile d'insertion est plus importante que ce que MySQL est configuré pour gérer ! Pour contourner ce problème, vous devrez augmenter la variable MySQL</p>
+
+<pre><code>max_allowed_packet
+</code></pre>
+
+<p>à une valeur plus grande. Parfois, une valeur de 1024M est requise.</p>
+
+<p>Il peut également être judicieux d'augmenter la variable</p>
+
+<pre><code>max_connections
+</code></pre>
+
+<p>car des erreurs similaires peuvent être signalées depuis la base de données.</p>
+
+<h3>Erreur 500 lors de l'édition de modèles PDF</h3>
+
+<p>Un <a href="https://forum.invoiceninja.com/t/500-error-when-editing-pdf-invoice-templates-potential-fix/7067">rapport</a> a été émis par un utilisateur qui a résolu l'erreur 500 sur son serveur en désactivant ModSecurity.</p>
+
+<h3>Erreur 500 lors de la tentative de connexion ou de modification des détails de l'entreprise</h3>
+
+<p>Essayez ces étapes pour résoudre l'erreur 500 du serveur lors de la tentative de connexion ou de la modification des détails de l'entreprise.</p>
+
+<ol>
+<li>Téléchargez la dernière mise à jour depuis les <a href="https://github.com/invoiceninja/invoiceninja/releases">versions publiées sur Github</a> (pas <code>invoiceninja.tar</code>, mais <code>Source code (zip)</code>)</li>
+<li>Téléchargez le zip, extrayez les fichiers et remplacez-les dans votre /public_html/ (Attention à ne pas remplacer le fichier .env ou tout sera supprimé)</li>
+<li>Connectez-vous à votre racine et assurez-vous tout d'abord que tous les fichiers sont possédés de manière récursive par l'utilisateur, ex. <code>sudo chown -R www-data:www-data dir/</code></li>
+<li>Exécutez cette commande <code>cd /home/domain.com/public_html/invoiceninja/ &amp;&amp; php artisan migrate</code> ou simplement <code>php artisan migrate</code>, sélectionnez "YES"</li>
+<li>Si une erreur comme celle-ci se produit</li>
+</ol>
+
+<pre><code>PHP Fatal error: Cannot declare class UpdateDesigns, because the name is already in use in /home/domain.com/public_html/invoiceninja/database/migrations/2021_09_16_115919_update_designs.php on line 0
+In 2021_09_16_115919_update_designs.php line n/a: Cannot declare class UpdateDesigns, because the name is already in use
+</code></pre>
+
+<p>Supprimez ce fichier et réessayez la commande jusqu'à ce qu'elle fonctionne correctement.</p>
+
+<ol start="6">
+<li>Allez sur https://domain.com/update?secret=x pour vous assurer que la mise à jour a fonctionné, cela devrait afficher l'écran de connexion et fonctionner, vous devriez également pouvoir modifier à nouveau les détails de l'entreprise.</li>
+</ol>
+
+<h3>Dépendance irrésoluble résolvant [Paramètre #0 [array $options]] dans la classe App\Utils\CssInlinerPlugin</h3>
+
+<p>Lorsque des modifications sont apportées au conteneur, cela peut rendre le cache obsolète dans l'application et l'empêcher de démarrer.</p>
+
+<p>La solution consiste à vider le contenu du dossier <code>bootstrap/cache</code>, en supprimant manuellement les fichiers ou en exécutant <code>/update?secret=</code> qui supprimera également le contenu de ce répertoire.</p>
+
+<h3>Erreur non capturée Collection::offsetExists($key)</h3>
+
+<p>Cette erreur est observée lorsque le système a Composer v1 installé. Mettez à jour vers Composer 2 en utilisant la commande suivante</p>
+
+<pre><code>sudo -H composer self-update
+</code></pre>
+
+<h3>file_exists(): restriction open_basedir en vigueur</h3>
+
+<p>Si vous n'êtes pas en mesure d'ajuster les restrictions open_basedir, les étapes suivantes peuvent vous aider :</p>
+
+<ol>
+<li>Supprimez bootstrap/cache/config.php</li>
+<li>Supprimez tous les fichiers journaux dans storage/logs</li>
+</ol>
+
+<h3>J'ai oublié mon mot de passe et ne peux pas le réinitialiser, AIDEZ-MOI !</h3>
+
+<p>Si vous avez un accès en ligne de commande, vous pouvez réinitialiser votre mot de passe manuellement en suivant les étapes suivantes. À partir de la ligne de commande, naviguez jusqu'au répertoire du projet et exécutez</p>
+
+<pre><code>php artisan tinker
+</code></pre>
+
+<p>Ensuite, trouvez l'identifiant de l'utilisateur pour la réinitialisation du mot de passe</p>
+
+<pre><code>User::all();
+</code></pre>
+
+<p>Récupérez l'utilisateur</p>
+
+<pre><code>$user = User::find(id_of_user_to_find);
+</code></pre>
+
+<p>Maintenant, réinitialisons le mot de passe</p>
+
+<pre><code>$user-&gt;password = Hash::make('password');
+$user-&gt;save();
+</code></pre>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/fr_CA/self-host-troubleshooting.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

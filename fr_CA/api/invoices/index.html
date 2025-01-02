@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="fr_CA">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/fr_CA/api/invoices">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="fr_CA" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/fr_CA.js"></script>
+    <script type="text/javascript" src="/fr_CA_index.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="fr_CA">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/fr_CA" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Recherche rapide" id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/fr_CA/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">Guide de l&#039;utilisateur</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation API</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Accéder à l&#039;application</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/fr_CA/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> Guide de l&#039;utilisateur </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Documentation API </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Accéder à l&#039;application</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide"></a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide">Guide du développeur</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Invoices</h1>
+
+<h3>Endpoints</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The invoices endpoint allows you to interact with invoices.
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    Endpoints</p>
+
+<pre><code>GET /api/v1/invoices
+POST /api/v1/invoices
+PUT /api/v1/invoices/{invoice}
+PUT /api/v1/invoices/{invoice}/upload
+DELETE /api/v1/invoices/{invoice}
+POST /api/v1/invoices/bulk
+GET /api/v1/invoices/{invoice}/delivery_note
+GET /api/v1/invoice/{invitation_key}/download
+POST /api/v1/invoices/update_reminders
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h3>Get Invoices</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The GET route returns a list of invoices.
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X GET 'http://ninja.test:8000/api/v1/invoices' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Query Parameters</h4>
+
+<hr />
+
+<p>Query parameters can be chained together to form complex queries. The current supported values are:</p>
+
+<p><strong>client_status</strong>: Filters invoice by their status values:<br />
+- <strong>1</strong> DRAFT<br />
+- <strong>2</strong> SENT<br />
+- <strong>3</strong> PARTIALLY PAID<br />
+- <strong>4</strong> PAID</p>
+
+<p>It is possible to chain together multiple statuses using a comma separated list for example:</p>
+
+<pre><code>/api/v1/invoices?client_status=1,2,3
+</code></pre>
+
+<p><strong>filter</strong>: Search across multiple columns (number, po_number, date, amount, balance, custom_value1, custom_value2, custom_value3, custom_value4)</p>
+
+<pre><code>/api/v1/invoices?filter=2022-01-05
+</code></pre>
+
+<p><strong>number</strong>: Search by invoice number<br />
+<strong>without_deleted_clients</strong>: Filters the returning invoices and excludes invoices for deleted clients.<br />
+<strong>with_trashed</strong>: Returning invoices that have been archived.<br />
+<strong>upcoming</strong>: Returns invoices which have NO due date or the due date is in the future.<br />
+<strong>overdue</strong>: Returns invoices which have a due_date OR partial_due_date in the past.<br />
+<strong>payable</strong>: Returns invoices which have a pending balance remaining.<br />
+<strong>sort</strong>: Sort the returning dataset, format is column|ASC ie ?sort=name|DESC<br />
+<strong>private_notes</strong>: Searches invoice on the private_notes column<br />
+<strong>created_at</strong>: Filters invoices greater than or equal to the created_at timestamp (Unix Timestamp)<br />
+<strong>updated_at</strong>: Filters invoices greater than or equal to the updated_at timestamp (Unix Timestamp)<br />
+<strong>is_deleted</strong>: Search using is_deleted boolean flag<br />
+<strong>include</strong>: A comma separated list of relationships to be returned back in the dataset options include:<br />
+- client - The associated client<br />
+- payments - The associated payments for this invoice<br />
+- activities - The activity records for this invoice<br />
+<strong>per_page</strong>: The number of invoices per page you want returned<br />
+<strong>page</strong>: The page number</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<pre><code>{
+"data": [
+{
+    "id": "xYRdG7dDzO",
+    "user_id": "VolejRejNm",
+    "project_id": "",
+    "assigned_user_id": "",
+    "amount": 4513.61,
+    "balance": 4513.61,
+    "client_id": "Wpmbk5ezJn",
+    "vendor_id": "",
+    "status_id": "2",
+    "design_id": "",
+    "recurring_id": "",
+    "created_at": 1675982786,
+    "updated_at": 1675982786,
+    "archived_at": 0,
+    "is_deleted": false,
+    "number": "0019",
+    "discount": 0,
+    "po_number": "",
+    "date": "2022-12-20",
+    "last_sent_date": "",
+    "next_send_date": "",
+    "due_date": "",
+    "terms": "",
+    "public_notes": "",
+    "private_notes": "",
+    "uses_inclusive_taxes": false,
+    "tax_name1": "",
+    "tax_rate1": 0,
+    "tax_name2": "",
+    "tax_rate2": 0,
+    "tax_name3": "CA Sales Tax",
+    "tax_rate3": 5,
+    "total_taxes": 483.61,
+    "is_amount_discount": true,
+    "footer": "",
+    "partial": 0,
+    "partial_due_date": "",
+    "custom_value1": "1972-12-12",
+    "custom_value2": "no",
+    "custom_value3": "",
+    "custom_value4": "",
+    "has_tasks": false,
+    "has_expenses": false,
+    "custom_surcharge1": 0,
+    "custom_surcharge2": 0,
+    "custom_surcharge3": 0,
+    "custom_surcharge4": 0,
+    "exchange_rate": 1,
+    "custom_surcharge_tax1": false,
+    "custom_surcharge_tax2": false,
+    "custom_surcharge_tax3": false,
+    "custom_surcharge_tax4": false,
+    "line_items": [
+        {
+            "quantity": 1,
+            "cost": 403,
+            "product_key": "Id sit.",
+            "notes": "Excepturi vel.",
+            "discount": 0,
+            "is_amount_discount": true,
+            "tax_name1": "Sales Tax",
+            "tax_rate1": 5,
+            "tax_name2": "",
+            "tax_rate2": 0,
+            "tax_name3": "",
+            "tax_rate3": 0,
+            "sort_id": 0,
+            "line_total": 403,
+            "gross_line_total": 423.15,
+            "custom_value1": "https:\/\/picsum.photos\/200",
+            "custom_value2": "47",
+            "custom_value3": "Sed placeat et.",
+            "custom_value4": "Eos et iusto velit.",
+            "type_id": "1",
+            "product_cost": 0,
+            "tax_amount": 20.15,
+            "date": ""
+        }
+    ],
+    "entity_type": "invoice",
+    "reminder1_sent": "",
+    "reminder2_sent": "",
+    "reminder3_sent": "",
+    "reminder_last_sent": "",
+    "paid_to_date": 0,
+    "subscription_id": "",
+    "auto_bill_enabled": false,
+    "invitations": [
+        {
+            "id": "W4QbYKezqM",
+            "client_contact_id": "Wpmbk5ezJn",
+            "key": "3TlMBVTIGgPQNMHzRhoHAo0mayy5O3rv",
+            "link": "http:\/\/ninja.test:8000\/client\/invoice\/3TlMBVTIGgPQNMHzRhoHAo0mayy5O3rv",
+            "sent_date": "2023-02-09 22:46:26",
+            "viewed_date": "",
+            "opened_date": "",
+            "updated_at": 1675982786,
+            "archived_at": 0,
+            "created_at": 1675982786,
+            "email_status": "",
+            "email_error": ""
+        },
+    ],
+    "documents": []
+},
+}⏎           
+</code></pre>
+
+<h3>Create Invoice</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The POST route is used to create a invoice.</p>
+
+<p>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X POST 'http://ninja.test:8000/api/v1/invoices' \
+-H "Content-Type:application/json" \
+-d '{"terms":"Something","line_items":[{"quantity":1,"cost":10,"product_key":"example product","notes":"Product Description"}]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Parameters</h4>
+
+<hr />
+
+<p><strong>client_id</strong>: <strong>REQUIRED string</strong> - The client id<br />
+<strong>project_id</strong>: <strong>optional string</strong> - The associated project id<br />
+<strong>vendor_id</strong>: <strong>optional string</strong> - The associated vendor id<br />
+<strong>subscription_id</strong>: <strong>optional string</strong> - The associated subscription id<br />
+<strong>number</strong>: <strong>optional string</strong> - The invoice number<br />
+<strong>discount</strong>: <strong>optional float</strong> - Discount amount or percentage<br />
+<strong>po_number</strong>: <strong>optional string</strong> - Purchase order number 
+<strong>date</strong>: <strong>optional date Y-m-d</strong> - Invoice date<br />
+<strong>due_date</strong>: <strong>optional date Y-m-d</strong> - Invoice due date
+<strong>public_notes</strong>: <strong>optional string</strong> - Public notes of the invoice, theses are client visible<br />
+<strong>private_notes</strong>: <strong>optional string</strong> - Private notes which are <em>not</em> visible to the client
+<strong>terms</strong>: <strong>optional string</strong> - Invoice terms<br />
+<strong>footer</strong>: <strong>optional string</strong> - Invoice footer<br />
+<strong>design_id</strong>: <strong>optional string</strong> - The design ID to be used for this invoice<br />
+<strong>uses_inclusive_taxes</strong>: <strong>optional bool true|false</strong> - Determine the tax method to apply to the invoice exclusive or inclusive taxes<br />
+<strong>tax_name1</strong>: <strong>optional string ie GST</strong> - The name of the first tax rate<br />
+<strong>tax_rate1</strong>: <strong>optiona float ie 10</strong> - The rate of the first tax rate<br />
+<strong>tax_name2</strong>: <strong>optional string ie VAT</strong> - The name of the first second rate<br />
+<strong>tax_rate2</strong>: <strong>optional float ie 17.5</strong>  - The rate of the first second rate<br />
+<strong>tax_name3</strong>: <strong>optional string ie VAT</strong> - The name of the first third rate<br />
+<strong>tax_rate3</strong>: <strong>optional float ie 17.5</strong>  - The rate of the first third rate<br />
+<strong>is_amount_discount</strong>: <strong>optional bool true|false</strong> - Boolean flag defining if the discount is an amount (true) or percentage (false)<br />
+<strong>partial</strong>: <strong>optional float ie 10.50</strong> - Partial / Deposit amount - if required<br />
+<strong>partial_due_date</strong>: <strong>optional date Y-m-d</strong> - The due date of the partial amount<br />
+<strong>custom_value1</strong>: <strong>optional string free form text</strong> - Custom values for the invoice<br />
+<strong>custom_value2</strong>: <strong>optional string free form text</strong> - Custom values for the invoice<br />
+<strong>custom_value3</strong>: <strong>optional string free form text</strong> - Custom values for the invoice<br />
+<strong>custom_value4</strong>: <strong>optional string free form text</strong> - Custom values for the invoice<br />
+<strong>custom_surcharge1</strong>: <strong>optional float ie. 1.20</strong> - Custom surcharge amounts for the invoice<br />
+<strong>custom_surcharge2</strong>: <strong>optional float ie. 1.20</strong> - Custom surcharge amounts for the invoice<br />
+<strong>custom_surcharge3</strong>: <strong>optional float ie. 1.20</strong> - Custom surcharge amounts for the invoice<br />
+<strong>custom_surcharge4</strong>: <strong>optional float ie. 1.20</strong> - Custom surcharge amounts for the invoice<br />
+<strong>custom_surcharge_tax1</strong>: <strong>optional bool true|false</strong> - Flag determining if taxes should apply to the surcharge amounts<br />
+<strong>custom_surcharge_tax2</strong>: <strong>optional bool true|false</strong> - Flag determining if taxes should apply to the surcharge amounts<br />
+<strong>custom_surcharge_tax3</strong>: <strong>optional bool true|false</strong> - Flag determining if taxes should apply to the surcharge amounts<br />
+<strong>custom_surcharge_tax4</strong>: <strong>optional bool true|false</strong> - Flag determining if taxes should apply to the surcharge amounts<br />
+<strong>exchange_rate</strong>: <strong>optional float ie 1.5</strong> - The currency exchange rate for this invoice<br />
+<strong>auto_bill_enabled</strong>: <strong>optional bool true|false</strong> - Boolean flag determining if the invoice should be auto billed<br />
+<strong>idempotency_key</strong>: <strong>optional string ie YgXPe3gISCdpcilDcQKaef06wgh1hE4p</strong> - Idempotency key, used to mitigate double requests
+<strong>assigned_user_id</strong>: <strong>optional string</strong> - The id of the assigned user for this invoice</p>
+
+<pre><code>  "line_items": [
+    {
+      "product_key": "Id sit.",
+      "notes": "Excepturi vel.",
+      "cost": 403,
+      "product_cost": 0,
+      "quantity": 1,
+      "tax_name1": "GST",
+      "tax_rate1": 10,
+      "tax_name2": "",
+      "tax_rate2": 0,
+      "tax_name3": "",
+      "tax_rate3": 0,
+      "custom_value1": "https://picsum.photos/200",
+      "custom_value2": "47",
+      "custom_value3": "Sed placeat et.",
+      "custom_value4": "Eos et iusto velit.",
+      "discount": 0,
+      "type_id": "1"
+    }
+  ],
+</code></pre>
+
+<h4>Response</h4>
+
+<hr />
+
+<h3>Update Invoice</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The PUT route is used to create a invoice.</p>
+
+<p>It is important to note that the primary key representation of the invoice is not an integer, but a hashed id, ie. <code>wMvbmEAbYA</code>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X PUT 'http://ninja.test:8000/api/v1/invoices/wMvbmEAbYA' \
+-H "Content-Type:application/json" \
+-d '{"name":"Invoice Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Parameters</h4>
+
+<hr />
+
+<h4>Response</h4>
+
+<hr />
+
+<p>```</p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/fr_CA/api/invoices.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

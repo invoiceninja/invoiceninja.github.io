@@ -1,0 +1,3097 @@
+<!DOCTYPE html>
+<html lang="fr_CA">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/fr_CA/statics">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="fr_CA" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/fr_CA.js"></script>
+    <script type="text/javascript" src="/fr_CA_index.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="fr_CA">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/fr_CA" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Recherche rapide" id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/fr_CA/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">Guide de l&#039;utilisateur</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation API</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Accéder à l&#039;application</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/fr_CA/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> Guide de l&#039;utilisateur </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Documentation API </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Accéder à l&#039;application</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide"></a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide">Guide du développeur</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Référence des variables statiques</h1>
+
+<h2>Types de paiement:</h2>
+
+<table>
+<thead>
+<tr>
+  <th>typeID</th>
+  <th>paymentMethod</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>4</td>
+  <td>ACH</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td>Alipay</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>American Express</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>Bank Transfer</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td>Carte Blanche</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Cash</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td>Check</td>
+</tr>
+<tr>
+  <td>32</td>
+  <td>Credit</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>Credit Card Other</td>
+</tr>
+<tr>
+  <td>31</td>
+  <td>Cryptocurrency</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Debit</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>Diners Card</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>Discover Card</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>EuroCard</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td>GoCardless</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td>Google Wallet</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td>JCB</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td>Laser</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td>Maestro</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>MasterCard</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td>Money Order</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>Nova</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td>PayPal</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td>SEPA Direct Debit</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td>Sofort</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td>Solo</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td>Swish</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td>Switch</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td>UnionPay</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td>Venmo</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>Visa Card</td>
+</tr>
+<tr>
+  <td>33</td>
+  <td>Zelle</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td>iZettle</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Devises</h2>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>US Dollar</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>British Pound</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Euro</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>South African Rand</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>Danish Krone</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>Israeli Shekel</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>Swedish Krona</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>Kenyan Shilling</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>Canadian Dollar</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>Philippine Peso</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>Indian Rupee</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>Australian Dollar</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td>Singapore Dollar</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td>Norske Kroner</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td>New Zealand Dollar</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td>Vietnamese Dong</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td>Swiss Franc</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td>Guatemalan Quetzal</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td>Malaysian Ringgit</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td>Brazilian Real</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td>Thai Baht</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td>Nigerian Naira</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td>Argentine Peso</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td>Bangladeshi Taka</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td>United Arab Emirates Dirham</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td>Hong Kong Dollar</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td>Indonesian Rupiah</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td>Mexican Peso</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td>Egyptian Pound</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td>Colombian Peso</td>
+</tr>
+<tr>
+  <td>31</td>
+  <td>West African Franc</td>
+</tr>
+<tr>
+  <td>32</td>
+  <td>Chinese Renminbi</td>
+</tr>
+<tr>
+  <td>33</td>
+  <td>Rwandan Franc</td>
+</tr>
+<tr>
+  <td>34</td>
+  <td>Tanzanian Shilling</td>
+</tr>
+<tr>
+  <td>35</td>
+  <td>Netherlands Antillean Guilder</td>
+</tr>
+<tr>
+  <td>36</td>
+  <td>Trinidad and Tobago Dollar</td>
+</tr>
+<tr>
+  <td>37</td>
+  <td>East Caribbean Dollar</td>
+</tr>
+<tr>
+  <td>38</td>
+  <td>Ghanaian Cedi</td>
+</tr>
+<tr>
+  <td>39</td>
+  <td>Bulgarian Lev</td>
+</tr>
+<tr>
+  <td>40</td>
+  <td>Aruban Florin</td>
+</tr>
+<tr>
+  <td>41</td>
+  <td>Turkish Lira</td>
+</tr>
+<tr>
+  <td>42</td>
+  <td>Romanian New Leu</td>
+</tr>
+<tr>
+  <td>43</td>
+  <td>Croatian Kuna</td>
+</tr>
+<tr>
+  <td>44</td>
+  <td>Saudi Riyal</td>
+</tr>
+<tr>
+  <td>45</td>
+  <td>Japanese Yen</td>
+</tr>
+<tr>
+  <td>46</td>
+  <td>Maldivian Rufiyaa</td>
+</tr>
+<tr>
+  <td>47</td>
+  <td>Costa Rican Colón</td>
+</tr>
+<tr>
+  <td>48</td>
+  <td>Pakistani Rupee</td>
+</tr>
+<tr>
+  <td>49</td>
+  <td>Polish Zloty</td>
+</tr>
+<tr>
+  <td>50</td>
+  <td>Sri Lankan Rupee</td>
+</tr>
+<tr>
+  <td>51</td>
+  <td>Czech Koruna</td>
+</tr>
+<tr>
+  <td>52</td>
+  <td>Uruguayan Peso</td>
+</tr>
+<tr>
+  <td>53</td>
+  <td>Namibian Dollar</td>
+</tr>
+<tr>
+  <td>54</td>
+  <td>Tunisian Dinar</td>
+</tr>
+<tr>
+  <td>55</td>
+  <td>Russian Ruble</td>
+</tr>
+<tr>
+  <td>56</td>
+  <td>Mozambican Metical</td>
+</tr>
+<tr>
+  <td>57</td>
+  <td>Omani Rial</td>
+</tr>
+<tr>
+  <td>58</td>
+  <td>Ukrainian Hryvnia</td>
+</tr>
+<tr>
+  <td>59</td>
+  <td>Macanese Pataca</td>
+</tr>
+<tr>
+  <td>60</td>
+  <td>Taiwan New Dollar</td>
+</tr>
+<tr>
+  <td>61</td>
+  <td>Dominican Peso</td>
+</tr>
+<tr>
+  <td>62</td>
+  <td>Chilean Peso</td>
+</tr>
+<tr>
+  <td>63</td>
+  <td>Icelandic Króna</td>
+</tr>
+<tr>
+  <td>64</td>
+  <td>Papua New Guinean Kina</td>
+</tr>
+<tr>
+  <td>65</td>
+  <td>Jordanian Dinar</td>
+</tr>
+<tr>
+  <td>66</td>
+  <td>Myanmar Kyat</td>
+</tr>
+<tr>
+  <td>67</td>
+  <td>Peruvian Sol</td>
+</tr>
+<tr>
+  <td>68</td>
+  <td>Botswana Pula</td>
+</tr>
+<tr>
+  <td>69</td>
+  <td>Hungarian Forint</td>
+</tr>
+<tr>
+  <td>70</td>
+  <td>Ugandan Shilling</td>
+</tr>
+<tr>
+  <td>71</td>
+  <td>Barbadian Dollar</td>
+</tr>
+<tr>
+  <td>72</td>
+  <td>Brunei Dollar</td>
+</tr>
+<tr>
+  <td>73</td>
+  <td>Georgian Lari</td>
+</tr>
+<tr>
+  <td>74</td>
+  <td>Qatari Riyal</td>
+</tr>
+<tr>
+  <td>75</td>
+  <td>Honduran Lempira</td>
+</tr>
+<tr>
+  <td>76</td>
+  <td>Surinamese Dollar</td>
+</tr>
+<tr>
+  <td>77</td>
+  <td>Bahraini Dinar</td>
+</tr>
+<tr>
+  <td>78</td>
+  <td>Venezuelan Bolivars</td>
+</tr>
+<tr>
+  <td>79</td>
+  <td>South Korean Won</td>
+</tr>
+<tr>
+  <td>80</td>
+  <td>Moroccan Dirham</td>
+</tr>
+<tr>
+  <td>81</td>
+  <td>Jamaican Dollar</td>
+</tr>
+<tr>
+  <td>82</td>
+  <td>Angolan Kwanza</td>
+</tr>
+<tr>
+  <td>83</td>
+  <td>Haitian Gourde</td>
+</tr>
+<tr>
+  <td>84</td>
+  <td>Zambian Kwacha</td>
+</tr>
+<tr>
+  <td>85</td>
+  <td>Nepalese Rupee</td>
+</tr>
+<tr>
+  <td>86</td>
+  <td>CFP Franc</td>
+</tr>
+<tr>
+  <td>87</td>
+  <td>Mauritian Rupee</td>
+</tr>
+<tr>
+  <td>88</td>
+  <td>Cape Verdean Escudo</td>
+</tr>
+<tr>
+  <td>89</td>
+  <td>Kuwaiti Dinar</td>
+</tr>
+<tr>
+  <td>90</td>
+  <td>Algerian Dinar</td>
+</tr>
+<tr>
+  <td>91</td>
+  <td>Macedonian Denar</td>
+</tr>
+<tr>
+  <td>92</td>
+  <td>Fijian Dollar</td>
+</tr>
+<tr>
+  <td>93</td>
+  <td>Bolivian Boliviano</td>
+</tr>
+<tr>
+  <td>94</td>
+  <td>Albanian Lek</td>
+</tr>
+<tr>
+  <td>95</td>
+  <td>Serbian Dinar</td>
+</tr>
+<tr>
+  <td>96</td>
+  <td>Lebanese Pound</td>
+</tr>
+<tr>
+  <td>97</td>
+  <td>Armenian Dram</td>
+</tr>
+<tr>
+  <td>98</td>
+  <td>Azerbaijan Manat</td>
+</tr>
+<tr>
+  <td>99</td>
+  <td>Bosnia and Herzegovina Convertible Mark</td>
+</tr>
+<tr>
+  <td>100</td>
+  <td>Belarusian Ruble</td>
+</tr>
+<tr>
+  <td>101</td>
+  <td>Gibraltar Pound</td>
+</tr>
+<tr>
+  <td>102</td>
+  <td>Moldovan Leu</td>
+</tr>
+<tr>
+  <td>103</td>
+  <td>Kazakhstani Tenge</td>
+</tr>
+<tr>
+  <td>104</td>
+  <td>Ethiopian Birr</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Langues</h2>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>English - United States</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Italian</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>German</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>French</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>Portuguese - Brazilian</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>Dutch</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>Spanish</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>Norwegian</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>Danish</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>Japanese</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>Swedish</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>Spanish - Spain</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td>French - Canada</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td>Lithuanian</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td>Polish</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td>Czech</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td>Croatian</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td>Albanian</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td>Greek</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td>English - United Kingdom</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td>Portuguese - Portugal</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td>Slovenian</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td>Finnish</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td>Romanian</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td>Turkish - Turkey</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td>Thai</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td>Macedonian</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td>Chinese - Taiwan</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td>Russian (Russia)</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td>Arabic</td>
+</tr>
+<tr>
+  <td>31</td>
+  <td>Persian</td>
+</tr>
+<tr>
+  <td>32</td>
+  <td>Latvian</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Fuseaux horaires</h2>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>Pacific/Midway</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>US/Samoa</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>US/Hawaii</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>US/Alaska</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>US/Pacific</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>America/Tijuana</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>US/Arizona</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>US/Mountain</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>America/Chihuahua</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>America/Mazatlan</td>
+</tr>
+<tr>
+  <td>11</td>
+  <td>America/Mexico_City</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>America/Monterrey</td>
+</tr>
+<tr>
+  <td>13</td>
+  <td>Canada/Saskatchewan</td>
+</tr>
+<tr>
+  <td>14</td>
+  <td>US/Central</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td>US/Eastern</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td>US/East-Indiana</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td>America/Bogota</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td>America/Lima</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td>America/Caracas</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td>Canada/Atlantic</td>
+</tr>
+<tr>
+  <td>21</td>
+  <td>America/La_Paz</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td>America/Santiago</td>
+</tr>
+<tr>
+  <td>23</td>
+  <td>Canada/Newfoundland</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td>America/Buenos_Aires</td>
+</tr>
+<tr>
+  <td>25</td>
+  <td>America/Godthab</td>
+</tr>
+<tr>
+  <td>26</td>
+  <td>Atlantic/Stanley</td>
+</tr>
+<tr>
+  <td>27</td>
+  <td>Atlantic/Azores</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td>Atlantic/Cape_Verde</td>
+</tr>
+<tr>
+  <td>29</td>
+  <td>Africa/Casablanca</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td>Europe/Dublin</td>
+</tr>
+<tr>
+  <td>31</td>
+  <td>Europe/Lisbon</td>
+</tr>
+<tr>
+  <td>32</td>
+  <td>Europe/London</td>
+</tr>
+<tr>
+  <td>33</td>
+  <td>Africa/Monrovia</td>
+</tr>
+<tr>
+  <td>34</td>
+  <td>Europe/Amsterdam</td>
+</tr>
+<tr>
+  <td>35</td>
+  <td>Europe/Belgrade</td>
+</tr>
+<tr>
+  <td>36</td>
+  <td>Europe/Berlin</td>
+</tr>
+<tr>
+  <td>37</td>
+  <td>Europe/Bratislava</td>
+</tr>
+<tr>
+  <td>38</td>
+  <td>Europe/Brussels</td>
+</tr>
+<tr>
+  <td>39</td>
+  <td>Europe/Budapest</td>
+</tr>
+<tr>
+  <td>40</td>
+  <td>Europe/Copenhagen</td>
+</tr>
+<tr>
+  <td>41</td>
+  <td>Europe/Ljubljana</td>
+</tr>
+<tr>
+  <td>42</td>
+  <td>Europe/Madrid</td>
+</tr>
+<tr>
+  <td>43</td>
+  <td>Europe/Paris</td>
+</tr>
+<tr>
+  <td>44</td>
+  <td>Europe/Prague</td>
+</tr>
+<tr>
+  <td>45</td>
+  <td>Europe/Rome</td>
+</tr>
+<tr>
+  <td>46</td>
+  <td>Europe/Sarajevo</td>
+</tr>
+<tr>
+  <td>47</td>
+  <td>Europe/Skopje</td>
+</tr>
+<tr>
+  <td>48</td>
+  <td>Europe/Stockholm</td>
+</tr>
+<tr>
+  <td>49</td>
+  <td>Europe/Vienna</td>
+</tr>
+<tr>
+  <td>50</td>
+  <td>Europe/Warsaw</td>
+</tr>
+<tr>
+  <td>51</td>
+  <td>Europe/Zagreb</td>
+</tr>
+<tr>
+  <td>52</td>
+  <td>Europe/Athens</td>
+</tr>
+<tr>
+  <td>53</td>
+  <td>Europe/Bucharest</td>
+</tr>
+<tr>
+  <td>54</td>
+  <td>Africa/Cairo</td>
+</tr>
+<tr>
+  <td>55</td>
+  <td>Africa/Harare</td>
+</tr>
+<tr>
+  <td>56</td>
+  <td>Europe/Helsinki</td>
+</tr>
+<tr>
+  <td>57</td>
+  <td>Asia/Jerusalem</td>
+</tr>
+<tr>
+  <td>58</td>
+  <td>Europe/Kiev</td>
+</tr>
+<tr>
+  <td>59</td>
+  <td>Europe/Minsk</td>
+</tr>
+<tr>
+  <td>60</td>
+  <td>Europe/Riga</td>
+</tr>
+<tr>
+  <td>61</td>
+  <td>Europe/Sofia</td>
+</tr>
+<tr>
+  <td>62</td>
+  <td>Europe/Tallinn</td>
+</tr>
+<tr>
+  <td>63</td>
+  <td>Europe/Vilnius</td>
+</tr>
+<tr>
+  <td>64</td>
+  <td>Europe/Istanbul</td>
+</tr>
+<tr>
+  <td>65</td>
+  <td>Asia/Baghdad</td>
+</tr>
+<tr>
+  <td>66</td>
+  <td>Asia/Kuwait</td>
+</tr>
+<tr>
+  <td>67</td>
+  <td>Africa/Nairobi</td>
+</tr>
+<tr>
+  <td>68</td>
+  <td>Asia/Riyadh</td>
+</tr>
+<tr>
+  <td>69</td>
+  <td>Asia/Tehran</td>
+</tr>
+<tr>
+  <td>70</td>
+  <td>Europe/Moscow</td>
+</tr>
+<tr>
+  <td>71</td>
+  <td>Asia/Baku</td>
+</tr>
+<tr>
+  <td>72</td>
+  <td>Europe/Volgograd</td>
+</tr>
+<tr>
+  <td>73</td>
+  <td>Asia/Muscat</td>
+</tr>
+<tr>
+  <td>74</td>
+  <td>Asia/Tbilisi</td>
+</tr>
+<tr>
+  <td>75</td>
+  <td>Asia/Yerevan</td>
+</tr>
+<tr>
+  <td>76</td>
+  <td>Asia/Kabul</td>
+</tr>
+<tr>
+  <td>77</td>
+  <td>Asia/Karachi</td>
+</tr>
+<tr>
+  <td>78</td>
+  <td>Asia/Tashkent</td>
+</tr>
+<tr>
+  <td>79</td>
+  <td>Asia/Kolkata</td>
+</tr>
+<tr>
+  <td>80</td>
+  <td>Asia/Kathmandu</td>
+</tr>
+<tr>
+  <td>81</td>
+  <td>Asia/Yekaterinburg</td>
+</tr>
+<tr>
+  <td>82</td>
+  <td>Asia/Almaty</td>
+</tr>
+<tr>
+  <td>83</td>
+  <td>Asia/Dhaka</td>
+</tr>
+<tr>
+  <td>84</td>
+  <td>Asia/Novosibirsk</td>
+</tr>
+<tr>
+  <td>85</td>
+  <td>Asia/Bangkok</td>
+</tr>
+<tr>
+  <td>86</td>
+  <td>Asia/Ho_Chi_Minh</td>
+</tr>
+<tr>
+  <td>87</td>
+  <td>Asia/Jakarta</td>
+</tr>
+<tr>
+  <td>88</td>
+  <td>Asia/Krasnoyarsk</td>
+</tr>
+<tr>
+  <td>89</td>
+  <td>Asia/Chongqing</td>
+</tr>
+<tr>
+  <td>90</td>
+  <td>Asia/Hong_Kong</td>
+</tr>
+<tr>
+  <td>91</td>
+  <td>Asia/Kuala_Lumpur</td>
+</tr>
+<tr>
+  <td>92</td>
+  <td>Australia/Perth</td>
+</tr>
+<tr>
+  <td>93</td>
+  <td>Asia/Singapore</td>
+</tr>
+<tr>
+  <td>94</td>
+  <td>Asia/Taipei</td>
+</tr>
+<tr>
+  <td>95</td>
+  <td>Asia/Ulaanbaatar</td>
+</tr>
+<tr>
+  <td>96</td>
+  <td>Asia/Urumqi</td>
+</tr>
+<tr>
+  <td>97</td>
+  <td>Asia/Irkutsk</td>
+</tr>
+<tr>
+  <td>98</td>
+  <td>Asia/Seoul</td>
+</tr>
+<tr>
+  <td>99</td>
+  <td>Asia/Tokyo</td>
+</tr>
+<tr>
+  <td>100</td>
+  <td>Australia/Adelaide</td>
+</tr>
+<tr>
+  <td>101</td>
+  <td>Australia/Darwin</td>
+</tr>
+<tr>
+  <td>102</td>
+  <td>Asia/Yakutsk</td>
+</tr>
+<tr>
+  <td>103</td>
+  <td>Australia/Brisbane</td>
+</tr>
+<tr>
+  <td>104</td>
+  <td>Australia/Canberra</td>
+</tr>
+<tr>
+  <td>105</td>
+  <td>Pacific/Guam</td>
+</tr>
+<tr>
+  <td>106</td>
+  <td>Australia/Hobart</td>
+</tr>
+<tr>
+  <td>107</td>
+  <td>Australia/Melbourne</td>
+</tr>
+<tr>
+  <td>108</td>
+  <td>Pacific/Port_Moresby</td>
+</tr>
+<tr>
+  <td>109</td>
+  <td>Australia/Sydney</td>
+</tr>
+<tr>
+  <td>110</td>
+  <td>Asia/Vladivostok</td>
+</tr>
+<tr>
+  <td>111</td>
+  <td>Asia/Magadan</td>
+</tr>
+<tr>
+  <td>112</td>
+  <td>Pacific/Auckland</td>
+</tr>
+<tr>
+  <td>113</td>
+  <td>Pacific/Fiji</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Pays</h2>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>name</th>
+  <th>iso_3166_2</th>
+  <th>iso_3166_3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>4</td>
+  <td>Afghanistan</td>
+  <td>AF</td>
+  <td>AFG</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>Albania</td>
+  <td>AL</td>
+  <td>ALB</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>Antarctica</td>
+  <td>AQ</td>
+  <td>ATA</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td>Algeria</td>
+  <td>DZ</td>
+  <td>DZA</td>
+</tr>
+<tr>
+  <td>16</td>
+  <td>American Samoa</td>
+  <td>AS</td>
+  <td>ASM</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td>Andorra</td>
+  <td>AD</td>
+  <td>AND</td>
+</tr>
+<tr>
+  <td>24</td>
+  <td>Angola</td>
+  <td>AO</td>
+  <td>AGO</td>
+</tr>
+<tr>
+  <td>28</td>
+  <td>Antigua and Barbuda</td>
+  <td>AG</td>
+  <td>ATG</td>
+</tr>
+<tr>
+  <td>31</td>
+  <td>Azerbaijan</td>
+  <td>AZ</td>
+  <td>AZE</td>
+</tr>
+<tr>
+  <td>32</td>
+  <td>Argentina</td>
+  <td>AR</td>
+  <td>ARG</td>
+</tr>
+<tr>
+  <td>36</td>
+  <td>Australia</td>
+  <td>AU</td>
+  <td>AUS</td>
+</tr>
+<tr>
+  <td>40</td>
+  <td>Austria</td>
+  <td>AT</td>
+  <td>AUT</td>
+</tr>
+<tr>
+  <td>44</td>
+  <td>Bahamas</td>
+  <td>BS</td>
+  <td>BHS</td>
+</tr>
+<tr>
+  <td>48</td>
+  <td>Bahrain</td>
+  <td>BH</td>
+  <td>BHR</td>
+</tr>
+<tr>
+  <td>50</td>
+  <td>Bangladesh</td>
+  <td>BD</td>
+  <td>BGD</td>
+</tr>
+<tr>
+  <td>51</td>
+  <td>Armenia</td>
+  <td>AM</td>
+  <td>ARM</td>
+</tr>
+<tr>
+  <td>52</td>
+  <td>Barbados</td>
+  <td>BB</td>
+  <td>BRB</td>
+</tr>
+<tr>
+  <td>56</td>
+  <td>Belgium</td>
+  <td>BE</td>
+  <td>BEL</td>
+</tr>
+<tr>
+  <td>60</td>
+  <td>Bermuda</td>
+  <td>BM</td>
+  <td>BMU</td>
+</tr>
+<tr>
+  <td>64</td>
+  <td>Bhutan</td>
+  <td>BT</td>
+  <td>BTN</td>
+</tr>
+<tr>
+  <td>68</td>
+  <td>Bolivia, Plurinational State of</td>
+  <td>BO</td>
+  <td>BOL</td>
+</tr>
+<tr>
+  <td>70</td>
+  <td>Bosnia and Herzegovina</td>
+  <td>BA</td>
+  <td>BIH</td>
+</tr>
+<tr>
+  <td>72</td>
+  <td>Botswana</td>
+  <td>BW</td>
+  <td>BWA</td>
+</tr>
+<tr>
+  <td>74</td>
+  <td>Bouvet Island</td>
+  <td>BV</td>
+  <td>BVT</td>
+</tr>
+<tr>
+  <td>76</td>
+  <td>Brazil</td>
+  <td>BR</td>
+  <td>BRA</td>
+</tr>
+<tr>
+  <td>84</td>
+  <td>Belize</td>
+  <td>BZ</td>
+  <td>BLZ</td>
+</tr>
+<tr>
+  <td>86</td>
+  <td>British Indian Ocean Territory</td>
+  <td>IO</td>
+  <td>IOT</td>
+</tr>
+<tr>
+  <td>90</td>
+  <td>Solomon Islands</td>
+  <td>SB</td>
+  <td>SLB</td>
+</tr>
+<tr>
+  <td>92</td>
+  <td>Virgin Islands, British</td>
+  <td>VG</td>
+  <td>VGB</td>
+</tr>
+<tr>
+  <td>96</td>
+  <td>Brunei Darussalam</td>
+  <td>BN</td>
+  <td>BRN</td>
+</tr>
+<tr>
+  <td>100</td>
+  <td>Bulgaria</td>
+  <td>BG</td>
+  <td>BGR</td>
+</tr>
+<tr>
+  <td>104</td>
+  <td>Myanmar</td>
+  <td>MM</td>
+  <td>MMR</td>
+</tr>
+<tr>
+  <td>108</td>
+  <td>Burundi</td>
+  <td>BI</td>
+  <td>BDI</td>
+</tr>
+<tr>
+  <td>112</td>
+  <td>Belarus</td>
+  <td>BY</td>
+  <td>BLR</td>
+</tr>
+<tr>
+  <td>116</td>
+  <td>Cambodia</td>
+  <td>KH</td>
+  <td>KHM</td>
+</tr>
+<tr>
+  <td>120</td>
+  <td>Cameroon</td>
+  <td>CM</td>
+  <td>CMR</td>
+</tr>
+<tr>
+  <td>124</td>
+  <td>Canada</td>
+  <td>CA</td>
+  <td>CAN</td>
+</tr>
+<tr>
+  <td>132</td>
+  <td>Cape Verde</td>
+  <td>CV</td>
+  <td>CPV</td>
+</tr>
+<tr>
+  <td>136</td>
+  <td>Cayman Islands</td>
+  <td>KY</td>
+  <td>CYM</td>
+</tr>
+<tr>
+  <td>140</td>
+  <td>Central African Republic</td>
+  <td>CF</td>
+  <td>CAF</td>
+</tr>
+<tr>
+  <td>144</td>
+  <td>Sri Lanka</td>
+  <td>LK</td>
+  <td>LKA</td>
+</tr>
+<tr>
+  <td>148</td>
+  <td>Chad</td>
+  <td>TD</td>
+  <td>TCD</td>
+</tr>
+<tr>
+  <td>152</td>
+  <td>Chile</td>
+  <td>CL</td>
+  <td>CHL</td>
+</tr>
+<tr>
+  <td>156</td>
+  <td>China</td>
+  <td>CN</td>
+  <td>CHN</td>
+</tr>
+<tr>
+  <td>158</td>
+  <td>Taiwan</td>
+  <td>TW</td>
+  <td>TWN</td>
+</tr>
+<tr>
+  <td>162</td>
+  <td>Christmas Island</td>
+  <td>CX</td>
+  <td>CXR</td>
+</tr>
+<tr>
+  <td>166</td>
+  <td>Cocos (Keeling) Islands</td>
+  <td>CC</td>
+  <td>CCK</td>
+</tr>
+<tr>
+  <td>170</td>
+  <td>Colombia</td>
+  <td>CO</td>
+  <td>COL</td>
+</tr>
+<tr>
+  <td>174</td>
+  <td>Comoros</td>
+  <td>KM</td>
+  <td>COM</td>
+</tr>
+<tr>
+  <td>175</td>
+  <td>Mayotte</td>
+  <td>YT</td>
+  <td>MYT</td>
+</tr>
+<tr>
+  <td>178</td>
+  <td>Congo</td>
+  <td>CG</td>
+  <td>COG</td>
+</tr>
+<tr>
+  <td>180</td>
+  <td>Congo, the Democratic Republic of the</td>
+  <td>CD</td>
+  <td>COD</td>
+</tr>
+<tr>
+  <td>184</td>
+  <td>Cook Islands</td>
+  <td>CK</td>
+  <td>COK</td>
+</tr>
+<tr>
+  <td>188</td>
+  <td>Costa Rica</td>
+  <td>CR</td>
+  <td>CRI</td>
+</tr>
+<tr>
+  <td>191</td>
+  <td>Croatia</td>
+  <td>HR</td>
+  <td>HRV</td>
+</tr>
+<tr>
+  <td>192</td>
+  <td>Cuba</td>
+  <td>CU</td>
+  <td>CUB</td>
+</tr>
+<tr>
+  <td>196</td>
+  <td>Cyprus</td>
+  <td>CY</td>
+  <td>CYP</td>
+</tr>
+<tr>
+  <td>203</td>
+  <td>Czech Republic</td>
+  <td>CZ</td>
+  <td>CZE</td>
+</tr>
+<tr>
+  <td>204</td>
+  <td>Benin</td>
+  <td>BJ</td>
+  <td>BEN</td>
+</tr>
+<tr>
+  <td>208</td>
+  <td>Denmark</td>
+  <td>DK</td>
+  <td>DNK</td>
+</tr>
+<tr>
+  <td>212</td>
+  <td>Dominica</td>
+  <td>DM</td>
+  <td>DMA</td>
+</tr>
+<tr>
+  <td>214</td>
+  <td>Dominican Republic</td>
+  <td>DO</td>
+  <td>DOM</td>
+</tr>
+<tr>
+  <td>218</td>
+  <td>Ecuador</td>
+  <td>EC</td>
+  <td>ECU</td>
+</tr>
+<tr>
+  <td>222</td>
+  <td>El Salvador</td>
+  <td>SV</td>
+  <td>SLV</td>
+</tr>
+<tr>
+  <td>226</td>
+  <td>Equatorial Guinea</td>
+  <td>GQ</td>
+  <td>GNQ</td>
+</tr>
+<tr>
+  <td>231</td>
+  <td>Ethiopia</td>
+  <td>ET</td>
+  <td>ETH</td>
+</tr>
+<tr>
+  <td>232</td>
+  <td>Eritrea</td>
+  <td>ER</td>
+  <td>ERI</td>
+</tr>
+<tr>
+  <td>233</td>
+  <td>Estonia</td>
+  <td>EE</td>
+  <td>EST</td>
+</tr>
+<tr>
+  <td>234</td>
+  <td>Faroe Islands</td>
+  <td>FO</td>
+  <td>FRO</td>
+</tr>
+<tr>
+  <td>238</td>
+  <td>Falkland Islands (Malvinas)</td>
+  <td>FK</td>
+  <td>FLK</td>
+</tr>
+<tr>
+  <td>239</td>
+  <td>South Georgia and the South Sandwich Islands</td>
+  <td>GS</td>
+  <td>SGS</td>
+</tr>
+<tr>
+  <td>242</td>
+  <td>Fiji</td>
+  <td>FJ</td>
+  <td>FJI</td>
+</tr>
+<tr>
+  <td>246</td>
+  <td>Finland</td>
+  <td>FI</td>
+  <td>FIN</td>
+</tr>
+<tr>
+  <td>248</td>
+  <td>Åland Islands</td>
+  <td>AX</td>
+  <td>ALA</td>
+</tr>
+<tr>
+  <td>250</td>
+  <td>France</td>
+  <td>FR</td>
+  <td>FRA</td>
+</tr>
+<tr>
+  <td>254</td>
+  <td>French Guiana</td>
+  <td>GF</td>
+  <td>GUF</td>
+</tr>
+<tr>
+  <td>258</td>
+  <td>French Polynesia</td>
+  <td>PF</td>
+  <td>PYF</td>
+</tr>
+<tr>
+  <td>260</td>
+  <td>French Southern Territories</td>
+  <td>TF</td>
+  <td>ATF</td>
+</tr>
+<tr>
+  <td>262</td>
+  <td>Djibouti</td>
+  <td>DJ</td>
+  <td>DJI</td>
+</tr>
+<tr>
+  <td>266</td>
+  <td>Gabon</td>
+  <td>GA</td>
+  <td>GAB</td>
+</tr>
+<tr>
+  <td>268</td>
+  <td>Georgia</td>
+  <td>GE</td>
+  <td>GEO</td>
+</tr>
+<tr>
+  <td>270</td>
+  <td>Gambia</td>
+  <td>GM</td>
+  <td>GMB</td>
+</tr>
+<tr>
+  <td>275</td>
+  <td>Palestine</td>
+  <td>PS</td>
+  <td>PSE</td>
+</tr>
+<tr>
+  <td>276</td>
+  <td>Germany</td>
+  <td>DE</td>
+  <td>DEU</td>
+</tr>
+<tr>
+  <td>288</td>
+  <td>Ghana</td>
+  <td>GH</td>
+  <td>GHA</td>
+</tr>
+<tr>
+  <td>292</td>
+  <td>Gibraltar</td>
+  <td>GI</td>
+  <td>GIB</td>
+</tr>
+<tr>
+  <td>296</td>
+  <td>Kiribati</td>
+  <td>KI</td>
+  <td>KIR</td>
+</tr>
+<tr>
+  <td>300</td>
+  <td>Greece</td>
+  <td>GR</td>
+  <td>GRC</td>
+</tr>
+<tr>
+  <td>304</td>
+  <td>Greenland</td>
+  <td>GL</td>
+  <td>GRL</td>
+</tr>
+<tr>
+  <td>308</td>
+  <td>Grenada</td>
+  <td>GD</td>
+  <td>GRD</td>
+</tr>
+<tr>
+  <td>312</td>
+  <td>Guadeloupe</td>
+  <td>GP</td>
+  <td>GLP</td>
+</tr>
+<tr>
+  <td>316</td>
+  <td>Guam</td>
+  <td>GU</td>
+  <td>GUM</td>
+</tr>
+<tr>
+  <td>320</td>
+  <td>Guatemala</td>
+  <td>GT</td>
+  <td>GTM</td>
+</tr>
+<tr>
+  <td>324</td>
+  <td>Guinea</td>
+  <td>GN</td>
+  <td>GIN</td>
+</tr>
+<tr>
+  <td>328</td>
+  <td>Guyana</td>
+  <td>GY</td>
+  <td>GUY</td>
+</tr>
+<tr>
+  <td>332</td>
+  <td>Haiti</td>
+  <td>HT</td>
+  <td>HTI</td>
+</tr>
+<tr>
+  <td>334</td>
+  <td>Heard Island and McDonald Islands</td>
+  <td>HM</td>
+  <td>HMD</td>
+</tr>
+<tr>
+  <td>336</td>
+  <td>Holy See (Vatican City State)</td>
+  <td>VA</td>
+  <td>VAT</td>
+</tr>
+<tr>
+  <td>340</td>
+  <td>Honduras</td>
+  <td>HN</td>
+  <td>HND</td>
+</tr>
+<tr>
+  <td>344</td>
+  <td>Hong Kong</td>
+  <td>HK</td>
+  <td>HKG</td>
+</tr>
+<tr>
+  <td>348</td>
+  <td>Hungary</td>
+  <td>HU</td>
+  <td>HUN</td>
+</tr>
+<tr>
+  <td>352</td>
+  <td>Iceland</td>
+  <td>IS</td>
+  <td>ISL</td>
+</tr>
+<tr>
+  <td>356</td>
+  <td>India</td>
+  <td>IN</td>
+  <td>IND</td>
+</tr>
+<tr>
+  <td>360</td>
+  <td>Indonesia</td>
+  <td>ID</td>
+  <td>IDN</td>
+</tr>
+<tr>
+  <td>364</td>
+  <td>Iran, Islamic Republic of</td>
+  <td>IR</td>
+  <td>IRN</td>
+</tr>
+<tr>
+  <td>368</td>
+  <td>Iraq</td>
+  <td>IQ</td>
+  <td>IRQ</td>
+</tr>
+<tr>
+  <td>372</td>
+  <td>Ireland</td>
+  <td>IE</td>
+  <td>IRL</td>
+</tr>
+<tr>
+  <td>376</td>
+  <td>Israel</td>
+  <td>IL</td>
+  <td>ISR</td>
+</tr>
+<tr>
+  <td>380</td>
+  <td>Italy</td>
+  <td>IT</td>
+  <td>ITA</td>
+</tr>
+<tr>
+  <td>384</td>
+  <td>Côte d'Ivoire</td>
+  <td>CI</td>
+  <td>CIV</td>
+</tr>
+<tr>
+  <td>388</td>
+  <td>Jamaica</td>
+  <td>JM</td>
+  <td>JAM</td>
+</tr>
+<tr>
+  <td>392</td>
+  <td>Japan</td>
+  <td>JP</td>
+  <td>JPN</td>
+</tr>
+<tr>
+  <td>398</td>
+  <td>Kazakhstan</td>
+  <td>KZ</td>
+  <td>KAZ</td>
+</tr>
+<tr>
+  <td>400</td>
+  <td>Jordan</td>
+  <td>JO</td>
+  <td>JOR</td>
+</tr>
+<tr>
+  <td>404</td>
+  <td>Kenya</td>
+  <td>KE</td>
+  <td>KEN</td>
+</tr>
+<tr>
+  <td>408</td>
+  <td>Korea, Democratic People's Republic of</td>
+  <td>KP</td>
+  <td>PRK</td>
+</tr>
+<tr>
+  <td>410</td>
+  <td>Korea, Republic of</td>
+  <td>KR</td>
+  <td>KOR</td>
+</tr>
+<tr>
+  <td>414</td>
+  <td>Kuwait</td>
+  <td>KW</td>
+  <td>KWT</td>
+</tr>
+<tr>
+  <td>417</td>
+  <td>Kyrgyzstan</td>
+  <td>KG</td>
+  <td>KGZ</td>
+</tr>
+<tr>
+  <td>418</td>
+  <td>Lao People's Democratic Republic</td>
+  <td>LA</td>
+  <td>LAO</td>
+</tr>
+<tr>
+  <td>422</td>
+  <td>Lebanon</td>
+  <td>LB</td>
+  <td>LBN</td>
+</tr>
+<tr>
+  <td>426</td>
+  <td>Lesotho</td>
+  <td>LS</td>
+  <td>LSO</td>
+</tr>
+<tr>
+  <td>428</td>
+  <td>Latvia</td>
+  <td>LV</td>
+  <td>LVA</td>
+</tr>
+<tr>
+  <td>430</td>
+  <td>Liberia</td>
+  <td>LR</td>
+  <td>LBR</td>
+</tr>
+<tr>
+  <td>434</td>
+  <td>Libya</td>
+  <td>LY</td>
+  <td>LBY</td>
+</tr>
+<tr>
+  <td>438</td>
+  <td>Liechtenstein</td>
+  <td>LI</td>
+  <td>LIE</td>
+</tr>
+<tr>
+  <td>440</td>
+  <td>Lithuania</td>
+  <td>LT</td>
+  <td>LTU</td>
+</tr>
+<tr>
+  <td>442</td>
+  <td>Luxembourg</td>
+  <td>LU</td>
+  <td>LUX</td>
+</tr>
+<tr>
+  <td>446</td>
+  <td>Macao</td>
+  <td>MO</td>
+  <td>MAC</td>
+</tr>
+<tr>
+  <td>450</td>
+  <td>Madagascar</td>
+  <td>MG</td>
+  <td>MDG</td>
+</tr>
+<tr>
+  <td>454</td>
+  <td>Malawi</td>
+  <td>MW</td>
+  <td>MWI</td>
+</tr>
+<tr>
+  <td>458</td>
+  <td>Malaysia</td>
+  <td>MY</td>
+  <td>MYS</td>
+</tr>
+<tr>
+  <td>462</td>
+  <td>Maldives</td>
+  <td>MV</td>
+  <td>MDV</td>
+</tr>
+<tr>
+  <td>466</td>
+  <td>Mali</td>
+  <td>ML</td>
+  <td>MLI</td>
+</tr>
+<tr>
+  <td>470</td>
+  <td>Malta</td>
+  <td>MT</td>
+  <td>MLT</td>
+</tr>
+<tr>
+  <td>474</td>
+  <td>Martinique</td>
+  <td>MQ</td>
+  <td>MTQ</td>
+</tr>
+<tr>
+  <td>478</td>
+  <td>Mauritania</td>
+  <td>MR</td>
+  <td>MRT</td>
+</tr>
+<tr>
+  <td>480</td>
+  <td>Mauritius</td>
+  <td>MU</td>
+  <td>MUS</td>
+</tr>
+<tr>
+  <td>484</td>
+  <td>Mexico</td>
+  <td>MX</td>
+  <td>MEX</td>
+</tr>
+<tr>
+  <td>492</td>
+  <td>Monaco</td>
+  <td>MC</td>
+  <td>MCO</td>
+</tr>
+<tr>
+  <td>496</td>
+  <td>Mongolia</td>
+  <td>MN</td>
+  <td>MNG</td>
+</tr>
+<tr>
+  <td>498</td>
+  <td>Moldova, Republic of</td>
+  <td>MD</td>
+  <td>MDA</td>
+</tr>
+<tr>
+  <td>499</td>
+  <td>Montenegro</td>
+  <td>ME</td>
+  <td>MNE</td>
+</tr>
+<tr>
+  <td>500</td>
+  <td>Montserrat</td>
+  <td>MS</td>
+  <td>MSR</td>
+</tr>
+<tr>
+  <td>504</td>
+  <td>Morocco</td>
+  <td>MA</td>
+  <td>MAR</td>
+</tr>
+<tr>
+  <td>508</td>
+  <td>Mozambique</td>
+  <td>MZ</td>
+  <td>MOZ</td>
+</tr>
+<tr>
+  <td>512</td>
+  <td>Oman</td>
+  <td>OM</td>
+  <td>OMN</td>
+</tr>
+<tr>
+  <td>516</td>
+  <td>Namibia</td>
+  <td>NA</td>
+  <td>NAM</td>
+</tr>
+<tr>
+  <td>520</td>
+  <td>Nauru</td>
+  <td>NR</td>
+  <td>NRU</td>
+</tr>
+<tr>
+  <td>524</td>
+  <td>Nepal</td>
+  <td>NP</td>
+  <td>NPL</td>
+</tr>
+<tr>
+  <td>528</td>
+  <td>Netherlands</td>
+  <td>NL</td>
+  <td>NLD</td>
+</tr>
+<tr>
+  <td>531</td>
+  <td>Curaçao</td>
+  <td>CW</td>
+  <td>CUW</td>
+</tr>
+<tr>
+  <td>533</td>
+  <td>Aruba</td>
+  <td>AW</td>
+  <td>ABW</td>
+</tr>
+<tr>
+  <td>534</td>
+  <td>Sint Maarten (Dutch part)</td>
+  <td>SX</td>
+  <td>SXM</td>
+</tr>
+<tr>
+  <td>535</td>
+  <td>Bonaire, Sint Eustatius and Saba</td>
+  <td>BQ</td>
+  <td>BES</td>
+</tr>
+<tr>
+  <td>540</td>
+  <td>New Caledonia</td>
+  <td>NC</td>
+  <td>NCL</td>
+</tr>
+<tr>
+  <td>548</td>
+  <td>Vanuatu</td>
+  <td>VU</td>
+  <td>VUT</td>
+</tr>
+<tr>
+  <td>554</td>
+  <td>New Zealand</td>
+  <td>NZ</td>
+  <td>NZL</td>
+</tr>
+<tr>
+  <td>558</td>
+  <td>Nicaragua</td>
+  <td>NI</td>
+  <td>NIC</td>
+</tr>
+<tr>
+  <td>562</td>
+  <td>Niger</td>
+  <td>NE</td>
+  <td>NER</td>
+</tr>
+<tr>
+  <td>566</td>
+  <td>Nigeria</td>
+  <td>NG</td>
+  <td>NGA</td>
+</tr>
+<tr>
+  <td>570</td>
+  <td>Niue</td>
+  <td>NU</td>
+  <td>NIU</td>
+</tr>
+<tr>
+  <td>574</td>
+  <td>Norfolk Island</td>
+  <td>NF</td>
+  <td>NFK</td>
+</tr>
+<tr>
+  <td>578</td>
+  <td>Norway</td>
+  <td>NO</td>
+  <td>NOR</td>
+</tr>
+<tr>
+  <td>580</td>
+  <td>Northern Mariana Islands</td>
+  <td>MP</td>
+  <td>MNP</td>
+</tr>
+<tr>
+  <td>581</td>
+  <td>United States Minor Outlying Islands</td>
+  <td>UM</td>
+  <td>UMI</td>
+</tr>
+<tr>
+  <td>583</td>
+  <td>Micronesia, Federated States of</td>
+  <td>FM</td>
+  <td>FSM</td>
+</tr>
+<tr>
+  <td>584</td>
+  <td>Marshall Islands</td>
+  <td>MH</td>
+  <td>MHL</td>
+</tr>
+<tr>
+  <td>585</td>
+  <td>Palau</td>
+  <td>PW</td>
+  <td>PLW</td>
+</tr>
+<tr>
+  <td>586</td>
+  <td>Pakistan</td>
+  <td>PK</td>
+  <td>PAK</td>
+</tr>
+<tr>
+  <td>591</td>
+  <td>Panama</td>
+  <td>PA</td>
+  <td>PAN</td>
+</tr>
+<tr>
+  <td>598</td>
+  <td>Papua New Guinea</td>
+  <td>PG</td>
+  <td>PNG</td>
+</tr>
+<tr>
+  <td>600</td>
+  <td>Paraguay</td>
+  <td>PY</td>
+  <td>PRY</td>
+</tr>
+<tr>
+  <td>604</td>
+  <td>Peru</td>
+  <td>PE</td>
+  <td>PER</td>
+</tr>
+<tr>
+  <td>608</td>
+  <td>Philippines</td>
+  <td>PH</td>
+  <td>PHL</td>
+</tr>
+<tr>
+  <td>612</td>
+  <td>Pitcairn</td>
+  <td>PN</td>
+  <td>PCN</td>
+</tr>
+<tr>
+  <td>616</td>
+  <td>Poland</td>
+  <td>PL</td>
+  <td>POL</td>
+</tr>
+<tr>
+  <td>620</td>
+  <td>Portugal</td>
+  <td>PT</td>
+  <td>PRT</td>
+</tr>
+<tr>
+  <td>624</td>
+  <td>Guinea-Bissau</td>
+  <td>GW</td>
+  <td>GNB</td>
+</tr>
+<tr>
+  <td>626</td>
+  <td>Timor-Leste</td>
+  <td>TL</td>
+  <td>TLS</td>
+</tr>
+<tr>
+  <td>630</td>
+  <td>Puerto Rico</td>
+  <td>PR</td>
+  <td>PRI</td>
+</tr>
+<tr>
+  <td>634</td>
+  <td>Qatar</td>
+  <td>QA</td>
+  <td>QAT</td>
+</tr>
+<tr>
+  <td>638</td>
+  <td>Réunion</td>
+  <td>RE</td>
+  <td>REU</td>
+</tr>
+<tr>
+  <td>642</td>
+  <td>Romania</td>
+  <td>RO</td>
+  <td>ROU</td>
+</tr>
+<tr>
+  <td>643</td>
+  <td>Russian Federation</td>
+  <td>RU</td>
+  <td>RUS</td>
+</tr>
+<tr>
+  <td>646</td>
+  <td>Rwanda</td>
+  <td>RW</td>
+  <td>RWA</td>
+</tr>
+<tr>
+  <td>652</td>
+  <td>Saint Barthélemy</td>
+  <td>BL</td>
+  <td>BLM</td>
+</tr>
+<tr>
+  <td>654</td>
+  <td>Saint Helena, Ascension and Tristan da Cunha</td>
+  <td>SH</td>
+  <td>SHN</td>
+</tr>
+<tr>
+  <td>659</td>
+  <td>Saint Kitts and Nevis</td>
+  <td>KN</td>
+  <td>KNA</td>
+</tr>
+<tr>
+  <td>660</td>
+  <td>Anguilla</td>
+  <td>AI</td>
+  <td>AIA</td>
+</tr>
+<tr>
+  <td>662</td>
+  <td>Saint Lucia</td>
+  <td>LC</td>
+  <td>LCA</td>
+</tr>
+<tr>
+  <td>663</td>
+  <td>Saint Martin (French part)</td>
+  <td>MF</td>
+  <td>MAF</td>
+</tr>
+<tr>
+  <td>666</td>
+  <td>Saint Pierre and Miquelon</td>
+  <td>PM</td>
+  <td>SPM</td>
+</tr>
+<tr>
+  <td>670</td>
+  <td>Saint Vincent and the Grenadines</td>
+  <td>VC</td>
+  <td>VCT</td>
+</tr>
+<tr>
+  <td>674</td>
+  <td>San Marino</td>
+  <td>SM</td>
+  <td>SMR</td>
+</tr>
+<tr>
+  <td>678</td>
+  <td>Sao Tome and Principe</td>
+  <td>ST</td>
+  <td>STP</td>
+</tr>
+<tr>
+  <td>682</td>
+  <td>Saudi Arabia</td>
+  <td>SA</td>
+  <td>SAU</td>
+</tr>
+<tr>
+  <td>686</td>
+  <td>Senegal</td>
+  <td>SN</td>
+  <td>SEN</td>
+</tr>
+<tr>
+  <td>688</td>
+  <td>Serbia</td>
+  <td>RS</td>
+  <td>SRB</td>
+</tr>
+<tr>
+  <td>690</td>
+  <td>Seychelles</td>
+  <td>SC</td>
+  <td>SYC</td>
+</tr>
+<tr>
+  <td>694</td>
+  <td>Sierra Leone</td>
+  <td>SL</td>
+  <td>SLE</td>
+</tr>
+<tr>
+  <td>702</td>
+  <td>Singapore</td>
+  <td>SG</td>
+  <td>SGP</td>
+</tr>
+<tr>
+  <td>703</td>
+  <td>Slovakia</td>
+  <td>SK</td>
+  <td>SVK</td>
+</tr>
+<tr>
+  <td>704</td>
+  <td>Viet Nam</td>
+  <td>VN</td>
+  <td>VNM</td>
+</tr>
+<tr>
+  <td>705</td>
+  <td>Slovenia</td>
+  <td>SI</td>
+  <td>SVN</td>
+</tr>
+<tr>
+  <td>706</td>
+  <td>Somalia</td>
+  <td>SO</td>
+  <td>SOM</td>
+</tr>
+<tr>
+  <td>710</td>
+  <td>South Africa</td>
+  <td>ZA</td>
+  <td>ZAF</td>
+</tr>
+<tr>
+  <td>716</td>
+  <td>Zimbabwe</td>
+  <td>ZW</td>
+  <td>ZWE</td>
+</tr>
+<tr>
+  <td>724</td>
+  <td>Spain</td>
+  <td>ES</td>
+  <td>ESP</td>
+</tr>
+<tr>
+  <td>728</td>
+  <td>South Sudan</td>
+  <td>SS</td>
+  <td>SSD</td>
+</tr>
+<tr>
+  <td>729</td>
+  <td>Sudan</td>
+  <td>SD</td>
+  <td>SDN</td>
+</tr>
+<tr>
+  <td>732</td>
+  <td>Western Sahara</td>
+  <td>EH</td>
+  <td>ESH</td>
+</tr>
+<tr>
+  <td>740</td>
+  <td>Suriname</td>
+  <td>SR</td>
+  <td>SUR</td>
+</tr>
+<tr>
+  <td>744</td>
+  <td>Svalbard and Jan Mayen</td>
+  <td>SJ</td>
+  <td>SJM</td>
+</tr>
+<tr>
+  <td>748</td>
+  <td>Swaziland</td>
+  <td>SZ</td>
+  <td>SWZ</td>
+</tr>
+<tr>
+  <td>752</td>
+  <td>Sweden</td>
+  <td>SE</td>
+  <td>SWE</td>
+</tr>
+<tr>
+  <td>756</td>
+  <td>Switzerland</td>
+  <td>CH</td>
+  <td>CHE</td>
+</tr>
+<tr>
+  <td>760</td>
+  <td>Syrian Arab Republic</td>
+  <td>SY</td>
+  <td>SYR</td>
+</tr>
+<tr>
+  <td>762</td>
+  <td>Tajikistan</td>
+  <td>TJ</td>
+  <td>TJK</td>
+</tr>
+<tr>
+  <td>764</td>
+  <td>Thailand</td>
+  <td>TH</td>
+  <td>THA</td>
+</tr>
+<tr>
+  <td>768</td>
+  <td>Togo</td>
+  <td>TG</td>
+  <td>TGO</td>
+</tr>
+<tr>
+  <td>772</td>
+  <td>Tokelau</td>
+  <td>TK</td>
+  <td>TKL</td>
+</tr>
+<tr>
+  <td>776</td>
+  <td>Tonga</td>
+  <td>TO</td>
+  <td>TON</td>
+</tr>
+<tr>
+  <td>780</td>
+  <td>Trinidad and Tobago</td>
+  <td>TT</td>
+  <td>TTO</td>
+</tr>
+<tr>
+  <td>784</td>
+  <td>United Arab Emirates</td>
+  <td>AE</td>
+  <td>ARE</td>
+</tr>
+<tr>
+  <td>788</td>
+  <td>Tunisia</td>
+  <td>TN</td>
+  <td>TUN</td>
+</tr>
+<tr>
+  <td>792</td>
+  <td>Turkey</td>
+  <td>TR</td>
+  <td>TUR</td>
+</tr>
+<tr>
+  <td>795</td>
+  <td>Turkmenistan</td>
+  <td>TM</td>
+  <td>TKM</td>
+</tr>
+<tr>
+  <td>796</td>
+  <td>Turks and Caicos Islands</td>
+  <td>TC</td>
+  <td>TCA</td>
+</tr>
+<tr>
+  <td>798</td>
+  <td>Tuvalu</td>
+  <td>TV</td>
+  <td>TUV</td>
+</tr>
+<tr>
+  <td>800</td>
+  <td>Uganda</td>
+  <td>UG</td>
+  <td>UGA</td>
+</tr>
+<tr>
+  <td>804</td>
+  <td>Ukraine</td>
+  <td>UA</td>
+  <td>UKR</td>
+</tr>
+<tr>
+  <td>807</td>
+  <td>Macedonia, the former Yugoslav Republic of</td>
+  <td>MK</td>
+  <td>MKD</td>
+</tr>
+<tr>
+  <td>818</td>
+  <td>Egypt</td>
+  <td>EG</td>
+  <td>EGY</td>
+</tr>
+<tr>
+  <td>826</td>
+  <td>United Kingdom</td>
+  <td>GB</td>
+  <td>GBR</td>
+</tr>
+<tr>
+  <td>831</td>
+  <td>Guernsey</td>
+  <td>GG</td>
+  <td>GGY</td>
+</tr>
+<tr>
+  <td>832</td>
+  <td>Jersey</td>
+  <td>JE</td>
+  <td>JEY</td>
+</tr>
+<tr>
+  <td>833</td>
+  <td>Isle of Man</td>
+  <td>IM</td>
+  <td>IMN</td>
+</tr>
+<tr>
+  <td>834</td>
+  <td>Tanzania, United Republic of</td>
+  <td>TZ</td>
+  <td>TZA</td>
+</tr>
+<tr>
+  <td>840</td>
+  <td>United States</td>
+  <td>US</td>
+  <td>USA</td>
+</tr>
+<tr>
+  <td>850</td>
+  <td>Virgin Islands, U.S.</td>
+  <td>VI</td>
+  <td>VIR</td>
+</tr>
+<tr>
+  <td>854</td>
+  <td>Burkina Faso</td>
+  <td>BF</td>
+  <td>BFA</td>
+</tr>
+<tr>
+  <td>858</td>
+  <td>Uruguay</td>
+  <td>UY</td>
+  <td>URY</td>
+</tr>
+<tr>
+  <td>860</td>
+  <td>Uzbekistan</td>
+  <td>UZ</td>
+  <td>UZB</td>
+</tr>
+<tr>
+  <td>862</td>
+  <td>Venezuela, Bolivarian Republic of</td>
+  <td>VE</td>
+  <td>VEN</td>
+</tr>
+<tr>
+  <td>876</td>
+  <td>Wallis and Futuna</td>
+  <td>WF</td>
+  <td>WLF</td>
+</tr>
+<tr>
+  <td>882</td>
+  <td>Samoa</td>
+  <td>WS</td>
+  <td>WSM</td>
+</tr>
+<tr>
+  <td>887</td>
+  <td>Yemen</td>
+  <td>YE</td>
+  <td>YEM</td>
+</tr>
+<tr>
+  <td>894</td>
+  <td>Zambia</td>
+  <td>ZM</td>
+  <td>ZMB</td>
+</tr>
+</tbody>
+</table>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/fr_CA/statics.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

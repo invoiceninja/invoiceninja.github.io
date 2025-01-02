@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/taxes">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Taxes</h1>
+
+<h2>Manual Taxes</h2>
+
+<p>Taxes can be configured manually by following the step <a href="/en/basic-settings/#tax_settings">here</a> where you can manually define the tax names, rates and how they are applied.</p>
+
+<h2>Video</h2>
+
+<p>Learn how to configure taxes in Invoice Ninja:</p>
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/Q-zM-vCjDXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<h2>US Sales Tax calculations</h2>
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/wZfTu2jhIWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>In Invoice Ninja v5.6 we introduce the ability to perform automatic tax calculations, let us provide a brief introduction to help you understand sales tax calculations in the United States.</p>
+
+<p>Sales tax in the U.S. is a consumption tax imposed by the government on the sale of goods and services. It's usually calculated as a percentage and added to the price of a product or service at the point of sale. Unlike some countries where a value-added tax (VAT) is utilized, in the U.S., there is no national sales tax. Instead, sales tax is levied at the state, county, and sometimes even at the municipal level, making it somewhat complex.</p>
+
+<p>This means that the sales tax can vary significantly from one location to another, not just from state to state, but even within a state. For example, in one city, the total sales tax might be 6%, while in another, it might be 9%. Some states, like Oregon and Delaware, don't impose any sales tax at all.</p>
+
+<p>Products and services can also be taxed differently. For instance, some states tax groceries, while others don't. Similarly, some states offer tax holidays, specific times during the year when sales tax is not charged on certain items.</p>
+
+<p>To accurately calculate sales tax, it's important to know:</p>
+
+<ul>
+<li>The precise location of the sale (the "nexus").</li>
+<li>The type of product or service being sold.</li>
+<li>The current tax rate in that location.</li>
+<li>Invoice Ninja can simplify this process for you by automating the sales tax calculation. It identifies the appropriate tax rate based on the 'ship-to' address on the invoice, and applies it to the taxable items in your invoice. It stays updated with the current tax rates across different locations, ensuring that your invoices are always compliant with the most recent tax laws.</li>
+</ul>
+
+<p>Remember, managing sales tax correctly is not only good for your business operations, but it's also a legal obligation. Having the ability to automatically calculate sales tax will save you time, reduce errors, and ensure that you're collecting the correct amount of tax on each sale, which is crucial for your business's tax reporting and remittance.</p>
+
+<h2>Configure US tax calculations</h2>
+
+<p>If you are a hosted Invoice Ninja client with a Pro or Enterprise plan, you can turn on tax calculations with these steps:</p>
+
+<h3>Turn on Calculate Taxes</h3>
+
+<pre><code class="language-bash">Settings &gt; Tax Settings
+</code></pre>
+
+<p><strong>Your company's country in Invoice Ninja must be set to either United States, Australia, or an EU country for the Calculate Taxes option to appear.</strong> (set under Company Details > Address).</p>
+
+<p><img src="/assets/images/taxes/enable_calculate_taxes_react.png" alt="Turn on tax calculations" /></p>
+
+<p>Navigate to Settings > Tax Settings and turn the Calculate Taxes switch on. A new section will appear for further configuration. It is important to select the Seller (your) subregion, this will be a US state where your business is registered for tax purposes.</p>
+
+<video width="100%" controls>
+  <source src="/assets/videos/taxes/tax_settings_calculate_taxes_subregions.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+
+<p>Beneath this is a range of regions where automatic tax calculations are supported. Each section provides additional granularity for where you wish to collect tax.</p>
+
+<p>There are essentially two options here, the first is to collect taxes in all states (Tax All), or you can choose Tax Selected and select which states to collect tax by clicking on the Show option which will expose all states. Mark the checkboxes of the states you wish to collect taxes from and then save.</p>
+
+<h3>Update your products</h3>
+
+<p>The way sales tax is applied can vary significantly based on the type of goods or services being sold. This is because each state can set its own rules about what is taxable and what isn't. For instance, tangible personal property is usually taxable, but certain types of items like groceries, prescription medicines, and clothing might be exempt from sales tax in some states.</p>
+
+<p>When it comes to services, the rules can get a bit more complex. Some states tax all services, some tax only certain services, while others don't tax services at all. For instance, repair and maintenance services might be taxed in one state, but not in another. Similarly, professional services such as legal or consulting services may be exempt in some states, but taxable in others.</p>
+
+<p>To handle the range of tax possibilities you can assign tax categories to your products.</p>
+
+<p>The available tax categories are as follows:</p>
+
+<ul>
+<li>Physical Goods</li>
+<li>Digital Products</li>
+<li>Services</li>
+<li>Shipping</li>
+<li>Tax Exempt</li>
+<li>Reduced Tax</li>
+<li>Override Tax</li>
+<li>Zero Rated</li>
+<li>Reverse Tax (Use Tax)</li>
+</ul>
+
+<h4>Physical Goods</h4>
+
+<p>Sales tax on physical goods, also known as tangible personal property, is one of the most common forms of sales tax in the United States. The majority of states charge sales tax on the purchase of physical goods, such as electronics, furniture, and vehicles. However, what is considered taxable can vary from state to state. Certain physical goods like groceries, prescription medicines, and sometimes clothing may be exempted or taxed at a reduced rate in some states. Select this category for physical goods that are taxable.</p>
+
+<h4>Digital Products</h4>
+
+<p>Sales tax on digital products is an evolving area in U.S. tax law, reflecting the increasing shift towards a digital economy. Digital products can include anything from e-books, music and video downloads, to software and digital subscriptions.</p>
+
+<p>Some states may tax digital goods exactly the same way as physical goods, others may tax only certain types of digital goods, while some states do not tax digital goods at all. For instance, an e-book might be taxed in one state, but could be tax-exempt in another. The tax might also depend on whether the digital good is considered a service or a product, and whether it's delivered on a tangible medium like a DVD or CD.</p>
+
+<h4>Services</h4>
+
+<p>Sales tax on services can be a complex area of taxation in the United States. Unlike tangible goods, which are usually taxable, services are taxed differently across states. Some states tax all services, others tax only specific services, and some do not tax services at all.</p>
+
+<p>For example, professional services such as consulting, legal, and accounting services may be exempt from sales tax in some states, while they are taxable in others. Similarly, personal services like haircuts, repairs and maintenance, or fitness training may be treated differently depending on the state.</p>
+
+<h4>Tax Exempt</h4>
+
+<p>Sales tax exemptions are an important part of the tax landscape in the United States. An exemption means that certain goods or services are not subject to sales tax. The specifics of what products and services are tax-exempt can vary significantly from one state to another.</p>
+
+<p>Common tax-exempt items often include groceries and prescription medicines, as many states aim to reduce the tax burden on essential items. Clothing is another category that is sometimes exempt or taxed at a lower rate, especially in states like Pennsylvania and Minnesota.</p>
+
+<h4>Reduced Tax</h4>
+
+<p>In addition to standard and exempt tax rates, many states in the United States also implement reduced tax rates for certain types of goods or services. These reduced rates are generally applied to make essential items more affordable or to stimulate certain sectors of the economy.</p>
+
+<p>Reduced tax rates can also apply to certain types of services. For instance, some states might apply a lower tax rate to educational services, medical services, or public transportation.</p>
+
+<h4>Override Tax</h4>
+
+<p>In some circumstances you may wish to override the tax rate on certain products that are outside the typical sales tax scope. When selected an Override Tax category, you can also select the tax (if any) that you wish to apply to the product.</p>
+
+<h4>Zero Rated</h4>
+
+<p>Zero-rated tax items are a unique category in the world of sales tax. While it might seem similar to tax-exempt items, there is a crucial difference. When an item is zero-rated, it technically remains taxable, but at a rate of 0%. The key advantage here is that while the end consumer doesn't pay any tax on these goods or services, the businesses involved in the supply chain may still reclaim input taxes (if applicable), something that is not allowed for tax-exempt items.</p>
+
+<p>However, it's important to note that the concept of zero-rated goods is more commonly associated with countries that use a Value Added Tax (VAT) system, such as those in the European Union or Canada. In these systems, certain essential goods like food or books are often zero-rated to reduce the cost burden on consumers, while still allowing businesses to claim back VAT they've paid on inputs.</p>
+
+<p>In the United States, which uses a sales tax system rather than VAT, the concept of zero-rating doesn't apply in the same way. Instead, states usually categorize goods and services as either taxable, exempt, or taxable at a reduced rate.</p>
+
+<h4>Reverse Tax (Use Tax)</h4>
+
+<p>The concept of "reverse tax" is often used in the context of "use tax". In the United States, a use tax is typically a type of tax charged to consumers who purchase goods or services from outside their home state for use in their home state, and where no sales tax has been charged.</p>
+
+<p>Essentially, use tax is the counterpart to sales tax and is designed to discourage consumers from buying out-of-state in order to avoid sales tax. It also helps to level the playing field between in-state retailers (who have to charge sales tax) and out-of-state retailers (who often don't).</p>
+
+<p>The rate of use tax is generally the same as the sales tax that would have been charged if the purchase had been made in-state. Therefore, if you buy an item tax-free from an online retailer located in another state, but you use the item in your home state, you're usually responsible for paying use tax to your state.</p>
+
+<p>Keep in mind, it's typically the buyer's responsibility to calculate, report, and remit use tax to the appropriate tax authority. This can get complicated for businesses making numerous out-of-state purchases. However, some states require larger businesses or those with a significant presence (nexus) in the state to charge use tax at the point of sale, effectively reversing the normal taxation process, hence the term "reverse tax".</p>
+
+<p><img src="/assets/images/taxes/exempt_product_tax.png" alt="Tax Exempt Product" /></p>
+
+<h3>Tax Exemptions</h3>
+
+<p>In the realm of sales tax, tax exemptions are specific scenarios where sales tax does not have to be paid on certain goods, services, or transactions. These exemptions are set by the tax authority, often at the state level in the United States, and can vary greatly from one state to another.</p>
+
+<p>Product-based Exemptions: Certain types of goods may be exempt from sales tax. For example, necessities like groceries and prescription medications are often tax-exempt. Clothing is also exempt in some states, and many states offer temporary exemptions for back-to-school supplies during certain periods of the year.</p>
+
+<p>Use-based Exemptions: This refers to situations where an item is used in a way that qualifies it to be tax-exempt. For instance, goods that are purchased for resale are often exempt from sales tax, as the tax will ultimately be paid by the end consumer. Similarly, items used in manufacturing or items purchased by non-profit organizations are often tax-exempt.</p>
+
+<p>Buyer-based Exemptions: In some cases, the buyer's status can lead to a tax exemption. For instance, government agencies, non-profit organizations, and certain other groups may not have to pay sales tax on their purchases.</p>
+
+<p>Transaction-based Exemptions: Certain types of sales transactions may be exempt from sales tax. For example, sales involving interstate commerce may be exempt in some cases.</p>
+
+<p>If you sell goods and services to a client who is tax exempt, you can mark them as tax exempt by editing their client record and setting the tax exempt switch on.</p>
+
+<p><img src="/assets/images/taxes/tax_exempt_client.png" alt="Tax Exempt Product" /></p>
+
+<h2>Configure EU tax calculations</h2>
+
+<h3>Settings.</h3>
+
+<p>The calculation engine for the EU has recently been updated to support EU wide tax calculations! This can be enabled in:</p>
+
+<pre><code class="language-bash">Settings &gt; Tax Settings
+</code></pre>
+
+<p>When enabling the Calculate Taxes feature it is important to note that the way your system calculates taxes will be configured in a very specific way:</p>
+
+<ul>
+<li>Invoice level taxes are disabled</li>
+<li>Line item taxes are enabled</li>
+<li>Tax calculations are set to exclusive, i.e.: 100 x 19% tax = 119 total</li>
+</ul>
+
+<p><img src="/assets/images/taxes/eu_calculate_taxes.png" alt="Tax Settings" /></p>
+
+<p>Note that you will need to select your seller subregion, this is the region considered to be <em>your</em> nexus for tax calculations.</p>
+
+<h3>EU VAT Thresholds</h3>
+
+<p>The current EU-wide threshold for distance selling is €10,000. Once your cross-border sales exceed this amount, you must:</p>
+
+<ul>
+<li>Register for VAT in the destination country</li>
+<li>Charge VAT at the destination country's rate</li>
+<li>Submit VAT returns in that country</li>
+</ul>
+
+<p>You can use the "(EU) Sales above threshold" toggle in settings to automatically apply the appropriate rules.</p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-blue-500">
+    <span>If using our Peppol integration, these additional VAT numbers can be added into Invoice Ninja, the system will gracefully use the necessary VAT identifier in your e-invoices when sending to your client.</span>
+</div></p>
+
+<h3>One-Stop Shop (OSS)</h3>
+
+<p>The EU One-Stop Shop (OSS) system allows businesses to:</p>
+
+<ul>
+<li>Register for VAT in a single EU country</li>
+<li>Submit VAT returns for all EU sales through that country</li>
+<li>Apply the correct VAT rates for each destination country</li>
+</ul>
+
+<p>Invoice Ninja supports OSS by automatically calculating the correct VAT rates based on your client's location.</p>
+
+<h3>Setup product tax categories</h3>
+
+<p>Configuration of taxes categories can now be done at the product level where you can configure the tax category of the product from one of thes following options</p>
+
+<table>
+<thead>
+<tr>
+  <th>Tax Category</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Physical</td>
+  <td>A physical product for sale ie. Car</td>
+</tr>
+<tr>
+  <td>Service</td>
+  <td>A service product such as Bricklaying</td>
+</tr>
+<tr>
+  <td>Digital</td>
+  <td>A digital product such as a software service</td>
+</tr>
+<tr>
+  <td>Shipping</td>
+  <td>A charge relating to shipment</td>
+</tr>
+<tr>
+  <td>Exempt</td>
+  <td>A product which is tax exempt</td>
+</tr>
+<tr>
+  <td>Reduced</td>
+  <td>A special product category which attracts a reduced rate</td>
+</tr>
+<tr>
+  <td>Override</td>
+  <td>A product which does not fit into a tax category and a custom tax name and rate is applied</td>
+</tr>
+<tr>
+  <td>Zero Rated</td>
+  <td>A product which attracts a tax rate of 0%</td>
+</tr>
+<tr>
+  <td>Reverse Tax</td>
+  <td>A product which is not chargeable in the origin region, but tax is payable by the buyer at their origin</td>
+</tr>
+<tr>
+  <td>Intra Community</td>
+  <td>A product which is a cross border sale and attracts no tax due to intra community supply regulations</td>
+</tr>
+</tbody>
+</table>
+
+<p>From the create/edit product view you can set a tax category, this will then be used when the product is selected in the Invoice.</p>
+
+<p><img src="/assets/images/taxes/eu_product_tax_category.png" alt="Product Tax Category" /></p>
+
+<h3>Client setup</h3>
+
+<p>Some important considerations when adding/editing a client record.</p>
+
+<p><img src="/assets/images/taxes/eu_tax_client_setup.png" alt="Client Tax Settings" /></p>
+
+<ul>
+<li>VAT Number: must be populated if the client has a one. EU requires businesses with VAT numbers to supply or else taxes may be applied.</li>
+<li>Valid VAT number switch: toggling this on/off will force the configuration to follow this setting, regardless of the value in the VAT Number field.</li>
+<li>Tax Exempt: if the client is tax exempt, then toggling this switch on will enforce no taxes on this client.</li>
+<li>Classification: the client classification is an important setting which is used in the tax calculator, for instance, in some regions, government agencies are not taxable entities, therefore setting the classification allow the engine another parameter to determine taxabilty.</li>
+</ul>
+
+<p>Where a valid VAT number is present, the tax calculation will take this into consideration and apply or remove the tax depending on the client location. Please note that the VAT number must pass validation using the VIES validation located <a href="https://ec.europa.eu/taxation_customs/vies/">here</a></p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>For self host users, you must have the PHP SOAP extension installed for the VAT number validation to work.</span>
+</div></p>
+
+<h3>Confirm taxes prior to sending!</h3>
+
+<p>Always ensure the taxes applied to your invoices appear in order. The tax calculator requires the client / company / product data to be correct to ensure the correct calculation of taxes.</p>
+
+<p><div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/en/quotes">
+        <span>Quotes</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div></p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/taxes.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

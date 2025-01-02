@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/advanced-settings">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Advanced Settings</h1>
+
+<h2 id=invoice_design>Invoice Design</h2>
+
+<p>These settings govern customization of the standard document design and layout used by default on new invoices, quotes, and credits.</p>
+
+<h3>General Settings</h3>
+
+<h4>Customize &amp; Preview</h4>
+
+<p>This button takes you to a very advanced template code editor, with a live preview generator.  Instructions for these features can be found under <a href="https://invoiceninja.github.io/en/custom-fields/">under PDF Customizations</a>.  You can preview the invoice design templates here, before selecting one you like to use permanently.</p>
+
+<h4>Template Settings</h4>
+
+<ul>
+<li><p><strong>Invoice Design</strong> - Select a default design template for invoices.</p></li>
+<li><p><strong>Quote Design</strong> - Select a default design template for quotes.</p></li>
+<li><p><strong>Credit Design</strong> - Select a default design template for credits.</p></li>
+<li><p><strong>Page Layout</strong> - Choose to setup your documents in portrait, or landscape mode.</p></li>
+<li><p><strong>Page Size</strong> - Preformats the PDF renderings of your entities to be better suited for certain printer page sizes.  Typically select the most common page size A4, the default, unless you have specific print requirements in house.</p></li>
+<li><p><strong>Font Size</strong> - Adjust the default font size to your preference.  Default 7.</p></li>
+<li><p><strong>Primary Font</strong> - Default Roboto.  A default custom font for document templates.</p></li>
+<li><p><strong>Secondary Font</strong> - Default Roboto.  A default secondary custom font for document templates.</p></li>
+<li><p><strong>Primary Color</strong> - Default #0c45a3.  A default custom color used by document templates.</p></li>
+<li><p><strong>Secondary Color</strong> - Default #7081e0.  A default secondary custom color used by document templates.</p></li>
+<li><p><strong>Empty Columns</strong> - Default Show.  Optionally hide columns in the item list that have no values to populate.</p></li>
+</ul>
+
+<h3>Client Details, Company Details, Invoice Details, etc.</h3>
+
+<p>A customizable list of data that populates sections of your documents, with the data entered in the associated record.</p>
+
+<ul>
+<li><p><strong>Add Field</strong> - Select from a list of available record detail values, to include in the record's section on new documents.</p></li>
+<li><p><strong>Reset</strong> - The button at the bottom resets the itemized list to its default values.</p></li>
+</ul>
+
+<p>The following is a list of the sections included in various documents, invoices, quotes, credits, and each item in the list has its own tab in the Invoice Design settings menu, to customize the values that will be presented on your generated documents.</p>
+
+<ul>
+<li><p><strong>Client Details</strong> - Fields added and removed here affect the section of your documents that print client record values.</p></li>
+<li><p><strong>Company Details</strong> - Fields added and removed here affect the section of your documents that print company record values.</p></li>
+<li><p><strong>Company Address</strong> - The company address is often presented in another location on the page, so it is separated into it's own section here as well.</p></li>
+<li><p><strong>Invoice Details</strong> - These fields populate values from the invoice record itself, to create the section that describes what invoice this is.</p></li>
+<li><p><strong>Quote Details</strong> - These fields populate values from the quote record itself, to create the section that describes what quote this is.</p></li>
+<li><p><strong>Credit Details</strong> - These fields populate values from the credit record itself, to create the section that describes what credit this is.</p></li>
+<li><p><strong>Product Columns</strong> - An itemized list of columns to include from the product details entries, for any product items included on your invoice, quote, or credit.</p></li>
+<li><p><strong>Task Columns</strong> - An itemized list of columns to include from the task details entries, for any task items included on your invoice, quote, or credit.</p></li>
+<li><p><strong>Total Fields</strong> - A list of all the accounting values, in as much or as little detail as you would like to present it on your invoices.</p></li>
+</ul>
+
+<h2 id=custom_fields>Custom Fields</h2>
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/fkMmaPSvBLs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>Custom Fields options control up to 4 custom fields to include in all entity records, to describe the entities with that can be shown in your PDF and documented transactions, or kept for admin records only.  You can use these to add details about a liquor license to your own company, details about memberships to clients, or certifications of your employees assigned to tasks, or other details.</p>
+
+<p>There are 5 different options for field types regardless of the type of record the custom field applies to.  In each case, you will select a field type on the right, and the value you enter on the left will represent the name of that custom field in forms and in the admin UI.</p>
+
+<p>To include a custom field, just give the field a name.  Without a field name, it will not appear in your entity records.  To remove a custom field, just delete the field name completely.</p>
+
+<ul>
+<li><p><strong>Single-line Text</strong> - Simply accepts a single line of arbitrary text for an entry.</p></li>
+<li><p><strong>Multi-line Text</strong> - Accepts multiple lines of arbitrary text, more suitable for more detailed notes.</p></li>
+<li><p><strong>Switch</strong> - This field is suited for true/false statements or yes/no states.  Custom toggle switch for active membership/license status, employee opt-in for night shifts, or check box value for products in inventory.</p></li>
+<li><p><strong>Dropdown</strong> - This generates a field with a dropdown menu to select from a list, and you will be immediately asked to present a comma separated list of values to populate the drop down menu with.</p></li>
+<li><p><strong>Date</strong> - A date field requests a date value, and on the admin UI, will even present a widget for date selection to help formatting the field value.  Good for license/certificate expiry dates, product manufacture date, etc.</p></li>
+</ul>
+
+<p>Each of these 5 field types can be assigned to up to 4 custom fields per entity type, selectable from the tabs at the top of the Custom Fields settings page.</p>
+
+<ul>
+<li><p><strong>Company</strong> - These custom fields apply to the company record, as in the one for your company specifically.</p></li>
+<li><p><strong>Clients</strong> - These custom fields apply to a client record, or the individual contact records nested in a client record.</p></li>
+<li><p><strong>Products</strong> - These fields apply to each product record, to better describe the items in your inventory.</p></li>
+<li><p><strong>Invoices</strong> - In addition to having 4 custom field options for your invoice records, you can also add a surcharge field.  The name of the field is entered here, and you select whether or not to apply tax.  The same tax applied to the entire invoice, otherwise it is exempt from it.  From the admin portal you will see the new surcharge field listed on every invoice above the tax drop downs, and it will expect you to assign an arbitrary dollar value to charge the client.</p></li>
+<li><p><strong>Payments</strong> - Custom fields that appear in payment records.</p></li>
+<li><p><strong>Vendors</strong> - Custom fields to help further describe your company's vendors, like your credit terms with them.</p></li>
+<li><p><strong>Expenses</strong> - Add more detail to your expense records with custom fields for a tax category of your expenses to help at the end of the year.</p></li>
+<li><p><strong>Users</strong> - These custom fields add detail to your user account records for registered users of the admin portal.  This would be a good place to put employee details if you plan to use the tasks system or have many users to manage.</p></li>
+</ul>
+
+<h2 id=generated_numbers>Generated Numbers</h2>
+
+<p>Generated numbers contain a collection of variables that allow very fine grained customization of generated numbers for any entity in the application.</p>
+
+<h3>Available Variables</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Variable</th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>$counter</td>
+  <td>The current count of the entity</td>
+</tr>
+<tr>
+  <td>$client_counter</td>
+  <td>The current count of the client entity</td>
+</tr>
+<tr>
+  <td>$group_counter</td>
+  <td>The current count of the group entity</td>
+</tr>
+<tr>
+  <td>$date:Y-m-d</td>
+  <td>The current date in the defined format ie Y-m-d</td>
+</tr>
+<tr>
+  <td>$year</td>
+  <td>The current year</td>
+</tr>
+<tr>
+  <td>$user_id</td>
+  <td>The user id of the creator of the entity</td>
+</tr>
+<tr>
+  <td>$client_custom1</td>
+  <td>The value of the first custom field of the client entity</td>
+</tr>
+<tr>
+  <td>$client_custom2</td>
+  <td>The value of the second custom field of the client entity</td>
+</tr>
+<tr>
+  <td>$client_custom3</td>
+  <td>The value of the third custom field of the client entity</td>
+</tr>
+<tr>
+  <td>$client_custom4</td>
+  <td>The value of the fourth custom field of the client entity</td>
+</tr>
+<tr>
+  <td>$client_id_number</td>
+  <td>The Client ID number</td>
+</tr>
+<tr>
+  <td>$client_number</td>
+  <td>The Client number</td>
+</tr>
+<tr>
+  <td>$vendor_custom1</td>
+  <td>The value of the first custom field of the vendor entity</td>
+</tr>
+<tr>
+  <td>$vendor_custom2</td>
+  <td>The value of the second custom field of the vendor entity</td>
+</tr>
+<tr>
+  <td>$vendor_custom3</td>
+  <td>The value of the third custom field of the vendor entity</td>
+</tr>
+<tr>
+  <td>$vendor_custom4</td>
+  <td>The value of the fourth custom field of the vendor entity</td>
+</tr>
+<tr>
+  <td>$vendor_id_number</td>
+  <td>The Vendor ID number</td>
+</tr>
+<tr>
+  <td>$vendor_number</td>
+  <td>The Vendor number</td>
+</tr>
+<tr>
+  <td>$expense_id_number</td>
+  <td>The matching Client or Vendor ID number</td>
+</tr>
+<tr>
+  <td>$user_custom1</td>
+  <td>The value of the first custom field of the user entity</td>
+</tr>
+<tr>
+  <td>$user_custom2</td>
+  <td>The value of the second custom field of the user entity</td>
+</tr>
+<tr>
+  <td>$user_custom3</td>
+  <td>The value of the third custom field of the user entity</td>
+</tr>
+<tr>
+  <td>$user_custom4</td>
+  <td>The value of the fourth custom field of the user entity</td>
+</tr>
+</tbody>
+</table>
+
+<p>To use these variables in your number patterns, you can add them like this:</p>
+
+<pre><code class="language-bash">{$date:y}-{$counter}-{$user_custom1}
+</code></pre>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span><p>
+        <strong>Note:</strong> The patterns must resolve to a UNIQUE number, duplicates are not allowed and the generated number will not be applied - or - will be modified to be unique.
+    </p></span>
+</div></p>
+
+<h3>Settings</h3>
+
+<p><img src="/assets/images/settings/generated_numbers/generated_numbers_settings_pane.png" alt="alt text" title="Generated Numbers Settings" /></p>
+
+<p>The settings tab contains the most general options that apply to number generation.  The other tabs provide more specific options that apply exclusively to each entity type.  The rules here apply broadly to every entity type.</p>
+
+<ul>
+<li><p><strong>Number Padding</strong> - The number padding drop down indicates how many leading zeros you'd like before each number. The default padding is 3 leading zeros ie 0001,0002,0003.</p></li>
+<li><p><strong>Generate Number</strong> - The generate number option allows you to customize WHEN the number is applied, there are two configurations; When Saved (will apply immediate when you save an entity) or When Sent (when the entity is sent / marked as sent).</p></li>
+<li><p><strong>Recurring Prefix</strong> - The recurring prefix is a prefix which is applied to entities that are created when a recurring entity has been generated.</p></li>
+<li><p><strong>Shared Invoice/Quote Counter</strong> - The shared invoice quote counter switch enables sharing of the counter between quote and invoices, so that quotes will use the counter that invoices use.</p></li>
+<li><p><strong>Shared Invoice/Credit Counter</strong> - The shared invoice credit counter switch enables sharing of the counter between credits and invoices, so that credits will use the counter that invoices use.  Enabling both Invoice/Quote, and Invoice/Credit shared counters, will have all three entities use the same counter as invoices do, and share number sequencing.</p></li>
+<li><p><strong>Reset Counter</strong> - Generated counters can be reset at a variety of frequencies. It is important to note that in order to reset the counter, you must combine enough unique variables to ensure that the generated counter will still be unique.  For example - if you use an annual reset counter for new entities, it would be a perfect addition to include the year at the beginning of the invoice number.</p></li>
+</ul>
+
+<h3>Clients, Invoices, Recurring Invoices, Payments, etc.</h3>
+
+<p><img src="/assets/images/settings/generated_numbers/generated_numbers_client.png" alt="alt text" title="Client generated numbers" /></p>
+
+<p>The various entity records available that generated numbers apply to, are all listed with their own tabs at the top, for you to customize the behaviours of the number generation for each respective entity type.</p>
+
+<ul>
+<li><strong>Number Pattern</strong> - Single line text field you can manually edit to finely tune your generated numbers.  Create a rule that outlines how new numbers will be generated.</li>
+</ul>
+
+<pre><code class="language-bash">{$date:y}-{$counter}
+</code></pre>
+
+<p>This example of a number pattern will produce a number like this, for the 9th count in 2021:  2021-0009</p>
+
+<p>Care to ensure you are adding enough unique data to the number patterns if you are using the <em>Reset Counter</em> feature, to prevent counter collisions.</p>
+
+<ul>
+<li><strong>Number Counter</strong> - The number counter is manually editable, but you can create counter collisions if you're not careful.  The number counter for any given entity type states the progress of the number counter for that entity.</li>
+</ul>
+
+<p>Also, at the bottom you will see some useful information to help you customize your <em>Number Pattern</em> more effectively.  The large button <strong>View Date Formats</strong> links to a page with a PHP style guide.  Below that, every entity type has it's own list of variables that can be used to add further customization to the <em>Number Pattern</em>.</p>
+
+<h2 id=email_settings>Email Settings</h2>
+
+<p>These settings govern the behavior, appearance, and other settings for emails sent by Invoice Ninja software on behalf of your company.</p>
+
+<ul>
+<li><p><strong>Reply-To Name</strong> - Specify a <em>reply-to name</em> to put at the top of your automated emails, such as to forward support requests to the appropriate contact.</p></li>
+<li><p><strong>Reply-To Email</strong> - Specify the <em>reply-to email</em> of the user clients should contact for support.</p></li>
+<li><p><strong>BCC Email</strong> - Blind Carbon Copy (BCC) email gets sent to a comma separated list of your specified email addresses.  BCC contact email addresses cannot be seen by any of the recipients of the email messages.</p></li>
+<li><p><strong>Email Design</strong> - Select a design template for the appearance of your emails.</p></li>
+<li><p><strong>Email Signature</strong> - Include a signature message along with all of your company email messages.  Multiple lines of text here for you to enter your custom signature.  HTML tags are respected here for formatting your email signature.</p></li>
+<li><p><strong>Send Time</strong> - You can configure emails to be sent at a time of day localized to the clients timezone. For example, setting Send Time of 9 will send all scheduled documents at 9am localized to the clients timezone.</p></li>
+</ul>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span><strong>NOTE</strong> If you are selecting Hour 24, 12:00am is technically the next day, in order to prevent emails from being dispatched technically a day later, this system will adjust the send time slightly so that it is scheduled to send just before midnight.</span>
+</div></p>
+
+<ul>
+<li><p><strong>Attach PDF</strong> - Turning on this switch will send invoices as PDFs attached to your emails.  By default, your emails all have links to view the documents on the client portal, but it may be preferable to send the PDF directly.</p></li>
+<li><p><strong>Attach Documents</strong> - When enabled, any files included in the <em>Documents</em> tab of the invoice, or other record, are attached to your emails to the clients.  Otherwise they can be viewed through the link on the client portal.</p></li>
+<li><p><strong>Attach UBL</strong> - International standard Universal Business Language (UBL).   UBL documents are XML business documents such as purchase orders and invoices.  Enabling this feature attaches an XML document along with the PDF invoice.  Normally all the XML information is embedded in the PDF but some users prefer or cannot read the embedded XML data in a PDF.</p></li>
+<li><p><strong>Enable E-invoice</strong> - If you wish to produce e-invoices compatible with your region, you can enable this setting, and select the standard you wish to support.</p></li>
+</ul>
+
+<h2 id=client_portal>Client Portal</h2>
+
+<p>These settings govern the behavior, function, and presentation of the Client Portal.</p>
+
+<p>There are four tabs in this setting panel, with unique features in each of them to cover.</p>
+
+<h3>Settings</h3>
+
+<p>These settings control the basic or general function and behavior of the client portal.</p>
+
+<ul>
+<li><p><strong>Client Portal</strong> - Enable or disable the client portal.  Disabling it will send all links to the client portal to a page that says the application has been blocked by the administrator.  Generally enabled by default.</p></li>
+<li><p><strong>Tasks</strong> - Disabled by default.  Enable it to present a tab on the left hand side for clients, to view Tasks that are assigned to them, whether invoiced or not.  Clients can see the tasks in a list, with columns for the task description, project name, status, and total duration.  This can allow clients to see your company's progress on tasks for them so far, and give them an overview of your project work for them.</p></li>
+<li><p><strong>Client Registration</strong> - Enabling this will allow new users to register themselves, and generate their own client entries in your database through a registration link on the client portal.</p></li>
+<li><p><strong>Document Upload</strong> - Enable allowing your clients to upload documents to the server, which will be attached as documents to their own client records.  In the client portal, they will see the option to drag and drop or click to upload files with a large button across the screen under the Documents tab.</p></li>
+<li><p><strong>Storefront</strong> - Enables API access to create invoices automatically.  After enabling, it will generate a company key, or API key to be used by your own or another third party's apps to perform invoice creation, and act as an automated storefront for your company's products or services.</p></li>
+<li><p><strong>Terms of Service</strong> - Custom, multi-line text field will be presented as your terms of service, in a discrete, clickable link at the bottom of every page of the client portal.</p></li>
+<li><p><strong>Privacy Policy</strong> - Another custom, multi-line text field will be presented as your Privacy Policy, in a discrete, clickable link at the bottom of every page of the client portal, right next to the Terms of Service.</p></li>
+</ul>
+
+<h3>Authorization</h3>
+
+<p>These settings govern authorization, accountability, and authentication features for the client portal and client's invoices.</p>
+
+<ul>
+<li><p><strong>Password Protect Invoices</strong> -  Disabled by default.  When enabled, clients will be asked to set a password the first time they view their invoices.  From now on they will need to enter this password.</p></li>
+<li><p><strong>Invoice Terms Checkbox</strong> - Prompts the client to accept the invoice terms when making a payment for an invoice in the client portal.</p></li>
+<li><p><strong>Quote Terms Checkbox</strong> - Prompts the client to accept the quote terms when confirming the quote in the client portal.</p></li>
+<li><p><strong>Invoice Signature</strong> - Require client to provide their signature on the screen with a mouse or touch screen, when paying an invoice on the client portal.</p></li>
+<li><p><strong>Quote Signature</strong> - Require client to provide their signature on the screen with a mouse or touch screen, when confirming a quote on the client portal.</p></li>
+<li><p><strong>Show on PDF</strong> - Show the client's signature on the invoice/quote PDF after it has been signed.</p></li>
+</ul>
+
+<p>For a demo on how to configure capturing signatures or terms prior to a client paying an invoice (or approving a quote, watch this video)</p>
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/V37vC0jNZIk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<h3>Messages</h3>
+
+<p>These are messages to be presented to clients at various screens of the client portal.</p>
+
+<ul>
+<li><p><strong>Dashboard</strong> - From the dashboard page, the client will be greeted by this message.</p></li>
+<li><p><strong>Unpaid Invoice</strong> - When viewing an unpaid invoice, the client will see this message.</p></li>
+<li><p><strong>Paid Invoice</strong> - Client will see this message when viewing a paid invoice.</p></li>
+<li><p><strong>Unapproved Quote</strong> - Client will be greeted by this message when opening a quote that is pending approval.</p></li>
+</ul>
+
+<h3>Customize</h3>
+
+<p>Here we can customize the appearance of the client portal a little more.</p>
+
+<ul>
+<li><p><strong>Header</strong> - Multi-line text value to be presented with a solid bar on its own row at the top of every page in the client portal.</p></li>
+<li><p><strong>Footer</strong> - Multi-line text value to be presented with a solid bar on its own row at the bottom of every page in the client portal.</p></li>
+<li><p><strong>Custom CSS</strong> - Enter your own custom CSS code to replace the stock CSS code of the client portal.</p></li>
+<li><p><strong>Custom JavaScript</strong> - Enter any custom JavaScript code you would like to embed on the client portal also here.</p></li>
+</ul>
+
+<h2 id=templates_and_reminders>Templates & Reminders</h2>
+
+<p>Here we have one <em>edit</em> tab with some depth for control, and a <em>preview</em> tab, to see our changes.  This allows us to customize the messages that get included with your invoice, quote, payment, or reminder emails.</p>
+
+<ul>
+<li><p><strong>Template</strong> - A drop down select menu to choose the email template we are going to modify.  Invoices, quotes, payments, reminders 1, 2, 3, etc.  <strong>Reminders</strong> are going to have more depth to customize, and their unique options will appear when you select a reminder template.  See below.</p></li>
+<li><p><strong>Subject</strong> - Email subject line.  Default subject for an invoice email:  "New invoice $number from $company.name".  These values are sourced from your company data and records per message.  You can select different values from the menus below, according to your template category, to further customize the message in your email template subject lines.</p></li>
+<li><p><strong>Body</strong> - Construct the body of the email template's message.  The default message body for an invoice email:</p>
+
+<p><code>"&lt;p&gt;To view your invoice for $amount, click the link below.&lt;/p&gt;&lt;div class="center"&gt;$view_link&lt;/div&gt;".</code></p>
+
+<p>The email message body accepts basic HTML formatting for additional customization, and like with the subject, you may also add  other values to your body message, by selecting from the appropriate list of values below.</p></li>
+</ul>
+
+<p>The categories below are tabs to select values to customize and personalize your message templates with, select the tabs to see the values ($amount, $due_date, etc) available for your template to get the relevant values in your messages.  Invoice and Quote template types have a slightly different set of available values, populating from the original invoice, or quote respectively.</p>
+
+<p>The values below are mostly self explanatory.  <strong>Invoice / Quote</strong> tab offers values populated from the relevant invoice or quote being emailed about.  <strong>Client</strong> tab offers values populated from the relevant client entry.  <strong>Contact</strong> tab offers values relevant for the first contact selected in the invoice record.  <strong>Company</strong> tab offers values from your own company record, to present information about your own company.  <strong>User</strong> tab offers values that represent the logged in user representing your company, who is sending the email message.  You can see what the values look like in an example message under the <em>Preview</em> tab.</p>
+
+<h3>Reminder Templates</h3>
+
+<p>As mentioned above, when you select a reminder from the template list at the top of the edit tab, you will see new options appear specific to the reminders.</p>
+
+<ul>
+<li><p><strong>First, Second, and Third Reminders</strong></p>
+
+<ul>
+<li><strong>Days</strong> - A simple integer is accepted here for the number of days before sending the reminder email.</li>
+<li><strong>Schedule</strong> - When to send the email reminder, offset by the number of days chosen.<br />
+<em>After the invoice date</em> - Reminder sent days after the invoice date.
+<em>Before the due date</em> - Reminder sent days before the invoice due date.
+<em>After the due date</em> - Reminder sent days after the invoice due date.</li>
+<li><strong>Send Email</strong> - An on/off toggle switch, to enable sending emails automatically for this reminder message.</li>
+<li><strong>Late Fee Amount</strong> - Enter a dollar value for a flat late fee charge.</li>
+<li><strong>Late Fee Percent</strong> - Enter a percent value to apply a late fee rate as a percent of the remaining balance.</li>
+</ul></li>
+<li><p><strong>Endless Reminders</strong></p>
+
+<ul>
+<li><strong>Send Email</strong> - An on/off toggle switch, to enable sending emails automatically for this reminder message.</li>
+<li><strong>Frequency</strong> - A drop down menu to select the frequency of sending automated, endless reminder emails, once first, second, and third reminders are exhausted.</li>
+</ul></li>
+</ul>
+
+<h2 id=group_settings>Group Settings</h2>
+
+<p>Group settings is another category with a lot of depth, but most of the topics are covered exactly already because Group settings is mostly about enabling specific basic or advanced settings on a per-group basis, allowing you to build unique experiences for certain collections of clients.</p>
+
+<p>The first step is to create a group, which is very simple, and only requires a group name.  Create  a group with the "+" icon in the top left corner of the group settings panel.  Give it a name and click "Save".</p>
+
+<p>Select your group.  You will see an <em>Overview</em> tab and a <em>Documents</em> tab.   From the <em>Documents</em> tab you can upload files like most other Documents tabs, they will not be seen anywhere other than the admin portal.  The <em>Overview</em> tab has two options, an interactive Clients button, where you can view a list of clients in the group, or add clients to the group, and a <em>Configure Settings</em> button.</p>
+
+<p>Note:  To remove a client from a group, it is easiest to edit the client directly and change their group or remove it.</p>
+
+<h3>Configure Settings</h3>
+
+<p>Customize any options here to override the regular settings for each respective category, or leave a field blank to use the regular settings.</p>
+
+<ul>
+<li><p><strong>Company Details</strong> - Configure a custom company profile for the client group.  This includes custom invoice terms, footers, and autobill settings.</p></li>
+<li><p><strong>Localization</strong> - Configure a custom localization for your clients in other countries/time zones, or using different languages, currencies, etc.</p></li>
+<li><p><strong>Payment Settings</strong> - Change autobill, and over/under payment permissions for the group.  Configure payment gateways for the group.</p></li>
+<li><p><strong>Task Settings</strong> - Set specific task rate, and rule for presentation of tasks in the client portal, for the group.</p></li>
+<li><p><strong>Invoice Design</strong> - Custom invoice design templates, specific to the group.</p></li>
+<li><p><strong>Generated Numbers</strong> - Use a unique number counter and set of numbering rules for the group, apart from the rest of your clients.</p></li>
+<li><p><strong>Email Settings</strong> - Change the default generic settings for emails sent out to group members by Invoice NInja.</p></li>
+<li><p><strong>Client Portal</strong> - Customize the client portal, exclusively for group members.</p></li>
+<li><p><strong>Templates &amp; Reminders</strong> - Have special rules for templates &amp; reminders for your group, personalize your messages further, or be more or less restrictive about late payments with certain groups.</p></li>
+<li><p><strong>Payment links</strong> - View and edit general, and group-specific payment link settings.</p></li>
+<li><p><strong>Workflow Settings</strong> - Change some of the admin portal UI workflow settings when interacting with invoices or quotes from client's group.</p></li>
+</ul>
+
+<h2 id=payment_links>Payment links</h2>
+
+<p>There are three views to the Payment links panel.  The payment link list, viewing a payment link, and creating or editing a payment link.</p>
+
+<p>From the payment link list you can select existing payment links to view, or edit them.  You can also add new payment links with the "+" character in the top left corner of the payment links list panel.</p>
+
+<p>When viewing a payment link you will see the initial cost of the payment link service at the top.  Below it, is a link you can copy and share to clients, or post on your storefront, which prompts clients to pay for, and setup the selected payment link, which creates the invoice and payment records for you when they do that.   Finally you will see links to filtered lists of invoices, or recurring invoices that are directly related to your payment link.</p>
+
+<p>When you <em>edit a payment link</em> there are three tabs with unique features to control the payment links with.</p>
+
+<h3>Overview</h3>
+
+<ul>
+<li><p><strong>Name</strong> - The name of your monthly payment link, presentable to clients.</p></li>
+<li><p><strong>Group</strong> - Assign payment links to groups, to allow group members to switch between payment links available exclusively to them based on their group membership.  Payment links not assigned to a group, will be visible to users who are not in a group only.  Use this to make special payment link models available to certain VIP clients, or etc.</p></li>
+<li><p><strong>Products</strong> - A searchable, and selectable drop down list of available products from the company.  These products are issued as a one-time purchase on the payment link model.  For example, a setup service fee.</p></li>
+<li><p><strong>Recurring Products</strong> - Also a searchable, and selectable drop down list of available products.  These products will appear on recurring invoices, for example, as the regular payment link fee.</p></li>
+</ul>
+
+<h3>Settings</h3>
+
+<ul>
+<li><p><strong>Frequency</strong> - A drop down selection list to choose a regular interval to charge the clients for this payment link model.</p></li>
+<li><p><strong>Auto bill</strong></p>
+
+<ul>
+<li><em>Enabled</em> - A user a payment will be automatically attempted if a payment method is stored on file.</li>
+<li><em>Enabled by default</em> - The client will be given the option to allow payment methods to be stored with the radio box selected.</li>
+<li><em>Disabled by default</em> - The client will be given the option to allow payment methods to be stored with the radio box unselected.</li>
+<li><em>Disabled</em> - No option is given, and auto billing is disabled.</li>
+</ul></li>
+<li><p><strong>Promo Code</strong> - An optional promo code to reward the client if they enter the correct code at checkout.</p></li>
+<li><p><strong>Promo Discount</strong> - Select from the drop down menu on the right, either "Percent" or "Amount" to discount the client by a flat rate, or percentage of the invoice amount for that period.  On the left, in the text field, enter the rate to discount by.</p></li>
+<li><p><strong>Return URL</strong> - Manually specify a URL to return the clients to when they are finished paying for and setting up their payment link.</p></li>
+<li><p><strong>Allow Query Overrides</strong> - This toggle switch enables API calls to the backend to override payment link requests, in order to append additional information to the payment link requests automatically when the client interacts with your storefront's website or app.</p></li>
+<li><p><strong>Allow Plan Changes</strong> - Allow clients who are on this payment link, the option to manually switch payment link models.  Different payment links available to change to, must be assigned to the same group.  Note, you can allow switching off of payment link A onto payment link B, and disallow switching off of payment link B, by not enabling <em>Allow Plan Changes</em> for payment link B only.</p></li>
+<li><p><strong>Allow Cancellation</strong> - Allow clients to manually request payment link cancellations from the client portal.  When enabled, optionally set a time window for clients to qualify for a refund on their payment link.</p></li>
+<li><p><strong>Trial Enabled</strong> - When enabled, the initial "Pay Now" button becomes a "Start Free Trial" button with no demand for payment details at the time of trial beginning.  When enabled, you should select a <em>Trial Duration</em> below in the newly spawned drop down menu.  Otherwise the trials will be indefinite.</p></li>
+<li><p><strong>Per Seat Enabled</strong> - Toggle on or off to enable a maximum capacity, or seat limit for the payment link.  When enabled, enter a number on the single text line spawned below, to specify the number of maximum seats.</p></li>
+</ul>
+
+<h3>Webhook</h3>
+
+<p>Webhooks allow your web based applications to communicate with each other.   These settings here, govern rules for outgoing webhooks when payment links are signed up for by clients.</p>
+
+<ul>
+<li><p><strong>Webhook URL</strong> - Enter the URL of the web service you wish to send your notification to.</p></li>
+<li><p><strong>REST Method</strong> - A drop down menu to select POST, or PUT.</p>
+
+<ul>
+<li><strong>POST</strong> - When you want to create a new entry, or record.</li>
+<li><strong>PUT</strong> - Use PUT to modify an entry or record.  The PUT functionality will cause the original entry or record to be fully replaced with the new incoming data.</li>
+</ul></li>
+</ul>
+
+<p>Below you can set as many Key-Value header pairs as you like.  This is a JSON payload,</p>
+
+<ul>
+<li><p><strong>Header Key</strong> - Enter the appropriate HTTP header as per available headers for InvoiceNinja's JSON API.</p></li>
+<li><p><strong>Header Value</strong> - Enter the value to be assigned to this custom HTTP header.</p></li>
+</ul>
+
+<h2 id=workflow_settings>Workflow Settings</h2>
+
+<p>A few settings to automate behaviors for handling invoices and quotes with.</p>
+
+<h3>Invoices</h3>
+
+<ul>
+<li><p><strong>Auto Email</strong> - Enabled by default, will automatically send emails to clients when a recurring invoice is created for them.</p></li>
+<li><p><strong>Auto Archive</strong> - Disabled by default, will automatically archive invoice records when they are fully paid.</p></li>
+<li><p><strong>Lock Invoices</strong> - Automatically lock invoices to prevent changes:</p>
+
+<ul>
+<li><strong>Off</strong> - Disable this feature.</li>
+<li><strong>When Sent</strong> - Lock invoice after it has been sent to the client.</li>
+<li><strong>When Paid</strong> - Lock invoice only after the client has fully paid off the invoice.</li>
+</ul></li>
+</ul>
+
+<h3>Quotes</h3>
+
+<ul>
+<li><p><strong>Automatically Convert</strong> - Enabled by default. Automatically convert the quote you sent into an invoice, after the client has approved the quote.</p></li>
+<li><p><strong>Auto Archive</strong> - Disabled by default. Automatically archive quotes, after they have been successfully converted into invoices.</p></li>
+</ul>
+
+<h2 id=user_management>User Management</h2>
+
+<p>There are three views to the User Management panel.  The users list, viewing a user, and creating or editing a user, and their permissions in the admin portal..</p>
+
+<p>When viewing a user, you see their email address at the top, which is used to sign into the admin portal with.  Below, you can see a list of buttons for all the client, invoice, quote, task, etc, records that the user has created, or been assigned.  The buttons will open user-filtered lists of the records for each respective category.</p>
+
+<p>When at the edit user pane, you will see three tabs to customize user settings with:</p>
+
+<h3>Details</h3>
+
+<ul>
+<li><p><strong>First Name</strong> - The user's first name.</p></li>
+<li><p><strong>Last Name</strong> - The user's last name.</p></li>
+<li><p><strong>Email</strong> - The user's email address.  Mandatory for the user to log in with.  When the user's account is first created, they will get an email from the InvoiceNinja server to verify their email address and log in.</p></li>
+<li><p><strong>Phone</strong> - Optionally add a phone number to your user entries for reference.</p></li>
+</ul>
+
+<h3>Notifications</h3>
+
+<p>A full list of events is shown here, for when an invoice, quote, payment, or credit has any sort of action taken, such as being created, being viewed, expiring, successful or failed payment, etc.</p>
+
+<p>Enable email notifications to the user for any number of these events.  Choose a notification behavior for each event as preferred:</p>
+
+<ul>
+<li><p><strong>None</strong> - No notifications will be sent for this event.</p></li>
+<li><p><strong>Owned by User</strong> - Only  when the event occurs to a record owned by the user, will the notification be sent.</p></li>
+<li><p><strong>All Records</strong> - Notify the user whenever this event occurs regardless of who owns the record.</p></li>
+</ul>
+
+<h3>Permissions</h3>
+
+<ul>
+<li><strong>Administrator</strong> - an on/off switch to elevate the user to Administrator level privileges.
+
+<ul>
+<li>When disabled, a list of permission categories appears below, which the user will be subjected to.  Grant, or deny permissions to create, edit, or view any record category here; clients, invoices, quotes, tasks, vendors, products, etc.</li>
+</ul></li>
+</ul>
+
+<h3>Archive/Delete User</h3>
+
+<ul>
+<li>The user's account becomes inactive but all their data is preserved</li>
+<li>The user can no longer log in</li>
+<li>Their historical data remains linked to records they created</li>
+<li>Can be restored later if needed</li>
+</ul>
+
+<h3><strong>Remove User</strong></h3>
+
+<ul>
+<li>Permanently removes the users access to the company.</li>
+<li>All their data remains and is still assigned to them, but they no longer can access the company they have been removed from.</li>
+</ul>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Archive/Delete/Remove actions effectively disable the users access to the company. The user can later be reattached to any company within the account.</span>
+</div></p>
+
+<p><div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/en/custom-fields">
+        <span>PDF customization</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div></p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/advanced-settings.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

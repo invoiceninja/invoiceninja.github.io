@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/self-host-installation">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/self-host-installation">Self Host</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/getting-started">Overview</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-installation">Installation</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-updating">Updating</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/env-variables">.env Variables</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-debug-mode">Debug Mode</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/legal/license">Legal</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/license">License</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/terms_of_service">Terms of Service</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/data_privacy">Data Privacy</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_data">Selfhost Data Privacy</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_terms">Selfhost Terms</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/gdpr">GDPR</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/self-host-installation">Self Host</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/getting-started">Overview</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-installation">Installation</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-updating">Updating</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/env-variables">.env Variables</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-debug-mode">Debug Mode</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/legal/license">Legal</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/license">License</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/terms_of_service">Terms of Service</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/data_privacy">Data Privacy</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_data">Selfhost Data Privacy</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_terms">Selfhost Terms</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/gdpr">GDPR</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Self Host Installation</h1>
+
+<h2>Server Requirements</h2>
+
+<p>Invoice Ninja has a few system requirements. Built on top of <a href="https://www.laravel.com/docs/">Laravel</a> it requires a PHP and MySQL server at a minimum with the following version and extensions installed.</p>
+
+<ul>
+<li>PHP 8.2 with following extensions
+
+<ul>
+<li>bcmath</li>
+<li>ctype</li>
+<li>imagick</li>
+<li>soap</li>
+<li>gd</li>
+<li>mbstring</li>
+<li>openssl</li>
+<li>common</li>
+<li>tokenizer</li>
+<li>xml</li>
+<li>curl</li>
+<li>zip</li>
+<li>gmp</li>
+<li>iconv</li>
+<li>mysqli</li>
+<li>intl</li>
+<li>fpm (if using NGINX)</li>
+<li>saxon (for e invoice validation)</li>
+</ul></li>
+<li>MySQL 5.7+ or MariaDB 10.3+</li>
+<li>NGINX or Apache</li>
+</ul>
+
+<p>On ubuntu this should be as simple as running:</p>
+
+<pre><code class="language-bash">sudo apt install php8.2-bcmath php8.2-gmp \
+    php8.2-gd php8.2-mbstring php8.2-xml \
+    php8.2-curl php8.2-zip php8.2-gmp php8.2-mysql php8.2-fpm \ 
+    php8.2-imagick php8.2-soap php8.2-common php8.2-intl
+</code></pre>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>You need to setup this version completely from scratch. Do not attempt to overwrite your old version of Invoice Ninja (4.x.x) with this version as the two codebases are completely different.</span>
+</div></p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Invoice Ninja does not support installation into a subdirectory. You will need a Domain or Subdomain for installation in its root location. ie https://domain.com not https://domain.com/subdirectory</span>
+</div></p>
+
+<h2>Installing Invoice Ninja</h2>
+
+<h3>CLI script</h3>
+
+<p>If your webserver is already configured and you have credentials to your database, community member Dros has created a CLI management and maintenance script for you.</p>
+
+<p><a href="https://github.com/DrDBanner/inmanage">CLI - install | update | backup </a></p>
+
+<p><em>This script complements the excellent <a href="#distribution-based-server-configurations">Distribution based server configurations</a> below. Once your server meets the prerequisites (webserver configured &amp; database accessible), this script makes the rest of the setup a breeze.</em></p>
+
+<h3>Docker</h3>
+
+<p>We have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>.</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xo6a3KtLC2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>If you make changes to your env file, please remember to reboot the container for the changes to take effect!</span>
+</div></p>
+
+<h3>Distribution based server configurations</h3>
+
+<p>If you need to configure your server from scratch, you'll find some excellent tutorials below.</p>
+
+<h4>Ubuntu 20.04 (Recommended)</h4>
+
+<p>Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto Ubuntu, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588">here</a></p>
+
+<h4>Ubuntu 22.04</h4>
+
+<p>Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5.5 from scratch onto Ubuntu, you can access the guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-5-on-ubuntu-22-04/13272">here</a></p>
+
+<h4>Installing on CentOS 8</h4>
+
+<p>If CentOS is more your Flavour, community member TechnicallyComputers has a very thorough step by step installation guide <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293">here</a>.</p>
+
+<h4>Installing on Arch</h4>
+
+<p>If Arch Linux is more your flavour, community member brackenhill-mob has a very thorough step by step installation guide <a href="https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196">here</a></p>
+
+<h4>Installing on Enterprise Linux</h4>
+
+<p>TechnicallyComputers also has a guide for installation Invoice Ninja on Enterprise Linux <a href="https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293">here</a></p>
+
+<h3>Pre built archive (Advanced)</h3>
+
+<!-- Video unavailable ATM "private" <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+<p>A prebuilt archive can be downloaded from our GitHub release page <a href="https://github.com/invoiceninja/invoiceninja/releases">here</a>. You will need to download the package named <strong>invoiceninja.tar</strong></p>
+
+<p>Unpack this file into the virtual host directory you have created.</p>
+
+<p>This option is suited for advanced users. If you prefer a more convenient installation option, consider the <a href="#cli-script">CLI script</a>.</p>
+
+<h4>File Permissions</h4>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Ensure the file permission have been set to the web server user. For example in Ubuntu this is www-data if you have configured a virtual host with a root directory of <code>/var/www/html</code> you would set the ownership like this.</span>
+</div></p>
+
+<pre><code class="language-bash">sudo chown -R www-data:www-data /var/www/html
+sudo find ./ -type d -exec chmod 755 {} \;
+</code></pre>
+
+<h4>Web server configuration</h4>
+
+<p>A sample NGINX configuration is provided below, it assumes you have PHP 8.1 installed with the PHP FPM extension installed</p>
+
+<pre><code class="language-bash">server {
+
+listen 80;
+server_name invoiceninja.test;
+root /var/www/invoiceninja/public;
+index index.php index.html index.htm;
+client_max_body_size 20M;
+
+gzip on;
+gzip_types      application/javascript application/x-javascript text/javascript text/plain application/xml application/json;
+gzip_proxied    no-cache no-store private expired auth;
+gzip_min_length 1000;
+
+# Allow access to index.php
+location = /index.php {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+}
+
+# Block all other .php requests
+location ~ \.php$ {
+    return 403;
+}
+
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+
+    # Add your rewrite rule for non-existent files
+    if (!-e $request_filename) {
+        rewrite ^(.+)$ /index.php?q=$1 last;
+    }
+}
+
+location ~ /\.ht {
+    deny all;
+}
+
+}
+</code></pre>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Performance hint!</p>
+
+<p>Enable gzip in your webserver configuration, this will dramatically improve the loading time of the application! Please see the above nginx configuration for a sample of how to load the components of the application with gzip.</span>
+</div></p>
+
+<h4>Database server configuration</h4>
+
+<p>Create a database on your MySQL compatible server and add a user that has full access to the database. Database configuration is out of the scope of this article, more information can be found <a href="https://dev.mysql.com/doc/refman/8.0/en/creating-database.html">here</a></p>
+
+<h4>Cron configuration</h4>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Ensure you set the scheduler under the web server user i.e. <code>sudo -u www-data crontab -e</code></span>
+</div></p>
+
+<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record.</p>
+
+<pre><code class="language-bash">* * * * * cd /path-to-your-project &amp;&amp; php artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre>
+
+<p>If you are using shared hosting, then you will need to add an additional parameter to the cron command which looks like this:</p>
+
+<pre><code>* * * * * cd /path/to/root/folder &amp;&amp; /usr/bin/php -d register_argc_argv=On artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre>
+
+<h3>Installation from git (Advanced)</h3>
+
+<p>For power users installing the app from Github can be done with the following two steps</p>
+
+<pre><code class="language-bash">git clone -b v5-stable --single-branch https://github.com/invoiceninja/invoiceninja.git
+
+composer create-project --no-dev
+</code></pre>
+
+<p><em>Be aware, at the time of writing the react frontend is not included by default if you clone this repository. Refer to the configured Github workflow for additional information.</em></p>
+
+<h3>Final setup steps</h3>
+
+<p>Once you have configured your virtual host, copy the same .env file</p>
+
+<pre><code class="language-bash">.env.example
+
+</code></pre>
+
+<p>to</p>
+
+<pre><code class="language-bash">.env
+
+</code></pre>
+
+<p>then create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page</p>
+
+<h4>Cron configuration</h4>
+
+<p>Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it requires that a cron job to be configured, edit your crontab and enter the following record</p>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>Ensure you set the scheduler under the web server user i.e. <code>sudo -u www-data crontab -e</code></span>
+</div></p>
+
+<pre><code class="language-bash">* * * * * cd /path-to-your-project &amp;&amp; php artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre>
+
+<p>Some Webservers require the Cronjob to end with <code>&gt; /dev/null 2&gt;&amp;1</code> instead of <code>&gt;&gt; /dev/null 2&gt;&amp;1</code> for it to work.
+Also check if your Webserver Cronjob needs to be set with <code>/private_html/</code> instead of <code>/public_html/</code> within the path.
+And sometimes it's enough to put <code>php</code> instead of <code>/opt/alt/php73/usr/bin/php</code> in the cronjob scheduler command to execute.</p>
+
+<p>If you still encounter errors, it may be helpful to temporarily remove <code>&gt;&gt; /dev/null 2&gt;&amp;1</code> from  the cron, this should output the cron to the <code>cron.log</code></p>
+
+<p>If you are having troubles with your crons, have a look at the troubleshooting section <a href="https://invoiceninja.github.io/en/self-host-troubleshooting/#cron-not-running-queue-not-running">here</a></p>
+
+<p>If you would like to improve the performance of your Invoice Ninja installation, then turning on the queue system will dramatically improve the performance of the application.</p>
+
+<p>If you have root access to your system, then simply follow the Laravel <a href="https://laravel.com/docs/8.x/queues#supervisor-configuration">guide</a> to configure the supervisor service to start and restart your queue.</p>
+
+<p>Forum member @link470 also has the following guide to configure the Supervisor process on Ubuntu 22.04 using the following steps:</p>
+
+<h4>Supervisor for Invoice Ninja Ubuntu 22.04 LTS</h4>
+
+<pre><code class="language-bash">$ sudo apt-get install supervisor
+</code></pre>
+
+<p>Next, create a configuration file for Invoice Ninja by navigating to the Supervisor configuration directory and starting up your text editor of choice with the file name to use. You can set any file name here ending in .conf. I’m using vi.</p>
+
+<pre><code class="language-bash">$ cd /etc/supervisor/conf.d
+$ sudo vi invoiceninja-worker.conf
+</code></pre>
+
+<p>In the new invoiceninja-worker.conf file, enter the following:.</p>
+
+<pre><code class="language-bash">[program:invoiceninja-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /path/to/invoiceninja/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+autostart=true
+autorestart=true
+stopasgroup=true
+killasgroup=true
+user=www-data
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/var/log/invoiceninja-worker.log
+stopwaitsecs=3600
+</code></pre>
+
+<p>There’s 4 main things to change:</p>
+
+<p>program: The program name you’ll use for the worker<br />
+command: The path to the artisan file in the root of the Invoice Ninja application directory<br />
+user: The user that’ll be running Supervisor. Typically, this is the web server user (the same user that has ownership over the Invoice Ninja files)<br />
+stdout_logfile: Optionally, include the path to a log file for the Supervisor worker<br />
+Once these changes are made to suit your environment, save the file.</p>
+
+<p>If you chose to set a log file path, ensure the log file is created and that the user account configured has access to it. For this example, the log is stored in /var/log.</p>
+
+<pre><code class="language-bash">$ cd /var/log
+$ sudo touch invoiceninja-worker.log
+$ sudo chown www-data:www-data invoiceninja-worker.log
+</code></pre>
+
+<p>Now that Supervisor is set up, we can read the configuration file:</p>
+
+<pre><code class="language-bash">$ sudo supervisorctl reread
+</code></pre>
+
+<p>This should tell us that the name of our config (invoiceninja-worker) is available. The above command will also need to be re-ran any time that the config file is updated.</p>
+
+<p>Next, add the new config to the process group for Supervisor (this command also needs to be ran any time the configuration is updated)</p>
+
+<pre><code class="language-bash">$ sudo supervisorctl update
+</code></pre>
+
+<p>Now, start the Supervisor worker</p>
+
+<pre><code class="language-bash">$ sudo supervisorctl start invoiceninja-worker:*
+</code></pre>
+
+<p>Running the following will show worker processes as RUNNING (on my installation, I see 8 worker processes, numbered 00 through 07)</p>
+
+<pre><code class="language-bash">$ sudo supervisorctl status
+</code></pre>
+
+<p>Now that the Supervisor is configured, we need to tell Invoice Ninja to actually use it.</p>
+
+<p>Edit the .env file for Invoice Ninja</p>
+
+<pre><code class="language-bash">$ sudo vi /path/to/invoiceninja/.env
+</code></pre>
+
+<p>Edit the following line to change it from sync to database, and save the file</p>
+
+<pre><code class="language-bash">QUEUE_CONNECTION=database
+</code></pre>
+
+<p>Finally, now that everything is set up, reload the config for Invoice Ninja and restart the queue. I’m using www-data for this example as the web server user.</p>
+
+<pre><code class="language-bash">$ cd /path/to/invoiceninja/
+$ sudo -u www-data php artisan optimize
+$ sudo -u www-data php artisan queue:restart
+</code></pre>
+
+<p>That’s it! You should now have a functioning Supervisor setup for Invoice Ninja.</p>
+
+<h4>Alternative for queues on shared hosting</h4>
+
+<p>If you are on shared hosting, it is possible to get the queues working by defining a new cron with the following configuration:</p>
+
+<pre><code>*/5 * * * * cd  /path/to/root/folder &amp;&amp; /usr/bin/php -d register_argc_argv=On artisan queue:work --stop-when-empty
+</code></pre>
+
+<p>Some people have different web hosting setups, so this might also work:</p>
+
+<pre><code>*/5 * * * * php /home/admin/domains/site.com/private_html/invoices_site/artisan queue:work --stop-when-empty
+</code></pre>
+
+<p>This cron will start a queue worker every 5 minutes and run any jobs that are in the queue and then gracefully terminate itself. This means any emails / notification may be queued for a small period of time prior to executing. If this amount of delay is acceptable, it is a great way to get queue's working on shared hosting.</p>
+
+<p>If you prefer to manage the queues with Supervisor, then you will want to disable the internal Invoice Ninja commands which start the queue, to do this simly set the following .env var</p>
+
+<pre><code>INTERNAL_QUEUE_ENABLED=false
+</code></pre>
+
+<p>You will then have full control over the queue.</p>
+
+<h2>Shared Hosting</h2>
+
+<h4>Server Requirements</h4>
+
+<p>We have tested Invoice Ninja v5 on shared hosting and can confirm that it does work. Softaculous has a one click installer which makes the entire setup process simple, however if you do not have Softaculous available it may still be possible to install Invoice Ninja. There are several checks you will need to do prior to confirming whether your Shared Host has the correctly enabled modules. Invoice Ninja relies on:</p>
+
+<ul>
+<li>proc_open</li>
+<li>exec</li>
+<li>open_basedir</li>
+<li>fpassthru</li>
+</ul>
+
+<p>Without these modules, you will not be able to run Invoice Ninja. We do include some preflight checks of these modules in the Setup workflow, but it is best to check with your host that they support these modules. Some hosts choose to disable these modules as they classify them as security risks.</p>
+
+<h4>Database configuration</h4>
+
+<p>Create a MySQL compatible database in your shared host control panel along with a database user, record the database name, username and password as you'll need this later. Ensure your database user has full access to the database you've just created.</p>
+
+<h4>Upload release asset</h4>
+
+<p>Download the latest release from our <a href="https://github.com/invoiceninja/invoiceninja/releases">Releases</a> page. Note, you'll want to find the latest release which will contain 3 files, the one you need will be annotated as invoiceninja.tar.</p>
+
+<p>Upload this file to your shared host, typically if your webhost uses the industry standard cPanel, you'll want to upload the <strong>invoiceninja.tar</strong> file to the <strong>public_html</strong> directory. Once the upload has completed, using the file manager unzip the file.</p>
+
+<p>You will also need to copy/rename the .env.example file to .env</p>
+
+<h4>Run setup</h4>
+
+<p>Navigate to https://your.url.com/setup and fill in the form. The setup process will perform some pre flight checks and then attempt run the setup. If it has been successful you will be navigated to the Admin portal. If the setup fails for some reason, you'll be returned to the Setup screen with an error message, there may be additional errors reported in <strong>storage/logs/laravel.log</strong> that will provide more information where the setup has failed.</p>
+
+<p>If you see a <strong>404 webserver error</strong> and use <strong>sub.domain.com</strong> make sure to point the path for the subdomain towards the <code>/public</code> folder from the extracted invoiceninja.tar file, for example: <code>/domains/domain.com/public_html/invoices2/public/</code></p>
+
+<h5>Add the cron job</h5>
+
+<p>Add the Laravel scheduler cron job, be sure to include the full path, for a cPanel host it should look like this:</p>
+
+<pre><code>* * * * * cd /path/to/root/folder &amp;&amp; /usr/bin/php -d register_argc_argv=On artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre>
+
+<h2>Mail Configuration</h2>
+
+<p>When configuring your email, please ensure all of the fields are filled in. In particular you <em>must</em> include the MAIL_FROM_ADDRESS and MAIL_FROM_NAME to prevent errors such as</p>
+
+<pre><code class="language-bash">Address in mailbox given [ ] does not comply with RFC 2822, 3.6.2.
+</code></pre>
+
+<p>Here is a full example - using Gmail as an example.</p>
+
+<pre><code class="language-bash">MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="your_email_address@gmail.com"
+MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="your_email_address@gmail.com"
+MAIL_FROM_NAME="Full Name With Double Quotes"
+
+</code></pre>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span>NOTE: if you are using SSL encryption the MAIL_PORT is 465. TLS encryption is on port 587.</span>
+</div></p>
+
+<h3>Individual mail configurations per company</h3>
+
+<p>From v5.5.38 we support per company mail configurations.</p>
+
+<p>What does this mean?</p>
+
+<p>For example if you have two Companies, Acme co and Ninja co you can create separate mail server configurations for each company.</p>
+
+<p>To configure this you will need to prefix your .env  with the primary key of the company ie In your database open the companies table, and if the primary ID column is 1 for Acme co this would be the configuration</p>
+
+<pre><code>1_MAIL_HOST=
+1_MAIL_PORT=
+1_MAIL_USERNAME=null
+1_MAIL_PASSWORD=null
+1_MAIL_ENCRYPTION=null
+</code></pre>
+
+<p>If Ninja Co company id 5</p>
+
+<pre><code>5_MAIL_HOST=
+5_MAIL_PORT=
+5_MAIL_USERNAME=null
+5_MAIL_PASSWORD=null
+5_MAIL_ENCRYPTION=null
+</code></pre>
+
+<h2>Currency Conversion</h2>
+
+<p>Invoice Ninja supports <a href="https://openexchangerates.org/">Open Exchange</a> for currency conversion.
+Open Exchange currently provides a free tier which is suitable for daily updates of the exchange rates.
+Simply insert a Open Exchange API key into your .env file to enable exchange rate updates:</p>
+
+<pre><code class="language-bash">OPENEXCHANGE_APP_ID=your_open_exchange_api_key_here
+</code></pre>
+
+<p>Currencies are updated automatically by using the scheduler. In case the currencies are not available within the UI please double check the database table <code>currencies</code> and ensure that <code>exchange_rate</code> fields contains realistic values.</p>
+
+<h2>Lib Saxon</h2>
+
+<p>If using e invoicing, you may want to install the saxon extension. The saxon extension provides XSLT2 validation of e invoice schema's and provides additional confidence that your einvoice will be accepted by third party systems.</p>
+
+<p>We have a short video showing the installation steps here:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s21ewzAeYjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/self-host-installation.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>
