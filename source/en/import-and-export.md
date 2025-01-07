@@ -41,6 +41,16 @@ There are some special considerations when importing invoices.
 3. Each line item MUST include a quantity and cost column for the calculations of the invoice total.
 4. If you wish to include a payment on the invoice, add a payment amount column and reference the amount paid.
 
+## Importing / Updating Products
+
+As well as importing new products, you can also update existing products!
+
+Invoice Ninja will check for existing products with the same Product/Item name and instead of creating a new product, it will update the product with the new data.
+
+<x-warning>
+  **Note** Invoice Ninja will only update active products, archived/deleted products will not be updated instead NEW products will be created.
+</x-warning>
+
 ## Third Party Import
 
 ### Freshbooks
