@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="fr_CA">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/fr_CA/api/clients">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="fr_CA" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/fr_CA.js"></script>
+    <script type="text/javascript" src="/fr_CA_index.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="fr_CA">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/fr_CA" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Recherche rapide" id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/fr_CA/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">Guide de l&#039;utilisateur</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">Documentation API</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Accéder à l&#039;application</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/fr_CA/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> Guide de l&#039;utilisateur </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Documentation API </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Accéder à l&#039;application</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide"></a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                          <a class="block hover:text-ninjaGuide du développeur-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/fr_CA/developer-guide">Guide du développeur</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/developer-guide">Premiers pas</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/payment-gateways">Passerelles de paiement</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/fr_CA/statics">Variables statiques</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="https://api-docs.invoicing.co/">Docs API</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Clients</h1>
+
+<h3>Endpoints</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The clients endpoint allows you to interact with clients and their contacts.
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    Endpoints</p>
+
+<pre><code>GET /api/v1/clients
+POST /api/v1/clients
+PUT /api/v1/clients/{client}
+PUT /api/v1/clients/{client}/upload
+DELETE /api/v1/clients/{client}
+POST /api/v1/clients/bulk
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h3>Get Clients</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The GET route returns a list of clients and their associated contacts.
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X GET 'http://ninja.test:8000/api/v1/clients' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Query Parameters</h4>
+
+<hr />
+
+<p>Query parameters can be chained together to form complex queries. The current supported values are:</p>
+
+<p><strong>balance</strong>: A query to return clients with a balance using an operator and value<br />
+ - ie ?balance=lt:10 Returns clients with a balance less than 10<br />
+ - available operators lt, lte, gt, gte, eq<br />
+<strong>between_balance</strong>: Returns clients with a balance between two values<br />
+ - ie ?between_balance=10:20 - Returns clients with a balance between 10 and 20<br />
+<strong>client_id</strong>: Search by the client_id parameter
+<strong>created_at</strong>: Search by created at (Unix timestamp)<br />
+<strong>updated_at</strong>: Search by updated at (Unix timestamp)<br />
+<strong>email</strong>: Returns clients with a contacts.email field equal to an email<br />
+<strong>filter</strong>: Search across multiple columns (name, id_number, first_name, last_name, email, custom_value1, custom_value2, custom_value3, custom_value4)<br />
+<strong>id_number</strong>: Search by id_number<br />
+<strong>is_deleted</strong>: Search using is_deleted boolean flag<br />
+<strong>include</strong>: A comma separated list of relations to include. 
+ - contacts - The array of contacts associated with the client
+ - documents - The array of documents associated with the client
+ - gateway_tokens - Payment gateway tokens associated with the client
+<strong>name</strong>: Search by Client Name
+<strong>number</strong>: Search by number<br />
+<strong>per_page</strong>: The number of clients per page you want returned<br />
+<strong>page</strong>: The page number<br />
+<strong>sort</strong>: Sort the returning dataset, format is column|ASC ie ?sort=name|DESC</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<pre><code>{
+"data": [
+{
+    "id": "OpnelpJeKB",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "O'Reilly-Metz",
+    "website": "http:\/\/www.okeefe.com\/aut-nostrum-omnis-explicabo-nostrum.html",
+    "private_notes": "Laudantium enim numquam provident eius ipsa. Perspiciatis aut et sunt veniam sapiente. Et dicta quo quis vel consectetur dolor.",
+    "balance": 10735.05,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "VOYXVqOLrT1pc4FdKCg8AXVIeumby5IfKvkQ1eAB",
+    "address1": "83865",
+    "address2": "28362 Carlotta Junctions Apt. 508",
+    "phone": "",
+    "city": "South Sibylstad",
+    "state": "New York",
+    "postal_code": "52557-0628",
+    "country_id": "288",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "9999",
+    "shipping_address2": "6540 Kari Meadows Apt. 411",
+    "shipping_city": "East Jordy",
+    "shipping_state": "Illinois",
+    "shipping_postal_code": "39913-0552",
+    "shipping_country_id": "4",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "industry_id": "",
+        "size_id": "",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "929146739",
+    "id_number": "",
+    "updated_at": 1631673918,
+    "archived_at": 0,
+    "created_at": 1631673918,
+    "display_name": "O'Reilly-Metz",
+    "number": "0001",
+    "contacts": [
+        {
+            "id": "YQdJqg9bOG",
+            "first_name": "Jewell",
+            "last_name": "McClure",
+            "email": "user@example.com",
+            "created_at": 1631673918,
+            "updated_at": 1631673918,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "276-345-6722",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q",
+            "send_email": true,
+            "last_login": 0,
+            "password": "**********",
+            "link": "http:\/\/ninja.test:8000\/client\/key_login\/d78CHQD80ePJbEn7tYX1fsRn5hXr7XiWQqjJYT9Q"
+        },
+        {
+            "id": "y1aKZjleQG",
+            "first_name": "Alaina",
+            "last_name": "Wuckert",
+            "email": "amcdermott@example.org",
+            "created_at": 1631673918,
+            "updated_at": 1631673918,
+            "archived_at": 0,
+            "is_primary": false,
+            "is_locked": false,
+            "phone": "(641) 879-8481",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86",
+            "send_email": true,
+            "last_login": 0,
+            "password": "**********",
+            "link": "http:\/\/ninja.test:8000\/client\/key_login\/KQoEiBxAQe05p43QubjoMcHxYKkBQLpWU4Swxi86"
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+],
+"meta": {
+    "pagination": {
+        "total": 1,
+        "count": 1,
+        "per_page": 1,
+        "current_page": 1,
+        "total_pages": 1,
+        "links": []
+    }
+}
+}⏎           
+</code></pre>
+
+<h3>Create Client</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The POST route is used to create a client.</p>
+
+<p>Its important to note that contacts are intimately related to the client. The API expects the full contacts array with each POST/PUT request.</p>
+
+<p>To remove a contact you would simply drop the contact object from the contacts array and PUT back to the API.</p>
+
+<p>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X POST 'http://ninja.test:8000/api/v1/clients' \
+-H "Content-Type:application/json" \
+-d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Parameters</h4>
+
+<hr />
+
+<p><strong>name</strong>: (string) The client name<br />
+<strong>website</strong>: (string) The client website<br />
+<strong>private_notes</strong>: (string) Private notes for the client<br />
+<strong>industry_id</strong>: (integer) The industry id of the client<br />
+<strong>size_id</strong>: (integer) The size id of the client<br />
+<strong>address1</strong>: (string) Address line 1<br />
+<strong>address2</strong>: (string) Address line 2<br />
+<strong>city</strong>: (string) City<br />
+<strong>state</strong>: (string) State<br />
+<strong>postal_code</strong>: (string) Postal code<br />
+<strong>country_id</strong>: (string) The country id of the client<br />
+<strong>custom_value1</strong>: (string) Custom value<br />
+<strong>custom_value2</strong>: (string) Custom value<br />
+<strong>custom_value3</strong>: (string) Custom value<br />
+<strong>custom_value4</strong>: (string) Custom value<br />
+<strong>shipping_address1</strong>: (string) Shipping address line 1<br />
+<strong>shipping_address2</strong>: (string) Shipping address line 2<br />
+<strong>shipping_city</strong>: (string) Shipping city<br />
+<strong>shipping_state</strong>: (string) Shipping state<br />
+<strong>shipping_postal_code</strong>: (string) Shipping postal code<br />
+<strong>shipping_country_id</strong>: (integer) Shipping country id<br />
+<strong>settings</strong>: (object) Settings object for the client - see Company Settings for more information<br />
+<strong>vat_number</strong>: (string) Tax number of the client<br />
+<strong>id_number</strong>: (string) ID reference for the client<br />
+<strong>group_settings_id</strong>: (string) The group membership id<br />
+<strong>public_notes</strong>: (string) Public notes for the client<br />
+<strong>phone</strong>: (string) The phone number of the client<br />
+<strong>number</strong>: (string) The reference number for the client</p>
+
+<p>Contacts array:<br />
+<strong>first_name</strong>: (string) Contact first name.<br />
+<strong>last_name</strong>: (string) Contact last name.<br />
+<strong>email</strong>: (string) Contact email.<br />
+<strong>phone</strong>: (string) Contact phone number.<br />
+<strong>custom_value1</strong>: (string) Custom value<br />
+<strong>custom_value2</strong>: (string) Custom value<br />
+<strong>custom_value3</strong>: (string) Custom value<br />
+<strong>custom_value4</strong>: (string) Custom value<br />
+<strong>send_email</strong>: (bool) Determine if this contact will by default receive emails</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<pre><code>{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "balance": 0,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "address1": "",
+    "address2": "",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "postal_code": "",
+    "country_id": "840",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "",
+    "shipping_address2": "",
+    "shipping_city": "",
+    "shipping_state": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h",
+            "send_email": true,
+            "last_login": 0,
+            "password": "",
+            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+
+</code></pre>
+
+<h3>Update Client</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The PUT route is used to create a client.</p>
+
+<p>It is important to note that the primary key representation of the client is not an integer, but a hashed id, ie. <code>wMvbmEAbYA</code>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA' \
+-H "Content-Type:application/json" \
+-d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Parameters</h4>
+
+<hr />
+
+<p><strong>name</strong>: (string) The client name<br />
+<strong>website</strong>: (string) The client website<br />
+<strong>private_notes</strong>: (string) Private notes for the client<br />
+<strong>industry_id</strong>: (integer) The industry id of the client<br />
+<strong>size_id</strong>: (integer) The size id of the client<br />
+<strong>address1</strong>: (string) Address line 1<br />
+<strong>address2</strong>: (string) Address line 2<br />
+<strong>city</strong>: (string) City<br />
+<strong>state</strong>: (string) State<br />
+<strong>postal_code</strong>: (string) Postal code<br />
+<strong>country_id</strong>: (string) The country id of the client<br />
+<strong>custom_value1</strong>: (string) Custom value<br />
+<strong>custom_value2</strong>: (string) Custom value<br />
+<strong>custom_value3</strong>: (string) Custom value<br />
+<strong>custom_value4</strong>: (string) Custom value<br />
+<strong>shipping_address1</strong>: (string) Shipping address line 1<br />
+<strong>shipping_address2</strong>: (string) Shipping address line 2<br />
+<strong>shipping_city</strong>: (string) Shipping city<br />
+<strong>shipping_state</strong>: (string) Shipping state<br />
+<strong>shipping_postal_code</strong>: (string) Shipping postal code<br />
+<strong>shipping_country_id</strong>: (integer) Shipping country id<br />
+<strong>settings</strong>: (object) Settings object for the client - see Company Settings for more information<br />
+<strong>vat_number</strong>: (string) Tax number of the client<br />
+<strong>id_number</strong>: (string) ID reference for the client<br />
+<strong>group_settings_id</strong>: (string) The group membership id<br />
+<strong>public_notes</strong>: (string) Public notes for the client<br />
+<strong>phone</strong>: (string) The phone number of the client<br />
+<strong>number</strong>: (string) The reference number for the client</p>
+
+<p>Contacts array:<br />
+<strong>first_name</strong>: (string) Contact first name.<br />
+<strong>last_name</strong>: (string) Contact last name.<br />
+<strong>email</strong>: (string) Contact email.<br />
+<strong>phone</strong>: (string) Contact phone number.<br />
+<strong>custom_value1</strong>: (string) Custom value<br />
+<strong>custom_value2</strong>: (string) Custom value<br />
+<strong>custom_value3</strong>: (string) Custom value<br />
+<strong>custom_value4</strong>: (string) Custom value<br />
+<strong>send_email</strong>: (bool) Determine if this contact will by default receive emails</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<pre><code>{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "balance": 0,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "address1": "",
+    "address2": "",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "postal_code": "",
+    "country_id": "840",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "",
+    "shipping_address2": "",
+    "shipping_city": "",
+    "shipping_state": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h",
+            "send_email": true,
+            "last_login": 0,
+            "password": "",
+            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+
+</code></pre>
+
+<h3>Upload Client Documents</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The PUT route is used to upload documents to a client record.</p>
+
+<p>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA/upload' \
+-H 'Content-Type: multipart/form-data' \
+-F _method=PUT \
+-F 'documents[]=@filename.png'
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Parameters</h4>
+
+<hr />
+
+<p>none.</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<pre><code>{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "balance": 0,
+    "group_settings_id": "",
+    "paid_to_date": 0,
+    "credit_balance": 0,
+    "last_login": 0,
+    "size_id": "",
+    "public_notes": "",
+    "client_hash": "AVS87HCjH2EHA74pAqYCmFJ9dAmg9rfQfpPc4NRu",
+    "address1": "",
+    "address2": "",
+    "phone": "",
+    "city": "",
+    "state": "",
+    "postal_code": "",
+    "country_id": "840",
+    "industry_id": "",
+    "custom_value1": "",
+    "custom_value2": "",
+    "custom_value3": "",
+    "custom_value4": "",
+    "shipping_address1": "",
+    "shipping_address2": "",
+    "shipping_city": "",
+    "shipping_state": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+            "is_primary": true,
+            "is_locked": false,
+            "phone": "",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "contact_key": "LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h",
+            "send_email": true,
+            "last_login": 0,
+            "password": "",
+            "link": "http:\/\/ninja.test\/client\/key_login\/LE3IpSlTpV93DkMNNiSKiUmkaBpajsWW60I3818h"
+        }
+    ],
+    "documents": [
+        {
+            "id": "Wpmbk5ezJn",
+            "user_id": "q9wdL84djP",
+            "assigned_user_id": "",
+            "project_id": "",
+            "vendor_id": "",
+            "url": "http:\/\/ninja.test\/api\/v1\/documents\/Wpmbk5ezJn\/download",
+            "preview": "",
+            "name": "document.pdf",
+            "type": "pdf",
+            "disk": "public",
+            "hash": "niqbMIupZI0p1wS1ZwsEqJSMac8plimEXAr0TuIR.pdf",
+            "size": 40078,
+            "width": 0,
+            "height": 0,
+            "is_default": false,
+            "updated_at": 1631681485,
+            "archived_at": 0,
+            "created_at": 1631681485,
+            "is_deleted": false
+        }
+    ],
+    "gateway_tokens": []
+}
+</code></pre>
+
+<h3>Delete Client</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The DELETE route is delete a Client. Note* To ensure referential integrity entity records are never permanently deleted. A deleted client is simply "hidden" from view and their balance, invoices and payments are hidden from all reports.</p>
+
+<p>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X DELETE 'http://ninja.test:8000/api/v1/clients' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Parameters</h4>
+
+<hr />
+
+<p>none.</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<pre><code>{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+</code></pre>
+
+<h3>Client Bulk Actions</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    The bulk action route allows you to perform an action on multiple clients.</p>
+
+<p>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X POST 'http://ninja.test/api/v1/clients/bulk' \
+-H "Content-Type:application/json" \
+-d '{"action":"restore","ids":["VolejRejNm","wMvbmEAbYA"]}' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Parameters</h4>
+
+<hr />
+
+<p><strong>archive</strong>: Archive clients.<br />
+<strong>restore</strong>: Restore clients.<br />
+<strong>delete</strong>: Delete clients.</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<h4>Response</h4>
+
+<hr />
+
+<p>Array of clients</p>
+
+<pre><code>{
+"data": [
+{
+    "id": "OpnelpJeKB",
+    "user_id": "q9wdL84djP",
+    "shipping_country_id": "4",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "industry_id": "",
+        "size_id": "",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "929146739",
+    "contacts": [
+        {
+            "id": "YQdJqg9bOG",
+            "first_name": "Jewell",
+            "last_name": "McClure",
+            "email": "user@example.com",
+
+        },
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+],
+"meta": {
+    "pagination": {
+        "total": 1,
+        "count": 1,
+        "per_page": 1,
+        "current_page": 1,
+        "total_pages": 1,
+        "links": []
+    }
+}
+}⏎           
+</code></pre>
+
+<h3>Client Purge</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    It is possible to remove a client (and all their associated data) permanently from the system. In order to
+do this, you would need to use the purge routes.</p>
+
+<p>This is a password protected route, meaning that a password override is required to execute this command, to
+use this the header field X-API-PASSWORD is also required in the request. This password would match your login password.</p>
+
+<p>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X POST '/api/v1/clients/{id}/purge' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-API-PASSWORD:your_login_password_here" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Route Parameters</h4>
+
+<hr />
+
+<p>id: The hashed ID of the client</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<p>HTTP response code 200</p>
+
+<pre><code>{
+"data": {
+    'message': 'Success'
+}⏎      
+</code></pre>
+
+<h3>Client Merge</h3>
+
+<p><div class="grid grid-cols-12 gap-4">
+    <div class="grid-cols-12 lg:col-span-6">
+    It is possible to merge two clients into a single client. This will aggregate both clients invoices / documents and other attributes into a single client.</p>
+
+<p>This is a password protected route, meaning that a password override is required to execute this command, to
+use this the header field X-API-PASSWORD is also required in the request. This password would match your login password.</p>
+
+<p>
+</div>
+<div class="grid-cols-12 lg:col-span-6">
+    </p>
+
+<pre><code>curl -X POST '/api/v1/clients/{id}/{mergeable_client_hashed_id}/merge' \
+-H "X-API-TOKEN:company-token-test" \
+-H "X-API-PASSWORD:your_login_password_here" \
+-H "X-Requested-With: XMLHttpRequest";
+</code></pre>
+
+<p>
+</div>
+</div>
+</p>
+
+<h4>Route Parameters</h4>
+
+<hr />
+
+<p>id: The client to receive the merging client
+mergeable_client_hashed_id: The hashed id of the client to be merged.</p>
+
+<h4>Response</h4>
+
+<hr />
+
+<p>HTTP response: code 200
+Object response: Client</p>
+
+<pre><code>{
+"data": {
+    "id": "wMvbmEAbYA",
+    "user_id": "q9wdL84djP",
+    "assigned_user_id": "",
+    "name": "Client Name",
+    "website": "",
+    "private_notes": "",
+    "shipping_postal_code": "",
+    "shipping_country_id": "",
+    "settings": {
+        "entity": "App\\Models\\Client",
+        "invoice_terms": "Client Terms",
+        "currency_id": "1"
+    },
+    "is_deleted": false,
+    "vat_number": "",
+    "id_number": "",
+    "updated_at": 1631680816,
+    "archived_at": 0,
+    "created_at": 1631680816,
+    "display_name": "Le Dudette",
+    "number": "0002",
+    "contacts": [
+        {
+            "id": "9wdL8kpdjP",
+            "first_name": "Contact first name",
+            "last_name": "Contact last name",
+            "email": "email@gmail.com",
+            "created_at": 1631680816,
+            "updated_at": 1631680816,
+            "archived_at": 0,
+        }
+    ],
+    "documents": [],
+    "gateway_tokens": []
+}
+</code></pre>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/fr_CA/api/clients.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:fr_CA'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/expenses">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Expenses</h1>
+
+<p>The <em>Expenses</em> module enables you to manage and track your organization's business related expenses, whether they are goods, or services. Expense records also support billing them to your clients, so you can pass along the costs directly through your invoices. Effective use of the expense module can help you track and monitor your organization's cash flow, and keep up with your taxes.</p>
+
+<video width="100%" controls>
+  <source src="/assets/videos/expenses/create_expense.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<h2>Expenses Module View</h2>
+
+<p>When you select the <em>Expenses</em> module from the navigation menu on the left hand side of the screen, you will be taken to the table view listing and sorting all available expense records.</p>
+
+<p>From the table view you can sort expense records by the various status filters on top of the table. You can use the <em>Filter</em> text box to search for an expense number, vendor, or amount. A <em>More Actions</em> menu to the right of each entry in the table shows a list of available management actions you can take against an expense record, such as editing, cloning to a new expense record, cloning to a new recurring expense record, archiving, or deleting.</p>
+
+<h2>Viewing/Editing an Expense</h2>
+
+<p>Simply click on an expense number from the table to view/edit that expense.</p>
+
+<p>The view/edit panel for an expense record has all the details about the record broken into four sections, as follows:</p>
+
+<h3>Details</h3>
+
+<ul>
+<li><strong>Status</strong>: the status of the expense - it's automatically set; see See <a href="#lifecycle_of_an_expense">Lifecycle of an Expense</a></li>
+<li><strong>Expense Number</strong>: the expense number is best left alone, so it can be automatically generated by Invoice Ninja. The policies governing generated numbers can be found in <em>Settings</em> > <em>Generated Numbers</em>.</li>
+<li><strong>Vendor</strong>: Link the expense to a vendor by selecting an available vendor record from the list here. (Vendor = who the expense is paid TO).</li>
+<li><strong>Client</strong>: Link the expense to a client by selecting an available client record. When creating an invoice from an expense, the new invoice will also be automatically be assigned to this client.</li>
+<li><strong>Project</strong>: select a project the expense is linked to</li>
+<li><strong>Category</strong>: put the expense in an expense category - expense categories can also be managed from <em>Settings > Expense Settings</em></li>
+<li><strong>User</strong>: link an admin portal user to the expense. The User option can be used in the reports for tracking, but can also be used to give a specific user permission to view/edit an individual record.</li>
+<li><strong>Tax</strong>: <em>Expense Tax Rates</em> must first be enabled under <em>Settings > Tax Settings</em> for this tax option to show up. Here you can select a tax rate to apply to the expense if <em>Taxes > By Rate</em> is selected in the expense, or enter the tax name and tax amount if <em>Taxes > By Amount</em> is selected in the expense.
+
+<ul>
+<li>NOTE that you select the tax rate/amount here on the left, but control how the tax is applied on the right under the <em>Taxes</em> panel
+based tax, to a custom flat tax.</li>
+</ul></li>
+<li><strong>Amount</strong>: enter the total expense amount</li>
+<li><strong>Currency</strong>: Currency you paid your expense in, automatically populated with the default currency of the vendor assigned to the expense. If not specified, currency is treated as your default company currency.</li>
+<li><strong>Date</strong>: Date of the expense (defaults to today). Note that this is the date that the vendor invoices you for the expense, not the date of your payment to the vendor.</li>
+</ul>
+
+<h3>Notes</h3>
+
+<ul>
+<li><em>Public Notes</em> - Use this field to describe the expense. When creating an invoice for a client from an expense record, the public notes are included in the line item description for the expense.</li>
+<li><em>Private Notes</em> - The value of this field is only viewable by users of the admin portal, so you can use it to make notes to yourself and other coworkers about the expense record.</li>
+</ul>
+
+<h3>Additional Info</h3>
+
+<ul>
+<li><strong>Should be invoiced</strong>: you can turn this toggle on if the expense should be invoiced to a client (see <a href="#more_actions_dropdown">More Actions dropdown menu</a> for next steps)</li>
+<li><strong>Mark Paid</strong>: Enable this to indicate that your organization has paid the vendor for this expense. This is <em>not</em> to indicate a payment from a client. After checking <em>Mark Paid</em>, these options will appear below:
+
+<ul>
+<li><strong>Payment Type</strong>: Select the payment type your organization used to pay the vendor with.</li>
+<li><strong>Date</strong>: Enter the date your organization paid the vendor (defaults to today).</li>
+<li><strong>Transaction Reference</strong>: Enter a transaction reference code or number if applicable.</li>
+</ul></li>
+<li><strong>Convert currency</strong>: If the expense is billed in a currency other than your own default currency, enabling this allows you to set the currency you prefer to pay with, and an exchange rate, to calculate how much the expense cost in your preferred currency.
+
+<ul>
+<li><strong>Exchange Rate</strong>: the current exchange rate will be automatically set when selecting a currency, but can be manually adjusted</li>
+<li><strong>Converted Amount</strong>: this amount is calculated as follows: <em>Expense Amount</em> &#42; <em>Exchange Rate</em> = <em>Converted Amount</em></li>
+</ul></li>
+<li><strong>Add Documents to Invoice</strong>: Enable this feature to include any documents attached to an expense, with the documents attached to the invoice when you create an invoice out of the expense record.</li>
+<li><strong>Taxes</strong>: configure how the expense is taxed to you in more detail.</li>
+</ul>
+
+<p><div class="p-5 bg-gray-200 border-l-4 border-red-500">
+    <span></p>
+
+<p>Note that when you view your reports, expenses will be categorized by the currency of the expense/vendor, not the currency selected under "Convert Currency". If you wish to consolidate your profit and loss totals under one currency, you should select your own currency for each expense record, and use the converted amount for the expense amount, leaving any reference to a foreign currency out of the record details.</p>
+
+<p></span>
+</div></p>
+
+<h3>Taxes</h3>
+
+<p>The taxes section is where you control how taxes are applied to the expense.</p>
+
+<p><em>Expense Tax Rates</em> must first be enabled under <em>Settings > Tax Settings</em> for expense taxes to work (or it will say "Item tax rates are disabled").</p>
+
+<p>The <em>Taxes</em> panel on the bottom right of the expense edit screen will let you choose one of these options:</p>
+
+<ul>
+<li>Enter Taxes: Configure how the expense is taxed to you in more detail. Change between rate or amount to change the <em>Tax</em> field (under the details tab) from a percent based tax, to a custom flat tax.
+
+<ul>
+<li>By Rate: this is selected by default. You can select a tax rate under <em>Details</em> to apply to the expense.</li>
+<li>By Amount: allows you to manually enter a <em>Tax Name</em> and <em>Tax Amount</em> under <em>Details</em> to apply to the expense. Note that you can apply up to three tax rates/amounts to an expense, based on the settting <em>Settings > Tax Settings > Expense Tax Rates</em> where you can select <em>Disabled, One Tax Rate, Two Tax Rates,</em> or <em>Three Tax Rates</em>. For example, if you have <em>Three Tax Rates</em> as the enabled option, you will see three <em>Tax</em> options on the left.</li>
+</ul></li>
+<li>Inclusive Taxes: Enable this option if the taxes are inclusive to the cost of the expense, rather than exclusive. For example:
+
+<ul>
+<li>Exclusive tax is applied on top of the expense cost, like so: 100 + 10% = $110 total (100 + 10).</li>
+<li>Inclusive tax is when taxes are deducted from the amount the vendor bills you, and included in your expense amount, rather than tacked on top of what you pay the vendor, like so: 100 + 10% = $100 total (90.91 +9.09).</li>
+</ul></li>
+</ul>
+
+<p>Here's a video of enabling the Expense Tax Rates, adding a new Expense Category, and recording a new expense using these options:</p>
+
+<video width="100%" controls>
+  <source src="/assets/videos/expenses/expense_settings_taxes.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<h2 id="more_actions_dropdown">More Actions dropdown menu</h2>
+
+<p>You can use the <em>More Actions</em> dropdown menu (if on the expenses table view) or the <em>Save</em> dropdown arrow menu in the top right corner of the expense edit panel, to see a list of management actions that can be taken against the expense record:</p>
+
+<ul>
+<li>Clone: this will create a new expense record with the same details as the existing expense record, for today's date.</li>
+<li>Clone to Recurring: clone the expense record to a new recurring expense</li>
+<li>Archive</li>
+<li>Delete</li>
+<li>Restore: only visible if an archived/deleted expense is selected - lets you restore the expense to logged/paid status</li>
+</ul>
+
+<p>These additional options will be visible only if <em>Should be invoiced</em> is checked:</p>
+
+<ul>
+<li>Invoice Expense: this will create a new invoice record with the expense details automatically entered as a line item on the invoice</li>
+<li>Add to Invoice: this will let you add the expense to an existing invoice with the expense details automatically entered as a line item on the invoice. A list of the client's invoices will show for selection.</li>
+</ul>
+
+<h3>Documents</h3>
+
+<p>The Documents tab supports uploading files such as documents, pictures, and more to allow you to share them with the client when attached to an invoice (if enabled) or with other users of the admin portal.</p>
+
+<h2 id="lifecycle_of_an_expense">Lifecycle of an Expense</h2>
+
+<p>The following describe the lifecycle of an expense record</p>
+
+<h3>Logged</h3>
+
+<p>An expense's default state is <em>Logged</em>, when an expense is created. An expense is marked logged whether or not you have reported that you have paid the vendor for the expense yet.</p>
+
+<h3>Pending</h3>
+
+<p>An expense that has <em>Should be Invoiced</em> enabled, making it billable to a client, is automatically changed to a <em>Pending</em> state.</p>
+
+<h3>Invoiced</h3>
+
+<p>An expense record is automatically changed to <em>Invoiced</em> after the expense has been added to a client invoice. Note that an expense is marked <em>Invoiced</em> simply by being on an invoice, and its state doesn't change whether or not that invoice has been paid for by the client. The overview tab of the expense record's preview panel will link you to the invoice that expense is attached to.</p>
+
+<h3>Archived</h3>
+
+<p>An expense record can manually be archived, which simply hides it from view in the table or list of active expenses. The details of archived expenses are still included in reports. You can view archived expenses by changing filters in the table view, and you can use the "Restore" function to return an archived expense to its former state.</p>
+
+<h3>Deleted</h3>
+
+<p>An expense record can manually be deleted, which will remove it from view, and remove it from any reports as well. Deleted expense records can be seen by changing your filters when viewing the table or list of expenses, and using the "Restore" function can return the deleted expense record to its former state.</p>
+
+<h2>Tips</h2>
+
+<ul>
+<li>You could just create an expense only with an amount and nothing else... but it's best to always organize your expenses by vendor/client. For example, under <em>Reports</em> you're able to report on expenses by status, clients, vendors, projects, and categories. Also, expenses will be shown in categories under the <em>Profit and Loss</em> report.</li>
+<li>You can see all expenses attached to a specific vendor: <em>Vendor Details > Expenses</em></li>
+<li>You can see all expenses attached to a specific client: <em>Client Details > Expenses</em></li>
+<li>Expenses can have default options configured under <em>Settings > Expense Settings</em>. See <a href="/en/basic-settings#expense_settings">Expense Settings</a></li>
+</ul>
+
+<h2>Expense Inbound Email (Self Host Only)</h2>
+
+<p>This feature allows you to configure an e-mail address to accept attachments from vendors, clients and internal users which can then be processed using Mindee to perform data extraction and create expense records. Zugferd xml files are also supported and are able to be automatically parsed and converted into an expense.</p>
+
+<p>The system works by configuring an e-mail address to accept attachments, the attachments (and the email body text) are stored on file and an expense record is created. The system will attempt to extract data from the document and insert it into the expense record.</p>
+
+<p>The following settings are available:</p>
+
+<ul>
+<li>Enable Expense Mailbox (Enabled/Disables the processing of emails)</li>
+<li>Expense Mailbox E-Mail (The e-mail address to process which will be receiving the emails)</li>
+<li>Allow Company Users (Toggles whether internal users can send emails to the configured expense mailbox)</li>
+<li>Allow Vendors (Toggles whether vendors can send emails to the configured expense mailbox)</li>
+<li>Allow Unknown Senders (Toggles whether unknown semders can send emails to the configured expense mailbox)</li>
+<li>Allowed Email Addresses (A comma separated list of domains which are allowed to send emails to the configured expense mailbox)</li>
+<li>Blocked Email Addresses (A comma separated list of domains which are blocked from sending emails to the configured expense mailbox)</li>
+</ul>
+
+<h3>Inbound Providers</h3>
+
+<h4>Mailgun</h4>
+
+<p>To ensure delivery, you have to configure all used mailgun regions with a recieving configuration using store &amp; notify.</p>
+
+<p>Create and setup your mailgun account
+Prepare your DNS settings for inbound mail processing, by setting up necessary MX records
+Create a receiving route using store and notify
+3a. Go to Receiving Section and click on "Create Route"
+3b. Create your route by selecting your mailbox configured in invoiceninja and add notify endpoint /api/v1/mailgun_inbound_webhook</p>
+
+<h4>Brevo</h4>
+
+<p>To ensure delivery you have to configure brevo inbound parsing according to: https://developers.brevo.com/docs/inbound-parse-webhooks</p>
+
+<p>Create and setup your brevo account
+Prepare your DNS settings for inbound mail processing, by setting up necessary MX records
+Register the webhook via the brevo api to the following notify endpoint: /api/v1/brevo_inbound_webhook?token=brevo-api-token
+SetUp Postmark
+To ensure delivery you have to configure brevo inbound parsing according to: https://developers.brevo.com/docs/inbound-parse-webhooks</p>
+
+<h4>SetUp with Own MailServer</h4>
+
+<p>If you want to use your own mailbox, you have to either redirect the mail to a mailbox of one of the providers above or use a provider for inbound directly.
+We recommend to use one of these providers hosted on a subdomain f.ex. invoicing.xxx.com directly or to use the auto-generated mailbox of postmark when you are using redirect.</p>
+
+<h4>SetUp Mindee OCR</h4>
+
+<p>To parse a document IN can use OCR solutions like Mindee. Mindee offers to process documents and guess the contents using AI. Each account has 250 pages for free, which makes it very suiteable for small busineses using self-hosted.</p>
+
+<p>Use the following .env variable to configure your mindee api key:</p>
+
+<p>MINDEE_API_KEY=your-api-key</p>
+
+<h4>1. (Optional) SetUp Mindee Account and Update ENV</h4>
+
+<p>First of All, you have to create your Mindee Account (if you wanna use OCR), without it IN will only use standards like ZUGFeRD if the document supports it. Create an API Key and save it to the env file of your IN instance:
+MINDEE_API_KEY=API-KEY
+I suggest checking how many free pages are included in your free mindee subscription. Default should be 250, but this may varry.
+I you wanna change your local tracked contingent per month to avoid unnecessary payments to mindee, you can use the following envs to customize the behavior:</p>
+
+<p>MINDEE_MONTHLY_LIMIT
+MINDEE_DAILY_LIMIT
+MINDEE_ACCOUNT_MONTHLY_LIMIT
+MINDEE_ACCOUNT_DAILY_LIMIT
+if the limit is exceeded mindee is treated as not configured. (ignored)</p>
+
+<h4>2. SetUp your Inboud Mail Provider</h4>
+
+<p>SetUp your account at mailgun/postmark/brevo and follow the steps to setup inbound mail parsing (each service does it differently)
+You can look at the original PR (#9042) , where I have documented more informations about each provider. I will now describe how I did it with brevo:
+a) Set an API-Key for the brevo endpoint within your env:
+INBOUND_WEBHOOK_TOKEN=XXX
+you can use somthing like: https://generate-random.org/api-key-generator
+b) Read and do this (setup your DNS and infos about it): https://developers.brevo.com/docs/inbound-parse-webhooks
+c) Create an API key in the Console
+d) Use this api-documentation to send the needed requests to setup your webhook: https://developers.brevo.com/reference/getwebhooks-1 => please append the following at the end of your url ?token=XXX (this is the api token from a)
+I highly suggest trying it first out if the webhook is working by using an url from https://webhook.site. This website will show you the contents of the webhooks beeing send, after you sended an email to the inbound webhook email. You can use the recieving url as the target for the webhooks created in d)</p>
+
+<h4>3. (Optional) Prepare your current email mailbox</h4>
+
+<p>I am using gmail with google workspace, so i created a forward rules within admin.google.com to redirect all emails from xxx@my-domain.de to my internal email at brevo for recieving email at brevo and dont publishing the brevo email. You can also use the rules for redirect within the mailbox itself</p>
+
+<h4>4. SetUp IN</h4>
+
+<p>a) Go To Settings->Expenses and enable the Inbound Mailbox
+b) Paste your brevo email into the reciever field (this has to be unique regarding the whole IN instance)
+c) Allow the senders you want to be able to send you expenses via mail.
+=> I use enable my vendors and from my own company and added as whitelist also my personal email from my phone</p>
+
+<h4>5. Test the system</h4>
+
+<p>a) Send an Email to the brevo inbound email
+b) Check if an expense got created
+c) If not: check if the request from brevo is present => this sometimes takes up to 5min
+d) If yes: check the logs for any errors and report them as an issue if you have any trouble resolving them</p>
+
+<p><div class="flex justify-end">
+    <a class="text-blue-500 flex items-center" href="/en/credits">
+        <span>Credits</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="p-0 mt-1 h-4" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="13 17 18 12 13 7"></polyline>
+            <polyline points="6 17 11 12 6 7"></polyline>
+        </svg>
+    </a>
+</div></p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/expenses.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>
