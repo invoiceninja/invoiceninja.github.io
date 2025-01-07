@@ -213,3 +213,8 @@ PDF_PAGE_NUMBER_X=0
 PDF_PAGE_NUMBER_Y=-6
 ```
 Controls the x/y coordinates of the PDF page numbering (if enabled)
+
+```
+DISABLE_PURIFY_HTML=true
+```
+Disables the purify HTML sanitization which can cause issues with PDF generation.
