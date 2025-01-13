@@ -86,7 +86,7 @@ And enter in the values for your company
 In your custom design, you'll then want to insert the variable that allows the QR code to be injected, for example.
 
 ```
-<div>
+<div data-state="encoded-html">
 $sepa_qr_code
 </div>
 ```
