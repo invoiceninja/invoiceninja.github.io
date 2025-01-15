@@ -50,7 +50,7 @@ Vous devrez ensuite personnaliser votre design pour inclure le code QR sur vos P
 Dans l'onglet Corps, ajoutez en bas
 
 ```
-<div style="page-break-inside: avoid;">
+<div style="page-break-inside: avoid;" data-state="encoded-html">
 $swiss_qr
 </div>
 ```

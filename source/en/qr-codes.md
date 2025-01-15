@@ -50,7 +50,7 @@ You'll then need to customize your design to include the QR code on your PDFs. T
 In the body tab, at the bottom add
 
 ```
-<div style="page-break-inside: avoid;">
+<div style="page-break-inside: avoid;" data-state="encoded-html">
 $swiss_qr
 </div>
 ```
