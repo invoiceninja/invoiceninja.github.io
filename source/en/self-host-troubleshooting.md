@@ -38,10 +38,107 @@ In order to recover from a failed/incomplete update, you may attempt to run the 
  b) From a browser window 
 
  https://yourdomain.com/update?secret=UPDATE_SECRET_VALUE_FROM_ENV_FILE
-
+ 
 ### ERROR: Target class [view] does not exist
 
 This error can usually be resolved by deleting the contents of the bootstrap/cache folder.
+
+## Downgrading to a Specific Version
+
+If you need to downgrade your Invoice Ninja installation to a specific version, follow the steps below. Ensure you have sufficient backups and preparation to avoid data loss or service interruption.
+
+### Step 1: Backup Your Installation
+
+#### 1.1 Backup Your `.env` File
+The `.env` file contains critical configuration for your installation. Make a copy of it:
+
+NB! change directory to your Invoice Ninja root folder
+```bash
+cd /var/www/invoiceninja
+```
+
+NB! Make sure to replace {youraccount} with your user folder
+```bash
+cp .env /home/{youraccount}/invoice-ninja-env-backup-YYYY-MM-DD
+```
+
+#### 1.2 Backup Your Database
+Use your preferred database management tool to create a backup. Many tutorials are available online based on your specific database setup (e.g., MySQL, PostgreSQL).
+
+#### 1.3 Backup Your Root Folder
+For complete recovery, back up your Invoice Ninja root folder:
+
+NB! Make sure to replace {youraccount} with your user folder
+```bash
+tar -pzcf /home/{youraccount}/invoiceninja-YYYY-MM-DD.tar.gz /var/www/invoiceninja
+```
+
+### Step 2: Download the Target Version
+Navigate to the [Invoice Ninja Releases Page](https://github.com/invoiceninja/invoiceninja/releases) and identify the version you wish to downgrade to. Download the `invoiceninja.tar` file for that version into the root of your Invoice Ninja folder:
+
+NB! change directory to your Invoice Ninja root folder
+```bash
+cd /var/www/invoiceninja 
+```
+```bash
+wget https://github.com/invoiceninja/invoiceninja/releases/download/v5.XX.XX/invoiceninja.tar
+```
+
+### Step 3: Extract the Files
+Extract the downloaded archive, ensuring it overwrites the existing files:
+
+NB! Make sure to replace www-data with your web user
+```bash
+sudo -u www-data tar -xf invoiceninja.tar 
+```
+
+### Step 4: Clear Caches
+Run the following commands to clear caches and optimize the application:
+
+NB! Make sure to replace www-data with your web user
+```bash
+sudo -u www-data php artisan cache:clear
+sudo -u www-data php artisan view:clear
+sudo -u www-data php artisan config:clear
+sudo -u www-data php artisan optimize:clear
+sudo -u www-data composer dump-autoload
+```
+
+### Step 5: Clean Up
+Delete the downloaded `invoiceninja.tar` file to keep your installation tidy:
+
+```bash
+cd /var/www/invoiceninja
+```
+```bash
+rm -f invoiceninja.tar
+```
+
+### Step 6: Verify the Installation
+Access your Invoice Ninja installation through the browser to ensure it is functioning correctly. If errors occur, follow these steps:
+
+1. Delete the Invoice Ninja folder:
+    
+   ```bash
+   rm -rf /var/www/invoiceninja
+   ```
+   
+2. Restore from your backups:
+   - Extract your root folder backup.
+
+   ```bash
+   tar -zxf /home/{youraccount}/invoiceninja-YYYY-MM-DD.tar.gz -C /
+   ```
+
+   - Restore your database backup.
+
+### Notes
+- Ensure that the target version’s system requirements match your server’s configuration.
+- If you encounter permission issues, verify that the `www-data` user (or equivalent web server user) has the correct access to your installation directory.
+- For additional help, consult the community forums.
+
+
+
 
 ## SQLSTATE[42S22]: Column not found: 
 
