@@ -55,6 +55,13 @@ $swiss_qr
 </div>
 ```
 
+or we have also made available a decoded version using the following variable
+
+```
+$swiss_qr_raw
+```
+
+
 After you have saved the design, you'll want to make this your new default design.
 
 ![alt text](/assets/images/pdf_customization/swiss_qrcode2.png "Swiss QR Codes")
