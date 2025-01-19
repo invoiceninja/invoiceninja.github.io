@@ -292,6 +292,14 @@ As of version 5.5.12 we no longer prebundle snappdf in the release files, so if 
 vendor/bin/snappdf download
 ```
 
+<x-warning>
+If PDF generation is broken after an upgrade, you may need to run the above command again, with the force option.
+
+chmod +x vendor/bin/snappdf
+sudo -u www-data vendor/bin/snappdf download --force
+
+</x-warning>
+
 Snappdf is also the default PDF engine in our [Docker](https://github.com/invoiceninja/dockerfiles) image, so if you prefer a very simple installation please consider our Docker setup as it is very fast to get going!
 
 You can use this command to test Snappdf:
