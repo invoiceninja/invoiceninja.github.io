@@ -743,6 +743,8 @@ Here are the object definitions that are available.
 | expense_id | string |  |
 | _id | string | 358982ee-f062-42f3-9dcf-4068e9347fa0 |
 | cost_raw | float | 372 |
+| net_cost | string | $372.00 |
+| net_cost_raw | float | 372.00 |
 | discount_raw | float | 0 |
 | line_total_raw | float | 372.00 |
 | gross_line_total_raw | float | 389.48 |
