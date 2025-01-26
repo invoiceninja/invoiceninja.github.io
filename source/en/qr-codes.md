@@ -39,13 +39,21 @@ This is your normal IBAN. You can't use a reference! You are only allowed to use
 
 Follows the ISO-11649 norm. Works like a QR-Reference but uses ISO-11649 which makes it usable international. Unlike the provious two QR codes, this also works outside of Switzerland. You have to use the normal IBAN, not the QR IBAN.
 
+### Inserting the QR Code into your Invoice
+
+<x-info>
+> Your company country must be set to Switzerland for the QR IBAN and BESR Number fields to become visible on the Company Details page.
+</x-info>
+
 ![alt text](/assets/images/pdf_customization/swiss_qrcode1.png "Swiss QR Codes")
 
-You can configure this under Settigns > Company Details in the Details page.
+Codes can be inserted directly into the wysiwyg editor in either the public notes or terms sections. 
 
 ![alt text](/assets/images/pdf_customization/swiss_qrcode3.png "Swiss QR Codes")
 
-You'll then need to customize your design to include the QR code on your PDFs. To do this create a new design in Settings > Inovice Design > Customize
+<x-warning>
+> Due to the width of these containers, the QR Code will appear compressed. If you prefer to have the QR code stretch the width of the PDF, you'll want to create a custom design and insert the QR code into the body of the invoice as shown below.
+</x-warning>
 
 In the body tab, at the bottom add
 
@@ -61,10 +69,13 @@ or we have also made available a decoded version using the following variable
 $swiss_qr_raw
 ```
 
+![alt text](/assets/images/pdf_customization/swiss_qrcode4.png "Swiss QR Codes")
+
+This will then allow the QR code to stretch the width of the PDF and will appear as follows.
+
+![alt text](/assets/images/pdf_customization/swiss_qrcode5.png "Swiss QR Codes")
 
 After you have saved the design, you'll want to make this your new default design.
-
-![alt text](/assets/images/pdf_customization/swiss_qrcode2.png "Swiss QR Codes")
 
 If your QR codes are not appearing then there would be a configuration issue that needs to be addressed. The most common reasons the QR code does not appear on the PDF is due to missing company details. Your full address is required along with the clients full details.
 
@@ -72,31 +83,43 @@ If your QR codes are not appearing then there would be a configuration issue tha
 
 To enable SEPA QR codes you'll need to follow a couple of steps to ensure there is the correct data.
 
-SEPA QR codes require at the very least a IBAN, for payments outside of EEA you will also need the BIC. These two fields are harvested from the Custom Company Fields section of Invoice Ninja. Please note that IBAN must be the first custom field and BIC the second custom field. To configure these navigate to
+SEPA QR codes require at the very least a IBAN, for payments outside of EEA you will also need the BIC. 
+
+You can configure your payment details by enabling E Invoicing and setting the payment method to Credit Transfer (code 30) or SEPA Credit Transfer (code 58).
+
+![alt text](/assets/images/qr/sepa_qr_code_config_1.png "Enable E Invoicing")
+
+Once you enable E Invoicing, the payment means dialog will appear, then set either code 30 or 58, the form will then populate with the correct fields.
+
+![alt text](/assets/images/qr/sepa_qr_code_config_2.png "Set payment method to Credit/Transfer")
+
+The variable
 
 ```bash
-Settings > Custom Fields > Company
+$sepa_qr_code
 ```
 
-![alt text](/assets/images/user_guide/iban_bic.png "IBAN and BIC configuration")
+Can be placed directly into the Public Notes or Terms sections of your invoice, for automatic generation of the QR code in your invoice.
 
-Once saved, then navigate to
+![alt text](/assets/images/qr/sepa_qr_code_config_3.png "Insert code into invoice")
 
-```bash
-Settings > Company Details
-```
+If you prefer to have control over the location of the QR code you can create a custom design and then use the following options to inject the QR code into your PDF.
 
-And enter in the values for your company
-
-![alt text](/assets/images/user_guide/iban_bic_2.png "IBAN and BIC configuration")
-
-In your custom design, you'll then want to insert the variable that allows the QR code to be injected, for example.
 
 ```
 <div data-state="encoded-html">
 $sepa_qr_code
 </div>
 ```
+
+or
+
+```
+$sepa_qr_code_raw
+```
+
+![alt text](/assets/images/qr/sepa_qr_code_config_4.png "Insert code into the custom design")
+
 
 ## Generic Payment link QR Codes
 
