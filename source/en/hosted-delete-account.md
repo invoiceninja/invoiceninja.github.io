@@ -14,16 +14,12 @@ Navigate to
 Settings > Account Managment > Danger Zone
 ```
 
+<x-warning>
+Once confirmed, this is irreversable. All data will be wiped from our system. 
+</x-warning>
+
 ![alt text](/assets/images/account/account_danger_zone.png "Danger Zone")
 
 Click on the Delete Account button and a confirmation modal will appear.
 
 ![alt text](/assets/images/account/account_delete_modal.png "Confirm account deletion")
-
-<x-warning>
-Once confirmed, this is irreversable. All data will be wiped from our system. 
-</x-warning>
-
-<x-warning>
-Disable the required checkboxes and then save.
-</x-warning>
