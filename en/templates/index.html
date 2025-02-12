@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/templates">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">User Guide</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/user-guide">Getting Started</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/faq">FAQ</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/gateways">Payment Gateways</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/clients">Clients</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/client-portal">Client Portal</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/einvoicing">E-invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/invoices">Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-invoices">Recurring Invoices</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/products">Products</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/payments">Payments</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/taxes">Taxes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/quotes">Quotes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/expenses">Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/credits">Credits</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/projects">Projects</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tasks">Tasks</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/purchase_orders">Purchase Orders</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/recurring-expenses">Recurring Expenses</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/reports">Reports</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/subscriptions">Subscriptions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/vendors">Vendors</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/banking">Banking</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/transactions">Transactions</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/basic-settings">Basic Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/advanced-settings">Advanced Settings</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/tax-accounting-tips">Tax Accounting Tips</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Advanced Topics</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/email-customization">Email Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/custom-fields">PDF Customization</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/import-and-export">Import/Export</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/qr-codes">QR Codes</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/templates">Templates</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="#">Hosted</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-quickstart">Quick Start</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-activate">Activate</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-custom-domain">Custom Domain</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-migration">Hosted Migration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-mail">Mail Servers</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-stripe">Stripe Integration</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/hosted-delete-account">Delete Account</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h1>Templates</h1>
+
+<h2>Introduction</h2>
+
+<p>Templates allow you to create customized designs and documents using raw data. We have a prebuilt range of templates that will allow you to quickly create Statements / Payment Receipts / Payment Refund Receipts and Delivery Notes,  but the functionality does not stop there.</p>
+
+<p>You can also run a templates against any entity within the application and have a PDF returned the the entities dataset embedded in. Here is an example of a template which has been produced from a Project:</p>
+
+<p><img src="/assets/images/templates/project_template.png" alt="alt text" title="Project Template" /></p>
+
+<p>When run against our project template, we receive a PDF like this:</p>
+
+<p><img src="/assets/images/templates/project_template_output.png" alt="alt text" title="Project Template Output" /></p>
+
+<p>In our template we have constructed (use the Twig templating engine) a document which contain the projects details and a summary of each task time log entry.</p>
+
+<h2>Getting Started</h2>
+
+<h3>Delivery Note Example</h3>
+
+<div class="video_container">
+<iframe class="video" src="https://www.youtube.com/embed/kfG5vvcbYes" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<h3>Concepts</h3>
+
+<p>Templates are simple Html / CSS documents combined with the super powerful <a href="https://twig.symfony.com/">twig</a> templating engine.</p>
+
+<p>This combined with the raw data from Invoice Ninja allows you to create a document that exactly fits your requirements. To start, simply create a new template in</p>
+
+<pre><code class="language-bash">Settings / Invoice Design / Custom Designs
+</code></pre>
+
+<p><img src="/assets/images/templates/template_starter_1.png" alt="alt text" title="Creating a new template" /></p>
+
+<p>You will see that along with providing a name for the design/template, there is a new selector which allows you to choose whether the design is a regular design (ie for invoices / quotes) or a template which can also be a custom design, but also includes the power twig syntax and data to create bespoke templates.</p>
+
+<p>After selecting the template option, a series of checkboxes will appear where you can associate the data types with the template. This is an important step as it allows us to provide the menu options for this template in the correct location and also provides the correct context when running the template;</p>
+
+<p>for example, if you select the invoice checkbox, the system will be able to prepare your invoice/s to be run through the template. You can select multiple options here and the system will ensure this data is prepared and ready for use in the template.</p>
+
+<p>How did we construct this? Lets take a look at a template sample:</p>
+
+<p><img src="/assets/images/templates/template_starter_2.png" alt="alt text" title="Ninja Blocks" /></p>
+
+<p>Embedded in the html/css is a dedicated set of <code>&lt;ninja&gt;&lt;/ninja&gt;</code> tags, this tells the template engine that we are now using the Twig Templating system.</p>
+
+<p><img src="/assets/images/templates/template_starter_3.png" alt="alt text" title="Harvesting the data" /></p>
+
+<p>Templates always assume that the data being processed in an array of objects. In this particular case, we have an array of projects. If your template will only ever consider a single project then you'll want to harvest the first project in your array of projects using this syntax:</p>
+
+<pre><code class="language-twig">{% if projects %}
+{% set project = projects|first %}
+</code></pre>
+
+<p>Now that we have the project object, we can use this in our template, to print a variable to the template, you would wrap the variable in {{ }} like this:</p>
+
+<pre><code class="language-twig">&lt;h1&gt;@{{ project.name }}&lt;/h1&gt;
+&lt;h3&gt;Due: {{ project.due_date }}&lt;/h3&gt;
+&lt;h6&gt;{{ project.current_hours }} / {{ project.budgeted_hours }}: (Hours / Budgeted Hours @ {{ project.task_rate }}) - Report generated on {{ "now"|date('Y-m-d') }}&lt;/h6&gt;
+</code></pre>
+
+<p>We've now started to introduce variables into our template and also some nifty twig formats for dynamic data such as a date using this following syntax to present when the report was generated</p>
+
+<pre><code class="language-twig">Report generated on {{ "now"|date('Y-m-d') }}
+</code></pre>
+
+<p>Lets now loop through the project tasks and output the time_log data with the following sequence</p>
+
+<pre><code class="language-twig">{% for task in project.tasks %}
+
+    {% for log in task.time_log %}
+
+    &lt;tr&gt;
+        &lt;td&gt;{{ log.start_date }}&lt;/td&gt;
+        &lt;td&gt;
+            &lt;div&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;{{ log.description }}&lt;/li&gt;
+                    &lt;li&gt;{{ task.user.name }}&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+
+        &lt;/td&gt;
+        &lt;td&gt;{{ log.duration|date('h:i:s')}}&lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+
+{% endfor %}
+</code></pre>
+
+<p>Here we have created a for loop, iterating over every task in the project, this follows with another for loop where we loop over every time_log entry in each task where we output the dates / description and duration of each task.</p>
+
+<p>Finally, we are able to transform the log.duration (seconds), into a date format with h:i:s format (Hours:Minutes:Seconds)</p>
+
+<h2>Using blocks in templates</h2>
+
+<p>If you wish to use standard company/client/vendor details, this is super simple using standard div blocks:</p>
+
+<pre><code class="language-html">&lt;div id="client-details"&gt;&lt;/div&gt;
+&lt;div id="company-details"&gt;&lt;/div&gt;
+&lt;div id="company-address"&gt;&lt;/div&gt;
+&lt;div id="vendor-details"&gt;&lt;/div&gt;
+&lt;div id="shipping-address"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>These will populate using the data stored in Settings > Invoice Designs for each block.</p>
+
+<h2>Data Access</h2>
+
+<h3>Twig variables</h3>
+
+<p>Accessing data using twig would be as follows:</p>
+
+<p>First we'd check to ensure the variable is available</p>
+
+<pre><code class="language-twig">{% if tasks|e %}
+{% endif %}
+</code></pre>
+
+<p>Then we can iterate</p>
+
+<pre><code class="language-twig">{% if tasks|e %}
+
+    {% for task in tasks %}
+    {% endfor %}
+
+{% endif %}
+</code></pre>
+
+<p>Accessing data is done using dot notation, for example retrieving the client name of a tasks project would be as follows:</p>
+
+<pre><code class="language-twig">{{ task.project.client.name }}
+</code></pre>
+
+<h3>Invoice Ninja variables</h3>
+
+<p>Standard $ notation variables are also available within templates, this allows you to use familiar variables such as $invoice.amount - you can also combine twig and ninja variables like this to integrate conditionals into your template. ie</p>
+
+<pre><code class="language-twig"><br />{% if invoice.balance &gt; 0 %}
+ $invoice.balance is payable!
+{% else %}
+ Invoice has been paid! Thanks!
+{% endif %}
+
+</code></pre>
+
+<h4>Allowed Tags</h4>
+
+<ul>
+<li>if</li>
+<li>for</li>
+<li>set</li>
+<li>filter</li>
+</ul>
+
+<h4>Allowed Filters</h4>
+
+<ul>
+<li>escape</li>
+<li>e</li>
+<li>upper</li>
+<li>lower</li>
+<li>capitalize</li>
+<li>filter</li>
+<li>length</li>
+<li>merge</li>
+<li>format_currency</li>
+<li>format_number</li>
+<li>format_percent_number</li>
+<li>map</li>
+<li>join</li>
+<li>first</li>
+<li>date</li>
+<li>sum</li>
+<li>nl2br</li>
+</ul>
+
+<h4>Allowed Functions</h4>
+
+<ul>
+<li>range</li>
+<li>cycle</li>
+<li>constant</li>
+<li>date</li>
+</ul>
+
+<h4>Allowed Properties</h4>
+
+<ul>
+<li>type_id</li>
+</ul>
+
+<h4>Allowed Methods</h4>
+
+<ul>
+<li>img</li>
+<li>t</li>
+</ul>
+
+<h2>Statements</h2>
+
+<p>Statements are special objects in templates. Because the input data point is a client/s we need additional information to understand whether a template is a "statement" template or not.</p>
+
+<p>When creating custom statements, you will want to insert a comment within the template so that the system can resolve that it is a statement for processing</p>
+
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;!-- Statement - TemplateID #TS4 ##statement##--&gt;
+&lt;html&gt;
+&lt;head&gt;
+</code></pre>
+
+<p>Note the special text</p>
+
+<pre><code>##statement##
+</code></pre>
+
+<p>This will allow the system to resolve a custom statement.</p>
+
+<h2>Object Json Definitions</h2>
+
+<p>Here are the object definitions that are available.</p>
+
+<h3>Invoice</h3>
+
+<pre><code class="language-json">{
+    "invoices": [
+        {
+            "amount": "$6,606.30",
+            "balance": "$6,606.30",
+            "status_id": 2,
+            "status": "Sent",
+            "amount_raw": "6606.300000",
+            "balance_raw": "6606.300000",
+            "number": "0001",
+            "discount": "6.000000",
+            "po_number": "Unde.",
+            "date": "25. March 2024",
+            "last_sent_date": "",
+            "next_send_date": "",
+            "due_date": "",
+            "terms": "Default company invoice terms",
+            "public_notes": "",
+            "private_notes": "",
+            "uses_inclusive_taxes": false,
+            "tax_name1": "GST",
+            "tax_rate1": 10,
+            "tax_name2": "VAT",
+            "tax_rate2": 17.5,
+            "tax_name3": "THIRDTAX",
+            "tax_rate3": 5,
+            "total_taxes": "$1,905.44",
+            "total_taxes_raw": "1905.440000",
+            "is_amount_discount": false,
+            "footer": "Default invoice footer",
+            "partial": "0.000000",
+            "partial_due_date": "",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "custom_surcharge1": 0,
+            "custom_surcharge2": 0,
+            "custom_surcharge3": 0,
+            "custom_surcharge4": 0,
+            "exchange_rate": 1,
+            "custom_surcharge_tax1": false,
+            "custom_surcharge_tax2": false,
+            "custom_surcharge_tax3": false,
+            "custom_surcharge_tax4": false,
+            "reminder1_sent": "",
+            "reminder2_sent": "",
+            "reminder3_sent": "",
+            "reminder_last_sent": "",
+            "paid_to_date": "$0.00",
+            "auto_bill_enabled": false,
+            "line_items": [
+                {
+                    "quantity": 1,
+                    "cost": "$372.00",
+                    "product_key": "Ut in.",
+                    "notes": "Architecto at est.",
+                    "discount": 0,
+                    "is_amount_discount": false,
+                    "tax_name1": "Sales Tax",
+                    "tax_rate1": 5,
+                    "tax_name2": "",
+                    "tax_rate2": 0,
+                    "tax_name3": "",
+                    "tax_rate3": 0,
+                    "sort_id": "0",
+                    "line_total": "$372.00",
+                    "gross_line_total": "$389.48",
+                    "custom_value1": "https://picsum.photos/200",
+                    "custom_value2": "75",
+                    "custom_value3": "Nulla est incidunt.",
+                    "custom_value4": "Consequatur in.",
+                    "type_id": "1",
+                    "product_cost": "$0.00",
+                    "tax_amount": "$17.48",
+                    "date": "",
+                    "tax_id": "1",
+                    "task_id": "",
+                    "expense_id": "",
+                    "_id": "358982ee-f062-42f3-9dcf-4068e9347fa0",
+                    "cost_raw": 372,
+                    "discount_raw": 0,
+                    "line_total_raw": "372.00",
+                    "gross_line_total_raw": 389.48,
+                    "tax_amount_raw": 17.48,
+                    "product_cost_raw": 0,
+                    "task": {
+                        "number": "0007",
+                        "description": "The task description",
+                        "duration": 726023,
+                        "rate": "$0.00",
+                        "rate_raw": "0.000000",
+                        "created_at": "21. March 2024",
+                        "updated_at": "27. March 2024",
+                        "date": "21. March 2024",
+                        "project": {
+                            "name": "Date App",
+                            "number": "0006",
+                            "created_at": "22. March 2024",
+                            "updated_at": "22. March 2024",
+                            "task_rate": "$0.00",
+                            "task_rate_raw": "0.000000",
+                            "due_date": "",
+                            "private_notes": "",
+                            "public_notes": "",
+                            "budgeted_hours": 1200,
+                            "custom_value1": "",
+                            "custom_value2": "",
+                            "custom_value3": "",
+                            "custom_value4": "",
+                            "color": "",
+                            "current_hours": 0,
+                            "client": {
+                                "name": "Kilback-Stoltenberg",
+                                "balance": "0.000000",
+                                "payment_balance": "0.000000",
+                                "credit_balance": "2084.140000",
+                                "vat_number": "428950405"
+                            },
+                            "user": {
+                                "name": "Glennie Schaefer Dr. Corbin Rowe",
+                                "email": "small@example.com"
+                            }
+                        },
+                        "time_log": [
+                            {
+                                "start_date_raw": 1711012404,
+                                "start_date": "20. March 2024 22:13:24",
+                                "end_date_raw": 1711095351,
+                                "end_date": "21. March 2024 21:15:51",
+                                "description": "Consequatur voluptas aperiam sapiente optio non dolores quaerat.",
+                                "billable": true,
+                                "duration_raw": 82947,
+                                "duration": "23:02:27"
+                            },
+                            {
+                                "start_date_raw": 1711095651,
+                                "start_date": "21. March 2024 21:20:51",
+                                "end_date_raw": 1711149254,
+                                "end_date": "22. March 2024 12:14:14",
+                                "description": "Aut iusto ducimus molestiae reprehenderit fugiat cum.",
+                                "billable": true,
+                                "duration_raw": 53603,
+                                "duration": "14:53:23"
+                            },
+                        ],
+                        "custom_value1": "",
+                        "custom_value2": "",
+                        "custom_value3": "",
+                        "custom_value4": "",
+                        "status": "Ready to do",
+                        "user": {
+                            "name": "Glennie Schaefer Dr. Corbin Rowe",
+                            "email": "small@example.com"
+                        },
+                        "client": {
+                            "name": "Kilback-Stoltenberg",
+                            "balance": "0.000000",
+                            "payment_balance": "0.000000",
+                            "credit_balance": "2084.140000",
+                            "vat_number": "428950405"
+                        }
+                    }
+                },
+                {
+                    "quantity": 1,
+                    "cost": "$73.00",
+                    "product_key": "Non.",
+                    "notes": "Aut sunt totam.",
+                    "discount": 0,
+                    "is_amount_discount": false,
+                    "tax_name1": "Sales Tax",
+                    "tax_rate1": 5,
+                    "tax_name2": "",
+                    "tax_rate2": 0,
+                    "tax_name3": "",
+                    "tax_rate3": 0,
+                    "sort_id": "0",
+                    "line_total": "$73.00",
+                    "gross_line_total": "$76.43",
+                    "custom_value1": "https://picsum.photos/200",
+                    "custom_value2": "29",
+                    "custom_value3": "Accusamus quo.",
+                    "custom_value4": "Qui similique culpa.",
+                    "type_id": "1",
+                    "product_cost": "$0.00",
+                    "tax_amount": "$3.43",
+                    "date": "",
+                    "tax_id": "1",
+                    "task_id": "",
+                    "expense_id": "",
+                    "_id": "013efb0f-5f11-45fc-b404-20427fb0e2a0",
+                    "cost_raw": 73,
+                    "discount_raw": 0,
+                    "line_total_raw": "73.00",
+                    "gross_line_total_raw": 76.43,
+                    "tax_amount_raw": 3.43,
+                    "product_cost_raw": 0
+                },
+            ],
+
+            "client": {
+                "name": "Kub, Koepp and Conroy",
+                "balance": "6606.300000",
+                "payment_balance": "0.000000",
+                "credit_balance": "0.000000",
+                "vat_number": "373145743"
+            },
+            "payments": [
+                {
+                    "status": "Refunded",
+                    "badge": "&lt;h6&gt;&lt;span class=\"badge badge-primary\"&gt;Refunded&lt;\/span&gt;&lt;\/h6&gt;",
+                    "amount": "$104.95",
+                    "applied": "$104.95",
+                    "balance": "-$104.95",
+                    "refunded": "$104.95",
+                    "amount_raw": "104.950000",
+                    "applied_raw": "104.950000",
+                    "refunded_raw": "104.950000",
+                    "balance_raw": -104.95,
+                    "date": "24. March 2024",
+                    "method": "",
+                    "currency": "USD",
+                    "exchange_rate": 1,
+                    "transaction_reference": null,
+                    "is_manual": 1,
+                    "number": "0003",
+                    "custom_value1": "",
+                    "custom_value2": "",
+                    "custom_value3": "",
+                    "custom_value4": "",
+                    "created_at": "25. March 2024",
+                    "updated_at": "25. March 2024",
+                    "refund_activity": ["24. March 2024 Invoice #0029 $104.95 Refunded"],
+                    "client": {
+                        "name": "cypress",
+                        "balance": "0.000000",
+                        "payment_balance": "333.000000",
+                        "credit_balance": "0.000000",
+                        "vat_number": "561724719"
+                    },
+                    "paymentables": [
+                        {
+                            "invoice": "0029",
+                            "amount_raw": "104.9500",
+                            "refunded_raw": "104.9500",
+                            "net_raw": 0,
+                            "amount": "$104.95",
+                            "refunded": "$104.95",
+                            "net": "$0.00",
+                            "is_credit": false,
+                            "date": "24. March 2024",
+                            "created_at": "25. March 2024",
+                            "updated_at": "25. March 2024",
+                            "timestamp": 1711329333
+                        }
+                    ],
+                }
+            ],
+            "total_tax_map": [
+                {
+                    "name": "GST 10%",
+                    "total": 470.09
+                },
+                {
+                    "name": "VAT 17.5%",
+                    "total": 822.65
+                },
+                {
+                    "name": "THIRDTAX 5%",
+                    "total": 235.04
+                }
+            ],
+            "line_tax_map": [
+                {
+                    "name": "Sales Tax 5%",
+                    "total": 124.72999999999999
+                },
+                {
+                    "name": "VAT 17.5%",
+                    "total": 117.95
+                },
+                {
+                    "name": "GST 10%",
+                    "total": 134.98
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+
+<h3>Payment</h3>
+
+<pre><code class="language-json">{
+    "payments": [
+        {
+            "status": "Completed",
+            "badge": "&lt;h6&gt;&lt;span class=\"badge badge-info\"&gt;Completed&lt;\/span&gt;&lt;\/h6&gt;",
+            "amount": "$6,723.74",
+            "applied": "$6,723.74",
+            "balance": "$0.00",
+            "refunded": "$0.00",
+            "amount_raw": "6723.740000",
+            "applied_raw": "6723.740000",
+            "refunded_raw": "0.000000",
+            "balance_raw": 0,
+            "date": "22. March 2024",
+            "method": "",
+            "currency": "USD",
+            "exchange_rate": 1,
+            "transaction_reference": "Manual entry",
+            "is_manual": 1,
+            "number": "0002",
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "created_at": "22. March 2024",
+            "updated_at": "22. March 2024",
+            "client": {
+                "name": "Kilback-Stoltenberg",
+                "balance": "0.000000",
+                "payment_balance": "0.000000",
+                "credit_balance": "2084.140000",
+                "vat_number": "428950405"
+            },
+            "paymentables": [],
+            "refund_activity": []
+        }
+    ]
+}
+</code></pre>
+
+<h3>Task</h3>
+
+<pre><code class="language-json">{
+    "tasks": [
+        {
+            "number": "0007",
+            "description": "The task description",
+            "duration": 726023,
+            "rate": "$0.00",
+            "rate_raw": "0.000000",
+            "created_at": "21. March 2024",
+            "updated_at": "27. March 2024",
+            "date": "21. March 2024",
+            "project": {
+                "name": "Date App",
+                "number": "0006",
+                "created_at": "22. March 2024",
+                "updated_at": "22. March 2024",
+                "task_rate": "$0.00",
+                "task_rate_raw": "0.000000",
+                "due_date": "",
+                "private_notes": "",
+                "public_notes": "",
+                "budgeted_hours": 1200,
+                "custom_value1": "",
+                "custom_value2": "",
+                "custom_value3": "",
+                "custom_value4": "",
+                "color": "",
+                "current_hours": 0,
+                "tasks": [],
+                "client": {
+                    "name": "Kilback-Stoltenberg",
+                    "balance": "0.000000",
+                    "payment_balance": "0.000000",
+                    "credit_balance": "2084.140000",
+                    "vat_number": "428950405"
+                },
+                "user": {
+                    "name": "Glennie Schaefer Dr. Corbin Rowe",
+                    "email": "small@example.com"
+                }
+            },
+            "time_log": [
+                {
+                    "start_date_raw": 1711012404,
+                    "start_date": "20. March 2024 22:13:24",
+                    "end_date_raw": 1711095351,
+                    "end_date": "21. March 2024 21:15:51",
+                    "description": "Consequatur voluptas aperiam sapiente optio non dolores quaerat.",
+                    "billable": true,
+                    "duration_raw": 82947,
+                    "duration": "23:02:27"
+                },
+                {
+                    "start_date_raw": 1711095651,
+                    "start_date": "21. March 2024 21:20:51",
+                    "end_date_raw": 1711149254,
+                    "end_date": "22. March 2024 12:14:14",
+                    "description": "Aut iusto ducimus molestiae reprehenderit fugiat cum.",
+                    "billable": true,
+                    "duration_raw": 53603,
+                    "duration": "14:53:23"
+                },
+            ],
+            "custom_value1": "",
+            "custom_value2": "",
+            "custom_value3": "",
+            "custom_value4": "",
+            "status": "Ready to do",
+            "user": {
+                "name": "Glennie Schaefer Dr. Corbin Rowe",
+                "email": "small@example.com"
+            },
+            "client": {
+                "name": "Kilback-Stoltenberg",
+                "balance": "0.000000",
+                "payment_balance": "0.000000",
+                "credit_balance": "2084.140000",
+                "vat_number": "428950405"
+            }
+        }
+    ]
+}
+</code></pre>
+
+<h2>Definitions</h2>
+
+<h3>Invoice / Quote / Credit / Purchase Order Definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Description</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>amount</td>
+  <td>formatted currency</td>
+  <td>$6,606.30</td>
+</tr>
+<tr>
+  <td>balance</td>
+  <td>formatted currency</td>
+  <td>$6,606.30</td>
+</tr>
+<tr>
+  <td>status_id</td>
+  <td>integer representation of the status</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>status</td>
+  <td>text representation of invoice status</td>
+  <td>Sent</td>
+</tr>
+<tr>
+  <td>amount_raw</td>
+  <td>float</td>
+  <td>6606.300000</td>
+</tr>
+<tr>
+  <td>balance_raw</td>
+  <td>float</td>
+  <td>6606.300000</td>
+</tr>
+<tr>
+  <td>number</td>
+  <td>invoice number</td>
+  <td>0001</td>
+</tr>
+<tr>
+  <td>discount</td>
+  <td>float</td>
+  <td>6.000000</td>
+</tr>
+<tr>
+  <td>po_number</td>
+  <td>string</td>
+  <td>Unde.</td>
+</tr>
+<tr>
+  <td>date</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>last_sent_date</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>next_send_date</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>due_date</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>terms</td>
+  <td>string</td>
+  <td>Default company invoice terms</td>
+</tr>
+<tr>
+  <td>public_notes</td>
+  <td>string</td>
+  <td>Public Notes</td>
+</tr>
+<tr>
+  <td>private_notes</td>
+  <td>string</td>
+  <td>Private notes</td>
+</tr>
+<tr>
+  <td>uses_inclusive_taxes</td>
+  <td>boolean</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>tax_name1</td>
+  <td>string</td>
+  <td>GST</td>
+</tr>
+<tr>
+  <td>tax_rate1</td>
+  <td>float</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>tax_name2</td>
+  <td>string</td>
+  <td>VAT</td>
+</tr>
+<tr>
+  <td>tax_rate2</td>
+  <td>float</td>
+  <td>17.</td>
+</tr>
+<tr>
+  <td>tax_name3</td>
+  <td>string</td>
+  <td>THIRDTAX</td>
+</tr>
+<tr>
+  <td>tax_rate3</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>total_taxes</td>
+  <td>formatted currency</td>
+  <td>$1,905.44</td>
+</tr>
+<tr>
+  <td>total_taxes_raw</td>
+  <td>float</td>
+  <td>1905.440000</td>
+</tr>
+<tr>
+  <td>is_amount_discount</td>
+  <td>bool</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>footer</td>
+  <td>string</td>
+  <td>Default invoice footer</td>
+</tr>
+<tr>
+  <td>partial</td>
+  <td>float</td>
+  <td>0.000000</td>
+</tr>
+<tr>
+  <td>partial_due_date</td>
+  <td>string</td>
+  <td>24/1/2024</td>
+</tr>
+<tr>
+  <td>custom_value1</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value2</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value3</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value4</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_surcharge1</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>custom_surcharge2</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>custom_surcharge3</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>custom_surcharge4</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>exchange_rate</td>
+  <td>float</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>custom_surcharge_tax1</td>
+  <td>boolean</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>custom_surcharge_tax2</td>
+  <td>boolean</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>custom_surcharge_tax3</td>
+  <td>boolean</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>custom_surcharge_tax4</td>
+  <td>boolean</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>reminder1_sent</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>reminder2_sent</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>reminder3_sent</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>reminder_last_sent</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>paid_to_date</td>
+  <td>formatted currency</td>
+  <td>$0.00</td>
+</tr>
+<tr>
+  <td>auto_bill_enabled</td>
+  <td>booleam</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>line_items</td>
+  <td>array</td>
+  <td><a href="/en/templates#line-items-definition">Line items</a></td>
+</tr>
+<tr>
+  <td>client</td>
+  <td>object</td>
+  <td><a href="/en/templates#client-definition">Client</a></td>
+</tr>
+<tr>
+  <td>payments</td>
+  <td>array</td>
+  <td><a href="/en/templates#payment-definition">Payment</a></td>
+</tr>
+<tr>
+  <td>total_tax_map</td>
+  <td>array</td>
+  <td><a href="/en/templates#tax-map-definition">Tax Map</a></td>
+</tr>
+<tr>
+  <td>line_tax_map</td>
+  <td>array</td>
+  <td><a href="/en/templates#tax-map-definition">Tax Map</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Line items definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Description</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>quantity</td>
+  <td>float</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>cost</td>
+  <td>formatted currency</td>
+  <td>$372.00</td>
+</tr>
+<tr>
+  <td>product_key</td>
+  <td>string</td>
+  <td>Ut in.</td>
+</tr>
+<tr>
+  <td>notes</td>
+  <td>string</td>
+  <td>Architecto at est.</td>
+</tr>
+<tr>
+  <td>discount</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>is_amount_discount</td>
+  <td>boolean</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>tax_name1</td>
+  <td>string</td>
+  <td>Sales Tax</td>
+</tr>
+<tr>
+  <td>tax_rate1</td>
+  <td>float</td>
+  <td>5</td>
+</tr>
+<tr>
+  <td>tax_name2</td>
+  <td>string</td>
+  <td></td>
+</tr>
+<tr>
+  <td>tax_rate2</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>tax_name3</td>
+  <td>string</td>
+  <td></td>
+</tr>
+<tr>
+  <td>tax_rate3</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>sort_id</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>line_total</td>
+  <td>formatted currency</td>
+  <td>$372.00</td>
+</tr>
+<tr>
+  <td>gross_line_total</td>
+  <td>formatted currency</td>
+  <td>$389.48</td>
+</tr>
+<tr>
+  <td>custom_value1</td>
+  <td>string</td>
+  <td>https://picsum.photos/200</td>
+</tr>
+<tr>
+  <td>custom_value2</td>
+  <td>string</td>
+  <td>75</td>
+</tr>
+<tr>
+  <td>custom_value3</td>
+  <td>string</td>
+  <td>Nulla est incidunt.</td>
+</tr>
+<tr>
+  <td>custom_value4</td>
+  <td>string</td>
+  <td>Consequatur in.</td>
+</tr>
+<tr>
+  <td>type_id</td>
+  <td>string</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>product_cost</td>
+  <td>formatted currency</td>
+  <td>$0.00</td>
+</tr>
+<tr>
+  <td>tax_amount</td>
+  <td>formatted currency</td>
+  <td>$17.48</td>
+</tr>
+<tr>
+  <td>date</td>
+  <td>string</td>
+  <td>24/1/2023</td>
+</tr>
+<tr>
+  <td>tax_id</td>
+  <td>string</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>task_id</td>
+  <td>string</td>
+  <td></td>
+</tr>
+<tr>
+  <td>task</td>
+  <td>object</td>
+  <td><a href="/en/templates#task-definition">Task</a></td>
+</tr>
+<tr>
+  <td>expense_id</td>
+  <td>string</td>
+  <td></td>
+</tr>
+<tr>
+  <td>_id</td>
+  <td>string</td>
+  <td>358982ee-f062-42f3-9dcf-4068e9347fa0</td>
+</tr>
+<tr>
+  <td>cost_raw</td>
+  <td>float</td>
+  <td>372</td>
+</tr>
+<tr>
+  <td>net_cost</td>
+  <td>string</td>
+  <td>$372.00</td>
+</tr>
+<tr>
+  <td>net_cost_raw</td>
+  <td>float</td>
+  <td>372.00</td>
+</tr>
+<tr>
+  <td>discount_raw</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>line_total_raw</td>
+  <td>float</td>
+  <td>372.00</td>
+</tr>
+<tr>
+  <td>gross_line_total_raw</td>
+  <td>float</td>
+  <td>389.48</td>
+</tr>
+<tr>
+  <td>tax_amount_raw</td>
+  <td>float</td>
+  <td>17.48</td>
+</tr>
+<tr>
+  <td>product_cost_raw</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Tax map definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Description</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>name</td>
+  <td>string</td>
+  <td>GST 10%</td>
+</tr>
+<tr>
+  <td>total</td>
+  <td>float</td>
+  <td>470.09</td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Payment definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Description</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>status</td>
+  <td>string</td>
+  <td>Refunded</td>
+</tr>
+<tr>
+  <td>badge</td>
+  <td>string</td>
+  <td>Refunded</td>
+</tr>
+<tr>
+  <td>amount</td>
+  <td>formatted currency</td>
+  <td>$104.95</td>
+</tr>
+<tr>
+  <td>applied</td>
+  <td>formatted currency</td>
+  <td>$104.95</td>
+</tr>
+<tr>
+  <td>balance</td>
+  <td>formatted currency</td>
+  <td>-$104.95</td>
+</tr>
+<tr>
+  <td>refunded</td>
+  <td>formatted currency</td>
+  <td>$104.95</td>
+</tr>
+<tr>
+  <td>amount_raw</td>
+  <td>float</td>
+  <td>104.950000</td>
+</tr>
+<tr>
+  <td>applied_raw</td>
+  <td>float</td>
+  <td>104.950000</td>
+</tr>
+<tr>
+  <td>refunded_raw</td>
+  <td>float</td>
+  <td>104.950000</td>
+</tr>
+<tr>
+  <td>balance_raw</td>
+  <td>float</td>
+  <td>-104.95</td>
+</tr>
+<tr>
+  <td>date</td>
+  <td>string</td>
+  <td>24. March 2024</td>
+</tr>
+<tr>
+  <td>method</td>
+  <td>string</td>
+  <td>Visa</td>
+</tr>
+<tr>
+  <td>currency</td>
+  <td>string</td>
+  <td>USD</td>
+</tr>
+<tr>
+  <td>exchange_rate</td>
+  <td>float</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>transaction_reference</td>
+  <td>string</td>
+  <td>2sd2fv34</td>
+</tr>
+<tr>
+  <td>is_manual</td>
+  <td>boolean</td>
+  <td>1</td>
+</tr>
+<tr>
+  <td>number</td>
+  <td>string</td>
+  <td>0003</td>
+</tr>
+<tr>
+  <td>custom_value1</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value2</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value3</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value4</td>
+  <td>string</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>updated_at</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>refund_activity</td>
+  <td>array of string</td>
+  <td>[24. March 2024 Invoice #0029 $104.95 Refunded]</td>
+</tr>
+<tr>
+  <td>paymentables</td>
+  <td>array</td>
+  <td><a href="/en/templates#paymentables-definition">Paymentables</a></td>
+</tr>
+<tr>
+  <td>client</td>
+  <td>object</td>
+  <td><a href="/en/templates#client-definition">Client</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Paymentables definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Description</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>invoice</td>
+  <td>string</td>
+  <td>0029</td>
+</tr>
+<tr>
+  <td>amount_raw</td>
+  <td>float</td>
+  <td>104.9500</td>
+</tr>
+<tr>
+  <td>refunded_raw</td>
+  <td>float</td>
+  <td>104.9500</td>
+</tr>
+<tr>
+  <td>net_raw</td>
+  <td>float</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>amount</td>
+  <td>formatted currency</td>
+  <td>$104.95</td>
+</tr>
+<tr>
+  <td>refunded</td>
+  <td>formatted currency</td>
+  <td>$104.95</td>
+</tr>
+<tr>
+  <td>net</td>
+  <td>formatted currency</td>
+  <td>$0.00</td>
+</tr>
+<tr>
+  <td>is_credit</td>
+  <td>boolean</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>date</td>
+  <td>string</td>
+  <td>24. March 2024</td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>updated_at</td>
+  <td>string</td>
+  <td>25. March 2024</td>
+</tr>
+<tr>
+  <td>timestamp</td>
+  <td>unix timestamp</td>
+  <td>171132933</td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Task Definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Description</th>
+  <th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>number</td>
+  <td>Task number</td>
+  <td>0007</td>
+</tr>
+<tr>
+  <td>description</td>
+  <td>Task Description</td>
+  <td>Service for bob</td>
+</tr>
+<tr>
+  <td>duration</td>
+  <td>Duration of task in seconds</td>
+  <td>72602</td>
+</tr>
+<tr>
+  <td>rate</td>
+  <td>Task rate currency formatted</td>
+  <td>$0.00</td>
+</tr>
+<tr>
+  <td>rate_raw</td>
+  <td>Task rate raw float</td>
+  <td>0.000000</td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>Date task created</td>
+  <td>21. March 2024</td>
+</tr>
+<tr>
+  <td>updated_at</td>
+  <td>Date task updated</td>
+  <td>27. March 2024</td>
+</tr>
+<tr>
+  <td>date</td>
+  <td>Date of task</td>
+  <td>21. March 2024</td>
+</tr>
+<tr>
+  <td>custom_value1</td>
+  <td>Task Custom Value 1</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value2</td>
+  <td>Task Custom Value 2</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value3</td>
+  <td>Task Custom Value 3</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value4</td>
+  <td>Task Custom Value 4</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>status</td>
+  <td>The task status</td>
+  <td>Ready to do</td>
+</tr>
+<tr>
+  <td>user</td>
+  <td>The Creating User Object</td>
+  <td>See User Property definition</td>
+</tr>
+<tr>
+  <td>client</td>
+  <td>The Client Object</td>
+  <td>See Client Property definition</td>
+</tr>
+<tr>
+  <td>project</td>
+  <td>The Client Object</td>
+  <td>See Client Property definition</td>
+</tr>
+<tr>
+  <td>time_log</td>
+  <td>Array of time log entries</td>
+  <td>See time_log definition</td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Time Log Definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Time Log Array (of objects)</th>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>start_date_raw</td>
+  <td>unix timestamp</td>
+  <td>1711095651</td>
+</tr>
+<tr>
+  <td>start_date</td>
+  <td>Formatted start date</td>
+  <td>21. March 2024 21:20:51</td>
+</tr>
+<tr>
+  <td>end_date_raw</td>
+  <td>unix timestamp</td>
+  <td>1711149254</td>
+</tr>
+<tr>
+  <td>end_date</td>
+  <td>Formatted start date</td>
+  <td>22. March 2024 12:14:14</td>
+</tr>
+<tr>
+  <td>description</td>
+  <td>The task item description</td>
+  <td>Aut iusto ducimus molestiae reprehenderit fugiat cum</td>
+</tr>
+<tr>
+  <td>billable</td>
+  <td>boolean - defines if this time entry is billable</td>
+  <td>true</td>
+</tr>
+<tr>
+  <td>duration_raw</td>
+  <td>seconds - raw duration of entry</td>
+  <td>53603</td>
+</tr>
+<tr>
+  <td>duration</td>
+  <td>formatted duration</td>
+  <td>14:53:23</td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>User Definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Creating User Object</th>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>name</td>
+  <td>The users name</td>
+  <td>Bob Jane</td>
+</tr>
+<tr>
+  <td>email</td>
+  <td>The users email</td>
+  <td>bob@gmail.com</td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Client Definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Client Object</th>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>name</td>
+  <td>The full client name</td>
+  <td>Kilback-Stoltenberg</td>
+</tr>
+<tr>
+  <td>balance</td>
+  <td>The client balance</td>
+  <td>0.000000</td>
+</tr>
+<tr>
+  <td>payment_balance</td>
+  <td>The client payment balance</td>
+  <td>0.000000</td>
+</tr>
+<tr>
+  <td>credit_balance</td>
+  <td>Thje client credit balance</td>
+  <td>2084.140000</td>
+</tr>
+<tr>
+  <td>vat_number</td>
+  <td>The client VAT Number</td>
+  <td>428950405</td>
+</tr>
+<tr>
+  <td>currency</td>
+  <td>The client currency code</td>
+  <td>USD</td>
+</tr>
+<tr>
+  <td>locale</td>
+  <td>The client locale</td>
+  <td>en</td>
+</tr>
+<tr>
+  <td>address</td>
+  <td>The formatted billing address</td>
+  <td>1 Wallaby Way, Sydney</td>
+</tr>
+<tr>
+  <td>shipping_address</td>
+  <td>The formatted shipping address</td>
+  <td>2 Wallaby Way, Sydney</td>
+</tr>
+<tr>
+  <td>custom_value1</td>
+  <td>The first client custom value</td>
+  <td>Bob</td>
+</tr>
+<tr>
+  <td>custom_value2</td>
+  <td>The second client custom value</td>
+  <td>Blue</td>
+</tr>
+<tr>
+  <td>custom_value3</td>
+  <td>The third client custom value</td>
+  <td>Batman</td>
+</tr>
+<tr>
+  <td>custom_value4</td>
+  <td>The fourth client custom value</td>
+  <td>Pistachio</td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Project Definition</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Project Object</th>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>name</td>
+  <td>The project name</td>
+  <td>Date App</td>
+</tr>
+<tr>
+  <td>number</td>
+  <td>The project number</td>
+  <td>0006</td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>Date created</td>
+  <td>22. March 2024</td>
+</tr>
+<tr>
+  <td>updated_at</td>
+  <td>Date updated</td>
+  <td>22. March 2024</td>
+</tr>
+<tr>
+  <td>task_rate</td>
+  <td>Task Rate for project (formatted in currency)</td>
+  <td>$0.00</td>
+</tr>
+<tr>
+  <td>task_rate_raw</td>
+  <td>Task rate for project - float format</td>
+  <td>0.000000</td>
+</tr>
+<tr>
+  <td>due_date</td>
+  <td>The due date for the project</td>
+  <td>22. March 2025</td>
+</tr>
+<tr>
+  <td>private_notes</td>
+  <td>The private notes of the project</td>
+  <td>Private notes</td>
+</tr>
+<tr>
+  <td>public_notes</td>
+  <td>The public notes of the project</td>
+  <td>Public notes</td>
+</tr>
+<tr>
+  <td>budgeted_hours</td>
+  <td>The number of hours budgeted for the project</td>
+  <td>200</td>
+</tr>
+<tr>
+  <td>custom_value1</td>
+  <td>Project Custom Value 1</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value2</td>
+  <td>Project Custom Value 2</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value3</td>
+  <td>Project Custom Value 3</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>custom_value4</td>
+  <td>Project Custom Value 4</td>
+  <td>Custom Value</td>
+</tr>
+<tr>
+  <td>color</td>
+  <td>The color associated with the project</td>
+  <td>#fff</td>
+</tr>
+<tr>
+  <td>current_hours</td>
+  <td>The accured hours of the project so far</td>
+  <td>100</td>
+</tr>
+<tr>
+  <td>tasks</td>
+  <td>Array of tasks</td>
+  <td><a href="/en/templates/#task-definition">Task</a></td>
+</tr>
+<tr>
+  <td>user</td>
+  <td>The Creating User Object</td>
+  <td><a href="/en/templates/#user-definition">User</a></td>
+</tr>
+<tr>
+  <td>client</td>
+  <td>The Client Object</td>
+  <td><a href="/en/templates/#client-definition">Client</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Sample Templates</h2>
+
+<h3>Statements</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Preview</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>TS1</td>
+  <td>Plain Statement</td>
+  <td><a href="/assets/images/templates/ts1.png"><img src="/assets/images/templates/ts1.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts1.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TS2</td>
+  <td>Color Statement</td>
+  <td><a href="/assets/images/templates/ts2.png"><img src="/assets/images/templates/ts2.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts2.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TS3</td>
+  <td>Vertical Statement</td>
+  <td><a href="/assets/images/templates/ts3.png"><img src="/assets/images/templates/ts3.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts3.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TS4</td>
+  <td>Logo Statement</td>
+  <td><a href="/assets/images/templates/ts4.png"><img src="/assets/images/templates/ts4.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts4.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Delivery Notes</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Preview</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>TD4</td>
+  <td>3 Column</td>
+  <td><a href="/assets/images/templates/td4.png"><img src="/assets/images/templates/td4.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td4.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TD5</td>
+  <td>2 Column / Footer</td>
+  <td><a href="/assets/images/templates/td5.png"><img src="/assets/images/templates/td5.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td5.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TD12</td>
+  <td>2 Column</td>
+  <td><a href="/assets/images/templates/td12.png"><img src="/assets/images/templates/td12.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td12.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TD13</td>
+  <td>2 Column Mono</td>
+  <td><a href="/assets/images/templates/td13.png"><img src="/assets/images/templates/td13.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td13.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Payment Receipts</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Preview</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>TP6</td>
+  <td>Standard</td>
+  <td><a href="/assets/images/templates/tp6.png"><img src="/assets/images/templates/tp6.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tp6.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TP7</td>
+  <td>Horizontal</td>
+  <td><a href="/assets/images/templates/tp7.png"><img src="/assets/images/templates/tp7.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tp7.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Refund Receipts</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Preview</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>TR8</td>
+  <td>Horizontal</td>
+  <td><a href="/assets/images/templates/tr8.png"><img src="/assets/images/templates/tr8.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tr8.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TR9</td>
+  <td>Standard</td>
+  <td><a href="/assets/images/templates/tr9.png"><img src="/assets/images/templates/tr9.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tr9.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3>Project/Tasks</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Preview</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>TP11</td>
+  <td>Project Outline</td>
+  <td><a href="/assets/images/templates/tp11.png"><img src="/assets/images/templates/tp11.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/projects/tp11.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td>TT10</td>
+  <td>Task</td>
+  <td><a href="/assets/images/templates/tt10.png"><img src="/assets/images/templates/tt10.png" width="200"/></a></td>
+  <td><a href="https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/tasks/tt10.html" title="download">Download</a></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/templates.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>
