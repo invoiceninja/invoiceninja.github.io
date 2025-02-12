@@ -6,7 +6,7 @@ locale: en
 
 # Hosted Mail
 
-If you are a pro/enterprise user, you have access to multiple different ways to send emails from Invoice Ninja. We offer OAuth integrations with both Google and Microsoft allowing you to send emails from your own email address. 
+If you are a Pro Plan or Enterprise Plan user, you have access to multiple different ways to send emails from Invoice Ninja. We offer OAuth integrations with both Google and Microsoft allowing you to send emails from your own email address. 
 
 ### Send with Gmail / Microsoft
 
@@ -70,3 +70,28 @@ All ourbound emails that are sent from the Invoice Ninja Hosted Mail Service (ma
 If your client clicks on an unsubscribe link, they'll be taken to a page where they can opt out of receiving emails from you. This will mark their client record as "DO NOT SEND" and you will also receive a follow up email advising that this action has been taken by your client.
 
 For more information, you can read this great article from ![Postmark](https://postmarkapp.com/blog/2024-gmail-yahoo-email-requirements "Postmark") 
+
+### Send with SMTP
+
+You can also configure your own SMTP server to send emails from Invoice Ninja.
+
+![alt text](/assets/images/user_guide/smtp_server_configuration.png "Configuration screen for SMTP Server")
+
+The following parameters are supported:
+
+- Host ie smtp.gmail.com
+- Port ie 587,25,465
+- Encryption ie tls,ssl,starttls
+- Username SMTP username
+- Password SMTP password
+- Verify Peer (verifies the identity of the SMTP server, including checking the certificate and hostname)
+
+You can use the Send Test Email button to test the configuration and send a test email to ensure that your SMTP server is working.
+
+### Send with Brevo
+
+![alt text](/assets/images/user_guide/brevo_server_configuration.png "Configuration screen for Brevo")
+
+If you prefer to send bulk emails via Brevo, then this is also supported. We do not throttle the outbound emails using Brevo, so this is suitable if you require a high throughput email service.
+
+The only configuration required is your Brevo API key.
