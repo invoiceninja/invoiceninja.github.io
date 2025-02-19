@@ -830,6 +830,60 @@ Here are the object definitions that are available.
 | time_log | Array of time log entries | See time_log definition |
 | | | |
 
+### Expense Definition
+
+| Field      | Description | Example |
+| ----------- | ----------- | ----------- |
+| category | The expense category | Travel |
+| amount | The expense amount | $100.00 |
+| amount_raw | The expense amount raw | 100.00 |
+| date | The expense date | 24. March 2024 |
+| private_notes | The expense private notes | Private notes |
+| public_notes | The expense public notes | Public notes |
+| exchange_rate | The expense exchange rate | 1.00 |
+| tax_name1 | The expense tax name 1 | GST |
+| tax_rate1 | The expense tax rate 1 | 10 |
+| tax_name2 | The expense tax name 2 | VAT |
+| tax_rate2 | The expense tax rate 2 | 17 |
+| tax_name3 | The expense tax name 3 | THIRDTAX |
+| tax_rate3 | The expense tax rate 3 | 0 |
+| tax_amount1 | The expense tax amount 1 | $10.00 |
+| tax_amount2 | The expense tax amount 2 | $17.00 |
+| tax_amount3 | The expense tax amount 3 | $0.00 |
+| payment_date | The expense payment date | 24. March 2024 |
+| transaction_reference | The expense transaction reference | 1234567890 |
+| custom_value1 | The expense custom value 1 | Custom Value |
+| custom_value2 | The expense custom value 2 | Custom Value |
+| custom_value3 | The expense custom value 3 | Custom Value |
+| custom_value4 | The expense custom value 4 | Custom Value |
+| calculate_tax_by_amount | The expense calculate tax by amount | true |
+| uses_inclusive_taxes | The expense uses inclusive taxes | true |
+| client | The expense client | [Client](/en/templates/#client-definition) |
+| vendor | The expense vendor | [Vendor](/en/templates/#vendor-definition) |
+| project | The expense project | [Project](/en/templates/#project-definition) |
+| | | |
+
+### Vendor Definition
+
+| Field      | Description | Example |
+| ----------- | ----------- | ----------- |
+| name | The vendor name | Vendor Name |
+| email | The vendor email | vendor@example.com |
+| phone | The vendor phone | 1234567890 |
+| website | The vendor website | https://www.vendor.com |
+| number | The vendor number | 1234567890 |
+| id_number | The vendor id number | 1234567890 |
+| vat_number | The vendor vat number | 1234567890 |
+| currency | The vendor currency | USD |
+| custom_value1 | The vendor custom value 1 | Custom Value |
+| custom_value2 | The vendor custom value 2 | Custom Value |
+| custom_value3 | The vendor custom value 3 | Custom Value |
+| custom_value4 | The vendor custom value 4 | Custom Value |
+| address | The vendor address | 1234 Main St, Anytown, USA |
+| shipping_address | The vendor shipping address | 1234 Main St, Anytown, USA |
+| locale | The vendor locale | en |
+| | | |
+
 ### Time Log Definition
 
 | Time Log Array (of objects) | | | 
@@ -892,6 +946,7 @@ Here are the object definitions that are available.
 | color | The color associated with the project | #fff | 
 | current_hours | The accured hours of the project so far | 100 |
 | tasks | Array of tasks | [Task](/en/templates/#task-definition) |
+| expenses | Array of expenses | [Expense](/en/templates/#expense-definition) |
 | user | The Creating User Object | [User](/en/templates/#user-definition) |
 | client | The Client Object | [Client](/en/templates/#client-definition) |
 | | | |
