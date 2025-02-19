@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Free Source Available Invoicing, Expenses &amp; Time-Tracking | Invoice Ninja</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="referrer" content="always">
+    <link rel="canonical" href="https://invoiceninja.github.io/en/legal/self_hosting_data">
+    <meta name="description" content="The leading free source available online invoicing app for freelancers &amp; businesses. Invoice, accept payments, track expenses, &amp; time-tasks">
+    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:version" content="v1.0.1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a9a637f18943cc2bb17828c0109d4dde">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+        <script type="text/javascript" src="/en_index.js"></script>
+    <script type="text/javascript" src="/en.js"></script>
+        <style>
+      .search-wrapper {
+        /* position: relative; */
+        /* display: inline-block; */
+        /* max-width: 50%;  */
+      }
+
+        .results-list {
+        position: absolute;
+        background-color: white;
+        /* border: 1px solid #ccc; */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        max-height: 400px;
+        max-width:800px;
+        overflow-y: scroll;
+        width: calc(100% - 2px);
+        z-index: 10000;
+        top: 100%; /* This will pin the dropdown to the bottom of the search input */
+        left: auto;
+        right: auto;
+        border-top-left-radius: 0; 
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0.25rem;
+        /* /* border-bottom-right-radius: 0.25rem; */
+        }
+
+        .results-list li {
+        padding: 8px;
+        cursor: pointer;
+        }
+
+        .results-list li:hover {
+        background-color: #eee;
+        }
+        .result-item {
+          padding: 16px;
+          cursor: pointer;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .result-item:last-child {
+          border-bottom: none;
+        }
+
+        .result-item:hover {
+          background-color: #f9f9f9;
+        }
+
+        .result-title {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 4px;
+        }
+
+        .result-description {
+          font-size: 14px;
+          color: #777;
+        }
+
+    </style>
+ 
+   <script>
+
+      document.addEventListener('DOMContentLoaded', function () {
+
+      let idx = lunr.Index.load(data);
+
+      const input = document.getElementById('search-input');
+      const resultsList = document.getElementById('results-list');
+
+      input.addEventListener('input', function () {
+        const query = input.value.toLowerCase().trim();
+
+        const results = idx.search(query);
+
+        // Clear previous results
+        resultsList.innerHTML = '';
+
+        if (query === '') {
+          resultsList.style.display = 'none';
+          return;
+        }
+        // Populate the dropdown results list
+        results.forEach(result => {
+        
+          const matchedDoc = documents.find(doc => doc.id == result.ref);
+        
+          const li = document.createElement('li');
+          li.className = 'result-item';
+
+          const a = document.createElement('a');
+          a.href = matchedDoc.uri;
+          a.style.textDecoration = 'none'; // Remove the default underline from the link
+
+          const div = document.createElement('div');
+          div.className = 'result-title';
+          div.textContent = matchedDoc.title + ' | ' + matchedDoc.sub_title;
+          a.appendChild(div);
+
+          const div2 = document.createElement('div');
+          div2.className = 'result-description';
+          div2.textContent = matchedDoc.body.substring(0, 150) + '...';
+          a.appendChild(div2);
+
+          li.appendChild(a);
+          resultsList.appendChild(li);
+
+        });
+
+        resultsList.style.display = results.length ? 'block' : 'none';
+
+      });
+
+      // Hide the dropdown results list when clicking outside the search box
+      document.addEventListener('click', function (event) {
+        if (!event.target.closest('#search-box')) {
+          resultsList.style.display = 'none';
+        }
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowUp') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex - 1);
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault(); // Prevent scrolling the page
+          selectResult(selectedIndex + 1);
+        } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          
+          window.location.href = resultsList.children[selectedIndex].children[0].href;
+        }
+      });
+
+      let selectedIndex = -1;
+
+      function selectResult(index) {
+        // Deselect the previously selected item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.remove('bg-gray-200');
+        }
+
+        selectedIndex = index;
+
+        // Select the new item
+        if (selectedIndex >= 0 && selectedIndex < resultsList.children.length) {
+          resultsList.children[selectedIndex].classList.add('bg-gray-200');
+
+          // Smoothly scroll to the selected item
+          resultsList.children[selectedIndex].scrollIntoView({
+            block: 'nearest',
+            behavior: 'smooth'
+          });
+        }
+      }
+
+
+      document.addEventListener('keydown', (e) => {
+
+        if (e.key.toLowerCase() == 'k' && e.ctrlKey) {
+              // Add your code here
+              
+            e.preventDefault(); // Prevent scrolling the page
+
+            console.log("yoyo");
+
+              input.focus();
+          }
+      });
+
+
+    });
+
+
+
+  </script>
+
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/agate.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+</head>
+
+<meta name="locale" content="en">
+
+<nav class="py-4 sticky top-0 z-40 lg:z-50 w-full bg-white border-b">
+    <div id="navigation-content" class="grid grid-cols-12">
+        <div class="float-left pl-4 col-span-2">
+            <a href="/en" id=""><img class="object-contain h-10 mt-2	" src="/assets/images/logo-rounded.png" alt="Invoice Ninja logo" />
+            </a>
+        </div>
+                    <div class="search-wrapper w-full col-span-5 flex justify-center" id="search-box">
+                <input type="text" id="search-input" placeholder="Search Invoice Ninja... (Ctrl K)" class="h-14 text-lg focus:outline-none rounded-mdsm:max-w-xs">
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+            <!-- <input type="text" placeholder="Quick search ..." id="topSearchBox" data-lpignore="true"
+                class="pb-1 border-b hover:border-ninja-blue focus:border-ninja-blue focus:outline-none"> -->
+                <div id="right-side-items" class="text-sm w-full col-span-5 flex flex-grow justify-end pr-5">
+            <div class="hidden md:hidden lg:block md:space-x-2">
+                <span>
+                    <a href="/en/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">User Guide</a>
+                </span>
+                <span>
+                    <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">API Documentation</a>
+                </span>
+                <span>
+                    <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">Go to app</a>
+                </span>
+                <span>
+                    <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="en">EN</option>
+                        <option value="fr_CA">Fr (CA)</option>
+                    </select>
+                </span>
+            </div>
+            <div class="flex flex-col lg:hidden">
+                <button id="mobile-menu-toggle" class="focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
+        <a href="/en/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> User Guide </a>
+        <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> API Documentation </a>
+        <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> Go to app</a>
+        <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <option value="en">EN</option>
+            <option value="fr_CA">Fr (CA)</option>
+        </select>
+    </div>
+</nav>
+
+<script>
+    let element = document.getElementById('locale_mobile');
+    element.value = document.querySelector('meta[name="locale"]').content;
+
+    let element2 = document.getElementById('locale');
+    element2.value = document.querySelector('meta[name="locale"]').content;
+</script>
+
+<body class="font-sans antialiased text-gray-900 bg-white ">
+        <div class="hidden top-0 absolute z-40 bg-white w-full h-screen" id="mobile-menu-overlay">
+       <div class="p-6 flex items-top justify-between">
+           <div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/self-host-installation">Self Host</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/getting-started">Overview</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-installation">Installation</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-troubleshooting">Troubleshooting</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-updating">Updating</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/env-variables">.env Variables</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-debug-mode">Debug Mode</a>
+                                                  </div>
+                   </div>
+                                  <div clasS="mb-8">
+                       <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/legal/license">Legal</a>
+
+                       <div class="mt-2">
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/license">License</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/terms_of_service">Terms of Service</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/data_privacy">Data Privacy</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_data">Selfhost Data Privacy</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_terms">Selfhost Terms</a>
+                                                          <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/gdpr">GDPR</a>
+                                                  </div>
+                   </div>
+                          </div>
+           <div>
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.add('hidden');">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+           </div>
+       </div>
+    </div>
+
+    <div class="max-w-12xl grid grid-cols-12 py-2 px-2 lg:mx-auto">
+        <div class="hidden space-y-6 md:block lg:col-span-2">
+            <div class="hidden lg:block fixed mt-2 h-full overflow-y-auto pb-32 pr-16 pl-4">
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/self-host-installation">Self Host</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/getting-started">Overview</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-installation">Installation</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-troubleshooting">Troubleshooting</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-updating">Updating</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/env-variables">.env Variables</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/self-host-debug-mode">Debug Mode</a>
+                                                    </div>
+                    </div>
+                                    <div clasS="mb-8">
+                        <a class="block hover:text-ninja-blue font-semibold uppercase "
+                          href="/en/legal/license">Legal</a>
+
+
+                        <div class="mt-2">
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/license">License</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/terms_of_service">Terms of Service</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/data_privacy">Data Privacy</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_data">Selfhost Data Privacy</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/self_hosting_terms">Selfhost Terms</a>
+                                                            <a class="block hover:text-ninja-blue py-1 "
+                                  href="/en/legal/gdpr">GDPR</a>
+                                                    </div>
+                    </div>
+                            </div>
+        </div> <!-- End of sidebar -->
+
+        <div class="col-span-12 md:col-span-8 prose mx-auto max-w-max" id="page-content">
+            <div class="block lg:hidden flex flex-col mb-4 lg:mb-0">
+                <button onclick="document.getElementById('mobile-menu-overlay').classList.remove('hidden');">&#8592; Documentation</button>
+            </div>
+
+            <h2>Self-Hosting Data Privacy Addendum</h2>
+
+<h3 style='margin-top:2.0pt;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:windowtext;'>Updated 22-March-2021</span></strong></h3>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;'><br>Self-Hosting the Invoice Ninja Platform Data Privacy Addendum</span></strong></p>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Privacy Policy, Consent to Process, Data Control</span></strong></h3>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></p>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>This Privacy Policy applies to those self-hosting the Invoice Ninja platform on their own 3rd party servers (collectively &ldquo;self-hosters&rdquo; or &ldquo;self-hosting&rdquo;), as well as all websites invoiceninja.com, app.invoiceninja.com including all subdomains, and invoiceninja.org (the &ldquo;Sites&rdquo;) owned and operated by Invoice Ninja, LLC (collectively, &ldquo;Invoice Ninja&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). This Privacy Policy describes how Invoice Ninja collects, uses, shares and secures the personal data you provide to us. It also describes your options in deleting/purging your PII permanently from Invoice Ninja in compliance with GDPR.</span></p>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></strong></h3>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Consent: PII Data We Collect</span></strong></h3>
+
+<ul style="list-style-type: disc;margin-left:0cmundefined;">
+    <li><span style='font-family:"Verdana",sans-serif;'>Main Account User Name</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Main Account User Email</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company Name (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company Website URL (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company ID # (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company VAT # (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company Phone Number (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company Mailing Address (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Account Sub-Users Names &amp; Emails (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company Size (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Company Industry (optional)</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Geo location based on IP address</span></li>
+    <li><span style='font-family:"Verdana",sans-serif;'>Billing Information; last 4 digits of credit card &amp; expiration date, billing address (paid accounts only)</span></li>
+</ul>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></strong></h3>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Restriction/Erasure: Purging PII Account Data</span></strong></h3>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></p>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>For those self-hosting the Invoice Ninja platform, Invoice Ninja does <u><span style="border:none windowtext 1.0pt;padding:0cm;">NOT</span></u> collect data other than the above listed PII. To purge all PII, contact:&nbsp;</span><span style='font-size:13px;font-family:"Verdana",sans-serif;'><a href="mailto:privacy@invoiceninja.com"><span style="color:#31AC4F;">privacy@invoiceninja.com</span></a></span><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp; or&nbsp;</span><span style='font-size:13px;font-family:"Verdana",sans-serif;'><a href="mailto:legal@invoiceninja.com"><span style="color:#31AC4F;">legal@invoiceninja.com</span></a></span><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;with your request and all PII data will be purged within 2 business days of account verification.</span></p>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></strong></h3>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Newsletter</span></strong></h3>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></p>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Periodically we use your account email contact to send out newsletters announcing new features &amp; functionality for the benefit of your account use. You may remove yourself at any time by clicking &ldquo;unsubscribe&rdquo; from any newsletter email footer to permanently and irreversibly be removed from any &amp; all future mailings.</span></p>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></strong></h3>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1D1C1D;background:white;'>Reporting Errors</span></strong></h3>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1D1C1D;'><br> <span style="background:white;">Self host users have an option to report errors directly to us, by clicking on this checkbox you agree to send anonymized data directly to our servers for the purpose of understanding why the error was generated. This information will only be used for the express purpose of delivering bug fixes for the Invoice Ninja software application.</span></span></h3>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;'><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;'>&nbsp;</span></p>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Changes to this Privacy Policy</span></strong></h3>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></p>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>We may update this Privacy Policy to reflect changes to our information practices. If we make any material changes we will notify you by email and/or newsletter (sent to the main email address specified in your account). We also encourage you to review this page from time to time to familiarize yourself on our privacy practices.</span></p>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></strong></h3>
+
+<h3 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:107%;font-size:16px;font-family:"Calibri Light",sans-serif;color:#1F4D78;font-weight:normal;vertical-align:baseline;'><strong><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Communication &amp; Resolution</span></strong></h3>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>&nbsp;</span></p>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;margin:0cm;vertical-align:baseline;'><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>Users with questions regarding their account privacy, data use, data purging, questions or concerns on any privacy or any data use matter, should contact:&nbsp;</span><span style='font-size:13px;font-family:"Verdana",sans-serif;'><a href="mailto:privacy@invoiceninja.com"><span style="color:#31AC4F;">privacy@invoiceninja.com</span></a></span><span style='font-size:13px;font-family:"Verdana",sans-serif;color:#1B1A1A;'>or&nbsp;</span><span style='font-size:13px;font-family:"Verdana",sans-serif;'><a href="mailto:legal@invoiceninja.com"><span style="color:#31AC4F;">legal@invoiceninja.com</span></a></span></p>
+
+<p style='margin-right:0cm;margin-left:0cm;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0cm;margin-bottom:8.0pt;line-height:107%;'><span style='font-size:13px;line-height:107%;font-family:"Verdana",sans-serif;'>&nbsp;</span></p>
+
+            <a href="https://github.com/invoiceninja/invoiceninja.github.io/blob/v5-rework/source/en/legal/self_hosting_data.md"
+               class="pt-4 border-t inline-flex items-center w-full block">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                     class="feather feather-github">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <span class="ml-2">Want to contribute? Edit this page on GitHub!</span>
+            </a>
+        </div> <!-- End of main content -->
+
+        <div class="hidden md:block col-span-2 p-4">
+            <div class="fixed overflow-y-auto pr-4 h-full pl-4 pb-32 text-sm" id="toc-container">
+                <!-- Placeholder for table of contents -->
+                <span class="text-sm uppercase block mb-3 text-ninja-blue">On this page</span>
+            </div>
+        </div>
+    </div>
+        <script src="/assets/build/js/main.js?id=5d8f1025c2be8c2903a2ea7ba7775489"></script>
+
+    <script>
+        document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+            let mobileMenu = document.getElementById('mobile-menu');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                return mobileMenu.classList.remove('hidden');
+            }
+
+            return mobileMenu.classList.add('hidden');
+        });
+    </script>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#topSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script>
+        <script type="text/javascript">
+        docsearch({
+            apiKey: '4816218e8381d5a17beacd84823e9ea3',
+            indexName: 'invoiceninja',
+            inputSelector: '#indexSearchBox',
+            debug: false,
+            searchParameters: {
+                facetFilters: ['language:en'],
+            },
+        });
+    </script> -->
+
+<style>
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video_container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+</style>
+</body>
+
+</html>
