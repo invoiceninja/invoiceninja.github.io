@@ -131,6 +131,13 @@ Standard address information fields are available here to enter a billing addres
 
 Just like the billing address, standard address information fields are available here to enter a shipping address for your clients with. Additionally, you can use the _Copy Billing_ button below these fields, to simply copy the billing address information into the shipping address fields as well.
 
+#### Locations
+
+You can add multiple locations to a client. These locations can be used to store different address information for the client, such as a different billing address or shipping address.
+
+Locations can be added to the Invoice / Quote / Credit / Recurring Invoice from their respective edit pages. These locations will override the client's default billing or shipping address for the specific invoice. This is useful if you have a client that has multiple locations, or if you need to send an invoice to a different address than the client's default billing address.
+
+
 ### Settings
 
 - By clicking Settings from the edit client dropdown, you can tailor any setting to the client, including payment settings, tax, currency, invoice design, email templates, and more:
