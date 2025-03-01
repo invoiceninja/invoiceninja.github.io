@@ -131,7 +131,7 @@ Standard address information fields are available here to enter a billing addres
 
 Just like the billing address, standard address information fields are available here to enter a shipping address for your clients with. Additionally, you can use the _Copy Billing_ button below these fields, to simply copy the billing address information into the shipping address fields as well.
 
-#### Locations
+### Locations
 
 You can add multiple locations to a client. These locations can be used to store different address information for the client, such as a different billing address or shipping address.
 
