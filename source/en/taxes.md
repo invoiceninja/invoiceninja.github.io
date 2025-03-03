@@ -18,9 +18,7 @@ Learn how to configure taxes in Invoice Ninja:
 
 ## US Sales Tax calculations
 
-<div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/wZfTu2jhIWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<x-video src="https://video.invoicing.co/hls/us_sales_tax/us_sales_tax.mpd"></x-video>
 
 In Invoice Ninja v5.6 we introduce the ability to perform automatic tax calculations, let us provide a brief introduction to help you understand sales tax calculations in the United States.
 

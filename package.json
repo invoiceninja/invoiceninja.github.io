@@ -9,20 +9,21 @@
         "watch": "npm run local -- --watch"
     },
     "devDependencies": {
+        "@docsearch/css": "^3.0.0",
         "@tailwindcss/typography": "0.4.1",
         "cross-env": "^7.0.3",
         "laravel-mix": "^6",
         "laravel-mix-jigsaw": "^2.0.0",
+        "lunr": "^2.3.9",
         "postcss": "^8.4",
         "postcss-import": "^14.0.2",
         "tailwindcss": "^2.2.17",
-        "vue-template-compiler": "^2.6.14",
-        "lunr": "^2.3.9",
         "video.js": "^8.0.4",
-        "@docsearch/css": "^3.0.0"
+        "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
         "anchor-js": "^4.3.1",
-        "lunr": "^2.3.9"
+        "lunr": "^2.3.9",
+        "videojs-contrib-dash": "^5.1.1"
     }
 }

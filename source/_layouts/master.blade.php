@@ -21,6 +21,7 @@
 
     <script src="{{ mix('js/lunr.min.js', 'assets/build') }}"></script>
     <script src="{{ mix('js/video.min.js', 'assets/build') }}"></script>
+    <script src="{{ mix('js/videojs-dash.min.js', 'assets/build') }}"></script>
 
     @if($locale == 'en')
     <script type="text/javascript" src="/en_index.js"></script>

@@ -16,6 +16,7 @@ mix.jigsaw()
     .copy('node_modules/lunr/lunr.min.js', 'source/assets/build/js')
     .copy('node_modules/video.js/dist/video.min.js', 'source/assets/build/js')
     .copy('node_modules/video.js/dist/video-js.css', 'source/assets/build/css')
+    .copy('node_modules/videojs-contrib-dash/dist/videojs-dash.min.js', 'source/assets/build/js')
     .options({
         processCssUrls: false,
     })
