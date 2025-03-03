@@ -14,9 +14,7 @@ Taxes can be configured manually by following the step [here](/en/basic-settings
 
 Learn how to configure taxes in Invoice Ninja:
 
-<div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/Q-zM-vCjDXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<x-video src="https://video.invoicing.co/hls/tax_configuration/tax_configuration_react.mp4"></x-video>
 
 ## US Sales Tax calculations
 

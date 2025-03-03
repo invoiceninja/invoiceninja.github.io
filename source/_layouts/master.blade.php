@@ -15,13 +15,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <link rel="stylesheet" href="{{ mix('css/docsearch.min.css', 'assets/build') }}" />
+    <link rel="stylesheet" href="{{ mix('css/video-js.css', 'assets/build') }}" />
     <link rel="icon" type="image/png" href="/assets/images/favicon.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    <script src="{{ mix('js/lunr.min.js', 'assets/build') }}"></script>
+    <script src="{{ mix('js/video.min.js', 'assets/build') }}"></script>
+
     @if($locale == 'en')
     <script type="text/javascript" src="/en_index.js"></script>
     <script type="text/javascript" src="/en.js"></script>
