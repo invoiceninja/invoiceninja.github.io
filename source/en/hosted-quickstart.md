@@ -17,12 +17,14 @@ Here is a quick video to help you perform the initial configuration of Invoice N
 After your initial company setup, you may want to configure additional details about your company. You can follow this video to configure some default settings:
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/CxbfxJlU7KI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/setup/setup.mpd" is_dash="true" id="initial-setup-video"></x-video>
 </div>
 
 ## Taxes and Localization
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q-zM-vCjDXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video_container">
+<x-video src="/assets/videos/taxes/tax_configuration/tax_configuration_react.mpd" is_dash="false" id="tax-configuration-video"></x-video>
+</div>
 
 Learn how to setup total taxes and line item taxes, and also localize your installation for your region.
 
