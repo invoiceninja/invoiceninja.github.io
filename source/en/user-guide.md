@@ -67,7 +67,7 @@ Invoice level taxes are calculated on the sum of the line level amounts for exam
 After your initial company setup, you may want to configure additional details about your company. You can follow this video to configure some default settings:
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/CxbfxJlU7KI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/company_defaults/company_defaults.mpd" is_dash="true" id="company-defaults-video"></x-video>
 </div>
 
 ### Company Logo
