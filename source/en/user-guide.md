@@ -91,7 +91,7 @@ Settings > Tax Settings
 Learn how to setup total taxes including line item taxes, and also localize your installation for your region.
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/Q-zM-vCjDXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/taxes/tax_configuration/tax_configuration_react.mpd" is_dash="false" id="tax-configuration-video"></x-video>
 </div>
 
 ### Your first invoice
@@ -99,7 +99,7 @@ Learn how to setup total taxes including line item taxes, and also localize your
 Step through the process of creating your first invoice. Includes creating custom product columns and also customizing your invoice number patterns.
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/kU1Ok-1RG5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/invoices/first_invoice/invoice_creation.mpd" is_dash="false" id="invoice-creation-video"></x-video>
 </div>
 
 ### Get Paid!
