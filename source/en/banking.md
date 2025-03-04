@@ -13,7 +13,7 @@ For enterprise users on our hosted platform, we have integrated with [Yodlee](ht
 The Yodlee integration links primarily with most of the major US banks, allowing you to link your bank accounts with Invoice Ninja to import your bank transactions for reconciliation.
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/_sIfIr7QUHA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/banking/banking.mpd" is_dash="true" id="banking-video"></x-video>
 </div>
 
 ## Credit Card Integrations with GoCardless
