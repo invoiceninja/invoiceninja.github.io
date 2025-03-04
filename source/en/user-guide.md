@@ -29,7 +29,7 @@ Of course we also provide a fantastic web application which can be found [here](
 You'll want to do some basic configuration when you log in for the first time, settings up your company name, address and uploading your logo. You can follow the steps with this short video.
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/8H1jO1rtBYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/setup/setup.mpd" is_dash="true" id="initial-setup-video"></x-video>
 </div>
 
 ## Currency Precision, Unit Costs, Quantities and Tax Calculations.
