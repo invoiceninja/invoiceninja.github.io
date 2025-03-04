@@ -107,7 +107,7 @@ Step through the process of creating your first invoice. Includes creating custo
 The final step connecting a payment gateway. Invoice Ninja links with all major payment gateways and makes getting paid super simple. Here is a short video of how to connect the most popular gateway Stripe to Invoice Ninja
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/qitfiD6L8rQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/payments/get_paid/get_paid.mpd" is_dash="false" id="get-paid-video"></x-video>
 </div>
 
 For more information on payment gateways and methods that we support click [here](/en/gateways)
