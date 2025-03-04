@@ -121,7 +121,7 @@ Edit, or create a new invoice, credit, etc, in order to see the changes to the t
 <h2 id=payment_settings>Payment Settings</h2>
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/uVp1vc7Uhs4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/payments/payment_settings/payment_settings.mpd" is_dash="true" id="payment-settings-video"></x-video>
 </div>
 
 You may configure payment gateways, and payment rules/behaviors from here.

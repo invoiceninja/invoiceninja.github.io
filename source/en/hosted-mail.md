@@ -14,7 +14,7 @@ If you are a Pro Plan or Enterprise Plan user, you have access to multiple diffe
 Connecting either Gmail or Microsoft involves the same steps. Below is a short video showing the steps.
 
 <div class="video_container">
-<iframe class="video" src="https://www.youtube.com/embed/dU48fu3tmS0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<x-video src="/assets/videos/hosted_mail/hosted_mail.mpd" is_dash="true" id="hosted_mail-video"></x-video>
 </div>
 
 <x-info>
