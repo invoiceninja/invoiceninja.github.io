@@ -157,9 +157,9 @@ Our PayTrace integration includes Credit Card payment options, including token b
 
 Our PayFast integration includes Credit Card payment options. Here is a quick guide to help setup receiving credit card payments with PayFast
 
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SOQhEidfwdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
+<div class="video_container">
+<x-video src="/assets/videos/gateways/payfast/payfast.mpd" is_dash="true" id="payfast-video"></x-video>
+</div>
 
 <hr>
 
