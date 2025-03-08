@@ -158,10 +158,13 @@ Ensure you set the scheduler under the web server user i.e. `sudo -u www-data cr
 <p>For power users installing the app from Github can be done with the following two steps</p>
 
 ```bash
-git clone -b v5-stable --single-branch https://github.com/invoiceninja/invoiceninja.git
+git clone --depth 1 -b v5.11.53 https://github.com/invoiceninja/invoiceninja.git
 
 composer create-project --no-dev
 ```
+
+**Note** replace v5.11.53 with the latest tag version, you will also want to ensure that when performing updates, you use the latest tag version rather than a particular branch, ie v5-develop. This will ensure that you are not pulling in work in progress code.
+
 
 ### Final setup steps
 
