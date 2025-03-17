@@ -19,7 +19,19 @@ There are three types of QR-Rechnungen.
 This is a special IBAN, different from you normal IBAN. Easiest way is to ask your bank for the QR-IBAN, but you can also calculate it yourself.
 The QR-Reference is a 26 digit number follow by one checksum digit. The checksum has to be modulo 10, recursive. Additionally you can add 140 symbols of text.
 
-### How to calculate your QR-IBAN:
+### How to calculate automatically your QR-IBAN:
+
+Now there is a new tool to calculate it automatically, you will find it here : 
+[Swiss IBAN to QR-IBAN Converter](https://alexin-tech.github.io/Swiss-IBAN-to-QR-IBAN-Converter/)
+
+In order to find your QR-IID , just : 
+Go to the [SIX Group IID Inquiry Page](https://www.six-group.com/en/products-services/banking-services/interbank-clearing/online-services/inquiry-iid.html)
+Enter your bank name in the **Bank/Institution** field.
+Click the **Search** button.
+Look for a **QR-IID** in the results (values between **30000 - 31999**).
+Copy the QR-IID and paste it into the input field of the [Swiss IBAN to QR-IBAN Converter](https://alexin-tech.github.io/Swiss-IBAN-to-QR-IBAN-Converter/) 
+
+### How to calculate manually your QR-IBAN:
 
 For example, the normal IID of Raiffeisen is 80808.
 
