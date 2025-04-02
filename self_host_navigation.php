@@ -10,7 +10,7 @@ return [
             'updating' => '/:locale/self-host-updating',
             'env_variables' => '/:locale/env-variables',
             'debug_mode' => '/:locale/self-host-debug-mode',
-
+            'white_labeling' => '/:locale/self-host-white-labeling',
         ],
     ],
     'legal' => [
