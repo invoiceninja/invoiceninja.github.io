@@ -96,4 +96,7 @@ return [
     'email_customization' => 'Email Customization',
     'delete_account' => 'Delete Account',
     'templates' => 'Templates',
+    'client_portal' => 'Portail client',
+    'tax_accounting_tips' => 'Conseils de comptabilité fiscale',
+    'white_labeling' => 'Personnalisation de marque',
 ];
