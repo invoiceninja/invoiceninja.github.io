@@ -186,6 +186,7 @@ Standard $ notation variables are also available within templates, this allows y
 * date
 * sum
 * nl2br
+* reduce
 
 #### Allowed Functions
 * range
