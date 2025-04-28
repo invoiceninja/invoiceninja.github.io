@@ -40,6 +40,7 @@ L'application est divisée en trois parties principales : le backend/API et les 
 
 - Cadre d'application : [React](https://reactjs.org)
 - Code : [GitHub](https://github.com/invoiceninja/ui)
+- Démo: [react.invoicing.co/demo](https://react.invoicing.co/demo)
 
 ## Définition de l'API
 

@@ -40,6 +40,7 @@ The app is divided into three main parts: the backend/API and the two admin port
 
 - Framework: [React](https://reactjs.org)
 - Code: [GitHub](https://github.com/invoiceninja/ui)
+- Demo: [react.invoicing.co/demo](https://react.invoicing.co/demo)
 
 ## API Definition
 
