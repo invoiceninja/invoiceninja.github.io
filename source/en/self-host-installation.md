@@ -11,24 +11,7 @@ locale: en
 <p>Invoice Ninja has a few system requirements. Built on top of <a href="https://www.laravel.com/docs/">Laravel</a> it requires a PHP and MySQL server at a minimum with the following version and extensions installed.</p>
 
 * PHP 8.2 with following extensions
-    * bcmath
-    * ctype
-    * imagick
-    * soap
-    * gd
-    * mbstring
-    * openssl
-    * common
-    * tokenizer
-    * xml
-    * curl
-    * zip
-    * gmp
-    * iconv
-    * mysqli
-    * intl
-    * fpm (if using NGINX)
-    * saxon (for e invoice validation)
+    * bcmath, ctype, imagick, soap, gd, mbstring, openssl, common, tokenizer, xml, curl, zip, gmp, iconv, mysqli, intl, fpm (if using NGINX), saxon (for e invoice validation)
 * MySQL 5.7+ or MariaDB 10.3+
 * NGINX or Apache
 
@@ -53,7 +36,7 @@ Invoice Ninja does not support installation into a subdirectory. You will need a
 
 ### CLI script
 
-If your webserver is already configured and you have credentials to your database, community member Dros has created a CLI management and maintenance script for you. 
+If your webserver is already configured and you have credentials to your database, community member Dros has created a CLI script for management and maintenance for you. 
 
 [CLI - install | update | backup ](https://github.com/DrDBanner/inmanage)
 
@@ -73,7 +56,7 @@ If you make changes to your env file, please remember to reboot the container fo
 
 If you need to configure your server from scratch, you'll find some excellent tutorials below.
 
-#### Ubuntu 20.04 (Recommended)
+#### Ubuntu 20.04
 
 Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-ubuntu-20-04/4588)
 
@@ -81,18 +64,21 @@ Community member TechnicallyComputers has a very helpful step by step guide on h
 
 Community member TechnicallyComputers has a very helpful step by step guide on how to install Invoice Ninja v5.5 from scratch onto Ubuntu, you can access the guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-5-on-ubuntu-22-04/13272)
 
-#### Installing on CentOS 8
+#### CentOS 8
 
 If CentOS is more your Flavour, community member TechnicallyComputers has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-centos-8/4293). 
 
-#### Installing on Arch
+#### Arch
 
 If Arch Linux is more your flavour, community member brackenhill-mob has a very thorough step by step installation guide [here](https://forum.invoiceninja.com/t/howto-install-invoice-ninja-v5-on-arch-linux/6196)
 
-#### Installing on Enterprise Linux
+#### Enterprise Linux
 
 TechnicallyComputers also has a guide for installation Invoice Ninja on Enterprise Linux [here](https://forum.invoiceninja.com/t/install-invoice-ninja-v5-on-enterprise-linux-8/4293)
 
+#### Debian 12
+
+Community member Dros has writte a detailed guide for installing Invoice Ninja on Debian 12 Bookworm. It includes snappdf setup and a management script for updates, backups, and provisioning [here](https://github.com/DrDBanner/inmanage/blob/main/docs/tutorials/install_invoiceninja_debian12_bookworm_vm.md)
 
 ### Pre built archive (Advanced)
 
