@@ -2,9 +2,8 @@
 
 return [
     'user_guide' => 'User Guide',
-    'hosting_guide' => 'Hosting Guide',
     'api_documentation' => 'API Docs',
-    'go_to_app' => 'Live DEMO',
+    'go_to_app' => '⏻ Open App',
     'developer_resources' => 'Developer Resources',
     'self_host_installation' => 'Self-Hosted Installation',
     'migrate_to_v5' => 'Migrate to v5',
