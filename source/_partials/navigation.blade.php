@@ -21,6 +21,9 @@
                     <a href="/{{ $locale }}/user-guide" class="py-2 border-b border-transparent hover:border-ninja-blue">{{ $page->__('texts.user_guide', $locale) }}</a>
                 </span>
                 <span>
+                    <a href="/{{ $locale }}/self-host-installation" class="py-2 border-b border-transparent hover:border-ninja-blue">{{ $page->__('texts.self_host', $locale) }}</a>
+                </span>
+                <span>
                     <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">{{ $page->__('texts.api_documentation', $locale) }}</a>
                 </span>
                 <span>
