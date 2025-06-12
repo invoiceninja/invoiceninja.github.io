@@ -52,7 +52,7 @@ We have a dedicated repository with detailed instructions on how to get started 
 If you make changes to your env file, please remember to reboot the container for the changes to take effect!
 </x-warning>
 
-### Distribution based server configurations
+### Linux server configs
 
 If you need to configure your server from scratch, you'll find some excellent tutorials below.
 
@@ -80,7 +80,7 @@ TechnicallyComputers also has a guide for installation Invoice Ninja on Enterpri
 
 Community member Dros has writte a detailed guide for installing Invoice Ninja on Debian 12 Bookworm. It includes snappdf setup and a management script for updates, backups, and provisioning [here](https://github.com/DrDBanner/inmanage/blob/main/docs/tutorials/install_invoiceninja_debian12_bookworm_vm.md)
 
-### Pre built archive (Advanced)
+### Tarball
 
 <!-- Video unavailable ATM "private" <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
@@ -173,7 +173,7 @@ If you are using shared hosting, then you will need to add an additional paramet
 * * * * * cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
 
-### Installation from git (Advanced)
+### Git
 
 For power users installing the app from Github can be done with the following two steps
 
