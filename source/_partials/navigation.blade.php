@@ -50,6 +50,7 @@
     </div>
     <div id="mobile-menu" class="hidden px-4 pt-4 flex flex-col">
         <a href="/{{ $locale }}/getting-started" class="py-2 border-b border-transparent hover:border-ninja-blue"> {{ $page->__('texts.user_guide', $locale) }} </a>
+        <a href="/{{ $locale }}/self-host-installation" class="py-2 border-b border-transparent hover:border-ninja-blue">{{ $page->__('texts.self_host', $locale) }}</a>
         <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> {{ $page->__('texts.api_documentation', $locale) }} </a>
         <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> {{ $page->__('texts.go_to_app', $locale) }}</a>
         <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
