@@ -40,13 +40,13 @@ If your webserver is already configured and you have credentials to your databas
 
 [CLI - install | update | backup ](https://github.com/DrDBanner/inmanage)
 
-*This script complements the excellent [Distribution based server configurations](#distribution-based-server-configurations) below. Once your server meets the prerequisites (webserver configured & database accessible), this script makes the rest of the setup a breeze.*
+*This script complements the excellent [Linux server configurations](#linux-server-configs) below. Once your server meets the prerequisites (webserver configured & database accessible), this script makes the rest of the setup a breeze.*
 
 ### Docker
 
 We have a dedicated repository with detailed instructions on how to get started <a href="https://github.com/invoiceninja/dockerfiles">HERE</a>.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xo6a3KtLC2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="max-width:100%;" src="https://www.youtube.com/embed/xo6a3KtLC2g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <x-warning>
 If you make changes to your env file, please remember to reboot the container for the changes to take effect!
@@ -462,4 +462,4 @@ If using e invoicing, you may want to install the saxon extension. The saxon ext
 
 We have a short video showing the installation steps here:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/s21ewzAeYjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" style="max-width:100%;" src="https://www.youtube.com/embed/s21ewzAeYjc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
