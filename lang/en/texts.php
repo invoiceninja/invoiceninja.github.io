@@ -2,8 +2,8 @@
 
 return [
     'user_guide' => 'User Guide',
-    'api_documentation' => 'API Documentation',
-    'go_to_app' => 'Go to app',
+    'api_documentation' => 'API Docs',
+    'go_to_app' => '⏻ Open App',
     'developer_resources' => 'Developer Resources',
     'self_host_installation' => 'Self-Hosted Installation',
     'migrate_to_v5' => 'Migrate to v5',
