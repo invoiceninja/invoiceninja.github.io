@@ -80,6 +80,10 @@ TechnicallyComputers also has a guide for installation Invoice Ninja on Enterpri
 
 Community member Dros has writte a detailed guide for installing Invoice Ninja on Debian 12 Bookworm. It includes snappdf setup and a management script for updates, backups, and provisioning [here](https://github.com/DrDBanner/inmanage/blob/main/docs/tutorials/install_invoiceninja_debian12_bookworm_vm.md)
 
+#### Debian 12 on Windows
+
+Community member Dros has writte a detailed guide for installing Invoice Ninja on Debian 12 Bookworm via Windows WSL. It includes snappdf setup and a management script for updates, backups, and provisioning [here](https://github.com/DrDBanner/inmanage/blob/main/docs/tutorials/install_invoiceninja_debian12_bookworm_vm.md#21-run-invoice-ninja-on-windows-wsl) (Mind the click to unfold hint)
+
 ### Tarball
 
 <!-- Video unavailable ATM "private" <iframe width="560" height="315" src="https://www.youtube.com/embed/i04EX7WXTVE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
