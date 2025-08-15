@@ -16,6 +16,7 @@ The list of supported e-invoice formats include:
 - [PEPPOL (Universal - Cross industry / border)](#peppol)
 - [ZUGFeRD - XRechung (Germany)](#zugferd)
 - [Facturae (Spain)](#facturae)
+- [Verifactu (Spain)](#verifactu)
 - [FatturaPA (Italy)](#fatturapa)
 - [FACT1 (Romania)](#fact1)
 - [EN16931 (Generic)](#en16931)
@@ -269,6 +270,33 @@ The ZUGFeRD standard does not accept negative valued invoices. Historically some
 ## Facturae
 
 Spanish e-invoice documents are supported and generate valid documents. these can be uploaded into the FACe system.
+
+## Verifactu (alpha)
+
+Support for Verifactu is nearing. The invoicing flow within Invoice Ninja will remain unchanged however there are several important points to note:
+
+1. Power of Attorney.
+
+In order for Invoice Ninja to submit invoices to AEAT on your behalf, AEAT requires you to provide permission. This can be done directly from the AEAT website and searching for Invoice Ninja in the list of registered providers.
+
+2. Document submission process.
+
+- After an invoice has been submitted, it cannot be modified and the document itself will move into a "locked state"
+- It is possible to cancel a submitted document by either using the Cancel or Delete option on the invoice.
+- If you need to create a rectification invoice (Credit Note), you will need to use the Rectify menu option, this will generate a negative invoice linked to the existing invoice.
+- Rectification invoices can be cancelled, this will remove the credit note linked to the invoice.
+
+**NOTE**
+
+Once an invoice has had a rectification invoice (credit note) applied to it, it cannot be delete unless all of the credit notes attached to it have also been cancelled/deleted.
+
+3. Verifactu tab:
+
+On the edit invoice page, after saving an invoice you will now see a Verifactu tab, inside here will be additional information about the invoice validation.
+
+4. Mandatory information.
+
+For invoices to Spanish users. You MUST have entered a NIF for the client this is a requirement from AEAT. The only exception would be if no NIF is available to use the clients Passport Number in the Client's ID Number field. AEAT requires the census data on the recipient. Sending will fail if you attempt to send an invoice to a client without these details.
 
 ## FatturaPA
 
