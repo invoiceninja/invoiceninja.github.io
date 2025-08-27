@@ -139,4 +139,5 @@ return [
     'client_portal' => 'Client Portal',
     'tax_accounting_tips' => 'Tax Accounting Tips',
     'white_labeling' => 'White Labeling',
+'schedules' => 'Schedules',
 ];

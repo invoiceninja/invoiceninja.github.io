@@ -40,6 +40,7 @@ return [
             'import_export' => '/:locale/import-and-export',
             'qr_codes' => '/:locale/qr-codes',
             'templates' => '/:locale/templates',
+            'schedules' => '/:locale/schedules',
         ],
     ],
     'hosted' => [

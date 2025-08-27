@@ -99,4 +99,5 @@ return [
     'client_portal' => 'Portail client',
     'tax_accounting_tips' => 'Conseils de comptabilité fiscale',
     'white_labeling' => 'Personnalisation de marque',
+    'schedules' => 'Horaires',
 ];
