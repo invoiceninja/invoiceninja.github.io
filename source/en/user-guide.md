@@ -116,4 +116,4 @@ For more information on payment gateways and methods that we support click [here
 
 Please see our [FAQ](/en/faq) page
 
-<x-next url=/en/clients>Clients</x-next>
+<x-next url=/en/faq>FAQ</x-next>

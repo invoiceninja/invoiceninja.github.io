@@ -310,4 +310,4 @@ Romanian e-invoices can be generated, however as there is no delivery connection
 
 Standard EN16931 documents can be generated and downloaded as needed.
 
-<x-next url=/en/invoices>Invoices</x-next>
+<x-next url=/en/esignatures>E Signatures</x-next>

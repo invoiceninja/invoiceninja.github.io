@@ -95,4 +95,4 @@ When a payment is archived no further modifications can be made to the payment. 
 
 Restoring a payment from the archived or deleted state will set the payment back to its previous state prior to archiving.
 
-<x-next url=/en/taxes>Taxes</x-next>
+<x-next url=/en/projects>Projects</x-next>

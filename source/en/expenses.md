@@ -231,4 +231,4 @@ d) If yes: check the logs for any errors and report them as an issue if you have
 
 
 
-<x-next url=/en/credits>Credits</x-next>
+<x-next url=/en/invoices>Invoices</x-next>

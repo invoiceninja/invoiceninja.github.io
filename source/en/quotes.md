@@ -177,4 +177,4 @@ When a quote is archived no further modifications can be made to the quote. To m
 
 Restoring a quote from the archived or deleted state will set the quote back to its previous state prior to archiving.
 
-<x-next url=/en/expenses>Expenses</x-next>
+<x-next url=/en/recurring-invoices>Recurring Invoices</x-next>

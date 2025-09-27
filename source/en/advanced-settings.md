@@ -505,4 +505,3 @@ Archive/Delete/Remove actions effectively disable the users access to the compan
 
 
 
-<x-next url=/en/custom-fields>PDF customization</x-next>

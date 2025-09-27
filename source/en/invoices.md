@@ -214,4 +214,4 @@ When a invoice is archived no further modifications can be made to the invoice. 
 
 Restoring a invoice from the archived or deleted state will set the invoice back to its previous state prior to archiving.
 
-<x-next url=/en/recurring-invoices>Recurring Invoices</x-next>
+<x-next url=/en/quotes>Quotes</x-next>

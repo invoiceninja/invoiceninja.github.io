@@ -75,4 +75,4 @@ The ## and &lt;div&gt; in the description are intentional - used to apply CSS fo
 
 Note: expenses linked to a project won't be included on the invoice that is created from a project. If you want to bill your client for project expenses, they will have to be added manually to the invoice as items.
 
-<x-next url=/en/tasks>Tasks</x-next>
+<x-next url=/en/purchase_orders>Purchase Orders</x-next>

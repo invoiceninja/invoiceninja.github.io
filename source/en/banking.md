@@ -119,4 +119,4 @@ When creating a rule there are a number of options available.
 
 - Value | The user assigned value used to compare against.
 
-<x-next url=/en/transactions>Transactions</x-next>
+<x-next url=/en/clients>Clients</x-next>

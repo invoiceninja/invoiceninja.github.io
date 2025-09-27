@@ -100,4 +100,4 @@ You can add as many contacts as you like to a vendor record, to represent indivi
 
 Here you can use any custom fields you configured under _Settings>Vendors>Custom Fields_
 
-<x-next url=/en/banking>Banking</x-next>
+<x-next url=/en/basic-settings>Basic Settings</x-next>

@@ -111,4 +111,4 @@ Transactions > Import
 
 You'll need to have created a Bank Account prior to this, so the transactions are linked to the correct bank account.
 
-<x-next url=/en/basic-settings>Basic Settings</x-next>
+<x-next url=/en/vendors>Vendors</x-next>

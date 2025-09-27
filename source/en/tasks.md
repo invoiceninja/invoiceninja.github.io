@@ -160,4 +160,4 @@ Archived tasks are hidden from all views by default. Archived tasks are still co
 
 A deleted task is no hidden from all views by default, and is no longer considered available. Deleted tasks can not be added to invoices, edited, or billed for. You can change your view filters to see deleted tasks, and you can "Restore" a deleted task record to return it to its former state.
 
-<x-next url=/en/purchase_orders>Purchase Orders</x-next>
+<x-next url=/en/taxes>Taxes</x-next>

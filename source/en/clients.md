@@ -213,4 +213,4 @@ $contact.custom3
 $contact.custom4
 ```
 
-<x-next url=/en/client-portal>Client Portal</x-next>
+<x-next url=/en/credits>Credits</x-next>

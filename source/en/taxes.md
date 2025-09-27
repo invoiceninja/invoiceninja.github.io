@@ -236,4 +236,4 @@ For self host users, you must have the PHP SOAP extension installed for the VAT 
 
 Always ensure the taxes applied to your invoices appear in order. The tax calculator requires the client / company / product data to be correct to ensure the correct calculation of taxes.
 
-<x-next url=/en/quotes>Quotes</x-next>
+<x-next url=/en/recurring-expenses>Recurring Expenses</x-next>

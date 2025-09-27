@@ -217,4 +217,4 @@ Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlappi
 
 As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/en/basic-settings/#localization).
 
-<x-next url=/en/products>Products</x-next>
+<x-next url=/en/gateways>Payment Gateways</x-next>

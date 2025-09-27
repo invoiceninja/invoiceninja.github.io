@@ -406,4 +406,4 @@ A failed request would return the an array like this:
 }
 ```
 
-<x-next url=/en/vendors>Vendors</x-next>
+<x-next url=/en/transactions>Transactions</x-next>
