@@ -22,7 +22,6 @@ The list of supported e-invoice formats include:
 - [EN16931 (Generic)](#en16931)
 
 ## PEPPOL 
-***BETA RELEASE***
 
 Invoice Ninja has now rolled out a PEPPOL access point which will be available for both self hosted and hosted users to route their e-invoices through the PEPPOL network. 
 ## How does it work?
@@ -46,11 +45,26 @@ There are a few important considerations with e-invoicing.
 3. After an invoice has been "sent" it can never be modified, instead if there are changes that need to be applied you must create a new Invoice/Credit with the changes
 
 ## Can I receive e-invoices?
-Yes, in an upcoming version we will also support the delivery of e-invoicing via the peppol network directly into your company.  
-
-(Self hosted users will receive these via WebHook)
+Yes!  (Self hosted users will receive these via a cron which will poll Invoice Ninja Servers every 4 hours.)
 
 ## Getting started checklist
+
+### Supported Countries:
+
+The list below are the currently supported PEPPOL countries
+
+ - Austria
+ - Belgium
+ - Denmark
+ - Germany
+ - Iceland
+ - Ireland
+ - Luxembourg
+ - Netherlands
+ - Norway
+ - Sweden
+
+If your country is not listed, most likely it means they do not support the standard PEPPOL format and are what is known as a CTC (Continuous Transaction Controls) where they have custom requirements for their e-invoicing. CTC countries are not currently supported, and it is important to note that in 2030 all EU countries will be required to use the standard PEPPOL network implementation.
 
 ### Hosted Users
  - Register with your government body if e-invoices are to be routed via government portal.
