@@ -353,7 +353,7 @@ Here are the object definitions that are available.
                                 "state": "NSW",
                                 "postal_code": "2113",
                                 "country_id": "840",
-                                "group_settings_id": "1"
+                                "group": "Special Orders"
                             },
                             "user": {
                                 "name": "Glennie Schaefer Dr. Corbin Rowe",
@@ -404,7 +404,7 @@ Here are the object definitions that are available.
                             "state": "NSW",
                             "postal_code": "2113",
                             "country_id": "840",
-                            "group_settings_id": "1"
+                            "group": "Special Orders"
                         }
                     }
                 },
@@ -458,7 +458,7 @@ Here are the object definitions that are available.
                 "state": "NSW",
                 "postal_code": "2113",
                 "country_id": "840",
-                "group_settings_id": "1"
+                "group": "Special Orders"
             },
             "payments": [
                 {
@@ -499,7 +499,7 @@ Here are the object definitions that are available.
                         "state": "NSW",
                         "postal_code": "2113",
                         "country_id": "840",
-                        "group_settings_id": "1"
+                        "group": "Special Orders"
                     },
                     "paymentables": [
                         {
@@ -594,7 +594,7 @@ Here are the object definitions that are available.
                 "state": "NSW",
                 "postal_code": "2113",
                 "country_id": "840",
-                "group_settings_id": "1"
+                "group": "Special Orders"
             },
             "paymentables": [],
             "refund_activity": []
@@ -648,7 +648,7 @@ Here are the object definitions that are available.
                     "state": "NSW",
                     "postal_code": "2113",
                     "country_id": "840",
-                    "group_settings_id": "1"
+                    "group": "Special Orders"
                 },
                 "user": {
                     "name": "Glennie Schaefer Dr. Corbin Rowe",
@@ -699,7 +699,7 @@ Here are the object definitions that are available.
                 "state": "NSW",
                 "postal_code": "2113",
                 "country_id": "840",
-                "group_settings_id": "1"
+                "group": "Special Orders"
             }
         }
     ]
@@ -980,7 +980,7 @@ Here are the object definitions that are available.
 | state | The state or province | NSW |
 | postal_code | The postal or zip code | 2113 |
 | country_id | The country ID | 840 |
-| group_settings_id | The client group settings ID | 1 |
+| group | The client group name | Special Orders |
 | phone | The client phone number | 555 123-1321 |
 | address | The formatted billing address | 1 Wallaby Way, Sydney |
 | shipping_address | The formatted shipping address | 2 Wallaby Way, Sydney | 
