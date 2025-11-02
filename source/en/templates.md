@@ -353,7 +353,17 @@ Here are the object definitions that are available.
                                 "state": "NSW",
                                 "postal_code": "2113",
                                 "country_id": "840",
-                                "group": "Special Orders"
+                                "group": "Special Orders",
+                                "location": {
+                                    "location_name": "Billy",
+                                    "address": "44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                                    "address1": "44 Nice Street",
+                                    "address2": "Apt 5",
+                                    "city": "Nicest City",
+                                    "state": "Best State",
+                                    "postal_code": "90210",
+                                    "country": "USA"
+                                }
                             },
                             "user": {
                                 "name": "Glennie Schaefer Dr. Corbin Rowe",
@@ -404,7 +414,17 @@ Here are the object definitions that are available.
                             "state": "NSW",
                             "postal_code": "2113",
                             "country_id": "840",
-                            "group": "Special Orders"
+                            "group": "Special Orders",
+                            "location": {
+                                "location_name": "Billy",
+                                "address": "44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                                "address1": "44 Nice Street",
+                                "address2": "Apt 5",
+                                "city": "Nicest City",
+                                "state": "Best State",
+                                "postal_code": "90210",
+                                "country": "USA"
+                            }
                         }
                     }
                 },
@@ -458,7 +478,17 @@ Here are the object definitions that are available.
                 "state": "NSW",
                 "postal_code": "2113",
                 "country_id": "840",
-                "group": "Special Orders"
+                "group": "Special Orders",
+                "location": {
+                    "location_name": "Billy",
+                    "address": "44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                    "address1": "44 Nice Street",
+                    "address2": "Apt 5",
+                    "city": "Nicest City",
+                    "state": "Best State",
+                    "postal_code": "90210",
+                    "country": "USA"
+                }
             },
             "payments": [
                 {
@@ -499,7 +529,17 @@ Here are the object definitions that are available.
                         "state": "NSW",
                         "postal_code": "2113",
                         "country_id": "840",
-                        "group": "Special Orders"
+                        "group": "Special Orders",
+                        "location": {
+                            "location_name": "Billy",
+                            "address": "44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                            "address1": "44 Nice Street",
+                            "address2": "Apt 5",
+                            "city": "Nicest City",
+                            "state": "Best State",
+                            "postal_code": "90210",
+                            "country": "USA"
+                        }
                     },
                     "paymentables": [
                         {
@@ -594,7 +634,17 @@ Here are the object definitions that are available.
                 "state": "NSW",
                 "postal_code": "2113",
                 "country_id": "840",
-                "group": "Special Orders"
+                "group": "Special Orders",
+                "location": {
+                    "location_name": "Billy",
+                    "address": "44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                    "address1": "44 Nice Street",
+                    "address2": "Apt 5",
+                    "city": "Nicest City",
+                    "state": "Best State",
+                    "postal_code": "90210",
+                    "country": "USA"
+                }
             },
             "paymentables": [],
             "refund_activity": []
@@ -648,7 +698,17 @@ Here are the object definitions that are available.
                     "state": "NSW",
                     "postal_code": "2113",
                     "country_id": "840",
-                    "group": "Special Orders"
+                    "group": "Special Orders",
+                    "location": {
+                        "location_name": "Billy",
+                        "address": "44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                        "address1": "44 Nice Street",
+                        "address2": "Apt 5",
+                        "city": "Nicest City",
+                        "state": "Best State",
+                        "postal_code": "90210",
+                        "country": "USA"
+                    }
                 },
                 "user": {
                     "name": "Glennie Schaefer Dr. Corbin Rowe",
@@ -699,7 +759,17 @@ Here are the object definitions that are available.
                 "state": "NSW",
                 "postal_code": "2113",
                 "country_id": "840",
-                "group": "Special Orders"
+                "group": "Special Orders",
+                "location": {
+                    "location_name": "Billy",
+                    "address": "44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                    "address1": "44 Nice Street",
+                    "address2": "Apt 5",
+                    "city": "Nicest City",
+                    "state": "Best State",
+                    "postal_code": "90210",
+                    "country": "USA"
+                }
             }
         }
     ]
@@ -981,6 +1051,7 @@ Here are the object definitions that are available.
 | postal_code | The postal or zip code | 2113 |
 | country_id | The country ID | 840 |
 | group | The client group name | Special Orders |
+| location | The client location object | [Location](#location-definition) |
 | phone | The client phone number | 555 123-1321 |
 | address | The formatted billing address | 1 Wallaby Way, Sydney |
 | shipping_address | The formatted shipping address | 2 Wallaby Way, Sydney | 
@@ -988,6 +1059,20 @@ Here are the object definitions that are available.
 | custom_value2 | The second client custom value | Blue |
 | custom_value3 | The third client custom value | Batman |
 | custom_value4 | The fourth client custom value | Pistachio |
+| | | |
+
+### Location Definition
+
+| Location Object | | |
+| ---- | ---- | ---- | 
+| location_name | The location name | Billy |
+| address | The formatted location address with HTML line breaks | 44 Nice Street<br/>Apt 5<br/>Nicest City, Best State 90210<br/>United States<br/> |
+| address1 | The first line of the location address | 44 Nice Street |
+| address2 | The second line of the location address | Apt 5 |
+| city | The city | Nicest City |
+| state | The state or province | Best State |
+| postal_code | The postal or zip code | 90210 |
+| country | The country name | USA |
 | | | |
 
 ### Project Definition
