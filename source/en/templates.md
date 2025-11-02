@@ -345,7 +345,14 @@ Here are the object definitions that are available.
                                 "balance": "0.000000",
                                 "payment_balance": "0.000000",
                                 "credit_balance": "2084.140000",
-                                "vat_number": "428950405"
+                                "vat_number": "428950405",
+                                "address1": "5 Wallaby Way",
+                                "address2": "Apt 1",
+                                "phone": "555 123-1321",
+                                "city": "Sydney",
+                                "state": "NSW",
+                                "postal_code": "2113",
+                                "country_id": "840"
                             },
                             "user": {
                                 "name": "Glennie Schaefer Dr. Corbin Rowe",
@@ -388,7 +395,14 @@ Here are the object definitions that are available.
                             "balance": "0.000000",
                             "payment_balance": "0.000000",
                             "credit_balance": "2084.140000",
-                            "vat_number": "428950405"
+                            "vat_number": "428950405",
+                            "address1": "5 Wallaby Way",
+                            "address2": "Apt 1",
+                            "phone": "555 123-1321",
+                            "city": "Sydney",
+                            "state": "NSW",
+                            "postal_code": "2113",
+                            "country_id": "840"
                         }
                     }
                 },
@@ -434,7 +448,14 @@ Here are the object definitions that are available.
                 "balance": "6606.300000",
                 "payment_balance": "0.000000",
                 "credit_balance": "0.000000",
-                "vat_number": "373145743"
+                "vat_number": "373145743",
+                "address1": "5 Wallaby Way",
+                "address2": "Apt 1",
+                "phone": "555 123-1321",
+                "city": "Sydney",
+                "state": "NSW",
+                "postal_code": "2113",
+                "country_id": "840"
             },
             "payments": [
                 {
@@ -467,7 +488,14 @@ Here are the object definitions that are available.
                         "balance": "0.000000",
                         "payment_balance": "333.000000",
                         "credit_balance": "0.000000",
-                        "vat_number": "561724719"
+                        "vat_number": "561724719",
+                        "address1": "5 Wallaby Way",
+                        "address2": "Apt 1",
+                        "phone": "555 123-1321",
+                        "city": "Sydney",
+                        "state": "NSW",
+                        "postal_code": "2113",
+                        "country_id": "840"
                     },
                     "paymentables": [
                         {
@@ -554,7 +582,14 @@ Here are the object definitions that are available.
                 "balance": "0.000000",
                 "payment_balance": "0.000000",
                 "credit_balance": "2084.140000",
-                "vat_number": "428950405"
+                "vat_number": "428950405",
+                "address1": "5 Wallaby Way",
+                "address2": "Apt 1",
+                "phone": "555 123-1321",
+                "city": "Sydney",
+                "state": "NSW",
+                "postal_code": "2113",
+                "country_id": "840"
             },
             "paymentables": [],
             "refund_activity": []
@@ -600,7 +635,14 @@ Here are the object definitions that are available.
                     "balance": "0.000000",
                     "payment_balance": "0.000000",
                     "credit_balance": "2084.140000",
-                    "vat_number": "428950405"
+                    "vat_number": "428950405",
+                    "address1": "5 Wallaby Way",
+                    "address2": "Apt 1",
+                    "phone": "555 123-1321",
+                    "city": "Sydney",
+                    "state": "NSW",
+                    "postal_code": "2113",
+                    "country_id": "840"
                 },
                 "user": {
                     "name": "Glennie Schaefer Dr. Corbin Rowe",
@@ -643,7 +685,14 @@ Here are the object definitions that are available.
                 "balance": "0.000000",
                 "payment_balance": "0.000000",
                 "credit_balance": "2084.140000",
-                "vat_number": "428950405"
+                "vat_number": "428950405",
+                "address1": "5 Wallaby Way",
+                "address2": "Apt 1",
+                "phone": "555 123-1321",
+                "city": "Sydney",
+                "state": "NSW",
+                "postal_code": "2113",
+                "country_id": "840"
             }
         }
     ]
@@ -918,6 +967,13 @@ Here are the object definitions that are available.
 | vat_number | The client VAT Number | 428950405 |
 | currency | The client currency code | USD | 
 | locale | The client locale | en |
+| address1 | The first line of the billing address | 5 Wallaby Way |
+| address2 | The second line of the billing address | Apt 1 |
+| city | The city | Sydney |
+| state | The state or province | NSW |
+| postal_code | The postal or zip code | 2113 |
+| country_id | The country ID | 840 |
+| phone | The client phone number | 555 123-1321 |
 | address | The formatted billing address | 1 Wallaby Way, Sydney |
 | shipping_address | The formatted shipping address | 2 Wallaby Way, Sydney | 
 | custom_value1 | The first client custom value | Bob |
