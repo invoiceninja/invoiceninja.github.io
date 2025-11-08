@@ -24,7 +24,6 @@ The list of supported e-invoice formats include:
 ## PEPPOL 
 
 Invoice Ninja has now rolled out a PEPPOL access point which will be available for both self hosted and hosted users to route their e-invoices through the PEPPOL network. 
-## How does it work?
 
 ## How do I get started?
 
@@ -43,6 +42,7 @@ There are a few important considerations with e-invoicing.
 1. All taxes must be applied at the line level. Total taxes are not supported with e-invoicing
 2. If you do not charge VAT/TAX on your invoices, you still need to apply a tax code/reason ie. Cross Border exemption, seller with no VAT number etc
 3. After an invoice has been "sent" it can never be modified, instead if there are changes that need to be applied you must create a new Invoice/Credit with the changes
+4. To create a credit note for PEPPOL you need to use a negative invoice. This will generate the correct document type for PEPPOL.
 
 ## Can I receive e-invoices?
 Yes!  (Self hosted users will receive these via a cron which will poll Invoice Ninja Servers every 4 hours.)
