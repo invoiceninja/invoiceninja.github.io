@@ -141,4 +141,5 @@ return [
     'white_labeling' => 'White Labeling',
     'schedules' => 'Schedules',
     'esignatures' => 'E Signatures',
+    'repository' => 'Repository',
 ];
