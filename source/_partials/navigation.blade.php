@@ -30,6 +30,9 @@
                     <a target="_blank" href="https://app.invoicing.co" class="px-5 py-2 border rounded-full hover:border-ninja-blue">{{ $page->__('texts.go_to_app', $locale) }}</a>
                 </span>
                 <span>
+                    <a href="https://github.com/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue">{{ $page->__('texts.repository', $locale) }}</a>
+                </span>
+                <span>
                     <select id="locale" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-1 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <option value="en">EN</option>
                         <option value="fr_CA">Fr (CA)</option>
@@ -53,6 +56,7 @@
         <a href="/{{ $locale }}/self-host-installation" class="py-2 border-b border-transparent hover:border-ninja-blue">{{ $page->__('texts.self_host', $locale) }}</a>
         <a href="https://api-docs.invoicing.co/" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> {{ $page->__('texts.api_documentation', $locale) }} </a>
         <a href="https://app.invoicing.co" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> {{ $page->__('texts.go_to_app', $locale) }}</a>
+        <a href="https://github.com/invoiceninja/invoiceninja" target="_blank" class="py-2 border-b border-transparent hover:border-ninja-blue"> {{ $page->__('texts.repository', $locale) }}</a>
         <select id="locale_mobile" onchange="this.options[this.selectedIndex].value && (window.location = '/' + this.options[this.selectedIndex].value);" class="mt-2 rounded-md border-0 py-1.5 pl-3 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
             <option value="en">EN</option>
             <option value="fr_CA">Fr (CA)</option>
