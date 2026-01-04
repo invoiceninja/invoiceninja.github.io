@@ -31,7 +31,7 @@
             </li>
 
             <li class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow border-t-4" style="border-color: rgb(255, 0, 0);">
-                <a href="/en/getting-started/">
+                <a href="/en/self-host-installation/">
                     <div class="flex flex-1 flex-col p-8">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-auto h-32 w-32 flex-shrink-0">
                             <path stroke-linecap="round" stroke-linejoin="round"
