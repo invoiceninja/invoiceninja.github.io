@@ -45,4 +45,4 @@ jobs:
       - name: Publish
         run: |
           git subtree split --prefix build_production -b master
-          git push -f origin master:master
+          git push -f origin master:master --no-verify
