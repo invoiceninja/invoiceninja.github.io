@@ -217,4 +217,32 @@ Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlappi
 
 As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/en/basic-settings/#localization).
 
+### E-Invoicing and Invoice Period Definition
+
+Sometimes you need to provide additional context when billing a recurring invoice, where services span a range of time (ie February 2026 - April 2026), and Invoice Period is required.
+
+To cater for this use case, in the E-Invoice tab of the Recurring invoices there is a Start Date and End Date section.
+
+![alt text](/assets/images/recurring_invoices/recurring_invoice_period.png "Invoice Period")
+
+In order to handle the multiple variations that are possible, the start and end dates utilize the [date_create()](https://www.php.net/manual/en/function.date-create.php) function.  
+
+This allows you to use natual language to define the range period.
+
+For example:
+
+Assume we generate our invoices on the 1st of October 2025, with the following definitions for start/end dates
+
+Start Date: first day of last month
+End Date: last date of last month.
+
+This will generate a Invoice Period of 1st of September 2025 to 30th of September 2025.
+
+To take this a step further, you can also chain together multiple statements for better resolution ie.
+
+Start Date: first day of month
+End Date: first day of month, +1 month
+
+This will generate a Invoice Period of 1st of September 2025 to 1st of October 2025.
+
 <x-next url=/en/gateways>Payment Gateways</x-next>
