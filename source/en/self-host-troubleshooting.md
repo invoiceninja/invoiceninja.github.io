@@ -570,4 +570,5 @@ Now lets reset the password
 
 ```
 $user->password = Hash::make('password');
-$u->save();
+$user->save();
+```
