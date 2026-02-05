@@ -91,6 +91,31 @@
           color: #777;
         }
 
+        .code-block-wrapper {
+          position: relative;
+        }
+        .code-block-copy {
+          position: absolute;
+          top: 0.5rem;
+          right: 0.5rem;
+          padding: 0.25rem 0.5rem;
+          font-size: 0.75rem;
+          background: rgba(255, 255, 255, 0.9);
+          border: 1px solid #ccc;
+          border-radius: 0.25rem;
+          cursor: pointer;
+          color: #333;
+        }
+        .code-block-copy:hover {
+          background: #fff;
+          border-color: #999;
+        }
+        .code-block-copy-done {
+          background: #e8f5e9;
+          border-color: #4caf50;
+          color: #2e7d32;
+        }
+
     </style>
  
    <script>

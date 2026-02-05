@@ -1141,3 +1141,31 @@ Here are the object definitions that are available.
 |TP11 | Project Outline | [<img src="/assets/images/templates/tp11.png" width="200"/>](/assets/images/templates/tp11.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/projects/tp11.html "download") |
 |TT10 | Task | [<img src="/assets/images/templates/tt10.png" width="200"/>](/assets/images/templates/tt10.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/tasks/tt10.html "download") |  
 |||||
+
+## Snippets
+
+Here are some quick and easy snippets you can use in your templates/designs
+
+### Display payments table on an invoice
+
+```bash
+​<ninja>
+    {% if invoices %}
+    {% set invoice = invoices|first %}
+        <div>
+        <table>
+        {% if invoice.payments is not empty  %}
+        <tr><td>Date</td><td>Amount</td></tr>
+        {% for payment in invoice.payments %}
+        <tr>
+            <td>{{ payment.date }}</td>
+            <td>{{ payment.amount }}</td>
+        </tr>
+
+        {% endfor %}
+        </table>
+        {% endif %}
+        </div>
+    {% endif %}
+</ninja>
+```

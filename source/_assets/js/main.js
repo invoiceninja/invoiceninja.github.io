@@ -10,6 +10,33 @@ anchors.options = {
 anchors.add();
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Add copy-to-clipboard buttons for code blocks
+    document.querySelectorAll('#page-content pre').forEach(function (pre) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'code-block-copy';
+        button.textContent = 'Copy';
+        button.setAttribute('aria-label', 'Copy code to clipboard');
+        wrapper.appendChild(button);
+
+        button.addEventListener('click', function () {
+            const code = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+            navigator.clipboard.writeText(code).then(function () {
+                button.textContent = 'Copied!';
+                button.classList.add('code-block-copy-done');
+                setTimeout(function () {
+                    button.textContent = 'Copy';
+                    button.classList.remove('code-block-copy-done');
+                }, 2000);
+            });
+        });
+    });
+
     let contentsTable = document.getElementById('toc-container');
 
     let elements = document.querySelectorAll('#page-content > h2[id], #page-content > h3[id]');
