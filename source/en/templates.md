@@ -1101,6 +1101,258 @@ Here are the object definitions that are available.
 | client | The Client Object | [Client](/en/templates/#client-definition) |
 | | | |
 
+
+
+## Standard variable access.
+
+From version v5.12.56 we have ported standard variables (ie $invoice.number) into twig compatible variables. To access these you can use the following notation
+
+$invoice.number becomes entity.invoice.number
+
+The full list of these are included here:
+
+### Client Information
+
+- `entity.client` - The Client Name
+- `entity.contact` - Benedict Eichmann
+- `entity.client_name` - A Client Called Bob
+- `entity.client_balance` - $0.00
+- `entity.client_address` - "8447<br/>63993 Aiyana View<br/>Aufderharchester, North Carolina 11243<br/>United States<br/>"
+- `entity.client1` - "custom value"
+- `entity.client2` - "custom value"
+- `entity.client3` - "custom value"
+- `entity.client4` - "custom value"
+
+### Company Information
+
+- `entity.company.name` - "Invoice Ninja Company"
+- `entity.company.logo` - "https://example.com/storage/tHjH0YBHxBAgKunEwdW7YabC06HvVUDo/YhAsO5Bs4W91C6yjQ39i7iXp5NffmzXwIYn3EQjl.png"
+- `entity.company.email` - "zmckenzie@example.net"
+- `entity.company.phone` - "(314) 954-7839"
+- `entity.company.website` - "http://bahringer.com/"
+- `entity.company.address` - "Emely Square<br/>65087 Angie Locks Suite 605<br/>East Lorenzoville, Vermont 35254-5442<br/>United States<br/>Phone: (314) 954-7839<br/>Email: zmckenzie@example.net<br/>"
+- `entity.company.address1` - "Emely Square"
+- `entity.company.address2` - "65087 Angie Locks Suite 605"
+- `entity.company.city` - "East Lorenzoville"
+- `entity.company.state` - "Vermont"
+- `entity.company.postal_code` - "35254-5442"
+- `entity.company.country` - "United States"
+- `entity.company.country_2` - "US"
+- `entity.company.city_state_postal` - "East Lorenzoville, Vermont, 35254-5442"
+- `entity.company.postal_city_state` - "35254-5442, East Lorenzoville, Vermont"
+- `entity.company.postal_city` - "35254-5442, Vermont"
+- `entity.company.vat_number` - "BE123456789"
+- `entity.company.id_number` - "123456789"
+- `entity.company.classification` - "Business"
+- `entity.company.custom1` - "Custom Company Field 1"
+- `entity.company.custom2` - "Custom Company Field 2"
+- `entity.company.custom3` - "Custom Company Field 3"
+- `entity.company.custom4` - "Custom Company Field 4"
+
+### Invoice Information
+
+- `entity.invoice` - "0029"
+- `entity.invoice_no` - "0029"
+- `entity.number` - "0029"
+- `entity.number_short` - "0029"
+- `entity.date` - "2023-10-25"
+- `entity.invoiceDate` - "2023-10-25"
+- `entity.due_date` - "2022-01-01"
+- `entity.dueDate` - "2022-01-01"
+- `entity.po_number` - "PO12345"
+- `entity.poNumber` - "PO-123456"
+- `entity.reference` - "REF-001"
+- `entity.invoice_total_raw` - 0.0
+- `entity.subtotal` - "$0.00"
+- `entity.net_subtotal` - "$0.00"
+- `entity.gross_subtotal` - "$0.00"
+- `entity.discount` - "$0.00"
+- `entity.taxes` - "$40.00"
+- `entity.total` - "$10.00"
+- `entity.balance` - "$40.00"
+- `entity.balance_due` - "$1110.00"
+- `entity.balance_due_raw` - "0.00"
+- `entity.amount` - "$30.00"
+- `entity.amount_due` - "$0.00"
+- `entity.amount_raw` - "0.00"
+- `entity.paid_to_date` - "$0.00"
+- `entity.outstanding` - "$440.00"
+- `entity.partial` - "$30.00"
+- `entity.partial_due` - "$50.00"
+- `entity.partial_due_date` - "&nbsp;"
+- `entity.payment_due` - "&nbsp;"
+- `entity.amount_paid` - "$100.00"
+
+### Quote Information
+
+- `entity.quote.number` - "0029"
+- `entity.quote.quote_number` - "0029"
+- `entity.quote.quote_no` - "0029"
+- `entity.quote.date` - "2023-10-25"
+- `entity.quote.datetime` - "2023-10-25 01:10:00"
+- `entity.quote.valid_until` - "2023-10-24"
+- `entity.quote.balance_due` - "$0.00"
+- `entity.quote.po_number` - "PO12345"
+- `entity.quote.amount` - "$0.00"
+- `entity.quote.total` - "$10.00"
+- `entity.quote.custom1` - "custom value"
+- `entity.quote.custom2` - "custom value"
+- `entity.quote.custom3` - "custom value"
+- `entity.quote.custom4` - "custom value"
+- `entity.quote_no` - "0029"
+
+### Credit Information
+
+- `entity.credit.number` - "0029"
+- `entity.credit.credit_no` - "0029"
+- `entity.credit.date` - "2023-10-25"
+- `entity.credit.datetime` - "2023-10-25 01:10:00"
+- `entity.credit.valid_until` - "2024-12-11"
+- `entity.credit.po_number` - "PO12345"
+- `entity.credit.balance` - "$0.00"
+- `entity.credit.total` - "$0.00"
+- `entity.credit_no` - "0029"
+- `entity.credit_number` - "0029"
+- `entity.credit_amount` - "$40.00"
+- `entity.credit_balance` - "$0.00"
+
+### User Information
+
+- `entity.user.name` - "Derrick Monahan DDS Erna Wunsch"
+- `entity.user.first_name` - "Derrick Monahan DDS"
+- `entity.user.last_name` - "Erna Wunsch"
+- `entity.firstName` - "Benedict"
+- `entity.created_by_user` - "Derrick Monahan DDS Erna Wunsch"
+- `entity.assigned_to_user` - "John Smith"
+
+### Payment Information
+
+- `entity.payment.date` - "2022-10-10"
+- `entity.payment_link` - "http://example.com/client/pay/UAUY8vIPuno72igmXbbpldwo5BDDKIqs"
+- `entity.payment_url` - "http://example.com/client/pay/UAUY8vIPuno72igmXbbpldwo5BDDKIqs"
+- `entity.paymentLink` - "http://example.com/client/pay/UAUY8vIPuno72igmXbbpldwo5BDDKIqs"
+- `entity.payment_button` - '<a class="button" href="http://example.com/client/pay/UAUY8vIPuno72igmXbbpldwo5BDDKIqs">Pay Now</a>'
+- `entity.paymentButton` - '<a class="button" href="http://example.com/client/pay/UAUY8vIPuno72igmXbbpldwo5BDDKIqs">Pay Now</a>'
+- `entity.payment_qrcode` - (QR code SVG)
+- `entity.payments` - "Payment History List"
+- `entity.method` - "&nbsp;"
+
+### Portal Links
+
+- `entity.portal_url` - "http://example.com/client/"
+- `entity.portal_button` - '<a class="button" href="http://example.com/client/key_login/zJJEjlUtXPiNnnnyO2tcYia64PSwauidy61eDnMU?client_hash=nzikYQITs1kyUK61GScTNW67JwhTRkOBVdvsHzIv">View client portal</a>'
+- `entity.portalButton` - '<a class="button" href="http://example.com/client/key_login/zJJEjlUtXPiNnnnyO2tcYia64PSwauidy61eDnMU?client_hash=nzikYQITs1kyUK61GScTNW67JwhTRkOBVdvsHzIv">View client portal</a>'
+- `entity.view_url` - "http://example.com/client/invoice/UAUY8vIPuno72igmXbbpldwo5BDDKIqs"
+- `entity.view_link` - '<a class="button" href="http://example.com/client/invoice/UAUY8vIPuno72igmXbbpldwo5BDDKIqs">View Invoice</a>'
+- `entity.view_button` - '<a class="button" href="http://example.com/client/invoice/UAUY8vIPuno72igmXbbpldwo5BDDKIqs">View Invoice</a>'
+- `entity.viewLink` - '<a class="button" href="http://example.com/client/invoice/UAUY8vIPuno72igmXbbpldwo5BDDKIqs">View Invoice</a>'
+- `entity.viewButton` - '<a class="button" href="http://example.com/client/invoice/UAUY8vIPuno72igmXbbpldwo5BDDKIqs">View Invoice</a>'
+- `entity.app_url` - "http://example.com"
+
+### Styling & Design
+
+- `entity.primary_color` - "#298AAB"
+- `entity.secondary_color` - "#7081e0"
+- `entity.font_name` - "Roboto"
+- `entity.font_size` - 16
+- `entity.font_url` - "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+- `entity.secondary_font_name` - "Roboto"
+- `entity.secondary_font_url` - "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+- `entity.page_size` - "A4"
+- `entity.page_layout` - "portrait"
+- `entity.global_margin` - "6.35mm"
+- `entity.company_logo` - "https://example.com/storage/tHjH0YBHxBAgKunEwdW7YabC06HvVUDo/YhAsO5Bs4W91C6yjQ39i7iXp5NffmzXwIYn3EQjl.png"
+- `entity.company_logo_size` - "65%"
+- `entity.status_logo` - '<div class="stamp is-paid"> Paid</div>'
+- `entity.show_paid_stamp` - "none"
+- `entity.show_shipping_address` - "none"
+- `entity.show_shipping_address_block` - "none"
+- `entity.show_shipping_address_visibility` - "0"
+
+### Text & Content
+
+- `entity.public_notes` - "These are very public notes"
+- `entity.notes` - "Additional notes"
+- `entity.terms` - "Default company invoice terms"
+- `entity.footer` - "Default invoice footer"
+- `entity.entity_footer` - "Default invoice footer"
+- `entity.thanks` - "Thanks!"
+- `entity.description` - "Description text"
+- `entity.details` - "Additional details"
+- `entity.emailSignature` - "A email signature."
+- `entity.auto_bill` - "This invoice will automatically be billed to your credit card on file on the due date."
+- `entity.autoBill` - "This invoice will automatically be billed to your credit card on file on the due date."
+
+### Tax Information
+
+- `entity.tax` - "$15.00"
+- `entity.total_tax_labels` - "GST, VAT"
+- `entity.total_tax_values` - "$10.00, $5.00"
+- `entity.line_tax_labels` - "Sales Tax"
+- `entity.line_tax_values` - "$3.00"
+
+### Custom Fields
+
+- `entity.company1` - "Custom Company 1"
+- `entity.company2` - "Custom Company 2"
+- `entity.company3` - "Custom Company 3"
+- `entity.company4` - "Custom Company 4"
+- `entity.custom_surcharge1` - "$0.00"
+- `entity.custom_surcharge2` - "$0.00"
+- `entity.custom_surcharge3` - "$0.00"
+- `entity.custom_surcharge4` - "$0.00"
+
+### Address Information
+
+- `entity.address1` - "Emely Square"
+- `entity.address2` - "65087 Angie Locks Suite 605"
+- `entity.city_state_postal` - "East Lorenzoville, Vermont, 35254-5442"
+- `entity.postal_city_state` - "35254-5442, East Lorenzoville, Vermont"
+- `entity.country` - "United States"
+- `entity.country_2` - "AF"
+- `entity.shipping` - "Shipping Address"
+- `entity.ship_to` - "Shipping Recipient Name"
+
+### Miscellaneous
+
+- `entity.entity` - "invoice"
+- `entity.entity_number` - "0029"
+- `entity.entity_issued_to` - "Bob Jones"
+- `entity.entity_images` - "Image URLs"
+- `entity.vat_number` - "975977515"
+- `entity.id_number` - "ID Number"
+- `entity.account` - "434343"
+- `entity.website` - "http://bahringer.com/"
+- `entity.email` - "email@invoiceninja.net"
+- `entity.phone` - "&nbsp;"
+- `entity.from` - "Bob Jones"
+- `entity.to` - "Jimmy Giggles"
+- `entity.item` - "Line item"
+- `entity.net` - "Net"
+- `entity.dir` - "ltr"
+- `entity.dir_text_align` - "left"
+- `entity.valid_until` - "2023-12-31"
+- `entity.your_entity` - "Your Invoice"
+- `entity.user_iban` - "&nbsp;"
+- `entity.signature` - "&nbsp;"
+- `entity.refund` - "$0.00"
+- `entity.refunded` - "$0.00"
+- `entity.invoices` - "0029"
+- `entity.tech_hero_image` - "https://invoicing.co/images/pdf-designs/tech-hero-image.jpg"
+- `entity.spc_qr_code` - "QR code for Swiss Payment"
+- `entity.verifactu_qr_code` - "VeriFacTu QR code"
+- `entity.statement` - "Statement content"
+- `entity.statement_amount` - "$500.00"
+- `entity.history` - "Transaction history"
+- `entity.start_date` - "2023-01-31"
+- `entity.end_date` - "2023-12-31"
+- `entity.receipt` - "Receipt content"
+- `entity.delivery_note` - "Delivery instructions"
+- `entity.quantity` - "10"
+- `entity.order_number` - "ORD-12345"
+- `entity.term_days` - "14"
+
+
 ## Sample Templates
 
 ### Statements
