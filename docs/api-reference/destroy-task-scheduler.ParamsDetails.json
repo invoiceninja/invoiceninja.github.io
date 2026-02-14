@@ -1,0 +1,1 @@
+{"parameters":[{"name":"X-Requested-With","in":"header","description":"Used to send the XMLHttpRequest header","required":true,"schema":{"type":"string","example":"XMLHttpRequest"}},{"name":"id","in":"path","description":"The Scheduler Hashed ID","required":true,"schema":{"type":"string","format":"string"},"example":"D2J234DFA"}]}

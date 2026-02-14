@@ -1,0 +1,1 @@
+{"title":"Body","body":{"description":"The CSV file","required":true,"content":{"multipart/form-data":{"schema":{"type":"string","format":"binary"}}}}}

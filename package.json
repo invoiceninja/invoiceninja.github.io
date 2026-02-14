@@ -1,29 +1,54 @@
 {
-    "private": true,
-    "scripts": {
-        "local": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "staging": "cross-env NODE_ENV=staging node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "dev": "npm run local",
-        "prod": "npm run production",
-        "watch": "npm run local -- --watch"
-    },
-    "devDependencies": {
-        "@docsearch/css": "^3.0.0",
-        "@tailwindcss/typography": "0.4.1",
-        "cross-env": "^7.0.3",
-        "laravel-mix": "^6",
-        "laravel-mix-jigsaw": "^2.0.0",
-        "lunr": "^2.3.9",
-        "postcss": "^8.4",
-        "postcss-import": "^14.0.2",
-        "tailwindcss": "^2.2.17",
-        "video.js": "^8.0.4",
-        "vue-template-compiler": "^2.6.14"
-    },
-    "dependencies": {
-        "anchor-js": "^4.3.1",
-        "lunr": "^2.3.9",
-        "videojs-contrib-dash": "^5.1.1"
-    }
+  "name": "invoiceninja-docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "gen-api-docs": "docusaurus gen-api-docs invoiceninja",
+    "clean-api-docs": "docusaurus clean-api-docs invoiceninja"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/plugin-client-redirects": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
+    "@easyops-cn/docusaurus-search-local": "^0.55.0",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "docusaurus-plugin-openapi-docs": "^4.4.0",
+    "docusaurus-theme-openapi-docs": "^4.4.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "video.js": "^8.0.4",
+    "videojs-contrib-dash": "^5.1.1"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "^3.7.0",
+    "@docusaurus/tsconfig": "^3.7.0",
+    "@docusaurus/types": "^3.7.0",
+    "typescript": "~5.6.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
+  }
 }

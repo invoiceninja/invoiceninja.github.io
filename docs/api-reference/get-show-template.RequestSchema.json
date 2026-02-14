@@ -1,0 +1,1 @@
+{"title":"Body","body":{"description":"The template subject and body","required":true,"content":{"application/json":{"schema":{"properties":{"subject":{"description":"The email template subject","type":"string"},"body":{"description":"The email template body","type":"string"}},"type":"object"}}}}}

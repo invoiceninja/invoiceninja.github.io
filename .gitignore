@@ -1,12 +1,20 @@
-/build_local/
-/cache/
-/node_modules/
-/vendor/
-/.idea/
-/.vscode/
-npm-debug.log
-yarn-error.log
+# Docusaurus
+/build/
+/.docusaurus/
+node_modules/
 
+# Legacy Jigsaw (can be removed once migration is complete)
+/build_local/
 /build_staging/
 /build_production/
+/cache/
 /source/assets/build/
+/vendor/
+
+# IDE
+/.idea/
+/.vscode/
+
+# Logs
+npm-debug.log
+yarn-error.log

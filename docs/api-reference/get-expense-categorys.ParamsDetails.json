@@ -1,0 +1,1 @@
+{"parameters":[{"name":"index","in":"query","description":"Replaces the default response index from data to a user specific string\n\nie.\n\n```html\n  ?index=new_index\n```\n\nresponse is wrapped\n\n```json\n  {\n    'new_index' : [\n      .....  \n    ]\n  }\n```\n","required":false,"schema":{"type":"string","example":"user"}}]}
