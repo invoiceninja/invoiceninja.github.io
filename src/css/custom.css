@@ -233,6 +233,60 @@ strong, b {
   --ifm-leading: 1.7;
 }
 
+/* Vertical rhythm — breathing room between block elements */
+.theme-doc-markdown > p,
+.theme-doc-markdown > ul,
+.theme-doc-markdown > ol {
+  margin-bottom: 1.25rem;
+}
+
+.theme-doc-markdown > .alert,
+.theme-doc-markdown > div[class^='admonition'],
+.theme-doc-markdown > details {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown > div[class^='codeBlockContainer'],
+.theme-doc-markdown > pre {
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown > table {
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.theme-doc-markdown > hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.theme-doc-markdown > img,
+.theme-doc-markdown > p > img {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Nested list spacing */
+.theme-doc-markdown li {
+  margin-bottom: 0.25rem;
+}
+
+.theme-doc-markdown li > ul,
+.theme-doc-markdown li > ol {
+  margin-top: 0.25rem;
+}
+
+/* Space between a heading and the element right before it */
+.theme-doc-markdown h4,
+.theme-doc-markdown h5,
+.theme-doc-markdown h6 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.625rem;
+}
+
 .theme-doc-markdown h2 {
   margin-top: 2.5rem;
   padding-top: 1.25rem;
@@ -410,6 +464,12 @@ table tbody tr:nth-child(2n) {
   padding: 0.875rem 1.125rem;
   font-size: 0.875rem;
   line-height: 1.6;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert p:last-child {
+  margin-bottom: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -855,9 +915,22 @@ h2.openapi__method-endpoint-path {
    -------------------------------------------------------------------------- */
 
 .video-container {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border-radius: 8px;
   overflow: hidden;
+}
+
+/* Video.js DASH player containers */
+[data-vjs-player] {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.theme-doc-markdown > video,
+.theme-doc-markdown > p > video {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .video-container video {
