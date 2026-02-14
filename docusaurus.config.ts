@@ -239,7 +239,7 @@ const config: Config = {
       disableSwitch: false,
     },
     navbar: {
-      title: "Invoice Ninja",
+      title: "",
       logo: {
         alt: "Invoice Ninja",
         src: "img/logo-rounded.png",

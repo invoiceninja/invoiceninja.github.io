@@ -7,7 +7,8 @@ interface VideoPlayerProps {
   id?: string;
 }
 
-function VideoPlayerInner({ src, isDash = false, id }: VideoPlayerProps) {
+function VideoPlayerInner({ src, isDash, id }: VideoPlayerProps) {
+  const useDash = isDash ?? src.endsWith(".mpd");
   const videoRef = useRef<HTMLVideoElement>(null);
   const playerRef = useRef<any>(null);
 
@@ -18,7 +19,7 @@ function VideoPlayerInner({ src, isDash = false, id }: VideoPlayerProps) {
       const videojs = (await import("video.js")).default;
       await import("video.js/dist/video-js.css");
 
-      if (isDash) {
+      if (useDash) {
         await import("videojs-contrib-dash");
       }
 
@@ -30,7 +31,7 @@ function VideoPlayerInner({ src, isDash = false, id }: VideoPlayerProps) {
           aspectRatio: "16:9",
         });
 
-        if (isDash) {
+        if (useDash) {
           player.src({ src, type: "application/dash+xml" });
         }
 
@@ -47,9 +48,9 @@ function VideoPlayerInner({ src, isDash = false, id }: VideoPlayerProps) {
         playerRef.current = null;
       }
     };
-  }, [src, isDash]);
+  }, [src, useDash]);
 
-  if (isDash) {
+  if (useDash) {
     return (
       <div data-vjs-player>
         <video
