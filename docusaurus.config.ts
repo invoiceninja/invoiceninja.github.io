@@ -247,32 +247,33 @@ const config: Config = {
       },
       items: [
         {
-          type: "doc",
-          docId: "user-guide/user-guide",
+          type: "docSidebar",
+          sidebarId: "userGuide",
           label: "User Guide",
           position: "left",
         },
         {
-          type: "doc",
-          docId: "self-host/self-host-installation",
+          type: "docSidebar",
+          sidebarId: "selfHost",
           label: "Self Host",
           position: "left",
         },
         {
-          type: "doc",
-          docId: "hosted/hosted-quickstart",
+          type: "docSidebar",
+          sidebarId: "hosted",
           label: "Hosted",
           position: "left",
         },
         {
-          type: "doc",
-          docId: "developer-guide/developer-guide",
+          type: "docSidebar",
+          sidebarId: "developerGuide",
           label: "Developer Guide",
           position: "left",
         },
         {
+          type: "docSidebar",
+          sidebarId: "apisidebar",
           label: "API Reference",
-          to: "/en/api-reference/invoice-ninja-api-reference",
           position: "left",
         },
         {

@@ -3,14 +3,6 @@
 /.docusaurus/
 node_modules/
 
-# Legacy Jigsaw (can be removed once migration is complete)
-/build_local/
-/build_staging/
-/build_production/
-/cache/
-/source/assets/build/
-/vendor/
-
 # IDE
 /.idea/
 /.vscode/

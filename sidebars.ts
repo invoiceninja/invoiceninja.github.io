@@ -2,7 +2,7 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 import apiSidebar from "./docs/api-reference/sidebar";
 
 const sidebars: SidebarsConfig = {
-  docs: [
+  userGuide: [
     {
       type: "category",
       label: "User Guide",
@@ -51,26 +51,26 @@ const sidebars: SidebarsConfig = {
         "advanced-topics/tax-accounting-tips",
       ],
     },
+    "migration",
     {
       type: "category",
-      label: "Hosted",
+      label: "Legal",
       collapsed: true,
-      link: { type: "doc", id: "hosted/hosted-quickstart" },
       items: [
-        "hosted/hosted-quickstart",
-        "hosted/hosted-activate",
-        "hosted/hosted-custom-domain",
-        "hosted/hosted-migration",
-        "hosted/hosted-mail",
-        "hosted/hosted-stripe",
-        "hosted/hosted-troubleshooting",
-        "hosted/hosted-delete-account",
+        "legal/license",
+        "legal/terms-of-service",
+        "legal/data-privacy",
+        "legal/self-hosting-data",
+        "legal/self-hosting-terms",
+        "legal/gdpr",
       ],
     },
+  ],
+  selfHost: [
     {
       type: "category",
       label: "Self Host",
-      collapsed: true,
+      collapsed: false,
       link: { type: "doc", id: "self-host/self-host-installation" },
       items: [
         "self-host/getting-started",
@@ -83,10 +83,30 @@ const sidebars: SidebarsConfig = {
         "self-host/self-host-white-labeling",
       ],
     },
+  ],
+  hosted: [
+    {
+      type: "category",
+      label: "Hosted",
+      collapsed: false,
+      link: { type: "doc", id: "hosted/hosted-quickstart" },
+      items: [
+        "hosted/hosted-quickstart",
+        "hosted/hosted-activate",
+        "hosted/hosted-custom-domain",
+        "hosted/hosted-migration",
+        "hosted/hosted-mail",
+        "hosted/hosted-stripe",
+        "hosted/hosted-troubleshooting",
+        "hosted/hosted-delete-account",
+      ],
+    },
+  ],
+  developerGuide: [
     {
       type: "category",
       label: "Developer Guide",
-      collapsed: true,
+      collapsed: false,
       link: { type: "doc", id: "developer-guide/developer-guide" },
       items: [
         "developer-guide/developer-guide",
@@ -101,20 +121,6 @@ const sidebars: SidebarsConfig = {
         },
         "developer-guide/payment-gateways",
         "developer-guide/statics",
-      ],
-    },
-    "migration",
-    {
-      type: "category",
-      label: "Legal",
-      collapsed: true,
-      items: [
-        "legal/license",
-        "legal/terms-of-service",
-        "legal/data-privacy",
-        "legal/self-hosting-data",
-        "legal/self-hosting-terms",
-        "legal/gdpr",
       ],
     },
   ],
