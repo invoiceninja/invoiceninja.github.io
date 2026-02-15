@@ -20,7 +20,7 @@ The first step needed to prepare to migrate your data across to your new v5 inst
 
 ## Installing v5.
 
-Installing v5 is covered in detail [here](/en/self-host/self-host-installation) with resources to cover your needs for Docker / Shared Hosting or Ubuntu/Centos installations.
+Installing v5 is covered in detail [here](/docs/self-host/self-host-installation) with resources to cover your needs for Docker / Shared Hosting or Ubuntu/Centos installations.
 
 An important detail with your v5 installation is that your initial user login is identical to your v4 installation.
 

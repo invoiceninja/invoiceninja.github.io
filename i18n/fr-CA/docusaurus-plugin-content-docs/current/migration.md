@@ -18,7 +18,7 @@ La première étape nécessaire pour préparer la migration de vos données vers
 
 ## Installation de v5.
 
-L'installation de v5 est expliquée en détail [ici](/fr-CA/self-host/self-host-installation) avec des ressources pour couvrir vos besoins pour des installations Docker / Hébergement partagé ou Ubuntu/Centos.
+L'installation de v5 est expliquée en détail [ici](/docs/self-host/self-host-installation) avec des ressources pour couvrir vos besoins pour des installations Docker / Hébergement partagé ou Ubuntu/Centos.
 
 Un détail important lors de votre installation v5 est que votre identifiant utilisateur initial est identique à celui de votre installation v4.
 

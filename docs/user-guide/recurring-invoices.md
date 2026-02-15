@@ -53,7 +53,7 @@ Optionally enter a discount amount or percentage.
 
 ## Enter your products/tasks
 
-The products/tasks entry is the same as for regular invoices & quotes. Since this is a recurring invoice, you have the ability to use special keywords in the description field. You can also configure notes, terms, footer, link a project, set exchange rate, taxes, etc. the same way as on regular invoices. See [Invoice Items](/en/user-guide/invoices#items)
+The products/tasks entry is the same as for regular invoices & quotes. Since this is a recurring invoice, you have the ability to use special keywords in the description field. You can also configure notes, terms, footer, link a project, set exchange rate, taxes, etc. the same way as on regular invoices. See [Invoice Items](/docs/user-guide/invoices#items)
 
 ## Auto Bill options
 
@@ -97,7 +97,7 @@ If you either select invoice(s) from the Recurring Invoices home page, or you se
 
 ### Update Prices
 
-This option will check all the products on the recurring invoice against the [Products](/en/user-guide/products) list in Invoice Ninja, and update the prices on the recurring invoice to match the current product price. For example, if you updated the price of an item you sell and need the price change to reflect on recurring invoices generated from now on.
+This option will check all the products on the recurring invoice against the [Products](/docs/user-guide/products) list in Invoice Ninja, and update the prices on the recurring invoice to match the current product price. For example, if you updated the price of an item you sell and need the price change to reflect on recurring invoices generated from now on.
 
 ### Increase Prices
 
@@ -212,7 +212,7 @@ Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlappi
 
 ### Translations
 
-As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/en/user-guide/basic-settings/#localization).
+As you can see [MONTHYEAR|MONTHYEAR] uses "to" between date ranges. This is not hard coded, but it builds itself based on [your localization settings](/docs/user-guide/basic-settings/#localization).
 
 ### E-Invoicing and Invoice Period Definition
 

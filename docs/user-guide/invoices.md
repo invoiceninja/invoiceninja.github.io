@@ -49,7 +49,7 @@ The _More Actions_ dropdown has many frequently used options:
 - Mark Paid: Mark invoice as fully paid
 - Client Portal: View the invoice as the client in the client portal
 - Reverse: See [Reversed](#reversed)
-- Run Template: Brings up the screen to run the invoice as a [Template](/en/advanced-topics/templates) by selecting a design (Advanced feature)
+- Run Template: Brings up the screen to run the invoice as a [Template](/docs/advanced-topics/templates) by selecting a design (Advanced feature)
 - Clone to Invoice: clone the invoice
 - Clone to Other: Lets you choose whether to clone to a _Recurring Invoice_, _Quote_, _Credit_, or _Purchase Order_ (the items from the invoice will be copied)
 - Archive

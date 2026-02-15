@@ -63,7 +63,7 @@ Il existe plusieurs façons d'exporter des données hors d'Invoice Ninja.
 
 ## Fonction d'exportation à l'aide des rapports
 
-En utilisant le [rapport](/fr-CA/user-guide/reports), vous pouvez générer des rapports et les filtrer. Lorsque vous êtes prêt, il y a un bouton Exporter qui exportera les données en CSV pour des téléchargements instantanés.
+En utilisant le [rapport](/docs/user-guide/reports), vous pouvez générer des rapports et les filtrer. Lorsque vous êtes prêt, il y a un bouton Exporter qui exportera les données en CSV pour des téléchargements instantanés.
 
 ![texte alternatif](/assets/images/settings/export_report.png "Exportations")
 

@@ -10,7 +10,7 @@ Credits can be applied to invoices as a payment.
 
 ![Credits homepage](/assets/images/credits/credits_homepage_table.png)
 
-Note that choosing the right Payment Settings is vital to make credits intuitive and useful to your customers, see [Payment Settings](/en/user-guide/basic-settings/#payment_settings).
+Note that choosing the right Payment Settings is vital to make credits intuitive and useful to your customers, see [Payment Settings](/docs/user-guide/basic-settings/#payment_settings).
 
 ## Viewing a Credit
 
@@ -29,7 +29,7 @@ The _More Actions_ dropdown has many frequently used options:
 - Client Portal: View the credit as the client in the client portal
 - Apply Credit: Apply the credit
   - This brings up the _Enter Payment_ screen applying the credit amount to the selected client.
-- Run Template: Brings up the screen to run the credit as a [Template](/en/advanced-topics/templates) by selecting a design (Advanced feature)
+- Run Template: Brings up the screen to run the credit as a [Template](/docs/advanced-topics/templates) by selecting a design (Advanced feature)
 - Clone to Credit: clone the credit
 - Clone to Other: Lets you choose whether to clone to an _Invoice_, _Quote_, _Recurring Invoice_, or _Purchase Order_ (the items from the credit will be copied)
 - Archive

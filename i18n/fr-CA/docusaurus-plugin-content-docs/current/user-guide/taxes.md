@@ -6,7 +6,7 @@ sidebar_position: 20
 
 ## Taxes Manuelles
 
-Les taxes peuvent être configurées manuellement en suivant les étapes [ici](/en/basic-settings/#tax_settings) où vous pouvez définir manuellement les noms des taxes, les taux et comment ils sont appliqués.
+Les taxes peuvent être configurées manuellement en suivant les étapes [ici](/docs/user-guide/basic-settings#tax_settings) où vous pouvez définir manuellement les noms des taxes, les taux et comment ils sont appliqués.
 
 ## Calcul des taxes de vente américaines
 

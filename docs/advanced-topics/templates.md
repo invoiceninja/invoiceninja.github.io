@@ -830,11 +830,11 @@ Here are the object definitions that are available.
 | reminder_last_sent |  string | 25. March 2024 |
 | paid_to_date | formatted currency | $0.00 |
 | auto_bill_enabled | booleam| false |
-| line_items | array | [Line items](/en/advanced-topics/templates#line-items-definition) |
-| client | object | [Client](/en/advanced-topics/templates#client-definition) |
-| payments | array | [Payment](/en/advanced-topics/templates#payment-definition) |
-| total_tax_map | array | [Tax Map](/en/advanced-topics/templates#tax-map-definition) |
-| line_tax_map | array | [Tax Map](/en/advanced-topics/templates#tax-map-definition) |
+| line_items | array | [Line items](/docs/advanced-topics/templates#line-items-definition) |
+| client | object | [Client](/docs/advanced-topics/templates#client-definition) |
+| payments | array | [Payment](/docs/advanced-topics/templates#payment-definition) |
+| total_tax_map | array | [Tax Map](/docs/advanced-topics/templates#tax-map-definition) |
+| line_tax_map | array | [Tax Map](/docs/advanced-topics/templates#tax-map-definition) |
 | | | |
 
 ### Line items definition
@@ -866,7 +866,7 @@ Here are the object definitions that are available.
 | date | string |  24/1/2023 |
 | tax_id | string | 1 |
 | task_id | string |  |
-| task | object | [Task](/en/advanced-topics/templates#task-definition)
+| task | object | [Task](/docs/advanced-topics/templates#task-definition)
 | expense_id | string |  |
 | _id | string | 358982ee-f062-42f3-9dcf-4068e9347fa0 |
 | cost_raw | float | 372 |
@@ -913,8 +913,8 @@ Here are the object definitions that are available.
 | created_at | string | 25. March 2024 |
 | updated_at | string | 25. March 2024 |
 | refund_activity | array of string | [24. March 2024 Invoice #0029 $104.95 Refunded] |
-| paymentables | array | [Paymentables](/en/advanced-topics/templates#paymentables-definition) |
-| client | object | [Client](/en/advanced-topics/templates#client-definition) |
+| paymentables | array | [Paymentables](/docs/advanced-topics/templates#paymentables-definition) |
+| client | object | [Client](/docs/advanced-topics/templates#client-definition) |
 | | | |
 
 ### Paymentables definition
@@ -985,9 +985,9 @@ Here are the object definitions that are available.
 | custom_value4 | The expense custom value 4 | Custom Value |
 | calculate_tax_by_amount | The expense calculate tax by amount | true |
 | uses_inclusive_taxes | The expense uses inclusive taxes | true |
-| client | The expense client | [Client](/en/advanced-topics/templates/#client-definition) |
-| vendor | The expense vendor | [Vendor](/en/advanced-topics/templates/#vendor-definition) |
-| project | The expense project | [Project](/en/advanced-topics/templates/#project-definition) |
+| client | The expense client | [Client](/docs/advanced-topics/templates/#client-definition) |
+| vendor | The expense vendor | [Vendor](/docs/advanced-topics/templates/#vendor-definition) |
+| project | The expense project | [Project](/docs/advanced-topics/templates/#project-definition) |
 | | | |
 
 ### Vendor Definition
@@ -1095,10 +1095,10 @@ Here are the object definitions that are available.
 | custom_value4 | Project Custom Value 4 | Custom Value |
 | color | The color associated with the project | #fff | 
 | current_hours | The accured hours of the project so far | 100 |
-| tasks | Array of tasks | [Task](/en/advanced-topics/templates/#task-definition) |
-| expenses | Array of expenses | [Expense](/en/advanced-topics/templates/#expense-definition) |
-| user | The Creating User Object | [User](/en/advanced-topics/templates/#user-definition) |
-| client | The Client Object | [Client](/en/advanced-topics/templates/#client-definition) |
+| tasks | Array of tasks | [Task](/docs/advanced-topics/templates/#task-definition) |
+| expenses | Array of expenses | [Expense](/docs/advanced-topics/templates/#expense-definition) |
+| user | The Creating User Object | [User](/docs/advanced-topics/templates/#user-definition) |
+| client | The Client Object | [Client](/docs/advanced-topics/templates/#client-definition) |
 | | | |
 
 ## Sample Templates

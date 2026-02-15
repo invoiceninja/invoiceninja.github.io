@@ -175,7 +175,7 @@ When an individual self-registers on the client portal, their name and email wil
 
 Email addresses for _contacts_ are considered authentic. For example, if an individual attempts to self-register while already being included as a _contact_ for another _client_ entry, the self-registration portal will force them to resubmit their personal information using a new email address, or have their email address removed from the other _client_ listing.
 
-See [Client Portal](/en/user-guide/client-portal)
+See [Client Portal](/docs/user-guide/client-portal)
 
 ## Group Settings for Client Management
 

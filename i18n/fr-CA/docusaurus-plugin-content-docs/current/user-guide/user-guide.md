@@ -64,4 +64,4 @@ L'étape finale consiste à connecter une passerelle de paiement. Invoice Ninja 
 
 <iframe class="video" src="https://www.youtube.com/embed/qitfiD6L8rQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Pour plus d'informations sur les passerelles que nous prenons en charge, cliquez [ici](/fr-CA/user-guide/gateways)
+Pour plus d'informations sur les passerelles que nous prenons en charge, cliquez [ici](/docs/user-guide/gateways)

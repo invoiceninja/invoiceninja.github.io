@@ -58,4 +58,4 @@ Il suffit d'activer la fonctionnalité Suivi d'inventaire dans le panneau de con
 
 Pour voir les niveaux de stock actuels, il suffit de consulter le produit.
 
-Vous pouvez également combiner le module de bon de commande pour mettre à jour automatiquement votre niveau d'inventaire, voir <a href="/fr-CA/purchase_order"> Bon de commande</a> pour plus d'informations.
+Vous pouvez également combiner le module de bon de commande pour mettre à jour automatiquement votre niveau d'inventaire, voir <a href="/docs/user-guide/purchase-orders"> Bon de commande</a> pour plus d'informations.

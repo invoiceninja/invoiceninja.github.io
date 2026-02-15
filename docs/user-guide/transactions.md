@@ -16,7 +16,7 @@ Settings > Credit Cards & Banks
 
 You can view and add bank accounts in the settings section of the application.
 
-Please see [Banking](/en/user-guide/banking) for details.
+Please see [Banking](/docs/user-guide/banking) for details.
 
 ## Transactions List
 

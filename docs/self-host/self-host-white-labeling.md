@@ -19,5 +19,5 @@ You can use the link on the navigation menu to purchase a white label license.
 There's an option to manually apply the license on Settings > Account Management.
 
 :::info
-Note: to support e-invoicing add `LICENSE_KEY="your_white_label_license"` to the [.env file](/en/self-host/env-variables).
+Note: to support e-invoicing add `LICENSE_KEY="your_white_label_license"` to the [.env file](/docs/self-host/env-variables).
 :::

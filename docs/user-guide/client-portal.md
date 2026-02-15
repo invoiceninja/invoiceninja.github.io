@@ -10,7 +10,7 @@ sidebar_position: 7
 - When you send a client an invoice or quote, the email contains a link to view the invoice online in the client portal.
   - The invoice link will open in the client portal. From there the client has access to the other self-serve features of the portal.
 - Client portal access is available for all your clients. You can optionally allow anyone to register as a new client under Settings>Client Portal>Registration.
-- Only the enabled modules in Invoice Ninja will show in the client portal. For example, if you turn off Quotes, that option won't be visible to clients anymore. See: [Enabled Modules](/en/user-guide/basic-settings/#enabled-modules)
+- Only the enabled modules in Invoice Ninja will show in the client portal. For example, if you turn off Quotes, that option won't be visible to clients anymore. See: [Enabled Modules](/docs/user-guide/basic-settings/#enabled-modules)
 
 ## Tabs in the Client Portal
 

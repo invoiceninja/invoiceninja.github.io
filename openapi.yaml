@@ -1400,8 +1400,8 @@ paths:
     get:
       tags:
         - bank_transaction_rules
-      summary: "Shows a bank_transaction"
-      description: "Displays a bank_transaction by id"
+      summary: "Shows a bank_transaction_rule"
+      description: "Displays a bank_transaction_rule by id"
       operationId: showBankTransactionRule
       parameters:
         - $ref: "#/components/parameters/X-API-TOKEN"
@@ -1529,8 +1529,8 @@ paths:
     get:
       tags:
         - bank_transaction_rules
-      summary: "Shows a bank_transaction for editing"
-      description: "Displays a bank_transaction by id"
+      summary: "Shows a bank_transaction_rule for editing"
+      description: "Displays a bank_transaction_rule by id"
       operationId: editBankTransactionRule
       parameters:
         - $ref: "#/components/parameters/X-API-TOKEN"
@@ -3524,8 +3524,8 @@ paths:
     put:
       tags:
         - expense_categories
-      summary: "Updates a tax rate"
-      description: "Handles the updating of a tax rate by id"
+      summary: "Updates an expense category"
+      description: "Handles the updating of an expense category by id"
       operationId: updateExpenseCategory
       parameters:
         - $ref: "#/components/parameters/X-API-TOKEN"
@@ -4961,7 +4961,7 @@ paths:
           $ref: "#/components/responses/default"
     delete:
       tags:
-        - payment_termss
+        - payment_terms
       summary: "Deletes a Payment Term"
       description: "Handles the deletion of an PaymentTerm by id"
       operationId: deletePaymentTerm
@@ -7833,7 +7833,7 @@ paths:
           $ref: "#/components/responses/default"
     delete:
       tags:
-        - task_statuss
+        - task_status
       summary: "Deletes a TaskStatus Term"
       description: "Handles the deletion of an TaskStatus by id"
       operationId: deleteTaskStatus
@@ -9003,8 +9003,8 @@ paths:
     post:
       tags:
         - users
-      summary: "Reconfirm an existing user to a company"
-      description: "Reconfirm an existing user from a company"
+      summary: "Invite an existing user to a company"
+      description: "Invite an existing user to a company"
       operationId: inviteUser
       parameters:
         - $ref: "#/components/parameters/X-API-TOKEN"
@@ -9257,7 +9257,7 @@ paths:
           $ref: "#/components/responses/default"
     delete:
       tags:
-        - Webhooks
+        - webhooks
       summary: "Deletes a Webhook"
       description: "Handles the deletion of a Webhook by id"
       operationId: deleteWebhook
@@ -9577,7 +9577,7 @@ paths:
           $ref: "#/components/responses/default"
     put:
       tags:
-        - Credits
+        - credits
       summary: "Update credit"
       description: "Handles the updating of an Credit by id"
       operationId: updateCredit
@@ -9805,9 +9805,9 @@ paths:
   "/api/v1/credit/{invitation_key}/download":
     get:
       tags:
-        - quotes
-      summary: "Download quote PDF"
-      description: "Downloads a specific quote"
+        - credits
+      summary: "Download credit PDF"
+      description: "Downloads a specific credit"
       operationId: downloadCredit
       parameters:
         - $ref: "#/components/parameters/X-API-TOKEN"
@@ -27492,11 +27492,6 @@ tags:
     description: |
       Endpoint definitions for interacting with recurring_invoices.
 
-  - name: Recurring-Invoices
-    x-displayName: Recurring Invoices
-    description: |
-      Endpoint definitions for interacting with recurring_invoices.
-
   - name: payments
     x-displayName: Payments
     description: |
@@ -27528,11 +27523,6 @@ tags:
       Endpoint definitions for interacting with vendors.
 
   - name: Purchase Orders
-    x-displayName: Purchase Orders
-    description: |
-      Endpoint definitions for interacting with purchase orders.
-
-  - name: Purchase-Orders
     x-displayName: Purchase Orders
     description: |
       Endpoint definitions for interacting with purchase orders.
@@ -27612,11 +27602,6 @@ tags:
     description: |
       Endpoint definitions for connecting accounts.
 
-  - name: Credits
-    x-displayName: Credits
-    description: |
-      Endpoint definitions for interacting with credits.
-
   - name: designs
     x-displayName: Designs
     description: |
@@ -27686,11 +27671,6 @@ tags:
     x-displayName: Payment Terms
     description: |
       Endpoint definitions for interacting with payment terms.
-
-  - name: payment_termss
-    x-displayName: Payment Terms
-    description: |
-      Endpoint definitions for payment terms operations.
 
   - name: ping
     x-displayName: Ping
@@ -27762,11 +27742,6 @@ tags:
     description: |
       Endpoint definitions for interacting with task statuses.
 
-  - name: task_statuss
-    x-displayName: Task Status
-    description: |
-      Endpoint definitions for task status operations.
-
   - name: tax_rates
     x-displayName: Tax Rates
     description: |
@@ -27801,11 +27776,6 @@ tags:
     x-displayName: Webhooks
     description: |
       Endpoint definitions for interacting with webhooks.
-
-  - name: Webhooks
-    x-displayName: Webhooks
-    description: |
-      Endpoint definitions for webhook operations.
 
   - name: yodlee
     x-displayName: Yodlee

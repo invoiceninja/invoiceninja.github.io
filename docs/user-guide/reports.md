@@ -149,4 +149,4 @@ There are too many ways to use the customization of the _Reports_ module to list
 
 ## Tax Reports
 
-TIP: If you are looking for an explanation of tax or sales tax report features, see this article: [Tax Accounting Tips](/en/advanced-topics/tax-accounting-tips/)
+TIP: If you are looking for an explanation of tax or sales tax report features, see this article: [Tax Accounting Tips](/docs/advanced-topics/tax-accounting-tips/)

@@ -10,11 +10,11 @@ You can invoice your clients, sell products and services, quotes, purchase order
 
 Some of our features which can help with accounting include:
 
-- **Expenses**: Track any type of expense, track tax(es) paid per expense, currency conversion, track expenses per vendor and client. See [Expenses](/en/user-guide/expenses/)
-- **Recurring Expenses**: Any expense can be made into an expense that automatically reoccurs on a set schedule. See [Recurring Expenses](/en/user-guide/recurring-expenses)
-- **Transactions**: Connect your bank account to Invoice Ninja for automatic reconciliation of payments and expenses. See [Transactions](/en/user-guide/transactions)
-- **Payments**: Track all payments received by your business, by customer. You can run reports on payments, clients, and keep track of reference numbers/payment methods. See [Payments](/en/user-guide/payments)
-- **Reports**: Generate highly customized and fine-tuned reports for your various records. You can track profits, sales, expenses, performance of your products and services, and either visualize that data directly, or export it for processing and analysis in an external application. See [Reports](/en/user-guide/reports)
+- **Expenses**: Track any type of expense, track tax(es) paid per expense, currency conversion, track expenses per vendor and client. See [Expenses](/docs/user-guide/expenses/)
+- **Recurring Expenses**: Any expense can be made into an expense that automatically reoccurs on a set schedule. See [Recurring Expenses](/docs/user-guide/recurring-expenses)
+- **Transactions**: Connect your bank account to Invoice Ninja for automatic reconciliation of payments and expenses. See [Transactions](/docs/user-guide/transactions)
+- **Payments**: Track all payments received by your business, by customer. You can run reports on payments, clients, and keep track of reference numbers/payment methods. See [Payments](/docs/user-guide/payments)
+- **Reports**: Generate highly customized and fine-tuned reports for your various records. You can track profits, sales, expenses, performance of your products and services, and either visualize that data directly, or export it for processing and analysis in an external application. See [Reports](/docs/user-guide/reports)
 
 If your business uses Invoice Ninja for billing your clients, you may want to take advantage of the accounting features we'll describe below.
 
@@ -36,7 +36,7 @@ You can enter each of your expenses in the Invoice Ninja Expenses module:
   - If the expense was related to a client or project, you can attach it to a client and project.
 - You are able to categorize the expense by selecting or creating a category.
 - Tax: if you are required to keep track of taxes you PAID on business expenses to claim input tax credits, you can do this by enabling Expense Tax under _Settings > Tax Settings > Expense Tax Rates_.
-  - You can even layer up to three calculated tax rates. See [Tax Settings](/en/user-guide/taxes/) for details on tax configuration.
+  - You can even layer up to three calculated tax rates. See [Tax Settings](/docs/user-guide/taxes/) for details on tax configuration.
 
 ### Example use cases
 
@@ -47,13 +47,13 @@ You can enter each of your expenses in the Invoice Ninja Expenses module:
 ## Sales tax collection
 
 If you are collecting sales tax, ensure you have the tax rates configured properly in Invoice Ninja.
-See [Tax Settings](/en/user-guide/taxes/) for details on tax configuration.
+See [Tax Settings](/docs/user-guide/taxes/) for details on tax configuration.
 
 Once your tax rate(s) are added, you would apply tax to your products/invoices. If certain items sold are exempt from sales tax, it's easy to mark a product as Tax Exempt, or taxable at 0% in case you are able to claim input tax credits on it.
 
 ## Transactions
 
-You can link your bank account to Invoice Ninja and have it sync your transactions for bookkeeping purposes. See [Transactions](/en/user-guide/transactions/) for how to set this up.
+You can link your bank account to Invoice Ninja and have it sync your transactions for bookkeeping purposes. See [Transactions](/docs/user-guide/transactions/) for how to set this up.
 
 You can import your transactions on demand, or with automatic syncing, which will keep all of your transactions up to date. You also have the option to import bank statements in CSV format.
 
@@ -79,7 +79,7 @@ If you consistently entered all your expenses and payments received in Invoice N
 
 ### Profit and Loss Report
 
-See [Reports: Profit and Loss Report](/en/user-guide/reports#profit_and_loss_report)
+See [Reports: Profit and Loss Report](/docs/user-guide/reports#profit_and_loss_report)
 
 ### Manual Calculations
 
@@ -109,7 +109,7 @@ The Tax Summary Report can be used to see a total of all the taxes collected in 
 
 #### Other Reports
 
-There are a number of other reports available for product sales, invoices by client, credits, quotes, purchase orders, and more. See [Reports](/en/user-guide/reports/)
+There are a number of other reports available for product sales, invoices by client, credits, quotes, purchase orders, and more. See [Reports](/docs/user-guide/reports/)
 
 ### Calculations
 

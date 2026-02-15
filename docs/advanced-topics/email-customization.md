@@ -26,7 +26,7 @@ Selecting a template will replace the content in the panel beneath it where it c
 
 ## Invoice Email Customization
 
-The custom fields available for Invoices / Quotes and Credits are the same ones used for PDF customization, the full list can be found [here](/en/advanced-topics/custom-fields/#custom-fields)
+The custom fields available for Invoices / Quotes and Credits are the same ones used for PDF customization, the full list can be found [here](/docs/advanced-topics/custom-fields/#custom-fields)
 
 ## Payment Email Customization
 

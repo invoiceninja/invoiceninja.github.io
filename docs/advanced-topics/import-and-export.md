@@ -77,7 +77,7 @@ There are several ways to export data out of Invoice Ninja:
 
 ## Export Function using Reports
 
-Using the [report](/en/user-guide/reports) you are able to generate reports and filter them down. When you are ready, there is an Export button which will export the data to csv for instant downloads.
+Using the [report](/docs/user-guide/reports) you are able to generate reports and filter them down. When you are ready, there is an Export button which will export the data to csv for instant downloads.
 
 ![alt text](/assets/images/settings/export_report.png "Exports")
 

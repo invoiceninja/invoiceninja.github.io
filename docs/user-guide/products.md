@@ -54,7 +54,7 @@ The Documents pane allows you to upload and view documents that are linked to th
 
 ### Custom Fields
 
-You can apply advanced custom attributes to products called _Custom Fields_. See: [Custom Fields](/en/advanced-topics/custom-fields/#custom-fields)
+You can apply advanced custom attributes to products called _Custom Fields_. See: [Custom Fields](/docs/advanced-topics/custom-fields/#custom-fields)
 
 ## Inventory Tracking
 
@@ -70,4 +70,4 @@ To view the current stock levels, simply viewing the product will show the curre
 
 If you want a spreadsheet of all your prouct's stock levels, you can go to _Reports_, select Report _Product_ and it will download a .csv of all your products including stock levels.
 
-You can also combine the Purchase Order module to update your inventory level automatically, see [Purchase Orders](/en/user-guide/purchase-orders) for more info.
+You can also combine the Purchase Order module to update your inventory level automatically, see [Purchase Orders](/docs/user-guide/purchase-orders) for more info.

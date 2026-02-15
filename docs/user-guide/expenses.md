@@ -129,7 +129,7 @@ An expense record can manually be deleted, which will remove it from view, and r
 - You could just create an expense only with an amount and nothing else... but it's best to always organize your expenses by vendor/client. For example, under _Reports_ you're able to report on expenses by status, clients, vendors, projects, and categories. Also, expenses will be shown in categories under the _Profit and Loss_ report.
 - You can see all expenses attached to a specific vendor: _Vendor Details > Expenses_
 - You can see all expenses attached to a specific client: _Client Details > Expenses_
-- Expenses can have default options configured under _Settings > Expense Settings_. See [Expense Settings](/en/user-guide/basic-settings#expense_settings)
+- Expenses can have default options configured under _Settings > Expense Settings_. See [Expense Settings](/docs/user-guide/basic-settings#expense_settings)
 
 ## Expense Inbound Email (Self Host Only)
 

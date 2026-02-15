@@ -67,7 +67,7 @@ After you Save the draft quote, a dropdown menu arrow will appear. The _Save_ dr
 - Approve: Mark the quote as Approved
 - Convert to Invoice: Convert the quote to an invoice for the client to pay
 - Convert to Project: Convert the quote to a project
-- Run template: Brings up the screen to run the quote as a [Template](/en/advanced-topics/templates) by selecting a design (Advanced feature)
+- Run template: Brings up the screen to run the quote as a [Template](/docs/advanced-topics/templates) by selecting a design (Advanced feature)
 - Clone to Quote: Clone the quote
 - Clone to Other: Lets you choose whether to clone to an _Invoice_, _Credit_, _Recurring Invoice_, or _Purchase Order_ (the items from the quote will be copied)
 - Archive

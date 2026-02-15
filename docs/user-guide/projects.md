@@ -38,7 +38,7 @@ Each task in the project has a _More Actions_ dropdown which provides options re
 
 ![Project task dropdown](/assets/images/projects/project_task_dropdown.png)
 
-_To learn more about task time tracking/statuses, see: [Tasks](/en/user-guide/tasks)_
+_To learn more about task time tracking/statuses, see: [Tasks](/docs/user-guide/tasks)_
 
 ## Creating and Editing a Project
 

@@ -18,7 +18,7 @@ Here you will find answers to many frequently asked questions about Invoice Ninj
 
 ![Client portal](/assets/images/clients/client_portal.png "Client portal")
 
-See [Client Portal](/en/user-guide/client-portal)
+See [Client Portal](/docs/user-guide/client-portal)
 
 ### What is a subdomain?
 
@@ -33,7 +33,7 @@ See [Client Portal](/en/user-guide/client-portal)
 
 - Accepting online payments has never been easier. Invoice Ninja integrates with all the major online payment gateways to let you accept payments in 135+ currencies: [Payment Gateway Integrations](https://invoiceninja.com/payments/)
 - In order to accept payments online, you need to integrate your Invoice Ninja account with a "payment gateway."
-- See: [Setting Up Payment Gateways](/en/user-guide/gateways/)
+- See: [Setting Up Payment Gateways](/docs/user-guide/gateways/)
 
 ### How do I setup automatic reminders for unpaid invoices?
 
@@ -59,7 +59,7 @@ See [Client Portal](/en/user-guide/client-portal)
 - You can apply multiple payments per invoice. Ex., deposits or partial payments.
 - The payments module lets you record the amount received, payment date, payment type (the method of payment), a transaction reference, and you can record some notes.
 - You also have the option to convert currency when recording the payment. You can select the currency to convert from, and an exchange rate. The exchange rates are updated daily.
-- See: [Payments](/en/user-guide/payments)
+- See: [Payments](/docs/user-guide/payments)
 
 ### How can I send payment email?
 
@@ -103,12 +103,12 @@ See [Client Portal](/en/user-guide/client-portal)
 
   ![Client settings additional info - currency](/assets/images/clients/client_additional_info_currency.png "Client settings additional info - currency")
 
-- If your configured [Payment Gateway](/en/user-guide/gateways) supports the currency, the client will be able to pay in that currency. Payments will record the currency they paid in.
+- If your configured [Payment Gateway](/docs/user-guide/gateways) supports the currency, the client will be able to pay in that currency. Payments will record the currency they paid in.
 - You are able to report your revenues/payments by currency in the dashboard, and reports.
 
   ![Dashboard filter by currency](/assets/images/dashboard/dashboard_filter_by_currency.png "Dashboard filter by currency")
 
-- If you have a group of clients that you'd like to bill in a specific currency, or apply other settings to a group of clients, you can use the Groups feature in Invoice Ninja – see: [Group Settings for Client Management](/en/user-guide/clients/#group-settings-for-client-management)
+- If you have a group of clients that you'd like to bill in a specific currency, or apply other settings to a group of clients, you can use the Groups feature in Invoice Ninja – see: [Group Settings for Client Management](/docs/user-guide/clients/#group-settings-for-client-management)
   - Groups lets you customize any setting or templates (ex. invoice templates) to tailor to your group of clients. For example, if you want a different invoice design or email for your "USD Clients" you can configure that easily with Groups.
 
 ### How can I show the currency symbol on invoices/quotes?
@@ -131,7 +131,7 @@ See [Client Portal](/en/user-guide/client-portal)
   - Line-item taxation is also supported. When enabled, this will add column(s) to the invoice for the line item tax rate(s) - you can select one to three line item tax rates.
 - You can also toggle whether taxes are inclusive or exclusive.
 - You can also set a tax category for your each product. That way, you can report which tax category the tax was charge for based on the products you sold. For example, "Physical Goods", "Tax Exempt"…
-- See full instructions and videos for tax configuration: [Taxes](/en/user-guide/taxes)
+- See full instructions and videos for tax configuration: [Taxes](/docs/user-guide/taxes)
 
 ### How can I create individual logins to Invoice Ninja for my staff to make invoices and use features, but not see my business's total revenues or reporting?
 
@@ -143,7 +143,7 @@ See [Client Portal](/en/user-guide/client-portal)
 
   ![New User](/assets/images/settings/user_management_new_user.png "New User")
 
-- See: [User Management](/en/user-guide/advanced-settings/#user_management)
+- See: [User Management](/docs/user-guide/advanced-settings/#user_management)
 
 ### What happens when I email an invoice out to the client?
 
@@ -153,7 +153,7 @@ See [Client Portal](/en/user-guide/client-portal)
 
   ![Invoice email template](/assets/images/settings/default_invoice_email_template.png "Invoice email template")
 
-- See: [Email Settings](/en/user-guide/advanced-settings/#email_settings)
+- See: [Email Settings](/docs/user-guide/advanced-settings/#email_settings)
 
 ### How to make the invoice always included as a PDF attachment in the email?
 
@@ -164,10 +164,10 @@ See [Client Portal](/en/user-guide/client-portal)
 
 - You can customize your invoice, quote, purchase order, and other template designs under _Settings>Invoice Design_.
   - You can change the style, layout, colors, fonts, type of company and client information shown, show custom fields, whether to show a PAID stamp, whether to number pages, hide empty columns, and more.
-  - See: [Invoice Design](/en/user-guide/advanced-settings/#invoice_design)
+  - See: [Invoice Design](/docs/user-guide/advanced-settings/#invoice_design)
 - Designs can be further tailored to individual clients or groups of clients by using the Client Settings and Groups features
-  - See: [Custom Settings Per Client](/en/user-guide/clients)
-  - See: [Group Settings](/en/user-guide/clients/#group-settings-for-client-management)
+  - See: [Custom Settings Per Client](/docs/user-guide/clients)
+  - See: [Group Settings](/docs/user-guide/clients/#group-settings-for-client-management)
 
 ### What is the purpose of the User dropdown in invoices/quotes/expenses?
 

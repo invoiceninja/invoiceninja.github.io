@@ -31,13 +31,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Cache Docusaurus
+        uses: actions/cache@v4
+        with:
+          path: |
+            .docusaurus
+            node_modules/.cache
+          key: docusaurus-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
       - name: Generate OpenAPI docs
         run: npx docusaurus gen-api-docs invoiceninja
 
       - name: Build site
         run: npm run build
         env:
-          NODE_OPTIONS: "--max-old-space-size=8192"
+          NODE_OPTIONS: "--max-old-space-size=16384"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
