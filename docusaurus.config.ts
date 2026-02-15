@@ -229,6 +229,7 @@ const config: Config = {
         hashed: true,
         indexBlog: false,
         docsRouteBasePath: "en",
+        explicitSearchResultPath: true,
       },
     ],
   ],
