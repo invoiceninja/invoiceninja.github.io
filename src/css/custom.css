@@ -927,6 +927,11 @@ h2.openapi__method-endpoint-path {
   overflow: hidden;
 }
 
+/* Hide the big play button once the video has started */
+.vjs-has-started .vjs-big-play-button {
+  display: none !important;
+}
+
 .theme-doc-markdown > video,
 .theme-doc-markdown > p > video {
   margin-top: 1rem;
