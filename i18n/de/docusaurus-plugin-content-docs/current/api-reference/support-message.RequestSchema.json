@@ -1,0 +1,1 @@
+{"title":"Body","body":{"description":"The message","required":true,"content":{"application/json":{"schema":{"properties":{"message":{"description":"The support message","type":"string"}},"type":"string"}}}}}
