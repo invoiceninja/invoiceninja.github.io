@@ -36,7 +36,7 @@ The self updater will pull the latest release from our Github repository, extrac
 
 If the update button does not work, you can alternatively download the invoiceninja.tar file and overwrite the folder of your installation, note that there are 3 files always:  https://github.com/invoiceninja/invoiceninja/releases
 
-```
+```bash
 invoiceninja.tar - 170 MB or 500 MB roughly
 Source code (zip) - 15 MB roughly
 Source code (tar.gz) - 14 MB roughly

@@ -42,31 +42,31 @@ import Translate from "@docusaurus/Translate";
 ###  GET /api/v1/clients  
 When retrieving a list of clients you can also chain query parameters in order to filter the dataset that is returned. For example, you can send a request to the following URL to retrieve clients that have a balance greater than 1000
   
-```
+```bash
 /api/v1/clients?balance=gt:1000
 ``` 
 
 You can also sort the results by adding a sort parameter. The following example will sort the results by the client name in descending order
 
-```
+```bash
 /api/v1/clients?sort=name|desc
 ```
 
 You can also combine multiple filters together. The following example will return clients that have a balance greater than 1000 and are not deleted and have a name that starts with "Bob"
 
-```
+```bash
 /api/v1/clients?balance=gt:1000&name=Bob*
 ```
 
 If you wish to retrieve child relations, you can also combine the query parameter `?include=` with a comma separated list of relationships
 
-```
+```bash
 /api/v1/clients?include=activities,ledger,system_logs'
 ```
 
 The per_page and page variables allow pagination of the list of clients. The following example will return the second page of clients with 15 clients per page
 
-```
+```bash
 /api/v1/clients?per_page=15&page=2
 ```
 

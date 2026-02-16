@@ -8,7 +8,7 @@ sidebar_position: 1
 
 The minimum required fields for authenticating against the API is an email and password
 
-```
+```bash
 curl -X POST 'http://ninja.test/api/v1/login' \
 -H "Content-Type:application/json" \
 -d '{"email":"demo@invoiceninja.com","password":"Password0"}' \
@@ -19,7 +19,7 @@ The return response is a CompanyUser object which contains child relations of th
 
 [truncated response]
 
-```
+```bash
  	{
         "permissions": "",
         "notifications": {
@@ -94,7 +94,7 @@ The return response is a CompanyUser object which contains child relations of th
 
 You are able to append some query parameters which can include additional information in the response.
 
-```
+```bash
 http://ninja.test/api/login?include_static=true
 ```
 
@@ -104,23 +104,23 @@ This will include a data array (These are datetime / payment terms and other "st
 
 To improve the resilience of the login route, you may also append an additional header
 
-```
+```bash
 X-API-SECRET
 ```
 
 This value would need to match the .env variable
 
-```
+```bash
 API_SECRET
 ```
 
 A full example of a login using the X-API-SECRET would be as follows:
 
 
-```
+```bash
 curl -X POST 'http://ninja.test/api/v1/login' \
 -H "Content-Type:application/json" \
 -d '{"email":"demo@invoiceninja.com","password":"Password0"}' \
 -H "X-API-SECRET: SuperSecretSecret" \
 -H "X-Requested-With: XMLHttpRequest";
-```
+```bash

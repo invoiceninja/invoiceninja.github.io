@@ -173,7 +173,7 @@ Nice! Now, each time you send this invoice, you don't have to put the exact mont
 
 ### Supported combinations
 
-```
+```bash
 Month: :MONTH
 Year: :YEAR
 Quarter: :QUARTER
@@ -206,7 +206,7 @@ Keep in mind that **[MONTHYEAR|MONTHYEAR]** syntax will take care of **overlappi
 
 ### Supported combinations
 
-```
+```bash
 [MONTHYEAR|MONTHYEAR +, -], [MONTHYEAR|MONTHYEAR+16], [MONTHYEAR|MONTHYEAR-2]
 ```
 

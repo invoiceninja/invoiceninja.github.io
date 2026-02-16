@@ -171,7 +171,7 @@ Invoice Ninja relies heavily on the Laravel Scheduler, for this to operate it re
 
 If you are using shared hosting, then you will need to add an additional parameter to the cron command which looks like this:
 
-```
+```bash
 * * * * * cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
 
@@ -197,13 +197,12 @@ Once you have configured your virtual host, copy the same .env file
 
 ```bash
 .env.example
-
 ``` 
+
 to 
 
 ```bash
 .env
-
 ``` 
 
 then create a database and point your browser to http://your.domain.com/setup - the setup process will check a number of system settings such as PDF generation, database and mail settings and also allow you to configure the first account on the system, click Submit and the app will setup your application and redirect you to the login page
@@ -293,7 +292,7 @@ Next, add the new config to the process group for Supervisor (this command also 
 
 ```bash
 $ sudo supervisorctl update
-```
+```bash
 Now, start the Supervisor worker
 
 ```bash
@@ -318,7 +317,7 @@ Edit the following line to change it from sync to database, and save the file
 
 ```bash
 QUEUE_CONNECTION=database
-```
+```bash
 Finally, now that everything is set up, reload the config for Invoice Ninja and restart the queue. I’m using www-data for this example as the web server user.
 
 ```bash
@@ -332,13 +331,13 @@ That’s it! You should now have a functioning Supervisor setup for Invoice Ninj
 #### Alternative for queues on shared hosting
 If you are on shared hosting, it is possible to get the queues working by defining a new cron with the following configuration:
 
-```
+```bash
 */5 * * * * cd  /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan queue:work --stop-when-empty
 ```
 
 Some people have different web hosting setups, so this might also work:
 
-```
+```bash
 */5 * * * * php /home/admin/domains/site.com/private_html/invoices_site/artisan queue:work --stop-when-empty
 ```
 
@@ -346,7 +345,7 @@ This cron will start a queue worker every 5 minutes and run any jobs that are in
 
 If you prefer to manage the queues with Supervisor, then you will want to disable the internal Invoice Ninja commands which start the queue, to do this simly set the following .env var
 
-```
+```bash
 INTERNAL_QUEUE_ENABLED=false
 ```
 
@@ -388,7 +387,7 @@ If you see a **404 webserver error** and use **sub.domain.com** make sure to poi
 
 Add the Laravel scheduler cron job, be sure to include the full path, for a cPanel host it should look like this:
 
-```
+```bash
 * * * * * cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
 
@@ -428,7 +427,7 @@ For example if you have two Companies, Acme co and Ninja co you can create separ
 
 To configure this you will need to prefix your .env  with the primary key of the company ie In your database open the companies table, and if the primary ID column is 1 for Acme co this would be the configuration
 
-```
+```bash
 1_MAIL_HOST=
 1_MAIL_PORT=
 1_MAIL_USERNAME=null
@@ -438,7 +437,7 @@ To configure this you will need to prefix your .env  with the primary key of the
 
 If Ninja Co company id 5
 
-```
+```bash
 5_MAIL_HOST=
 5_MAIL_PORT=
 5_MAIL_USERNAME=null

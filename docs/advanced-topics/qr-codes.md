@@ -67,15 +67,14 @@ Codes can be inserted directly into the wysiwyg editor in either the public note
 
 In the body tab, at the bottom add
 
-```
+```bash
 <div style="page-break-inside: avoid;" data-state="encoded-html">
 $swiss_qr
-
 ```
 
 or we have also made available a decoded version using the following variable
 
-```
+```bash
 $swiss_qr_raw
 ```
 
@@ -116,15 +115,14 @@ Can be placed directly into the Public Notes or Terms sections of your invoice, 
 If you prefer to have control over the location of the QR code you can create a custom design and then use the following options to inject the QR code into your PDF.
 
 
-```
+```bash
 <div data-state="encoded-html">
 $sepa_qr_code
-
 ```
 
 or
 
-```
+```bash
 $sepa_qr_code_raw
 ```
 
@@ -135,8 +133,7 @@ $sepa_qr_code_raw
 
 Generic payment QR codes can easily be applied to your Invoice PDF using the following block in your custom Design
 
-```
+```bash
 <div>
 $payment_qrcode
-
 ```

@@ -11,7 +11,7 @@ The clients endpoint allows you to interact with clients and their contacts.
 
 
 Endpoints
-```
+```bash
 GET /api/v1/clients
 POST /api/v1/clients
 PUT /api/v1/clients/{client}
@@ -30,7 +30,7 @@ POST /api/v1/clients/bulk
 The GET route returns a list of clients and their associated contacts.
 
 
-```
+```bash
 curl -X GET 'http://ninja.test:8000/api/v1/clients' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-Requested-With: XMLHttpRequest";
@@ -67,7 +67,7 @@ Query parameters can be chained together to form complex queries. The current su
 #### Response
 ____
 
-```
+```bash
 {
 "data": [
 {
@@ -190,7 +190,7 @@ To remove a contact you would simply drop the contact object from the contacts a
 
 
 
-```
+```bash
 curl -X POST 'http://ninja.test:8000/api/v1/clients' \
 -H "Content-Type:application/json" \
 -d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
@@ -246,7 +246,7 @@ Contacts array:
 #### Response
 ____
 
-```
+```bash
 {
 "data": {
     "id": "wMvbmEAbYA",
@@ -332,7 +332,7 @@ The PUT route is used to create a client.
 It is important to note that the primary key representation of the client is not an integer, but a hashed id, ie. ```wMvbmEAbYA```
 
 
-```
+```bash
 curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA' \
 -H "Content-Type:application/json" \
 -d '{"name":"Client Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
@@ -388,7 +388,7 @@ Contacts array:
 #### Response
 ____
 
-```
+```bash
 {
 "data": {
     "id": "wMvbmEAbYA",
@@ -474,7 +474,7 @@ The PUT route is used to upload documents to a client record.
 
 
 
-```
+```bash
 curl -X PUT 'http://ninja.test:8000/api/v1/clients/wMvbmEAbYA/upload' \
 -H 'Content-Type: multipart/form-data' \
 -F _method=PUT \
@@ -495,7 +495,7 @@ none.
 ____
 
 
-```
+```bash
 {
 "data": {
     "id": "wMvbmEAbYA",
@@ -601,7 +601,7 @@ The DELETE route is delete a Client. Note* To ensure referential integrity entit
 
 
 
-```
+```bash
 curl -X DELETE 'http://ninja.test:8000/api/v1/clients' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-Requested-With: XMLHttpRequest";
@@ -618,7 +618,7 @@ none.
 #### Response
 ____
 
-```
+```bash
 {
 "data": {
     "id": "wMvbmEAbYA",
@@ -666,7 +666,7 @@ The bulk action route allows you to perform an action on multiple clients.
 
 
 
-```
+```bash
 curl -X POST 'http://ninja.test/api/v1/clients/bulk' \
 -H "Content-Type:application/json" \
 -d '{"action":"restore","ids":["VolejRejNm","wMvbmEAbYA"]}' \
@@ -690,7 +690,7 @@ ____
 ____
 
 Array of clients
-```
+```bash
 {
 "data": [
 {
@@ -743,7 +743,7 @@ use this the header field X-API-PASSWORD is also required in the request. This p
 
 
 
-```
+```bash
 curl -X POST '/api/v1/clients/{id}/purge' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-API-PASSWORD:your_login_password_here" \
@@ -762,7 +762,7 @@ id: The hashed ID of the client
 ____
 
 HTTP response code 200
-```
+```bash
 {
 "data": {
     'message': 'Success'
@@ -780,7 +780,7 @@ use this the header field X-API-PASSWORD is also required in the request. This p
 
 
 
-```
+```bash
 curl -X POST '/api/v1/clients/{id}/{mergeable_client_hashed_id}/merge' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-API-PASSWORD:your_login_password_here" \
@@ -801,7 +801,7 @@ ____
 HTTP response: code 200
 Object response: Client 
 
-```
+```bash
 {
 "data": {
     "id": "wMvbmEAbYA",

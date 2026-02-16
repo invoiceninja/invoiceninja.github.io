@@ -1,0 +1,34 @@
+{
+  "logo.alt": {
+    "message": "Invoice Ninja",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.User Guide": {
+    "message": "Hướng dẫn sử dụng",
+    "description": "Navbar item with label User Guide"
+  },
+  "item.label.Self Host": {
+    "message": "Tự lưu trữ",
+    "description": "Navbar item with label Self Host"
+  },
+  "item.label.Hosted": {
+    "message": "Được lưu trữ",
+    "description": "Navbar item with label Hosted"
+  },
+  "item.label.Developer Guide": {
+    "message": "Hướng dẫn nhà phát triển",
+    "description": "Navbar item with label Developer Guide"
+  },
+  "item.label.API Reference": {
+    "message": "Tài liệu API",
+    "description": "Navbar item with label API Reference"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.Open App": {
+    "message": "Mở ứng dụng",
+    "description": "Navbar item with label Open App"
+  }
+}

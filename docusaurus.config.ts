@@ -28,7 +28,25 @@ const config: Config = {
 
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "fr-CA"],
+    locales: [
+      "en",      // English
+      "de",      // German
+      "es",      // Spanish
+      "fr",      // French
+      "fr-CA",   // French (Canada)
+      "it",      // Italian
+      "ja",      // Japanese
+      "nl",      // Dutch
+      "pt-BR",   // Portuguese (Brazil)
+      "ru-RU",   // Russian
+      "zh-TW",   // Chinese (Traditional)
+      "en-GB",   // British English
+      // Uncomment additional locales as needed for production:
+      // "af-ZA", "ar", "bg", "ca", "cs", "da", "el", "es-ES", "et", "fa", "fi",
+      // "fr-CH", "he", "hr", "hu", "id-ID", "km-KH", "lo-LA", "lt", "lv-LV",
+      // "mk-MK", "nb-NO", "pl", "pt-PT", "ro", "sk", "sl", "sq", "sr", "sv",
+      // "th", "tr-TR", "vi"
+    ],
     localeConfigs: {
       en: { label: "English", direction: "ltr", htmlLang: "en-US" },
       "af-ZA": { label: "Afrikaans", direction: "ltr" },

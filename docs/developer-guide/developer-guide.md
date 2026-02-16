@@ -48,7 +48,7 @@ Our full API definition can be found <a href="https://api-docs.invoicing.co/">he
 
 The base url for v5 is:
 
-```
+```bash
 https://invoicing.co
 ```
 
@@ -70,7 +70,7 @@ The data type of the id fields has changes from integer to string to support the
 
 The route for uploading documents has changed, here's a v5 cURL example:
 
-```
+```bash
 curl -X POST https://invoicing.co/api/v1/invoices/<invoice_id>/upload \
   -H 'Content-Type: multipart/form-data' \
   -H 'X-API-TOKEN: TOKEN' \
@@ -91,7 +91,7 @@ The X-API-SECRET requires you to configure a .env variable ```API_SECRET=```
 This is an optional header, and is only assessed on the /api/v1/login route.
 
 
-```
+```bash
 X-API-SECRET: value
 ```
 
@@ -105,7 +105,7 @@ The X-API-TOKEN is the authentication token and is required for all API requests
 This is a required header.
 
 
-```
+```bash
 X-API-TOKEN: value
 ```
 
@@ -119,7 +119,7 @@ The X-Requested-With header is a security minded header, there is only one value
 This is a required header.
 
 
-```
+```bash
 X-Requested-With: XMLHttpRequest
 ```
 
@@ -133,7 +133,7 @@ When submitting data to the API you must declare the content type
 This is a required header when using POST/PUT methods.
 
 
-```
+```bash
 Content-Type: application/json
 Content-Type: multipart/form-data
 ```

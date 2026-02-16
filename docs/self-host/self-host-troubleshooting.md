@@ -77,7 +77,7 @@ Navigate to the [Invoice Ninja Releases Page](https://github.com/invoiceninja/in
 NB! change directory to your Invoice Ninja root folder
 ```bash
 cd /var/www/invoiceninja 
-```
+```bash
 ```bash
 wget https://github.com/invoiceninja/invoiceninja/releases/download/v5.XX.XX/invoiceninja.tar
 ```
@@ -107,7 +107,7 @@ Delete the downloaded `invoiceninja.tar` file to keep your installation tidy:
 
 ```bash
 cd /var/www/invoiceninja
-```
+```bash
 ```bash
 rm -f invoiceninja.tar
 ```
@@ -145,7 +145,7 @@ If you see in your error logs a message such as "Column not found" this indicate
 1. http://yourdomain.com/update?secret=insert_your_UPDATE_SECRET_variable_here
 2. From the project root run the following command:
 
-```bash
+```
 
 php artisan migrate
 
@@ -163,7 +163,7 @@ If you are faced with your recurring invoices not firing, or your reminders not 
 
 If you are using shared hosting, then will need to add an additional parameter to the cron command which looks like this:
 
-```
+```bash
 cd /path/to/root/folder && /usr/bin/php -d register_argc_argv=On artisan schedule:run >> /dev/null 2>&1
 ```
 
@@ -171,7 +171,7 @@ Please note that on some systems the php location may be different, so confirm w
 
 To test your changes, navigate your browser to the update URL which is in the following format:
 
-```
+```bash
 https://yourdomain.com/update?secret=
 ```
 
@@ -181,7 +181,7 @@ The secret variable is located in your .env file until the key `UPDATE_SECRET` ,
 
 If you are using Cloudflare, then most likely Cloudflare could be caching your static data. To force cache busting, edit your nginx.conf file and add in the following snippet
 
-```
+```bash
 location ~* \.pdf$ {
     add_header Cache-Control no-store;
 }
@@ -215,7 +215,7 @@ If you are using gmail smtp relay, then a additional .env variable is required.
 
 For Gmail SMTP Relay also ensure you have configure this service in Google by using the following steps:
 
-```
+```bash
 Go to [Apps > Google Workspace > Gmail > Routing]
 Next to SMTP relay service, click Configure.
 Set up the SMTP relay service by following the steps in [SMTP relay: Route outgoing non-Gmail messages through Google]
@@ -236,7 +236,7 @@ MAIL_FROM_NAME=xxxx
 
 You will also want to make sure you do not have any firewall rules which may be blocking access to the Google servers, just in case, ensure the following IP addresses are whitelisted:
 
-```
+```bash
 142.251.163.28
 172.253.63.28
 172.253.118.28
@@ -280,13 +280,13 @@ We strongly recommend using the built in [snappdf](https://github.com/beganovich
 
 To configure SnapPDF use the following .env vars
 
-```
+```bash
 PDF_GENERATOR=snappdf
 ```
 
 As of version 5.5.12 we no longer prebundle snappdf in the release files, so if you have a new installation you'll need to manually invoke the download of the chromium binary, from the root of the project run the following:
 
-```
+```bash
 vendor/bin/snappdf download
 ```
 
@@ -301,7 +301,7 @@ Snappdf is also the default PDF engine in our [Docker](https://github.com/invoic
 
 You can use this command to test Snappdf:
 
-```
+```bash
 ./vendor/bin/snappdf convert --html "<h1>Hello world</h1>" test.pdf
 ```
 
@@ -327,7 +327,7 @@ Phantom JS Cloud is the default PDF engine [PhantomJS Cloud](https://phantomjscl
 
 Phantom JS can be toggled on and off by setting the PHANTOMJS_PDF_GENERATOR to either TRUE or FALSE. The following .env variables are available for configuring PhantomJS.
 
-```
+```bash
 PDF_GENERATOR=phantom
 PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
 PHANTOMJS_SECRET='your-secret-here'
@@ -345,7 +345,7 @@ For PhantomJS to work, your Invoice Ninja installation web address must be publi
 
 The default PDF generated as of version 5.5.12 is our hosted platform PDF conversion system. The hosted ninja PDF generator is an offsite PDF generator hosted by Invoice Ninja, which operate similar to PhantomJS. It is important to note that we do not store any information with this service, we simply convert the HTML your system sends into a PDF file which is return on the fly.
 
-```
+```bash
 PDF_GENERATOR=hosted_ninja
 ```  
 
@@ -380,7 +380,7 @@ In a recent update, chromium/chrome uses the crashpad handler to write to the us
 
 <p>You may need to restart the queue like this</p>
 
-```
+```bash
 php artisan queue:restart
 ```
 
@@ -388,7 +388,7 @@ php artisan queue:restart
 
 This error indicated that the client_max_body_size parameter in NGINX is too small, you will need to edit your nginx config and increase the size
 
-```
+```bash
 client_max_body_size 100M;
 ```
 
@@ -415,13 +415,13 @@ Pdf generation will not working using the inbuilt PDF engine without some subsys
 
 Some systems do not allow cron configurations, one work around is to use a web cron service which can hit a defined endpoint which executes the scheduler via a GET HTTP request. Invoice Ninja has implemented a small service to allow a webcron service to hit the end point:
 
-```
+```bash
 https://domain.com/webcron?secret=
 ```
 
 To configure the service, you need to add a .env variable
 
-```
+```bash
 WEBCRON_SECRET=password
 ```
 
@@ -443,7 +443,7 @@ RewriteRule ^(.*)$ subdirectoryname/public/$1 [L]
 
 If you are finding that all your pre setup checks are passing however you keep falling back to the setup screen, this could indicate that you are missing the ```mysql-client``` library which is needed to perform the initial migration. If you are unable to install this for some reason (ie. XAMPP) then you'll need to run the migrations manually by entering the following at the command prompt
 
-```
+```bash
 php artisan migrate:fresh --seed 
 ```
 
@@ -451,7 +451,7 @@ php artisan migrate:fresh --seed
 
 This error is thrown from deep within PHP and indicates a permissions issue - most likely the public/storage and/or storage/ directory is not writable by the web user, depending on your platform, you'll need to run something like:
 
-```
+```bash
 sudo chown -R www-data:www-data public/storage
 
 sudo find ./ -type d -exec chmod 755 {} \;
@@ -459,7 +459,7 @@ sudo find ./ -type d -exec chmod 755 {} \;
 
 and/or
 
-```
+```bash
 sudo chown -R www-data:www-data storage/
 
 sudo find ./ -type d -exec chmod 755 {} \;
@@ -477,13 +477,13 @@ It may help to add `LOCAL_DOWNLOAD=true` to the .env file, this will embed the i
 
 If you are using the database for your queue's then sometimes you may see an error from MySQL
 
-```
+```bash
 1153 Got a packet bigger than 'max_allowed_packet'
 ```
 
 This indicates the insertion payload is bigger than MySQL is configured to handle! To work around this, you will need to increate the mysql variable
 
-```
+```bash
 max_allowed_packet
 ```
 
@@ -491,7 +491,7 @@ To a larger value. Sometimes a value of 1024M is required.
 
 It may also be wise to increase the variable
 
-```
+```bash
 max_connections
 ```
 
@@ -512,7 +512,7 @@ Try these steps to fix the 500 server error when trying to login or editing comp
 4. Run this command `cd /home/domain.com/public_html/invoiceninja/ && php artisan migrate` or simply `php artisan migrate` whatever works for you, select "YES"
 5. If an error occurs like this one
 
-```
+```bash
 PHP Fatal error:  Cannot declare class UpdateDesigns, because the name is already in use in /home/domain.com/public_html/invoiceninja/database/migrations/2021_09_16_115919_update_designs.php on line 0
 In 2021_09_16_115919_update_designs.php line n/a: Cannot declare class UpdateDesigns, because the name is already in use
 ```
@@ -531,7 +531,7 @@ The solution is to clear the contents of the folder ```bootstrap/cache```, by ei
 
 This error is observed when the system has Composer v1 installed. Update to Composer 2 using the following command
 
-```
+```bash
 sudo -H composer self-update
 ```
 
@@ -546,25 +546,25 @@ If you aren't able to adjust the open_basedir restrictions the following steps m
 
 If you have command line access, you can reset your password manually by following the following steps. From the command line, navigate to the project directory and run
 
-```
+```bash
 php artisan tinker
 ```
 
 Then find the id of the user for the password reset
 
-```
+```bash
 User::all();
 ```
 
 Retrieve the user
 
-```
+```bash
 $user = User::find(id_of_user_to_find);
 ```
 
 Now lets reset the password
 
-```
+```bash
 $user->password = Hash::make('password');
 $user->save();
-```
+```bash

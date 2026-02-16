@@ -193,7 +193,7 @@ To create a custom field navigate to Settings > Custom fields. Advanced features
 
 ### Client placeholders
 
-```
+```bash
 $client.custom1
 $client.custom2
 $client.custom3
@@ -202,9 +202,9 @@ $client.custom4
 
 ### Contact placeholders
 
-```
+```bash
 $contact.custom1
 $contact.custom2
 $contact.custom3
 $contact.custom4
-```
+```bash

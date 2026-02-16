@@ -11,7 +11,7 @@ The invoices endpoint allows you to interact with invoices.
 
 
 Endpoints
-```
+```bash
 GET /api/v1/invoices
 POST /api/v1/invoices
 PUT /api/v1/invoices/{invoice}
@@ -33,7 +33,7 @@ POST /api/v1/invoices/update_reminders
 The GET route returns a list of invoices.
 
 
-```
+```bash
 curl -X GET 'http://ninja.test:8000/api/v1/invoices' \
 -H "X-API-TOKEN:company-token-test" \
 -H "X-Requested-With: XMLHttpRequest";
@@ -53,13 +53,13 @@ Query parameters can be chained together to form complex queries. The current su
 
 It is possible to chain together multiple statuses using a comma separated list for example:  
 
-```
+```bash
 /api/v1/invoices?client_status=1,2,3
 ```
 
 **filter**: Search across multiple columns (number, po_number, date, amount, balance, custom_value1, custom_value2, custom_value3, custom_value4)  
 
-```
+```bash
 /api/v1/invoices?filter=2022-01-05
 ```
 
@@ -84,7 +84,7 @@ It is possible to chain together multiple statuses using a comma separated list 
 #### Response
 ____
 
-```
+```bash
 {
 "data": [
 {
@@ -204,7 +204,7 @@ The POST route is used to create a invoice.
 
 
 
-```
+```bash
 curl -X POST 'http://ninja.test:8000/api/v1/invoices' \
 -H "Content-Type:application/json" \
 -d '{"terms":"Something","line_items":[{"quantity":1,"cost":10,"product_key":"example product","notes":"Product Description"}]}' \
@@ -257,7 +257,7 @@ ____
 **auto_bill_enabled**: **optional bool true|false** - Boolean flag determining if the invoice should be auto billed  
 **idempotency_key**: **optional string ie YgXPe3gISCdpcilDcQKaef06wgh1hE4p** - Idempotency key, used to mitigate double requests
 **assigned_user_id**: **optional string** - The id of the assigned user for this invoice  
-```
+```bash
   "line_items": [
     {
       "product_key": "Id sit.",
@@ -295,7 +295,7 @@ The PUT route is used to create a invoice.
 It is important to note that the primary key representation of the invoice is not an integer, but a hashed id, ie. ```wMvbmEAbYA```
 
 
-```
+```bash
 curl -X PUT 'http://ninja.test:8000/api/v1/invoices/wMvbmEAbYA' \
 -H "Content-Type:application/json" \
 -d '{"name":"Invoice Name","contacts":[{"first_name":"helly","email":"email@example.com"}]}' \
@@ -313,4 +313,4 @@ ____
 #### Response
 ____
 
-```
+```bash

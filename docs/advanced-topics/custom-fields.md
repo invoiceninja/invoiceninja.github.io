@@ -528,4 +528,4 @@ $secondary_font_name - The name of the secondary font
 $font_size - The size of the font selected in the settings
 $font_name - The name of the primary font
 $font_url - The URL to the primary font resource
-```
+```bash

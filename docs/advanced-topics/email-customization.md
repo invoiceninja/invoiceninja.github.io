@@ -100,7 +100,6 @@ $postal_city_state - Postal code / City /State of the client
 $client.postal_city_state - Alias of $postal_city_state
 $postal_city - Postal Code / City of the client
 $client.postal_city - Alias of $postal_city
-
 ```
 
 In Invoice Ninja version 5, as a single payment can be associated with multiple invoices, there are some special helper variables which enable outputting all of the invoice references these are as follows:

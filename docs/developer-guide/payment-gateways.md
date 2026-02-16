@@ -25,7 +25,7 @@ You should update your code to be up to date with the <a href="https://github.co
 
 You will then want to create your own branch for for your driver ie.
 
-```
+```bash
 git branch my_payment_driver
 ```
 
@@ -33,7 +33,7 @@ git branch my_payment_driver
 
 Lets create a migration file which will insert a record identifying the gateway.
 
-```
+```bash
 php artisan make:migration my_new_gateway
 ```
 
@@ -41,7 +41,7 @@ Let open this file and in the up() method create our new gateway record
 
 Init a new gateway instance
 
-```
+```bash
 $gateway = new Gateway;
 $gateway->name = 'Fancy Gateway'; 
 $gateway->key = Str::lower(Str::random(32)); 
@@ -65,7 +65,7 @@ $gateway->save();
 * site_url: A URL field which allows the user to go directly to the gateway page for further information (Type: string, url)
 * default_gateway_type_id: If your gateway has multiple ways to pay, ie Credit Card, Bank Transfer etc, then you’ll want to select a default method. The list of defined methods are found on the GatewayType model as follows:
 
-```
+```bash
 const CREDIT_CARD = 1;
 const BANK_TRANSFER = 2;
 const PAYPAL = 3;
@@ -282,4 +282,4 @@ $cg->require_shipping_address = true;
 $cg->update_details = true;
 $cg->config = encrypt('{"apiKey":"api_key_value","anotherKey":"another_value"}');
 $cg->save();
-```
+```bash

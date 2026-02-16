@@ -44,7 +44,7 @@ Webhooks are single time events that do not retry if your endpoint is unavailabl
 
 This request queries the endpoint whether the client/contact is eligible to continue through the checkout. You may use this if you wish to restrict users to one subscription at a time, the payload that is sent to the endpoint looks like this
 
-```
+```bash
 {
 	"context" : "is_eligible",
 	"subscription" : "l4zbq7repr",
@@ -68,7 +68,7 @@ This request queries the endpoint whether the client/contact is eligible to cont
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -77,7 +77,7 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
@@ -88,7 +88,7 @@ A failed request would return the an array like this:
 
 If you have configured your payment link to be a trial based subscription. Then after the eligibility check, the system will attempt to start the trial, your endpoint will receive a payload like this:
 
-```
+```bash
 {
 	"context" : "trial",
 	"recurring_invoice" : "l4zbq7repr",
@@ -110,7 +110,7 @@ If you have configured your payment link to be a trial based subscription. Then 
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -119,7 +119,7 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
@@ -130,7 +130,7 @@ A failed request would return the an array like this:
 
 When a recurring subscription is created for the first time, a payload is sent to the endpoint to notify of a successful subscription creation and payment, the payload will look like this:
 
-```
+```bash
 {
     "context" : "recurring_purchase",
     "recurring_invoice" : "l4zbq7repr",
@@ -156,7 +156,7 @@ When a recurring subscription is created for the first time, a payload is sent t
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -165,7 +165,7 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
@@ -176,7 +176,7 @@ A failed request would return the an array like this:
 
 Where your payment link is only for a standard product, and _not_ a recurring product, then your endpoint will receive a single purchase webhook with the following configuration:
 
-```
+```bash
 {
 	"context" : "single_purchase",
 	"invoice" : "l4zbq7repr",
@@ -198,7 +198,7 @@ Where your payment link is only for a standard product, and _not_ a recurring pr
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -207,7 +207,7 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
@@ -220,7 +220,7 @@ If you support allowing clients to upgrade/downgrade their subscriptions, a chan
 
 When a client changes plans, there may be either a credit due, or a payment depending on the plan and pro rata refund that is generated. In these two cases, the payload differs with either a `credit` or `invoice` key appearing in the payload. The following are examples:
 
-```
+```bash
 {
 	"context" : "change_plan",
 	"recurring_invoice" : "l4zbq7repr",
@@ -232,7 +232,7 @@ When a client changes plans, there may be either a credit due, or a payment depe
 }
 ```
 
-```
+```bash
 {
 	"context" : "change_plan",
 	"recurring_invoice" : "l4zbq7repr",
@@ -258,7 +258,7 @@ When a client changes plans, there may be either a credit due, or a payment depe
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -267,7 +267,7 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
@@ -278,7 +278,7 @@ A failed request would return the an array like this:
 
 If you allow subscription cancellations, then the following payload is forwarded to the endpoint:
 
-```
+```bash
 {
 	"context" : "cancellation",
 	"subscription" : "l4zbq7repr",
@@ -302,7 +302,7 @@ If you allow subscription cancellations, then the following payload is forwarded
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -311,7 +311,7 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
@@ -322,7 +322,7 @@ A failed request would return the an array like this:
 
 A daily check is performed to check if any subscriptions have gone past their due date without a payment. If a subscription has been found to expired, a webhook is sent with the following payload:
 
-```
+```bash
 {
 	"context" : "plan_expired",
 	"client" : "l4zbq7repr",
@@ -342,7 +342,7 @@ A daily check is performed to check if any subscriptions have gone past their du
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -351,7 +351,7 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
@@ -362,7 +362,7 @@ A failed request would return the an array like this:
 
 When a payment for a subscription is made (ie for a renewal), a Plan Paid webhook event is fired with the following configuration:
 
-```
+```bash
 {
     "context" : "plan_paid",
     "subscription" : "l4zbq7repr",
@@ -388,7 +388,7 @@ When a payment for a subscription is made (ie for a renewal), a Plan Paid webhoo
 
 A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
 
-```
+```bash
 {
 	"message" : "Success",
 	"status_code" : "200" / HTTP status code 2xx
@@ -397,9 +397,9 @@ A standard array should be returned under all circumstances, within the array wi
 
 A failed request would return the an array like this:
 
-```
+```bash
 {
 	"message" : "A human readable failure message to pass back to the client",
 	"status_code" : "403" / HTTP status code 4xx/5xx
 }
-```
+```bash

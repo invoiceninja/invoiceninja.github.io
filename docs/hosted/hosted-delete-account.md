@@ -8,7 +8,7 @@ If you wish for all of your data and account information to be removed from the 
 
 Navigate to
 
-```
+```bash
 Settings > Account Managment > Danger Zone
 ```
 

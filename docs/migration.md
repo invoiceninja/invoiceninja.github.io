@@ -140,7 +140,7 @@ If you are experiencing issues with the migration not running as expected please
 * Inspect the log file /storage/logs/laravel.log for further information.
 * If you are still experiencing issues, turn on advanced logging by adding the following variable to your .env file. 
 
-```
+```bash
 EXPANDED_LOGGING=true 
 ```
 
@@ -155,7 +155,7 @@ The app will do its best to report back a human readable error if the migration 
 
 Some known issues when migrating to our hosted platform include:
 
-```
+```bash
 "This user is unable to be attached to this company. Perhaps they have already registered a user on another account?"
 ```
 

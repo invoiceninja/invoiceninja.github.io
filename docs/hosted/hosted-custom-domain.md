@@ -15,7 +15,7 @@ It is important that you do not use you root domain, ie best-brand.com as this m
     
 Once you have decided on a name,  you need to create a CNAME pointing your domain name to our Invoice Ninja custom domain record:
 
-```
+```bash
 cname.invoicing.co.
 ```
 
@@ -23,7 +23,7 @@ Once you can see the record resolving correctly, you then add your domain name t
 
 Change your portal mode to Domain and then enter the fully qualified domain name ie:
 
-```
+```bash
 https://portal.best-brand.com
 ```
 

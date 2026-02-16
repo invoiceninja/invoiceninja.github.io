@@ -113,7 +113,6 @@ If you wish to use standard company/client/vendor details, this is super simple 
 <div id="vendor-details">
 
 <div id="shipping-address">
-
 ```
 
 These will populate using the data stored in Settings > Invoice Designs for each block.
@@ -159,7 +158,6 @@ Standard $ notation variables are also available within templates, this allows y
 {% else %}
  Invoice has been paid! Thanks!
 {% endif %}
-
 ```
 
 #### Allowed Tags
@@ -216,7 +214,7 @@ When creating custom statements, you will want to insert a comment within the te
 
 Note the special text 
 
-```
+```bash
 ##statement##
 ```
 
