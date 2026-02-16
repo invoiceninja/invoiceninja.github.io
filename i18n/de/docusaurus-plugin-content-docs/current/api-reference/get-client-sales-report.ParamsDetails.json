@@ -1,1 +1,0 @@
-{"parameters":[{"name":"X-Requested-With","in":"header","description":"Used to send the XMLHttpRequest header","required":true,"schema":{"type":"string","example":"XMLHttpRequest"}}]}

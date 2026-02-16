@@ -1,1 +1,0 @@
-{"title":"Body","body":{"description":"User credentials","required":true,"content":{"application/json":{"schema":{"type":"array","items":{"description":"Array of hashed IDs to be bulk 'actioned","type":"integer","example":0}}}}}}

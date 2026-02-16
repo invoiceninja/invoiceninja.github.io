@@ -1,1 +1,0 @@
-{"title":"Body","body":{"description":"File Upload Body","required":true,"content":{"multipart/form-data":{"schema":{"type":"object","properties":{"_method":{"type":"string","example":"PUT"},"documents":{"type":"array","items":{"description":"Array of binary documents for upload","type":"string","format":"binary"}}}}}}}}
