@@ -247,8 +247,8 @@ strong, b {
   margin-bottom: 1.5rem;
 }
 
-.theme-doc-markdown > div[class*='codeBlockContainer'],
-.theme-doc-markdown > pre {
+.theme-doc-markdown div[class*='codeBlockContainer'],
+.theme-doc-markdown pre {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -260,7 +260,7 @@ strong, b {
 .theme-doc-markdown ul + pre,
 .theme-doc-markdown ol + div[class*='codeBlockContainer'],
 .theme-doc-markdown ol + pre {
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
 }
 
 .theme-doc-markdown > table {
