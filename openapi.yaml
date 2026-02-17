@@ -410,42 +410,6 @@ paths:
           description: 'Server error'
         default:
           $ref: "#/components/responses/default"
-  /api/v1/yodlee/refresh:
-    post:
-      tags:
-        - yodlee
-      summary: "Yodlee Webhook"
-      description: "Webhook endpoint for Yodlee. Used to notify the system that a data point can be updated."
-      operationId: yodleeRefreshWebhook
-      parameters:
-        - $ref: "#/components/parameters/X-API-TOKEN"
-        - $ref: "#/components/parameters/X-Requested-With"
-      responses:
-        200:
-          description: ""
-          headers:
-            X-MINIMUM-CLIENT-VERSION:
-              $ref: "#/components/headers/X-MINIMUM-CLIENT-VERSION"
-            X-RateLimit-Remaining:
-              $ref: "#/components/headers/X-RateLimit-Remaining"
-            X-RateLimit-Limit:
-              $ref: "#/components/headers/X-RateLimit-Limit"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Credit"
-        401:
-          $ref: "#/components/responses/401"
-        403:
-          $ref: "#/components/responses/403"
-        422:
-          $ref: "#/components/responses/422"
-        429:
-          $ref: "#/components/responses/429"
-        5XX:
-          description: 'Server error'
-        default:
-          $ref: "#/components/responses/default"
   /api/v1/bank_integrations:
     get:
       tags:
@@ -27776,11 +27740,6 @@ tags:
     x-displayName: Webhooks
     description: |
       Endpoint definitions for interacting with webhooks.
-
-  - name: yodlee
-    x-displayName: Yodlee
-    description: |
-      Endpoint definitions for Yodlee webhooks.
 
 externalDocs:
   description: "Client Libraries"

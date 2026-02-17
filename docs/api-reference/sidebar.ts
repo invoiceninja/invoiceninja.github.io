@@ -2820,22 +2820,6 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "Yodlee",
-      link: {
-        type: "doc",
-        id: "api-reference/yodlee",
-      },
-      items: [
-        {
-          type: "doc",
-          id: "api-reference/yodlee-refresh-webhook",
-          label: "Yodlee Webhook",
-          className: "api-method post",
-        },
-      ],
-    },
   ],
 };
 
