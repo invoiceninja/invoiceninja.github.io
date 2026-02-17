@@ -248,19 +248,19 @@ strong, b {
 }
 
 .theme-doc-markdown div[class*='codeBlockContainer'],
-.theme-doc-markdown pre {
+.theme-doc-markdown > pre {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-/* Extra spacing after paragraphs/lists before code blocks */
+/* Reduce top margin when code blocks follow content (paragraph margin-bottom already provides spacing) */
 .theme-doc-markdown p + div[class*='codeBlockContainer'],
 .theme-doc-markdown p + pre,
 .theme-doc-markdown ul + div[class*='codeBlockContainer'],
 .theme-doc-markdown ul + pre,
 .theme-doc-markdown ol + div[class*='codeBlockContainer'],
 .theme-doc-markdown ol + pre {
-  margin-top: 1.5rem;
+  margin-top: 0.375rem;
 }
 
 .theme-doc-markdown > table {
@@ -397,6 +397,10 @@ div[class*='codeBlockContainer'] {
   box-shadow: none;
   overflow: hidden;
   font-size: 0.8125rem;
+}
+
+div[class*='codeBlockContainer'] pre {
+  padding: 0.875rem 1.125rem;
 }
 
 div[class*='codeBlockContainer'] code {
