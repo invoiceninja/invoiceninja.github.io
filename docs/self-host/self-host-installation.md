@@ -13,7 +13,7 @@ sidebar_position: 3
 * MySQL 5.7+ or MariaDB 10.3+
 * NGINX or Apache
 
-On ubuntu this should be as simple as running:  
+On ubuntu this should be as simple as running:
 
 ```bash
 sudo apt install php8.2-bcmath php8.2-gmp \

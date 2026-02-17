@@ -247,18 +247,18 @@ strong, b {
   margin-bottom: 1.5rem;
 }
 
-.theme-doc-markdown > div[class^='codeBlockContainer'],
+.theme-doc-markdown > div[class*='codeBlockContainer'],
 .theme-doc-markdown > pre {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 /* Extra spacing after paragraphs/lists before code blocks */
-.theme-doc-markdown p + div[class^='codeBlockContainer'],
+.theme-doc-markdown p + div[class*='codeBlockContainer'],
 .theme-doc-markdown p + pre,
-.theme-doc-markdown ul + div[class^='codeBlockContainer'],
+.theme-doc-markdown ul + div[class*='codeBlockContainer'],
 .theme-doc-markdown ul + pre,
-.theme-doc-markdown ol + div[class^='codeBlockContainer'],
+.theme-doc-markdown ol + div[class*='codeBlockContainer'],
 .theme-doc-markdown ol + pre {
   margin-top: 1.75rem;
 }
@@ -391,7 +391,7 @@ code {
    Code blocks
    -------------------------------------------------------------------------- */
 
-div[class^='codeBlockContainer'] {
+div[class*='codeBlockContainer'] {
   border: 1px solid var(--ifm-hr-border-color);
   border-radius: 8px;
   box-shadow: none;
@@ -399,7 +399,7 @@ div[class^='codeBlockContainer'] {
   font-size: 0.8125rem;
 }
 
-div[class^='codeBlockContainer'] code {
+div[class*='codeBlockContainer'] code {
   border: none;
   font-size: inherit;
   padding: 0;
@@ -408,7 +408,7 @@ div[class^='codeBlockContainer'] code {
   line-height: 1.65;
 }
 
-div[class^='codeBlockTitle'] {
+div[class*='codeBlockTitle'] {
   border-bottom: 1px solid var(--ifm-hr-border-color);
   font-family: var(--ifm-font-family-base);
   font-size: 0.75rem;
