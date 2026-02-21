@@ -21,7 +21,7 @@ See [Client Portal](/docs/user-guide/client-portal)
 ### What is a subdomain?
 
 - The subdomain is used in the client portal to personalize links to match your brand. Ex., https://your-brand.invoicing.co
-- Under Settings>Client Portal, you can setup your subdomain.
+- Under Settings > Client Portal, you can setup your subdomain.
 - Links generated in the system (invoices, quotes, etc.) that are sent to your clients will use the subdomain you have configured.
 - If you have multiple companies, you can set a different subdomain for each company. Ex., companya.invoicing.co, companyb.invoicing.co… that way, each company has its own branding and custom link.
 
