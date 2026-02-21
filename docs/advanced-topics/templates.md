@@ -7,7 +7,6 @@ sidebar_position: 5
 
 Templates allow you to create customized designs and documents using raw data. We have a prebuilt range of templates that will allow you to quickly create Statements / Payment Receipts / Payment Refund Receipts and Delivery Notes,  but the functionality does not stop there.
 
-
 You can also run a templates against any entity within the application and have a PDF returned the the entities dataset embedded in. Here is an example of a template which has been produced from a Project:
 
 ![alt text](/assets/images/templates/project_template.png "Project Template")
