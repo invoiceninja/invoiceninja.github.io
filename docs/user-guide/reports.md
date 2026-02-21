@@ -2,8 +2,6 @@
 title: "Reports"
 sidebar_position: 22
 ---
-# Reports
-
 In the _Reports_ module, you are able to generate highly customized and fine tuned reports of your various records. You can track profits, sales, expenses, performance of your products and services, and export it for processing and analysis in an external application.
 
 Effective use of the reports module can help prepare financial records for your business, monitor your progress and development, track expenses, and maintain accountability.

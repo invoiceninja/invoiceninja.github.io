@@ -2,8 +2,6 @@
 title: "Hosted TroubleShooting"
 sidebar_position: 7
 ---
-# Hosted TroubleShooting
-
 ## Auth.net
 
 ### CardCode is required.. (or similar)

@@ -2,8 +2,6 @@
 title: "Purchase Orders"
 sidebar_position: 18
 ---
-# Purchase Orders
-
 A purchase order (PO) is a legally binding document that a buyer uses to request goods or services from a supplier. It serves as an official offer to purchase specific items at a specified price and is typically used by businesses in the procurement process. The PO includes details such as the type, quantity, and cost of the products or services being requested, as well as any relevant delivery or payment terms.
 
 Once a supplier accepts the PO, it becomes a binding contract between the buyer and seller.

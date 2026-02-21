@@ -2,8 +2,6 @@
 title: "Self Host Updating"
 sidebar_position: 5
 ---
-# Self Host Updating
-
 ### Docker
 
 When we tag a new release, a new image is built. All that is required for docker users is to bring down the container, pull in the new image and then bring the container up again, these three commands are all that are needed.

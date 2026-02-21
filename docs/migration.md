@@ -2,8 +2,6 @@
 title: "Migration"
 sidebar_position: 99
 ---
-# Migration
-
 ## Migrating to v5
 
 :::info

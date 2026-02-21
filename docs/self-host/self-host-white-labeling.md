@@ -2,8 +2,6 @@
 title: "Self Host White Labeling"
 sidebar_position: 8
 ---
-# Self Host White Labeling
-
 ## Overview
 
 For a nominal annual fee, you are able to white label the client facing pages of the application. This removes all client faces pages (and PDFs) of any Invoice Ninja branding.

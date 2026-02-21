@@ -2,8 +2,6 @@
 title: "Tasks"
 sidebar_position: 19
 ---
-# Tasks
-
 _Tasks_ represent small to medium sized jobs or services performed for a client, and are suited perfectly for services rendered with an hourly rate. Tasks enable you to track your time on the job, with stopwatch-like functions baked into your tasks, and you can track and record hours across as many date and time periods as you need to.
 
 You can assign tasks to a project, in order to keep track of the various jobs involved in it, or leave them as standalone small jobs.

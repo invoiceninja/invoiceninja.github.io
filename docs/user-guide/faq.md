@@ -2,8 +2,6 @@
 title: "Frequently Asked Questions"
 sidebar_position: 3
 ---
-# Frequently Asked Questions
-
 Here you will find answers to many frequently asked questions about Invoice Ninja.
 
 ### What is the Client Portal?

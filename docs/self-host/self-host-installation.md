@@ -2,8 +2,6 @@
 title: "Self Host Installation"
 sidebar_position: 3
 ---
-# Self Host Installation
-
 ## Server Requirements
 
 <p>Invoice Ninja has a few system requirements. Built on top of <a href="https://www.laravel.com/docs/">Laravel</a> it requires a PHP and MySQL server at a minimum with the following version and extensions installed.</p>

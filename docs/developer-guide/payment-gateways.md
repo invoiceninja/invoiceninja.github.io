@@ -2,8 +2,6 @@
 title: "Payment Gateways"
 sidebar_position: 2
 ---
-# Payment Gateways
-
 ## Adding payment gateways
 
 Payment Driver Template.

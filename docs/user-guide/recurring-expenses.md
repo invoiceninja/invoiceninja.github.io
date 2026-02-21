@@ -2,8 +2,6 @@
 title: "Recurring Expenses"
 sidebar_position: 21
 ---
-# Recurring Expenses
-
 The _Recurring Expenses_ module enables you to schedule repeated expense reports in a similar fashion to recurring invoices. You can use this to automatically generate records for your organizations subscription services, or regular supply purchases.
 
 ## Recurring Expenses Module View

@@ -2,8 +2,6 @@
 title: "Invoices"
 sidebar_position: 3
 ---
-# Invoices
-
 ### Endpoints
 
 

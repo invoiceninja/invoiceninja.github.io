@@ -2,8 +2,6 @@
 title: "Quotes"
 sidebar_position: 12
 ---
-# Quotes
-
 Quote records are used to provide your clients with accurate previews of what a quote might look like for requested products and/or services. Quotes can be generated as PDFs, viewed in the client portal by the client, and if agreed upon, they can be converted directly into invoices. Unless it is converted to an invoice, quotes have no effect on a client's balance or ledger.
 
 <video width="100%" controls>

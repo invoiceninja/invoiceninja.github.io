@@ -2,8 +2,6 @@
 title: "E-Signatures (beta coming soon!)"
 sidebar_position: 9
 ---
-# E-Signatures (beta coming soon!)
-
 <p align="center">
 	<img class="h-40" src="/assets/images/docuninja/logo.svg" alt="DocuNinja"/>
 </p>

@@ -2,8 +2,6 @@
 title: "Hosted migration"
 sidebar_position: 4
 ---
-# Hosted migration
-
 ## V4 Hosted to V5 Hosted
 
 Migrating to v5 for hosted users should be a straight forward process.

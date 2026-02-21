@@ -2,8 +2,6 @@
 title: "QR Codes"
 sidebar_position: 4
 ---
-# QR Codes
-
 We currently offer three options for QR codes in Invoice Ninja: Swiss QR, SEPA ERC and generic Payment link QR codes which will take the end user to the Invoice Ninja Client portal for payment.
 
 ## Swiss QR Codes

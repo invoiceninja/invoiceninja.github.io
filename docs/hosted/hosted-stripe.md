@@ -2,8 +2,6 @@
 title: "Hosted Stripe"
 sidebar_position: 6
 ---
-# Hosted Stripe
-
 ## Stripe Integration
 
 In v5 of Invoice Ninja we have introduced Stripe Connect using OAuth. This integration provides a secure way to integrate your Stripe account into Invoice Ninja.

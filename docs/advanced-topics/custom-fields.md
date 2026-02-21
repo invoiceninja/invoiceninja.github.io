@@ -2,8 +2,6 @@
 title: "Custom Fields"
 sidebar_position: 2
 ---
-# Custom Fields {#custom-fields}
-
 ## PDF Customizations
 
 PDF generation in v5 is via an HTML templating system. We provide multiple design templates for you to choose from, or

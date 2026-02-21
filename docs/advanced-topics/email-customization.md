@@ -2,8 +2,6 @@
 title: "Email Customization"
 sidebar_position: 1
 ---
-# Email Customization
-
 ## Custom Content
 
 Customizing the content of you emails should be simple and painfree! By default we include a range of default - translated - templates which should suit most use cases! If you prefer to extend and customize the emails your clients please read on!

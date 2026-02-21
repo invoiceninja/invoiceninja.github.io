@@ -2,8 +2,6 @@
 title: "Self Host Troubleshooting"
 sidebar_position: 4
 ---
-# Self Host Troubleshooting
-
 ### General Troubleshooting Steps
 
 If you're experiencing issues with your self-hosted Invoice Ninja instance, follow these general troubleshooting steps before diving into the specific sections:

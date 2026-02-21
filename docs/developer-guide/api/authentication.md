@@ -2,8 +2,6 @@
 title: "Authentication"
 sidebar_position: 1
 ---
-# Authentication
-
 ## Base login
 
 The minimum required fields for authenticating against the API is an email and password

@@ -2,8 +2,6 @@
 title: "Credits"
 sidebar_position: 6
 ---
-# Credits
-
 A credit note is a document sent to the client, notifying that a credit has been provided to their account.
 Credit notes are used to issue redeemable credits for a specific _Product_ or for a flat rate.
 Credits can be applied to invoices as a payment.

@@ -2,8 +2,6 @@
 title: "Expenses"
 sidebar_position: 10
 ---
-# Expenses
-
 The _Expenses_ module enables you to manage and track your organization's business related expenses, whether they are goods, or services. Expense records also support billing them to your clients, so you can pass along the costs directly through your invoices. Effective use of the expense module can help you track and monitor your organization's cash flow, and keep up with your taxes.
 
 <video width="100%" controls>
