@@ -74,7 +74,6 @@ const sidebars: SidebarsConfig = {
       link: { type: "doc", id: "self-host/self-host-installation" },
       items: [
         "self-host/getting-started",
-        "self-host/self-host",
         "self-host/self-host-installation",
         "self-host/self-host-troubleshooting",
         "self-host/self-host-updating",
