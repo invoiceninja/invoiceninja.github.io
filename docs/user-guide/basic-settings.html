@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-user-guide/basic-settings" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Basic Settings | Invoice Ninja</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://invoiceninja.github.io/docs/user-guide/basic-settings"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Basic Settings | Invoice Ninja"><meta data-rh="true" name="description" content="The basic settings are where you can setup everything you need to define your company."><meta data-rh="true" property="og:description" content="The basic settings are where you can setup everything you need to define your company."><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://invoiceninja.github.io/docs/user-guide/basic-settings"><link data-rh="true" rel="alternate" href="https://invoiceninja.github.io/docs/user-guide/basic-settings" hreflang="en"><link data-rh="true" rel="alternate" href="https://invoiceninja.github.io/docs/user-guide/basic-settings" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"User Guide","item":"https://invoiceninja.github.io/docs/user-guide/"},{"@type":"ListItem","position":2,"name":"Basic Settings","item":"https://invoiceninja.github.io/docs/user-guide/basic-settings"}]}</script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="/assets/css/styles.b710f334.css">
+<script src="/assets/js/runtime~main.04d917f2.js" defer="defer"></script>
+<script src="/assets/js/main.cf8592e7.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-rounded.png" alt="Invoice Ninja" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo-rounded.png" alt="Invoice Ninja" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/user-guide">User Guide</a><a class="navbar__item navbar__link" href="/docs/hosted/hosted-quickstart">Hosted</a><a class="navbar__item navbar__link" href="/docs/self-host/self-host-installation">Self Host</a><a class="navbar__item navbar__link" href="/docs/developer-guide">Developer Guide</a><a class="navbar__item navbar__link" href="/docs/api-reference/invoice-ninja-api-reference">API Reference</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/invoiceninja/invoiceninja" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://app.invoicing.co" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Open App<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/docs/user-guide"><span title="User Guide" class="categoryLinkLabel_W154">User Guide</span></a><button aria-label="Collapse sidebar category &#x27;User Guide&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide"><span title="User Guide" class="linkLabel_WmDU">User Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/faq"><span title="Frequently Asked Questions" class="linkLabel_WmDU">Frequently Asked Questions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/banking"><span title="Banking" class="linkLabel_WmDU">Banking</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/clients"><span title="Clients" class="linkLabel_WmDU">Clients</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/credits"><span title="Credits" class="linkLabel_WmDU">Credits</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/client-portal"><span title="Client Portal" class="linkLabel_WmDU">Client Portal</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/einvoicing"><span title="E Invoicing" class="linkLabel_WmDU">E Invoicing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/esignatures"><span title="E-Signatures (beta coming soon!)" class="linkLabel_WmDU">E-Signatures (beta coming soon!)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/expenses"><span title="Expenses" class="linkLabel_WmDU">Expenses</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/invoices"><span title="Invoices" class="linkLabel_WmDU">Invoices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/quotes"><span title="Quotes" class="linkLabel_WmDU">Quotes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/recurring-invoices"><span title="Recurring Invoices" class="linkLabel_WmDU">Recurring Invoices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/gateways"><span title="Payment Gateways" class="linkLabel_WmDU">Payment Gateways</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/products"><span title="Products" class="linkLabel_WmDU">Products</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/payments"><span title="Payments" class="linkLabel_WmDU">Payments</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/projects"><span title="Projects" class="linkLabel_WmDU">Projects</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/purchase-orders"><span title="Purchase Orders" class="linkLabel_WmDU">Purchase Orders</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/tasks"><span title="Tasks" class="linkLabel_WmDU">Tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/taxes"><span title="Taxes" class="linkLabel_WmDU">Taxes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/recurring-expenses"><span title="Recurring Expenses" class="linkLabel_WmDU">Recurring Expenses</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/reports"><span title="Reports" class="linkLabel_WmDU">Reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/subscriptions"><span title="Payment Links" class="linkLabel_WmDU">Payment Links</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/transactions"><span title="Transactions" class="linkLabel_WmDU">Transactions</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/vendors"><span title="Vendors" class="linkLabel_WmDU">Vendors</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/user-guide/basic-settings"><span title="Basic Settings" class="linkLabel_WmDU">Basic Settings</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/user-guide/advanced-settings"><span title="Advanced Settings" class="linkLabel_WmDU">Advanced Settings</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/advanced-topics/email-customization"><span title="Advanced Topics" class="categoryLinkLabel_W154">Advanced Topics</span></a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/migration"><span title="Migration" class="linkLabel_WmDU">Migration</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/legal/license"><span title="Legal" class="categoryLinkLabel_W154">Legal</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_xLCN"><div class="docItemContainer_jfFK"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/user-guide"><span>User Guide</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Basic Settings</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Basic Settings</h1></header><div class="row"><div class="col col--12 markdown"><p>The basic settings are where you can setup everything you need to define your company.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The settings search is a great way to find settings that are configured in multiple places. If you search for email, color or any other term you’ll find all of the relevant settings.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="company_details">Company Details<a href="#company_details" class="hash-link" aria-label="Direct link to Company Details" title="Direct link to Company Details" translate="no">​</a></h2>
+<p>Settings found here relate to the currently selected company, from the company selection drop-down widget in the top left corner of the admin portal UI. Select the company you want to view settings for. The Company Details section is where you configure your address, upload your company logo and also set your company defaults.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="details">Details<a href="#details" class="hash-link" aria-label="Direct link to Details" title="Direct link to Details" translate="no">​</a></h3>
+<p>Any data entered in this first box of custom fields will all appear as your company&#x27;s details section, in most default invoice layouts and other records. Emails and websites will be clickable links in PDFs.</p>
+<ul>
+<li class=""><strong>Name</strong> - Your company name</li>
+<li class=""><strong>ID Number</strong> - Your company&#x27;s business number, or tax identification number</li>
+<li class=""><strong>VAT Number</strong> - A <strong>value added tax identification number</strong> or <strong>VAT identification number</strong> is an identifier used in many countries, including the EU, for value added tax purpose</li>
+<li class=""><strong>Website</strong> - Your company&#x27;s website</li>
+<li class=""><strong>Email</strong> - General company contact email, or sales contact email would go best here</li>
+<li class=""><strong>Phone</strong> - Support contact phone number for your company</li>
+</ul>
+<p>Any data entered in here is generally for reference purposes in the admin portal, and don&#x27;t appear on default documents.</p>
+<ul>
+<li class=""><strong>Size</strong> - Approximate number of employees in this company</li>
+<li class=""><strong>Industry</strong> - A browsable, searchable list of preset categories to describe the field your company is in</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="address">Address<a href="#address" class="hash-link" aria-label="Direct link to Address" title="Direct link to Address" translate="no">​</a></h3>
+<p>On most default invoices and other documents, you also see all of the data entered in these fields as well. These fields should all be self explanatory, and apply to most if not all businesses in any country.</p>
+<ul>
+<li class=""><strong>Street</strong></li>
+<li class=""><strong>Apt/Suite</strong></li>
+<li class=""><strong>City</strong></li>
+<li class=""><strong>State/Province</strong></li>
+<li class=""><strong>Postal Code</strong></li>
+<li class=""><strong>Country</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="logo">Logo<a href="#logo" class="hash-link" aria-label="Direct link to Logo" title="Direct link to Logo" translate="no">​</a></h3>
+<p>Image uploaded here will be saved in the public/storage directory like other uploaded files. The company logo image will appear on default invoice layouts, and in the company selection widget in the top left corner of the Admin Portal UI.</p>
+<p>The image you select should be 300x300 for best results, and there are no restrictions to the size of the file you upload, but it will cause issues with PDF invoices easily if you do not follow the standard 300x300 pixel resolution practice for logos.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="defaults">Defaults<a href="#defaults" class="hash-link" aria-label="Direct link to Defaults" title="Direct link to Defaults" translate="no">​</a></h3>
+<p>The defaults are system wide - company level defaults, this will applied at every level of the application they refer to.</p>
+<ul>
+<li class="">
+<p><strong>Invoice Payment Terms</strong> - The payment term defined in &#x27;days&#x27;. You can configure custom payment terms by clicking the <strong>Configure Payment Terms</strong> button</p>
+</li>
+<li class="">
+<p><strong>Quote Valid Until</strong> - Similar to Invoice Payment Terms, you will select a length of time in days, from the list of payment terms time lengths.</p>
+</li>
+<li class="">
+<p><strong>Terms and Footers</strong> - The terms and footers text inputs allow you to define default for each. These will be injected into the document automagically for you. All you need to do is set it once here and we&#x27;ll take care of the rest! Note, you can always override these values by editing them directly in the entity.</p>
+<p>The terms and footers appear below any Public Notes attached to your documents.</p>
+<p>These make great places to set stock disclaimers or clauses, to clarify policies about liability and responsibility up front and in print on every document.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="documents">Documents<a href="#documents" class="hash-link" aria-label="Direct link to Documents" title="Direct link to Documents" translate="no">​</a></h3>
+<p>Upload company documents here. These are not used automatically on any documents, and are only accessible from the admin portal. Documents stored here will also appear in the &quot;public/storage&quot; directory on the web server, implying that files stored here should not be considered truly secure, and this storage location is best reserved for template forms, notices, blank agreements, policy handouts, etc.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="user_details">User Details<a href="#user_details" class="hash-link" aria-label="Direct link to User Details" title="Direct link to User Details" translate="no">​</a></h2>
+<p>The User Details section covers account settings for the currently logged in user. A user&#x27;s details help identify them among your team, help your teammates contact each other, and is relevant in Invoice Ninja if you are assigning users to tasks, projects, clients, or etc as a practice for organization and accountability.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="details-1">Details<a href="#details-1" class="hash-link" aria-label="Direct link to Details" title="Direct link to Details" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>First Name</strong></li>
+<li class=""><strong>Last Name</strong></li>
+<li class=""><strong>Email</strong> - Used to send password reset links to when requested.</li>
+<li class=""><strong>Phone</strong> - For your reference only.</li>
+<li class=""><strong>Password</strong> - You would use this field to change your user account password, it doesn&#x27;t reveal your existing account password.</li>
+<li class=""><strong>Enable Two Factor</strong> - Enable two factor authentication using TOTP codes with any TOTP supported 2FA app or device. The pop-up will present a random secret code, and a matching QR code for it. It will require you test the TOTP with a one time password to verify the 2FA setup works, then save the change to your account.</li>
+<li class=""><strong>Accent Color</strong> - Accent colors are used mostly as selection highlighter, and button colors in the admin portal UI. Accent Color is a mix of user-associated, and company associated. Each user may pick all of their own accent colors, and for each company.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="notifications">Notifications<a href="#notifications" class="hash-link" aria-label="Direct link to Notifications" title="Direct link to Notifications" translate="no">​</a></h3>
+<p>Email notifications can be configured here for your user account. You can setup email events to notify you of almost any variety of record change event, whether an invoice, quote, payment, or credit, was viewed, approved, paid, failed, late, sent, created, etc.</p>
+<p>You can choose to set notifications to one of three option levels:</p>
+<ul>
+<li class=""><strong>None</strong> - Get no notifications for this event</li>
+<li class=""><strong>Owned by user</strong> - Only get notifications for this event, if the record in question is assigned to your user account</li>
+<li class=""><strong>All Records</strong> - Get notifications for every instance of this transaction category</li>
+</ul>
+<p>Also, the All Events category can be used to quickly set notification levels of every category to the same thing all at once.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="localization">Localization<a href="#localization" class="hash-link" aria-label="Direct link to Localization" title="Direct link to Localization" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="settings">Settings<a href="#settings" class="hash-link" aria-label="Direct link to Settings" title="Direct link to Settings" translate="no">​</a></h3>
+<p>Here you can set some server-wide settings for Invoice Ninja that will be applied to the text formatting on all records generated PDF documents.</p>
+<ul>
+<li class=""><strong>Currency</strong> - Searchable drop down menu to select a default currency.</li>
+<li class=""><strong>Currency Format</strong> - Select preferred presentation method for your selected currency.</li>
+<li class=""><strong>Language</strong> - Searchable drop down menu to select a preferred language, where supported by Invoice Ninja.</li>
+<li class=""><strong>Date Format</strong> - Searchable drop down menu to select a preferred date format.</li>
+<li class=""><strong>Military Time</strong> - Toggle on and off 24-hour time preference.</li>
+<li class=""><strong>First Month of the Year</strong> - Default January, used to determine annual start point when looking at or generating reports.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="custom-labels">Custom Labels<a href="#custom-labels" class="hash-link" aria-label="Direct link to Custom Labels" title="Direct link to Custom Labels" translate="no">​</a></h3>
+<p>In the custom labels section, you are able to reformat the descriptive text labels used in all your document templates. This is a useful feature to add custom language settings to your documents manually.</p>
+<p>You have a list to maintain of custom labels. Adding a custom label, such as &quot;Item&quot;, will add it to your list on the left column, and in the right column next to &quot;Item&quot; you will see a text-entry field for the text you want to replace &quot;Item&quot; with. For example &quot;Line Item&quot;, or &quot;UPC&quot;. This replaces the text used on all your invoices, and etc.</p>
+<ul>
+<li class=""><strong>Select Label</strong> - From this drop down list you can select a label from a list of labels.</li>
+<li class=""><strong>Add Custom</strong> - Add a label to virtually any value used on your documents, with a few more steps. Click the <em>Add Custom</em> blue text button in the top right of the panel, and what Invoice Ninja expects from you to create a working label for you, is the key name for the label (not the label&#x27;s current text value).<!-- -->
+<ul>
+<li class=""><strong>Labels</strong> - Click the blue text &quot;Labels&quot; button in the &quot;Add Custom&quot; popup, to open a link a dictionary list of all the labels in a single PHP document. Select a desired label to change from this extensive list, and use the key name <code>invoice_date</code> and not the value &quot;Invoice Date&quot; as the label name when adding a custom label, to link it directly to the dictionary key <code>invoice_date</code>. When it appears in the list, it will present the key&#x27;s value &quot;Invoice Date&quot; on your custom labels list, allowing you to change the text to &quot;Date of Transaction&quot;, or anything else.</li>
+</ul>
+</li>
+</ul>
+<p>Edit, or create a new invoice, credit, etc, in order to see the changes to the text labels applied across your documents now.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="payment_settings">Payment Settings<a href="#payment_settings" class="hash-link" aria-label="Direct link to Payment Settings" title="Direct link to Payment Settings" translate="no">​</a></h2>
+<div>Loading video...</div>
+<p>You may configure payment gateways, and payment rules/behaviors from here.</p>
+<ul>
+<li class="">
+<p><strong>Auto bill</strong></p>
+<ul>
+<li class=""><em>Enabled</em> - A payment will be automatically attempted if a valid payment method is stored on file.</li>
+<li class=""><em>Enabled by default</em> - The client will be given the option to allow payment methods to be stored with the radio box selected.</li>
+<li class=""><em>Disabled by default</em> - The client will be given the option to allow payment methods to be stored with the radio box unselected.</li>
+<li class=""><em>Disabled</em> - No option is given, and auto billing is disabled.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Auto Bill On</strong> - In an event where auto billing is enabled, you can configure the automatic payment to be triggered when an invoice is sent, or on the due date of that invoice.</p>
+</li>
+<li class="">
+<p><strong>Payment Type</strong> - This selector will set the default payment method.</p>
+</li>
+<li class="">
+<p><strong>Use Available Credits</strong> - Configure behavior for when a client has available credits in their account as they go to make a payment</p>
+<ul>
+<li class=""><em>Off</em> - Will not use available credits in the client&#x27;s account.</li>
+<li class=""><em>Enabled</em> - Will use any available credits by default.</li>
+<li class=""><em>Show Option</em> - Will prompt the user making the payment that there are credits available, if they choose to apply them.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Allow Over Payment</strong> - Toggle on/off client ability to optionally pay extra as a tip.</p>
+</li>
+<li class="">
+<p><strong>Allow Under Payment</strong> - Toggle the ability for clients to pay a minimum or partial amount owing.</p>
+</li>
+<li class="">
+<p><strong>Payment Emails</strong></p>
+<ul>
+<li class=""><em>Manual Payment Email</em> - Sends a payment notification to the client when a manual payment is applied</li>
+<li class=""><em>Online Payment Email</em> - Sends a payment notification to the client when an online payment has been processed.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="configure-payment-gateways">Configure Payment Gateways<a href="#configure-payment-gateways" class="hash-link" aria-label="Direct link to Configure Payment Gateways" title="Direct link to Configure Payment Gateways" translate="no">​</a></h3>
+<p>Integrating your Invoice Ninja account with a payment gateway allows clients to pay their invoices with 1-click!</p>
+<p>The payment gateway processes the transaction in the background while your client never leave their Invoice Ninja client-side portal. Seamless!</p>
+<p>Please see: <a class="" href="/docs/user-guide/gateways">Payment Gateways</a></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tax_settings">Tax Settings<a href="#tax_settings" class="hash-link" aria-label="Direct link to Tax Settings" title="Direct link to Tax Settings" translate="no">​</a></h2>
+<p>In this section we can configure some of the default settings for taxes applied to either entire invoices, or products themselves only. Tax rates are expressed in % values only.</p>
+<p><strong>CAREFUL!</strong></p>
+<p>You can accidentally double charge taxes if you apply tax rates on the flat balance of an invoice, <em>and</em> on the individual products in the invoice themselves. If there is a separate tax for certain products you sell, that might be where this could apply.</p>
+<ul>
+<li class=""><strong>Invoice Tax Rates</strong> - Disabled, one, two, or three tax rates choices. You will see &quot;<em>Default Tax Rate</em>&quot; fields spawn near the bottom when you change this setting. The new fields below will set the default tax rates applied to the flat balance of any invoice. Note, that you can change the tax rates for any individual invoice.</li>
+<li class=""><strong>Item Tax Rates</strong> - Disabled, one, two, or three tax rate choices. Optionally enable &quot;<em>Tax</em>&quot; fields which will then spawn in the <em>Edit Product</em> panel, or in the product listing on an invoice.</li>
+<li class=""><strong>Expense Tax Rates</strong> - Disabled, one, two or three tax rate choices. Defines the number of tax rates to be configured for expenses.</li>
+<li class=""><strong>Inclusive Taxes</strong> - Enable this setting to use inclusive taxes, which determines whether the tax rate is reduced from the set product/invoice total value, or added on top of it after.<!-- -->
+<ul>
+<li class=""><em>Example</em>
+Exclusive: 100 + 10% = 100 + 10
+Inclusive: 100 + 10% = 90.91 + 9.09</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configure Rates</strong> - A simple <em>Tax Rates</em> settings panel to manage tax rates applicable to your company. Tax rates configured here are selectable from the <em>Tax</em> and <em>Tax Rate</em> drop down menus on invoices and products. You add a tax rate with the &quot;+&quot; button in the bottom right panel, and simply add a name, and tax rate expressed in percent only.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="product_settings">Product Settings<a href="#product_settings" class="hash-link" aria-label="Direct link to Product Settings" title="Direct link to Product Settings" translate="no">​</a></h2>
+<p>These options govern the behaviors and rules related to <em>Products</em> either when editing the products directly, or interacting with them on invoices, quotes, etc.</p>
+<ul>
+<li class="">
+<p><strong>Show Product Discount</strong> - Optionally enable a discount field for products/items when added to invoices or quotes. This line item appears on invoice and quote documents sent to clients.</p>
+</li>
+<li class="">
+<p><strong>Show Product Cost</strong> - Enables a <em>Product Cost</em> field in each product listing, for tracking item costs, and markup values. This item does <em>not</em> appear on any customer invoices, it is only for the admin portal.</p>
+</li>
+<li class="">
+<p><strong>Show Product Quantity</strong> - Display a quantity field on invoices or not. Defaults to one, if the product quantity field is disabled.</p>
+</li>
+<li class="">
+<p><strong>Default Quantity</strong> - When the product quantity field is enabled, enabling this will make the quantity default to 1, otherwise you must explicitly specify the quantity of each product.</p>
+</li>
+<li class="">
+<p><strong>Fill Products</strong> - Enable, to automatically fill the description and cost fields with the values of the product you select, when adding a product to an invoice.</p>
+</li>
+<li class="">
+<p><strong>Update Products</strong> - Changing the product description, or tax rate on an invoice, will automatically update that products entry in the product list.</p>
+</li>
+<li class="">
+<p><strong>Convert Products</strong> - Enable to support automatically converting product prices to your client&#x27;s currency.</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="task_settings">Task Settings<a href="#task_settings" class="hash-link" aria-label="Direct link to Task Settings" title="Direct link to Task Settings" translate="no">​</a></h2>
+<p>Settings here govern the rules and behaviors related to tasks, which are nested in projects.</p>
+<ul>
+<li class=""><strong>Default Tax Rate</strong> - Custom field to set a flat default task rate per hour.</li>
+<li class=""><strong>Auto Start Tasks</strong> - Enable to automatically start a task&#x27;s time tracking when a task is created.</li>
+<li class=""><strong>Show Task End Date</strong> - Enables an &quot;<em>End Date</em>&quot; field when creating and editing tasks.</li>
+</ul>
+<p>These rules strictly govern</p>
+<ul>
+<li class=""><strong>Show Tasks Table</strong> - When enabled, will always present a &quot;<em>Tasks</em>&quot; category when adding items to invoices, where you can select tasks assigned to a client, and add them to the invoice.</li>
+<li class=""><strong>Invoice Task Datelog</strong> - Include the dates of entries in the task log when adding the task to an invoice.</li>
+<li class=""><strong>Invoice Task Timelog</strong> - Include the timestamps of a given task when adding it to an invoice.</li>
+<li class=""><strong>Add Documents to Invoice</strong> - Enable to make documents attached to your tasks, visible to clients as well as admin portal users.</li>
+</ul>
+<p><strong>Configure Statuses</strong> - This button enters another settings panel for &quot;<em>Task Statuses</em>&quot; which manages a list of selectable statuses for tasks, for example: Backlog, Ready to do, In Progress, and Done. All there is to configure for a task status, is the name of the status, and an indicator color.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="expense_settings">Expense Settings<a href="#expense_settings" class="hash-link" aria-label="Direct link to Expense Settings" title="Direct link to Expense Settings" translate="no">​</a></h2>
+<p>These rules govern default settings and behaviors of your company&#x27;s expense records.</p>
+<p>Each of these settings below can be configured on a per-expense record basis, when creating or editing an expense. Changing these settings here will change the default configuration for new expense records.</p>
+<ul>
+<li class=""><strong>Should be Invoiced</strong> - Enable this to mark an expense as billable to a client. Expenses with invoicing enabled can be included on client invoices, and when you create an invoice from a project that the invoicable expense is linked to. When an expense record has invoicing enabled, it&#x27;s lifecycle status will change to <em>Pending</em> until it is invoiced, and paid for, after which it will be changed automatically again to <em>Paid</em>.</li>
+<li class=""><strong>Mark Paid</strong> - Enable this to indicate that your organization has paid the vendor for this expense. This is <em>not</em> to indicate a payment from a client.<!-- -->
+<ul>
+<li class=""><strong>Payment Type</strong> - Select the payment type your organization used to pay the vendor with.</li>
+<li class=""><strong>Date</strong> - Enter the date your organization paid the vendor.</li>
+<li class=""><strong>Transaction Reference</strong> - Enter a transaction reference code or number if applicable.</li>
+</ul>
+</li>
+<li class=""><strong>Convert Currency</strong> - If the expense is billed in a currency other than your own default currency, enabling this allows you to set the currency you prefer to pay with, and an exchange rate, to calculate how much the expense cost in your preferred currency.</li>
+</ul>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>Note that when you view your reports, expenses will be categorized by the currency of the expense/vendor, not the currency selected under &quot;Convert Currency&quot;. If you wish to consolidate your profit and loss totals under one currency, you should select your own currency for each expense record, and use the converted amount for the expense amount, leaving any reference to a foreign currency out of the record details.</p></div></div>
+<ul>
+<li class=""><strong>Add Documents to Invoice</strong> - Enable this feature to include any documents attached to an expense, with the documents attached to the invoice when you create an invoice out of the expense record.</li>
+<li class=""><strong>Enter Taxes</strong> - Configure how the expense is taxed to you in more detail. Change between rate or amount to change the <em>Tax</em> field (under the details tab) from a percent based tax, to a custom flat tax.<!-- -->
+<ul>
+<li class=""><strong>By Rate</strong> - this is selected by default. You can select a tax rate under <em>Details</em> to apply to the expense.</li>
+<li class=""><strong>By Amount</strong> - allows you to manually enter a <em>Tax Name</em> and <em>Tax Amount</em> under <em>Details</em> to apply to the expense. Note that you can apply up to three tax rates/amounts to an expense, based on the settting <em>Settings &gt; Tax Settings &gt; Expense Tax Rates</em> where you can select <em>Disabled, One Tax Rate, Two Tax Rates,</em> or <em>Three Tax Rates</em>. For example, if you have <em>Three Tax Rates</em> as the enabled option, you will see three <em>Tax</em> options on the left.</li>
+</ul>
+</li>
+<li class=""><strong>Inclusive Taxes</strong> - Enable this option if the taxes are inclusive to the cost of the expense, rather than exclusive. For example:<!-- -->
+<ul>
+<li class="">Exclusive tax is applied on top of the expense cost, like so: 100 + 10% = $110 total (100 + 10).</li>
+<li class="">Inclusive tax is when taxes are deducted from the amount the vendor bills you, and included in your expense amount, rather than tacked on top of what you pay the vendor, like so: 100 + 10% = $100 total (90.91 +9.09).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Configure Categories</strong> - This table below the Expense Settings allows you to manage the <em>Expense Categories</em>&quot;. Here, you can manage a simple list (Name, and Color fields only) for expense categories. This can help you organize your expenses more effectively, by assigning an expense category to each of your expenses.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="import_export">Import | Export<a href="#import_export" class="hash-link" aria-label="Direct link to Import | Export" title="Direct link to Import | Export" translate="no">​</a></h2>
+<p>Here, you have many options for file formats to import your company records from.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="csv">CSV<a href="#csv" class="hash-link" aria-label="Direct link to CSV" title="Direct link to CSV" translate="no">​</a></h3>
+<p>CSV formatted records can be imported only. CSV file imports must be done per-category, and not all in one large file.</p>
+<p>You will have to manually select matching categories for some entries in the CSV after it is uploaded, because older or other software may not use the same labels.</p>
+<p>The expected formatting of the CSV document is to have a single row with all the column categories, followed by a row for each entry.</p>
+<p>When importing your CSV document, verify that the column on the left matches your column labels from the CSV file, and that the column in the middle matches the first row underneath the column labels of your CSV file. Then on the right, select the most accurate label available from Invoice Ninja to associate those values with the new label upon import.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="json">JSON<a href="#json" class="hash-link" aria-label="Direct link to JSON" title="Direct link to JSON" translate="no">​</a></h3>
+<p>A full company backup can be generated via the Export option. This will schedule a job which will export all settings and data and compress it into a .zip file for download. When the job has been completed an email is sent with a download link (Download links expire daily).</p>
+<p>The data can be transported to another installation, or used to overwrite an existing company dataset.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>If you do not wish to overwrite the current company and instead import the dataset as a NEW company you <em>must</em> create a new company first prior to importing as this will overwrite the current company!</p></div></div>
+<p>When importing JSON you have the option to import only settings or data or both.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>Note on the hosted platform, the company importer will perform a preflight check to ensure your dataset is importable. If your plan does not have sufficient resources (ie. multiple users or client limit is reached), the importer will fail and you will be notified via email of the exact issue.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="device_settings">Device Settings<a href="#device_settings" class="hash-link" aria-label="Direct link to Device Settings" title="Direct link to Device Settings" translate="no">​</a></h2>
+<p>These settings govern the settings for the session or instance on the physical device you are currently signed into. On a new device, these settings will not apply.</p>
+<ul>
+<li class="">
+<p><strong>Layout</strong> - Explicitly choose from a desktop, or mobile layout. Normally Invoice Ninja can detect which type of display you are using though.</p>
+</li>
+<li class="">
+<p><strong>Menu Sidebar</strong> - The menu sidebar is the left-most sidebar for navigation. When set to &quot;<em>Collapse</em>&quot; the sidebar stays pinned, and can expand or shrink. When set to &quot;<em>Float</em>&quot; the sidebar stays hidden, and slides out from a gesture or by clicking the &quot;<em>hamburger</em>&quot; button in the top left corner.</p>
+</li>
+<li class="">
+<p><strong>History Sidebar</strong> - The history sidebar will spawn somewhere on the righthand-side. When set to &quot;<em>Show/Hide</em>&quot; the history sidebar spawns on the far right, and is a persistent sidebar that resizes and moves the panels around it. When set to &quot;<em>Float</em>&quot; the history sidebar spawns in front of the panel you&#x27;re working in when you press the &quot;<em>History</em>&quot; button at the top of a menu list, and it dismisses itself automatically.</p>
+</li>
+<li class="">
+<p><strong>Preview Sidebar</strong> - Enabled is the default setting, which presents you with a list of clients, invoices, tasks, etc. and the entire entry in the list is a clickable button to view the entry&#x27;s advanced details in a persistent sidebar on the righthand-side.</p>
+<p>When disabled, you are instead presented with no sidebar on the right, only a list, and each entry shows a little more detail at a glance, but it doesn&#x27;t offer advanced details views, and disabling this feature can effectively reduce features normally available to you through these detailed preview sidebars.</p>
+</li>
+<li class="">
+<p><strong>List Long Press</strong> - Configure behavior when you long press a menu list entry. &quot;<em>Start Multiselect</em>&quot; to use the long press to switch to an item selector mode and select multiple items to act upon, or choose &quot;<em>Show Actions</em>&quot; to simply spawn a context menu of available actions for that one menu list entry instead.</p>
+</li>
+<li class="">
+<p><strong>Rows Per Page</strong> - Configure the default number of rows to load per menu page.</p>
+</li>
+<li class="">
+<p><strong>Dark Mode</strong> - Toggles a dark theme for low light conditions, or personal preference.</p>
+</li>
+<li class="">
+<p><strong>Color Theme</strong> - Select color themes to use for the tags assigned to invoices, payments, tasks, etc (Such as &quot;<em>In Progress</em>&quot; &quot;<em>Sent</em>&quot; or &quot;<em>Running</em>&quot;). Accent colors for the UI are chosen from the User Details section.</p>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="account_management">Account Management<a href="#account_management" class="hash-link" aria-label="Direct link to Account Management" title="Direct link to Account Management" translate="no">​</a></h2>
+<p>The Account Management panel mostly governs the account for your company on the server, status with Invoice Ninja licensing, and API configurations for developers interested in automation.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="overview">Overview<a href="#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h3>
+<p>From this tab you have a few different things presented to you.</p>
+<p>First are things related to your company&#x27;s status, or terms with Invoice Ninja</p>
+<ul>
+<li class=""><strong>Plan</strong> - Status of your current plan with Invoice Ninja hosting services.</li>
+<li class=""><strong>Activate Company</strong> - Enable or disable company active state, disabling it will disable a number of automated features, like emails, recurring invoices, and notifications.</li>
+<li class=""><strong>Enable Markdown</strong> - Enable your template designs to embed markdown into your HTML code, for formatting PDFs with markdown. At this time, the markdown code can only be converted from within product line item descriptions, but there are plans to implement wider support.</li>
+<li class=""><strong>Decimal Comma</strong> - When creating or editing documents (invoices, quotes, etc) in the admin portal, enabling this will change the use of decimals, to commas in order to separate dollars from cents. It operates with one or the other but not both at once. For example, 20.00 will instead be represented as 20,00. A decimal will be ignored with commas enabled, and vice versa.</li>
+<li class=""><strong>Include Drafts</strong> - When generating reports from the &quot;Reports&quot; module, enabling this feature will include objects that are still marked as drafts in the figures of your reports.</li>
+<li class=""><strong>Purchase License</strong> - A link to request an invoice from Invoice Ninja for a white label license. License will be emailed to you.</li>
+<li class=""><strong>Apply License</strong> - Enter the license key provided by Invoice Ninja to remove white label from documents and client-facing parts of the app.</li>
+</ul>
+<p>Second, are all developer resources for automation features.</p>
+<ul>
+<li class=""><strong>API Tokens</strong> - Create new randomly generated API tokens, and manage existing tokens in a subsettings panel here.</li>
+<li class=""><strong>API Webhooks</strong> - Create and manage API webhooks in a subsettings panel here.</li>
+<li class=""><strong>API Docs</strong> - Link to the API documentation for developers.</li>
+<li class=""><strong>Zapier</strong> - Login link for Zapier to configure automated processes with Zapier.</li>
+</ul>
+<p>Third, are the most dangerous and serious buttons! Make sure you know what you are doing!</p>
+<ul>
+<li class=""><strong>Purge Data</strong> - Permanently deletes <em>all your companies and records</em> from the database!</li>
+<li class=""><strong>Delete Company</strong> - Permanently deletes the <em>currently selected company</em> from the database!</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="enabled-modules">Enabled Modules<a href="#enabled-modules" class="hash-link" aria-label="Direct link to Enabled Modules" title="Direct link to Enabled Modules" translate="no">​</a></h3>
+<p>Tick boxes here enable and disable entire modules for the company. Disabling a category or two like &quot;Projects&quot; and &quot;Tasks&quot; will remove them from the menu sidebar on the righthand-side and hide them and all their existing records, until you re-enable the module again.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="integrations">Integrations<a href="#integrations" class="hash-link" aria-label="Direct link to Integrations" title="Direct link to Integrations" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Google Analytics Tracking ID</strong> - Without needing to write in the code yourself, easily integrate analytics and ecommerce tracking on your domain by inserting your Google Analytics account tracking ID in this field. See <a href="https://support.google.com/analytics/answer/1008080#zippy=%2Cin-this-article" target="_blank" rel="noopener noreferrer" class="">here</a> for help finding your Analytics tracking ID.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="security-settings">Security Settings<a href="#security-settings" class="hash-link" aria-label="Direct link to Security Settings" title="Direct link to Security Settings" translate="no">​</a></h3>
+<p>Configure some simple server account security settings for logged in users.</p>
+<ul>
+<li class=""><strong>Password Timeout</strong> - You normally require a password for certain actions, like deleting any data. Here you can set a timeout until the next time you have to re-enter that password to perform another similar action.</li>
+<li class=""><strong>Web Session Timeout</strong> - Disabled by default, set a timeout to logout the user from the admin portal after a given time.</li>
+<li class=""><strong>Require Password with Social Login</strong> - If you have social login enabled on your server, you may enable this setting to force users to verify their account password anyways when they log in.</li>
+</ul></div></div></div><div class="row"><div class="col col--12"><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/invoiceninja/invoiceninja.github.io/tree/v5-rework/docs/user-guide/basic-settings.mdx" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2026-02-21T07:55:08.000Z" itemprop="dateModified">Feb 21, 2026</time></b></span></div></div></footer></div></div></article><div class="row"><div class="col col--12"><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/user-guide/vendors"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Vendors</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/user-guide/advanced-settings"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Advanced Settings</div></a></nav></div></div></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#company_details" class="table-of-contents__link toc-highlight">Company Details</a><ul><li><a href="#details" class="table-of-contents__link toc-highlight">Details</a></li><li><a href="#address" class="table-of-contents__link toc-highlight">Address</a></li><li><a href="#logo" class="table-of-contents__link toc-highlight">Logo</a></li><li><a href="#defaults" class="table-of-contents__link toc-highlight">Defaults</a></li><li><a href="#documents" class="table-of-contents__link toc-highlight">Documents</a></li></ul></li><li><a href="#user_details" class="table-of-contents__link toc-highlight">User Details</a><ul><li><a href="#details-1" class="table-of-contents__link toc-highlight">Details</a></li><li><a href="#notifications" class="table-of-contents__link toc-highlight">Notifications</a></li></ul></li><li><a href="#localization" class="table-of-contents__link toc-highlight">Localization</a><ul><li><a href="#settings" class="table-of-contents__link toc-highlight">Settings</a></li><li><a href="#custom-labels" class="table-of-contents__link toc-highlight">Custom Labels</a></li></ul></li><li><a href="#payment_settings" class="table-of-contents__link toc-highlight">Payment Settings</a><ul><li><a href="#configure-payment-gateways" class="table-of-contents__link toc-highlight">Configure Payment Gateways</a></li></ul></li><li><a href="#tax_settings" class="table-of-contents__link toc-highlight">Tax Settings</a></li><li><a href="#product_settings" class="table-of-contents__link toc-highlight">Product Settings</a></li><li><a href="#task_settings" class="table-of-contents__link toc-highlight">Task Settings</a></li><li><a href="#expense_settings" class="table-of-contents__link toc-highlight">Expense Settings</a></li><li><a href="#import_export" class="table-of-contents__link toc-highlight">Import | Export</a><ul><li><a href="#csv" class="table-of-contents__link toc-highlight">CSV</a></li><li><a href="#json" class="table-of-contents__link toc-highlight">JSON</a></li></ul></li><li><a href="#device_settings" class="table-of-contents__link toc-highlight">Device Settings</a></li><li><a href="#account_management" class="table-of-contents__link toc-highlight">Account Management</a><ul><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a></li><li><a href="#enabled-modules" class="table-of-contents__link toc-highlight">Enabled Modules</a></li><li><a href="#integrations" class="table-of-contents__link toc-highlight">Integrations</a></li><li><a href="#security-settings" class="table-of-contents__link toc-highlight">Security Settings</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/user-guide">User Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/self-host/self-host-installation">Self Host</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/invoice-ninja-api-reference">API Reference</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://forum.invoiceninja.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Forum<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://invoiceninja.slack.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Slack<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/invoiceninja/invoiceninja" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.invoiceninja.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">Website<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Invoice Ninja. All rights reserved.</div></div></div></footer></div>
+</body>
+</html>
