@@ -2,8 +2,6 @@
 title: "Clients"
 sidebar_position: 5
 ---
-# Clients
-
 Video on adding a client:
 <video width="100%" controls>
 

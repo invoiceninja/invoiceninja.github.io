@@ -2,8 +2,6 @@
 title: "Recurring Invoices"
 sidebar_position: 13
 ---
-# Recurring Invoices
-
 Recurring invoices are a convenient way to automate the process of billing a client on a regular schedule. You can set a recurring invoice to be generated automatically at a specific interval and sent to your client via email. This feature is useful for businesses that have regular clients and bill them on a regular schedule, such as monthly or annually. It saves time and effort by automating the invoice creation process.
 
 <video width="100%" controls>

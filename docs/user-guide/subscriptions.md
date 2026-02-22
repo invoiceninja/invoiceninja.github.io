@@ -2,8 +2,6 @@
 title: "Payment Links"
 sidebar_position: 23
 ---
-# Payment Links
-
 ## Introduction
 
 Payment Links (previously known as Subscriptions) are a supercharged version of our Buy Now links from version 4.

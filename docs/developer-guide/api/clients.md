@@ -2,8 +2,6 @@
 title: "Clients"
 sidebar_position: 2
 ---
-# Clients
-
 ### Endpoints
 
 

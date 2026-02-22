@@ -2,8 +2,6 @@
 title: "Payments"
 sidebar_position: 16
 ---
-# Payments
-
 Payment records are automatically generated when payments are processed from the client portal or when an invoice is marked as paid. When an invoice is marked as paid, a payment record for the full amount is created and labeled as "Manual Entry."
 
 There are four possible statuses for a payment record:

@@ -2,8 +2,6 @@
 title: "Products"
 sidebar_position: 15
 ---
-# Products
-
 ## Creating Products
 
 There several ways for a product to be created, including:

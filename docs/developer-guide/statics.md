@@ -2,8 +2,6 @@
 title: "Statics"
 sidebar_position: 3
 ---
-# Statics
-
 ## Payment Types:
 
 | typeID | paymentMethod     |

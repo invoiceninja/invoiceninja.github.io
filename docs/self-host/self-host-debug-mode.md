@@ -2,8 +2,6 @@
 title: "Self Host Debug Mode"
 sidebar_position: 7
 ---
-# Self Host Debug Mode
-
 ## Overview
 
 Debug mode should only ever be used to get addtional information on why your system may not be responding / behaving as expected.

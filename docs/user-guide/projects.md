@@ -2,8 +2,6 @@
 title: "Projects"
 sidebar_position: 17
 ---
-# Projects
-
 The _Projects_ module is useful for managing large collections of work for clients. A project record itself is simple, but its functionality and usefulness come from the records linked to it. By linking Tasks and Expenses to a project, you can stay organized and plan the work for your client. You can also link a project to a User in the admin portal to maintain accountability.
 
 You can assign multiple tasks and expenses to a project, but it is not required. Tasks represent billable hours and assigning them to a project with a Task Rate set, allows you to create a default hourly rate. Expenses represent goods or services you had to pay for. Assigning expenses to a project helps you keep track of them when it's time to bill your client for the completed project.

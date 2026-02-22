@@ -2,8 +2,6 @@
 title: "Transactions"
 sidebar_position: 24
 ---
-# Transactions
-
 ## Overview
 
 Invoice Ninja has partnered with [Yodlee](https://www.yodlee.com) and [GoCardless](https://gocardless.com), top data providers, to gain access to bank & credit card data feeds. This partnership gives Invoice Ninja users worldwide access to major banks and enables them to connect their accounts for automatic reconciliation of payments and expenses.

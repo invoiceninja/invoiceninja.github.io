@@ -2,8 +2,6 @@
 title: "Invoices"
 sidebar_position: 11
 ---
-# Invoices
-
 Invoice records support a lot of detail and allow you to bill your clients for _Products_, _Tasks_, or _Expenses_. You can attach documents or pictures to invoices, which the client may view from the client portal. Invoice records keep a history of when changes were made to them, and which users performed those changes, in order to increase accountability within your business.
 
 <video width="100%" controls>

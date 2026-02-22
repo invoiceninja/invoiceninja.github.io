@@ -2,8 +2,6 @@
 title: "Import and Export"
 sidebar_position: 3
 ---
-# Import and Export
-
 ## Import Data
 
 You can import data into Invoice Ninja from CSV files or other accounting software from anywhere in the application using the green Import Button.

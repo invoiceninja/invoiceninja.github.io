@@ -2,8 +2,6 @@
 title: "Vendors"
 sidebar_position: 25
 ---
-# Vendors
-
 The Vendors module allows you to manage a list of vendors that your organization purchases goods or services from for business-related purposes. You can enter all necessary contact and billing information for each vendor, and track individual purchases through expense records which are linked to the corresponding vendor record. Managing vendor records is crucial for effective management of your business or organization.
 
 Vendors are used in Purchase Orders (required), and Expenses (optional). That means you can track both purchasing and expenses to specific vendors.

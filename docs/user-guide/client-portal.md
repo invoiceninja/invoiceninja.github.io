@@ -2,8 +2,6 @@
 title: "Client Portal"
 sidebar_position: 7
 ---
-# Client Portal
-
 ![Client portal homescreen](/assets/images/client_portal/client_portal_homescreen_invoices.png "Client portal homescreen")
 
 - The client portal is an online self-serve dashboard for your client to see their invoices, make payments, download statements, manage subscriptions, payment methods, and more.

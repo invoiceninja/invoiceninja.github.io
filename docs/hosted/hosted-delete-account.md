@@ -2,8 +2,6 @@
 title: "Hosted Account Deletion"
 sidebar_position: 8
 ---
-# Hosted Account Deletion
-
 If you wish for all of your data and account information to be removed from the system please use the following steps:
 
 Navigate to

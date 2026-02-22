@@ -2,8 +2,6 @@
 title: "E Invoicing"
 sidebar_position: 8
 ---
-# E Invoicing
-
 ## Introduction
 e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has supported UBL format invoices for some time and now we also support a range of e-invoice formats including direct delivery of e-invoices over the PEPPOL network.
 

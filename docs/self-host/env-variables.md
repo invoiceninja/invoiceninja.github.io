@@ -2,8 +2,6 @@
 title: "Env Variables"
 sidebar_position: 6
 ---
-# Env Variables
-
 ```bash
 LICENSE_KEY="your_white_label_license"
 ```bash

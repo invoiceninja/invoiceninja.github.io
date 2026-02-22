@@ -2,7 +2,6 @@
 title: "Tax Accounting Tips"
 sidebar_position: 7
 ---
-# Tax Accounting Tips
 
 Invoice Ninja is a fully featured invoicing system with many small-business friendly features.
 
