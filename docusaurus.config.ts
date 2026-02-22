@@ -232,14 +232,14 @@ const config: Config = {
         },
         {
           type: "docSidebar",
-          sidebarId: "selfHost",
-          label: "Self Host",
+          sidebarId: "hosted",
+          label: "Hosted",
           position: "left",
         },
         {
           type: "docSidebar",
-          sidebarId: "hosted",
-          label: "Hosted",
+          sidebarId: "selfHost",
+          label: "Self Host",
           position: "left",
         },
         {
