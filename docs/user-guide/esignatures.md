@@ -113,12 +113,13 @@ Yes! you can create different templates based on your designs for invoices, quot
 
 Yes! when customizing the template, you are also able to capture additional fields such as Dates and other inputs.
 
-### Release Schedule
- - **When are you releasing?** We are in the final stages of testing DocuNinja internally. We plan to release the beta version of DocuNinja to Hosted users (for free!) in Q4 of 2025. 
- - **Will there be a self hosted option?** At this stage, no. The complexity around signing Documents has precluded a selfhosted version.
-
 ### SOC2 compliance
  - **Is DocuNinja SOC2 Compliant?** We are undergoing SOC2 audit currently and aim to have this signed off in Q1 2026
 
+## Beta: - Known Issues
+
+### Completed Invoices/Quotes/Purchase Orders added as attachment
+
+ Currently when an invoice ninja document such as an Invoice, Quote or Purchase Order is signed and completed. It will be returned as an attachment only. This is problematic and the generated Invoice will still be the pre-signed version which is not optimal.We have addressed this issue. Now, when an Invoice/Quote/Purchase order is _completed_ it will be returned and set as the source of truth for all instances where this PDF is emailed/downloaded/viewed. Pending release as @ 23rd February 2026 
 
 ---
