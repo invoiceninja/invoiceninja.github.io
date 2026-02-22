@@ -91,9 +91,7 @@ const sidebars: SidebarsConfig = {
       link: { type: "doc", id: "hosted/hosted-quickstart" },
       items: [
         "hosted/hosted-quickstart",
-        "hosted/hosted-activate",
         "hosted/hosted-custom-domain",
-        "hosted/hosted-migration",
         "hosted/hosted-mail",
         "hosted/hosted-stripe",
         "hosted/hosted-troubleshooting",

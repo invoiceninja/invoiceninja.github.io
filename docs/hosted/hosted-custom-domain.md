@@ -1,5 +1,5 @@
 ---
-title: "Hosted custom domain"
+title: "Hosted Custom Domain"
 sidebar_position: 3
 ---
 ## Custom Domain Configuration
