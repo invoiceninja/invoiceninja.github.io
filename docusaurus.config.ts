@@ -130,9 +130,7 @@ const config: Config = {
 
           // Hosted redirects
           { from: ['/en/hosted-quickstart'], to: '/docs/hosted/hosted-quickstart' },
-          { from: ['/en/hosted-activate'], to: '/docs/hosted/hosted-activate' },
           { from: ['/en/hosted-custom-domain'], to: '/docs/hosted/hosted-custom-domain' },
-          { from: ['/en/hosted-migration'], to: '/docs/hosted/hosted-migration' },
           { from: ['/en/hosted-stripe'], to: '/docs/hosted/hosted-stripe' },
           { from: ['/en/hosted-troubleshooting'], to: '/docs/hosted/hosted-troubleshooting' },
           { from: ['/en/hosted-mail'], to: '/docs/hosted/hosted-mail' },
@@ -178,8 +176,8 @@ const config: Config = {
             '/docs/self-host/self-host-installation', '/docs/self-host/self-host-troubleshooting',
             '/docs/self-host/self-host-debug-mode', '/docs/self-host/self-host-updating',
             '/docs/self-host/env-variables',
-            '/docs/hosted/hosted-quickstart', '/docs/hosted/hosted-activate',
-            '/docs/hosted/hosted-custom-domain', '/docs/hosted/hosted-migration',
+            '/docs/hosted/hosted-quickstart',
+            '/docs/hosted/hosted-custom-domain',
             '/docs/hosted/hosted-stripe', '/docs/hosted/hosted-troubleshooting',
             '/docs/hosted/hosted-mail', '/docs/hosted/hosted-delete-account',
             '/docs/developer-guide', '/docs/developer-guide/api/authentication',
