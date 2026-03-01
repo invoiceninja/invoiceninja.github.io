@@ -37,6 +37,53 @@ There are some special considerations when importing invoices.
 3. Each line item MUST include a quantity and cost column for the calculations of the invoice total. (Otherwise a generic 1 x Invoice Amount line item will be used.)
 4. If you wish to include a payment on the invoice, add a payment amount column and reference the amount paid.
 
+### Invoice Status Values
+
+When importing invoices, you can set the status using the following values in your CSV:
+
+| CSV Value | Result |
+|-----------|--------|
+| `draft` | Draft |
+| `sent` | Sent |
+| `paid` | Paid |
+| `1` or `true` or `yes` | Paid |
+| `0` or `false` or `no` | Sent |
+| *(empty)* | Sent |
+
+## Importing Quotes
+
+### Quote Status Values
+
+When importing quotes, you can set the status using the following values in your CSV:
+
+| CSV Value | Result |
+|-----------|--------|
+| `draft` | Draft |
+| `sent` | Sent |
+
+## Importing Recurring Invoices
+
+### Frequency Values
+
+When importing recurring invoices, you can set the billing frequency using the following values in your CSV:
+
+| CSV Value | Frequency |
+|-----------|-----------|
+| `daily` | Daily |
+| `weekly` | Weekly |
+| `biweekly` | Every 2 weeks |
+| `4weeks` | Every 4 weeks |
+| `monthly` or `month` | Monthly |
+| `bimonthly` | Every 2 months |
+| `quarterly` | Every 3 months |
+| `4months` | Every 4 months |
+| `6months` | Every 6 months |
+| `yearly` or `annually` or `annual` or `year` | Annually |
+| `2years` | Every 2 years |
+| `3years` | Every 3 years |
+
+If no frequency is provided, the default is **Monthly**.
+
 ## Importing / Updating Products
 
 As well as importing new products, you can also update existing products!
