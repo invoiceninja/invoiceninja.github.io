@@ -32,9 +32,9 @@ If you regularly import the same file format, the application will offer you the
 
 There are some special considerations when importing invoices.
 
-1. A invoice number must be included in the file and must be unique.
+1. A invoice number must be included in the file and must be unique. (If no invoice number is provided, the system will attempt to assign one itself.)
 2. If you have multiple line items you wish to include within the same invoice, use the same invoice number for each line.
-3. Each line item MUST include a quantity and cost column for the calculations of the invoice total.
+3. Each line item MUST include a quantity and cost column for the calculations of the invoice total. (Otherwise a generic 1 x Invoice Amount line item will be used.)
 4. If you wish to include a payment on the invoice, add a payment amount column and reference the amount paid.
 
 ## Importing / Updating Products
