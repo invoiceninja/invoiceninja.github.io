@@ -476,6 +476,12 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
+          id: "api-reference/download-credit",
+          label: "Download quote PDF",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api-reference/get-quotes",
           label: "List quotes",
           className: "api-method get",
@@ -570,12 +576,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api-reference/update-credit",
-          label: "Update credit",
-          className: "api-method put",
-        },
-        {
-          type: "doc",
           id: "api-reference/delete-credit",
           label: "Delete credit",
           className: "api-method delete",
@@ -597,12 +597,6 @@ const sidebar: SidebarsConfig = {
           id: "api-reference/bulk-credits",
           label: "Bulk credit actions",
           className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api-reference/download-credit",
-          label: "Download credit PDF",
-          className: "api-method get",
         },
         {
           type: "doc",
@@ -1371,7 +1365,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api-reference/show-bank-transaction-rule",
-          label: "Shows a bank_transaction_rule",
+          label: "Shows a bank_transaction",
           className: "api-method get",
         },
         {
@@ -1389,7 +1383,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api-reference/edit-bank-transaction-rule",
-          label: "Shows a bank_transaction_rule for editing",
+          label: "Shows a bank_transaction for editing",
           className: "api-method get",
         },
         {
@@ -1673,14 +1667,30 @@ const sidebar: SidebarsConfig = {
       label: "Connected Account",
       link: {
         type: "doc",
-        id: "api-reference/connected-account-tag",
+        id: "api-reference/connected-account",
       },
       items: [
         {
           type: "doc",
-          id: "api-reference/connected-account",
+          id: "api-reference/post-connected-account",
           label: "Connect an oauth user to an existing user",
           className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Credits",
+      link: {
+        type: "doc",
+        id: "api-reference/credits",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api-reference/update-credit",
+          label: "Update credit",
+          className: "api-method put",
         },
       ],
     },
@@ -1825,7 +1835,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api-reference/update-expense-category",
-          label: "Updates an expense category",
+          label: "Updates a tax rate",
           className: "api-method put",
         },
         {
@@ -1971,7 +1981,13 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api-reference/preimport",
-          label: "Pre Import checks - returns a reference to the job and the headers of the CSV",
+          label: "Pre Import CSV data",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api-reference/post-import",
+          label: "Import CSV data",
           className: "api-method post",
         },
       ],
@@ -2025,12 +2041,12 @@ const sidebar: SidebarsConfig = {
       label: "One Time Token",
       link: {
         type: "doc",
-        id: "api-reference/one-time-token-tag",
+        id: "api-reference/one-time-token",
       },
       items: [
         {
           type: "doc",
-          id: "api-reference/one-time-token",
+          id: "api-reference/post-one-time-token",
           label: "Attempts to create a one time token",
           className: "api-method post",
         },
@@ -2076,12 +2092,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api-reference/delete-payment-term",
-          label: "Deletes a Payment Term",
-          className: "api-method delete",
-        },
-        {
-          type: "doc",
           id: "api-reference/edit-payment-terms",
           label: "Shows an Payment Term for editting",
           className: "api-method get",
@@ -2091,6 +2101,22 @@ const sidebar: SidebarsConfig = {
           id: "api-reference/bulk-payment-terms",
           label: "Performs bulk actions on an array of payment terms",
           className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Payment Terms",
+      link: {
+        type: "doc",
+        id: "api-reference/payment-termss",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api-reference/delete-payment-term",
+          label: "Deletes a Payment Term",
+          className: "api-method delete",
         },
       ],
     },
@@ -2251,12 +2277,12 @@ const sidebar: SidebarsConfig = {
       label: "Refresh",
       link: {
         type: "doc",
-        id: "api-reference/refresh-tag",
+        id: "api-reference/refresh",
       },
       items: [
         {
           type: "doc",
-          id: "api-reference/refresh",
+          id: "api-reference/post-refresh",
           label: "Refresh data by timestamp",
           className: "api-method post",
         },
@@ -2498,12 +2524,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api-reference/delete-task-status",
-          label: "Deletes a TaskStatus Term",
-          className: "api-method delete",
-        },
-        {
-          type: "doc",
           id: "api-reference/edit-task-statuss",
           label: "Shows an TaskStatusfor editting",
           className: "api-method get",
@@ -2513,6 +2533,22 @@ const sidebar: SidebarsConfig = {
           id: "api-reference/bulk-task-statuss",
           label: "Performs bulk actions on an array of task statuses",
           className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Task Status",
+      link: {
+        type: "doc",
+        id: "api-reference/task-statuss",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api-reference/delete-task-status",
+          label: "Deletes a TaskStatus Term",
+          className: "api-method delete",
         },
       ],
     },
@@ -2735,7 +2771,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api-reference/invite-user",
-          label: "Invite an existing user to a company",
+          label: "Reconfirm an existing user to a company",
           className: "api-method post",
         },
         {
@@ -2751,12 +2787,12 @@ const sidebar: SidebarsConfig = {
       label: "Webcron",
       link: {
         type: "doc",
-        id: "api-reference/webcron-tag",
+        id: "api-reference/webcron",
       },
       items: [
         {
           type: "doc",
-          id: "api-reference/webcron",
+          id: "api-reference/get-webcron",
           label: "Executes the task scheduler via a webcron service",
           className: "api-method get",
         },
@@ -2796,12 +2832,6 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api-reference/delete-webhook",
-          label: "Deletes a Webhook",
-          className: "api-method delete",
-        },
-        {
-          type: "doc",
           id: "api-reference/edit-webhook",
           label: "Shows a Webhook for editting",
           className: "api-method get",
@@ -2816,6 +2846,38 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api-reference/bulk-webhooks",
           label: "Performs bulk actions on an array of Webhooks",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Webhooks",
+      link: {
+        type: "doc",
+        id: "api-reference/webhooks",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api-reference/delete-webhook",
+          label: "Deletes a Webhook",
+          className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Yodlee",
+      link: {
+        type: "doc",
+        id: "api-reference/yodlee",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api-reference/yodlee-refresh-webhook",
+          label: "Yodlee Webhook",
           className: "api-method post",
         },
       ],

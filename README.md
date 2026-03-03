@@ -37,18 +37,9 @@ git clone https://github.com/invoiceninja/invoiceninja.github.io.git
 
 #### Change directory and install dependencies
 
-```bash
-cd invoiceninja.github.io
-composer i
 npm i
-```
-
-#### Preview it
-
-```bash
-npm run watch
-vendor/bin/jigsaw serve
-```
+npm run clean-api-docs && npm run gen-api-docs
+npm start
 
 Now you should be able to edit & preview your changes in real-time.
 
