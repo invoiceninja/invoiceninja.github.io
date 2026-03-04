@@ -1,0 +1,427 @@
+---
+id: post-import
+title: "Import CSV data"
+description: "The import endpoint executes the actual data import. Call this after `/api/v1/preimport` has returned the file hash, available fields, and column headers."
+sidebar_label: "Import CSV data"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/invoice-ninja-api-reference
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Import CSV data"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/v1/import"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+The import endpoint executes the actual data import. Call this after `/api/v1/preimport` has returned the file hash, available fields, and column headers.
+
+Using the data from the preimport response, construct a `column_map` that tells the system how each CSV column maps to a system field. The import runs asynchronously — you will receive an email notification once it completes.
+
+**Request body**
+
+- **hash** — The unique file reference returned by `/api/v1/preimport`.
+- **import_type** — The source format (e.g. `csv`, `freshbooks`, `invoice2go`, `invoicely`).
+- **skip_header** — Set to `true` to skip the first row of the CSV (the header row).
+- **column_map** — An object keyed by entity type (e.g. `invoice`, `client`). Each entity contains:
+  - **mapping** — An object where each key is the CSV column index (as a string) and each value is the target system field from the `available` array, or an empty string `""` to skip that column.
+
+---
+
+### Available mapping fields
+
+Each mapping value uses the format `entity.property`. The tables below list every available field per entity type.
+
+### Data Matching:
+
+#### Client Matching:
+  Matching a record to a client is performed by using the clients email address (first) or the clients (exact) name. If no match is found, a new client is created.
+
+#### Multi line item invoice/quote/credits/recurring invoice Matching:
+  If you need to import multiple line items into an invoice (other other entity) you will want to assign the same (unique) invoice number to each row in the csv file, the system will group together lines where the invoice number is the same and create line items for each row.
+
+#### Invoice fields (`files[invoice]`)
+
+| Field | Description |
+|---|---|
+| `invoice.number` | Invoice number |
+| `invoice.user_id` | Assigned user |
+| `invoice.amount` | Invoice amount |
+| `invoice.balance` | Outstanding balance |
+| `invoice.discount` | Discount value |
+| `invoice.po_number` | Purchase order number |
+| `invoice.date` | Invoice date |
+| `invoice.due_date` | Due date |
+| `invoice.terms` | Invoice terms |
+| `invoice.status` | Invoice status |
+| `invoice.public_notes` | Public notes (visible to client) |
+| `invoice.is_sent` | Whether the invoice has been sent |
+| `invoice.private_notes` | Private notes (internal only) |
+| `invoice.uses_inclusive_taxes` | Whether tax amounts are inclusive |
+| `invoice.tax_name1` | Tax name (tier 1) |
+| `invoice.tax_rate1` | Tax rate (tier 1) |
+| `invoice.tax_name2` | Tax name (tier 2) |
+| `invoice.tax_rate2` | Tax rate (tier 2) |
+| `invoice.tax_name3` | Tax name (tier 3) |
+| `invoice.tax_rate3` | Tax rate (tier 3) |
+| `invoice.is_amount_discount` | Whether discount is a fixed amount |
+| `invoice.footer` | Invoice footer |
+| `invoice.partial` | Partial/deposit amount |
+| `invoice.partial_due_date` | Partial payment due date |
+| `invoice.custom_value1` | Custom field 1 |
+| `invoice.custom_value2` | Custom field 2 |
+| `invoice.custom_value3` | Custom field 3 |
+| `invoice.custom_value4` | Custom field 4 |
+| `invoice.custom_surcharge1` | Custom surcharge 1 |
+| `invoice.custom_surcharge2` | Custom surcharge 2 |
+| `invoice.custom_surcharge3` | Custom surcharge 3 |
+| `invoice.custom_surcharge4` | Custom surcharge 4 |
+| `invoice.exchange_rate` | Currency exchange rate |
+| `client.name` | Client name |
+| `client.email` | Client email |
+| `payment.date` | Payment date |
+| `payment.amount` | Payment amount |
+| `payment.transaction_reference` | Payment transaction reference |
+| `item.quantity` | Line item quantity |
+| `item.cost` | Line item unit cost |
+| `item.product_key` | Line item product key |
+| `item.notes` | Line item description |
+| `item.discount` | Line item discount |
+| `item.is_amount_discount` | Whether line item discount is a fixed amount |
+| `item.tax_name1` | Line item tax name (tier 1) |
+| `item.tax_rate1` | Line item tax rate (tier 1) |
+| `item.tax_name2` | Line item tax name (tier 2) |
+| `item.tax_rate2` | Line item tax rate (tier 2) |
+| `item.tax_name3` | Line item tax name (tier 3) |
+| `item.tax_rate3` | Line item tax rate (tier 3) |
+| `item.custom_value1` | Line item custom field 1 |
+| `item.custom_value2` | Line item custom field 2 |
+| `item.custom_value3` | Line item custom field 3 |
+| `item.custom_value4` | Line item custom field 4 |
+| `item.type_id` | Line item type |
+
+#### Client fields (`files[client]`)
+
+| Field | Description |
+|---|---|
+| `client.name` | Client name |
+| `client.user_id` | Assigned user |
+| `client.balance` | Account balance |
+| `client.paid_to_date` | Total paid to date |
+| `client.currency_id` | Currency |
+| `client.website` | Website URL |
+| `client.private_notes` | Private notes |
+| `client.industry_id` | Industry |
+| `client.size_id` | Company size |
+| `client.address1` | Address line 1 |
+| `client.address2` | Address line 2 |
+| `client.city` | City |
+| `client.state` | State/province |
+| `client.postal_code` | Postal code |
+| `client.country_id` | Country |
+| `client.custom_value1` | Custom field 1 |
+| `client.custom_value2` | Custom field 2 |
+| `client.custom_value3` | Custom field 3 |
+| `client.custom_value4` | Custom field 4 |
+| `client.shipping_address1` | Shipping address line 1 |
+| `client.shipping_address2` | Shipping address line 2 |
+| `client.shipping_city` | Shipping city |
+| `client.shipping_state` | Shipping state/province |
+| `client.shipping_postal_code` | Shipping postal code |
+| `client.shipping_country_id` | Shipping country |
+| `client.payment_terms` | Default payment terms |
+| `client.vat_number` | VAT/tax number |
+| `client.id_number` | ID number |
+| `client.public_notes` | Public notes |
+| `client.phone` | Phone number |
+| `contact.first_name` | Contact first name |
+| `contact.last_name` | Contact last name |
+| `contact.email` | Contact email |
+| `contact.phone` | Contact phone |
+| `contact.custom_value1` | Contact custom field 1 |
+| `contact.custom_value2` | Contact custom field 2 |
+| `contact.custom_value3` | Contact custom field 3 |
+| `contact.custom_value4` | Contact custom field 4 |
+
+#### Product fields (`files[product]`)
+
+| Field | Description |
+|---|---|
+| `product.product_key` | Product key/name |
+| `product.notes` | Product description |
+| `product.cost` | Product cost |
+| `product.price` | Product price |
+| `product.quantity` | Default quantity |
+| `product.tax_name1` | Tax name (tier 1) |
+| `product.tax_rate1` | Tax rate (tier 1) |
+| `product.tax_name2` | Tax name (tier 2) |
+| `product.tax_rate2` | Tax rate (tier 2) |
+| `product.tax_name3` | Tax name (tier 3) |
+| `product.tax_rate3` | Tax rate (tier 3) |
+| `product.custom_value1` | Custom field 1 |
+| `product.custom_value2` | Custom field 2 |
+| `product.custom_value3` | Custom field 3 |
+| `product.custom_value4` | Custom field 4 |
+| `product.image_url` | Product image URL |
+| `product.in_stock_quantity` | In-stock quantity |
+| `product.tax_category` | Tax category |
+| `product.max_quantity` | Maximum quantity |
+
+#### Payment fields (`files[payment]`)
+
+| Field | Description |
+|---|---|
+| `payment.number` | Payment number |
+| `payment.user_id` | Assigned user |
+| `payment.amount` | Payment amount |
+| `payment.refunded` | Refunded amount |
+| `payment.applied` | Applied amount |
+| `payment.transaction_reference` | Transaction reference |
+| `payment.private_notes` | Private notes |
+| `payment.custom_value1` | Custom field 1 |
+| `payment.custom_value2` | Custom field 2 |
+| `payment.custom_value3` | Custom field 3 |
+| `payment.custom_value4` | Custom field 4 |
+| `payment.client_id` | Client |
+| `payment.invoice_number` | Invoice number |
+| `payment.date` | Payment date |
+| `payment.method` | Payment method |
+
+#### Vendor fields (`files[vendor]`)
+
+| Field | Description |
+|---|---|
+| `vendor.name` | Vendor name |
+| `vendor.phone` | Phone number |
+| `vendor.id_number` | ID number |
+| `vendor.vat_number` | VAT/tax number |
+| `vendor.website` | Website URL |
+| `vendor.first_name` | First name |
+| `vendor.last_name` | Last name |
+| `vendor.email` | Email address |
+| `vendor.currency_id` | Currency |
+| `vendor.public_notes` | Public notes |
+| `vendor.private_notes` | Private notes |
+| `vendor.address1` | Address line 1 |
+| `vendor.address2` | Address line 2 |
+| `vendor.city` | City |
+| `vendor.state` | State/province |
+| `vendor.postal_code` | Postal code |
+| `vendor.country_id` | Country |
+| `vendor.custom_value1` | Custom field 1 |
+| `vendor.custom_value2` | Custom field 2 |
+| `vendor.custom_value3` | Custom field 3 |
+| `vendor.custom_value4` | Custom field 4 |
+| `contact.first_name` | Contact first name |
+| `contact.last_name` | Contact last name |
+| `contact.email` | Contact email |
+| `contact.phone` | Contact phone |
+| `contact.custom_value1` | Contact custom field 1 |
+| `contact.custom_value2` | Contact custom field 2 |
+| `contact.custom_value3` | Contact custom field 3 |
+| `contact.custom_value4` | Contact custom field 4 |
+
+#### Expense fields (`files[expense]`)
+
+| Field | Description |
+|---|---|
+| `expense.vendor` | Vendor name |
+| `expense.client` | Client name |
+| `expense.project` | Project name |
+| `expense.category` | Expense category |
+| `expense.amount` | Expense amount |
+| `expense.currency` | Currency |
+| `expense.date` | Expense date |
+| `expense.payment_type` | Payment type |
+| `expense.payment_date` | Payment date |
+| `expense.transaction_reference` | Transaction reference |
+| `expense.public_notes` | Public notes |
+| `expense.private_notes` | Private notes |
+| `expense.tax_name1` | Tax name (tier 1) |
+| `expense.tax_rate1` | Tax rate (tier 1) |
+| `expense.tax_name2` | Tax name (tier 2) |
+| `expense.tax_rate2` | Tax rate (tier 2) |
+| `expense.tax_name3` | Tax name (tier 3) |
+| `expense.tax_rate3` | Tax rate (tier 3) |
+| `expense.uses_inclusive_taxes` | Whether tax amounts are inclusive |
+| `expense.custom_value1` | Custom field 1 |
+| `expense.custom_value2` | Custom field 2 |
+| `expense.custom_value3` | Custom field 3 |
+| `expense.custom_value4` | Custom field 4 |
+
+#### Quote fields (`files[quote]`)
+
+| Field | Description |
+|---|---|
+| `quote.number` | Quote number |
+| `quote.user_id` | Assigned user |
+| `quote.amount` | Quote amount |
+| `quote.balance` | Outstanding balance |
+| `quote.discount` | Discount value |
+| `quote.po_number` | Purchase order number |
+| `quote.date` | Quote date |
+| `quote.due_date` | Valid until date |
+| `quote.terms` | Quote terms |
+| `quote.status` | Quote status |
+| `quote.public_notes` | Public notes |
+| `quote.is_sent` | Whether the quote has been sent |
+| `quote.private_notes` | Private notes |
+| `quote.uses_inclusive_taxes` | Whether tax amounts are inclusive |
+| `quote.tax_name1` | Tax name (tier 1) |
+| `quote.tax_rate1` | Tax rate (tier 1) |
+| `quote.tax_name2` | Tax name (tier 2) |
+| `quote.tax_rate2` | Tax rate (tier 2) |
+| `quote.tax_name3` | Tax name (tier 3) |
+| `quote.tax_rate3` | Tax rate (tier 3) |
+| `quote.is_amount_discount` | Whether discount is a fixed amount |
+| `quote.footer` | Quote footer |
+| `quote.partial` | Partial/deposit amount |
+| `quote.partial_due_date` | Partial payment due date |
+| `quote.custom_value1` | Custom field 1 |
+| `quote.custom_value2` | Custom field 2 |
+| `quote.custom_value3` | Custom field 3 |
+| `quote.custom_value4` | Custom field 4 |
+| `quote.custom_surcharge1` | Custom surcharge 1 |
+| `quote.custom_surcharge2` | Custom surcharge 2 |
+| `quote.custom_surcharge3` | Custom surcharge 3 |
+| `quote.custom_surcharge4` | Custom surcharge 4 |
+| `quote.exchange_rate` | Currency exchange rate |
+| `client.name` | Client name |
+| `client.email` | Client email |
+| `payment.date` | Payment date |
+| `payment.amount` | Payment amount |
+| `payment.transaction_reference` | Transaction reference |
+| `item.*` | Same line item fields as invoices |
+
+#### Recurring invoice fields (`files[recurring_invoice]`)
+
+Supports all invoice fields above, plus:
+
+| Field | Description |
+|---|---|
+| `invoice.frequency_id` | Recurrence frequency |
+| `invoice.remaining_cycles` | Remaining billing cycles |
+| `invoice.auto_bill` | Auto-bill setting |
+| `invoice.next_send_date` | Next send date (replaces `invoice.date`) |
+
+#### Task fields (`files[task]`)
+
+| Field | Description |
+|---|---|
+| `task.number` | Task number |
+| `task.user_id` | Assigned user |
+| `task.rate` | Hourly rate |
+| `task.description` | Task description |
+| `task.billable` | Whether the task is billable |
+| `task.status` | Task status |
+| `task.start_date` | Start date |
+| `task.end_date` | End date |
+| `task.start_time` | Start time |
+| `task.end_time` | End time |
+| `task.duration` | Duration |
+| `task.custom_value1` | Custom field 1 |
+| `task.custom_value2` | Custom field 2 |
+| `task.custom_value3` | Custom field 3 |
+| `task.custom_value4` | Custom field 4 |
+| `task.notes` | Task notes |
+| `project.name` | Project name |
+| `client.name` | Client name |
+| `client.email` | Client email |
+
+#### Bank transaction fields (`files[bank_transaction]`)
+
+| Field | Description |
+|---|---|
+| `transaction.transaction_id` | Transaction ID |
+| `transaction.amount` | Transaction amount |
+| `transaction.currency` | Currency |
+| `transaction.account_type` | Account type |
+| `transaction.category` | Category |
+| `transaction.category_type` | Category type |
+| `transaction.date` | Transaction date |
+| `transaction.bank_account` | Bank account |
+| `transaction.description` | Description |
+| `transaction.base_type` | Base type |
+| `transaction.payment_type_Credit` | Credit amount |
+| `transaction.payment_type_Debit` | Debit amount |
+| `transaction.participant` | Participant reference |
+| `transaction.participant_name` | Participant name |
+
+---
+
+**Example**
+
+```bash
+curl -X POST 'https://invoiceninja.com/api/v1/import' \
+  -H 'X-API-TOKEN: YOUR_API_TOKEN_HERE' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "hash": "MvKeSwMnhAfgkzdYKgxM5ummxGbLIdNm",
+    "import_type": "csv",
+    "skip_header": true,
+    "column_map": {
+      "invoice": {
+        "mapping": {
+          "0": "client.name",
+          "1": "client.email",
+          "2": "",
+          "3": "invoice.number",
+          "4": "invoice.amount"
+        }
+      }
+    }
+  }'
+```
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./post-import.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./post-import.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./post-import.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      
