@@ -13,7 +13,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "gen-api-docs": "docusaurus gen-api-docs invoiceninja",
-    "clean-api-docs": "docusaurus clean-api-docs invoiceninja"
+    "clean-api-docs": "docusaurus clean-api-docs invoiceninja",
+    "icons:sync": "node scripts/extract-icons.js",
+    "icons:check": "node scripts/extract-icons.js && git diff --exit-code static/assets/images/icons"
   },
   "dependencies": {
     "@docusaurus/core": "^3.7.0",

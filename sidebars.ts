@@ -118,6 +118,14 @@ const sidebars: SidebarsConfig = {
         },
         "developer-guide/payment-gateways",
         "developer-guide/statics",
+        {
+          type: "category",
+          label: "Editor Guides",
+          items: [
+            "editor-guides/buttons-and-icons",
+            "editor-guides/media",
+          ],
+        },
       ],
     },
   ],

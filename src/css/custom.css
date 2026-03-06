@@ -387,7 +387,7 @@ code {
   font-weight: 400;
   border: 1px solid var(--ifm-hr-border-color);
   background: var(--ifm-code-background);
-  font-size: 0.8125em;
+  font-size: 0.92em;
   padding: 0.1em 0.35em;
 }
 
@@ -969,4 +969,495 @@ h2.openapi__method-endpoint-path {
 article img {
   max-width: 100%;
   height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Doc content cards (ported from pre-Docusaurus pages)
+   -------------------------------------------------------------------------- */
+
+.theme-doc-markdown .card-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  height: 100%;
+  padding: 1.125rem;
+  border: 1px solid var(--ifm-hr-border-color);
+  border-radius: 0.75rem;
+  background: var(--ifm-background-color);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.theme-doc-markdown .card-panel :where(h3, h4, p, ul, ol, div) {
+  margin: 0;
+}
+
+.theme-doc-markdown .card-panel > p:first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.74rem;
+  font-weight: 650;
+  color: #64748b;
+}
+
+.theme-doc-markdown .card-panel > h3,
+.theme-doc-markdown .card-panel > h4 {
+  font-size: 1.03rem;
+  line-height: 1.28;
+  font-weight: 650;
+}
+
+.theme-doc-markdown .card-panel > p {
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--ifm-font-color-secondary);
+}
+
+.theme-doc-markdown .card-panel :where(p, div, ul, ol) + :where(p, div, ul, ol) {
+  margin-top: 0.75rem;
+}
+
+.theme-doc-markdown .card-cta {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.theme-doc-markdown .card-btn {
+  display: inline-flex;
+  width: auto;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.55rem;
+  border: 1px solid transparent;
+  font-size: 0.87rem;
+  line-height: 1.15;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-doc-markdown .card-btn:focus-visible {
+  outline: 2px solid #0f172a;
+  outline-offset: 2px;
+}
+
+.theme-doc-markdown .card-btn-primary {
+  background: #0f172a;
+  color: #ffffff !important;
+}
+
+.theme-doc-markdown .card-btn-primary:hover {
+  background: #1e293b;
+}
+
+.theme-doc-markdown .card-btn-outline {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a !important;
+}
+
+.theme-doc-markdown .card-btn-outline:hover {
+  background: #f8fafc;
+}
+
+.theme-doc-markdown .card-btn img {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.theme-doc-markdown .card-btn-primary img {
+  filter: invert(1);
+}
+
+/* Minimal utility support for imported markdown blocks */
+.theme-doc-markdown .grid {
+  display: grid;
+}
+
+.theme-doc-markdown .grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.theme-doc-markdown .gap-3 {
+  gap: 0.75rem;
+}
+
+.theme-doc-markdown .gap-4 {
+  gap: 1rem;
+}
+
+.theme-doc-markdown .gap-6 {
+  gap: 1.5rem;
+}
+
+.theme-doc-markdown .my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Install path cards (self-host landing block)
+   -------------------------------------------------------------------------- */
+
+.theme-doc-markdown .install-path-grid {
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.theme-doc-markdown .install-path-grid .card-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  gap: 0.75rem;
+  height: 100%;
+  min-height: 17.5rem;
+  border-radius: 0.9rem;
+  border-color: #d7ddea;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.theme-doc-markdown .install-path-grid .card-panel > p:first-child {
+  margin-bottom: 0.1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  color: #5f7394;
+}
+
+.theme-doc-markdown .install-path-grid .card-panel > h3 {
+  font-size: 1.12rem;
+  line-height: 1.3;
+  color: #1f2438;
+}
+
+.theme-doc-markdown .install-path-grid .card-panel > p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+.theme-doc-markdown .install-path-grid .card-cta {
+  margin-top: auto;
+  padding-top: 0.25rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.theme-doc-markdown .install-path-grid .card-cta > .card-btn + .card-btn {
+  margin-top: 0;
+}
+
+.theme-doc-markdown .install-path-grid .card-btn {
+  gap: 0.35rem;
+  padding: 0.34rem 0.58rem;
+  font-size: 0.8rem;
+  border-radius: 0.52rem;
+  min-width: 7.6rem;
+  min-height: 2.05rem;
+  font-weight: 620;
+}
+
+.theme-doc-markdown .install-path-grid .card-btn-primary {
+  background: #0f1b38;
+}
+
+.theme-doc-markdown .install-path-grid .card-btn-primary:hover {
+  background: #12224a;
+}
+
+[data-theme='dark'] .theme-doc-markdown .install-path-grid .card-panel {
+  background: linear-gradient(180deg, #172035 0%, #111827 100%);
+  border-color: #2b3a55;
+}
+
+[data-theme='dark'] .theme-doc-markdown .install-path-grid .card-panel > p:first-child {
+  color: #9fb2d6;
+}
+
+[data-theme='dark'] .theme-doc-markdown .install-path-grid .card-panel > h3 {
+  color: #e5e7eb;
+}
+
+[data-theme='dark'] .theme-doc-markdown .install-path-grid .card-panel > p {
+  color: #cbd5e1;
+}
+
+@media (max-width: 640px) {
+  .theme-doc-markdown .install-path-grid .card-panel {
+    min-height: 0;
+  }
+
+  .theme-doc-markdown .install-path-grid .card-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .theme-doc-markdown .install-path-grid .card-cta > .card-btn + .card-btn {
+    margin-top: 0.25rem;
+  }
+}
+
+.theme-doc-markdown .flex {
+  display: flex;
+}
+
+.theme-doc-markdown .flex-col {
+  flex-direction: column;
+}
+
+.theme-doc-markdown .h-full {
+  height: 100%;
+}
+
+.theme-doc-markdown .space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .theme-doc-markdown .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .theme-doc-markdown .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .theme-doc-markdown .xl\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Overview preview page
+   -------------------------------------------------------------------------- */
+
+.overview-preview-hero {
+  border: 1px solid var(--ifm-hr-border-color);
+  border-radius: 0.875rem;
+  background:
+    linear-gradient(120deg, rgba(99, 91, 255, 0.08), rgba(99, 91, 255, 0.02)),
+    var(--ifm-background-color);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.overview-preview-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+}
+
+.overview-preview-title {
+  margin: 0.5rem 0 0;
+  font-size: 2.15rem;
+  line-height: 1.15;
+  max-width: 20ch;
+}
+
+.overview-preview-description {
+  margin: 0.875rem 0 0;
+  color: var(--ifm-font-color-secondary);
+  max-width: 60ch;
+}
+
+.overview-preview-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.overview-preview-hero-panel {
+  border: 1px solid var(--ifm-hr-border-color);
+  border-radius: 0.75rem;
+  background: var(--ifm-background-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.overview-preview-panel-title {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-font-color-secondary);
+  font-weight: 700;
+}
+
+.overview-preview-panel-link {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--ifm-hr-border-color);
+  border-radius: 0.625rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-color);
+}
+
+.overview-preview-panel-link:hover {
+  border-color: var(--ifm-color-primary-lighter);
+  color: var(--ifm-color-primary);
+}
+
+.overview-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.overview-preview-doc-card,
+.overview-preview-community-card {
+  border: 1px solid var(--ifm-hr-border-color);
+  border-radius: 0.875rem;
+  background: var(--ifm-background-color);
+  padding: 1.125rem;
+  text-decoration: none !important;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 200px;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.overview-preview-doc-card:hover,
+.overview-preview-community-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--ifm-color-primary-lighter);
+  box-shadow: 0 2px 12px rgba(99, 91, 255, 0.08);
+  color: inherit;
+}
+
+.overview-preview-doc-card--compact {
+  min-height: 0;
+}
+
+.overview-preview-doc-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  background: rgba(99, 91, 255, 0.1);
+  color: #4338ca;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(99, 91, 255, 0.16);
+}
+
+.overview-preview-doc-icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+}
+
+[data-theme='dark'] .overview-preview-doc-icon {
+  background: rgba(129, 140, 248, 0.18);
+  border-color: rgba(129, 140, 248, 0.3);
+  color: #c7d2fe;
+}
+
+.overview-preview-doc-card h3,
+.overview-preview-community-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.overview-preview-doc-card p,
+.overview-preview-community-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.5;
+}
+
+.overview-preview-card-actions {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.overview-preview-card-action {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.overview-preview-card-action:hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
+}
+
+.overview-preview-card-action--secondary {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-secondary);
+}
+
+.overview-preview-card-action--secondary:hover {
+  color: var(--ifm-color-primary);
+}
+
+.overview-preview-grid--resources {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.overview-preview-grid--community {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 996px) {
+  .overview-preview-hero {
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+  }
+
+  .overview-preview-title {
+    font-size: 1.5rem;
+    max-width: 100%;
+  }
+
+  .overview-preview-grid,
+  .overview-preview-grid--community,
+  .overview-preview-grid--resources {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .overview-preview-doc-card,
+  .overview-preview-community-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .overview-preview-grid,
+  .overview-preview-grid--community,
+  .overview-preview-grid--resources {
+    grid-template-columns: 1fr;
+  }
 }
