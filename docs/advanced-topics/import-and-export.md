@@ -84,6 +84,20 @@ When importing recurring invoices, you can set the billing frequency using the f
 
 If no frequency is provided, the default is **Monthly**.
 
+### Auto Bill Options
+
+When importing recurring invoices, you can set the auto bill behavior using the following values in your CSV:
+
+| CSV Value | Result |
+|-----------|--------|
+| `no` or `off` or `false` | Off |
+| `yes` or `always` or `true` | Always |
+| `optin` | Opt-in |
+| `optout` | Opt-out |
+
+If no value is provided, the default is **Off**.
+
+
 ## Importing / Updating Products
 
 As well as importing new products, you can also update existing products!
