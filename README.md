@@ -8,24 +8,9 @@
 
 Documentation is available at [https://invoiceninja.github.io](https://invoiceninja.github.io).
 
-### Table of contents
-
-- [Invoice Ninja Documentation](#invoice-ninja-documentation)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Getting started](#getting-started)
-    - [Clone the repository](#clone-the-repository)
-    - [Change directory and install dependencies](#change-directory-and-install-dependencies)
-    - [Preview it](#preview-it)
-  - [Code of Conduct](#code-of-conduct)
-  - [Licence](#licence)
-
 ### Introduction
 
-Invoice Ninja documentation is written in the markdown. To process and compile docs locally, we'll need PHP &
-Node.js.
-
-The documentation is using Laravel Jigsaw (https://jigsaw.tighten.co/) as a processing engine.
+Invoice Ninja documentation is written in Markdown and built with [Docusaurus](https://docusaurus.io/). You'll need Node.js (v18+) installed to build and preview the docs locally.
 
 ### Getting started
 
@@ -33,18 +18,42 @@ The documentation is using Laravel Jigsaw (https://jigsaw.tighten.co/) as a proc
 
 ```bash
 git clone https://github.com/invoiceninja/invoiceninja.github.io.git
+cd invoiceninja.github.io
 ```
 
-#### Change directory and install dependencies
+#### Install dependencies
 
-npm i
+```bash
+npm install
+```
+
+#### Generate API docs
+
+```bash
 npm run clean-api-docs && npm run gen-api-docs
+```
+
+#### Start the development server
+
+```bash
 npm start
+```
 
-Now you should be able to edit & preview your changes in real-time.
+This launches a local development server at `http://localhost:3000` with hot-reloading, so edits are reflected in real-time.
 
-The official repository is configured to build the site on each commit, so there's no need to compile the production version
-locally.
+#### Build for production
+
+```bash
+npm run build
+```
+
+#### Serve the production build locally
+
+```bash
+npm run serve
+```
+
+The official repository is configured to build and deploy the site on each commit, so there's no need to compile the production version locally.
 
 ### Code of Conduct
 
