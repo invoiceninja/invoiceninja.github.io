@@ -2,6 +2,30 @@
 title: "Self Host Updating"
 sidebar_position: 5
 ---
+
+### INmanage CLI
+
+If your Invoice Ninja instance is managed by the
+<a href="/docs/self-host/self-host-installation#choose-your-install-path">INmanage CLI</a>,
+updates boil down to a single command:
+
+```bash
+inm core update
+```
+
+The script creates a pre-update snapshot automatically, applies the latest
+Invoice Ninja release, ensures file integrity, clears caches, and restarts the queue worker. If
+something goes sideways, roll back instantly:
+
+```bash
+inm core update rollback last
+```
+
+Snapshots are timestamped and stored in the INmanage backup directory so you can
+audit or restore them later. Refer to the
+[INmanage repository](https://github.com/DrDBanner/inmanage) for advanced flags
+and automation tips.
+
 ### Docker
 
 When we tag a new release, a new image is built. All that is required for docker users is to bring down the container, pull in the new image and then bring the container up again, these three commands are all that are needed.
@@ -34,14 +58,14 @@ The self updater will pull the latest release from our Github repository, extrac
 
 If the update button does not work, you can alternatively download the invoiceninja.tar file and overwrite the folder of your installation, note that there are 3 files always:  https://github.com/invoiceninja/invoiceninja/releases
 
-```bash
+```
 invoiceninja.tar - 170 MB or 500 MB roughly
 Source code (zip) - 15 MB roughly
 Source code (tar.gz) - 14 MB roughly
 ```
 
 :::warning
-Please ensure to delete the .git folder prior to attempting updates on v5.1.50 and over. The updater will fail silently if any hidden folders are present.
+Please ensure to delete the `.git` folder prior to attempting updates on v5.1.50 and over. The updater will fail silently if any hidden folders are present.
 :::
 
 After running the updater you'll want to run the update route
@@ -51,4 +75,3 @@ https://url.com/update?secret=
 ```
 
 The value of the secret query parameter is found in the .env file under the key ```UPDATE_SECRET``` 
-
