@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - v5-rework
-  pull_request:
-    branches:
-      - v5-rework
 
 permissions:
   contents: write
@@ -22,7 +19,6 @@ jobs:
           fetch-depth: 0
 
       - name: Snapshot current live site for rollback
-        if: github.event_name == 'push'
         run: |
           git tag -f pre-deploy-backup origin/master || true
           git push origin pre-deploy-backup --force || true
@@ -35,13 +31,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Checkout Invoice Ninja UI icons source
-        uses: actions/checkout@v4
-        with:
-          repository: invoiceninja/ui
-          path: external/invoiceninja-ui
-          fetch-depth: 1
-
       - name: Cache Docusaurus
         uses: actions/cache@v4
         with:
@@ -49,9 +38,6 @@ jobs:
             .docusaurus
             node_modules/.cache
           key: docusaurus-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-
-      - name: Verify generated icons are up to date
-        run: npm run icons:check
 
       - name: Generate OpenAPI docs
         run: npx docusaurus gen-api-docs invoiceninja
@@ -62,7 +48,6 @@ jobs:
           NODE_OPTIONS: "--max-old-space-size=16384"
 
       - name: Deploy to GitHub Pages
-        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
