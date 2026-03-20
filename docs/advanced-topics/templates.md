@@ -1141,28 +1141,1858 @@ Here are the object definitions that are available.
 
 ## Snippets
 
-Here are some quick and easy snippets you can use in your templates/designs
+Here are some quick and easy snippets you can use in your templates/designs. Each snippet shows the CSS to add to the **Includes** section and the HTML/Twig to add to the **Body** section of your design.
 
-### Display payments table on an invoice
+:::tip
+All Twig code must be wrapped in `<ninja></ninja>` tags. Place these blocks in the Body section of your design.
+:::
 
-```bash
-​<ninja>
-    {% if invoices %}
+### 1. Task Subtotal on Invoice
+
+Calculate and display a subtotal for task/service line items only.
+
+**Add to Includes Tab:**
+
+```css
+.task_totals_container {
+    margin-top: 0rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding-top: 0rem;
+    padding-right: 1rem;
+    gap: 80px;
+    page-break-inside: auto;
+    overflow: visible !important;
+}
+
+.task_totals {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.task_totals div:nth-child(odd) {
+    text-align: left;
+}
+
+.task_totals div:nth-child(even) {
+    text-align: right;
+}
+```
+
+**Add to Body Tab (after `<table id="task-table" ...></table>`):**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
     {% set invoice = invoices|first %}
-        <div>
-        <table>
-        {% if invoice.payments is not empty  %}
-        <tr><td>Date</td><td>Amount</td></tr>
-        {% for payment in invoice.payments %}
-        <tr>
-            <td>{{ payment.date }}</td>
-            <td>{{ payment.amount }}</td>
-        </tr>
+    {% set task_subtotal = 0 %}
+    {% for item in invoice.line_items|filter(item => item.type_id == 2) %}
+        {% set task_subtotal = task_subtotal + item.gross_line_total_raw %}
+    {% endfor %}
 
+    <div class="task_totals_container">
+        <div></div>
+        <div class="task_totals">
+            <div>Subtotal</div>
+            <div>{{ task_subtotal|format_currency('USD') }}</div>
+        </div>
+    </div>
+{% endif %}
+</ninja>
+```
+
+### 2. Product Subtotal on Invoice
+
+Same concept as the task subtotal, but filtering for product line items (`type_id == 1`). Place this after the `<table id="product-table">` element.
+
+**Add to Includes:**
+
+```css
+.product_totals_container {
+    margin-top: 0rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding-right: 1rem;
+    gap: 80px;
+    page-break-inside: auto;
+    overflow: visible !important;
+}
+
+.product_totals {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.product_totals div:nth-child(odd) {
+    text-align: left;
+}
+
+.product_totals div:nth-child(even) {
+    text-align: right;
+}
+```
+
+**Add to Body (after `<table id="product-table" ...></table>`):**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+    {% set product_subtotal = 0 %}
+    {% for item in invoice.line_items|filter(item => item.type_id == 1) %}
+        {% set product_subtotal = product_subtotal + item.line_total_raw %}
+    {% endfor %}
+
+    <div class="product_totals_container">
+        <div></div>
+        <div class="product_totals">
+            <div>Product Subtotal</div>
+            <div>{{ product_subtotal|format_currency('USD') }}</div>
+        </div>
+    </div>
+{% endif %}
+</ninja>
+```
+
+### 3. Separate Products and Tasks into Distinct Tables
+
+When an invoice contains both products and services, render them in two separate custom tables with individual subtotals. This replaces the default product and task tables — you can hide them via CSS if needed.
+
+**Add to Includes:**
+
+```css
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.custom-table th {
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #333;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.custom-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table .subtotal-row td {
+    font-weight: bold;
+    border-top: 2px solid #333;
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.text-right {
+    text-align: right;
+}
+```
+
+**Add to Body:**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    {% set products = invoice.line_items|filter(item => item.type_id == 1) %}
+    {% set tasks = invoice.line_items|filter(item => item.type_id == 2) %}
+
+    {% if products|length > 0 %}
+    <div class="section-title">Products</div>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th class="text-right">Unit Cost</th>
+                <th class="text-right">Qty</th>
+                <th class="text-right">Line Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set product_subtotal = 0 %}
+            {% for item in products %}
+            <tr>
+                <td>{{ item.product_key }}</td>
+                <td>{{ item.notes }}</td>
+                <td class="text-right">{{ item.cost }}</td>
+                <td class="text-right">{{ item.quantity }}</td>
+                <td class="text-right">{{ item.line_total }}</td>
+            </tr>
+            {% set product_subtotal = product_subtotal + item.line_total_raw %}
+            {% endfor %}
+            <tr class="subtotal-row">
+                <td colspan="4" class="text-right">Product Subtotal</td>
+                <td class="text-right">{{ product_subtotal|format_currency('USD') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% if tasks|length > 0 %}
+    <div class="section-title">Services</div>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Description</th>
+                <th class="text-right">Rate</th>
+                <th class="text-right">Hours</th>
+                <th class="text-right">Line Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set task_subtotal = 0 %}
+            {% for item in tasks %}
+            <tr>
+                <td>{{ item.product_key }}</td>
+                <td>{{ item.notes }}</td>
+                <td class="text-right">{{ item.cost }}</td>
+                <td class="text-right">{{ item.quantity }}</td>
+                <td class="text-right">{{ item.line_total }}</td>
+            </tr>
+            {% set task_subtotal = task_subtotal + item.line_total_raw %}
+            {% endfor %}
+            <tr class="subtotal-row">
+                <td colspan="4" class="text-right">Service Subtotal</td>
+                <td class="text-right">{{ task_subtotal|format_currency('USD') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+
+{% endif %}
+</ninja>
+```
+
+### 4. Conditional "PAID" / "OVERDUE" Watermark Stamp
+
+Overlay a rotated stamp on the invoice based on its payment status. This uses the `balance_raw` field to determine if the invoice is fully paid.
+
+**Add to Includes:**
+
+```css
+.stamp {
+    position: fixed;
+    top: 35%;
+    left: 25%;
+    font-size: 6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transform: rotate(-30deg);
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.stamp-paid {
+    color: #2e7d32;
+    border: 8px solid #2e7d32;
+    padding: 10px 30px;
+    border-radius: 12px;
+}
+
+.stamp-overdue {
+    color: #c62828;
+    border: 8px solid #c62828;
+    padding: 10px 30px;
+    border-radius: 12px;
+}
+```
+
+**Add to Body (at the top, before other content):**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    {% if invoice.balance_raw == 0 %}
+        <div class="stamp stamp-paid">PAID</div>
+    {% elseif invoice.due_date is not empty and invoice.status_id != 1 %}
+        <div class="stamp stamp-overdue">OVERDUE</div>
+    {% endif %}
+{% endif %}
+</ninja>
+```
+
+### 5. Dynamic Payment Instructions Based on Balance
+
+Show bank transfer details when there is an outstanding balance, or a thank you message when the invoice is paid. Place this in the footer area of your design.
+
+**Add to Body:**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    {% if invoice.balance_raw > 0 %}
+    <div style="margin-top: 2rem; padding: 1rem; border: 1px solid #ddd; border-radius: 4px; background: #f9f9f9;">
+        <strong>Payment Instructions</strong>
+        <p>Please remit payment of {{ invoice.balance }} to:</p>
+        <table style="margin-top: 0.5rem;">
+            <tr><td style="padding-right: 1rem;">Bank:</td><td>First National Bank</td></tr>
+            <tr><td style="padding-right: 1rem;">Account Name:</td><td>Your Company LLC</td></tr>
+            <tr><td style="padding-right: 1rem;">Account Number:</td><td>1234567890</td></tr>
+            <tr><td style="padding-right: 1rem;">Routing Number:</td><td>021000021</td></tr>
+            <tr><td style="padding-right: 1rem;">Reference:</td><td>Invoice #{{ invoice.number }}</td></tr>
+        </table>
+    </div>
+    {% else %}
+    <div style="margin-top: 2rem; padding: 1rem; text-align: center; color: #2e7d32;">
+        <strong>Payment received — thank you for your business!</strong>
+    </div>
+    {% endif %}
+{% endif %}
+</ninja>
+```
+
+### 7. Line Item Grouping with Category Headers
+
+Group line items by a custom value (e.g., `custom_value1` used as a category). This inserts a header row each time the category changes. Ensure your line items are sorted by `custom_value1` for best results.
+
+**Add to Includes:**
+
+```css
+.grouped-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.grouped-table th {
+    background-color: #f0f0f0;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 2px solid #333;
+}
+
+.grouped-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.group-header td {
+    background-color: #e8e8e8;
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 6px 8px;
+    border-bottom: 1px solid #999;
+}
+
+.text-right {
+    text-align: right;
+}
+```
+
+**Add to Body:**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+    {% set current_group = '' %}
+
+    <table class="grouped-table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th class="text-right">Qty</th>
+                <th class="text-right">Unit Cost</th>
+                <th class="text-right">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in invoice.line_items|filter(item => item.type_id == 1) %}
+            {% if item.custom_value1 != current_group %}
+                {% set current_group = item.custom_value1 %}
+                <tr class="group-header">
+                    <td colspan="5">{{ current_group|upper }}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td>{{ item.product_key }}</td>
+                <td>{{ item.notes }}</td>
+                <td class="text-right">{{ item.quantity }}</td>
+                <td class="text-right">{{ item.cost }}</td>
+                <td class="text-right">{{ item.line_total }}</td>
+            </tr>
         {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+</ninja>
+```
+
+### 9. Running Line Item Counter / Row Numbering
+
+Add sequential row numbers to your line items using Twig's built-in `loop.index` variable.
+
+**Add to Includes:**
+
+```css
+.numbered-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.numbered-table th, .numbered-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.numbered-table th {
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #333;
+    text-align: left;
+}
+
+.row-number {
+    width: 40px;
+    text-align: center;
+    color: #888;
+}
+
+.text-right {
+    text-align: right;
+}
+```
+
+**Add to Body:**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    <table class="numbered-table">
+        <thead>
+            <tr>
+                <th class="row-number">#</th>
+                <th>Item</th>
+                <th>Description</th>
+                <th class="text-right">Qty</th>
+                <th class="text-right">Unit Cost</th>
+                <th class="text-right">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in invoice.line_items %}
+            <tr>
+                <td class="row-number">{{ loop.index }}</td>
+                <td>{{ item.product_key }}</td>
+                <td>{{ item.notes }}</td>
+                <td class="text-right">{{ item.quantity }}</td>
+                <td class="text-right">{{ item.cost }}</td>
+                <td class="text-right">{{ item.line_total }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+</ninja>
+```
+
+### 10. Client Outstanding Balance Banner
+
+Display a prominent banner at the top of the invoice showing the client's total outstanding balance across all invoices.
+
+**Add to Includes:**
+
+```css
+.balance-banner {
+    background-color: #fff3e0;
+    border: 1px solid #ff9800;
+    border-radius: 4px;
+    padding: 10px 16px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #e65100;
+}
+
+.balance-banner strong {
+    font-size: 1rem;
+}
+```
+
+**Add to Body (at the top of your design):**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    {% if invoice.client.balance > invoice.amount_raw %}
+    <div class="balance-banner">
+        <strong>Account Notice:</strong>
+        Your total outstanding balance is {{ invoice.client.balance|format_currency('USD') }}.
+        This invoice ({{ invoice.number }}) accounts for {{ invoice.amount }} of that total.
+    </div>
+    {% endif %}
+{% endif %}
+</ninja>
+```
+
+### 12. Enhanced Payment History Table
+
+An improved version of the basic payments table that includes payment method, transaction reference, and refund details.
+
+**Add to Includes:**
+
+```css
+.payment-history {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.payment-history th {
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #333;
+    padding: 8px;
+    text-align: left;
+}
+
+.payment-history td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.payment-history .refund-row td {
+    color: #c62828;
+    font-style: italic;
+    padding-left: 2rem;
+    border-bottom: 1px dotted #ddd;
+}
+
+.payment-section-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.text-right {
+    text-align: right;
+}
+```
+
+**Add to Body:**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    {% if invoice.payments is not empty %}
+    <div class="payment-section-title">Payment History</div>
+    <table class="payment-history">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Number</th>
+                <th>Method</th>
+                <th>Reference</th>
+                <th class="text-right">Amount</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payment in invoice.payments %}
+            <tr>
+                <td>{{ payment.date }}</td>
+                <td>{{ payment.number }}</td>
+                <td>{{ payment.method }}</td>
+                <td>{{ payment.transaction_reference }}</td>
+                <td class="text-right">{{ payment.amount }}</td>
+                <td>{{ payment.status }}</td>
+            </tr>
+
+            {% if payment.refund_activity is not empty %}
+                {% for refund in payment.refund_activity %}
+                <tr class="refund-row">
+                    <td colspan="6">↳ {{ refund }}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endif %}
+</ninja>
+```
+
+### 13. Discount Summary
+
+When the invoice has a discount applied, display a summary showing the discount details prominently.
+
+**Add to Includes:**
+
+```css
+.discount-summary {
+    margin-top: 1rem;
+    padding: 10px 16px;
+    background-color: #e8f5e9;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+.discount-summary .label {
+    font-weight: bold;
+}
+
+.discount-summary .value {
+    text-align: right;
+}
+```
+
+**Add to Body:**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    {% if invoice.discount > 0 %}
+    <div class="discount-summary">
+        <div class="label">Discount Applied:</div>
+        <div class="value">
+            {% if invoice.is_amount_discount %}
+                {{ invoice.discount|format_currency('USD') }} off
+            {% else %}
+                {{ invoice.discount }}% off
+            {% endif %}
+        </div>
+        <div class="label">Amount Before Discount:</div>
+        <div class="value">
+            {% set line_sum = 0 %}
+            {% for item in invoice.line_items %}
+                {% set line_sum = line_sum + item.line_total_raw %}
+            {% endfor %}
+            {{ line_sum|format_currency('USD') }}
+        </div>
+        <div class="label">You Save:</div>
+        <div class="value">
+            {% if invoice.is_amount_discount %}
+                {{ invoice.discount|format_currency('USD') }}
+            {% else %}
+                {{ (line_sum * invoice.discount / 100)|format_currency('USD') }}
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+</ninja>
+```
+
+### 15. Custom Footer with Conditional Bank Details
+
+Show different bank account details based on the client's currency. Useful for businesses that hold accounts in multiple currencies.
+
+**Add to Body (in the footer area):**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    <div style="margin-top: 2rem; padding: 1rem; border-top: 2px solid #333; font-size: 0.85rem;">
+        <strong>Bank Details for Payment</strong>
+
+        {% if invoice.client.currency == 'EUR' %}
+        <table style="margin-top: 0.5rem;">
+            <tr><td style="padding-right: 1rem;">Bank:</td><td>Deutsche Bank</td></tr>
+            <tr><td style="padding-right: 1rem;">IBAN:</td><td>DE89 3704 0044 0532 0130 00</td></tr>
+            <tr><td style="padding-right: 1rem;">BIC/SWIFT:</td><td>COBADEFFXXX</td></tr>
+            <tr><td style="padding-right: 1rem;">Reference:</td><td>{{ invoice.number }}</td></tr>
+        </table>
+
+        {% elseif invoice.client.currency == 'GBP' %}
+        <table style="margin-top: 0.5rem;">
+            <tr><td style="padding-right: 1rem;">Bank:</td><td>Barclays</td></tr>
+            <tr><td style="padding-right: 1rem;">Sort Code:</td><td>20-00-00</td></tr>
+            <tr><td style="padding-right: 1rem;">Account:</td><td>12345678</td></tr>
+            <tr><td style="padding-right: 1rem;">Reference:</td><td>{{ invoice.number }}</td></tr>
+        </table>
+
+        {% else %}
+        <table style="margin-top: 0.5rem;">
+            <tr><td style="padding-right: 1rem;">Bank:</td><td>First National Bank</td></tr>
+            <tr><td style="padding-right: 1rem;">Account:</td><td>1234567890</td></tr>
+            <tr><td style="padding-right: 1rem;">Routing:</td><td>021000021</td></tr>
+            <tr><td style="padding-right: 1rem;">Reference:</td><td>{{ invoice.number }}</td></tr>
         </table>
         {% endif %}
 
+        <p style="margin-top: 0.5rem; color: #666;">
+            Please include invoice number <strong>{{ invoice.number }}</strong> as payment reference.
+        </p>
+    </div>
+{% endif %}
+</ninja>
+```
+
+---
+
+## Full Design Examples
+
+These are complete, ready-to-use designs that demonstrate the full power of the Twig templating engine. You can import these directly into **Settings > Invoice Design > Custom Designs**.
+
+### Professional Invoice with Mixed Line Items
+
+A complete invoice design that separates products from services, includes a tax breakdown, payment history, and conditional paid/overdue styling.
+
+#### Includes (CSS)
+
+```css
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --border-color: #ddd;
+    --bg-light: #f8f9fa;
+    --text-muted: #6c757d;
+    --success: #27ae60;
+    --danger: #e74c3c;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.invoice-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.invoice-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.invoice-number {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.details-box h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+}
+
+.details-box p {
+    margin: 2px 0;
+    font-size: 0.85rem;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.5rem;
+}
+
+.items-table th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.items-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.items-table tbody tr:nth-child(even) {
+    background-color: var(--bg-light);
+}
+
+.items-table .subtotal-row td {
+    font-weight: bold;
+    border-top: 2px solid var(--primary-color);
+    border-bottom: none;
+    background-color: transparent;
+}
+
+.section-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.totals-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.totals-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.totals-table td {
+    padding: 6px 10px;
+}
+
+.totals-table .total-row {
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-top: 2px solid var(--primary-color);
+}
+
+.totals-table .label {
+    text-align: left;
+    color: var(--text-muted);
+}
+
+.totals-table .value {
+    text-align: right;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.payment-table th {
+    background-color: var(--bg-light);
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.payment-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tax-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.tax-table td {
+    padding: 4px 10px;
+}
+
+.stamp {
+    position: fixed;
+    top: 35%;
+    left: 25%;
+    font-size: 6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transform: rotate(-30deg);
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 9999;
+    border: 8px solid;
+    padding: 10px 30px;
+    border-radius: 12px;
+}
+
+.stamp-paid { color: var(--success); border-color: var(--success); }
+.stamp-overdue { color: var(--danger); border-color: var(--danger); }
+
+.invoice-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+```
+
+#### Body
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+{% set invoice = invoices|first %}
+
+{% if invoice.balance_raw == 0 %}
+    <div class="stamp stamp-paid">PAID</div>
+{% endif %}
+
+<div class="invoice-header">
+    <div>
+        <div id="company-details"></div>
+    </div>
+    <div style="text-align: right;">
+        <div class="invoice-title">INVOICE</div>
+        <div class="invoice-number">#{{ invoice.number }}</div>
+    </div>
+</div>
+
+<div class="details-grid">
+    <div class="details-box">
+        <h4>Bill To</h4>
+        <div id="client-details"></div>
+    </div>
+    <div class="details-box">
+        <h4>Ship To</h4>
+        <div id="shipping-address"></div>
+    </div>
+    <div class="details-box">
+        <h4>Invoice Details</h4>
+        <p><strong>Invoice Date:</strong> {{ invoice.date }}</p>
+        <p><strong>Due Date:</strong> {{ invoice.due_date }}</p>
+        <p><strong>PO Number:</strong> {{ invoice.po_number }}</p>
+        <p><strong>Status:</strong> {{ invoice.status }}</p>
+    </div>
+</div>
+
+{% set products = invoice.line_items|filter(item => item.type_id == 1) %}
+{% set tasks = invoice.line_items|filter(item => item.type_id == 2) %}
+
+{% if products|length > 0 %}
+<div class="section-label">Products</div>
+<table class="items-table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th class="text-right">Unit Cost</th>
+            <th class="text-right">Qty</th>
+            <th class="text-right">Tax</th>
+            <th class="text-right">Line Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% set product_subtotal = 0 %}
+        {% for item in products %}
+        <tr>
+            <td>{{ item.product_key }}</td>
+            <td>{{ item.notes }}</td>
+            <td class="text-right">{{ item.cost }}</td>
+            <td class="text-right">{{ item.quantity }}</td>
+            <td class="text-right">{{ item.tax_amount }}</td>
+            <td class="text-right">{{ item.line_total }}</td>
+        </tr>
+        {% set product_subtotal = product_subtotal + item.line_total_raw %}
+        {% endfor %}
+        <tr class="subtotal-row">
+            <td colspan="5" class="text-right">Product Subtotal</td>
+            <td class="text-right">{{ product_subtotal|format_currency('USD') }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+{% if tasks|length > 0 %}
+<div class="section-label">Services</div>
+<table class="items-table">
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Description</th>
+            <th class="text-right">Rate</th>
+            <th class="text-right">Hours</th>
+            <th class="text-right">Tax</th>
+            <th class="text-right">Line Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% set task_subtotal = 0 %}
+        {% for item in tasks %}
+        <tr>
+            <td>{{ item.product_key }}</td>
+            <td>{{ item.notes }}</td>
+            <td class="text-right">{{ item.cost }}</td>
+            <td class="text-right">{{ item.quantity }}</td>
+            <td class="text-right">{{ item.tax_amount }}</td>
+            <td class="text-right">{{ item.line_total }}</td>
+        </tr>
+        {% set task_subtotal = task_subtotal + item.line_total_raw %}
+        {% endfor %}
+        <tr class="subtotal-row">
+            <td colspan="5" class="text-right">Service Subtotal</td>
+            <td class="text-right">{{ task_subtotal|format_currency('USD') }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+<div class="totals-container">
+    <div>
+        {% if invoice.total_tax_map|length > 0 %}
+        <div class="section-label">Tax Breakdown</div>
+        <table class="tax-table">
+            {% for tax in invoice.total_tax_map %}
+            <tr>
+                <td>{{ tax.name }}</td>
+                <td class="text-right">{{ tax.total|format_currency('USD') }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+    <div>
+        <table class="totals-table">
+            <tr>
+                <td class="label">Subtotal</td>
+                <td class="value">{{ invoice.amount }}</td>
+            </tr>
+            {% if invoice.discount > 0 %}
+            <tr>
+                <td class="label">Discount
+                    {% if invoice.is_amount_discount %}
+                    {% else %}
+                        ({{ invoice.discount }}%)
+                    {% endif %}
+                </td>
+                <td class="value">-{{ invoice.discount }}{% if invoice.is_amount_discount == false %}%{% endif %}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td class="label">Tax</td>
+                <td class="value">{{ invoice.total_taxes }}</td>
+            </tr>
+            <tr class="total-row">
+                <td class="label">Total</td>
+                <td class="value">{{ invoice.amount }}</td>
+            </tr>
+            {% if invoice.paid_to_date != '$0.00' %}
+            <tr>
+                <td class="label">Paid to Date</td>
+                <td class="value">{{ invoice.paid_to_date }}</td>
+            </tr>
+            {% endif %}
+            <tr class="total-row">
+                <td class="label">Balance Due</td>
+                <td class="value">{{ invoice.balance }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% if invoice.payments is not empty %}
+<div class="section-label">Payments Received</div>
+<table class="payment-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Number</th>
+            <th>Method</th>
+            <th class="text-right">Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for payment in invoice.payments %}
+        <tr>
+            <td>{{ payment.date }}</td>
+            <td>{{ payment.number }}</td>
+            <td>{{ payment.method }}</td>
+            <td class="text-right">{{ payment.amount }}</td>
+            <td>{{ payment.status }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<div class="invoice-footer">
+    {% if invoice.terms is not empty %}
+    <p><strong>Terms:</strong> {{ invoice.terms }}</p>
     {% endif %}
+    {% if invoice.footer is not empty %}
+    <p>{{ invoice.footer }}</p>
+    {% endif %}
+    {% if invoice.public_notes is not empty %}
+    <p>{{ invoice.public_notes }}</p>
+    {% endif %}
+</div>
+
+{% endif %}
+</ninja>
+```
+
+### Detailed Timesheet Invoice
+
+A task-focused invoice design that expands each service line item to show the associated task's time log entries including start/end times, descriptions, and durations. Ideal for agencies and freelancers billing by the hour.
+
+#### Includes (CSS)
+
+```css
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.ts-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #1a237e;
+}
+
+.ts-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1a237e;
+}
+
+.ts-subtitle {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.ts-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.ts-details h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+.ts-details p {
+    margin: 2px 0;
+    font-size: 0.85rem;
+}
+
+.task-block {
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+}
+
+.task-header {
+    background-color: #1a237e;
+    color: white;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 1rem;
+}
+
+.task-meta {
+    background-color: #e8eaf6;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    color: #333;
+    border-bottom: 1px solid #c5cae9;
+}
+
+.timelog-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.timelog-table th {
+    background-color: #f5f5f5;
+    padding: 6px 12px;
+    text-align: left;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+}
+
+.timelog-table td {
+    padding: 6px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+}
+
+.timelog-table .billable-yes { color: #2e7d32; }
+.timelog-table .billable-no { color: #c62828; }
+
+.task-subtotal {
+    background-color: #f5f5f5;
+    padding: 6px 12px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border-top: 1px solid #ccc;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.summary-table td {
+    padding: 8px 12px;
+}
+
+.summary-table .label { text-align: left; color: #666; }
+.summary-table .value { text-align: right; font-weight: bold; }
+.summary-table .total-row { border-top: 2px solid #1a237e; font-size: 1.1rem; }
+
+.hours-summary {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+.hours-summary h4 {
+    margin: 0 0 0.5rem 0;
+    color: #1a237e;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.hours-bar {
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.text-right { text-align: right; }
+```
+
+#### Body
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+{% set invoice = invoices|first %}
+
+<div class="ts-header">
+    <div>
+        <div id="company-details"></div>
+    </div>
+    <div style="text-align: right;">
+        <div class="ts-title">TIMESHEET INVOICE</div>
+        <div class="ts-subtitle">#{{ invoice.number }} — {{ invoice.date }}</div>
+    </div>
+</div>
+
+<div class="ts-details">
+    <div>
+        <h4>Bill To</h4>
+        <div id="client-details"></div>
+    </div>
+    <div>
+        <h4>Invoice Details</h4>
+        <p><strong>Invoice Date:</strong> {{ invoice.date }}</p>
+        <p><strong>Due Date:</strong> {{ invoice.due_date }}</p>
+        <p><strong>PO Number:</strong> {{ invoice.po_number }}</p>
+    </div>
+</div>
+
+{% set tasks = invoice.line_items|filter(item => item.type_id == 2) %}
+{% set total_hours = 0 %}
+{% set total_amount = 0 %}
+
+{% for item in tasks %}
+<div class="task-block">
+    <div class="task-header">
+        <span>{{ item.product_key }}</span>
+        <span>Rate: {{ item.cost }}</span>
+        <span>Total: {{ item.line_total }}</span>
+    </div>
+
+    {% if item.notes is not empty %}
+    <div class="task-meta">{{ item.notes }}</div>
+    {% endif %}
+
+    {% if item.task is defined and item.task.time_log is defined and item.task.time_log is not empty %}
+    <table class="timelog-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Description</th>
+                <th>Billable</th>
+                <th class="text-right">Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for log in item.task.time_log %}
+            <tr>
+                <td>{{ log.start_date|date('Y-m-d') }}</td>
+                <td>{{ log.start_date|date('H:i') }}</td>
+                <td>{{ log.end_date|date('H:i') }}</td>
+                <td>{{ log.description }}</td>
+                <td>
+                    {% if log.billable %}
+                        <span class="billable-yes">Yes</span>
+                    {% else %}
+                        <span class="billable-no">No</span>
+                    {% endif %}
+                </td>
+                <td class="text-right">{{ log.duration }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <div class="task-subtotal">
+        {% if item.task is defined %}
+            Task Duration: {{ item.task.duration|date('H:i:s') }} —
+        {% endif %}
+        Line Total: {{ item.line_total }}
+    </div>
+</div>
+
+{% set total_amount = total_amount + item.line_total_raw %}
+{% set total_hours = total_hours + item.quantity %}
+{% endfor %}
+
+{% set products = invoice.line_items|filter(item => item.type_id == 1) %}
+{% if products|length > 0 %}
+<div style="margin-top: 1rem; font-weight: bold; color: #1a237e; border-bottom: 1px solid #c5cae9; padding-bottom: 4px;">Other Items</div>
+<table class="timelog-table" style="margin-bottom: 1rem;">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th class="text-right">Qty</th>
+            <th class="text-right">Unit Cost</th>
+            <th class="text-right">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in products %}
+        <tr>
+            <td>{{ item.product_key }}</td>
+            <td>{{ item.notes }}</td>
+            <td class="text-right">{{ item.quantity }}</td>
+            <td class="text-right">{{ item.cost }}</td>
+            <td class="text-right">{{ item.line_total }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+<div class="summary-grid">
+    <div class="hours-summary">
+        <h4>Time Summary</h4>
+        <p>Total Hours Billed: <strong>{{ total_hours|format_number }}</strong></p>
+        <p>Service Line Items: <strong>{{ tasks|length }}</strong></p>
+    </div>
+    <div>
+        <table class="summary-table">
+            <tr>
+                <td class="label">Subtotal</td>
+                <td class="value">{{ invoice.amount }}</td>
+            </tr>
+            <tr>
+                <td class="label">Tax</td>
+                <td class="value">{{ invoice.total_taxes }}</td>
+            </tr>
+            <tr class="total-row">
+                <td class="label">Total Due</td>
+                <td class="value">{{ invoice.balance }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% if invoice.terms is not empty %}
+<div style="margin-top: 2rem; font-size: 0.8rem; color: #666; border-top: 1px solid #ddd; padding-top: 0.5rem;">
+    <strong>Terms:</strong> {{ invoice.terms }}
+</div>
+{% endif %}
+
+{% endif %}
+</ninja>
+```
+
+### Project Progress Report
+
+A template designed to be run against a **Project** entity, showing project details, task breakdown with statuses, hours burned vs. budgeted, associated expenses, and a cost summary.
+
+:::info
+When creating this template, select the **Project** checkbox in the template entity associations.
+:::
+
+#### Includes (CSS)
+
+```css
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.report-header {
+    background-color: #0d47a1;
+    color: white;
+    padding: 1.5rem;
+    margin: -1rem -1rem 0 -1rem;
+}
+
+.report-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.report-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 0.25rem;
+}
+
+.report-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.meta-item {
+    text-align: center;
+}
+
+.meta-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+}
+
+.meta-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0d47a1;
+}
+
+.progress-section {
+    margin: 1.5rem 0;
+}
+
+.progress-bar-container {
+    height: 24px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.progress-bar-ok { background-color: #43a047; }
+.progress-bar-warning { background-color: #f9a825; }
+.progress-bar-danger { background-color: #e53935; }
+
+.section-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0d47a1;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #0d47a1;
+}
+
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.task-table th {
+    background-color: #e3f2fd;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #0d47a1;
+    border-bottom: 2px solid #90caf9;
+}
+
+.task-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.task-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+    background-color: #78909c;
+}
+
+.expense-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.expense-table th {
+    background-color: #fff3e0;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #e65100;
+    border-bottom: 2px solid #ffcc80;
+}
+
+.expense-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cost-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.cost-box {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.cost-box h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.cost-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 4px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cost-row.total {
+    font-weight: bold;
+    border-top: 2px solid #333;
+    border-bottom: none;
+    padding-top: 8px;
+    margin-top: 4px;
+}
+
+.text-right { text-align: right; }
+
+.client-section {
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.client-box h4 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+.notes-section {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #fffde7;
+    border: 1px solid #fff9c4;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+```
+
+#### Body
+
+```html
+<ninja>
+{% if projects is defined and projects is not empty %}
+{% set project = projects|first %}
+
+<div class="report-header">
+    <div class="report-title">{{ project.name }}</div>
+    <div class="report-subtitle">Project Progress Report — Generated {{ "now"|date('d M Y') }}</div>
+</div>
+
+<div class="report-meta">
+    <div class="meta-item">
+        <div class="meta-label">Project Number</div>
+        <div class="meta-value">#{{ project.number }}</div>
+    </div>
+    <div class="meta-item">
+        <div class="meta-label">Due Date</div>
+        <div class="meta-value">{{ project.due_date }}</div>
+    </div>
+    <div class="meta-item">
+        <div class="meta-label">Task Rate</div>
+        <div class="meta-value">{{ project.task_rate }}</div>
+    </div>
+</div>
+
+<div class="client-section">
+    <div class="client-box">
+        <h4>Client</h4>
+        <p><strong>{{ project.client.name }}</strong></p>
+        <p>{{ project.client.address1 }}</p>
+        {% if project.client.address2 is not empty %}<p>{{ project.client.address2 }}</p>{% endif %}
+        <p>{{ project.client.city }}, {{ project.client.state }} {{ project.client.postal_code }}</p>
+        <p>{{ project.client.phone }}</p>
+    </div>
+    <div class="client-box">
+        <h4>Project Manager</h4>
+        <p><strong>{{ project.user.name }}</strong></p>
+        <p>{{ project.user.email }}</p>
+    </div>
+</div>
+
+<div class="progress-section">
+    <div class="section-title">Hours Progress</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 0.5rem;">
+        <div><strong>Current:</strong> {{ project.current_hours }} hrs</div>
+        <div><strong>Budgeted:</strong> {{ project.budgeted_hours }} hrs</div>
+        <div><strong>Remaining:</strong>
+            {% set remaining = project.budgeted_hours - project.current_hours %}
+            {{ remaining }} hrs
+        </div>
+    </div>
+    {% if project.budgeted_hours > 0 %}
+        {% set pct = (project.current_hours / project.budgeted_hours) * 100 %}
+        <div class="progress-bar-container">
+            <div class="progress-bar {% if pct <= 75 %}progress-bar-ok{% elseif pct <= 100 %}progress-bar-warning{% else %}progress-bar-danger{% endif %}"
+                 style="width: {% if pct > 100 %}100{% else %}{{ pct }}{% endif %}%;">
+                {{ pct|format_number }}%
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% if project.tasks is not empty %}
+<div class="section-title">Tasks ({{ project.tasks|length }})</div>
+<table class="task-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Task</th>
+            <th>Assigned To</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th class="text-right">Duration</th>
+            <th class="text-right">Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% set total_duration = 0 %}
+    {% for task in project.tasks %}
+        <tr>
+            <td>{{ task.number }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.user.name }}</td>
+            <td><span class="status-badge">{{ task.status }}</span></td>
+            <td>{{ task.date }}</td>
+            <td class="text-right">{{ task.duration|date('H:i:s') }}</td>
+            <td class="text-right">{{ task.rate }}</td>
+        </tr>
+        {% set total_duration = total_duration + task.duration %}
+
+        {% if task.time_log is not empty %}
+        <tr>
+            <td></td>
+            <td colspan="6" style="padding: 0 0 0 2rem;">
+                <table style="width: 100%; font-size: 0.8rem; color: #666;">
+                {% for log in task.time_log %}
+                    <tr>
+                        <td style="width: 30%;">{{ log.start_date }} → {{ log.end_date }}</td>
+                        <td>{{ log.description }}</td>
+                        <td style="width: 15%; text-align: right;">{{ log.duration }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </td>
+        </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if project.expenses is not empty %}
+<div class="section-title">Expenses ({{ project.expenses|length }})</div>
+<table class="expense-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Vendor</th>
+            <th class="text-right">Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% set total_expenses = 0 %}
+    {% for expense in project.expenses %}
+        <tr>
+            <td>{{ expense.date }}</td>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.public_notes }}</td>
+            <td>{% if expense.vendor is defined %}{{ expense.vendor.name }}{% endif %}</td>
+            <td class="text-right">{{ expense.amount }}</td>
+        </tr>
+        {% set total_expenses = total_expenses + expense.amount_raw %}
+    {% endfor %}
+        <tr style="font-weight: bold; border-top: 2px solid #e65100;">
+            <td colspan="4" class="text-right">Total Expenses</td>
+            <td class="text-right">{{ total_expenses|format_currency('USD') }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+<div class="cost-summary">
+    <div class="cost-box">
+        <h4>Labour Cost Summary</h4>
+        <div class="cost-row">
+            <span>Task Rate</span>
+            <span>{{ project.task_rate }}</span>
+        </div>
+        <div class="cost-row">
+            <span>Hours Logged</span>
+            <span>{{ project.current_hours }}</span>
+        </div>
+        <div class="cost-row">
+            <span>Hours Budgeted</span>
+            <span>{{ project.budgeted_hours }}</span>
+        </div>
+        {% if project.budgeted_hours > 0 %}
+        <div class="cost-row">
+            <span>Budget Utilisation</span>
+            <span>{{ ((project.current_hours / project.budgeted_hours) * 100)|format_number }}%</span>
+        </div>
+        {% endif %}
+    </div>
+    <div class="cost-box">
+        <h4>Project Summary</h4>
+        <div class="cost-row">
+            <span>Total Tasks</span>
+            <span>{{ project.tasks|length }}</span>
+        </div>
+        {% if project.expenses is defined %}
+        <div class="cost-row">
+            <span>Total Expenses</span>
+            <span>{{ project.expenses|length }}</span>
+        </div>
+        {% endif %}
+        <div class="cost-row">
+            <span>Created</span>
+            <span>{{ project.created_at }}</span>
+        </div>
+        <div class="cost-row">
+            <span>Last Updated</span>
+            <span>{{ project.updated_at }}</span>
+        </div>
+    </div>
+</div>
+
+{% if project.public_notes is not empty %}
+<div class="notes-section">
+    <strong>Project Notes:</strong><br/>
+    {{ project.public_notes|nl2br }}
+</div>
+{% endif %}
+
+{% endif %}
 </ninja>
 ```
