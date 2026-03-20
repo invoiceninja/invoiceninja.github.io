@@ -1,272 +1,288 @@
 import React from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Translate, { translate } from "@docusaurus/Translate";
+import BookOpenIcon from "@site/static/assets/images/icons/BookOpen.svg";
+import OfficeIcon from "@site/static/assets/images/icons/Office.svg";
+import CloudUploadIcon from "@site/static/assets/images/icons/CloudUpload.svg";
+import ArrowsOppositeDirectionIcon from "@site/static/assets/images/icons/ArrowsOppositeDirection.svg";
+import GearIcon from "@site/static/assets/images/icons/Gear.svg";
+import TableColumnsIcon from "@site/static/assets/images/icons/TableColumns.svg";
+import CircleLockIcon from "@site/static/assets/images/icons/CircleLock.svg";
+import CreditCardIcon from "@site/static/assets/images/icons/CreditCard.svg";
+import MessageIcon from "@site/static/assets/images/icons/Message.svg";
+import MsgBubbleUserIcon from "@site/static/assets/images/icons/MsgBubbleUser.svg";
+import UsersIcon from "@site/static/assets/images/icons/Users.svg";
+import MediaPlayIcon from "@site/static/assets/images/icons/MediaPlay.svg";
+import CircleWarningIcon from "@site/static/assets/images/icons/CircleWarning.svg";
+import CircleQuestionIcon from "@site/static/assets/images/icons/CircleQuestion.svg";
+import EnvelopArrowRightIcon from "@site/static/assets/images/icons/EnvelopArrowRight.svg";
 
-function getDocSections() {
-  return [
-    {
-      title: translate({ id: "homepage.userGuide.title", message: "User Guide" }),
-      description: translate({
-        id: "homepage.userGuide.description",
-        message: "General documentation covering invoices, clients, payments, expenses, and all platform features.",
-      }),
-      link: "/docs/user-guide",
-      icon: "\u{1F4D6}",
-    },
-    {
-      title: translate({ id: "homepage.developerResources.title", message: "Developer Resources" }),
-      description: translate({
-        id: "homepage.developerResources.description",
-        message: "API integration guides, payment gateway development, and technical reference materials.",
-      }),
-      link: "/docs/developer-guide",
-      icon: "\u2699\uFE0F",
-    },
-    {
-      title: translate({ id: "homepage.selfHosted.title", message: "Self-Hosted Installation" }),
-      description: translate({
-        id: "homepage.selfHosted.description",
-        message: "Install and manage your own Invoice Ninja instance. Server requirements, configuration, and updates.",
-      }),
-      link: "/docs/self-host/self-host-installation",
-      icon: "\u{1F5A5}\uFE0F",
-    },
-    {
-      title: translate({ id: "homepage.migrate.title", message: "Migrate to V5" }),
-      description: translate({
-        id: "homepage.migrate.description",
-        message: "Step-by-step guide to migrate your data from Invoice Ninja v4 to the latest v5 platform.",
-      }),
-      link: "/docs/migration",
-      icon: "\u{1F504}",
-    },
-  ];
-}
+type CardLink = {
+  label: string;
+} & ({ to: string } | { href: string });
 
-function getCommunitySections() {
-  return [
-    {
-      title: translate({ id: "homepage.slack.title", message: "Slack" }),
-      description: translate({
-        id: "homepage.slack.description",
-        message: "Join our community chat for real-time help and discussion.",
-      }),
-      link: "https://invoiceninja.slack.com",
-      secondaryLink: "http://slack.invoiceninja.com",
-      secondaryText: translate({
-        id: "homepage.slack.secondaryText",
-        message: "Not a member? Click for invite",
-      }),
-      image: "/assets/images/slackbot.png",
-    },
-    {
-      title: translate({ id: "homepage.forum.title", message: "Forum" }),
-      description: translate({
-        id: "homepage.forum.description",
-        message: "Browse and participate in community discussions, feature requests, and support threads.",
-      }),
-      link: "https://forum.invoiceninja.com",
-      image: "/assets/images/discourse.png",
-    },
-    {
-      title: translate({ id: "homepage.email.title", message: "Email" }),
-      description: translate({
-        id: "homepage.email.description",
-        message: "Reach out directly to our team for support inquiries.",
-      }),
-      link: "mailto:contact@invoiceninja.com",
-      displayLink: "contact@invoiceninja.com",
-    },
-    {
-      title: translate({ id: "homepage.demo.title", message: "Demo" }),
-      description: translate({
-        id: "homepage.demo.description",
-        message: "Try Invoice Ninja with a fully interactive demo environment. No signup required.",
-      }),
-      link: "https://react.invoicing.co/demo",
-      image: "/assets/images/invoiceninja_icon_large.png",
-    },
-  ];
-}
+type Card = {
+  links: CardLink[];
+  title: string;
+  description: string;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+};
 
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
+const operationsCards: Card[] = [
+  {
+    title: "User Guide",
+    description:
+      "Daily operations: clients, invoices, payments, taxes, and recurring flows.",
+    links: [{ to: "/docs/user-guide", label: "Open user guide" }],
+    Icon: BookOpenIcon,
+  },
+  {
+    title: "Self Host Installation",
+    description: "Choose CLI, Docker, or manual install for your own infrastructure.",
+    links: [{ to: "/docs/self-host/self-host-installation", label: "Install self-host" }],
+    Icon: OfficeIcon,
+  },
+  {
+    title: "Hosted Platform",
+    description: "Quick start on the managed cloud platform with minimal setup.",
+    links: [{ to: "/docs/hosted/hosted-quickstart", label: "Hosted quickstart" }],
+    Icon: CloudUploadIcon,
+  },
+  {
+    title: "Migration",
+    description: "Move from v4 to v5 with the migration checklist and rollout path.",
+    links: [{ to: "/docs/migration", label: "Migration guide" }],
+    Icon: ArrowsOppositeDirectionIcon,
+  },
+];
+
+const developerCards: Card[] = [
+  {
+    title: "Developer Guide",
+    description:
+      "Architecture, extension points, gateway development, and technical workflows.",
+    links: [{ to: "/docs/developer-guide", label: "Developer docs" }],
+    Icon: GearIcon,
+  },
+  {
+    title: "API Reference",
+    description: "Endpoint-level OpenAPI docs with request/response schemas.",
+    links: [{ to: "/docs/api-reference/invoice-ninja-api-reference", label: "Open API docs" }],
+    Icon: TableColumnsIcon,
+  },
+  {
+    title: "API Authentication",
+    description: "Auth model, headers, and token setup for secure integrations.",
+    links: [{ to: "/docs/developer-guide/api/authentication", label: "Auth guide" }],
+    Icon: CircleLockIcon,
+  },
+  {
+    title: "Payment Gateways",
+    description: "Implement or customize payment gateway integrations.",
+    links: [{ to: "/docs/developer-guide/payment-gateways", label: "Gateway guide" }],
+    Icon: CreditCardIcon,
+  },
+];
+
+const communityCards: Card[] = [
+  {
+    title: "Support Forum",
+    description: "Search community answers and share your own setup notes.",
+    links: [{ href: "https://forum.invoiceninja.com", label: "Open forum" }],
+    Icon: MessageIcon,
+  },
+  {
+    title: "Slack",
+    description: "Direct access to the team and community discussions.",
+    links: [
+      { href: "https://invoiceninja.slack.com", label: "Open Slack workspace" },
+      { href: "http://slack.invoiceninja.com", label: "Not a member? Get invite" },
+    ],
+    Icon: MsgBubbleUserIcon,
+  },
+  {
+    title: "Discord",
+    description: "Chat with other self-hosters and exchange deployment tips.",
+    links: [{ href: "https://discord.gg/ZwEdtfCwXA", label: "Join Discord" }],
+    Icon: UsersIcon,
+  },
+  {
+    title: "YouTube",
+    description: "Watch walkthroughs, release notes, and deep-dives.",
+    links: [{ href: "https://www.youtube.com/@appinvoiceninja", label: "Watch videos" }],
+    Icon: MediaPlayIcon,
+  },
+];
+
+const supportCards: Card[] = [
+  {
+    title: "Self Host Troubleshooting",
+    description: "Fix install, cron, queue, update, and runtime issues for self-host.",
+    links: [{ to: "/docs/self-host/self-host-troubleshooting", label: "Self-host fixes" }],
+    Icon: CircleWarningIcon,
+  },
+  {
+    title: "Hosted Troubleshooting",
+    description: "Resolve common hosted account and platform issues quickly.",
+    links: [{ to: "/docs/hosted/hosted-troubleshooting", label: "Hosted fixes" }],
+    Icon: CircleWarningIcon,
+  },
+  {
+    title: "FAQ",
+    description: "Answers for common billing, setup, and workflow questions.",
+    links: [{ to: "/docs/user-guide/faq", label: "Open FAQ" }],
+    Icon: CircleQuestionIcon,
+  },
+  {
+    title: "Contact Support",
+    description: "Reach out directly for help with account or technical blockers.",
+    links: [{ href: "mailto:contact@invoiceninja.com", label: "Email support" }],
+    Icon: EnvelopArrowRightIcon,
+  },
+];
+
+function IconAsset({
+  Icon,
+}: {
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}): React.JSX.Element {
   return (
-    <header className="hero hero--primary" style={{ textAlign: "center" }}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-      </div>
-    </header>
+    <span className="overview-preview-doc-icon" aria-hidden="true">
+      <Icon />
+    </span>
   );
 }
 
-function DocCards() {
-  const docSections = getDocSections();
+function renderCardAction(
+  link: CardLink,
+  key: string,
+  isSecondary: boolean,
+): React.JSX.Element {
+  const className = isSecondary
+    ? "overview-preview-card-action overview-preview-card-action--secondary"
+    : "overview-preview-card-action";
+
+  if ("to" in link) {
+    return (
+      <Link key={key} to={link.to} className={className}>
+        {link.label}
+      </Link>
+    );
+  }
+
   return (
-    <section className="homepage-section">
-      <div className="container">
-        <h2 className="homepage-section__title">
-          <Translate id="homepage.helpTitle">What can we help with?</Translate>
-        </h2>
-        <div className="row">
-          {docSections.map((section) => (
-            <div
-              key={section.title}
-              className="col col--6"
-              style={{ marginBottom: "1.5rem" }}
-            >
-              <Link to={section.link} className="homepage-card">
-                <span className="homepage-card__icon">{section.icon}</span>
-                <div>
-                  <h3 className="homepage-card__title">{section.title}</h3>
-                  <p className="homepage-card__description">
-                    {section.description}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <a
+      key={key}
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
+      {link.label}
+    </a>
   );
 }
 
-function CommunityCards() {
-  const communitySections = getCommunitySections();
+function renderCard(card: Card, className: string): React.JSX.Element {
   return (
-    <section className="homepage-section homepage-section--alt">
-      <div className="container">
-        <h2 className="homepage-section__title">
-          <Translate id="homepage.communityTitle">Community & Support</Translate>
-        </h2>
-        <div className="row">
-          {communitySections.map((section) => (
-            <div
-              key={section.title}
-              className="col col--3"
-              style={{ marginBottom: "1.5rem" }}
-            >
-              <a
-                href={section.link}
-                className="homepage-community-card"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {section.image && (
-                  <img
-                    src={section.image}
-                    alt={section.title}
-                    className="homepage-community-card__image"
-                  />
-                )}
-                {!section.image && (
-                  <div className="homepage-community-card__icon-placeholder">
-                    ✉️
-                  </div>
-                )}
-                <h3 className="homepage-community-card__title">
-                  {section.title}
-                </h3>
-                <p className="homepage-community-card__description">
-                  {section.description}
-                </p>
-                {section.secondaryLink && (
-                  <span className="homepage-community-card__secondary">
-                    {section.secondaryText}
-                  </span>
-                )}
-                {section.displayLink && (
-                  <span className="homepage-community-card__secondary">
-                    {section.displayLink}
-                  </span>
-                )}
-              </a>
-            </div>
-          ))}
-        </div>
+    <article key={card.title} className={className}>
+      <IconAsset Icon={card.Icon} />
+      <h3>{card.title}</h3>
+      <p>{card.description}</p>
+      <div className="overview-preview-card-actions">
+        {card.links.map((link, index) =>
+          renderCardAction(link, `${card.title}-${index}`, index > 0),
+        )}
       </div>
-    </section>
-  );
-}
-
-function QuickLinks() {
-  return (
-    <section className="homepage-section">
-      <div className="container">
-        <h2 className="homepage-section__title">
-          <Translate id="homepage.moreResources">More Resources</Translate>
-        </h2>
-        <div className="row">
-          <div
-            className="col col--4"
-            style={{ marginBottom: "1.5rem" }}
-          >
-            <Link to="/docs/hosted/hosted-quickstart" className="homepage-card homepage-card--compact">
-              <div>
-                <h3 className="homepage-card__title">
-                  <Translate id="homepage.hostedPlatform.title">Hosted Platform</Translate>
-                </h3>
-                <p className="homepage-card__description">
-                  <Translate id="homepage.hostedPlatform.description">
-                    Quick setup on our managed cloud. No server required.
-                  </Translate>
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div
-            className="col col--4"
-            style={{ marginBottom: "1.5rem" }}
-          >
-            <Link to="/docs/api-reference/invoice-ninja-api-reference" className="homepage-card homepage-card--compact">
-              <div>
-                <h3 className="homepage-card__title">
-                  <Translate id="homepage.apiReference.title">API Reference</Translate>
-                </h3>
-                <p className="homepage-card__description">
-                  <Translate id="homepage.apiReference.description">
-                    Interactive API docs with examples for every endpoint.
-                  </Translate>
-                </p>
-              </div>
-            </Link>
-          </div>
-          <div
-            className="col col--4"
-            style={{ marginBottom: "1.5rem" }}
-          >
-            <Link to="/docs/legal/license" className="homepage-card homepage-card--compact">
-              <div>
-                <h3 className="homepage-card__title">
-                  <Translate id="homepage.legal.title">Legal</Translate>
-                </h3>
-                <p className="homepage-card__description">
-                  <Translate id="homepage.legal.description">
-                    License, terms of service, privacy policy, and GDPR.
-                  </Translate>
-                </p>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+    </article>
   );
 }
 
 export default function Home(): React.JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title="Home" description={siteConfig.tagline}>
-      <HomepageHeader />
+    <Layout
+      title="Documentation Overview"
+      description="Context-based navigation for operations, developer workflows, community, and support"
+    >
       <main>
-        <DocCards />
-        <CommunityCards />
-        <QuickLinks />
+        <section className="homepage-section">
+          <div className="container">
+            <div className="overview-preview-hero">
+              <div>
+                <p className="overview-preview-kicker">Invoice Ninja</p>
+                <h1 className="overview-preview-title">
+                  Free Source Available Invoicing, Expenses &amp; Time-Tracking
+                </h1>
+                <p className="overview-preview-description">
+                  Start with a live demo, then choose the right docs path for
+                  operations, development, self-hosting, or support.
+                </p>
+                <div className="overview-preview-actions">
+                  <a
+                    className="button button--primary"
+                    href="https://react.invoicing.co/demo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Open Demo Login
+                  </a>
+                  <a className="button button--secondary" href="/docs/user-guide">
+                    User Guide
+                  </a>
+                  <a
+                    className="button button--secondary"
+                    href="/docs/self-host/self-host-installation"
+                  >
+                    Self Hosting
+                  </a>
+                </div>
+              </div>
+              <div className="overview-preview-hero-panel">
+                <p className="overview-preview-panel-title">Jump to context</p>
+                <a href="#operations" className="overview-preview-panel-link">Operations</a>
+                <a href="#developer" className="overview-preview-panel-link">Developer</a>
+                <a href="#community" className="overview-preview-panel-link">Community</a>
+                <a href="#support" className="overview-preview-panel-link">Support</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="operations" className="homepage-section homepage-section--alt">
+          <div className="container">
+            <h2 className="homepage-section__title">Operations</h2>
+            <div className="overview-preview-grid">
+              {operationsCards.map((card) => renderCard(card, "overview-preview-doc-card"))}
+            </div>
+          </div>
+        </section>
+
+        <section id="developer" className="homepage-section">
+          <div className="container">
+            <h2 className="homepage-section__title">Developer</h2>
+            <div className="overview-preview-grid overview-preview-grid--resources">
+              {developerCards.map((card) => renderCard(card, "overview-preview-doc-card"))}
+            </div>
+          </div>
+        </section>
+
+        <section id="community" className="homepage-section homepage-section--alt">
+          <div className="container">
+            <h2 className="homepage-section__title">Community</h2>
+            <div className="overview-preview-grid overview-preview-grid--community">
+              {communityCards.map((card) => renderCard(card, "overview-preview-community-card"))}
+            </div>
+          </div>
+        </section>
+
+        <section id="support" className="homepage-section">
+          <div className="container">
+            <h2 className="homepage-section__title">Support</h2>
+            <div className="overview-preview-grid overview-preview-grid--resources">
+              {supportCards.map((card) => renderCard(card, "overview-preview-doc-card"))}
+            </div>
+          </div>
+        </section>
       </main>
     </Layout>
   );
