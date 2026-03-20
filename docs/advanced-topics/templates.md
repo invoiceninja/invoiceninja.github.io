@@ -1869,206 +1869,209 @@ These are complete, ready-to-use designs that demonstrate the full power of the 
 
 A complete invoice design that separates products from services, includes a tax breakdown, payment history, and conditional paid/overdue styling.
 
-#### Includes (CSS)
-
-```css
-:root {
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
-    --border-color: #ddd;
-    --bg-light: #f8f9fa;
-    --text-muted: #6c757d;
-    --success: #27ae60;
-    --danger: #e74c3c;
-}
-
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 13px;
-    color: #333;
-    line-height: 1.5;
-}
-
-.invoice-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 3px solid var(--primary-color);
-}
-
-.invoice-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 0.25rem;
-}
-
-.invoice-number {
-    font-size: 1rem;
-    color: var(--text-muted);
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.details-box h4 {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 4px;
-}
-
-.details-box p {
-    margin: 2px 0;
-    font-size: 0.85rem;
-}
-
-.items-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 0.5rem;
-}
-
-.items-table th {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 8px 10px;
-    text-align: left;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
-
-.items-table td {
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.items-table tbody tr:nth-child(even) {
-    background-color: var(--bg-light);
-}
-
-.items-table .subtotal-row td {
-    font-weight: bold;
-    border-top: 2px solid var(--primary-color);
-    border-bottom: none;
-    background-color: transparent;
-}
-
-.section-label {
-    font-size: 1rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--accent-color);
-}
-
-.totals-container {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 2rem;
-    margin-top: 1rem;
-}
-
-.totals-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.totals-table td {
-    padding: 6px 10px;
-}
-
-.totals-table .total-row {
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-top: 2px solid var(--primary-color);
-}
-
-.totals-table .label {
-    text-align: left;
-    color: var(--text-muted);
-}
-
-.totals-table .value {
-    text-align: right;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.payment-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-    margin-top: 0.5rem;
-}
-
-.payment-table th {
-    background-color: var(--bg-light);
-    padding: 6px 10px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.payment-table td {
-    padding: 6px 10px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.tax-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-}
-
-.tax-table td {
-    padding: 4px 10px;
-}
-
-.stamp {
-    position: fixed;
-    top: 35%;
-    left: 25%;
-    font-size: 6rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    transform: rotate(-30deg);
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: 9999;
-    border: 8px solid;
-    padding: 10px 30px;
-    border-radius: 12px;
-}
-
-.stamp-paid { color: var(--success); border-color: var(--success); }
-.stamp-overdue { color: var(--danger); border-color: var(--danger); }
-
-.invoice-footer {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-```
-
-#### Body
-
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --border-color: #ddd;
+            --bg-light: #f8f9fa;
+            --text-muted: #6c757d;
+            --success: #27ae60;
+            --danger: #e74c3c;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .invoice-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .invoice-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .invoice-number {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .details-box h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+        }
+
+        .details-box p {
+            margin: 2px 0;
+            font-size: 0.85rem;
+        }
+
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 0.5rem;
+        }
+
+        .items-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .items-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .items-table tbody tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .items-table .subtotal-row td {
+            font-weight: bold;
+            border-top: 2px solid var(--primary-color);
+            border-bottom: none;
+            background-color: transparent;
+        }
+
+        .section-label {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .totals-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .totals-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .totals-table td {
+            padding: 6px 10px;
+        }
+
+        .totals-table .total-row {
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .totals-table .label {
+            text-align: left;
+            color: var(--text-muted);
+        }
+
+        .totals-table .value {
+            text-align: right;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .payment-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .payment-table th {
+            background-color: var(--bg-light);
+            padding: 6px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .payment-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .tax-table td {
+            padding: 4px 10px;
+        }
+
+        .stamp {
+            position: fixed;
+            top: 35%;
+            left: 25%;
+            font-size: 6rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transform: rotate(-30deg);
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 9999;
+            border: 8px solid;
+            padding: 10px 30px;
+            border-radius: 12px;
+        }
+
+        .stamp-paid { color: var(--success); border-color: var(--success); }
+        .stamp-overdue { color: var(--danger); border-color: var(--danger); }
+
+        .invoice-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
 <ninja>
 {% if invoices is defined and invoices is not empty %}
 {% set invoice = invoices|first %}
@@ -2105,8 +2108,8 @@ body {
     </div>
 </div>
 
-{% set products = invoice.line_items|filter(item => item.type_id == 1) %}
-{% set tasks = invoice.line_items|filter(item => item.type_id == 2) %}
+{% set products = invoice.line_items|filter(item => item.type_id == '1') %}
+{% set tasks = invoice.line_items|filter(item => item.type_id == '2') %}
 
 {% if products|length > 0 %}
 <div class="section-label">Products</div>
@@ -2123,7 +2126,7 @@ body {
     </thead>
     <tbody>
         {% set product_subtotal = 0 %}
-        {% for item in products %}
+        {% for item in products|filter(item => item.type_id == '1') %}
         <tr>
             <td>{{ item.product_key }}</td>
             <td>{{ item.notes }}</td>
@@ -2157,7 +2160,7 @@ body {
     </thead>
     <tbody>
         {% set task_subtotal = 0 %}
-        {% for item in tasks %}
+        {% for item in tasks|filter(item => item.type_id == '2') %}
         <tr>
             <td>{{ item.product_key }}</td>
             <td>{{ item.notes }}</td>
@@ -2178,25 +2181,15 @@ body {
 
 <div class="totals-container">
     <div>
-        {% if invoice.total_tax_map|length > 0 %}
-        <div class="section-label">Tax Breakdown</div>
-        <table class="tax-table">
-            {% for tax in invoice.total_tax_map %}
-            <tr>
-                <td>{{ tax.name }}</td>
-                <td class="text-right">{{ tax.total|format_currency('USD') }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        {% endif %}
+    
     </div>
     <div>
         <table class="totals-table">
-            <tr>
+            <tr class="total-row">
                 <td class="label">Subtotal</td>
                 <td class="value">{{ invoice.amount }}</td>
             </tr>
-            {% if invoice.discount > 0 %}
+            {% if invoice.discount_raw > 0 %}
             <tr>
                 <td class="label">Discount
                     {% if invoice.is_amount_discount %}
@@ -2204,7 +2197,6 @@ body {
                         ({{ invoice.discount }}%)
                     {% endif %}
                 </td>
-                <td class="value">-{{ invoice.discount }}{% if invoice.is_amount_discount == false %}%{% endif %}</td>
             </tr>
             {% endif %}
             <tr>
@@ -2236,8 +2228,7 @@ body {
         <tr>
             <th>Date</th>
             <th>Number</th>
-            <th>Method</th>
-            <th class="text-right">Amount</th>
+            <th>Amount</th>
             <th>Status</th>
         </tr>
     </thead>
@@ -2246,8 +2237,7 @@ body {
         <tr>
             <td>{{ payment.date }}</td>
             <td>{{ payment.number }}</td>
-            <td>{{ payment.method }}</td>
-            <td class="text-right">{{ payment.amount }}</td>
+            <td>{{ payment.amount }}</td>
             <td>{{ payment.status }}</td>
         </tr>
     {% endfor %}
@@ -2269,166 +2259,172 @@ body {
 
 {% endif %}
 </ninja>
+</body>
+</html>
 ```
 
 ### Detailed Timesheet Invoice
 
 A task-focused invoice design that expands each service line item to show the associated task's time log entries including start/end times, descriptions, and durations. Ideal for agencies and freelancers billing by the hour.
 
-#### Includes (CSS)
-
-```css
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 13px;
-    color: #333;
-    line-height: 1.5;
-}
-
-.ts-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 3px solid #1a237e;
-}
-
-.ts-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #1a237e;
-}
-
-.ts-subtitle {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.ts-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-
-.ts-details h4 {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #999;
-    margin-bottom: 0.5rem;
-}
-
-.ts-details p {
-    margin: 2px 0;
-    font-size: 0.85rem;
-}
-
-.task-block {
-    margin-bottom: 1.5rem;
-    page-break-inside: avoid;
-}
-
-.task-header {
-    background-color: #1a237e;
-    color: white;
-    padding: 8px 12px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    gap: 1rem;
-}
-
-.task-meta {
-    background-color: #e8eaf6;
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    color: #333;
-    border-bottom: 1px solid #c5cae9;
-}
-
-.timelog-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.timelog-table th {
-    background-color: #f5f5f5;
-    padding: 6px 12px;
-    text-align: left;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: #666;
-    border-bottom: 1px solid #ddd;
-}
-
-.timelog-table td {
-    padding: 6px 12px;
-    border-bottom: 1px solid #eee;
-    font-size: 0.85rem;
-}
-
-.timelog-table .billable-yes { color: #2e7d32; }
-.timelog-table .billable-no { color: #c62828; }
-
-.task-subtotal {
-    background-color: #f5f5f5;
-    padding: 6px 12px;
-    text-align: right;
-    font-weight: bold;
-    font-size: 0.85rem;
-    border-top: 1px solid #ccc;
-}
-
-.summary-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.summary-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.summary-table td {
-    padding: 8px 12px;
-}
-
-.summary-table .label { text-align: left; color: #666; }
-.summary-table .value { text-align: right; font-weight: bold; }
-.summary-table .total-row { border-top: 2px solid #1a237e; font-size: 1.1rem; }
-
-.hours-summary {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 1rem;
-    background-color: #f8f9fa;
-}
-
-.hours-summary h4 {
-    margin: 0 0 0.5rem 0;
-    color: #1a237e;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-}
-
-.hours-bar {
-    height: 8px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    margin-top: 0.5rem;
-    overflow: hidden;
-}
-
-.text-right { text-align: right; }
-```
-
-#### Body
-
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timesheet Invoice</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .ts-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #1a237e;
+        }
+
+        .ts-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a237e;
+        }
+
+        .ts-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .ts-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .ts-details h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .ts-details p {
+            margin: 2px 0;
+            font-size: 0.85rem;
+        }
+
+        .task-block {
+            margin-bottom: 1.5rem;
+            page-break-inside: avoid;
+        }
+
+        .task-header {
+            background-color: #1a237e;
+            color: white;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1rem;
+        }
+
+        .task-meta {
+            background-color: #e8eaf6;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            color: #333;
+            border-bottom: 1px solid #c5cae9;
+        }
+
+        .timelog-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .timelog-table th {
+            background-color: #f5f5f5;
+            padding: 6px 12px;
+            text-align: left;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #666;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .timelog-table td {
+            padding: 6px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+
+        .timelog-table .billable-yes { color: #2e7d32; }
+        .timelog-table .billable-no { color: #c62828; }
+
+        .task-subtotal {
+            background-color: #f5f5f5;
+            padding: 6px 12px;
+            text-align: right;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-top: 1px solid #ccc;
+        }
+
+        .summary-grid {
+            page-break-inside: avoid;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .summary-table td {
+            padding: 8px 12px;
+        }
+
+        .summary-table .label { text-align: left; color: #666; }
+        .summary-table .value { text-align: right; font-weight: bold; }
+        .summary-table .total-row { border-top: 2px solid #1a237e; font-size: 1.1rem; }
+
+        .hours-summary {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            background-color: #f8f9fa;
+        }
+
+        .hours-summary h4 {
+            margin: 0 0 0.5rem 0;
+            color: #1a237e;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .hours-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .text-right { text-align: right; }
+    </style>
+</head>
+<body>
 <ninja>
 {% if invoices is defined and invoices is not empty %}
 {% set invoice = invoices|first %}
@@ -2576,6 +2572,8 @@ body {
 
 {% endif %}
 </ninja>
+</body>
+</html>
 ```
 
 ### Project Progress Report
@@ -2586,219 +2584,222 @@ A template designed to be run against a **Project** entity, showing project deta
 When creating this template, select the **Project** checkbox in the template entity associations.
 :::
 
-#### Includes (CSS)
-
-```css
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 13px;
-    color: #333;
-    line-height: 1.5;
-}
-
-.report-header {
-    background-color: #0d47a1;
-    color: white;
-    padding: 1.5rem;
-    margin: -1rem -1rem 0 -1rem;
-}
-
-.report-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.report-subtitle {
-    font-size: 0.9rem;
-    opacity: 0.85;
-    margin-top: 0.25rem;
-}
-
-.report-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-    padding: 1rem;
-    background-color: #f5f5f5;
-    border-radius: 4px;
-}
-
-.meta-item {
-    text-align: center;
-}
-
-.meta-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #999;
-}
-
-.meta-value {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #0d47a1;
-}
-
-.progress-section {
-    margin: 1.5rem 0;
-}
-
-.progress-bar-container {
-    height: 24px;
-    background-color: #e0e0e0;
-    border-radius: 12px;
-    overflow: hidden;
-    margin: 0.5rem 0;
-}
-
-.progress-bar {
-    height: 100%;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.75rem;
-    font-weight: bold;
-}
-
-.progress-bar-ok { background-color: #43a047; }
-.progress-bar-warning { background-color: #f9a825; }
-.progress-bar-danger { background-color: #e53935; }
-
-.section-title {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #0d47a1;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    padding-bottom: 4px;
-    border-bottom: 2px solid #0d47a1;
-}
-
-.task-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-}
-
-.task-table th {
-    background-color: #e3f2fd;
-    padding: 8px 10px;
-    text-align: left;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #0d47a1;
-    border-bottom: 2px solid #90caf9;
-}
-
-.task-table td {
-    padding: 8px 10px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.task-table tbody tr:nth-child(even) {
-    background-color: #fafafa;
-}
-
-.status-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: white;
-    background-color: #78909c;
-}
-
-.expense-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-}
-
-.expense-table th {
-    background-color: #fff3e0;
-    padding: 8px 10px;
-    text-align: left;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #e65100;
-    border-bottom: 2px solid #ffcc80;
-}
-
-.expense-table td {
-    padding: 8px 10px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.cost-summary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 1.5rem;
-}
-
-.cost-box {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 1rem;
-}
-
-.cost-box h4 {
-    margin: 0 0 0.5rem 0;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    color: #999;
-}
-
-.cost-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    padding: 4px 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.cost-row.total {
-    font-weight: bold;
-    border-top: 2px solid #333;
-    border-bottom: none;
-    padding-top: 8px;
-    margin-top: 4px;
-}
-
-.text-right { text-align: right; }
-
-.client-section {
-    margin: 1.5rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-.client-box h4 {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #999;
-    margin-bottom: 0.5rem;
-}
-
-.notes-section {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: #fffde7;
-    border: 1px solid #fff9c4;
-    border-radius: 4px;
-    font-size: 0.85rem;
-}
-```
-
-#### Body
-
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Progress Report</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .report-header {
+            background-color: #0d47a1;
+            color: white;
+            padding: 1.5rem;
+            margin: -1rem -1rem 0 -1rem;
+        }
+
+        .report-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .report-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-top: 0.25rem;
+        }
+
+        .report-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+        }
+
+        .meta-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #0d47a1;
+        }
+
+        .progress-section {
+            margin: 1.5rem 0;
+        }
+
+        .progress-bar-container {
+            height: 24px;
+            background-color: #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .progress-bar-ok { background-color: #43a047; }
+        .progress-bar-warning { background-color: #f9a825; }
+        .progress-bar-danger { background-color: #e53935; }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #0d47a1;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #0d47a1;
+        }
+
+        .task-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .task-table th {
+            background-color: #e3f2fd;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #0d47a1;
+            border-bottom: 2px solid #90caf9;
+        }
+
+        .task-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .task-table tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            background-color: #78909c;
+        }
+
+        .expense-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .expense-table th {
+            background-color: #fff3e0;
+            padding: 8px 10px;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #e65100;
+            border-bottom: 2px solid #ffcc80;
+        }
+
+        .expense-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .cost-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .cost-box {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+
+        .cost-box h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        .cost-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            padding: 4px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cost-row.total {
+            font-weight: bold;
+            border-top: 2px solid #333;
+            border-bottom: none;
+            padding-top: 8px;
+            margin-top: 4px;
+        }
+
+        .text-right { text-align: right; }
+
+        .client-section {
+            margin: 1.5rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .client-box h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+            margin-bottom: 0.5rem;
+        }
+
+        .notes-section {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #fffde7;
+            border: 1px solid #fff9c4;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
 <ninja>
 {% if projects is defined and projects is not empty %}
 {% set project = projects|first %}
@@ -2995,4 +2996,6 @@ body {
 
 {% endif %}
 </ninja>
+</body>
+</html>
 ```
