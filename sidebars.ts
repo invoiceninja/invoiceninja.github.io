@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
         "user-guide/vendors",
         "user-guide/basic-settings",
         "user-guide/advanced-settings",
+        "user-guide/quickbooks",
       ],
     },
     {
