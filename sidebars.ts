@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
         "user-guide/payments",
         "user-guide/projects",
         "user-guide/purchase-orders",
+        "user-guide/quickbooks",
         "user-guide/tasks",
         "user-guide/taxes",
         "user-guide/recurring-expenses",
@@ -35,7 +36,6 @@ const sidebars: SidebarsConfig = {
         "user-guide/vendors",
         "user-guide/basic-settings",
         "user-guide/advanced-settings",
-        "user-guide/quickbooks",
       ],
     },
     {
