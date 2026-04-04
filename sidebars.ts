@@ -26,6 +26,7 @@ const sidebars: SidebarsConfig = {
         "user-guide/payments",
         "user-guide/projects",
         "user-guide/purchase-orders",
+        "user-guide/quickbooks",
         "user-guide/tasks",
         "user-guide/taxes",
         "user-guide/recurring-expenses",
