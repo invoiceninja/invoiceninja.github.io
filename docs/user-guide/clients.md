@@ -3,19 +3,19 @@ title: "Clients"
 sidebar_position: 5
 ---
 Video on adding a client:
-<video width="100%" controls>
 
+<video width="100%" controls>
   <source src="/assets/videos/clients/create_client.mp4" type="video/mp4" />
 </video>
 
 ## Creating Clients
 
-There several ways for a client to be created, including:
+There are several ways for a client to be created, including:
 
 - Clients > + Client
 - Settings > Import | Export > Client CSV Import
 - Client Portal (if client registration is enabled on Settings > Client Portal)
-- API Integrator: Zapier, Integromat, APISync, or manual API calls developed using the [API Documentation](https://api-docs.invoicing.co/).
+- API Integrator: Zapier, Make, APISync, or manual API calls developed using the [API Documentation](https://invoiceninja.github.io/docs/api-reference/invoice-ninja-api-reference).
 
 A "Client" can either represent a person or a company. If only the contact information is set the contact name will be used as the client's display name. If the client's name is set then it will be used instead.
 
@@ -30,6 +30,42 @@ There are three different client id fields:
 The simplest way to add a new client is to click the **+** in the navigation:
 
 ![Add client button](/assets/images/clients/add_client_plus_button_leftnav.png "Add client button")
+
+## Common Tasks
+
+### Change a Client's Currency
+
+By default all clients will have the same currency as the company, however if you need to invoice a client in a different currency you can override a client's currency using these steps:
+
+Open the client, click **Edit**, and navigate to the Settings Tab:
+
+![Set Client Currency](/assets/images/clients/set_client_currency.png "Set Client Currency")
+
+Currency is bound at the client level, not at the document level. This means changing a client's currency applies the new currency to every document associated with that client — all existing and future invoices, quotes, credits, and payments will display in the new currency. There is no per-document currency override, so if you need a one-off document in a different currency, consider creating a separate client record for that purpose.
+
+### Archive a Client
+
+Open the client and choose **Archive** from **More Actions** (or the menu on the client list). Archiving simply hides the client from the default views — nothing else changes. Their invoices, payments, reporting totals, and history all remain intact and can still be viewed by filtering the list to show archived records.
+
+### Restore an Archived Client
+
+On the client list, change the status filter at the top of the table to **Archived**, open the client, and select **Restore** from **More Actions**. The client returns to your active list with all data unchanged.
+
+### Delete a Client
+
+Deleting a client removes them and all of their financial activity from your reports — invoices, payments, credits, and related transactions are excluded from reporting totals as if they never happened. The underlying data is not erased; the client and their records are only hidden and flagged as deleted, and can be brought back in full using **Restore** from **More Actions** (with the status filter set to **Deleted**).
+
+Use **Delete** when you want a client's activity excluded from your reporting. Use **Archive** when you just want to tidy up your active client list without affecting any totals.
+
+To delete, open the client and choose **Delete** from **More Actions**.
+
+### Purge a Client
+
+**Purge** is a permanent, irreversible action that wipes all of the client's data from the system — the client, their contacts, invoices, quotes, payments, credits, and any related records are removed and cannot be restored. Use this only when you are certain the data is no longer needed (for example, to satisfy a data-removal request).
+
+### Merge Duplicate Clients
+
+If the same client was created twice (for example, once through self-registration and once manually), you can combine them into a single record. Open the client you want to merge, choose **Merge** from **More Actions**, and select the client to merge into. All data is then transitioned into one record.
 
 ## Viewing Clients
 
@@ -110,6 +146,7 @@ From the admin portal, you will see the button _Add Second Contact_ to expand th
 - **Email** - Email address associated with the client, and used as their log in credential for the client portal.
 - **Phone** - For reference, phone number contact information for the individual contact.
 - **Add to Invoices** - Whether to include this contact on invoices and quotes by default.
+- **CC Only** - Adds the contact as a CC recipient on emails.
 
 When making an invoice or quote, you have the ability to email it to multiple contacts at the same time. The client's contacts who have **Add to Invoices** checked will be automatically included on new invoices/quotes, like this example:
 
@@ -127,9 +164,77 @@ Just like the billing address, standard address information fields are available
 
 ### Locations
 
-You can add multiple locations to a client. These locations can be used to store different address information for the client, such as a different billing address or shipping address.
+A **Location** is a named alternative address stored against a client. When creating an invoice, quote, credit, recurring invoice, or purchase order for that client, you can pick one of their locations to override the default business or shipping address on that specific document.
 
-Locations can be added to the Invoice / Quote / Credit / Recurring Invoice from their respective edit pages. These locations will override the client's default billing or shipping address for the specific invoice. This is useful if you have a client that has multiple locations, or if you need to send an invoice to a different address than the client's default billing address.
+Locations are useful when a client has:
+
+- Multiple sites, branches, or franchise stores that each need invoices addressed differently
+- A different ship-to address than their business address, that changes from order to order
+- A head office that pays the bill, plus delivery addresses that vary per shipment
+- Sites across multiple tax jurisdictions (for example, different US states) that each need tax calculated locally
+
+There is no limit to how many locations a client can have. Locations are managed only by admin portal users — clients cannot view or edit their own locations from the client portal.
+
+#### Adding a Location
+
+Open the client, click **Edit**, and go to the **Locations** tab (located next to the **Settings** tab). Click **Add Location** and fill in the fields below:
+
+- **Name** - A label to identify this location (e.g. "Sydney Warehouse", "Head Office"). The name must be unique across all locations in your company.
+- **Is Shipping Location** - Determines the role of this location. When enabled, the location is used as a **Shipping Address** override. When disabled, it is used as a **Business Address** override. A client can have separate locations for each purpose.
+- **Address 1 / Address 2 / City / State / Postal Code / Country** - Standard address fields. These will appear on any document the location is assigned to, in place of the client's default address.
+- **Custom Value 1-4** - Four free-text fields for any extra information you want to store against the location (e.g. site contact, delivery instructions, internal reference). These can be printed on PDFs using the placeholders listed below.
+
+#### Using a Location on an Invoice, Quote, or Credit
+
+When creating or editing an invoice, quote, credit, recurring invoice, or purchase order, a **Location** selector appears alongside the client selector at the top of the edit screen. Choose one of the client's locations to apply it to the document. The selected location's address replaces the client's default address on the generated PDF and in any emails sent for that document.
+
+If no location is selected, the document falls back to the client's default **Billing Address** and **Shipping Address** from the client record.
+
+#### Taxes on Locations
+
+If you have **Calculate Taxes** enabled under **Settings > Tax Settings**, each location automatically carries its own **tax nexus** (the jurisdiction in which that site is registered for tax), derived from the location's address. When a document uses that location, tax is calculated against the location's jurisdiction rather than the client's default address. This is what lets a single client with sites in, for example, multiple US states be billed under the correct state-level tax rules per document.
+
+If **Calculate Taxes** is off, the tax nexus on locations has no effect.
+
+#### Location Placeholders
+
+If you customise your invoice templates, the following placeholders resolve to the selected location's details when one is assigned, or fall back to the client's default address fields when no location is selected.
+
+##### Business Address
+
+```bash
+$address1
+$address2
+$city
+$state
+$postal_code
+$country
+$city_state_postal
+$postal_city_state
+$postal_city
+```
+
+##### Shipping Address
+
+```bash
+$shipping_address1
+$shipping_address2
+$shipping_city
+$shipping_state
+$shipping_postal_code
+$shipping_country
+```
+
+##### Location Name and Custom Fields
+
+```bash
+$location_name
+$shipping_location_name
+$location1
+$location2
+$location3
+$location4
+```
 
 
 ### Settings
@@ -163,7 +268,7 @@ Locations can be added to the Invoice / Quote / Credit / Recurring Invoice from 
 
 The _Documents_ panel provides the ability to upload documents and view documents you have linked to the client. These uploaded files are accessible through the admin portal, or through the client portal for your clients to view themselves. A useful way to employ the document uploads feature, is by uploading terms of service documents, contracts, or other files you would like to share with the client for any other reason.
 
-**Note for self-hosted users:** that uploaded documents are saved in the "public/storage" directory in a folder structure using hashed folder names to match the product entry, so backup this directory along with your database to preserve your attached documents.
+**Note for self-hosted users:** that uploaded documents are saved in the "public/storage" directory in a folder structure using hashed folder names to match the product entry, so back up this directory along with your database to preserve your attached documents.
 
 ## Contacts and the Client Portal
 
@@ -177,7 +282,7 @@ See [Client Portal](/docs/user-guide/client-portal)
 
 ## Group Settings for Client Management
 
-If many clients share the same settings, for example, the same currency or email reminder settings, you can create a group on _Settings_ > _Group Settings_ to, apply a standard set of settings to a large group of clients.
+If many clients share the same settings, for example, the same currency or email reminder settings, you can create a group on _Settings_ > _Group Settings_ to apply a standard set of settings to a large group of clients.
 
 For most settings, the app will first check if the client has a value in place, if not it will check if the client belongs to a group and if that group defines a value. Finally, it will use the default value set at the company level.
 

@@ -482,6 +482,12 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
+          id: "api-reference/download-credit",
+          label: "Download quote PDF",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
           id: "api-reference/get-quotes",
           label: "List quotes",
           className: "api-method get",
@@ -545,12 +551,6 @@ const sidebar: SidebarsConfig = {
           id: "api-reference/upload-quote",
           label: "Upload a quote document",
           className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api-reference/download-credit",
-          label: "Download quote PDF",
-          className: "api-method get",
         },
       ],
     },
