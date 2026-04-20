@@ -179,6 +179,8 @@ There is no limit to how many locations a client can have. Locations are managed
 
 Open the client, click **Edit**, and go to the **Locations** tab (located next to the **Settings** tab). Click **Add Location** and fill in the fields below:
 
+![Add/Edit Client Locations](/assets/images/clients/client_location_tab.png "Add/Edit Client Locations")
+
 - **Name** - A label to identify this location (e.g. "Sydney Warehouse", "Head Office"). The name must be unique across all locations in your company.
 - **Is Shipping Location** - Determines the role of this location. When enabled, the location is used as a **Shipping Address** override. When disabled, it is used as a **Business Address** override. A client can have separate locations for each purpose.
 - **Address 1 / Address 2 / City / State / Postal Code / Country** - Standard address fields. These will appear on any document the location is assigned to, in place of the client's default address.
@@ -187,6 +189,8 @@ Open the client, click **Edit**, and go to the **Locations** tab (located next t
 #### Using a Location on an Invoice, Quote, or Credit
 
 When creating or editing an invoice, quote, credit, recurring invoice, or purchase order, a **Location** selector appears alongside the client selector at the top of the edit screen. Choose one of the client's locations to apply it to the document. The selected location's address replaces the client's default address on the generated PDF and in any emails sent for that document.
+
+![Location Selection](/assets/images/clients/invoice_location_selector.png "Location Selection")
 
 If no location is selected, the document falls back to the client's default **Billing Address** and **Shipping Address** from the client record.
 
@@ -310,4 +314,4 @@ $contact.custom1
 $contact.custom2
 $contact.custom3
 $contact.custom4
-```bash
+```
