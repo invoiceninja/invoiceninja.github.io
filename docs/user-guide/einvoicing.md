@@ -2,13 +2,16 @@
 title: "E Invoicing"
 sidebar_position: 8
 ---
-## Introduction
-e-invoicing is rapidly being adopted in many jurisdictions. Invoice Ninja has supported UBL format invoices for some time and now we also support a range of e-invoice formats including direct delivery of e-invoices over the PEPPOL network.
 
-All of the supported e-invoice standards can be downloaded directly after creating a standard invoice in Invoice Ninja. In some jurisdictions you are able to forward the e-invoice directly to your customer, however in some regions (ie, Italy) the invoice is sent through the government and then forwarded onto the customer. This introduces a number of complexities including both parties being registered with the government body (SDI for Italy). If you are in one of these jurisdictions, you will need to start the process (if you have not already) in acquiring a government routing ID.
+E-invoicing is the practice of sending invoices as structured, machine-readable documents rather than PDFs or paper — so your customer's accounting system can ingest them directly without anyone retyping figures. Adoption is accelerating: many jurisdictions have moved, or are moving, to mandate it for B2B and B2G transactions, and the EU has signalled that all member states will be on a standard PEPPOL network implementation by 2030.
 
-## e-invoice standards
-The list of supported e-invoice formats include:
+Invoice Ninja has supported UBL-format invoices for some time, and now covers a range of e-invoice formats along with direct delivery over the PEPPOL network. Every supported standard can be downloaded straight from a regular invoice you create in Invoice Ninja — so enabling e-invoicing doesn't change how you invoice day-to-day, it only changes the shape of the document that goes out.
+
+In some regions the invoice travels directly from you to your customer. In others — Italy is the obvious example — it has to be routed through a government clearinghouse (SDI in Italy's case), which then forwards it to the customer. If you're in one of those jurisdictions, both parties need to be registered with the relevant body, and you'll need to start the process of obtaining a government routing ID if you haven't already.
+
+## E-Invoice Standards
+
+The list of supported formats is:
 
 - [PEPPOL (Universal - Cross industry / border)](#peppol)
 - [ZUGFeRD - XRechung (Germany)](#zugferd)
@@ -18,65 +21,98 @@ The list of supported e-invoice formats include:
 - [FACT1 (Romania)](#fact1)
 - [EN16931 (Generic)](#en16931)
 
-## PEPPOL 
+## PEPPOL
 
-Invoice Ninja has now rolled out a PEPPOL access point which will be available for both self hosted and hosted users to route their e-invoices through the PEPPOL network. 
+PEPPOL is the closest thing to a universal e-invoicing standard — a cross-border network that lets businesses in participating countries exchange invoices without bilateral integrations. Invoice Ninja operates its own PEPPOL access point, available to both hosted and self-hosted users, which routes your e-invoices onto the network.
 
-## How do I get started?
+## Getting Started
 
-### All users
-Each particular jurisdiction has a specific set of fields which MUST be populated in order for an e-invoice to be validated. For example, in Germany a Payment Means field is required within the e-invoice. What is this? This is the sending parties paymnet details, ie IBAN + financial account meta data such as bank, FIB etc. Without this data the e-invoice cannot be generated or sent.  As you onboard through the application you will have the opportunity to validate your data to ensure delivery of your e-invoices.
+Each jurisdiction has its own set of fields that *must* be populated for an e-invoice to validate. In Germany, for example, a Payment Means field is required — that's the sending party's payment details such as the IBAN and related bank metadata. Without it the e-invoice cannot be generated or sent. During onboarding you'll have the chance to validate your data so nothing blocks delivery later.
 
-### Hosted users
-We will be sending out notifications to our hosted users for the steps required for onboarding in their particular region. 
+If you're on our hosted platform we'll send you region-specific onboarding instructions. Self-hosted users proxy their e-invoices through our hosted platform: you register your service with Invoice Ninja, we create a legal entity ID for you, and your system then routes e-invoices through ours. For security and data privacy, the proxy only relays the data that is sent — it's never stored on our side.
 
-### Self hosted users
-Self Hosted users will be proxying their e-invoices through our hosted platform. What does this mean? In order to send your e-invoices you'll need to register your service with Invoice Ninja and we will create your legal entity id for you. Your system will then route e-invoices through our system as required. For security and data privacy, the service will only ever proxy the data that is sent, we will never store the data that is sent.
+## Preparing Your Installation
 
-## How do I prepare my Invoice Ninja installation to support e-invoicing?
-There are a few important considerations with e-invoicing.
+A few things are worth knowing before you flip e-invoicing on, because they change how you build and handle invoices going forward:
 
-1. All taxes must be applied at the line level. Total taxes are not supported with e-invoicing
-2. If you do not charge VAT/TAX on your invoices, you still need to apply a tax code/reason ie. Cross Border exemption, seller with no VAT number etc
-3. After an invoice has been "sent" it can never be modified, instead if there are changes that need to be applied you must create a new Invoice/Credit with the changes
-4. To create a credit note for PEPPOL you need to use a negative invoice. This will generate the correct document type for PEPPOL.
+1. All taxes must be applied at the line level. Invoice-level (total) taxes are not supported with e-invoicing. See [Line-Level vs Invoice-Level Tax](/docs/user-guide/user-guide#line-level-vs-invoice-level-tax) for the reasoning behind the two modes.
+2. If you don't charge VAT or tax on your invoices, you still need to apply a tax code or reason — for example, Cross Border exemption, or seller with no VAT number. The e-invoice schema requires an explicit answer to "why no tax?" rather than silence.
+3. Once an invoice has been *sent* it can never be modified. If something needs to change, create a new invoice or credit with the correction. This is a compliance rule, not a UI limitation — a sent e-invoice is effectively a legal document in transit.
+4. To issue a credit note under PEPPOL, use a negative invoice. That's what triggers the correct PEPPOL document type on the wire.
 
 ## Can I receive e-invoices?
-Yes!  (Self hosted users will receive these via a cron which will poll Invoice Ninja Servers every 4 hours.)
 
-## Getting started checklist
+Yes. On our hosted platform this is automatic. Self-hosted users receive inbound e-invoices via a cron that polls Invoice Ninja servers every four hours.
 
-### Supported Countries:
+## Getting Started Checklist
 
-The list below are the currently supported PEPPOL countries
+### Supported Countries
 
- - Austria
- - Belgium
- - Denmark
- - Germany
- - Iceland
- - Ireland
- - Luxembourg
- - Netherlands
- - Norway
- - Sweden
+The countries currently supported for PEPPOL delivery are:
 
-If your country is not listed, most likely it means they do not support the standard PEPPOL format and are what is known as a CTC (Continuous Transaction Controls) where they have custom requirements for their e-invoicing. CTC countries are not currently supported, and it is important to note that in 2030 all EU countries will be required to use the standard PEPPOL network implementation.
+- Austria
+- Belgium
+- Denmark
+- Germany
+- Iceland
+- Ireland
+- Luxembourg
+- Netherlands
+- Norway
+- Sweden
+
+
+From early May 2026, these countries will also enjoy full PEPPOL support;
+
+- Andorra
+- Australia
+- Bulgaria
+- Switzerland
+- Cyprus
+- Czech Republic
+- Estonia
+- Spain
+- Finland
+- France
+- United Kingdom
+- Greece
+- Croatia
+- Hungary
+- Italy
+- Japan
+- Liechtenstein
+- Lithuania
+- Latvia
+- Malaysia
+- New Zealand
+- Poland
+- Portugal
+- Romania
+- Singapore
+- Slovenia
+- Slovakia
+- United States
 
 ### Hosted Users
- - Register with your government body if e-invoices are to be routed via government portal.
- - Enable e-invoicing (Settings > E Invoice - select e invoice type => PEPPOL)
- - Ensure your company details pass validation (Settings > E-Invoicing - Validation)
- - Generate and send e-invoices!
+
+1. Register with your government body if e-invoices are to be routed via a government portal.
+2. Enable e-invoicing at **Settings > E Invoice**, and select PEPPOL as the e-invoice type.
+3. Ensure your company details pass validation at **Settings > E-Invoicing - Validation**.
+4. Generate and send e-invoices.
 
 ### Self Hosted Users
- - Register with your government body if e-invoices are to be routed via government portal.
- - Register your entity with Invoice Ninja.
- - Ensure your company details pass validation (Settings > E-Invoicing - Validation)
- - Enable e-invoicing (Settings > E Invoice - select e invoice type => PEPPOL)
- - Generate and send e-invoices!
+
+1. Register with your government body if e-invoices are to be routed via a government portal.
+2. Register your entity with Invoice Ninja.
+3. Ensure your company details pass validation at **Settings > E-Invoicing - Validation**.
+4. Enable e-invoicing at **Settings > E Invoice**, and select PEPPOL as the e-invoice type.
+5. Generate and send e-invoices.
 
 ## Code lists / values
+
+For e-invoicing there are several mandatory fields, one of them is the Payment Means. This is your preferred means of being paid by your client, for EU users, select Credit Transfer (code 30). This will allow you to enter your IBAN and BIC.
+
+The full list of available means is listed below:
 
 <a id="payment-means-codelist"></a>
 <details>
@@ -160,24 +196,29 @@ ZZZ - Mutually defined <br/>
 
 </details>
 
-## Jurisdiction specific requirements
+## Jurisdiction Specific Requirements
+
+Every PEPPOL country layers a few of its own rules on top of the standard. The sections below cover what each one expects in addition to the baseline fields.
 
 ### AT - Austria
 
 #### CustomerAssignedAccountID - Mandatory for GOV clients
-If you are sending an e-invoice to a government body, then you must include in the object
+
+When you're billing a government body in Austria, the e-invoice has to include:
 
 AccountingSupplierParty > CustomerAssignedAccountID
 
-This is the ID of the department within the government that the e-invoice will be routed to
+This is the ID of the department within the government that the e-invoice will be routed to — without it the system has no way to direct the document internally.
 
 ### BE - Belgium
-No additional requirements, when your legal entity id is created this is automatically sync'd with HERMES
+
+No additional requirements. When your legal entity ID is created it is automatically synced with HERMES.
 
 ### CH - Switzerland
 
 #### Payment Means - Mandatory
-The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) you must have at least ONE payment means that is a Credit Transfer type
+
+The payment means tells the recipient how you'd like to be paid. Using the [Payment Means](#payment-means-codelist) codelist, you must include at least ONE payment means of the Credit Transfer type.
 
 ```php
    <cac:PaymentMeans>
@@ -194,7 +235,8 @@ The payment means contains information on how the seller wishes to be paid. Use 
 ### DE - Germany
 
 #### Payment Means - Mandatory
-The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) list to determine the correct code required. For example, to display your bank account details the following would be required
+
+The payment means contains information on how the seller wishes to be paid. Consult the [Payment Means](#payment-means-codelist) codelist for the right code — for example, to declare a bank account for credit transfer:
 
 ```php
    <cac:PaymentMeans>
@@ -213,7 +255,8 @@ The payment means contains information on how the seller wishes to be paid. Use 
 *** Government registration required ***
 
 #### Payment Means - Mandatory
-The payment means contains information on how the seller wishes to be paid. Use the [Payment Means](#payment-means-codelist) you must have at least ONE payment means that is a Credit Transfer type
+
+The payment means contains information on how the seller wishes to be paid. Using the [Payment Means](#payment-means-codelist) codelist, you must include at least ONE payment means of the Credit Transfer type.
 
 ```php
    <cac:PaymentMeans>
@@ -228,95 +271,93 @@ The payment means contains information on how the seller wishes to be paid. Use 
 ```
 
 #### Due Date - Mandatory
+
 The invoice MUST have a due date set.
 
 #### Government bound e-invoices
-If sending to a Spanish government body the property
+
+If sending to a Spanish government body, the property:
 
 AccountingCustomerParty > PublicIdentifiers
 
-Must be set
+must be set.
 
 ### FI - Finland
-No special requirements
+
+No special requirements.
 
 ### FR - France
-The SIRET / 0009 identifier of the final recipient is to be included in the invoice.accountingCustomerParty.publicIdentifiers array.
+
+The SIRET / 0009 identifier of the final recipient must be included in the `invoice.accountingCustomerParty.publicIdentifiers` array.
 
 ### IT - Italy
-No special requirements
+
+No special requirements.
 
 ### NL - Netherlands
-When sending to government bodies the following property must be configured
 
-accountingSupplierParty > party > contact >email 
+When sending to government bodies the following property must be configured:
 
-### PL -Poland
+accountingSupplierParty > party > contact > email
+
+### PL - Poland
 
 *** Government registration required ***
 
-### RO -Romania
+### RO - Romania
 
 *** Government registration required ***
 
 #### Special codes for county
-The county field for a Romania address must use the ISO3166-2:RO codes, e.g. "RO-AB, RO-AR". Don’t omit the country prefix!
+
+The county field for a Romanian address must use the ISO3166-2:RO codes — for example, "RO-AB" or "RO-AR". Don't omit the country prefix, as validation will reject the document.
 
 #### Special codes for city
-The city field for county RO-B must be SECTOR1 - SECTOR6.
+
+For county RO-B the city field must be one of SECTOR1 through SECTOR6.
 
 ### SE - Sweden
-Receiver needs to be registered with Svefaktura to receive the e-invoice
+
+Receiver needs to be registered with Svefaktura to receive the e-invoice.
 
 ## ZUGFeRD
 
 <img class="" src="/assets/images/einvoices/zugferd.png" alt="CBA PowerBoard"/>
 
-Enabling ZUGFeRD is as simple as enabling e-invoicing in Settings > E-Invoice, selecting the appropriate X format you wish to generate and save! As the ZUGFeRD is very comprehensive, you can also embed the einvoice within the PDF document itself, simply toggle on the Merge E-Invoice and PDF switch and then save.
+ZUGFeRD is the German hybrid format — a regular PDF with the structured e-invoice XML embedded inside it, which means a single document works for both humans and machines. Turn it on from **Settings > E-Invoice**, select the X format variant you need, and save. If you'd like the XML carried inside the PDF itself rather than as a separate file, toggle **Merge E-Invoice and PDF** before saving.
 
 ** NOTE **
 
-The ZUGFeRD standard does not accept negative valued invoices. Historically some users may have used a negative invoice to indicate a Credit Note, this is no longer possible. Instead a dedicated Credit Note should be generated with matching POSTIVE values which reflect the credit you wish to assign.
+ZUGFeRD does not accept negative-valued invoices. If you've historically used a negative invoice to represent a credit note, that won't work here — you'll need to create a dedicated credit note with matching *positive* values reflecting the credit you're assigning. See [Credits](/docs/user-guide/credits) for how credit notes work.
 
 ## Facturae
 
-Spanish e-invoice documents are supported and generate valid documents. these can be uploaded into the FACe system.
+Spanish Facturae documents are supported and generate valid output. These can be uploaded into the FACe system.
 
 ## Verifactu (alpha) {#verifactu}
 
-Support for Verifactu is nearing. The invoicing flow within Invoice Ninja will remain unchanged however there are several important points to note:
+Support for Verifactu is nearing release. Your day-to-day invoicing flow inside Invoice Ninja doesn't change, but there are a few important behaviours to be aware of because Verifactu is a submission-based system with stricter document lifecycle rules:
 
-1. Power of Attorney.
+**1. Power of Attorney.** For Invoice Ninja to submit invoices to AEAT on your behalf, AEAT requires you to grant permission. This is done directly on the AEAT website by searching for Invoice Ninja in the list of registered providers.
 
-In order for Invoice Ninja to submit invoices to AEAT on your behalf, AEAT requires you to provide permission. This can be done directly from the AEAT website and searching for Invoice Ninja in the list of registered providers.
-
-2. Document submission process.
-
-- After an invoice has been submitted, it cannot be modified and the document itself will move into a "locked state"
-- It is possible to cancel a submitted document by either using the Cancel or Delete option on the invoice.
-- If you need to create a rectification invoice (Credit Note), you will need to use the Rectify menu option, this will generate a negative invoice linked to the existing invoice.
-- Rectification invoices can be cancelled, this will remove the credit note linked to the invoice.
+**2. Document submission process.** Once an invoice has been submitted it cannot be modified — the document moves into a locked state. You can still cancel a submitted document using **Cancel** or **Delete** on the invoice. If you need to issue a rectification invoice (a credit note), use the **Rectify** menu option — this generates a negative invoice linked to the original. Rectification invoices can themselves be cancelled, which removes the credit note linked to the invoice.
 
 **NOTE**
 
-Once an invoice has had a rectification invoice (credit note) applied to it, it cannot be delete unless all of the credit notes attached to it have also been cancelled/deleted.
+Once an invoice has a rectification invoice (credit note) applied to it, it cannot be deleted unless all attached credit notes have also been cancelled or deleted first.
 
-3. Verifactu tab:
+**3. Verifactu tab.** After saving an invoice on the edit invoice page, a Verifactu tab appears with additional information about that invoice's validation status.
 
-On the edit invoice page, after saving an invoice you will now see a Verifactu tab, inside here will be additional information about the invoice validation.
-
-4. Mandatory information.
-
-For invoices to Spanish users. You MUST have entered a NIF for the client this is a requirement from AEAT. The only exception would be if no NIF is available to use the clients Passport Number in the Client's ID Number field. AEAT requires the census data on the recipient. Sending will fail if you attempt to send an invoice to a client without these details.
+**4. Mandatory information.** For invoices to Spanish customers you MUST enter a NIF for the client — this is an AEAT requirement. The only exception is when no NIF is available, in which case the client's passport number can be stored in the **ID Number** field on the client record (see [Clients](/docs/user-guide/clients)). AEAT requires census data on the recipient, so sending will fail for any client missing these details.
 
 ## FatturaPA
 
-Italian e-invoices can be generated, however as there is no connection in the SDI as yet. This format is not currently production ready.
+Italian e-invoices can be generated, but the SDI connection isn't live yet so this format is not currently production ready.
 
 ## FACT1
 
-Romanian e-invoices can be generated, however as there is no delivery connection as yet. This format is not currently production ready.
+Romanian e-invoices can be generated, but the delivery connection isn't live yet so this format is not currently production ready.
 
 ## EN16931
 
-Standard EN16931 documents can be generated and downloaded as needed.
+Standard EN16931 documents can be generated and downloaded as needed. This is the generic European norm that underpins most national formats, so it's a useful fallback when you need a compliant structured invoice without committing to a specific country profile.

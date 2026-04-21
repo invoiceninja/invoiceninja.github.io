@@ -144,9 +144,6 @@ const config: Config = {
           { from: ['/en/payment-gateways'], to: '/docs/developer-guide/payment-gateways' },
           { from: ['/en/statics'], to: '/docs/developer-guide/statics' },
 
-          // Migration redirects
-          { from: ['/en/migration'], to: '/docs/migration' },
-
           // Legal redirects
           { from: ['/en/legal/license'], to: '/docs/legal/license' },
           { from: ['/en/legal/terms_of_service'], to: '/docs/legal/terms-of-service' },
@@ -183,7 +180,6 @@ const config: Config = {
             '/docs/developer-guide', '/docs/developer-guide/api/authentication',
             '/docs/developer-guide/api/clients', '/docs/developer-guide/api/invoices',
             '/docs/developer-guide/payment-gateways', '/docs/developer-guide/statics',
-            '/docs/migration',
             '/docs/legal/license', '/docs/legal/terms-of-service', '/docs/legal/data-privacy',
             '/docs/legal/self-hosting-data', '/docs/legal/self-hosting-terms', '/docs/legal/gdpr',
           ];

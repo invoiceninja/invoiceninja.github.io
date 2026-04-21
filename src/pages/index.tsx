@@ -4,7 +4,6 @@ import Link from "@docusaurus/Link";
 import BookOpenIcon from "@site/static/assets/images/icons/BookOpen.svg";
 import OfficeIcon from "@site/static/assets/images/icons/Office.svg";
 import CloudUploadIcon from "@site/static/assets/images/icons/CloudUpload.svg";
-import ArrowsOppositeDirectionIcon from "@site/static/assets/images/icons/ArrowsOppositeDirection.svg";
 import GearIcon from "@site/static/assets/images/icons/Gear.svg";
 import TableColumnsIcon from "@site/static/assets/images/icons/TableColumns.svg";
 import CircleLockIcon from "@site/static/assets/images/icons/CircleLock.svg";
@@ -47,12 +46,6 @@ const operationsCards: Card[] = [
     description: "Quick start on the managed cloud platform with minimal setup.",
     links: [{ to: "/docs/hosted/hosted-quickstart", label: "Hosted quickstart" }],
     Icon: CloudUploadIcon,
-  },
-  {
-    title: "Migration",
-    description: "Move from v4 to v5 with the migration checklist and rollout path.",
-    links: [{ to: "/docs/migration", label: "Migration guide" }],
-    Icon: ArrowsOppositeDirectionIcon,
   },
 ];
 

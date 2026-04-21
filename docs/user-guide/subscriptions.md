@@ -4,31 +4,35 @@ sidebar_position: 23
 ---
 ## Introduction
 
-Payment Links (previously known as Subscriptions) are a supercharged version of our Buy Now links from version 4.
+Payment Links (previously called Subscriptions) are Invoice Ninja's hosted checkout: a shareable URL that lets anyone buy from you without you needing to create an invoice or set up a client record first. Drop the link in an email, a social post, or a button on your website, and the person who clicks it lands on a branded checkout page, pays through your configured gateway, and becomes a client in your account automatically.
 
-In version 5, payment links allow you to build an instant shop front where you can bundle your existing products into direct link purchases.
+This is the feature to reach for when you want to sell something directly — a downloadable template, a one-off service fee, a monthly retainer, or a SaaS-style plan. If you already have a client on file and want to bill them on a schedule, [Recurring Invoices](/docs/user-guide/recurring-invoices) are the better fit; Payment Links are for the moment of first sale, where the customer discovers the price, pays, and self-serves from then on.
 
 ![alt text](/assets/images/subscriptions/payment_links_list.png "Payment Links list")
 
 ![alt text](/assets/images/subscriptions/payment_link_overview.png "Payment Link overview")
 
-When you create a payment link, a direct link is generated which is available to use to directly purchase the given product(s). This could be suitable for digital sales that are one time, or recurring, or even both at once.
+## Building a Payment Link
+
+A Payment Link is made up of one or more [Products](/docs/user-guide/products) you've already defined. When you create the link, you pick the products to include and the checkout page handles the rest — name, description, price, tax, and currency all flow through from the product record.
 
 ![alt text](/assets/images/subscriptions/payment_link_products_dropdown.png "Subscription products")
 
-When you create the payment link you are able to combine one time and recurring products into a single payment link. For example, lets say you run a hosting business and want to create a payment link which has a single Setup charge as well as a monthly recurring charge for the server.
+You can mix one-time and recurring products in the same link. A common example is a hosting business that charges a one-off setup fee alongside a monthly server charge: the setup fee lands on the first invoice only, and a recurring invoice takes over from there for the ongoing charge. Digital downloads, course access, retainers, memberships, and physical goods all fit the same pattern.
 
-When your client purchases this, the Setup charge will only be applied to the first invoice, and then a recurring invoice is generated for any recurring products in the payment link.
-
-If you want to allow your clients to move between subscriptions then this is possible by creating a Group and adding each payment link to the group. This bundles all of the payment links tagged with the same group together!
+## Settings and Self-Service
 
 ![alt text](/assets/images/subscriptions/payment_link_settings.png "Subscription settings")
 
-The settings pane allows you to define the frequency / auto billing and also promo codes/discounts. We also have integrated the ability for end user self service to change between subscriptions or even cancel these subscriptions. We also handle the accounting for you for refunds if they are defined.
+The settings pane is where you set billing frequency, toggle auto-billing, and add promo codes or discounts. It's also where you enable client self-service — once turned on, customers can upgrade, downgrade, or cancel their own subscription from the [Client Portal](/docs/user-guide/client-portal) without emailing you. Refunds, when you allow them, are accounted for automatically so your reports stay accurate.
+
+If you want customers to be able to move between plans — say, a Basic, Pro, and Enterprise tier — create a Group and tag each Payment Link with the same group. Any link in the group then shows the others as upgrade or downgrade options on the customer's portal.
+
+Payment Links use the same gateways as the rest of the app, so anything you've configured under [Payment Gateways](/docs/user-guide/gateways) is available at checkout.
 
 ## Webhook configuration
 
-The final piece of the payment links puzzle is integrating with third party services. When a subscription is purchased / cancelled / upgraded we can notify a third party endpoint!
+The final piece of the payment links puzzle is integrating with third party services. When a subscription is purchased, cancelled, or upgraded, Invoice Ninja can notify an external endpoint you control — useful for provisioning accounts, sending license keys, kicking off onboarding, or syncing to your CRM.
 
 ![alt text](/assets/images/subscriptions/payment_link_webhook.png "Subscription webhooks")
 

@@ -2,19 +2,12 @@
 title: "Tasks"
 sidebar_position: 19
 ---
-_Tasks_ represent small to medium sized jobs or services performed for a client, and are suited perfectly for services rendered with an hourly rate. Tasks enable you to track your time on the job, with stopwatch-like functions baked into your tasks, and you can track and record hours across as many date and time periods as you need to.
 
-You can assign tasks to a project, in order to keep track of the various jobs involved in it, or leave them as standalone small jobs.
+A **task** in Invoice Ninja is a time entry — a record of work you've done for a client, usually billed at an hourly rate. Tasks are built for the kind of work that's measured in hours rather than units: design sessions, legal consultations, support calls, on-site visits, development sprints, or any service where what you're selling is your time. Once the hours are tracked, a task can be dropped straight onto an invoice and billed without re-keying anything.
 
-Tasks can be added to a client's invoice independently, or in bulk when you create an invoice out of the project record itself.
-
-Tasks also allow you to assign an admin portal User to them, to maintain accountability and responsibility for the work associated with them.
-
-The _Tasks_ module is powerful, especially when used in combination with Projects and Expenses, and very useful to any service-based business.
+Tasks can stand on their own, or they can be grouped under a [Project](/docs/user-guide/projects) when a piece of work spans multiple sessions or team members. They're also one of the most useful pairings with [Expenses](/docs/user-guide/expenses) — together they let you bill a client for both your time and the out-of-pocket costs incurred on their behalf.
 
 ## Overview
-
-With the Tasks module, you can easily manage your work and stay organized. Try it out today!
 
 <video width="100%" controls>
   <source src="/assets/videos/tasks/tasks_demo.mp4" type="video/mp4" />
@@ -22,31 +15,23 @@ With the Tasks module, you can easily manage your work and stay organized. Try i
 
 ### Table View
 
-- By default, the Tasks module opens to the table view, where you can see all available tasks.
-- Filter tasks by their status: "Invoiced", "Uninvoiced", "Backlog", "Ready to do", "In progress", "Done"
-- Customize the columns and sort the tasks in the list to suit your needs.
-  - Use the 'Columns' button at the bottom right corner of the screen to add or remove columns from the table (ex. to display the assigned user, rate...)
-- Click on a task's status text in the row to change it or add a New Task Status.
+The Tasks module opens to the table view by default, showing every task in one list. You can filter by status — *Invoiced*, *Uninvoiced*, *Backlog*, *Ready to do*, *In progress*, or *Done* — and use the **Columns** button in the bottom right to add or remove fields like the assigned user or the rate. Click a task's status in the row to change it, or to add a new custom status on the fly.
 
 ### Kanban View
 
-- The Tasks module also offers an alternative viewing mode, the kanban view.
-- Use the kanban view to visualize your active tasks in a highly visual way, grouped into statuses.
-- Tasks are sorted into vertical lists by their status, and appear like notes stuck to a board.
-- Hover over a task 'note' to see options to view, edit, or start/stop the task.
-- Drag and drop tasks into other columns to change the status of the task quickly and easily.
-- You can use the _Project_ selection to see tasks linked to a specific project.
-- Press the "**+**" to the right of a task column to quickly add a task with that status.
+The kanban view is the same data arranged as a board. Tasks appear as cards grouped into vertical columns by status, so you can see at a glance what's waiting, what's underway, and what's finished. Hover over a card to view, edit, or start and stop its timer. Drag a card between columns to change its status. Use the **Project** selector at the top to narrow the board to a single project, and press the **+** beside any column to drop in a new task with that status already set.
 
 <video width="100%" controls>
   <source src="/assets/videos/tasks/tasks_kanban_operations.mp4" type="video/mp4" />
 </video>
 
-### Custom Task Status
+:::warning
+The kanban view is a working board, not a history view — invoiced and paid tasks are hidden so you can focus on what's still in progress. If you want the full history, use the table view.
+:::
 
-You can add custom task statuses from the table view by clicking a status text and selecting "New Task Status", or from the Kanban view by scrolling to the right and selecting the "**+**".
+### Custom Task Statuses
 
-The "New Task Status" window will appear where you will enter a name for the status as well as a color.
+The built-in statuses cover most workflows, but you can add your own to match how your team actually works. From the table view, click a task's status and choose **New Task Status**; from the kanban view, scroll right and press the **+**. Give the status a name and a colour, and it becomes available everywhere.
 
 #### From Table view
 
@@ -56,100 +41,82 @@ The "New Task Status" window will appear where you will enter a name for the sta
 
 ![New task status from kanban](/assets/images/tasks/new_task_status_from_kanban.png)
 
-#### Manage Task Statuses
-
-Task statuses can be edited/added from _Settings>Task Settings_
-
-:::warning
-Note that the *Tasks* kanban view does not present invoiced and paid tasks, it is more like a "to do list" kanban for visualizing and managing your current work, rather than a full history view, which the table view is better suited for.
-:::
+To rename, reorder, or delete statuses later, head to *Settings > Task Settings*.
 
 ## Viewing a Task
 
-- Select some whitespace on the tasks's row from the table view, or click on "View" for a task in the task kanban view to bring up the Tasks panel on the right.
-- At the top of the Tasks overview panel and on the right of the table view, you will see a "More Actions" dropdown menu.
+Click anywhere in a task's row from the table view, or hit **View** on a kanban card, to open the Tasks panel on the right. Along the top, the **More Actions** dropdown gives you everything you can do with that task.
 
-### More Actions Dropdown Menu
+### More Actions
 
 ![More actions](/assets/images/tasks/tasks_more_actions_dropdown.png)
 
-- "Edit" allows you to edit the task
-- The "Start"/"Stop" button changes depending on the state of the task, which will respectively start and create a date/time line in the task record to begin tracking billable hours for the work, or stop the timer and fill in the end time with the current time.
-- "Invoice Task" will create a new invoice record automatically filled with the current task for the assigned client of that task. Note: this option is only shown when "More Actions" is selected from the task's table view.
-- "Add to Invoice" will prompt you to select one of the client's active invoices to add the task to.
-- "Clone" will bring up the New Task screen pre-filled with the same information from the selected task.
-- "Run Template" allows you to run a template for the selected task.
-- "Archive" archives the task.
-- "Delete" deletes the task.
+- **Edit** — open the task to change its details.
+- **Start / Stop** — toggles the timer. Starting adds a new time entry with the current time; stopping closes it off with an end time.
+- **Invoice Task** — creates a new invoice for the task's client, pre-filled with the task. Available from the task's table row.
+- **Add to Invoice** — adds the task as a line item on one of the client's existing active invoices.
+- **Clone** — opens the new task screen pre-filled with this task's details.
+- **Run Template** — runs a configured template against the task.
+- **Archive** / **Delete** — hide or remove the task (see [Clients](/docs/user-guide/clients) for how archive and delete behave across the app — the same logic applies here).
 
-### Overview
+### Overview Tab
 
-The Overview tab in the Tasks panel provides you with all the general information about a task, including duration, value, and status.
+The Overview tab shows the shape of the task at a glance: its current status, the total duration logged, and the resulting amount (duration multiplied by rate). Below that is the breakdown of every time entry recorded. The client, project, assigned user, and status are all clickable links into filtered lists elsewhere in the app.
 
-- View the "Amount" or value of the work logged so far (Total Duration \* Rate)
-- See the task's status ("state")
-- A breakdown of dates and times of work entered in the task record is also displayed.
-- Click on the interactive links to access filtered lists or views of linked clients, projects, task status, or users.
-
-## Editing/Creating a Task
+## Creating and Editing a Task
 
 ### Details
 
-- **Client** - Assign a client to link to the task. When you invoice the task, it will automatically assign the invoice to that client.
-- **Project** - Optionally assign the task to an available project. Doing this will automatically assign the task to the same client as the project, and when you select a client, it will filter the available projects by those which are assigned to the client you've selected. Selecting a project will override the default task rate with the task rate defined in the project record.
-- **User** - Optionally assign an admin portal User to the task, to maintain accountability and responsibility for the work associated with it.
-- **Task Number** - While you can manually edit this, the best practice is to leave this field blank and allow Generated Numbers policies to populate the Task Number.
-- **Rate** - Automatically this field will use the default global task rate, or more authoritatively, the default task rate of the project it was assigned to. You may also manually specify a task rate by filling in the field yourself.
-- **Status** - Select a task status. Task statuses are a small part of the task lifecycle and help sort your tasks for organizational purposes. You can select one of the prebuilt task statuses, or create your own task statuses under _Settings_ > _Task Settings_.
-- **Description** - Create a description/note for your task, which will be included within the line item description of the task when you create an invoice out of your tasks or projects.
+- **Client** — who the work is for. When you invoice the task, the invoice is automatically raised against this client. See [Clients](/docs/user-guide/clients).
+- **Project** — optional, but useful. Assigning a task to a [project](/docs/user-guide/projects) automatically inherits the project's client and its task rate, so a consulting retainer billed at $150/hr doesn't have to be re-entered for every session.
+- **User** — the admin portal user responsible for the task. Helpful for accountability when more than one person logs time.
+- **Task Number** — leave blank and let Invoice Ninja auto-generate it based on your *Generated Numbers* policy.
+- **Rate** — falls back through a simple order: the project's rate (if a project is set), otherwise the client's default task rate, otherwise the company-wide default. You can override any of them by typing a rate directly.
+- **Status** — pick one of the prebuilt statuses or a custom one you've created under *Settings > Task Settings*.
+- **Description** — the note that will appear as the line-item description when the task is added to an invoice, so write it with the client in mind.
 
 ### Documents
 
-Here you are able to upload files such as pictures, documents, and more in order to give your client access to these files from the client portal.
+The Documents tab is for attaching files — photos from a site visit, a signed scope of work, a PDF of meeting notes — that you want kept alongside the task. Uploaded documents can be shared with the client through the [Client Portal](/docs/user-guide/client-portal).
 
-Note: To download all documents linked to one or more tasks, you can select the checkboxes for the tasks (from the table view), then _More Options>Documents_ which will email you a download link to retrieve the files.
+To pull down everything attached to one or more tasks at once, tick the checkboxes in the table view and choose *More Options > Documents*. You'll receive an email with a download link.
 
 ## Time Tracking
 
-The time tracking feature allows you to easily track billable hours for your work on a task for the client.
+Time tracking is where most of the day-to-day work happens. Every task has a **Time Entries** tab that holds a list of dated work sessions, and you can fill it in however suits you.
 
-### Time Entries
+The timer is the fastest way: press **Start** and Invoice Ninja opens a new entry with the current date and start time, then updates the duration every second. Press **Stop** and the end time locks in. If you'd rather log time after the fact — say, reconciling a day of work in the evening — type the entries in manually. You can enter a start and end time and let the duration calculate itself, or type the duration and let the end time calculate instead. Tab through the columns for quick keyboard entry.
 
-- View a mostly self-explanatory list of date and times.
-- Manually enter or edit date and time entries.
-- Use the start/stop button to start and stop the timer.
-- Starting the timer creates a new line in the list with the current Date and Start Time.
-- Stopping the timer will populate the "End Time", which calculates the Duration.
-- Alternatively, you can manually set the Duration, which will calculate your end time for you.
-- _TIP: tab through the columns for quick entry._
-- If an entry in the times list has no end time yet, the task record is considered to have the Running status and you will see the Duration of the task change every second when viewing the task, while it tracks the progress.
+A task with an open-ended entry (a start time but no end time yet) is considered *Running*. Running tasks show a live-updating duration and stay visible in the kanban view with a play icon, so it's always clear what's on the clock.
 
-## Lifecycle of a Task
+## Billing a Task
 
-Tasks have a unique lifecycle, with the option to create custom statuses and support for multiple statuses to aid in sorting and managing tasks while reflecting their current states.
+Once a task has hours logged, there are two ways to turn it into money. **Invoice Task** from the More Actions menu spins up a brand-new invoice for that client with the task already filled in as a line item. **Add to Invoice** lets you append the task to one of the client's existing draft or active invoices — handy when you're batching a month of small tasks onto a single monthly bill.
 
-### Manual Task Status or _Logged_
+If the task is tied to a project, you can also invoice at the project level and bring every uninvoiced task (and expense) over in one step. See [Projects](/docs/user-guide/projects) for that flow, and [Invoices](/docs/user-guide/invoices) for how line items, taxes, and totals come together on the invoice itself.
 
-A manually set task status is one that you select or configure, such as one of the pre-configured task statuses (Backlog, Done, In progress, or Ready to do) or a custom status you've created in _Settings_ > _Task Settings_. These statuses serve primarily as recordkeeping and help sort and visualize your active tasks. Tasks with a manually set status are considered _Logged_ if they have not been invoiced and are not currently in a _Running_ state.
+Once a task has been added to an invoice, it moves into the *Invoiced* state and drops off the kanban board — it's done work, not pending work.
+
+## Task Lifecycle
+
+Tasks can sit in several states at once (a manually set status plus a system state like *Running* or *Invoiced*), which can feel a little unusual at first. The key thing to know is which state governs when.
+
+### Logged
+
+The default state. A task is *Logged* when it has a manually chosen status (either a built-in one like *Backlog* or a custom one) and isn't currently running or invoiced. Logged is just Invoice Ninja's way of saying "this task exists, has a status, and is waiting for you to do something with it".
 
 ### Running
 
-A running task is any task that is currently tracking billable hours on the clock.
-
-- A task automatically enters a _Running_ status when it contains a line for date/time with a start time entered, but no duration or end time yet entered.
-
-- A running task will always show a moving time for it's _Duration_ to help track the active work being performed for that task.
-- When a task is in the running state, it will be presented in the table as "Running" but it technically still has the manually set task status, and when you look at the tasks kanban view, you will see it sorted as such, with a "play" icon next to it to represent it is in a running state.
-- Whether you manually populate the _End Time_ or _Duration_ of the open ended line on a task record, or stop the task to automatically populate those fields, the running task will return to a _Logged_ state, and appear in the table with the manually set task status.
+A task enters *Running* automatically the moment its time entry list contains a line with a start time but no end time yet. The duration ticks upward in real time, and the task appears as *Running* in the table view while keeping its underlying status for the kanban board. Completing the open entry — either by stopping the timer or by filling in the end time or duration by hand — returns the task to *Logged*.
 
 ### Invoiced
 
-A task is in an invoiced state after the task has been added to an invoice. A task in the invoice state no longer appears in the kanban view, because it is considered completed. When viewing a task that has been invoiced, there will be a link to the invoice it has been assigned to.
+Once a task has been added to an invoice, it's *Invoiced*. Invoiced tasks disappear from the kanban board (they're no longer work in progress) and, when viewed, show a link through to the invoice they belong to. If the invoice is later deleted, the task is released back to an uninvoiced state and becomes available to bill again.
 
 ### Archived
 
-Archived tasks are hidden from all views by default. Archived tasks are still considered available, and can be invoiced and billed for. You can change your view filters to see archived tasks, and you can "Restore" an archived task to return it to its former state.
+Archiving hides a task from the default views without removing it. Archived tasks can still be invoiced and still count toward reports — they're just tucked out of sight. Switch your status filter to *Archived* to find one, then use **Restore** to bring it back into circulation.
 
 ### Deleted
 
-A deleted task is no hidden from all views by default, and is no longer considered available. Deleted tasks can not be added to invoices, edited, or billed for. You can change your view filters to see deleted tasks, and you can "Restore" a deleted task record to return it to its former state.
+Deleting goes a step further: a deleted task is hidden and can no longer be edited, invoiced, or billed. The data is kept, though, so you can switch the filter to *Deleted* and use **Restore** to reinstate a task if it was removed by mistake.

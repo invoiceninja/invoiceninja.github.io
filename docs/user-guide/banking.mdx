@@ -4,47 +4,67 @@ sidebar_position: 4
 ---
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-## Bank Integrations with Yodlee
+Invoice Ninjas banking integration pulls your bank transactions into Invoice Ninja so you can match money coming in to invoices and categorise money going out as expenses — without retyping each line. You connect an account once (or upload a CSV), your transactions appear in the **Transactions** list, and rules can do most of the matching work for you.
 
-For enterprise users on our hosted platform, we have integrated with [Yodlee](https://www.yodlee.com), a leading data aggregration platform.
+This page covers how banking works, how to connect an account, how to work with the resulting transactions, and how to build rules that automate matching.
 
-The Yodlee integration links primarily with most of the major US banks, allowing you to link your bank accounts with Invoice Ninja to import your bank transactions for reconciliation.
+## How It Works
+
+Every bank transaction in Invoice Ninja goes through the same three-step lifecycle.
+
+1. **Imported** — a transaction arrives in Invoice Ninja, either through an automatic bank sync (Yodlee or GoCardless) or from a CSV file you upload. It starts with a status of **Unmatched**.
+2. **Matched** — the transaction is linked to something in your account. For incoming money, that's an invoice or an existing payment. For outgoing money, that's a vendor and expense category. You can match manually, one transaction at a time, or let a **bank rule** do it automatically.
+3. **Converted** — a real financial record is created from the transaction. For incoming money that's a **Payment** applied to the invoice; for outgoing money that's an **Expense** entry. Conversion can happen manually from the Transactions screen, or automatically if the matching rule has **auto-convert** enabled.
+
+### Transaction Statuses
+
+| Status | What it means |
+|---|---|
+| **Unmatched** | No rule or manual action has linked this transaction yet. |
+| **Matched** | An invoice, payment, or vendor/category has been linked, but no payment or expense record has been created yet. |
+| **Converted** | A payment or expense record has been created from this transaction. |
+
+You don't *have* to use rules. Rules are just a way to skip the manual step when the same pattern comes up repeatedly (e.g. "every Stripe deposit should mark the matching invoice as paid").
+
+## Connecting a Bank Account
+
+There are three ways to get your transactions into Invoice Ninja. Pick whichever matches your bank and region.
+
+### Yodlee (primarily US banks)
+
+For Enterprise users on our hosted platform, we've integrated with [Yodlee](https://www.yodlee.com), a leading data aggregation platform. Yodlee connects to most major US banks and pulls transactions automatically on a schedule.
 
 <VideoPlayer src="/assets/videos/banking/banking.mpd" isDash={true} id="banking-video" />
 
-## Credit Card Integrations with GoCardless
+### GoCardless (primarily EU banks)
 
-We have integrated with [GoCardless](https://gocardless.com), a payments integration platform.
+We've also integrated with [GoCardless](https://gocardless.com), which connects to most major banks across the EU and UK and imports their transactions into Invoice Ninja for matching.
 
-The GoCardless integration allows you to link a credit card account from primarily with most of the major EU banks to import transactions for reconciliation.
+### Connecting an Account
 
-## Connecting your accounts
+Both integrations use the same flow from inside Invoice Ninja.
 
-![alt text](/assets/images/banking/bank_connect.png "Bank accounts list")
+![Bank accounts list](/assets/images/banking/bank_connect.png "Bank accounts list")
 
 ```bash
 Settings > Credit Cards & Banks > Connect
 ```
 
-Clicking on the connect button with open a new browser window which connects to Yodlee, from this screen you are able to search for your bank and then log into your Bank Account
+Clicking **Connect** opens a new browser window where you search for your bank and sign in to your bank account.
 
-![alt text](/assets/images/banking/bank_yodlee_connect.png "Find your bank and login")
+![Find your bank and login](/assets/images/banking/bank_yodlee_connect.png "Find your bank and login")
 
-Once you have successfully authenticated with your bank, you'll be able to select the accounts you wish to link to Invoice Ninja, when this is completed, click save & finish.
+Once you've authenticated, you can select the accounts you'd like to link. Click **Save & Finish** when you're done. You'll also get the opportunity to add more accounts from different banks before you exit.
 
-Yodlee will give you the opportunity to add more bank accounts from different banks prior to exiting.
-
-![alt text](/assets/images/banking/auto_sync.png "Auto Sync")
+![Auto Sync](/assets/images/banking/auto_sync.png "Auto Sync")
 
 :::info
-Tip: If you wish for Invoice Ninja to automatically sync your transaction, turn on Auto Sync. This can be done for each individual Bank Account.
+**Auto Sync** controls whether Invoice Ninja pulls fresh transactions from your bank on a recurring schedule. You can toggle this on or off for each individual bank account — handy if you want one account synced daily but another only refreshed on demand.
 :::
 
-## Manually Importing Bank Statements
+### CSV Import (works with any bank)
 
-If you prefer to import your data using .csv files from your bank, you can upload these directly into Invoice Ninja.
-
-You can import these from:
+If your bank isn't supported, or you prefer not to link a live account, you can import transactions from a CSV file exported by your bank.
 
 ```bash
 Transactions > Import
@@ -54,290 +74,285 @@ Transactions > Import
 
 ![transactions import](/assets/images/transactions/transactions_import.png)
 
-You'll need to have created a Bank Account prior to this, so the transactions are linked to the correct bank account.
+Before importing, create a bank account in **Settings > Credit Cards & Banks** so the transactions have somewhere to land. During import, you'll be asked to map the CSV columns (date, description, amount) to Invoice Ninja's transaction fields.
 
-## Transactions
+## Working With Transactions
 
-Once data has been imported into Invoice Ninja, this can be viewed from the Transactions tab in the sidebar.
+Once transactions are in the system, they appear under the **Transactions** tab in the sidebar.
 
-![alt text](/assets/images/banking/bank_transactions.png "Transactions")
+![Transactions](/assets/images/banking/bank_transactions.png "Transactions")
 
-For more details on Transactions, see [Transactions](/docs/user-guide/transactions)
+From here you can:
+
+- **Filter** by status (Unmatched, Matched, Converted) to quickly find transactions that need your attention.
+- **Manually match** a transaction to an invoice, payment, or expense — useful for one-off transactions that don't justify a rule.
+- **Convert** a matched transaction into a payment or expense record.
+- **Delete** a transaction if it was imported in error (the underlying payment/expense is not deleted).
+
+For the full reference on the Transactions module, see [Transactions](/docs/user-guide/transactions).
 
 ## Bank Rules
 
-To improve your efficiency, you can build a ruleset to match your incoming transactions. Using a rule set will allow Invoice Ninja to perform the matching and/or conversion of transactions for you.
+Bank rules automate the matching step so you don't have to process each transaction manually. There are two kinds:
 
-![alt text](/assets/images/banking/bank_rule_list.png "Bank rule lists")
-
-There are two types of bank rules — **credit rules** for incoming payments and **debit rules** for outgoing payments:
-
-| | Credit Rules | Debit Rules |
+| | Money-in rules (Credit) | Money-out rules (Debit) |
 |---|---|---|
 | **Direction** | Money in | Money out |
 | **Purpose** | Match transactions to invoices or payments | Categorise transactions as expenses |
-| **Searchable fields** | Invoice, payment, and client fields (18 total) | Description and amount only |
+| **Searches on** | Invoice, payment, and client fields (18 total) | Transaction description and amount only |
 | **Auto-convert creates** | A payment record | An expense record |
-| **Assignment targets** | Invoice and/or client (automatic) | Vendor and expense category (manual) |
+| **Assignment** | Invoice and/or client (automatically resolved) | Vendor and expense category (you set these) |
+
+![Bank rule lists](/assets/images/banking/bank_rule_list.png "Bank rule lists")
+
+### Your First Rule
+
+A good first rule to build is an automatic match for your payment processor's deposits. For example, if Stripe deposits show up in your bank with the invoice number in the description:
+
+1. Go to **Settings > Credit Cards & Banks > Rules** and click **New Rule**.
+2. Set **Applies to** → `CREDIT`, and give it a name like *"Stripe deposits"*.
+3. Add a single condition: **Field** `$invoice.number`, matching the transaction description.
+4. Leave **Auto-convert** off for now, save the rule, and let it run against incoming transactions.
+5. Review the matches. Once you're happy they're correct, edit the rule and enable **Auto-convert**. From then on, matched deposits are applied to the right invoice automatically.
 
 ### Creating a Rule
-
-To create a bank rule, navigate to:
 
 ```bash
 Settings > Credit Cards & Banks > Rules
 ```
 
-You can edit and create rules from this page — simply click on a rule, or the create button to create a new bank rule.
+You can edit and create rules from this page — click a rule to edit it, or click the create button to add a new one.
 
-![alt text](/assets/images/banking/create_rule.png "Create bank rule")
+![Create bank rule](/assets/images/banking/create_rule.png "Create bank rule")
 
-Each rule has the following settings:
-
-| Setting | Description |
-|---|---|
-| **Name** | A label for your own reference (e.g. "Stripe deposits", "Office rent") |
-| **Applies to** | `CREDIT` or `DEBIT` — determines which transactions this rule evaluates |
-| **Match all / Match any** | Whether *all* conditions must be true, or *any one* is sufficient |
-| **Auto-convert** | When enabled, automatically creates a payment or expense on match |
-| **Conditions** | One or more conditions that define what to look for (see below) |
-
-#### Debit-specific settings
+Every rule has these core settings:
 
 | Setting | Description |
 |---|---|
-| **Vendor** | The vendor to assign to matched transactions |
-| **Expense category** | The expense category to assign to matched transactions |
+| **Name** | A label for your own reference (e.g. "Stripe deposits", "Office rent"). |
+| **Applies to** | `CREDIT` (money in) or `DEBIT` (money out) — determines which transactions this rule evaluates. |
+| **Match all / Match any** | Whether *all* conditions must be true, or *any one* is sufficient. |
+| **Auto-convert** | When enabled, automatically creates a payment or expense record on match. |
+| **Conditions** | One or more conditions that define what the rule looks for. |
 
-![alt text](/assets/images/banking/rule_spec.png "Rule specifications")
+Debit rules have two extra settings:
 
----
+| Setting | Description |
+|---|---|
+| **Vendor** | The vendor assigned to matched transactions. |
+| **Expense category** | The expense category assigned to matched transactions. |
 
-## Conditions
+![Rule specifications](/assets/images/banking/rule_spec.png "Rule specifications")
 
-Every rule contains one or more conditions. Each condition has three parts:
+### Conditions
+
+Every rule has one or more conditions, and every condition has three parts:
 
 | Part | Description |
 |---|---|
-| **Field** | What to search (differs between credit and debit rules) |
-| **Operator** | How to compare |
-| **Value** | What to compare against |
+| **Field** | What the rule looks at (the fields available differ between money-in and money-out rules). |
+| **Operator** | How it compares (equals, contains, greater than, etc). |
+| **Value** | What it compares against. |
 
-### Operators
-
-**String operators** — used with text fields like description, invoice number, email:
+**String operators** — for text fields like description, invoice number, and email:
 
 | Operator | Behaviour |
 |---|---|
-| `is` | Exact match (case-insensitive, ignores spaces) |
-| `contains` | The transaction description includes the value anywhere |
-| `starts_with` | The transaction description begins with the value |
-| `is_empty` | The field has no value |
+| `is` | Exact match (case-insensitive, ignores spaces). |
+| `contains` | The transaction description includes the value anywhere. |
+| `starts_with` | The transaction description begins with the value. |
+| `is_empty` | The field has no value. |
 
 :::info
-String matching is case-insensitive and strips spaces before comparing. For example, a rule value of `"acme corp"` matches a description containing `"AcmeCorp"`.
+String matching is case-insensitive and strips spaces before comparing. A rule value of `"acme corp"` will match a description containing `"AcmeCorp"`.
 :::
 
-**Numeric operators** — used with amount fields:
+**Numeric operators** — for amount fields:
 
 | Operator | Behaviour |
 |---|---|
-| `=` | Amount equals the value |
-| `>` | Amount is greater than the value |
-| `>=` | Amount is greater than or equal to the value |
-| `<` | Amount is less than the value |
-| `<=` | Amount is less than or equal to the value |
+| `=` | Amount equals the value. |
+| `>` | Amount is greater than the value. |
+| `>=` | Amount is greater than or equal to the value. |
+| `<` | Amount is less than the value. |
+| `<=` | Amount is less than or equal to the value. |
 
----
+### Match All vs Match Any
 
-## Credit Rules — Matching Incoming Payments
+This setting controls how multiple conditions within a single rule are evaluated.
 
-Credit rules search the bank transaction's **description** against your existing invoices, payments, and clients to find the best match.
+- **Match all** — Every condition must be true. Use this for precise matching when you want to combine criteria (e.g. *amount equals $500 AND description contains "Acme"*).
+- **Match any** — At least one condition must be true. Use this for broader matching when any single signal is enough.
 
-### Available Search Fields
-
-Credit rules can match against a rich set of fields across three entity types:
-
-**Invoice fields:**
-
-| Field | Description | Matching method |
-|---|---|---|
-| `$invoice.number` | Invoice number (e.g. INV-0001) | Searches for the invoice number as a whole word in the transaction description |
-| `$invoice.po_number` | Purchase order number | String operator against transaction description |
-| `$invoice.amount` | Invoice balance | Numeric operator comparing transaction amount to invoice amount |
-| `$invoice.custom1` – `$invoice.custom4` | Invoice custom fields | String operator against transaction description |
-
-**Payment fields:**
-
-| Field | Description | Matching method |
-|---|---|---|
-| `$payment.amount` | Payment amount | Numeric operator comparing transaction amount to payment amount |
-| `$payment.transaction_reference` | Payment reference / check number | String operator against transaction description |
-| `$payment.custom1` – `$payment.custom4` | Payment custom fields | String operator against transaction description |
-
-**Client fields:**
-
-| Field | Description | Matching method |
-|---|---|---|
-| `$client.id_number` | Client ID number | String operator against transaction description |
-| `$client.email` | Client contact email address | String operator against transaction description |
-| `$client.custom1` – `$client.custom4` | Client custom fields | String operator against transaction description |
-
-:::tip
-Client fields work best as **secondary conditions** combined with invoice or payment fields. When both are present, the system cross-references them to find the invoice or payment that belongs to that specific client — dramatically improving accuracy when multiple invoices share similar amounts.
-:::
-
-### How Credit Matching Works
-
-When a credit transaction is evaluated, the system searches for matches across all conditions in the rule. Once the conditions are met (all match, or any match, depending on your setting), the system resolves the best result using a priority order:
-
-1. **Invoice number** — A direct invoice number match in the description is the strongest signal. If found, the transaction is linked to that invoice immediately.
-
-2. **Invoice PO number** — If no invoice number matched, PO number matches are considered. When a client condition also matched, the system cross-references to find the invoice belonging to that client.
-
-3. **Invoice amount** — Invoices whose amount matches the transaction amount. Again, client conditions narrow the results.
-
-4. **Invoice custom fields** — Custom field matches on invoices, narrowed by client when available.
-
-5. **Payment amount** — Existing unlinked payments whose amount matches the transaction.
-
-6. **Payment reference** — Payments whose transaction reference appears in the description.
-
-7. **Payment custom fields** — Custom field matches on existing payments.
-
-At each priority level, if a client condition (email or ID number) also matched, the system first tries to find a result that belongs to that client before falling back to the first available match.
-
-:::info
-Only the **first matching rule** is applied to each transaction. Rules are evaluated in order, and processing stops after the first successful match. Design your most specific rules first.
-:::
-
-### What Happens on Match
-
-- The transaction status changes from **Unmatched** to **Matched**
-- The matched invoice or payment is linked to the transaction
-- If **auto-convert** is enabled, a payment record is created automatically and the transaction status becomes **Converted**
-
-### Which Invoices and Payments Are Considered
-
-- **Invoices** with status Draft, Sent, or Partial — excluding deleted invoices
-- **Payments** with status Pending or Completed — excluding deleted payments and payments already linked to a bank transaction
-
----
-
-## Debit Rules — Categorising Outgoing Payments
-
-Debit rules are simpler. They match against the transaction's own fields and assign a vendor and expense category.
-
-### Available Search Fields
-
-| Field | Operator type | Description |
-|---|---|---|
-| `description` | String | The bank transaction description text |
-| `amount` | Numeric | The bank transaction amount |
-
-### Examples
-
-**Match a specific vendor by description:**
-> Field: `description`, Operator: `contains`, Value: `"Amazon Web Services"`
-> Vendor: AWS, Category: Hosting
-
-**Match rent payments by amount:**
-> Field: `amount`, Operator: `=`, Value: `2500.00`
-> Field: `description`, Operator: `contains`, Value: `"Property Management"`
-> Match: All conditions
-> Vendor: ABC Property, Category: Rent
-
-**Match any small purchase from a supplier:**
-> Field: `description`, Operator: `starts_with`, Value: `"OFFICEWORKS"`
-> Vendor: Officeworks, Category: Office Supplies
-
-### What Happens on Match
-
-- The transaction status changes to **Matched**
-- The vendor and expense category from the rule are assigned to the transaction
-- If **auto-convert** is enabled, an expense record is created automatically with:
-  - The rule's vendor and category
-  - The transaction amount and currency
-  - The transaction date as both the expense date and payment date
-  - The transaction description as the expense reference
-  - The transaction status becomes **Converted**
-
-:::tip
-If no expense category is set on the rule, the system attempts to resolve one from the bank's own category mapping. Set an explicit category on the rule for predictable results.
-:::
-
----
-
-## Match All vs Match Any
-
-This setting controls how multiple conditions within a single rule are evaluated:
-
-- **Match all** — Every condition in the rule must be true. Use this for precise matching when you want to combine criteria (e.g. amount equals $500 AND description contains "Acme").
-- **Match any** — At least one condition must be true. Use this for broader matching when any single signal is sufficient.
-
-### Example: Match All
-
-A rule with two conditions and **Match all** enabled:
+**Match all example** — find transactions where an open invoice's amount matches AND the client's email appears in the description (a strong, specific match):
 
 | Condition | Field | Operator | Value |
 |---|---|---|---|
 | 1 | `$invoice.amount` | `=` | (transaction amount compared to invoice amount) |
 | 2 | `$client.email` | `contains` | (client email found in description) |
 
-Both must match. This finds transactions where the amount matches an open invoice AND the client's email appears in the description — a strong, specific match.
-
-### Example: Match Any
-
-A rule with two conditions and **Match any** enabled:
+**Match any example** — catch transactions that reference an invoice number OR a payment reference:
 
 | Condition | Field | Operator | Value |
 |---|---|---|---|
 | 1 | `$invoice.number` | — | (invoice number found in description) |
 | 2 | `$payment.transaction_reference` | `contains` | (payment reference found in description) |
 
-Either can match. This catches transactions that reference an invoice number OR a payment reference.
+### Money-In Rules (Credit) — Matching Incoming Payments
 
----
+Money-in rules look at each bank transaction's **description** and search it against your existing invoices, payments, and clients to find the best match.
 
-## Auto-Convert
+#### Available Fields
 
-When auto-convert is enabled on a rule, matched transactions are immediately processed without manual intervention:
+Money-in rules can match against a rich set of fields across three entity types.
+
+**Invoice fields:**
+
+| Field | Description | Matching method |
+|---|---|---|
+| `$invoice.number` | Invoice number (e.g. INV-0001) | Searches for the invoice number as a whole word in the transaction description. |
+| `$invoice.po_number` | Purchase order number | String operator against transaction description. |
+| `$invoice.amount` | Invoice balance | Numeric operator comparing transaction amount to invoice amount. |
+| `$invoice.custom1` – `$invoice.custom4` | Invoice custom fields | String operator against transaction description. |
+
+**Payment fields:**
+
+| Field | Description | Matching method |
+|---|---|---|
+| `$payment.amount` | Payment amount | Numeric operator comparing transaction amount to payment amount. |
+| `$payment.transaction_reference` | Payment reference / check number | String operator against transaction description. |
+| `$payment.custom1` – `$payment.custom4` | Payment custom fields | String operator against transaction description. |
+
+**Client fields:**
+
+| Field | Description | Matching method |
+|---|---|---|
+| `$client.id_number` | Client ID number | String operator against transaction description. |
+| `$client.email` | Client contact email address | String operator against transaction description. |
+| `$client.custom1` – `$client.custom4` | Client custom fields | String operator against transaction description. |
+
+:::tip
+Client fields work best as **secondary conditions** combined with invoice or payment fields. When both are present, Invoice Ninja cross-references them to find the invoice or payment that belongs to that specific client — dramatically improving accuracy when multiple invoices share similar amounts.
+:::
+
+#### How the Match Is Resolved
+
+When a credit transaction is evaluated and its conditions are met, Invoice Ninja resolves the best result using this priority order:
+
+1. **Invoice number** — a direct invoice number match in the description is the strongest signal. If found, the transaction is linked to that invoice immediately.
+2. **Invoice PO number** — considered next. If a client condition also matched, cross-referencing finds the invoice belonging to that client.
+3. **Invoice amount** — invoices whose amount matches the transaction amount. Client conditions narrow the results.
+4. **Invoice custom fields** — custom field matches on invoices, narrowed by client when available.
+5. **Payment amount** — existing unlinked payments whose amount matches the transaction.
+6. **Payment reference** — payments whose transaction reference appears in the description.
+7. **Payment custom fields** — custom field matches on existing payments.
+
+At each priority level, if a client condition also matched, Invoice Ninja first tries to find a result that belongs to that client before falling back to the first available match.
+
+:::info
+Only the **first matching rule** is applied to each transaction. Rules are evaluated in order, and processing stops after the first successful match — so place your most specific rules first, and any broader catch-all rules last.
+:::
+
+#### What Gets Considered
+
+- **Invoices** with status Draft, Sent, or Partial — excluding deleted invoices.
+- **Payments** with status Pending or Completed — excluding deleted payments and payments already linked to a bank transaction.
+
+#### What Happens on Match
+
+- The transaction status changes from **Unmatched** to **Matched**.
+- The matched invoice or payment is linked to the transaction.
+- If **auto-convert** is enabled, a payment record is created automatically and the transaction status becomes **Converted**.
+
+### Money-Out Rules (Debit) — Categorising Outgoing Payments
+
+Money-out rules are simpler. They look at the transaction's own fields and assign a vendor and expense category.
+
+#### Available Fields
+
+| Field | Operator type | Description |
+|---|---|---|
+| `description` | String | The bank transaction description text. |
+| `amount` | Numeric | The bank transaction amount. |
+
+#### Examples
+
+**Match a specific vendor by description:**
+
+> Field: `description`, Operator: `contains`, Value: `"Amazon Web Services"`
+> Vendor: AWS, Category: Hosting
+
+**Match rent payments by amount and description:**
+
+> Field: `amount`, Operator: `=`, Value: `2500.00`
+> Field: `description`, Operator: `contains`, Value: `"Property Management"`
+> Match: All conditions
+> Vendor: ABC Property, Category: Rent
+
+**Match any purchase from a specific supplier:**
+
+> Field: `description`, Operator: `starts_with`, Value: `"OFFICEWORKS"`
+> Vendor: Officeworks, Category: Office Supplies
+
+#### What Happens on Match
+
+- The transaction status changes to **Matched**.
+- The vendor and expense category from the rule are assigned.
+- If **auto-convert** is enabled, an expense record is created automatically with:
+  - The rule's vendor and category
+  - The transaction amount and currency
+  - The transaction date as both the expense date and payment date
+  - The transaction description as the expense reference
+  - The transaction status becomes **Converted**.
+
+:::tip
+If no expense category is set on the rule, Invoice Ninja tries to resolve one from the bank's own category mapping. For predictable results, always set an explicit category on the rule.
+:::
+
+### Auto-Convert
+
+When auto-convert is enabled, matched transactions are immediately processed without manual intervention:
 
 | Rule type | Auto-convert action |
 |---|---|
-| **Credit** | Creates a payment record against the matched invoice, marking the invoice as paid |
-| **Debit** | Creates an expense record with the vendor, category, amount, and date from the transaction |
+| **Credit** (money in) | Creates a payment record against the matched invoice, marking the invoice as paid. |
+| **Debit** (money out) | Creates an expense record with the vendor, category, amount, and date from the transaction. |
 
-After auto-conversion, the transaction status moves directly from **Unmatched** to **Converted**, skipping the intermediate **Matched** state.
+After auto-conversion the transaction moves directly from **Unmatched** to **Converted**, skipping the intermediate **Matched** state.
 
 :::warning
-Auto-convert creates real financial records (payments and expenses) automatically. Test your rules with auto-convert disabled first to verify they match the correct transactions before enabling it.
+Auto-convert creates real financial records (payments and expenses) automatically. Test your rules with auto-convert disabled first to verify they match the correct transactions, then enable it once you're confident.
 :::
 
----
+## Common Questions
 
-## Transaction Statuses
+### I already use Stripe (or another gateway) — do I still need to connect my bank?
 
-| Status | Description |
-|---|---|
-| **Unmatched** | No rule has matched this transaction yet |
-| **Matched** | A rule matched and linked an invoice/payment or assigned a vendor/category, but no record was created |
-| **Converted** | A payment or expense record was created from this transaction |
+Not for getting paid. When a client pays an invoice through a connected gateway, Invoice Ninja records the payment and marks the invoice as paid directly — the gateway handles everything.
 
----
+Connecting your bank is about **reconciliation**: matching the deposit that hits your actual bank account a few days later to the payment already recorded in Invoice Ninja, so your bookkeeping lines up. This is also where bank rules become useful, since a single Stripe payout often bundles many client payments into one bank deposit.
 
-## Tips for Effective Rules
+### Can I connect more than one account from the same bank?
 
-1. **Be specific with credit rules.** Combine invoice fields with client fields for accurate matching. A rule matching `$invoice.amount` alone may match the wrong invoice when multiple invoices share the same amount.
+Yes. When you link a bank through Yodlee or GoCardless, you can select multiple accounts from that bank during the connection flow, and connect additional banks afterward.
 
-2. **Use invoice number matching when possible.** If your payment processor includes the invoice number in the bank description, `$invoice.number` provides the most reliable match — it searches for the number as a distinct word boundary in the description.
+### Can I manually match a transaction without creating a rule?
 
-3. **Order matters.** The first matching rule wins. Place your most specific rules first and broader catch-all rules last.
+Yes. From the Transactions list, open any transaction and link it directly to an invoice, payment, or expense. Rules are an optimisation, not a requirement.
 
-4. **Start without auto-convert.** Create your rules with auto-convert disabled, let them run against incoming transactions, review the matches, and only enable auto-convert once you're confident in the results.
+### I imported transactions by mistake — how do I remove them?
 
-5. **Use Match All for precision.** When combining amount matching with client identification, use Match All to ensure both conditions are satisfied before linking.
+Delete them from the Transactions list. Deleting a transaction does not delete any linked payment or expense record — those need to be removed separately if they were already created.
 
-6. **Keep debit rules simple.** Since debit rules only match on description and amount, use clear, distinctive keywords from your bank statements. Check your bank's actual transaction descriptions to find consistent patterns.
+### Do I have to use Auto Sync?
 
-7. **Leverage custom fields.** If you store reference codes, project IDs, or account numbers in custom fields on invoices, payments, or clients, you can use them as matching criteria for credit rules.
+No. With Auto Sync off, transactions stay at whatever was last pulled until you refresh manually. Some users prefer this for accounts they only review periodically.
+
+## Tips for Reliable Rules
+
+- **Start without auto-convert.** Create rules with auto-convert off first, let them run, review the matches, then enable auto-convert once you're confident.
+- **Be specific with money-in rules.** Combining an invoice field with a client field dramatically improves accuracy when multiple invoices share the same amount.
+- **Prefer invoice numbers when you can.** If your payment processor includes the invoice number in the bank description, `$invoice.number` is the most reliable match — it looks for the number as a distinct word.
+- **Order matters.** The first matching rule wins. Place your most specific rules first and broader catch-all rules last.
+- **Keep money-out rules simple.** They only see description and amount, so look at your actual bank statements and use the most distinctive text you see repeatedly.
+- **Leverage custom fields.** If you store reference codes, project IDs, or account numbers in custom fields on invoices, payments, or clients, you can use them as matching criteria for money-in rules.

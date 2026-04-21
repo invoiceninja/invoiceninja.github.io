@@ -8,49 +8,35 @@ sidebar_position: 9
 
 ## Introduction
 
-**DocuNinja** is a new product within Invoice Ninja that delivers **ESIGN, UETA, and eIDAS-compliant eSignatures** for your business documents. It supports both documents created inside Invoice Ninja and external files uploaded into the platform.  
+DocuNinja is the sister product to Invoice Ninja that handles eSignatures on your business documents. If you've ever chased a client for a signed quote, emailed a PDF contract and hoped it came back countersigned, or needed proof that someone actually agreed to your terms before you started work, this is the piece that fills that gap. Signatures captured through DocuNinja are compliant with the three standards most businesses care about — ESIGN and UETA in the United States, and eIDAS across the European Union — so the signed document holds up the same way a paper signature would.
 
-As a cornerstone of document management, DocuNinja enhances workflow integration, streamlines approval processes, and ensures compliance with international eSignature standards. By embedding signatures directly within your existing document flows, it simplifies day-to-day operations and improves organizational efficiency.  
+It works with documents created inside Invoice Ninja (invoices, quotes, purchase orders) and with external files you upload, which means the same signing flow covers your proposals, NDAs, statements of work, and one-off contracts.
 
-## First-Party Integration
+## Why It's a Separate Product
 
-Although **DocuNinja** is a standalone application, it is built and maintained by the same team behind Invoice Ninja. This makes it a **first-party integration** rather than a third-party add-on.  
+DocuNinja is built and maintained by the same team, but it runs as its own application rather than a feature bolted onto Invoice Ninja. That distinction matters for a few reasons. eSignature compliance carries its own legal, infrastructure, and audit requirements that are easier to meet in a dedicated service. Keeping it separate also means DocuNinja can be used outside of Invoice Ninja entirely — for agencies handling documents that never become invoices, or teams who want signed paperwork from processes that live in other systems.
 
-Keeping DocuNinja as a separate application provides several advantages:  
+From your point of view, none of that separation is visible. DocuNinja connects directly to your Invoice Ninja account, shares your login and permissions, and its menu sits alongside the rest of the app. Documents are created, sent, tracked, and stored without leaving Invoice Ninja. It's a first-party integration, not a third-party add-on.
 
-- **Compliance and specialization**: eSignature services (ESIGN, UETA, eIDAS) have unique legal, security, and infrastructure requirements best served by a dedicated application.  
-- **Scalability and flexibility**: DocuNinja can evolve independently while still offering deep integration with Invoice Ninja workflows.  
-- **Broader use cases**: DocuNinja can be used both inside and outside of Invoice Ninja, making it possible to manage signatures and documents from other systems or processes as well.  
+## The Three Signing Workflows
 
-From a user perspective, the experience is seamless. DocuNinja connects directly to your Invoice Ninja account, sharing authentication, permissions, and workflows. Documents can be created, sent for signature, tracked, and stored without leaving the Invoice Ninja interface. To the end user, DocuNinja feels like a natural extension of Invoice Ninja, while benefiting from the flexibility and compliance of a dedicated service.  
+There are three ways DocuNinja gets used in practice, depending on what you're signing.
 
-## Workflows
+### Signing Invoice Ninja Documents
 
-DocuNinja supports three main signing workflows:  
+Invoices, quotes, and purchase orders generated inside Invoice Ninja can be signed directly through the [Client Portal](/docs/user-guide/client-portal). Once eSignatures are enabled for the document, the DocuNinja signing interface appears automatically when your client or vendor opens it — there's no separate link to send or tool for them to learn.
 
-### 1. Invoice Ninja Document Signing  
+Every signed document includes a verifiable audit trail and a dedicated Document Certificate, which is what you hand to an accountant, auditor, or lawyer as proof. This is also where the "why" of the design shows: for quotes and invoices gated behind a signature, the document process — payment capture, quote authorization — won't proceed until the signature is captured. That's deliberate, so a client can't accidentally pay a quote they haven't agreed to, or skip the signature and go straight to payment.
 
-Invoices, quotes, and purchase orders created inside Invoice Ninja can be signed directly through the client portal.  
+### Custom Templates with Variable Injection
 
-- **Seamless integration**: once eSignatures are enabled, the DocuNinja interface appears automatically for the client or vendor to sign.  
-- **Audit trail**: every signed document includes a verifiable record and a dedicated Document Certificate for compliance.  
-- **Efficiency**: approvals and sign-offs can be completed entirely within Invoice Ninja.  
+For documents that aren't invoices or quotes — NDAs, service agreements, HR paperwork, onboarding forms — DocuNinja provides a library of prebuilt templates you can adapt in the built-in editor. The point of a template is that you define the document once and reuse it for every client, rather than editing a Word file and re-uploading each time.
 
-### 2. Custom Templates with Variable Injection  
+Templates support variable injection, meaning placeholders like `{{ signatory.name }}` or `{{ company.address }}` get filled in from the data already stored in Invoice Ninja. Send a new-client agreement and the client's name, address, and contact details slot in automatically. This keeps recurring documents consistent and on-brand while still being personalised for each recipient.
 
-Beyond standard documents, DocuNinja allows you to create and manage **custom templates** (e.g., NDAs, contracts, HR agreements). A library of templates is provided, which can be customized within the built-in editor.  
+### Uploading an External Document
 
-- **Reusable templates**: define once, use many times.  
-- **Variable injection**: placeholders (e.g., `{{ signatory.name }}`, `{{ company.address }}`) are automatically filled with data from Invoice Ninja.  
-- **Consistency**: ensures recurring documents follow the same structure and branding while being personalized for each recipient.  
-
-### 3. Uploaded Document Signing  
-
-External files (such as PDFs) can be uploaded to Invoice Ninja and sent for eSignature through DocuNinja.  
-
-- **Flexible signing**: supports documents created outside of Invoice Ninja, such as vendor agreements, lease contracts, or legal forms.  
-- **Simple process**: upload the document, place signature fields, and send for signing.  
-- **Centralized storage**: signed copies are stored securely alongside your other Invoice Ninja documents.  
+If the document already exists as a PDF — a lease, a vendor agreement, a legal form someone else drafted — upload it, drop signature fields where you need them, and send it for signing. Signed copies are stored alongside your other Invoice Ninja documents, so you have one place to look when you need to find them later.
 
 ---
 
@@ -59,67 +45,60 @@ External files (such as PDFs) can be uploaded to Invoice Ninja and sent for eSig
 ### Documents tab
 ![DocuNinja Menu](/assets/images/docuninja/preview1.png "DocuNinja Menu")
 
-DocuNinja embeds into Invoice Ninja as its own side bar menu, you can manage all aspects of DocuNinja workflow through your Invoice Ninja account.
+DocuNinja appears as its own sidebar menu inside Invoice Ninja. Every part of the workflow — drafting, sending, tracking, storing — runs from here.
 
 ### Timeline
 ![Document Timeline](/assets/images/docuninja/preview2.png "Document Timeline")
 
-Each Document has a timeline of events so you can visualize the signing workflow.
+Each document keeps a timeline of events (sent, opened, signed, completed), so when a client says they never received something you can check rather than guess.
 
 ### Builder
 ![Builder](/assets/images/docuninja/preview3.png "Document Builder")
 
-The document builder allows you to create signatories and place signing widgets directly onto the document at your preferred location. Each widget has its own logic embedded within it, so you can mark a widget as required, you can also set additional logic such as requiring a text field to be in the format of an email address.
+The builder is where you set up signatories and drop signing widgets onto the document at the exact spot you want them. Each widget carries its own logic, so you can mark a field as required or restrict a text field to an email-address format — useful when you need to capture a clean piece of data rather than freeform text.
 
 ### Authorized Signatories
 ![Authorized Signatories](/assets/images/docuninja/preview4.png "Authorized Signatories")
 
-When signing an Invoice, you may prefer to only have certain client/contacts be the signatories, within the Invoice,Quote screen you can assign authorized signatories. The document process will not proceed (ie, payment capture , quote authorization), until the document has been first signed.
+When a client has multiple contacts but only specific people are allowed to sign (say, a director but not an accounts-payable contact), you can assign authorized signatories on the invoice or quote itself. Until the authorised person signs, downstream steps like payment capture or quote authorization stay locked.
 
 ### Signing Flow
 ![E Signature client flow](/assets/images/docuninja/preview5.png "E Signature client flow")
 
-The view of the Signature capture flow as the client/vendor proceeds through the portal.
+This is what the client or vendor sees when they sign, shown inside the client portal.
 
 ### Blueprint Wizard
 ![Blueprint Wizard](/assets/images/docuninja/preview6.png "Blueprint Wizard")
 
-Creation of "Blueprints" allows the creation of three specific types of documents that you will encounter in Invoice Ninja. You can create, update these from the blueprints section.
+Blueprints are where you configure the three document types Invoice Ninja itself emits — invoice, quote, purchase order — so the signing setup for each is defined once and applied every time.
 
 ### Prebuilt Templates
 ![Blueprint Wizard 2](/assets/images/docuninja/preview7.png "Blueprint Wizard 2")
 
-A range of prebuilt Templates are offered allowing you a starting point for your customized documents!
+Rather than starting from a blank page, a library of prebuilt templates gives you a working starting point for the most common agreements.
 
 ### Template Editor
 ![Blueprint Template Editor](/assets/images/docuninja/preview8.png "Blueprint Template Editor")
 
-Using the wysiwyg editor, you can create/update your templates, this uses simple drag and drop elements allowing you to customize the template for your needs. You also have the ability to reference placeholder data where you can use data already stored in Invoice Ninja to automatically populate the template.
-
-An example would be a contract of agreement with a new client, the template could be configured to automatically inject the clients details when sending the document to the client.
+The WYSIWYG editor uses drag-and-drop elements to build or modify a template. Placeholders let you pull in data already held in Invoice Ninja — for example, a new-client contract template that automatically fills the client's company name, address, and contact details when you send it.
 
 ### Mapping Signatories
 ![Mapping Signatories](/assets/images/docuninja/preview9.png "Map Signatories to Template")
 
-When you are ready to send the template, you would simply select the required signatories, and the template will be populated!
+When you're ready to send a template, pick the signatories and the placeholders resolve against their records — no manual find-and-replace.
 
-## FAQ:
+## FAQ
 
-### Can I customize the location of signatures on my quotes, invoice etc...
+### Can I customise where signatures appear on my quotes and invoices?
 
-Yes! you can create different templates based on your designs for invoices, quotes etc allowing you to customize the exact location of signatures on each document.
+Yes. You can create different templates per document design, and place signature fields exactly where you want them on each.
 
-### Can i add additional signature fields to my invoices, quotes...
+### Can I capture fields other than signatures?
 
-Yes! when customizing the template, you are also able to capture additional fields such as Dates and other inputs.
+Yes. When you customise a template you can add dates and other input fields alongside the signature, so a signed document can also collect the information you need at the same time.
 
-### SOC2 compliance
- - **Is DocuNinja SOC2 Compliant?** We are undergoing SOC2 audit currently and aim to have this signed off in Q1 2026
+### Is DocuNinja SOC 2 compliant?
 
-## Beta: - Known Issues
-
-### Completed Invoices/Quotes/Purchase Orders added as attachment
-
- Currently when an invoice ninja document such as an Invoice, Quote or Purchase Order is signed and completed. It will be returned as an attachment only. This is problematic and the generated Invoice will still be the pre-signed version which is not optimal.We have addressed this issue. Now, when an Invoice/Quote/Purchase order is _completed_ it will be returned and set as the source of truth for all instances where this PDF is emailed/downloaded/viewed. Pending release as @ 23rd February 2026 
+We are currently undergoing SOC 2 audit and aim to have it signed off in Q2 2026.
 
 ---

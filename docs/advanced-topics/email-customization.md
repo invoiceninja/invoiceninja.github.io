@@ -123,15 +123,13 @@ $invoice_references - A custom body of text including detailed information of th
 ```
 
 :::info
-Invoice #123
-Amount $5000.00
-Balance $0
+Invoice #123  
+Amount $5000.00  
+Balance $0  
 
----
-
-Invoice #124
-Amount $1000.00
-Balance $500.00
+Invoice #124  
+Amount $1000.00  
+Balance $500.00  
 :::
 
 ```bash

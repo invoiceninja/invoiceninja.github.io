@@ -2,87 +2,84 @@
 title: "Payments"
 sidebar_position: 16
 ---
-Payment records are automatically generated when payments are processed from the client portal or when an invoice is marked as paid. When an invoice is marked as paid, a payment record for the full amount is created and labeled as "Manual Entry."
+A payment is a record of money you've received from a [client](/docs/user-guide/clients) against one or more of their [invoices](/docs/user-guide/invoices). Every payment in Invoice Ninja is tied to a client, and most are tied to at least one invoice — that link is what moves an invoice from "Sent" to "Paid" and keeps your balances and reports accurate.
 
-There are four possible statuses for a payment record:
+Payments are created in one of two ways. When a client pays online through the [Client Portal](/docs/user-guide/client-portal) using a connected [payment gateway](/docs/user-guide/gateways), the payment record is generated automatically and matched to the invoice they paid. When money arrives some other way — a bank transfer, a cheque, cash, or a deposit you reconcile from [Banking](/docs/user-guide/banking) and [Transactions](/docs/user-guide/transactions) — you enter the payment yourself, or mark the invoice as paid and Invoice Ninja creates a payment labelled "Manual Entry" for the full amount.
 
-- "Unapplied" for payments that have not been assigned to an invoice
-- "Partially Unapplied" for payments with remaining credit
-- "Paid" for payments that have been fully applied to an invoice
-- "Refunded" for payments that have been returned to the customer. Note that any refunded amount must have been applied to an invoice first.
+It's worth understanding that payment records aren't sent to the client in the way invoices and receipts are. The payment is an internal accounting record; what the client sees is their invoice flipping to "Paid".
 
-It is important to note that payment records are not printed or issued to the customer, instead an invoice is marked as "Paid" when there is a payment record associated with it.
+## Payment Statuses
 
-## View a Payment
+A payment moves through a small set of statuses that describe how much of it has been applied to invoices:
 
-The payment view panel displays an overview of the payment status, the invoice it was applied to, the amount applied, the date of payment, the transaction reference, and any private notes. You can edit the payment record using the "Edit" button in the top right corner and use the Kebab menu to archive or delete it.
+- **Unapplied** — the payment is recorded against a client but hasn't been linked to an invoice yet. This is common when a client pays a retainer, sends money on account, or overpays; the funds sit on their record until you decide which invoice to apply them to.
+- **Partially Unapplied** — some of the payment has been applied to an invoice and some is still sitting as a balance you can use later.
+- **Paid** — the payment has been fully applied and has no remaining value.
+- **Refunded** — all or part of the payment has been returned to the client. Only amounts that were applied to an invoice can be refunded.
 
-At the bottom of the panel, you can apply or refund a payment. Keep in mind that a payment can be applied to multiple invoices when entered manually in the admin portal. Also, partial refunds are allowed, but only "Applied" payment amounts can be refunded."
+## Viewing a Payment
 
-## Edit a Payment
+Open a payment from the **Payments** list, or from the **Payments** tab on the client overview. The view panel shows the payment's status, the invoice (or invoices) it was applied to, the amount applied, the payment date, the transaction reference, and any private notes. The **Edit** button in the top-right lets you change the record; the kebab menu archives or deletes it. At the bottom of the panel you'll find the controls to apply more of the payment to another invoice, or to refund it.
+
+## Editing a Payment
 
 ![Edit payment](/assets/images/payments/edit_payment_react.png "Edit payment")
 
-These are the fields are available when editing a payment to add detail for your records:
+These fields are available when editing a payment:
 
-- **Payment Number** - Payment numbers get automatically generated to sort them for your records. The number generation rules can be viewed or modified under _Settings_ > _Generated Numbers_
-- **Payment Date** - The date of the payment, which is generally automatically populated with the current date.
-- **Payment Type** - A searchable drop down list to select a payment method from, such as cash, cheque, credit card, etc.
-- **Transaction Reference** - A transaction reference number for a debit/credit payment may go here, or a simple explanation about the transaction to give some detail about how it was recorded.
-- **Private Notes** - Private notes viewable only from the admin portal, for any purpose you might need to add additional details to the payment record for bookkeeping or auditing purposes.
-- **Convert Currency** - When enabled, this section allows you to select a currency provided by the client when it doesn't match your own currency. The exchange rate must be manually specified by you, and it will use that rate to calculate the converted amount automatically for you.
+- **Payment Number** — generated automatically. If you want to change the format, adjust it under _Settings_ > _Generated Numbers_.
+- **Payment Date** — defaults to today, but change it if the money actually arrived on a different day — your reports use this date.
+- **Payment Type** — a searchable dropdown of payment methods (cash, cheque, credit card, bank transfer, and so on). Useful for filtering reports later.
+- **Transaction Reference** — a bank reference, cheque number, or short note explaining where the money came from.
+- **Private Notes** — internal notes only visible inside the admin portal, for bookkeeping or audit trails.
+- **Convert Currency** — if the client paid in a currency other than your own, enable this and enter the exchange rate. Invoice Ninja calculates the converted amount for you.
 
-## Enter a Payment
+## Entering a Payment Manually
 
 <iframe class="video" src="https://www.youtube.com/embed/anX9l3MF-Ws" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-When manually entering a payment, all of the above fields apply, in addition to these below.
+When you record a payment by hand, the fields above apply, plus a few more that tell Invoice Ninja who paid and what to apply the money to:
 
-- **Client** - You must specify the client the payment is coming from first.
-- **Amount received** - Enter a value here if the total amount received was MORE than the invoice amount, or when recording a payment with no invoices. Otherwise this field should be left blank.
-- **Invoices** - Select an invoice(s) from a searchable list of available invoices for the client that have balance owing.
-  - **Amount received** - Specify the amount received for each invoice. This is populated automatically as the total amount due for the invoice.
-- **Credits** - Optionally, apply the client's credits to the payment.
-- **Send Email** - Enabled by default, disable to skip sending the client an email notifying them of their payment.
+- **Client** — select the client first. Every payment must belong to one.
+- **Amount Received** — leave this blank for a straightforward payment matching the invoice total. Fill it in when the client paid **more** than the invoice balance (see overpayments below), or when you're recording money with no invoice attached yet.
+- **Invoices** — pick one or more of the client's outstanding invoices. For each, the amount owing is pre-filled, and you can lower it if the client only paid part of the invoice.
+- **Credits** — optionally apply any [credits](/docs/user-guide/credits) the client has on their account as part of this payment.
+- **Send Email** — on by default. Turn it off if you don't want the client to receive a payment confirmation.
 
-## Using credits as part of a payment.
+### Applying One Payment Across Multiple Invoices
+
+It's common for a client to send a single lump sum covering several invoices at once. When you're entering the payment, just add each invoice in the **Invoices** section and either accept the pre-filled balances or split the total however you need. The payment record keeps track of which invoice got which share.
+
+### Partial Payments
+
+If a client only pays part of an invoice, enter the amount they actually sent against that invoice. The invoice will show a reduced balance owing and stay in a partial state until the rest comes in — which you'll record as a second payment later.
+
+### Overpayments and Credits on Account
+
+If you enter an **Amount Received** that's larger than the invoices you're applying it to, the leftover sits on the payment as an unapplied balance. The payment's status becomes **Partially Unapplied**, and you can apply the remainder to a future invoice whenever one is raised — no need to refund and re-bill. This is also how retainers and "money on account" work: record the payment with no invoice, and draw it down as invoices come in.
+
+## Using Credits as Part of a Payment
 
 <iframe class="video" src="https://www.youtube.com/embed/74v04u4Ma1M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Lifecycle of a Payment
+If the client has [credits](/docs/user-guide/credits) available, you can include them alongside the cash payment when entering a new payment. The credit and the payment combined cover the invoice, which is handy when you're settling a balance that's part cash, part store credit.
 
-### Unapplied
+## Refunds
 
-If a payment is created, assigned to a client, and given a value greater than 0 (zero), but not assigned or linked to an invoice, the payment is marked _Unapplied_.
+To refund a payment, open it and use the kebab menu in the top-right of the view panel. You can refund the full amount or just part of it, and you can choose which invoice the refund comes off. Only amounts that have already been **applied** to an invoice are eligible — an unapplied balance isn't a refund, it's just a deletion or reassignment. Once refunded, the relevant portion of the payment is unlinked from the invoice and the invoice balance goes back up.
 
-### Partial
+## Archiving, Deleting, and Restoring
 
-You can apply one payment to multiple invoices. If the payment amount is greater than the invoice balance, the payment will be marked as "Partially Applied" and the remaining balance can be applied to another invoice. You can view the remaining balance of a partial payment by viewing the payment details.
-
-### Completed
-
-_Completed_ Payments are fully applied to one or more invoices, and have no remaining value.
-
-### Refunded
-
-When viewing a payment, you can use the kebab menu in the upper right corner of the view panel to refund it. The payment will be unlinked from any invoices it has been applied to.
-
-### Cancelled & Deleted
-
-What happens when a payment is deleted?
-
-- Payment status set to deleted
-- The payment number is appended with <b>\_deleted</b> in order to allow reuse of payment numbers.
-- If the payment was previously marked _Partial_ or _Completed_ the remaining payment balance will no longer be available to the customer, and will be unlinked from any invoices it was previously linked to.
-
-### Archived
-
-Archiving a payment simply removes the payment from the payment list view. Archiving a payment keeps your list views clean and tidy.
+Archiving hides a payment from the default list view without touching any numbers. It's purely cosmetic — use it to keep your list tidy.
 
 :::warning
-When a payment is archived no further modifications can be made to the payment. To modify the payment you will need to *Restore* the payment first.
+A payment can't be modified while archived. **Restore** it first if you need to make changes.
 :::
 
-### Restored
+Deleting is heavier. When you delete a payment:
 
-Restoring a payment from the archived or deleted state will set the payment back to its previous state prior to archiving.
+- Its status becomes **Deleted**.
+- Its payment number is suffixed with `_deleted` so the original number can be reused.
+- If it was **Partially Unapplied** or **Paid**, the remaining balance is no longer available to the client and the payment is unlinked from any invoices it was applied to — those invoices will show a balance owing again.
+
+**Restore** from the archived or deleted state returns the payment to exactly where it was before, links and all.

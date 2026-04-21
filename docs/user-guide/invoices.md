@@ -2,7 +2,9 @@
 title: "Invoices"
 sidebar_position: 11
 ---
-Invoice records support a lot of detail and allow you to bill your clients for _Products_, _Tasks_, or _Expenses_. You can attach documents or pictures to invoices, which the client may view from the client portal. Invoice records keep a history of when changes were made to them, and which users performed those changes, in order to increase accountability within your business.
+An invoice is the bill you send a client — a dated, numbered record of what you delivered, what it costs, and how they can pay you. In Invoice Ninja an invoice is more than a PDF: it's a live document that tracks its own status, links to payments, feeds into the client's balance, and can trigger reminders, late fees, and online payment flows on your behalf.
+
+Invoices can bill for [Products](/docs/user-guide/products), [Tasks](/docs/user-guide/tasks), or [Expenses](/docs/user-guide/expenses), include attachments the client can view from the [Client Portal](/docs/user-guide/client-portal), and keep a full history of every change so you always know who did what and when.
 
 <video width="100%" controls>
   <source src="/assets/videos/invoices/create_invoice_clip_react.mp4" type="video/mp4" />
@@ -10,201 +12,192 @@ Invoice records support a lot of detail and allow you to bill your clients for _
 
 ## Viewing an Invoice
 
-To view an invoice, you can either view the PDF printout by selecting _More Actions>View PDF_, or you can enter the Edit Invoice screen to see all details and notes about the invoice. You can edit the invoice by clicking _More Actions>Edit_, or just click the invoice number to enter the edit screen.
+There are two ways to look at an invoice, and which one you want depends on what you're trying to do. To see the PDF that your client will receive, choose **More Actions > View PDF**. To see every detail — line items, notes, settings, linked payments — open the edit screen by clicking the invoice number, or choose **More Actions > Edit**.
 
 ### Click an invoice for overview
 
-On desktop if you click on an invoice row (not the invoice number), it will open a pull-out on the right with Overview, History, Activity, and Email History options.
+On desktop, clicking anywhere on an invoice row *except* the invoice number slides a panel out from the right with Overview, History, Activity, and Email History tabs. This is the fastest way to glance at the state of an invoice without leaving the list.
 
 ![Invoice overview](/assets/images/invoices/invoice_right_overview_panel.png "Invoice overview")
 
-From the overview panel, you will see general information about the invoice. The amount of the invoice, balance owing, any amount paid, which client it is assigned to, the date of the invoice, status...
+The Overview shows the invoice amount, balance owing, any amount paid, the client, the invoice date, and the current status — enough context to decide whether you need to take any action.
 
 #### History
 
-The _History_ panel presents a chronological overview of transactions related to the invoice, and shows you any changes made to the invoice total amount, and by which users.
+The History panel is a chronological record of changes to the invoice total and who made them. If a client ever queries why their balance differs from an earlier PDF, History is where you'll find the answer.
 
 #### Activity
 
-The _Activity_ panel presents a chronological overview of any actions performed against the invoice, including when it was created, edited, paid, refunded, cancelled, etc, and which user performed the action.
+Activity shows every action performed against the invoice — created, edited, emailed, paid, refunded, cancelled — alongside the user responsible. It's the audit trail for the document.
 
 #### Email History
 
-This panel presents a log of every time the invoice was emailed.
+A log of every time the invoice was emailed, to whom, and when. Useful when a client claims they never received an invoice.
 
 ### Invoice More Actions Dropdown
 
-The _More Actions_ dropdown has many frequently used options:
+The More Actions dropdown collects the things you'll reach for most often:
 
-- Email Invoice
-- View PDF: View the PDF version of the invoice
-- Print PDF: Brings up the printer dialog to print the invoice PDF
-- Schedule: Schedule the invoice to be sent at a later date/time
-- Delivery Note (PDF): Goes to the View PDF screen and checks the 'Delivery Note' toggle to include delivery note
-- Download: Downloads the invoice PDF
-- Download E-Invoice: Downloads the electronic invoice document file (for jurisdictions using E-Invoice)
-- Mark Sent: Mark invoice as sent (ex. if you sent manually by printing PDF...)
-- Mark Paid: Mark invoice as fully paid
-- Client Portal: View the invoice as the client in the client portal
-- Reverse: See [Reversed](#reversed)
-- Run Template: Brings up the screen to run the invoice as a [Template](/docs/advanced-topics/templates) by selecting a design (Advanced feature)
-- Clone to Invoice: clone the invoice
-- Clone to Other: Lets you choose whether to clone to a _Recurring Invoice_, _Quote_, _Credit_, or _Purchase Order_ (the items from the invoice will be copied)
-- Archive
-- Delete
+- **Email Invoice** — send (or resend) the invoice to the contacts checked to receive it
+- **View PDF** / **Print PDF** / **Download** — see or save the rendered PDF
+- **Schedule** — queue the invoice to send itself at a later date and time
+- **Delivery Note (PDF)** — open the PDF view with the Delivery Note toggle enabled
+- **Download E-Invoice** — download the structured electronic invoice file (for jurisdictions using [E-Invoicing](/docs/user-guide/einvoicing))
+- **Mark Sent** — flip a draft to sent without emailing, for example when you delivered the PDF yourself
+- **Mark Paid** — record full payment against the invoice in one click
+- **Client Portal** — preview the invoice exactly as your client sees it
+- **Reverse** — see [Reversed](#reversed)
+- **Run Template** — generate a document using an advanced [Template](/docs/advanced-topics/templates)
+- **Clone to Invoice** — copy the line items into a brand-new invoice
+- **Clone to Other** — copy the line items into a Recurring Invoice, Quote, Credit, or Purchase Order
+- **Archive** / **Delete** — see the lifecycle section below before reaching for these
 
 ## Invoice Edit or Create
 
-Here are some options you will see when creating or editing an invoice.
+The create and edit screens are the same screen with the same fields, so everything below applies whether you're starting fresh or revising an existing invoice.
 
 ### Client
 
-You must select a client from the list to apply your invoice to.
-
-### Contacts
+Every invoice belongs to exactly one [Client](/docs/user-guide/clients). Pick them from the client selector — or, if they don't exist yet, create them on the fly. The client drives the currency, tax rules, language, payment terms, and email templates used on the invoice, which is why it's worth getting the client record right before you invoice someone the first time.
 
 ![Client contacts on invoice](/assets/images/clients/client_auto_included_on_invoice_example.png "Client contacts on invoice")
 
-Here you see the contacts from your client that are marked as included in the invoice.
+### Contacts
 
-The checkbox next to each client defines whether they will receive the email notification. Contacts with the option _Add to Invoices_ selected in Client Edit, will automatically be checked to receive invoices and quote emails.
-
-Also available are links to the client portal for each respective contact included.
+A client can have several contacts (Accounts Payable, a project lead, a CC'd partner) and each one can be individually checked or unchecked for this specific invoice. Contacts with **Add to Invoices** enabled on the client record are pre-selected; you can override that per invoice without changing the client defaults. Each contact also has a direct link to their [Client Portal](/docs/user-guide/client-portal) view of the invoice, which is handy when you need to share a payment link in a chat or SMS.
 
 ### Invoice Details
 
-- **Invoice Date** - Automatically generated with today's date, is simply the date of the invoice.
-- **Due Date** - Optionally, you may include a later due date for payment of the invoice. If no due date is specified, the full amount is due immediately.
-- **Partial/Deposit** - Optionally, specify a required partial payment or deposit on the invoice, with its own due date, separate from, and owed before the invoice due date for the invoice's full amount.
-- **Invoice #** - The invoice number is auto generated as per _Settings > Advanced Settings > Generated Numbers_
-- **PO Number** - Optionally, typically for when you client has a product order number to provide for you, for their own recordkeeping purposes.
-- **Discount** - Enter a discount amount to apply to the invoice, either as a percentage, or a flat rate.
+- **Invoice Date** — defaults to today. This is the document date shown on the PDF and used for reporting.
+- **Due Date** — when full payment is due. Leave it blank and the invoice is due immediately; set it and the invoice won't be considered overdue (and won't trigger late fees or overdue reminders) until this date passes.
+- **Partial/Deposit** — a smaller amount owed *before* the full balance, with its own due date. Use this for deposits, retainers, or milestone billing: the client sees a "pay this much now" prompt on the portal, while the remainder still tracks against the main due date. A partial payment puts the invoice into the **Partial** status (see below).
+- **Invoice #** — auto-generated from the pattern you set under **Settings > Generated Numbers**. It's worth knowing Invoice Ninja tracks three different "numbers" that are easy to confuse. The **Invoice Number** (`$invoice.number`) is what appears on the PDF. The client has their own **Client Number** (`$client.number`), also auto-generated, used internally. And each record has an **ID** (`$client.id`, `$invoice.id`) used by the API — these short alphanumeric strings aren't meant for humans. If you're importing from another system, use the client's **ID Number** field to store their old reference without disturbing the generated numbering.
+- **PO Number** — your client's purchase order reference, printed on the PDF so their accounts team can match the invoice to their own records.
+- **Discount** — a reduction off the invoice total, entered as either a flat amount or a percentage.
 
 ## Items
 
-This is the main part of the invoice. You see a list of the line items included on the invoice. You can add _Products_, _Tasks_, or _Expenses_ to the invoice to bill your client for. Each item on the list will have these fields available:
+The items list is the body of the invoice: each row is something you're billing for. You can mix and match [Products](/docs/user-guide/products), [Tasks](/docs/user-guide/tasks), and [Expenses](/docs/user-guide/expenses) — adding a product auto-fills the description, price, and tax from your product library, while tasks and expenses pull their rate and description from their source records.
 
-- **Product** - The name of the product, task, or expense line item being applied.
-- **Description** - A description of the line item. Descriptions can include HTML code, or Markdown code formatting (When enabled under _Settings_ > _Account Management_).
-- **Unit Cost** - The cost of a single product or expense, or the hourly rate of a task for the line item.
-- **Quantity** - The number of products, expenses, or billable hours for a task, to be multiplied by the unit cost of that line item.
+Each line has the following fields:
+
+- **Product** — the name of the product, task, or expense.
+- **Description** — free text. HTML and Markdown are both supported when enabled under **Settings > Account Management**, which is useful for multi-line item notes or inline formatting.
+- **Unit Cost** — the per-unit price, hourly rate for a task, or expense amount.
+- **Quantity** — multiplied by unit cost to produce the line total. Quantity supports up to six decimal places, so 1.25 hours or 0.333 metres both work cleanly.
+
+See [Taxes](/docs/user-guide/taxes) for a full explanation of how per-line versus per-invoice tax is calculated, and why the two can differ by a cent or two on the same invoice.
 
 ## Bottom Tabs
 
 ![Bottom Tabs](/assets/images/invoices/invoice_bottom_tabs_react.png "Bottom Tabs")
 
+The tabs under the line items hold everything that isn't a billed item — notes, terms, attachments, and a handful of per-invoice overrides.
+
 ### Public Notes
 
-Any text notes to add detail or context to the invoice for you and your client. A good spot for service notes, or a summary of work performed for the client.
+Visible to the client, printed on the PDF. A good place for a summary of the work, thank-yous, or contextual detail that doesn't belong in a line description.
 
 ### Private Notes
 
-Private text notes, not printed on the invoice PDF or viewable by the client. These notes can only be seen by users of the admin portal.
+Admin-only. Never printed, never emailed. Use these for internal reminders — "approved by Sam", "watch for late payment", "chase before month-end".
 
 ### Terms
 
-Describe any terms or conditions for your client, as they relate to the invoice, and optionally _Save as default terms_.
+Your terms and conditions as they apply to this invoice. Click **Save as default terms** to reuse the same wording on every future invoice without retyping it.
 
 ### Footer
 
-Any text notes to be included at the bottom of the invoice. A good spot for less important disclaimers. Optionally _Save as default footer_.
+Small print at the bottom of the PDF — bank details, disclaimers, legal notices. Also supports **Save as default footer**.
 
 ### Documents
 
-Upload pictures or documents to your invoice, to include for your client. Uploaded files can be viewed and accessed by the client through the client portal.
+Attach files (contracts, photos, timesheets, delivery dockets) to the invoice. They're visible to the client through the [Client Portal](/docs/user-guide/client-portal) alongside the invoice PDF.
 
 ### Settings
 
-The _Settings_ panel includes some additional options for the invoice:
+Per-invoice overrides that don't fit elsewhere:
 
-- **Project** - Optionally link the invoice to a _Project_
-- **User** - Optionally change the user who is marked as creator of the invoice. The User option can be used in the reports for tracking, but can also be used to give a specific user permission to view/edit an individual record.
-- **Exchange Rate** - Optionally, for when your client record has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what they will owe in their own default currency.
-- **Vendor** - Optionally assign a _Vendor_ to the invoice
-- **Auto Bill Enabled** - When enabled, the client contact(s) will automatically be emailed for payment of their invoice. By default, auto bill actions will be performed on the invoice due date, as specified under _Settings>Payment Settings_.
-- **Inclusive Taxes** - When enabled, invoice tax will be marked as inclusive.
-- **Design** - Choose a template design from one of the premade templates, or one of your own custom designs. You can customize invoice designs under _Settings>Invoice Design_
+- **Project** — link the invoice to a [Project](/docs/user-guide/projects) for reporting.
+- **User** — change the user recorded as the invoice's creator. Beyond reporting, this can also be used to scope record visibility to a specific user.
+- **Exchange Rate** — when billing a client in a currency other than your company's, manually lock the rate used to convert totals back to your base currency for reporting.
+- **Vendor** — link a [Vendor](/docs/user-guide/vendors) to the invoice where relevant.
+- **Auto Bill Enabled** — when on, Invoice Ninja will automatically charge the client's saved payment method on the due date (or whenever you've configured under **Settings > Payment Settings**). Requires a connected [Payment Gateway](/docs/user-guide/gateways) and a tokenised card or bank account on the client.
+- **Inclusive Taxes** — when on, the tax is considered already included in the unit cost rather than added on top. Match this to how your prices are quoted.
+- **Design** — pick one of the built-in designs or a custom one you've built under **Settings > Invoice Design**.
 
 ## Charging Interest/Late Fees
 
-You can configure late fees for overdue invoices under _Settings>Templates & Reminders_:
+Late fees aren't configured on the invoice itself — they're rules applied globally under **Settings > Templates & Reminders**, so every overdue invoice is treated the same way. You define up to three reminders (for example, 3 days before due, 7 days overdue, 30 days overdue), and each reminder can optionally add a flat fee or a percentage of the outstanding balance as a new line on the invoice. Reminders only fire on invoices where **Send Reminders** is enabled on the client — which is why a client with a special arrangement won't trigger fees even if their invoice is overdue.
 
 ![Late fees overdue invoices](/assets/images/settings/late_fees_overdue_invoices.png "Late fees overdue invoices")
 
 ## Lifecycle of an invoice
 
+Every invoice moves through a small set of statuses. The status controls what the client sees, whether the invoice contributes to your reporting totals, and what actions you can take next. Understanding the transitions saves a lot of confusion later — particularly around why you can't edit something, or why a balance moved when you didn't expect it to.
+
 ### Draft
 
-The Draft status is the first status in the lifecycle of a invoice. In this status, changes can be made to the invoice and the invoice is hidden completely from the client. A draft invoice does not affect the ledger nor does it change the client balance. Draft invoices are inactive until either emailed to the client, marked as sent, or marked paid.
+Draft is where every invoice starts. In this state the invoice is invisible to the client, excluded from the ledger, and doesn't affect the client's balance — so you can build it up, tweak line items, and come back tomorrow without anyone seeing a half-finished document. Draft invoices become active the moment they're emailed, marked as sent, or marked as paid.
 
 :::warning
-Once a draft invoice has been emailed/marked as sent its status cannot be changed back to draft.
+Once a draft invoice has been emailed or marked as sent, it cannot be moved back to draft. If you need to start over, clone the invoice and cancel or delete the original.
 :::
 
 ### Sent
 
-A invoice is marked as sent when it has been emailed to the client or marked as _sent_ in the admin panel.
-
-When the invoice status is changed to Sent, the client balance increases by the _invoice balance_ amount.
+An invoice is marked Sent the moment you email it or choose **Mark Sent** from the actions menu. This is the status change that makes the invoice real: the client's balance increases by the invoice balance, reminders start counting down against the due date, and the invoice shows up in the client portal.
 
 ### Partial
 
-A invoice status of Partial means that a payment has been applied to the invoice but there is still a outstanding balance remaining on the invoice.
+Partial means a payment has landed against the invoice but hasn't covered the full balance — either because the client paid the **Partial/Deposit** amount, or because a smaller [Payment](/docs/user-guide/payments) or [Credit](/docs/user-guide/credits) was applied. The invoice stays active, the client balance reflects only what's still owing, and subsequent payments move it along until it reaches Paid.
 
 ### Paid
 
-A invoice status of Paid means that full payment has been applied to the invoice. The _invoice balance_ will be 0.
+The full balance has been covered and the invoice is closed out. The invoice balance is zero, and any further actions (refunds, reversals) happen through the linked payment rather than the invoice itself.
 
 ### Cancelled
 
-A invoice can be cancelled under the following conditions.
-
-- The invoice is marked as Sent, Partial or Paid (ie. some payment amount has been applied or the invoice is active)
-
-When a invoice is cancelled the _invoice balance_ is set to zero and the status updated to **Cancelled**, the _client balance_ is also adjusted down. If payments have been applied to the invoice these will remain linked to the invoice.
+Cancelling is the clean way to write off an invoice that was sent in error or for work that won't go ahead. You can cancel an invoice once it's Sent, Partial, or Paid. The invoice balance is zeroed, the client's balance drops accordingly, and the status becomes Cancelled. Any payments that were linked stay linked — cancelling doesn't erase history, it just settles the ledger.
 
 ### Deleted
 
-A invoice can be marked as deleted if the following conditions have been met:
-
-- The invoice has a status of Sent / Draft / Paid / Partial.
-
-What happens when a invoice is deleted?
-
-If the invoice has a balance remaining, in order to balance the ledger, we perform a **Cancellation** on the invoice first and then perform the deletion.
-
-- Invoice status set to deleted
-- The invoice number is appended with **\_deleted** in order to allow reuse of invoice numbers.
+Delete is a stronger action than Cancel, meant for invoices you want fully removed from your reporting. Invoices in Sent, Draft, Paid, or Partial status can be deleted. If the invoice had a balance or payments applied, Invoice Ninja quietly performs a Cancellation first to keep the ledger balanced, then marks the invoice deleted. The invoice number is also appended with `_deleted` so you can reuse the original number on a fresh invoice.
 
 :::warning
-Important! If a invoice has a remaining balance or has had payments applied to it, the invoice is cancelled and then deleted.
+If an invoice has a remaining balance or payments applied, it is cancelled first and then deleted — the two steps are automatic and inseparable.
 :::
 
 ### Reversed
 
-A invoice can be reversed under the following conditions:
+Reversing is the accountant-friendly way to undo an invoice that's already been paid. It's available once an invoice is Sent, Partial, or Paid. Where a Cancel simply adjusts the balances, a Reverse carefully re-routes any money that changed hands:
 
-- The invoice is marked as Sent, Partial or Paid (ie. some payment amount has been applied to the invoice)
+- The client's paid-to-date is reduced by the amount that had been paid against this invoice.
+- Any payments that were applied are detached from the invoice and re-linked to a new credit, so the client's money isn't lost — it becomes a [Credit](/docs/user-guide/credits) you can apply to a future invoice or refund.
+- Any existing credits that had been applied to the invoice are converted back into new credits.
+- The client balance is reduced by the invoice balance, the invoice balance is set to zero, and the status becomes Reversed.
 
-When a invoice is reversed the payment(s) that have been applied to the invoice have a credit generated against them. The ledger is also adjusted as follows:
-
-- The client paid to date amount is reduced by the calculated amount of (invoice balance - invoice amount).
-- A credit is generated for the payments applied to the invoice (invoice balance - invoice amount). The original payment record that was linked to the invoice will now be linked to a new credit record.
-- Any credit value that was applied as payment to the invoice is then converted into a new credit record.
-- The client balance is reduced by the invoice balance.
-- The invoice balance is finally set to 0.
-- The invoice status is set to Reversed.
-
-When a invoice has been reversed, the previous payments relationships are unlinked and cannot be restored.
+Once reversed, the original payment-to-invoice links are gone and cannot be restored — so reach for Reverse only when you actually want to unwind the transaction, not as a shortcut for correcting a typo.
 
 ### Archived
 
-Archiving a invoice simply removes the invoice from the invoice list view. Archiving a invoice keeps your list views clean and tidy and does not effect the ledger / client balance.
+Archiving hides an invoice from your default list views but leaves everything else untouched — the ledger, the client balance, the payments, the reports. Think of it as tidying, not deleting.
 
 :::warning
-When a invoice is archived no further modifications can be made to the invoice. To modify the invoice you will need to Restore the invoice first.
+Archived invoices are read-only. If you need to change something, restore the invoice first.
 :::
 
 ### Restored
 
-Restoring a invoice from the archived or deleted state will set the invoice back to its previous state prior to archiving.
+Restoring reverses an archive or delete and puts the invoice back into its previous status exactly as it was. No data is lost in either direction, which is why archive and delete are safe to use liberally.
+
+## Related
+
+- [Clients](/docs/user-guide/clients) — the other half of every invoice
+- [Payments](/docs/user-guide/payments) — record, refund, and reconcile money received
+- [Credits](/docs/user-guide/credits) — apply balances back toward future invoices
+- [Recurring Invoices](/docs/user-guide/recurring-invoices) — turn a one-off invoice into a subscription
+- [Quotes](/docs/user-guide/quotes) — price the work first, then convert to an invoice
+- [Taxes](/docs/user-guide/taxes) — configure how tax is calculated and displayed
+- [Payment Gateways](/docs/user-guide/gateways) — get paid online
+- [Client Portal](/docs/user-guide/client-portal) — what your client sees when the invoice lands

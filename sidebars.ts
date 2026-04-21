@@ -52,7 +52,6 @@ const sidebars: SidebarsConfig = {
         "advanced-topics/tax-accounting-tips",
       ],
     },
-    "migration",
     {
       type: "category",
       label: "Legal",

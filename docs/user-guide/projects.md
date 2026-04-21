@@ -2,71 +2,76 @@
 title: "Projects"
 sidebar_position: 17
 ---
-The _Projects_ module is useful for managing large collections of work for clients. A project record itself is simple, but its functionality and usefulness come from the records linked to it. By linking Tasks and Expenses to a project, you can stay organized and plan the work for your client. You can also link a project to a User in the admin portal to maintain accountability.
-
-You can assign multiple tasks and expenses to a project, but it is not required. Tasks represent billable hours and assigning them to a project with a Task Rate set, allows you to create a default hourly rate. Expenses represent goods or services you had to pay for. Assigning expenses to a project helps you keep track of them when it's time to bill your client for the completed project.
+A project is a container that groups everything you do for a [client](/docs/user-guide/clients) under one roof — the billable hours, the costs you incurred on their behalf, and the invoice that eventually goes out. The project record itself is deliberately simple; its value comes from what you hang off it. Once a few [tasks](/docs/user-guide/tasks) and [expenses](/docs/user-guide/expenses) are linked, you have a single place to see how much work has gone in, how much you've spent, and how close you are to the budget you agreed.
 
 ![Projects home screen](/assets/images/projects/projects_home_screen.png)
 
+## When to Use a Project
+
+Not every piece of work needs a project. If you're sending a one-off [invoice](/docs/user-guide/invoices) for a fixed amount — a product sale, a flat-fee service, a quick job — invoicing the client directly is faster and keeps your records uncluttered.
+
+Projects start to earn their keep when:
+
+- **Work is tracked by the hour.** A project gives your tasks a default **Task Rate**, so every new task for that engagement inherits the right hourly rate without you having to remember it.
+- **You need to watch a budget.** Set **Budgeted Hours** up front and the project overview shows total logged hours against budget at a glance — useful for fixed-scope retainers, capped engagements, and internal accountability.
+- **Costs accumulate over time.** Agency and freelance work often involves out-of-pocket expenses — stock photography, contractor invoices, travel. Linking expenses to a project keeps them bundled with the work they belong to, so nothing is forgotten at billing time.
+- **You want one user accountable.** Assigning a **User** to the project makes it clear who owns delivery, which matters as soon as a team gets past one or two people.
+- **You'll invoice in stages or at the end.** When several tasks and several weeks sit between "start" and "send invoice", the project is what ties it all together.
+
 ## Viewing a Project
 
-From the _Projects_ module, select any project from the table to bring up the project overview page.
+Selecting any project from the _Projects_ list opens its overview.
 
 ![Project overview](/assets/images/projects/project_overview.png)
 
-The screen displays the **Total** hours and **Budgeted** hours for the project. The Total hours are the sum of all tasks in the project, allowing you to see the progress of the work relative to the budgeted hours.
+The header shows the **Total** hours logged and the **Budgeted** hours you set, so progress against plan is visible immediately. You'll also see the assigned client and user, the number of linked tasks and expenses, the due date, and the default task rate. Public and private notes sit alongside, each with its own icon.
 
-You can also see the _Client_ and _User_ assigned to the project, as well as the number of linked _Tasks_ and _Expenses_. Additionally, you can see the project _Due Date_ and default _Task Rate_ for linked tasks.
-
-Public and private notes are also displayed with different icons.
-
-If there are any expenses linked to the project, they will be shown as links:
+Any expenses linked to the project appear as clickable links, making it easy to jump from the project into the underlying cost records:
 
 ![Expenses linked to project](/assets/images/projects/project_linked_expenses.png)
 
-The dropdown arrow menu at the top right corner of the screen offers the option to invoice the project (create an invoice to the client from the project), clone the project, run the project as a template, and archive or delete the project.
+The dropdown at the top-right is where the day-to-day actions live — invoice the project, clone it, run it as a template for similar future work, or archive and delete.
 
 ![Project edit dropdown arrow](/assets/images/projects/project_edit_dropdown_arrow_menu.png)
 
 ### Tasks
 
-On the right of the view project page above the tasks table, you have an option to create a **New Task** which will shortcut you to creating a task that is already prepared to be linked to the project you were viewing. The other button at the bottom is **Invoice Project** which takes you to a new page to create an invoice, already prepared with any unpaid tasks that are assigned to the project.
+Above the tasks table, **New Task** creates a task that's already wired up to this project, which saves the usual round-trip of opening a task and hunting for the right project in the dropdown. **Invoice Project** at the bottom takes every unbilled task attached to the project and drops it onto a fresh invoice for the client.
 
-Each task in the project has a _More Actions_ dropdown which provides options related to the specific task selected:
+Each row has a _More Actions_ menu for task-level controls:
 
 ![Project task dropdown](/assets/images/projects/project_task_dropdown.png)
 
-_To learn more about task time tracking/statuses, see: [Tasks](/docs/user-guide/tasks)_
+For time tracking and task statuses, see [Tasks](/docs/user-guide/tasks).
 
 ## Creating and Editing a Project
 
-Creating and editing a project is simple. Most of the functionality comes from the records linked to it, such as tasks and expenses, making it easy to bill the client for all related work. The customizable fields are:
+Creating a project is quick — most of the value comes later, from what you attach to it. The fields are:
 
-- **Project Name**: The name of the project, which is included in the line item description of the first task in the invoice when creating it from the project.
-- **Project Number**: An automatically generated number for record keeping purposes.
-- **Client**: Assign the project to a client.
-- **User**: Assign a user to the project to maintain accountability and responsibility.
-- **Due Date**: Assign a due date to stay focused and track progress.
-- **Budgeted Hours**: Set a budget for billable hours based on estimation and client agreement.
-- **Task Rate**: Set a default rate for billable hours in new tasks, which can be overwritten later.
-- **Public Notes**: Add notes for perspective and client records.
-- **Private Notes**: Add notes to be shared with coworkers who have access to the admin portal.
+- **Project Name** — The name of the engagement. It appears in the line-item description of the first task when you invoice the project, so pick something the client will recognise.
+- **Project Number** — Generated automatically for your own record-keeping.
+- **Client** — The [client](/docs/user-guide/clients) this work is for. A project can only belong to one client.
+- **User** — The team member accountable for the project.
+- **Due Date** — The target finish date. Helpful for keeping an eye on what's coming up.
+- **Budgeted Hours** — Your estimate or agreed cap on billable hours. Shown next to total logged hours on the overview.
+- **Task Rate** — The default hourly rate for new tasks on this project. Individual tasks can override it if the rate varies by role or phase.
+- **Public Notes** — Visible to the client on relevant documents; good for scope summaries.
+- **Private Notes** — Internal only; good for reminders and context for colleagues.
 
 ### Documents
 
-You can upload files, such as images, documents, and more under the _Documents_ tab. Like most other modules, files uploaded under the documents tab of a project can be viewed by the client through the client portal under the Documents section > Projects tab.
+Files you attach under the project's _Documents_ tab — briefs, signed scopes, design references — are available to the client through the client portal under _Documents > Projects_. Keep that in mind before uploading anything internal.
 
 ## Invoicing a Project
 
-Once you finish working on a project, it is time to bill the client for the total hours.
-
-Simply select the _Invoice Project_ option from the project Edit or More Actions dropdown.
+When the work is done (or you've hit a milestone worth billing), use **Invoice Project** from the project's Edit or More Actions menu.
 
 ![Project edit dropdown arrow](/assets/images/projects/project_edit_dropdown_arrow_menu.png)
 
-The New Invoice page will be pre-filled with the project's client, and the project's tasks will be added under the invoice's Tasks section.
-The ## and &lt;div&gt; in the description are intentional - used to apply CSS formatting.
+The new invoice is pre-filled with the project's client, and every unbilled task rolls onto the invoice as a line item. Review, adjust the wording if needed, and send.
+
+The `##` and `<div>` that appear in task descriptions are intentional — they carry CSS formatting through to the PDF.
 
 ![Invoice created from project](/assets/images/projects/invoice_created_from_project.png)
 
-Note: expenses linked to a project won't be included on the invoice that is created from a project. If you want to bill your client for project expenses, they will have to be added manually to the invoice as items.
+One thing to watch: expenses linked to a project are **not** automatically added to the generated invoice. If you're billing the client for project expenses, mark those expenses as billable on the [expense record](/docs/user-guide/expenses) and add them to the invoice manually, or include them as line items before sending.

@@ -2,100 +2,75 @@
 title: "Transactions"
 sidebar_position: 24
 ---
-## Overview
+The **Transactions** screen is where every line from your bank feed lands. It's the bridge between what your bank says happened and what Invoice Ninja knows about — deposits get matched to [invoices](/docs/user-guide/invoices) and turned into [payments](/docs/user-guide/payments), withdrawals get categorised as [expenses](/docs/user-guide/expenses), and anything that can't be matched automatically waits here for a quick review.
 
-Invoice Ninja has partnered with [Yodlee](https://www.yodlee.com) and [GoCardless](https://gocardless.com), top data providers, to gain access to bank & credit card data feeds. This partnership gives Invoice Ninja users worldwide access to major banks and enables them to connect their accounts for automatic reconciliation of payments and expenses.
+If you haven't connected a bank yet or set up matching rules, start with [Banking](/docs/user-guide/banking) — it covers the sync options (Yodlee, GoCardless, or CSV) and how rules work. This page focuses on the day-to-day: working through the list, reconciling what came in, and fixing up anything the rules missed.
 
-## Bank Accounts
+## Where Transactions Come From
+
+Every row in the list originates from one of three places:
+
+- An automatic bank sync through Yodlee or GoCardless, pulling fresh transactions on a schedule.
+- A CSV file you exported from your bank and imported manually.
+- A transaction you entered by hand from this screen — handy for cash movements or anything outside your connected accounts.
+
+No matter the source, each transaction follows the same lifecycle and shows up in the same list.
+
+## The Transactions List
 
 ```bash
-Settings > Credit Cards & Banks
+Transactions
 ```
 
-You can view and add bank accounts in the settings section of the application.
+![Transactions](/assets/images/banking/bank_transactions.png "Transactions")
 
-Please see [Banking](/docs/user-guide/banking) for details.
+The list is your reconciliation workspace. Filter by **Bank Account** when you're working through one account at a time, or by **Status** to zero in on what still needs attention. Each row shows the deposit or withdrawal amount, the date, the description as it came from the bank, and once a transaction has been converted, the linked invoice or expense.
 
-## Transactions List
+### Transaction Statuses
 
-The transactions overview displays all of your transactions and their status.
+A transaction always sits in one of three states, and understanding the difference is the key to working the list efficiently:
 
-![alt text](/assets/images/banking/bank_transactions.png "Transactions")
+- **Unmatched** — the transaction has just arrived and nothing has been linked to it yet. This is where everything starts.
+- **Matched** — Invoice Ninja (usually via a bank rule) has identified the invoice, payment, or vendor this transaction relates to, but no financial record has been created yet. Think of it as a suggestion waiting for your confirmation.
+- **Converted** — a real payment or expense record has been created from the transaction and linked back to it. Reconciliation for this line is complete.
 
-- **Bank Account** - Filter the account you are viewing transactions for.
-- **Status** - Defines the status of the transaction.
+Filtering by **Unmatched** is usually the fastest way to get through a session — those are the rows that still need a decision from you.
 
-  - Unmatched - A new transaction that needs to be matched to a Invoice or Expense
-  - Matched - A transaction that (based on predefined rules) has been matched to a Invoice or Expense
-  - Completed - A transaction that has been matched AND linked to a Invoice or Expense
+## Matching Deposits to Invoices
 
-- Deposit - The amount of income for the transaction.
-- Withdrawal - The amount of the expense for the transaction.
-- Date - The Date of the transaction.
-- Description - The description of the transaction.
-- Invoices - The linked invoices (visible when completed)
-- Expenses - The linked expenses (visible when completed)
+When a deposit lands (money in), your job is to connect it to the invoice it pays. Click the transaction row and a side panel opens with matching options.
 
-## Create a Manual Transaction
+![Convert a transaction to a payment](/assets/images/banking/convert_to_payment.png "Convert a transaction to a payment")
 
-To create a manual transaction click on the _New Transaction_ button
+Pick the invoice or invoices this deposit covers and click **Create Payment**. Invoice Ninja creates a payment for the full transaction amount, applies it across the invoices you selected, and links everything together — the transaction, the payment, and the invoices now all reference one another. The status flips to **Converted**.
 
-![alt text](/assets/images/banking/add_edit_transaction.png "Add a Transaction")
+If a bank rule has already suggested a match, the invoice will be pre-selected when you open the panel. You just review and confirm.
 
-Select a Type:
+## Categorising Withdrawals as Expenses
 
-- Deposit for income
-- Withdrawal for expenses
+Withdrawals (money out) work the same way, but the other direction. Click a withdrawal and the panel lets you assign a **Vendor** and an **Expense Category**.
 
-Fields:
+![Convert a transaction to a expense](/assets/images/banking/convert_to_expense.png "Convert a transaction to a expense")
 
-- Enter the Date of the transaction
-- The amount
-- Select the currency of the transaction
-- Select the bank account to link the transaction to
-- Enter a description. For auto matching, if you enter the invoice number we will automatically find and match the related invoice.
+Click **Convert to Expense** and Invoice Ninja creates an expense record using the transaction's amount, date, and description, then links the expense back to the transaction. See [Expenses](/docs/user-guide/expenses) for more on what you can do with the resulting records.
 
-## Matching Transactions
+If you'd rather work in bulk, tick the checkbox next to one or more withdrawals and choose **Actions > Create Expense**:
 
-When you click on a transaction a second window pane will open which will show you the matching options:
+![create expense](/assets/images/transactions/create_expense_from_checkbox.png "create expense")
 
-## Transaction Status
+![expense creation popup](/assets/images/transactions/expense_creation_popup.png "expense creation popup")
 
-A transaction can appear in three states:
+## Creating a Transaction Manually
 
-- Unmatched - A transaction that is unmatched is a transaction that has yet to be processed or categorized. When a transaction is created in the system, its first status is unmatched.
-- Matched - A transaction that is matched means that Invoice Ninja has calculated (based on a set of rules) the correct matching for this particular transaction. In the matched state, the transaction can be Converted (to either an expense or payment) or it can be recategorized manually.
-- Converted - A transaction that is converted means that either Invoice Ninja or a user has matched and converted the transaction into either an Expense or Payment. The details and linked objects can be viewed by clicking onto the transaction.
+Sometimes you need a transaction that didn't come from a bank feed — a cash payment, a petty-cash withdrawal, or something you want to reconcile without waiting for the sync. Click **New Transaction**.
 
-## Converting a transaction to an expense - Expense Matching
+![Add a Transaction](/assets/images/banking/add_edit_transaction.png "Add a Transaction")
 
-![alt text](/assets/images/banking/convert_to_expense.png "Convert a transaction to a expense")
+Choose **Deposit** for income or **Withdrawal** for an expense, then fill in the date, amount, currency, and the bank account it belongs to. If you include an invoice number in the description, Invoice Ninja will try to match it to the corresponding invoice automatically — the same logic used for synced transactions.
 
-When you click on the transaction row of a WITHDRAWAL, a side panel will appear as above.
+## Importing a Bank Statement
 
-From this panel you are able to assign a Vendor and/or an expense category to this transaction. When you are satisfied, just click on Convert to expense. The system will then process the transaction, convert it to an expense and finally link the expense and transaction together.
-
-Alternatively, you can select the checkbox next to the transaction, then _Actions>Create Expense_ as shown below:
-
-![alt text](/assets/images/transactions/create_expense_from_checkbox.png "create expense")
-
-![alt text](/assets/images/transactions/expense_creation_popup.png "expense creation popup")
-
-## Converting a transaction to a payment - Invoice Matching
-
-![alt text](/assets/images/banking/convert_to_payment.png "Convert a transaction to a payment")
-
-When you click on the transaction row of a DEPOSIT, a side panel will appear as above.
-
-From this panel you are able to click on a range of invoice which are to be associated with this transaction.
-
-When this has been completed, click on the Create Payment Button. The system will then process the transaction, creating a payment for the full tranasction amount, apply the payment to the associated invoices, and then link the invoice / transaction and payments together.
-
-## Manually Importing Bank Statements
-
-If you prefer to import your data using .csv files from your bank, you can upload these directly into Invoice Ninja.
-
-You can import these from:
+If your bank isn't supported by the live integrations, or you'd rather not link an account, you can bring transactions in from a CSV export.
 
 ```bash
 Transactions > Import
@@ -105,4 +80,10 @@ Transactions > Import
 
 ![transactions import](/assets/images/transactions/transactions_import.png)
 
-You'll need to have created a Bank Account prior to this, so the transactions are linked to the correct bank account.
+Create the bank account first under **Settings > Credit Cards & Banks** so the imported transactions have somewhere to land, then map the CSV columns (date, description, amount) to Invoice Ninja's fields during the import.
+
+## Reconciling Efficiently
+
+A good reconciliation workflow looks roughly like this: let [bank rules](/docs/user-guide/banking#bank-rules) handle the transactions that follow predictable patterns (gateway payouts, recurring rent, utility bills), then filter the list to **Unmatched** and work through whatever's left by hand. Rules do the repetitive work; you make the judgement calls on the unusual ones.
+
+If a transaction was imported in error, delete it from the list — the linked payment or expense, if one was created, stays put and can be removed separately.

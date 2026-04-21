@@ -2,9 +2,9 @@
 title: "Purchase Orders"
 sidebar_position: 18
 ---
-A purchase order (PO) is a legally binding document that a buyer uses to request goods or services from a supplier. It serves as an official offer to purchase specific items at a specified price and is typically used by businesses in the procurement process. The PO includes details such as the type, quantity, and cost of the products or services being requested, as well as any relevant delivery or payment terms.
+A purchase order is the mirror image of an invoice — where an invoice is something you send *to* a client, a purchase order is something you send *to a vendor* to request goods or services at an agreed price. It's a clear, written record of what you're ordering, how much you expect to pay, and on what terms. Once your vendor accepts it, the PO becomes a binding agreement between the two of you, which saves a lot of back-and-forth later if an invoice arrives with surprises on it.
 
-Once a supplier accepts the PO, it becomes a binding contract between the buyer and seller.
+Freelancers, small businesses, and agencies typically reach for a PO when buying stock, commissioning a subcontractor, ordering equipment, or locking in a larger spend that needs sign-off before the money goes out. If you're new to the buy-side of the app, it's worth reading [Vendors](/docs/user-guide/vendors) first — a vendor has to exist before you can raise a PO against them — and [Expenses](/docs/user-guide/expenses), since an accepted PO usually ends its life as an expense on your books.
 
 ## Creating a Purchase Order
 
@@ -12,110 +12,110 @@ Once a supplier accepts the PO, it becomes a binding contract between the buyer 
   <source src="/assets/videos/purchase_orders/create_purchase_order.mp4" type="video/mp4" />
 </video>
 
-Creating a purchase order has a similar work flow as when creating an invoice. Prior to creating a Purchase Order, a Vendor needs to be present in the system. A Vendor can be created directly from the Purchase Order page, or via the Vendors tab.
+Creating a purchase order follows much the same flow as creating an invoice. Before you start, you'll need a [vendor](/docs/user-guide/vendors) to raise the PO against — you can either add one ahead of time from the Vendors tab, or create one on the fly from the purchase order screen.
 
 ### Details
 
-The _Details_ panel includes the most basic information about the purchase order:
+The _Details_ panel holds the basics of the order:
 
-- **Vendor** - You must select a vendor from the list to apply your purchase order to.
-- **Purchase Order Date** - Automatically generated with today's date, is simply the date of the purchase order.
-- **Due Date** - Optionally, you may specify an end date that the purchase order is valid until, to limit how long you will honor it.
-- **Partial/Deposit** - Optionally, specify a required partial payment or deposit on the purchase order, with its own due date, separate from, and owed before the purchase order due date for the purchase order's full amount.
-- **Discount** - Enter a discount amount to apply to the purchase order, either as a percentage, or a flat rate.
+- **Vendor** — who you're buying from. Select one of your existing vendors.
+- **Purchase Order Date** — defaults to today, and is the date the PO is issued.
+- **Due Date** — an optional cut-off showing how long your offer stands.
+- **Partial/Deposit** — an optional amount owed up front, with its own due date ahead of the PO's full due date. Handy for deposits on larger orders.
+- **Discount** — a flat amount or percentage taken off the total.
 
 ### Items
 
-Here you see a list of the line items included on the purchase order. You can add _Products_, to the purchase order to bill your vendor for. Each item on the list will have these fields available:
+The items list is where you spell out what you're actually ordering. Each line can pull from your [Products](/docs/user-guide/products) catalogue or be typed in fresh:
 
-- **Product** - The name of the product item being applied.
-- **Description** - A description of the line item. Descriptions can include HTML code, or Markdown code formatting (When enabled under _Settings_ > _Account Management_).
-- **Unit Cost** - The cost of a single product for the line item.
-- **Quantity** - The number of products to be multiplied by the unit cost of that line item.
+- **Product** — the name of the product or service.
+- **Description** — supporting detail for the line. HTML and Markdown are supported when formatting is enabled under _Settings > Account Management_.
+- **Unit Cost** — the agreed price for a single unit.
+- **Quantity** — how many you're ordering; multiplied by unit cost to give the line total.
 
 ### Bottom Tabs
 
-The Purchase order can be decorated with additional terms, footer, and notes below.
+The lower section of the PO is where you add the softer context — terms, notes, and settings that shape how the document looks and behaves.
 
 ![Bottom Tabs](/assets/images/purchase_orders/purchase_order_bottom_tabs.png "Bottom Tabs")
 
 #### Terms
 
-Describe any terms or conditions for your vendor, as they relate to the Purchase Order, and optionally _Save as default terms_.
+Any conditions attached to the order — delivery windows, return policy, and so on. Tick _Save as default terms_ if you want the same wording on every future PO.
 
 #### Footer
 
-Any text notes to be included at the bottom of the Purchase Order. A good spot for less important disclaimers. Optionally _Save as default footer_.
+A small block printed at the bottom of the PDF. Good for disclaimers or standing references. Also savable as a default.
 
 #### Public Notes
 
-Any text notes to add detail or context to the purchase order for you and the vendor.
+Notes visible to the vendor, printed on the PDF. Use these for anything that adds helpful context to the order.
 
 #### Private Notes
 
-Private text notes, not printed on the Purchase Order PDF or viewable by the vendor. These notes can only be seen by users of the admin portal.
+Internal notes, not printed and not visible in the Vendor Portal. Only admin portal users can see them.
 
 #### Settings
 
-The _Settings_ panel includes some additional options for the Purchase Order:
-
-- **User** - Optionally change the user who is marked as creator of the Purchase Order.
-- **Project** - Optionally link the Purchase Order to a _Project_
-- **Client** - Optionally assign a _Client_ to the Purchase Order
-- **Exchange Rate** - Optionally, for when your vendor has another currency than your own as their default, you will be able to manually specify the exchange rate to automatically calculate what you will owe in their own default currency.
-- **Design** - Choose a template design from one of the premade templates, or one of your own custom designs. You can customize Purchase Order designs under _Settings>Invoice Design_
+- **User** — who's recorded as having created the PO.
+- **Project** — optionally link the PO to a project so its spend rolls up there.
+- **Client** — optionally tie the PO to a [client](/docs/user-guide/clients), which is useful when the purchase is being made on a client's behalf and will eventually be billed back to them.
+- **Exchange Rate** — if the vendor invoices in a currency other than your own, set the rate here so the conversion is captured on the PO.
+- **Design** — pick any of the built-in templates, or a custom design from _Settings > Invoice Design_.
 
 #### Documents
 
-Upload pictures or documents to your Purchase Order, to include for your vendor.
+Attach pictures, quotes, specs, or contracts to the PO so everything related to the order lives in one place.
 
-## Lifecycle of a purchase order
+## Lifecycle of a Purchase Order
+
+A PO moves through a handful of states from the moment you draft it to the moment it becomes an expense. Understanding the flow helps you see at a glance where each order sits.
 
 ### Draft
 
-The Draft status is the first status in the lifecycle of a purchase order. In this status, changes can be made to the purchase order and the purchase order is hidden completely from the vendor. Draft purchase orders are inactive until either emailed to the vendor or marked as sent.
+Every PO starts as a draft. At this stage it's yours alone — the vendor can't see it, and you can edit freely. Drafts stay inactive until you either email them or mark them as sent.
 
 :::warning
-Once a draft purchase order has been emailed/marked as sent its status cannot be changed back to draft.
+Once a draft has been emailed or marked as sent, it can't be moved back to draft.
 :::
 
 ### Sent
 
-A purchase order is marked as sent when it has been emailed to the vendor or marked as _sent_ in the admin panel.
+The PO becomes _Sent_ the moment it leaves your hands, whether that's by email from Invoice Ninja or by marking it sent manually (for example, if you handed over a PDF in person or forwarded it from another tool).
 
 ### Accepted
 
 ![alt text](/assets/images/purchase_orders/purchase_order2.png "Creating purchase order.")
 
-When a purchase order is **accepted** by the vendor, the status of the purchase order changes to accepted. The vendor is able to perform this via the Vendor Portal. The vendor can also be asked to agree to additional terms and place a signature on file for this purchase order during the acceptance process.
+When your vendor agrees to the order, the PO moves to _Accepted_. Vendors do this themselves through the Vendor Portal — the portal-facing side of Invoice Ninja where they can review the PO, optionally agree to extra terms, and leave a signature on file. At that point you have a binding record that both sides agreed to the same numbers.
 
 ### Received
 
-When the goods have been received, the administrator is able to mark the purchase order as accepted. At this point, if Inventory Tracking is enabled, the stock levels of the products/SKUs are incremented.
+Once the goods or services turn up, you can mark the PO as _Received_. If Inventory Tracking is enabled, stock levels for the matching products are incremented automatically, so the count on your shelves stays in step with the paperwork.
+
+### Converting a Purchase Order to an Expense
+
+A received PO doesn't just sit there — you can convert it into an [expense](/docs/user-guide/expenses) in one step, which is usually how the order ends its life in your books. The expense inherits the vendor, amount, and line detail from the PO, so you don't re-key anything, and if the PO was linked to a client or project the expense keeps that link too (handy for billing the cost back on). From there the expense behaves like any other — you can mark it paid, attach a receipt, or flag it as billable.
 
 ### Cancelled
 
-If the purchase order is cancelled, it is placed in a cancelled state.
+If the order falls through before it's received, mark it _Cancelled_ to preserve the record without treating it as live.
 
 ### Deleted
 
-A purchase order can be marked as deleted if the following conditions have been met
+A PO can be deleted while it's still in _Sent_ or _Draft_ status. When you delete one:
 
-- The purchase order has a status of Sent / Draft.
-
-What happens when a purchase order is deleted?
-
-- purchase order status set to deleted
-- The purchase order number is appended with **\_deleted** in order to allow reuse of purchase order numbers.
+- Its status is set to deleted.
+- The PO number is suffixed with **\_deleted** so the original number can be reused.
 
 ### Archived
 
-Archiving a purchase order simply removes the purchase order from the purchase order list view. Archiving a purchase order keeps your list views clean and tidy.
+Archiving removes a PO from the default list view without changing any of its data. It's purely cosmetic housekeeping.
 
 :::warning
-When a purchase order is archived no further modifications can be made to the purchase order. To modify the purchase order you will need to Restore the purchase order first.
+An archived PO can't be modified until it's restored.
 :::
 
 ### Restored
 
-Restoring a purchase order from the archived or deleted state will set the purchase order back to its previous state prior to archiving.
+Restoring a PO from archived or deleted puts it back into whichever state it was in beforehand, with all its data intact.
