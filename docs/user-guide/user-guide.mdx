@@ -2,50 +2,99 @@
 title: "User Guide"
 sidebar_position: 2
 ---
-import VideoPlayer from "@site/src/components/VideoPlayer";
+import VideoPlayer from "@site/src/components/VideoPlayer";  
 
-Invoice Ninja is an invoicing application which makes sending invoices and receiving payments simple and easy. Our latest version is a clean slate rewrite of our popular invoicing application which builds on the existing feature set and adds a wide range of features and enhancements the community has asked for.
+Invoice Ninja helps freelancers, small businesses, and agencies send invoices, quote work, track expenses, and get paid. Once your account is set up, you can invoice a client in any currency, accept online payments, run reports, and give customers a branded portal to pay and manage their documents — all from the same place.
 
-## Lets get started!
+This guide walks through the parts of the app you'll actually use day-to-day. Each section explains what something is, when you'd reach for it, and how it connects to the rest of the system.
 
-We support a wide range of devices and have custom applications for all platforms. For best performance we highly recommend using the application specific to your operating system.
+Invoice Ninja is available on the web and as a native app on iOS, Android, macOS, Windows, and Linux. Everything is synced to the same account, so you can start an invoice on your phone and finish it on your laptop.
 
-| Device  | Link                                                                           |
-| ------- | ------------------------------------------------------------------------------ |
-| Android | [Download](https://play.google.com/store/apps/details?id=com.invoiceninja.app) |
-| iOS     | [Download](https://apps.apple.com/us/app/invoice-ninja-v5/id1503970375)        |
-| macOS   | [Download](https://download.invoiceninja.com/macos)                            |
-| Linux   | [Download](https://snapcraft.io/invoiceninja)                                  |
-| Windows | [Download](https://www.microsoft.com/en-us/p/invoice-ninja/9n3f2bbcfdr6)       |
+## Key Concepts
 
-Of course we also provide a fantastic web application which can be found [here](https://app.invoicing.co). No matter which device you use, your data will be kept in sync and up to date!
+A few terms appear throughout the guide. Understanding them up front makes everything else easier.
 
-## Initial setup
+- **Client** — a person or company you invoice. See [Clients](/docs/user-guide/clients).
+- **Contact** — an individual email address attached to a client. A client can have multiple contacts (for example, Accounts Payable and Operations) and each contact gets their own [Client Portal](/docs/user-guide/client-portal) login.
+- **Invoice** — a bill sent to a client. See [Invoices](/docs/user-guide/invoices).
+- **Quote** — a priced proposal that can be converted into an invoice once the client accepts it. See [Quotes](/docs/user-guide/quotes).
+- **Recurring Invoice** — a template that automatically generates and sends invoices on a schedule (weekly, monthly, annually, and so on). See [Recurring Invoices](/docs/user-guide/recurring-invoices).
+- **Payment** — money received against one or more invoices. See [Payments](/docs/user-guide/payments).
+- **Credit** — a balance owed *to* the client, which can be applied to their future invoices. See [Credits](/docs/user-guide/credits).
+- **Expense** — a cost you've incurred, optionally billable back to a client. See [Expenses](/docs/user-guide/expenses).
+- **Product** — a reusable line-item template (description, price, tax) you can drop into invoices and quotes. See [Products](/docs/user-guide/products).
+- **Client Portal** — the customer-facing side of Invoice Ninja, where contacts view and pay their invoices. See [Client Portal](/docs/user-guide/client-portal).
 
-You'll want to do some basic configuration when you log in for the first time, settings up your company name, address and uploading your logo. You can follow the steps with this short video.
+## Getting Started
+
+When you first sign in you'll land on an empty dashboard. Working through the steps below in order will get you from a blank account to sending your first paid invoice.
+
+### 1. Set Up Your Company Details and Logo
+
+Your company name, address, and contact information appear on every invoice, quote, and email you send. Your logo is displayed on PDFs, in emails to your clients, and across the client portal.
+
+```bash
+Settings > Company Details
+```
+
+For best results use a landscape-oriented logo — it displays most cleanly across emails, PDFs, and the client portal.
+
+![Company Logo Upload](/assets/images/settings/company_logo.png "Company Logo Upload Location")
 
 <VideoPlayer src="/assets/videos/setup/setup.mpd" isDash={true} id="initial-setup-video" />
 
-## Currency Precision, Unit Costs, Quantities and Tax Calculations.
+### 2. Configure Your Company Defaults
 
-### Unit Costs
+Company defaults are the starting point for every new invoice, quote, and client — things like default payment terms, reminder behaviour, and invoice design. Setting them once up front saves you repeating yourself later, and individual clients can still override them when needed.
 
-Invoice Ninja accepts values denominated in the currency you are invoicing in. For unit costs greater than 1, the application will perform all calculations based on the currency in use, ie $41.644431 will use $41.64 in its base calculation where the currency precision is 2 decimal places. Where the unit cost value is less than 1, ie. 0.1254 precision up to 6 decimal places is supported, precision beyond this will be rounded to the nearest value. ie
+<VideoPlayer src="/assets/videos/company_defaults/company_defaults.mpd" isDash={true} id="company-defaults-video" />
 
-$0.123456 Supported!
-$0.1234567 Not Supported, will round to $0.123457
+### 3. Set Up Taxes and Localization
 
-### Quantity values
+If you charge tax, configure it before creating your first invoice so tax lines appear correctly from the start. You can set invoice-level taxes (one tax applied to the total), line-level taxes (a different tax per item), or both — and localize currency, date format, and terminology to your region.
 
-Quantity values have a precision of up to 6 decimal places for all values
+```bash
+Settings > Tax Settings
+```
 
-### Tax Calculations - Line Level / Invoice Level taxes
+<VideoPlayer src="/assets/videos/taxes/tax_configuration/tax_configuration_react.mpd" isDash={true} id="tax-configuration-video" />
 
-There can be small differences in the tax calculations depending if you are using Line Level or Invoice Level taxes.
+For detailed tax setup — including multiple jurisdictions, per-client tax rules, and compliance modes — see [Taxes](/docs/user-guide/taxes).
 
-Line level taxes are always calculated on the line level amount and then summed together.
+### 4. Create Your First Invoice
 
-Invoice level taxes are calculated on the sum of the line level amounts for example
+Once your company details, defaults, and taxes are in place, you're ready to invoice. The video below walks through the full flow: adding a client, listing items, customising product columns, setting your invoice number pattern, and sending.
+
+<VideoPlayer src="/assets/videos/invoices/first_invoice/invoice_creation.mpd" isDash={true} id="invoice-creation-video" />
+
+See [Invoices](/docs/user-guide/invoices) for the full reference.
+
+### 5. Connect a Payment Gateway and Get Paid
+
+Connect a payment gateway so clients can pay online directly from the invoice email or the client portal. Invoice Ninja integrates with all major gateways including Stripe, PayPal, Authorize.Net, Square, and many more.
+
+<VideoPlayer src="/assets/videos/payments/get_paid/get_paid.mpd" isDash={true} id="get-paid-video" />
+
+For the full list of supported gateways and setup instructions, see [Payment Gateways](/docs/user-guide/gateways).
+
+## Good to Know
+
+These details won't change how you use the app day-to-day, but are worth knowing if a figure on an invoice ever looks slightly different from what you expected.
+
+### Currency Precision
+
+Invoice Ninja stores and calculates values in the client's currency, using the currency's standard precision (typically two decimal places — for example, $41.64). For unit prices *below* 1 — common for per-unit components, fractions of an hour, or low-value parts — precision is supported up to six decimal places (for example, $0.123456). Values with more than six decimals are rounded.
+
+- $0.123456 — supported
+- $0.1234567 — rounded to $0.123457
+
+### Quantity Precision
+
+Quantity fields support up to six decimal places regardless of currency, which is useful for time entries (for example, 1.25 hours), weights, or measurements.
+
+### Line-Level vs Invoice-Level Tax
+
+You may see a small, expected difference in totals depending on whether tax is applied per line or to the whole invoice. This is caused by rounding on each line versus rounding once at the end:
 
 | Description | Line Level Tax Calculation | Invoice Level Tax Calculation |
 |------------|---------------------------|------------------------------|
@@ -56,48 +105,38 @@ Invoice level taxes are calculated on the sum of the line level amounts for exam
 | Tax Calculation | Sum of rounded individual taxes:<br/>$1.03 + $1.03 + $1.03 = $3.09 | Total × Tax Rate:<br/>$31.00 × 10% = $3.10 |
 | Total | $34.09 | $34.10 |
 
-### Company Defaults
+Both approaches are valid — choose whichever your accountant or local tax authority prefers.
 
-After your initial company setup, you may want to configure additional details about your company. You can follow this video to configure some default settings:
+## Where to Go Next
 
-<VideoPlayer src="/assets/videos/company_defaults/company_defaults.mpd" isDash={true} id="company-defaults-video" />
+Once you're up and running, these pages cover the rest of the app in detail.
 
-### Company Logo
+**Working with customers**
+- [Clients](/docs/user-guide/clients) — add clients, manage contacts and locations
+- [Client Portal](/docs/user-guide/client-portal) — what your customers see
+- [Vendors](/docs/user-guide/vendors) — the businesses you buy from
 
-Display your company logo on your Invoice PDFs and in the client portal. All emails that you send to your client from Invoice Ninja will display your Company Logo. You can upload your company logo in:
+**Billing and revenue**
+- [Invoices](/docs/user-guide/invoices) · [Quotes](/docs/user-guide/quotes) · [Credits](/docs/user-guide/credits)
+- [Recurring Invoices](/docs/user-guide/recurring-invoices) — automated subscriptions and retainers
+- [Payment Links](/docs/user-guide/subscriptions) — share a hosted checkout URL
+- [Purchase Orders](/docs/user-guide/purchase-orders)
 
-```bash
-Settings > Company Details > Logo
-```
+**Payments and banking**
+- [Payments](/docs/user-guide/payments) · [Payment Gateways](/docs/user-guide/gateways)
+- [Banking](/docs/user-guide/banking) · [Transactions](/docs/user-guide/transactions)
 
-![Company Logo Upload](/assets/images/settings/company_logo.png "Company Logo Upload Location")
+**Operations**
+- [Products](/docs/user-guide/products) · [Tasks](/docs/user-guide/tasks) · [Projects](/docs/user-guide/projects)
+- [Expenses](/docs/user-guide/expenses) · [Recurring Expenses](/docs/user-guide/recurring-expenses)
 
-For best results, using a logo which has a landscape orientation. This will display best across all devices and resources including emails, PDF and the client portal
+**Compliance and reporting**
+- [Taxes](/docs/user-guide/taxes) · [E-Invoicing](/docs/user-guide/einvoicing) · [E-Signatures](/docs/user-guide/esignatures)
+- [Reports](/docs/user-guide/reports) · [QuickBooks](/docs/user-guide/quickbooks)
 
-### Taxes and Localization
-
-```bash
-Settings > Tax Settings
-```
-
-Learn how to setup total taxes including line item taxes, and also localize your installation for your region.
-
-<VideoPlayer src="/assets/videos/taxes/tax_configuration/tax_configuration_react.mpd" isDash={true} id="tax-configuration-video" />
-
-### Your first invoice
-
-Step through the process of creating your first invoice. Includes creating custom product columns and also customizing your invoice number patterns.
-
-<VideoPlayer src="/assets/videos/invoices/first_invoice/invoice_creation.mpd" isDash={true} id="invoice-creation-video" />
-
-### Get Paid!
-
-The final step connecting a payment gateway. Invoice Ninja links with all major payment gateways and makes getting paid super simple. Here is a short video of how to connect the most popular gateway Stripe to Invoice Ninja
-
-<VideoPlayer src="/assets/videos/payments/get_paid/get_paid.mpd" isDash={true} id="get-paid-video" />
-
-For more information on payment gateways and methods that we support click [here](/docs/user-guide/gateways)
+**Configuration**
+- [Basic Settings](/docs/user-guide/basic-settings) · [Advanced Settings](/docs/user-guide/advanced-settings)
 
 ## Frequently Asked Questions
 
-Please see our [FAQ](/docs/user-guide/faq) page
+See the [FAQ](/docs/user-guide/faq).

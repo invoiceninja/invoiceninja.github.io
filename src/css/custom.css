@@ -135,6 +135,14 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-weight: 650;
   font-size: 1.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Space below the page title (rendered inside <header> above markdown content) */
+.theme-doc-markdown > header,
+article > header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 h2 {
