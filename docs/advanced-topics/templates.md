@@ -276,6 +276,13 @@ Here are the object definitions that are available.
             "reminder_last_sent": "",
             "paid_to_date": "$0.00",
             "auto_bill_enabled": false,
+            "actual_delivery_date": "25. March 2024",
+            "invoice_period": "01/03/2024 - 31/03/2024",
+            "project": {
+                "id": "Wpmbk5ezJn",
+                "name": "Date App",
+                "number": "0006"
+            },
             "line_items": [
                 {
                     "quantity": 1,
@@ -464,6 +471,10 @@ Here are the object definitions that are available.
             
             "client": {
                 "name": "Kub, Koepp and Conroy",
+                "number": "0001",
+                "id_number": "ABC-1234",
+                "invoice_term_days": 30,
+                "quote_term_days": 14,
                 "balance": "6606.300000",
                 "payment_balance": "0.000000",
                 "credit_balance": "0.000000",
@@ -541,6 +552,7 @@ Here are the object definitions that are available.
                     "paymentables": [
                         {
                             "invoice": "0029",
+                            "credit": "",
                             "amount_raw": "104.9500",
                             "refunded_raw": "104.9500",
                             "net_raw": 0,
@@ -665,6 +677,7 @@ Here are the object definitions that are available.
             "updated_at": "27. March 2024",
             "date": "21. March 2024",
             "project": {
+                "id": "Wpmbk5ezJn",
                 "name": "Date App",
                 "number": "0006",
                 "created_at": "22. March 2024",
@@ -682,6 +695,8 @@ Here are the object definitions that are available.
                 "color": "",
                 "current_hours": 0,
                 "tasks": [],
+                "invoices": [],
+                "assigned_user": [],
                 "client": {
                     "name": "Kilback-Stoltenberg",
                     "balance": "0.000000",
@@ -741,10 +756,16 @@ Here are the object definitions that are available.
             "status": "Ready to do",
             "user": {
                 "name": "Glennie Schaefer Dr. Corbin Rowe",
-                "email": "small@example.com"
+                "email": "small@example.com",
+                "signature": "<p>Regards, Glennie</p>"
             },
+            "assigned_user": [],
             "client": {
                 "name": "Kilback-Stoltenberg",
+                "number": "0001",
+                "id_number": "ABC-1234",
+                "invoice_term_days": 30,
+                "quote_term_days": 14,
                 "balance": "0.000000",
                 "payment_balance": "0.000000",
                 "credit_balance": "2084.140000",
@@ -770,6 +791,40 @@ Here are the object definitions that are available.
             }
         }
     ]
+}
+```
+
+### Company
+
+The `company` object is exposed as a top-level template variable carrying scalar fields describing the company that owns the entity being rendered.
+
+```json
+{
+    "company": {
+        "name": "Acme Pty Ltd",
+        "classification": "business",
+        "address1": "1 Main St",
+        "address2": "Suite 200",
+        "city": "Sydney",
+        "state": "NSW",
+        "postal_code": "2000",
+        "country": "Australia",
+        "country_2": "AU",
+        "city_state_postal": "Sydney, NSW 2000",
+        "postal_city_state": "2000 Sydney, NSW",
+        "postal_city": "2000 Sydney",
+        "phone": "555 123 1321",
+        "email": "hello@acme.test",
+        "vat_number": "123456789",
+        "id_number": "ABC-1234",
+        "website": "https://acme.test",
+        "payment_terms": "30",
+        "valid_until": "14",
+        "custom1": "",
+        "custom2": "",
+        "custom3": "",
+        "custom4": ""
+    }
 }
 ```
 
@@ -826,13 +881,24 @@ Here are the object definitions that are available.
 | reminder3_sent | string | 25. March 2024 |
 | reminder_last_sent |  string | 25. March 2024 |
 | paid_to_date | formatted currency | $0.00 |
-| auto_bill_enabled | booleam| false |
+| auto_bill_enabled | booleam (Invoice/Credit only) | false |
+| valid_until | string (Quote/Credit only) | 25. April 2024 |
+| project | object (Invoice only) | [Project](/docs/advanced-topics/templates#project-definition) |
+| actual_delivery_date | string (Invoice only, from e-invoice payload) | 25. March 2024 |
+| invoice_period | string (Invoice only, from e-invoice payload) | 01/03/2024 - 31/03/2024 |
+| vendor | object (Purchase Order only — reduced shape: `name`, `vat_number`, `currency`) | { name: "Acme", vat_number: "...", currency: "USD" } |
+| is_deleted | boolean (Purchase Order only) | false |
+| has_tasks | boolean (Purchase Order only) | false |
+| has_expenses | boolean (Purchase Order only) | false |
+| currency_id | string (Purchase Order only) | 1 |
 | line_items | array | [Line items](/docs/advanced-topics/templates#line-items-definition) |
 | client | object | [Client](/docs/advanced-topics/templates#client-definition) |
-| payments | array | [Payment](/docs/advanced-topics/templates#payment-definition) |
+| payments | array (Invoice/Credit only) | [Payment](/docs/advanced-topics/templates#payment-definition) |
 | total_tax_map | array | [Tax Map](/docs/advanced-topics/templates#tax-map-definition) |
 | line_tax_map | array | [Tax Map](/docs/advanced-topics/templates#tax-map-definition) |
 | | | |
+
+Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`, and `auto_bill_enabled` are emitted for Invoices and Credits only. `payments` is emitted for Invoices and Credits only. Quotes and Purchase Orders do not include these fields.
 
 ### Line items definition
 
@@ -917,7 +983,8 @@ Here are the object definitions that are available.
 ### Paymentables definition
 | Field      | Description | Example |
 | --- | --- | --- |
-| invoice | string  | 0029 |
+| invoice | string (present when the paymentable is an invoice) | 0029 |
+| credit | string (present when the paymentable is a credit; mutually exclusive with `invoice`) | 0012 |
 | amount_raw | float  | 104.9500 |
 | refunded_raw | float  | 104.9500 |
 | net_raw | float | 0 |
@@ -949,8 +1016,9 @@ Here are the object definitions that are available.
 | custom_value4 | Task Custom Value 4 | Custom Value |
 | status | The task status | Ready to do |
 | user | The Creating User Object | See User Property definition |
+| assigned_user | The assigned User Object (or empty array if none) | See User Property definition |
 | client | The Client Object | See Client Property definition |
-| project | The Client Object | See Client Property definition |
+| project | The Project Object (when emitted via `processTasks`). When the task is embedded inside an invoice line item, this is a string containing the project name instead of an object. | See Project Property definition |
 | time_log | Array of time log entries | See time_log definition |
 | | | |
 
@@ -958,6 +1026,7 @@ Here are the object definitions that are available.
 
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
+| number | The expense number | 0001 |
 | category | The expense category | Travel |
 | amount | The expense amount | $100.00 |
 | amount_raw | The expense amount raw | 100.00 |
@@ -985,6 +1054,7 @@ Here are the object definitions that are available.
 | client | The expense client | [Client](/docs/advanced-topics/templates/#client-definition) |
 | vendor | The expense vendor | [Vendor](/docs/advanced-topics/templates/#vendor-definition) |
 | project | The expense project | [Project](/docs/advanced-topics/templates/#project-definition) |
+| invoice | Array of invoices the expense is linked to (when applicable) | [Invoice](/docs/advanced-topics/templates#invoice--quote--credit--purchase-order-definition) |
 | | | |
 
 ### Vendor Definition
@@ -992,7 +1062,6 @@ Here are the object definitions that are available.
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
 | name | The vendor name | Vendor Name |
-| email | The vendor email | vendor@example.com |
 | phone | The vendor phone | 1234567890 |
 | website | The vendor website | https://www.vendor.com |
 | number | The vendor number | 1234567890 |
@@ -1028,6 +1097,7 @@ Here are the object definitions that are available.
 | ---- | ---- | ---- | 
 | name | The users name | Bob Jane |
 | email | The users email | bob@gmail.com |
+| signature | The user's email signature (HTML) | &lt;p&gt;Regards, Bob&lt;/p&gt; |
 | | | |
 
 ### Client Definition
@@ -1035,6 +1105,10 @@ Here are the object definitions that are available.
 | Client Object | | |
 | ---- | ---- | ---- | 
 | name | The full client name | Kilback-Stoltenberg |
+| number | The client number | 0001 |
+| id_number | The client id number | ABC-1234 |
+| invoice_term_days | Default payment terms (days) from client settings | 30 |
+| quote_term_days | Default quote validity (days) from client settings | 14 |
 | balance | The client balance | 0.000000 |
 | payment_balance | The client payment balance | 0.000000 |
 | credit_balance | Thje client credit balance | 2084.140000 |
@@ -1076,6 +1150,7 @@ Here are the object definitions that are available.
 
 | Project Object | | |
 | ---- | ---- | ---- | 
+| id | The project hashed id | Wpmbk5ezJn |
 | name | The project name |  Date App |
 | number | The project number |  0006 |
 | created_at | Date created | 22. March 2024 |
@@ -1095,7 +1170,40 @@ Here are the object definitions that are available.
 | tasks | Array of tasks | [Task](/docs/advanced-topics/templates/#task-definition) |
 | expenses | Array of expenses | [Expense](/docs/advanced-topics/templates/#expense-definition) |
 | user | The Creating User Object | [User](/docs/advanced-topics/templates/#user-definition) |
+| assigned_user | The assigned User Object (or empty array if none) | [User](/docs/advanced-topics/templates/#user-definition) |
 | client | The Client Object | [Client](/docs/advanced-topics/templates/#client-definition) |
+| invoices | Array of invoices linked to this project (top-level project only — omitted when project is nested inside another entity) | [Invoice](/docs/advanced-topics/templates#invoice--quote--credit--purchase-order-definition) |
+| | | |
+
+### Company Definition
+
+The `company` object is available as a top-level template variable and carries scalar fields describing the company that owns the entity being rendered.
+
+| Company Object | | |
+| ---- | ---- | ---- |
+| name | The company name | Acme Pty Ltd |
+| classification | The company classification | business |
+| address1 | First line of the company address | 1 Main St |
+| address2 | Second line of the company address | Suite 200 |
+| city | The company city | Sydney |
+| state | The company state or province | NSW |
+| postal_code | The postal or zip code | 2000 |
+| country | The country name | Australia |
+| country_2 | ISO 3166-1 alpha-2 country code | AU |
+| city_state_postal | Pre-formatted "City, State Postal" string | Sydney, NSW 2000 |
+| postal_city_state | Pre-formatted "Postal City, State" string | 2000 Sydney, NSW |
+| postal_city | Pre-formatted "Postal City" string | 2000 Sydney |
+| phone | The company phone | 555 123 1321 |
+| email | The company email | hello@acme.test |
+| vat_number | The company VAT number | 123456789 |
+| id_number | The company id number | ABC-1234 |
+| website | The company website | https://acme.test |
+| payment_terms | The default payment terms (days) | 30 |
+| valid_until | The default quote validity (days) | 14 |
+| custom1 | Company custom value 1 | Custom Value |
+| custom2 | Company custom value 2 | Custom Value |
+| custom3 | Company custom value 3 | Custom Value |
+| custom4 | Company custom value 4 | Custom Value |
 | | | |
 
 ## Sample Templates
