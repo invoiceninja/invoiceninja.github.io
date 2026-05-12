@@ -207,6 +207,24 @@ const config: Config = {
   ],
 
   themeConfig: {
+    languageTabs: [
+      {
+        highlight: "bash",
+        language: "curl",
+        logoClass: "curl",
+        codeSampleLanguage: "curl",
+        variant: "cURL",
+        variants: ["cURL"],
+      },
+      {
+        highlight: "php",
+        language: "php",
+        logoClass: "php",
+        codeSampleLanguage: "php",
+        variant: "cURL",
+        variants: ["cURL"],
+      },
+    ] as any,
     colorMode: {
       defaultMode: "light",
       disableSwitch: false,
