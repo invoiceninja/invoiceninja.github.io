@@ -2440,6 +2440,64 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Tags",
+      link: {
+        type: "doc",
+        id: "api-reference/tags",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api-reference/get-tags",
+          label: "List tags",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api-reference/store-tag",
+          label: "Create tag",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api-reference/get-tags-create",
+          label: "Blank tag",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api-reference/show-tag",
+          label: "Show tag",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api-reference/update-tag",
+          label: "Update tag",
+          className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api-reference/delete-tag",
+          label: "Delete tag",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api-reference/edit-tag",
+          label: "Edit tag",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api-reference/bulk-tags",
+          label: "Bulk tag actions",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Task Schedulers",
       link: {
         type: "doc",
@@ -2530,6 +2588,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api-reference/delete-task-status",
+          label: "Deletes a TaskStatus Term",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
           id: "api-reference/edit-task-statuss",
           label: "Shows an TaskStatusfor editting",
           className: "api-method get",
@@ -2539,22 +2603,6 @@ const sidebar: SidebarsConfig = {
           id: "api-reference/bulk-task-statuss",
           label: "Performs bulk actions on an array of task statuses",
           className: "api-method post",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Task Status",
-      link: {
-        type: "doc",
-        id: "api-reference/task-statuss",
-      },
-      items: [
-        {
-          type: "doc",
-          id: "api-reference/delete-task-status",
-          label: "Deletes a TaskStatus Term",
-          className: "api-method delete",
         },
       ],
     },
