@@ -29447,11 +29447,24 @@ tags:
   - name: products
     x-displayName: Products
     description: |
-      Endpoint definitions for interacting with products.
+      The Products API manages your catalog of reusable line items — the goods
+      and services you sell. Each product stores a default price, description,
+      tax settings, and cost, and can be referenced when building invoices,
+      quotes, and purchase orders to keep pricing and descriptions consistent.
+
+      ### Common uses
+      - Maintain a reusable catalog of goods and services
+      - Pre-fill invoice and quote line items from a product key
+      - Track stock quantities and notify on low inventory
   - name: invoices
     x-displayName: Invoices
 
     description: |
+
+      An invoice is a billable document sent to a client. The Invoices API lets
+      you create, send, and manage invoices, apply payments, download PDFs, and
+      trigger actions such as emailing or marking them paid. An invoice drives
+      the client balance and moves through the statuses below.
 
       ## Invoice Statuses
 
@@ -29475,7 +29488,10 @@ tags:
   - name: Recurring Invoices
     x-displayName: Recurring Invoices
     description: |
-      Endpoint definitions for interacting with recurring_invoices.
+      A recurring invoice is a template that automatically generates invoices on
+      a schedule (weekly, monthly, annually, and more). The Recurring Invoices
+      API lets you define the cadence, auto-billing behaviour, and remaining
+      cycles for subscription-style billing.
 
   - name: Recurring-Invoices
     x-displayName: Recurring Invoices
@@ -29485,32 +29501,56 @@ tags:
   - name: payments
     x-displayName: Payments
     description: |
-      Endpoint definitions for interacting with payments.
+      A payment records money received from a client, optionally allocated
+      across one or more invoices. The Payments API lets you record manual
+      payments, apply credits, process refunds, and reconcile amounts so client
+      balances stay accurate.
+
+      ### Common uses
+      - Record a payment and allocate it across one or more invoices
+      - Apply credits and handle partial or over-payments
+      - Refund or delete payments and adjust balances
 
   - name: quotes
     x-displayName: Quotes
     description: |
-      Endpoint definitions for interacting with quotes.
+      A quote (estimate) is a proposed set of charges you send to a client for
+      approval. The Quotes API lets you create, send, and manage quotes, and
+      convert an approved quote directly into an invoice.
+
+      ### Common uses
+      - Send estimates for client approval via the client portal
+      - Convert an accepted quote into an invoice
+      - Track quote status (draft, sent, approved)
 
   - name: credits
     x-displayName: Credits
     description: |
-      Endpoint definitions for interacting with credits.
+      A credit is effectively a negative invoice that reduces a client's
+      balance — issued for refunds, goodwill, or overpayments. The Credits API
+      lets you create and manage credits and apply them against a client's
+      outstanding invoices.
 
   - name: projects
     x-displayName: Projects
     description: |
-      Endpoint definitions for interacting with projects.
+      A project groups tasks and expenses for a client, typically for time-based
+      or milestone work. The Projects API lets you organise work, set a budget
+      and default task rate, and roll project tasks up into invoices.
 
   - name: tasks
     x-displayName: Tasks
     description: |
-      Endpoint definitions for interacting with tasks.
+      A task records time worked — billable or non-billable — optionally against
+      a project and client. The Tasks API lets you start and stop timers, log
+      time entries, and invoice tracked time.
 
   - name: vendors
     x-displayName: Vendors
     description: |
-      Endpoint definitions for interacting with vendors.
+      A vendor is a supplier you purchase goods or services from — the
+      accounts-payable counterpart to a client. The Vendors API manages vendor
+      records and their contacts, and underpins expenses and purchase orders.
 
   - name: Purchase Orders
     x-displayName: Purchase Orders
@@ -29525,7 +29565,9 @@ tags:
   - name: expenses
     x-displayName: Expenses
     description: |
-      Endpoint definitions for interacting with expenses.
+      An expense records money spent, optionally linked to a vendor, client, or
+      project, and can be marked billable to on-charge it to a client. The
+      Expenses API lets you record, categorise, and invoice expenses.
 
   - name: recurring_expenses
     x-displayName: Recurring Expenses
