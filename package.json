@@ -18,14 +18,15 @@
     "icons:check": "node scripts/extract-icons.js && git diff --exit-code static/assets/images/icons"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.7.0",
-    "@docusaurus/plugin-client-redirects": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0",
+    "@docusaurus/core": "^3.10.0",
+    "@docusaurus/plugin-client-redirects": "^3.10.0",
+    "@docusaurus/preset-classic": "^3.10.0",
     "@easyops-cn/docusaurus-search-local": "^0.55.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
-    "docusaurus-plugin-openapi-docs": "^4.4.0",
-    "docusaurus-theme-openapi-docs": "^4.4.0",
+    "docusaurus-plugin-openapi-docs": "^5.0.0",
+    "docusaurus-plugin-sass": "^0.2.6",
+    "docusaurus-theme-openapi-docs": "^5.0.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -33,9 +34,9 @@
     "videojs-contrib-dash": "^5.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.7.0",
-    "@docusaurus/tsconfig": "^3.7.0",
-    "@docusaurus/types": "^3.7.0",
+    "@docusaurus/module-type-aliases": "^3.10.0",
+    "@docusaurus/tsconfig": "^3.10.0",
+    "@docusaurus/types": "^3.10.0",
     "typescript": "~5.6.0"
   },
   "browserslist": {
