@@ -7,13 +7,15 @@ sidebar_position: 1
 The minimum required fields for authenticating against the API is an email and password
 
 ```bash
-curl -X POST 'http://ninja.test/api/v1/login' \
+curl -X POST 'https://invoicing.co/api/v1/login' \
 -H "Content-Type:application/json" \
 -d '{"email":"demo@invoiceninja.com","password":"Password0"}' \
 -H "X-Requested-With: XMLHttpRequest";
 ```
 
-The return response is a CompanyUser object which contains child relations of the user / company and its associated entities
+The return response is an array of CompanyUser objects which contains child relations of the user / company and its associated entities
+
+![alt text](/assets/images/developer/login_flow.png "Login Response")
 
 [truncated response]
 
@@ -93,7 +95,7 @@ The return response is a CompanyUser object which contains child relations of th
 You are able to append some query parameters which can include additional information in the response.
 
 ```bash
-http://ninja.test/api/login?include_static=true
+https://invoicing.co/api/login?include_static=true
 ```
 
 This will include a data array (These are datetime / payment terms and other "static" data that is used in the selectors of the administrator panel) located [here](https://github.com/invoiceninja/invoiceninja/blob/v5-stable/app/Utils/Statics.php)
@@ -116,7 +118,7 @@ A full example of a login using the X-API-SECRET would be as follows:
 
 
 ```bash
-curl -X POST 'http://ninja.test/api/v1/login' \
+curl -X POST 'https://invoicing.co/api/v1/login' \
 -H "Content-Type:application/json" \
 -d '{"email":"demo@invoiceninja.com","password":"Password0"}' \
 -H "X-API-SECRET: SuperSecretSecret" \

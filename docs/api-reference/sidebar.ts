@@ -16,15 +16,39 @@ const sidebar: SidebarsConfig = {
       items: [
         {
           type: "doc",
+          id: "api-reference/post-login",
+          label: "Login",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
           id: "api-reference/post-passkey-login-options",
           label: "Passkey login options",
           className: "api-method post",
         },
         {
           type: "doc",
-          id: "api-reference/post-login",
-          label: "Login",
+          id: "api-reference/get-settings-passkeys",
+          label: "List passkeys",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api-reference/post-settings-passkeys",
+          label: "Create passkey",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api-reference/post-settings-passkeys-options",
+          label: "Passkey registration options",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api-reference/delete-settings-passkey",
+          label: "Delete passkey",
+          className: "api-method delete",
         },
       ],
     },
@@ -2933,36 +2957,6 @@ const sidebar: SidebarsConfig = {
           id: "api-reference/yodlee-refresh-webhook",
           label: "Yodlee Webhook",
           className: "api-method post",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "settings",
-      items: [
-        {
-          type: "doc",
-          id: "api-reference/get-settings-passkeys",
-          label: "List passkeys",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api-reference/post-settings-passkeys",
-          label: "Create passkey",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api-reference/post-settings-passkeys-options",
-          label: "Passkey registration options",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api-reference/delete-settings-passkey",
-          label: "Delete passkey",
-          className: "api-method delete",
         },
       ],
     },

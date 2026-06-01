@@ -665,7 +665,7 @@ The bulk action route allows you to perform an action on multiple clients.
 
 
 ```bash
-curl -X POST 'http://ninja.test/api/v1/clients/bulk' \
+curl -X POST 'https://invoicing.co/api/v1/clients/bulk' \
 -H "Content-Type:application/json" \
 -d '{"action":"restore","ids":["VolejRejNm","wMvbmEAbYA"]}' \
 -H "X-API-TOKEN:company-token-test" \
