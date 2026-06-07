@@ -93,3 +93,33 @@ You can use the Send Test Email button to test the configuration and send a test
 If you prefer to send bulk emails via Brevo, then this is also supported. We do not throttle the outbound emails using Brevo, so this is suitable if you require a high throughput email service.
 
 The only configuration required is your Brevo API key.
+
+### Webhook configuration (delivery & bounce tracking)
+
+When email providers report back on what happened to a message — delivered, bounced, or marked as spam — Invoice Ninja uses those events to update the email status shown in your dashboard and to flag problem recipients so you stop emailing dead or hostile addresses.
+
+:::info
+If you send through the **default** Hosted Mail service, this is fully automatic — delivery, bounce, complaint and unsubscribe handling is built in and requires no setup on your part.
+:::
+
+If you are sending through **your own** provider account (the Postmark, Mailgun or Amazon SES options above), you can optionally enable webhooks so this tracking still works. The credentials you enter under `Settings / Email Settings` are the ones the webhook is validated against — you do not need server access.
+
+#### Postmark
+
+In your own Postmark server, add a webhook pointing at:
+
+```
+https://invoicing.co/api/v1/postmark_webhook
+```
+
+Add a custom HTTP header so the request authenticates, using the same Postmark server token you entered in `Settings / Email Settings`:
+
+```
+X-API-SECURITY: your_postmark_server_token
+```
+
+Then enable the **Delivery**, **Bounce**, **Spam Complaint** and (optionally) **Open** events.
+
+#### Mailgun & Amazon SES
+
+Delivery webhooks for Mailgun and Amazon SES rely on a signing key (Mailgun) or SNS topic (SES) that is managed at the platform level. If you need bounce and delivery tracking wired up for your own Mailgun or SES account on the hosted platform, please reach out to support so we can enable it. If you self-host, see the [Mail Webhooks](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking) guide for the full configuration.

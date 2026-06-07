@@ -103,13 +103,18 @@ MAIL_FROM_ADDRESS='jimmy@gmail.com'
 MAIL_FROM_NAME='David Canary'
 ```
 
-Your mail configuration
+Your global mail configuration. As of v5, mail is configured per-company inside the application under `Settings / Email Settings`; these `MAIL_*` variables only apply when a company's Email Provider is left as **Default**. See [Mail Configuration](/docs/self-host/self-host-installation#mail-configuration) for the full guide.
 
 ```bash
 POSTMARK_SECRET=
+MAILGUN_WEBHOOK_SIGNING_KEY=
+SES_AWS_ACCESS_KEY_ID=
+SES_AWS_SECRET_ACCESS_KEY=
+SES_REGION=us-east-1
+SES_TOPIC_ARN=
 ```
 
-Your postmark API key if you wish to use Postmark
+Credentials used by the mail webhooks that track delivery, bounces and spam complaints. `POSTMARK_SECRET` is your Postmark server token (also matched against the webhook `X-API-SECURITY` header), `MAILGUN_WEBHOOK_SIGNING_KEY` is your Mailgun HTTP signing key, and the `SES_*` values configure the Amazon SES / SNS notification topic. See [Mail Webhooks](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking).
 
 ```bash
 API_SECRET=password
