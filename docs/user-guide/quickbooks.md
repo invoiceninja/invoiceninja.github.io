@@ -5,13 +5,13 @@ sidebar_position: 28
 
 # QuickBooks
 
-Invoice Ninja's QuickBooks connection supports importing data from Quickbooks to Invoice Ninja and also syncing your Invoice Ninja data to Quickbooks.
+Invoice Ninja's QuickBooks Online connection can import data from QuickBooks into Invoice Ninja and push Invoice Ninja activity back to QuickBooks.
 
-This allows you to create and get paid within Invoice Ninja _and_ if you want an ongoing accounting integration, keep your data in sync in Quickbooks.
+This allows you to create invoices and get paid in Invoice Ninja, while also keeping QuickBooks connected if you want an ongoing accounting integration.
 
 ## Quick Start 
 
-### Connect Quickbooks To Invoice Ninja
+### Connect QuickBooks to Invoice Ninja
 
 To link a QuickBooks company, go to Settings > Account Management > Integrations and click the QuickBooks button to start the OAuth flow.
 
@@ -23,24 +23,24 @@ Once you've authenticated and chosen the company you want to link, you'll be red
 
 ### Start The Import
 
-Now, you are ready to start the import process to sync your Quickbooks data into Invoice Ninja.
+Now, you are ready to import your QuickBooks data into Invoice Ninja.
 
 ![QuickBooks Menu](/assets/images/quickbooks/qbimport.png "QuickBooks Import")
 
-From the import menu, you can toggle on the categories you wish to pull into Invoice Ninja and then click the Sync button. 
+From the import menu, you can toggle on the record types you wish to import into Invoice Ninja and then click the Sync button. 
 
 For large accounts, this can take up to several hours to complete.
 
 ### Choose Sync Options
 
-After completing the data import, you can enable the sync functionality which will allow Invoice Ninja to push up records that have been created / updated to Quickbooks.
+After completing the data import, you can enable sync options that allow Invoice Ninja to push records that have been created or updated to QuickBooks.
 
 ![QuickBooks Menu](/assets/images/quickbooks/qbsyncoptions.png "QuickBooks Sync Options")
 
-In this example, we have selected the Push option for Invoices. This will push from Invoice Ninja to Quickbooks when a new invoice is created - or - when an existing invoice is updated.
+In this example, we have selected the Push option for Invoices. This will push from Invoice Ninja to QuickBooks when a new invoice is created, or when an existing invoice is updated.
 
 :::warning
-Only the **Push** option is currently active, Pull and BiDirectional are options for a future release. 
+Only the **Push** option is currently active. **Pull** and **Bidirectional** are planned for a future release.
 :::
 
 ### How Does Sync Work?
@@ -54,7 +54,7 @@ The first time you push a record, the integration checks QuickBooks for a matchi
 
 The integration uses OAuth 2.0 and refreshes tokens automatically. If both your access and refresh tokens expire - which typically happens after 100 days of inactivity - you'll get an email prompting you to reconnect. Reconnecting from the QuickBooks settings page preserves your sync configuration and all existing record links, so you won't lose the mapping you've already built up.
 
-## QuickBooks to Invoice Ninja Terminology
+## QuickBooks Terms in Invoice Ninja
 
 | QuickBooks | Invoice Ninja | Where to learn more |
 |---|---|---|
@@ -64,8 +64,8 @@ The integration uses OAuth 2.0 and refreshes tokens automatically. If both your 
 | Invoice | Invoice | [Invoices](/docs/user-guide/invoices) |
 | Receive Payment | Payment | [Payments](/docs/user-guide/payments) |
 | Credit Memo | Credit | [Credits](/docs/user-guide/credits) |
-| Product/Service | Product | [Products](/docs/user-guide/products) |
-| Recurring Transaction or Recurring Template | Recurring Invoice | [Recurring Invoices](/docs/user-guide/recurring-invoices) |
+| Product or Service | Product | [Products](/docs/user-guide/products) |
+| Recurring Transaction / Template | Recurring Invoice | [Recurring Invoices](/docs/user-guide/recurring-invoices) |
 | Vendor | Vendor | [Vendors](/docs/user-guide/vendors) |
 | Purchase Order | Purchase Order | [Purchase Orders](/docs/user-guide/purchase-orders) |
 | Bank Transaction | Transaction | [Transactions](/docs/user-guide/transactions) |
@@ -86,7 +86,7 @@ Use this checklist to keep the move controlled and easy to verify.
 - [ ] Confirm invoice number sequence and next invoice number.
 - [ ] Confirm tax settings with your accountant or bookkeeper.
 
-## Ok, I am connected! Now What?
+## After You Connect QuickBooks
 
 Once the migration data is in place, do a short end-to-end setup pass before inviting clients.
 
@@ -116,4 +116,4 @@ Because the response has to come back before the invoice can be finalised, invoi
 When Automatic Taxes are enabled, Invoice Ninja creates the invoice in QuickBooks first (in real time) and uses QuickBooks' response as the source of truth for taxes. You cannot adjust tax calculations on the Invoice Ninja side while AST is enabled.
 :::
 
-If you require a specific product to be tax free, then the product itself should have the tax category Tax Exempt marked on it. This will ensure that when quickbooks evaluates the line items, it skips applying a tax category for any Non Taxable items.
+If a product should be tax-exempt, set the product's tax category to **Tax Exempt**. QuickBooks will then evaluate the line item as non-taxable.
