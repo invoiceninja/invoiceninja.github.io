@@ -35,7 +35,7 @@ If you're on our hosted platform we'll send you region-specific onboarding instr
 
 A few things are worth knowing before you flip e-invoicing on, because they change how you build and handle invoices going forward:
 
-1. All taxes must be applied at the line level. Invoice-level (total) taxes are not supported with e-invoicing. See [Line-Level vs Invoice-Level Tax](/docs/user-guide/user-guide#line-level-vs-invoice-level-tax) for the reasoning behind the two modes.
+1. All taxes must be applied at the line level. Invoice-level (total) taxes are not supported with e-invoicing. See [Line-Level vs Invoice-Level Tax](/docs/user-guide#line-level-vs-invoice-level-tax) for the reasoning behind the two modes.
 2. If you don't charge VAT or tax on your invoices, you still need to apply a tax code or reason — for example, Cross Border exemption, or seller with no VAT number. The e-invoice schema requires an explicit answer to "why no tax?" rather than silence.
 3. Once an invoice has been *sent* it can never be modified. If something needs to change, create a new invoice or credit with the correction. This is a compliance rule, not a UI limitation — a sent e-invoice is effectively a legal document in transit.
 4. To issue a credit note under PEPPOL, use a negative invoice. That's what triggers the correct PEPPOL document type on the wire.
