@@ -31,7 +31,9 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "video.js": "^8.0.4",
-    "videojs-contrib-dash": "^5.1.1"
+    "videojs-contrib-dash": "^5.1.1",
+    "videojs-contrib-quality-levels": "^4.1.0",
+    "videojs-hls-quality-selector": "^2.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.0",
