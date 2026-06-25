@@ -117,3 +117,9 @@ When Automatic Taxes are enabled, Invoice Ninja creates the invoice in QuickBook
 :::
 
 If a product should be tax-exempt, set the product's tax category to **Tax Exempt**. QuickBooks will then evaluate the line item as non-taxable.
+
+## Troubleshooting
+
+### Taxes are not being carried over from Invoice Ninja to QBO.
+
+In this scenario, Automatic Sales Taxes (AST) would be enabled in QBO, as QBO is in charge of calculating the tax nexus and applicable rates, the most common cause of taxes being removed would be the Clients record being set to tax exempt - OR - QBO not being able to determine the correct tax rates due invalid/incomplete customer address. 
