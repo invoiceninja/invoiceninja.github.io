@@ -1,0 +1,270 @@
+---
+title: "Basic Settings"
+sidebar_position: 26
+---
+import VideoPlayer from "@site/src/components/VideoPlayer";
+
+Basic Settings is where you tell Invoice Ninja who your business is, how you work, and what your documents should look like by default. Most of what you configure here flows into every invoice, quote, and email you send, so it pays to spend a little time up front getting it right.
+
+If you're brand new, start with the walkthrough in [Get Started](/docs/user-guide) — it covers the same ground in the order you'll actually need it. When you're ready to dig deeper into templates, reminders, and custom fields, head over to [Advanced Settings](/docs/user-guide/advanced-settings).
+
+:::info
+The settings search at the top of the Settings screen is the fastest way to find any option. Searching for terms like "email", "color", or "tax" surfaces every related setting across both Basic and Advanced Settings in one list.
+:::
+
+## Company Details {#company_details}
+
+Everything in this section is tied to the company you currently have selected in the top-left company switcher. If you run more than one business from the same account, switch companies first — the settings on this screen only apply to the active one.
+
+Company Details is the face of your business in Invoice Ninja. The name, logo, address, and contact info you enter here appear on your invoices, quotes, emails, and the client portal. The defaults you set here (payment terms, quote validity, footer text) are what every new invoice and quote starts with.
+
+### Details
+
+The fields in the first block print onto most default document layouts, so treat them as your letterhead. Emails and websites render as clickable links in PDFs.
+
+- **Name** — Your company name
+- **ID Number** — Business or tax identification number
+- **VAT Number** — EU/UK-style value added tax identifier
+- **Website** — Your company's website
+- **Email** — A general or sales contact address
+- **Phone** — A phone number clients can reach you on
+
+The next two are for your own reference in the admin portal and don't appear on documents.
+
+- **Size** — Approximate headcount
+- **Industry** — A searchable list of preset industry categories
+
+### Address
+
+Standard address fields that print on default invoice, quote, and statement layouts.
+
+- **Street**, **Apt/Suite**, **City**, **State/Province**, **Postal Code**, **Country**
+
+### Logo
+
+Your logo appears on invoice PDFs, emails, and in the company switcher in the top-left of the admin portal. A roughly 300×300 pixel image works best — much larger files can cause layout issues when generating PDFs. A landscape logo usually reads best across emails and the portal.
+
+### Defaults
+
+These are company-wide defaults. They fill in automatically when you create new records, but you can always override them on an individual invoice, quote, or client.
+
+- **Invoice Payment Terms** — Default due-in-days for new invoices. Use **Configure Payment Terms** to add your own (for example, "Net 14" or "Due on receipt").
+- **Quote Valid Until** — How long, in days, new quotes remain valid.
+- **Terms and Footers** — Default terms and footer text injected into every invoice and quote. Great for standing disclaimers, late-fee clauses, or policy wording you want on every document. These print below any public notes.
+
+### Documents
+
+A shared file store for company documents. Files uploaded here are accessible only from the admin portal — they don't attach to invoices automatically. Use it for template forms, blank agreements, handouts, and internal reference material. Note that files live in the `public/storage` directory, so this isn't the place for anything truly sensitive.
+
+## User Details {#user_details}
+
+This section is about *you* — the currently signed-in user — rather than the company. Your user details identify you to teammates, receive password-reset emails, and tie you to any client, task, or project you've been assigned. If you're a solo operator, you'll still want to set a name, email, and a strong password with 2FA.
+
+### Details
+
+- **First Name**, **Last Name**
+- **Email** — Used for password resets and team contact
+- **Phone** — For reference only
+- **Password** — Change your account password (your current password is never shown)
+- **Enable Two Factor** — Turn on TOTP-based 2FA using any authenticator app. You'll scan a QR code and confirm a one-time code before it saves.
+- **Accent Color** — The highlight and button color used throughout the admin portal. Accent color is per user *and* per company, so you can tell companies apart at a glance.
+
+### Notifications
+
+Notifications control which events email you personally. Useful if you want to know the second a client views a quote, or only want to hear about records you own.
+
+- **None** — No emails for this event
+- **Owned by user** — Only when the record is assigned to you
+- **All Records** — Every time this event happens in the company
+
+The **All Events** row lets you set every notification category at once.
+
+## Localization {#localization}
+
+Localization controls how currency, dates, numbers, and language appear on your documents. Set this early — changing currency after you've issued invoices doesn't retroactively recalculate the ones you've sent.
+
+### Settings
+
+- **Currency** — Your company's default currency (individual clients can override this)
+- **Currency Format** — How amounts are presented (symbol placement, thousands separators)
+- **Language** — Default language for documents and emails
+- **Date Format** — Preferred date presentation
+- **Military Time** — Toggle 24-hour time
+- **First Month of the Year** — Anchors annual reports to your fiscal year
+
+### Custom Labels
+
+Custom Labels let you rename any built-in term across your documents — useful when your industry calls them "Line Items" or "UPC" instead of "Item", or when you want to localize a specific phrase without switching the entire app language.
+
+- **Select Label** — Pick a label from a dropdown of available entries and type the replacement text.
+- **Add Custom** — To target a label not in the dropdown, click **Add Custom**, then **Labels** in the popup to open the full list of label *keys*. Enter the key (for example, `invoice_date`), not the displayed text ("Invoice Date"). Once linked, enter the text you want shown in its place (for example, "Date of Transaction").
+
+Edit or create a new invoice to see your relabelling applied.
+
+## Payment Settings {#payment_settings}
+
+<VideoPlayer src="/assets/videos/payments/payment_settings/payment_settings.mpd" isDash={true} id="payment-settings-video" />
+
+Payment Settings governs *how* clients pay you — whether cards stored on file are charged automatically, whether credits on the account are applied at checkout, and which of the payment-related emails fire. Gateway connections themselves (Stripe, PayPal, etc.) are managed through a link at the bottom of this panel.
+
+- **Auto Bill**
+  - *Enabled* — Automatically charge a stored payment method when an invoice comes due
+  - *Enabled by default* — Clients are offered to store a payment method, pre-ticked
+  - *Disabled by default* — Same offer, unticked
+  - *Disabled* — No option shown, no auto-billing
+- **Auto Bill On** — When auto-billing runs: on send, or on the due date
+- **Payment Type** — The default payment method recorded against manual payments
+- **Use Available Credits** — Whether client-account credits are applied automatically, offered as an option, or ignored at payment time
+- **Allow Over Payment** — Let clients tip or pay more than the invoiced amount
+- **Allow Under Payment** — Accept partial payments against an invoice
+- **Payment Emails**
+  - *Manual Payment Email* — Notify the client when you record a manual payment
+  - *Online Payment Email* — Notify the client when an online payment succeeds
+
+### Configure Payment Gateways
+
+Connecting a gateway is what lets clients click "Pay Now" on an invoice and complete checkout without leaving the client portal. For the full list of supported providers and setup steps, see [Payment Gateways](/docs/user-guide/gateways).
+
+## Tax Settings {#tax_settings}
+
+Tax Settings is where you decide whether tax lives at the invoice level, the line-item level, or both, and how many tax rates each document can carry. Set this up before your first invoice — changing it later doesn't rewrite history.
+
+:::warning
+It's easy to double-charge by enabling tax on both invoice totals *and* on every line item. Use line-level tax when different products carry different rates, and invoice-level tax when one rate applies to the whole document. For deeper tax scenarios — multiple jurisdictions, compliance modes, per-client tax rules — see [Taxes](/docs/user-guide/taxes).
+:::
+
+- **Invoice Tax Rates** — Disabled, one, two, or three tax rates applied to the invoice total. Enabling this spawns *Default Tax Rate* fields you can prefill.
+- **Item Tax Rates** — Disabled, one, two, or three tax rates available per line item on invoices and products.
+- **Expense Tax Rates** — Same control, for expense records.
+- **Inclusive Taxes** — When on, the tax is treated as already included in the price rather than added on top.
+  - Exclusive: 100 + 10% = 100 + 10 = 110
+  - Inclusive: 100 total = 90.91 + 9.09
+
+**Configure Rates** opens the Tax Rates manager. Add a rate with the **+** button, give it a name and a percentage, and it becomes selectable from the tax dropdowns on invoices, products, and expenses.
+
+## Product Settings {#product_settings}
+
+These switches tune how products behave when you drop them onto an invoice or quote. Turn on discounts or cost tracking if you need them; leave the rest alone if you don't.
+
+- **Show Product Discount** — Add a per-line discount field (visible on the client's PDF)
+- **Show Product Cost** — Track your cost against each product for markup/margin reporting (admin-only, never shown to clients)
+- **Show Product Quantity** — Show the quantity column on invoices
+- **Default Quantity** — Default each new line to a quantity of 1
+- **Fill Products** — Auto-fill description and price when you pick a product
+- **Update Products** — When you edit a product's description or tax on an invoice, push those changes back to the product library
+- **Convert Products** — Automatically convert product prices into the client's currency
+
+For more on managing your catalog, see [Products](/docs/user-guide/products).
+
+## Task Settings {#task_settings}
+
+Task Settings shape how time entries look and what information flows from tasks onto the invoices you bill them against.
+
+- **Default Tax Rate** — A default hourly rate for new tasks
+- **Auto Start Tasks** — Start the timer the moment a task is created
+- **Show Task End Date** — Adds an *End Date* field on tasks
+
+The next group controls how tasks appear on invoices:
+
+- **Show Tasks Table** — Always show a *Tasks* picker when building an invoice
+- **Invoice Task Datelog** — Include task-entry dates on the invoice
+- **Invoice Task Timelog** — Include the start/stop timestamps
+- **Add Documents to Invoice** — Share documents attached to the task with the client
+
+**Configure Statuses** opens the Task Statuses manager — a simple list of named, colored workflow stages (for example, Backlog, In Progress, Done) you can move tasks through.
+
+## Expense Settings {#expense_settings}
+
+These set the defaults for every new expense. Each field can still be changed on an individual expense; this is just where you pick the starting position.
+
+- **Should be Invoiced** — Mark new expenses as billable by default. Invoiceable expenses sit in *Pending* until they're billed and paid.
+- **Mark Paid** — Record that *you* paid the vendor (this is not a client payment).
+  - **Payment Type**, **Date**, **Transaction Reference** — Details about that vendor payment
+- **Convert Currency** — For expenses billed in a foreign currency, set the currency you want to pay in and an exchange rate
+
+:::warning
+Reports group expenses by the currency of the vendor/expense, not by your converted currency. If you want a clean profit-and-loss total in one currency, record each expense directly in your own currency using the converted amount.
+:::
+
+- **Add Documents to Invoice** — When an invoice is created from an expense, include the expense's attachments
+- **Enter Taxes** — Choose whether tax is entered as a percentage (*By Rate*) or a fixed amount (*By Amount*). The number of tax slots available matches your *Expense Tax Rates* choice under **Tax Settings**.
+- **Inclusive Taxes** — Same inclusive/exclusive toggle as the main tax settings, applied to expenses
+
+**Configure Categories** opens the Expense Categories list (name + color), useful for grouping expenses in reports. See [Expenses](/docs/user-guide/expenses) for the full workflow.
+
+## Import | Export {#import_export}
+
+This is how you get data into or out of Invoice Ninja — whether you're migrating from another tool, onboarding a batch of clients, or backing up a company.
+
+### CSV
+
+CSV import is per-category: clients, invoices, payments, and so on each need their own file. The first row must be column headers. After upload, you'll map each CSV column to a matching Invoice Ninja field. This is the usual route when migrating from another invoicing tool. For the client-import flow specifically, see [Clients](/docs/user-guide/clients).
+
+### JSON
+
+The JSON export produces a complete backup of the selected company — settings *and* data — as a downloadable zip. The export runs in the background; you'll get an email with a download link when it's ready (links expire daily).
+
+Imports can bring a JSON backup into a different company or reinstall it into an existing one. You can choose to import only settings, only data, or both.
+
+:::warning
+A JSON import *overwrites* the currently selected company. If you want the backup imported as a new, separate company, create the empty company first and switch into it before importing.
+:::
+
+:::warning
+On the hosted platform the importer runs a preflight check. If your plan doesn't have the user or client capacity to hold the dataset, the import aborts and you're notified by email.
+:::
+
+## Device Settings {#device_settings}
+
+Device Settings are per-device preferences — they stay with the browser or app you set them on. Sign in from another laptop and you'll configure these again there.
+
+- **Layout** — Force desktop or mobile layout (normally auto-detected)
+- **Menu Sidebar** — The left nav: *Collapse* keeps it pinned and resizable; *Float* hides it behind the hamburger button
+- **History Sidebar** — The right-hand activity panel: *Show/Hide* for a persistent panel, *Float* to have it slide over on demand
+- **Preview Sidebar** — When on, clicking a row opens a detailed side panel. When off, rows show a bit more inline detail but the side panel is gone.
+- **List Long Press** — Whether long-pressing a list row starts multi-select or opens an action menu
+- **Rows Per Page** — Default page size for list views
+- **Dark Mode** — Toggles the dark theme
+- **Color Theme** — Color set used for status tags ("Sent", "In Progress", etc.). The UI accent is set under User Details.
+
+## Account Management {#account_management}
+
+Account Management is about the account itself — your plan, white-label license, API credentials, module toggles, and security. Come here when you're integrating with another system, disabling a module you don't use, or tightening up security.
+
+### Overview
+
+Status and company-wide toggles:
+
+- **Plan** — Your current Invoice Ninja plan
+- **Activate Company** — Deactivating pauses emails, recurring invoices, and notifications
+- **Enable Markdown** — Allow markdown in product descriptions, rendered into the PDF
+- **Decimal Comma** — Switch decimal separators (1.00 ↔ 1,00) in admin-portal inputs
+- **Include Drafts** — Include draft records in report totals
+- **Purchase License** — Order a white-label license (invoice emailed to you)
+- **Apply License** — Enter a white-label license key to remove Invoice Ninja branding
+
+Developer tooling:
+
+- **API Tokens** — Create and manage API tokens
+- **API Webhooks** — Create and manage outbound webhooks
+- **API Docs** — Jump to the API reference
+- **Zapier** — Sign in to configure Zapier automations
+
+Danger zone — read the button twice before clicking:
+
+- **Purge Data** — Permanently wipes *every* company and record on the account
+- **Delete Company** — Permanently deletes the currently selected company
+
+### Enabled Modules
+
+Ticking a module off (for example, Projects or Tasks) removes it from the sidebar and hides its records. Nothing is deleted — re-enable the module and everything reappears. Useful for keeping the UI focused on what your business actually uses.
+
+### Integrations
+
+- **Google Analytics Tracking ID** — Drop in your GA tracking ID to get analytics and ecommerce tracking on your client portal without editing code. Google's help article on [finding your tracking ID](https://support.google.com/analytics/answer/1008080#zippy=%2Cin-this-article) walks through where to grab it.
+
+### Security Settings
+
+- **Password Timeout** — How long before you need to re-confirm your password for sensitive actions (like deletions)
+- **Web Session Timeout** — Auto-logout after a period of inactivity (off by default)
+- **Require Password with Social Login** — Even when signed in via a social provider, force a password check on login

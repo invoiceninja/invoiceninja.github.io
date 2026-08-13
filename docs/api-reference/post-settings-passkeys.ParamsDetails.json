@@ -1,0 +1,1 @@
+{"parameters":[{"name":"X-API-TOKEN","in":"header","description":"The API token to be used for authentication","required":true,"schema":{"type":"string","example":"TOKEN"}}]}

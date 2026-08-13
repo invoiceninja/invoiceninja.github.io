@@ -1,0 +1,81 @@
+/* API endpoint card — used by the swizzled DocCard for api-method items. */
+
+.apiCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.85rem 1rem;
+  height: 100%;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  transition: border-color var(--ifm-transition-fast) ease,
+    box-shadow var(--ifm-transition-fast) ease,
+    transform var(--ifm-transition-fast) ease;
+}
+
+.apiCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.apiCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.apiCardBadge {
+  flex-shrink: 0;
+  line-height: 1;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.apiCardTitle {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ifm-heading-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.apiCardPath {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8rem;
+  color: var(--ifm-font-color-secondary);
+  background: transparent;
+  border: none;
+  padding: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* HTTP method colours */
+.get {
+  background-color: #2e8555;
+}
+.post {
+  background-color: #2563eb;
+}
+.put {
+  background-color: #d97706;
+}
+.patch {
+  background-color: #7c3aed;
+}
+.delete {
+  background-color: #dc2626;
+}
+.head,
+.options {
+  background-color: #64748b;
+}

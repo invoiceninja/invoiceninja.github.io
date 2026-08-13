@@ -1,0 +1,21 @@
+# Docusaurus
+/build/
+/.docusaurus/
+node_modules/
+build_local/
+
+# Local/legacy working directories
+source/
+vendor/
+external/
+
+# OS noise
+.DS_Store
+
+# IDE
+/.idea/
+/.vscode/
+
+# Logs
+npm-debug.log
+yarn-error.log

@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"challenge_token":{"type":"string"},"credential":{"type":"object","additionalProperties":true},"name":{"type":"string"}},"required":["challenge_token","credential"]}}}}}

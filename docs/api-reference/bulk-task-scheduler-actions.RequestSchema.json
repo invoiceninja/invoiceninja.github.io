@@ -1,0 +1,1 @@
+{"title":"Body","body":{"description":"array of ids","required":true,"content":{"application/json":{"schema":{"type":"array","items":{"description":"Array of hashed IDs to be bulk 'actioned","type":"integer","example":0}}}}}}

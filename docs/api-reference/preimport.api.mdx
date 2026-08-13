@@ -1,0 +1,95 @@
+---
+id: preimport
+title: "Pre Import CSV data"
+description: "The preimport endpoint is the first step when importing CSV data into Invoice Ninja. It validates your file(s) and returns the column headers found in each CSV, allowing you to map them to system fields before performing the actual import."
+sidebar_label: "Pre Import CSV data"
+hide_title: true
+hide_table_of_contents: true
+api: eJztO9tu3LiSv1JHeUhiqNvO7WEbmItPxjMxcjNsJ5lBbMRsqbqbY4pUSKrbPRkD+xH7hfsliyqSasmt3CZ7cLDY8YPRkqiqYt0v1IfMi7nLJm8zWdXGeped51mJrrCy9tLobJKdLhBqi+E5oC5rI7UH6cAvEGbSOg/OYw2rBWoIy6Sew+OT11AKL0Bqb+BQL40sEF5I/bsYw6GHpVCyFB4drE1jYSYV3nF3QegSLPrG6oCgMKqpNCxQlGgdzEyjS5AaUBQLwpGDUMqsCOPaNOANVKKmNyv67dbOYwUziap0MMWZsQg12pmxFb1CGEThG6Ei5eMzfaZ3dp6YFUgPK2Mv3c4O3bs3hhP0cBGWvfPrGi8Ig9SlLIRHBoXaS78Gegh3cDwfw4UMG7/I4eJ9Yzz/KJRE7elXbU3ZFOGnWFfx7hJ1aSz9wqsatcOLu+MzfX8M+97Tto1GMBYq2gyxmXjnoHFpRxd84+35BdTCigo92hwucY0lTNddIidnGgBG6YVI6/kF/Pd//hfEK7BYGFu6/tKwhbgyXAwvjDuMK+PVR5YGDqSl4Wp4aeBQXBkuhhdGBsaV8Wqz9MEYSL8tutqEBxvNK9Fj4bHcVkEbtK+plREllsx/cIYVsBAapo1UJYigdqSPNUmG3iO4rpk6fN/Q3i52RS13l/d2g1ZdQCGUYhX8zTRQiXXEAVWjvKxVq2FB4lKDAJK6IsrfN+j8GF5qtQapC9WUW0rpwKLCpdCeVJftrqf2B1eiqhUGjb+4uJgKtzjTRWMVjH6Fo5cnp3B74X3tJru7UT00G3RhqrSV1lfchrMzEsboCdz+dbR/dDg6ffn04MUEfnv56vjd/tHhO75+9+Tg+KC7dr8osPYTEHWtyLSk0bu/O6PbNT/D7Y4VfhcJ6T7uq/N3P8Zfbly45fa6qMvf/Rh+hFW8/zOd5Zmp0TIVh2U2ydrtZXnWWhd50A+ZFhVmk6yz1yzPJPnQoDrZkGvdPzoEby5Rk0SmCI0jhTIWROMXJLrAgSzPSMLSYplNvG0wz1yxwEpkkw8ZsSGbZM5bqedZnmEQI2FgKq6v8w51x0FTsBy9kX7xGRJfETnkSFGXrE2/Pn/2xPs6AoH2tb9CXR9Wj8yowIm69w3a9RZxh2GRg2JBBmdRMa/cQtZsHL5j2jkxtRIcuApTVQIckvw8lmN4vMDiMhh1ZUpUra0q6TyYGQjnTCFpcTIt19vzTCj3hZvmiPmOrDq7vj4PQND5f5pyTS9ua0jy8Ck6xkjMGLb5XhjtUXsCFZyGsH6Xtj6iYEy3t4g009+x8D1YKR9gC6OcoLZkBl6ioxe7Dwc2u70HjohmlmifIjnEGIex7PEn2mp2nWd9Mx7CFGSaTbKp1GJAQxLvWKDJC2xAR8v/ZsjRcWwAp6j3zZAjoC7oGCW/HXQA1AEdo+o3Qw5wOoBTFP5myBGQy675j1Q2mDer5f29vW0TOo4hXcBCuAXIkpzqbJ1ypV4QTyYmUtB2EIxjE/S7KZ5rppX05EEoXo5gZ4dQ7OxwrrEPjZbvG/JAM7SoCyQ/OoRyDEfCUc5BObXZTgo4scYrLBqfqG6jNiFNtCbEOhE9lPIN5KUxHb07hoPODsmRCKkd54iERiyFVGJK6QHjIbvu59d+IXxIgJAZGEJH8KXSJcB9Asa6qaZoN3SMKQLQpfRYjQvjPGe/gYaYg7Us9iszKmWF2kmjhQJhrViHnC5UJqiQs8i0m6Gaok30ZtZUISt6fPI6QHFYGF1ugxHg2GGFEseaVU6Re9aoaLW4lMhFyVKoBh2UjeUcsJsRbnYlte9IjzdB3tI18zlH6lYdc879a2QK4z6i2BgRRTehqSjBq1B4cT3Qiu4iArdYW3QkkKhQU3R+NG/QuZ5Mo/BIrIwrp7rjQjdKRbXUVG/5YgGFaVRJgiduUnHFVpHlMbFg+/x19PzwxeHzV89Hj58dHrw4Hb0+OD45fPliOO5RZrRE60L2sxW1gt5Q0kA5jfD4TFbSj46xElKTaxkEGt4i5sa460DhzLcB38sKYSV1aVbjIaxSe5wPoOX/wyi98UINIeb0fS6XlPt9MdrrXoi/mSN/Or73gzj5qs9H71df6MRySNnDUKET4z6XN71o/3z5FE9Wz/Vifza//KP87en86vmjpqqufpk+OyxfVBRDkvIPbalP7GdcX7TeLUMMRrxd15EXyPJMlKX07F+Oegz8NHtbm+ssZePbovqk50Tb95ig5CooEfZYuW2BXXfY+Tbre1VOn8MNUZlGE5UdLxuBjt83grmUrsnpZufXPdv95A6CI05OktdMOu2h9CD2jDauK7ngPOhL8LVywLsO7T+R8jG+9BjzNnscmhQvwr7bflTi037gz3n+NtsvKoTHxta07sXr0d7evSzP7j3a2xvv7WXnzBjy2J8X7E3/HbpFXLl/1DW3atj18PvRvZsZkPNtu06OHHA3TPhiMcSr5D/yjF4PWkn1Qo9HD/O9/P75dfrLs4d797Zd2n6vLgW01hDc/yWnVKFzYo6DntQhFBY5fxPKQWlAGx/DDwXt2NWBXeo2UncRTqmwzvJPFch/HSxxyEvPYPpMOWCeJB4+GOahsfKPv8jCL2TZoXbNbCYL1vuagrKjYOo2GZlFZxpb4PiTPPoaOKRQtB23TSdr8NfY73V+Q1m27/Ql0LK0J4D797dZ8zo0n/+V3KfQz7AhLfmMHsZUgF3eSpCPYG37N/J0w6UuQ0uciUYNJDuvNJVnnEkf/IuYemIq9AtOWtFaSVFyRVq5soYZ+nEGd4gLEudEqvyI4J6cnh5F6dGiHCTCo6sreHh1tcGycaotmkd7e59i6IaNlNagXxhuKVK4pW6iX2STbKuPSvkg2mXqMjZWUbsudmFLrMz4Zit2KxDdugU/YWU4pW4nOKHJTOVa4zB2vOOaS1zDBfcOecbhqdMXWsnhXRdKpZUkWQQXQK+5GosznVEbr09lIJDymMIMEXcUuhxkjl0SCdY5pTAzw7ocudibJfELxyk7HW9BH41GVJz/423vrfM7Q6TtykrM0e1qXL1TZm7GtZ7fpbdv3YJD7Vsiz/QbVIWp2mR4m6LSFA3lPKzveSgqC1PVFhdUrC4R5o0sMUyQPM6pw6znfUC3HdRmhZarShS+sSlzYHAdg3JjeLNAv0BLj25bDCMIgiigaJw3VexR5dRXNlXARuOtmTIrx2Vdlw6SLBgGGMpBWtJY3lptzVJS15XrJWMUT/BAY+wUe4uiUlJjHDAkBnNnZSqV4t6fNQU6hy60ToKQbt26BW8WoUfb48QPZ7rPYs4RrZk2NHzk0DPa5M21Ep66SlCik3MdyZJVreRsvaEnT8TkTFmaN1VCi3nIVym+zSyiErrgLNVVQimY0qSNiQ9vovZoaysdOhBKXuIYqLMOggzLjmZWoi55KOPRzkSBeZSJ/IPp9VgRyQmcANdIz7nelvjzG6qGFS9xHZpos4VFGknW1szQxdZI6n7m4K2gbndspeVxx6mJGYiYo4dayBJmwnm0N6UUk+lncmqFlejO9NGTIzj56Wlq/4Q57dsFWtzY2lz6RTPlYVHXZe268nJUL+q7Z/oX8zVA9t3iUujfhK2MFaXcnZtRhDtiwHe3dGvd+rotk/3hTJ8OmjLPl6lLtERFQYo5jFc+TURmjS5CeUiFppndADFdkxzmVlRkdVQBr0EUpPzJJiqhZd2oYHkh/CfHitLeACeKggoVF3XMh0ZJ3s4eo3lTxV6jl55cjRfu0uWtgWMwb7+QthzRfGANFGCCcrCR8vwy+g1nVMM+BryQythgTmza5O/lTBat9rET2DLpX9Dz1k68sB7LM31qWL9cuE7UDPCet3VbqeBcaHcFb2iQJXDH2ECXWWlwqGawMC6MbJwXKgyHQoOX5NpJ+sdwOGMOLsQS9W0PQlkU5RpKarc5kwM5EmjqMJnTLUrhb9LCtqOR2bxOLvMS1zFkhjqX+eGo4CWSmF8vqbeSSNi82SFyI2NmHBmwMjY18Lpx0+U3pocQcg2Xp+ZTPGYRp96hBR+Fz6cKNmcJeoEs+f4SyCZvyvmACQrm9VPvNSDbku4GMOnA2LnQ8g+WEU8Zi6hqBhao6hBYxFLOiZ1EXaOpX+BFtL2lsNI0DgSpondkfYOKNAkN+n6ZNoFnKKyGhVkRwg7LogDaTl0M88TjwJl2auu4B3+QGD/pMWETknrSiY0dLeahJZD8cuuA02Qm7zjpJBrGd9yR4nGS4s9BihN41eeR87YpKHoQd4iQdltdJWD/QJNNjs7tYDvftGhikKTeWNw158dPhC4piiZuiqlpfCd3prDphW9cqoOSk6EN1JYsmjoixJNFBBXedjC3oqCeulozvsemRIhHFNwEfpa6ZAwQ0++wId94Y7mS7yrRlr/pZjvDKdzHMi3+u6H6L8g/PUFV/9A+7XgUEHoNzHOCkANq9h5o+YF0rsGQggU355wk6RXRT29sccA/lobc1QKd9HwIyYDl5hHJwBvO2VxTh4ExioqQ/G6khpiPVo3m4yTGNhWFFKTckWy7xzzXFAUmxm37u0pcBn2vTJiWR+c1Tqx4hv62i16rTUy9mXPG+o+bXiSZSZqpbYqDyc4ODOXtYR1VON0Vg6XRZ/OY/xuZzA1HxvrWk0tDmeDGS235t+QDxpCKQBpYpXSE0sF+8JKajr+FsPU97Mfw93yTK39PFVKwKHLg33eQE3U9v1NR2s4zwhLBLNFyvX0yhsdCKRduexOK8JVUCmZCqq1owz7iY1tn9ydsGYC0kY4d0taxPdZvR9GIMUVXKTZnqqao6EAgFR2e/TkN5xKG6N0C6J5LJdr+pLSHnrP3+pPjg9AxLH7j359n+s9R969/9a1/BB7u7+1t8MHLp5N4YC4e/xEueQc6R0OPqFqnQEQbDMfpuileKwnKBrBGTdkNmHBWJ2Qp4QhUe3wnioCJebB3r0PMc7PEEo7QVkKj9mpNtMkgA6rTZg1HvVbt3KKdUUobWkExsIfO26vjwxbPgw6eE0R4Sa5q0j8sGF9OvOiZOucpIHSooV8dH3bc+C8Hp3GrEd3DHo//KcoU4CdxBk3dH4JPjWljg03Q71hF98goG6aMktS6Fpan1sHLcVRtUXY5+UqL2D7FcgInspJKWILycO8B5RVTWZaoc5g2vk36uZChqE0VFc+Cb+Sc3BeOI0ESCekKmReWwLHe8RbWSK4AN6llS2BXBC0NffWjNik3SQNpfsMsRj4LPBchy05wH3bgvjAefiaB9eBi2Xa041ybKG1lS6jobOa0m+FFfQ061+J61FXXoN2Ecp9KSmL1fruVqPsycCXG7M4wdZu0Fsl/dJA8NnqmZOEncNiOiHh+39PU7p5SJ4YMoxAkTDOjSSmDGTbDh/fv95QngmA+HPAkcVtMK1RqFI57MQPpXqND/8ME3gamJAV2WNFUsojJYIu6u9tTYygGrZO9uICX2i7BNSGfdKUzCno9OHgPY1GuG2gEf+cs48pN0Thf6vlZdjciftSzUYp1lroqJ0HdOBiROLn2S0SnjDePyIKVaGg2vWiaePJwmRnSJobRZOh0BRUTbaEdAZKaUJOI2Mf09SLjERUWIjQqz/QbQhoMIRwLsabxIQha9FbiMhxz5OKJug85tSxikx9WkResBd0zDGEm1jp4b+D+3iaZCPjaEFm3FNHCeMWetFFU5kicwA812ne1mON3j/b44AgdI3EvZyehNbHVTY45XUyipNktTeF2Fc6F2uVX35nZu9jX2L1FgEdpGhHmEqLguQSdF6Fedbz140AzPZ5J7acZJ8FEs/xGr3u1Wm035K/zTNENx/OGCO9ACUcK/iw+GYKEYQ01pwMAqee78eYogbzOs3RQZpI9Gt+7P370iG7SYKESuoPyyCIchrMY6fuMmx3zD5uhzd/ffvz97cff3378/e3H/99vP+Ig1+OV362VkDTcDF76Q5zXvs1ELbM8W97jsyxpZnueZ9R8pucfPkyFw1dWXV/T7fApA01yS8kp0+bzgY/64X/3hw6DbLjEde9DjXgWIeOZLTVmwzGjt5uDZF+56zvHsXy4C1/3pcwnyO1/nLMhOf+LhH3x9zGfpGnrk5weYWHV44B+dBq++0grhj7y2LwU7KmzfOsUBgmrPYlAVp7l2TR+i1Lx+Qg+oR8zhfYnifX6+n8ATuxvMQ==
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/invoice-ninja-api-reference
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Pre Import CSV data"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/v1/preimport"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+The preimport endpoint is the first step when importing CSV data into Invoice Ninja. It validates your file(s) and returns the column headers found in each CSV, allowing you to map them to system fields before performing the actual import.
+
+**How it works**
+
+1. Set `import_type` to indicate the entity type (e.g. `invoice`, `quote`, `client`, `product`, `payment`, `vendor`, `expense`).
+2. Attach one or more CSV files using the `files[]` parameter, keyed by entity type:
+   - `files[invoice]` — invoice records
+   - `files[client]` — client records
+   - `files[product]` — product records
+   - `files[payment]` — payment records
+   - `files[vendor]` — vendor records
+   - `files[expense]` — expense records
+3. The response returns the detected column headers for each uploaded file so you can build a field mapping for the subsequent `/api/v1/import` call.
+
+You may upload multiple entity files in a single request. Only include the entity types relevant to your import.
+
+**Example**
+
+```bash
+curl -X POST 'https://invoiceninja.com/api/v1/preimport' \
+  -H 'X-API-TOKEN: YOUR_API_TOKEN_HERE' \
+  -H 'Accept: application/json' \
+  -F 'import_type=invoice' \
+  -F 'files[invoice]=@invoices.csv' \
+  -F 'files[client]=@clients.csv'
+```
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./preimport.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./preimport.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./preimport.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      
