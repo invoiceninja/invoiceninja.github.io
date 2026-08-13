@@ -40,7 +40,7 @@ After completing the data import, you can enable sync options that allow Invoice
 In this example, we have selected the Push option for Invoices. This will push from Invoice Ninja to QuickBooks when a new invoice is created, or when an existing invoice is updated.
 
 :::warning
-Only the **Push** option is currently active. **Pull** and **Bidirectional** are planned for a future release.
+Only **Push** is supported for ongoing synchronisation. Pull and Bidirectional synchronisation are not supported. The initial import is a separate, one-time step that brings your selected QuickBooks records into Invoice Ninja.
 :::
 
 ### How Does Sync Work?
@@ -49,6 +49,33 @@ A couple of things worth knowing. When you push an invoice, its client has to ex
 Not every field change triggers a push. Client balance updates (for example, when a payment is applied) are ignored; only meaningful edits like name, address, or contact info sync across. Product updates - price changes, description edits - are not currently pushed either; only newly created products are.
 
 The first time you push a record, the integration checks QuickBooks for a matching record before creating a duplicate. Clients are matched by display name, products by item name (skipping Category and Group types). If a match exists, Invoice Ninja links to it rather than creating a second copy.
+
+### Check an Invoice in QuickBooks
+
+After connecting QuickBooks, individual invoices include a **QuickBooks** tab. Use it when you want to confirm that an invoice was pushed successfully or investigate a mismatch.
+
+1. Open the invoice in Invoice Ninja.
+2. Select the **QuickBooks** tab.
+3. Review the **QuickBooks ID**, **Status**, and **Message**.
+4. Select **Check Record**.
+5. Review the connection status, QuickBooks balance and last-updated time, and the comparison of the invoice number and total.
+6. Follow the recommended action shown on the page, if one is needed.
+
+<!-- SCREENSHOT PLACEHOLDER
+Route: /invoices/{invoice_id}/quickbooks
+Required state: Show a pushed sample invoice after Check Record has completed. Include the QuickBooks ID, Status, Message, check result, connection status, QuickBooks balance and last-updated time, Number and Total comparison table, and at least one safe recommended action. Do not show real client or QuickBooks company information.
+-->
+
+The available actions depend on what Invoice Ninja finds:
+
+- **Force Link** links the Invoice Ninja invoice to a matching invoice already found in QuickBooks.
+- **Force Push** sends the current Invoice Ninja invoice to QuickBooks again.
+- **Change Invoice Number** returns you to the invoice so you can resolve a duplicate or mismatched number.
+- **Verify QuickBooks Invoice** asks you to inspect the matching invoice in QuickBooks before running **Check Record** again.
+
+:::warning
+Use **Force Link** and **Force Push** only after comparing the invoice number and total in both systems. Linking the wrong invoices or pushing the wrong version can leave your accounting records inconsistent.
+:::
 
 ### Connection and Authentication
 
