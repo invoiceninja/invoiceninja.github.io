@@ -267,3 +267,33 @@ With the gateway configured, a few related pages are worth a read:
 - [Set Gateway Fees](https://invoiceninja.github.io/en/gateways/#limits-fees)
 - [Payment Links](https://invoiceninja.github.io/en/advanced-settings/#payment_links)
 - [Custom Email Servers](https://invoiceninja.github.io/en/hosted-mail/)
+
+<hr/>
+
+## CHIP
+
+[CHIP](https://www.chip-in.asia/) is a Malaysian payment gateway that lets you accept FPX, cards (Visa, Mastercard, Maestro), DuitNow QR, and regional e-wallets (Touch 'n Go eWallet, GrabPay, ShopeePay, Maybank QRPay, Atome, Apple Pay, Google Pay). It supports token billing (stored cards and auto-bill) and refunds.
+
+> **Currency note:** CHIP currently processes payments in **MYR** only. The gateway only appears as an available payment method when the client's invoice currency is MYR.
+
+### Setup
+
+1. Sign in to your [CHIP account](https://www.chip-in.asia/).
+2. In the top-right corner, open **Developers**.
+3. Under **Brands**, copy your **Brand ID**.
+4. Under **Keys**, select **New Live Key**, give it a title, and copy the generated key.
+
+Then in Invoice Ninja:
+
+1. Go to **Settings > Payment Settings > New Gateway** and pick **CHIP** from the dropdown.
+2. On the **Credentials** tab, paste the **API Key** and **Brand ID**.
+3. Configure **Settings** and **Limits/Fees** as needed, then save.
+
+The **API Key** and **Brand ID** are the same values used across all CHIP integrations. Production and test keys are different — the Brand ID stays the same in both environments. See the [CHIP guide](https://blog.chip-in.asia/docs/how-to-get-api-key-api-host-brand-id/) for the full walkthrough.
+
+### Supported features
+
+- **Hosted checkout** — clients are redirected to CHIP's hosted payment page to complete the payment.
+- **Token billing** — card details can be tokenised and stored for auto-bill and one-click payment on the client portal.
+- **Refunds** — issue refunds from the Payments screen.
+- **Webhooks** — CHIP callbacks are verified against CHIP's public key before a payment is recorded.
