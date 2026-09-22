@@ -28,6 +28,11 @@ const sidebars: SidebarsConfig = {
         "user-guide/purchase-orders",
         "user-guide/quickbooks",
         "user-guide/tasks",
+        {
+          type: "link",
+          label: "Tags",
+          href: "/docs/user-guide/basic-settings#tag_settings",
+        },
         "user-guide/taxes",
         "user-guide/recurring-expenses",
         "user-guide/reports",

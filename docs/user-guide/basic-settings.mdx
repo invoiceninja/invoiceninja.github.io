@@ -173,6 +173,87 @@ The next group controls how tasks appear on invoices:
 
 **Configure Statuses** opens the Task Statuses manager — a simple list of named, colored workflow stages (for example, Backlog, In Progress, Done) you can move tasks through.
 
+## Tag Settings {#tag_settings}
+
+Tags are named, colored labels you attach to records so you can filter, search, and report on related work without inventing a new custom field for every label. Typical uses: mark a client as *VIP* or *Retainer*, flag tasks as *Billable* vs *Admin*, or group invoices that belong to a campaign.
+
+You manage the catalog from *Settings > Tags*. You apply tags on the record itself — clients, vendors, products, projects, tasks, invoices, quotes, credits, recurring invoices, expenses, recurring expenses, payments, purchase orders, and bank transactions all have a Tags field.
+
+On any of those screens, start typing in the Tags box to pick an existing tag or (if you're an admin) create a new one on the spot. List views can filter by tag, search includes tag names, and [Reports](/docs/user-guide/reports) can show a Tags column and restrict the export to selected tags.
+
+Keep the catalog small and reuse names. A handful of well-chosen tags is much more useful than a unique label on every record.
+
+### Global Tag Inheritance
+
+**Global Tag Inheritance** is off by default. Turn it on when a label on a parent should automatically land on the records you create underneath it — for example, tagging a client *VIP* so every new invoice, quote, project, and task for that client starts with *VIP* already applied.
+
+Only **global** tags cascade. A task-only or project-only tag stays on that record and is never copied to children.
+
+When inheritance is on, a brand-new record picks up the union of global tags from the parents it already has:
+
+- **Client** — flows onto new projects, tasks, invoices, quotes, credits, recurring invoices, expenses, recurring expenses, payments, and purchase orders
+- **Vendor** — flows onto new expenses, recurring expenses, purchase orders, invoices/quotes/credits (when a vendor is set), and bank transactions
+- **Project** — flows onto new tasks, invoices, quotes, credits, expenses, recurring expenses, and purchase orders tied to that project
+
+Tags you set on the new record yourself are kept and merged with whatever was inherited. Products never inherit — they have no parent.
+
+Two things inheritance does *not* do, which catch people out:
+
+- It runs **once, at creation**. Assigning a project or client later does not backfill tags.
+- Changing a parent's tags later does not update children that already exist.
+
+With inheritance on, invoicing also **rolls global tags up** from the tasks and expenses you add as line items. That roll-up is additive and runs whenever you save the invoice, so tagging a billed task *Retainer* (as a global tag) will add *Retainer* to the invoice without removing tags already there. Entity-specific task tags are left behind.
+
+A workflow that works well:
+
+1. Create the labels you want to travel as **global** tags (*Settings > Tags > New Tag*, type **Global**).
+2. Tag the parent — usually the [client](/docs/user-guide/clients) or [project](/docs/user-guide/projects).
+3. Create the child records. They arrive already tagged.
+4. Use typed tags on the child for local workflow (*Follow-up*, *Write-off*) that should not spread.
+
+Leave inheritance off if you prefer to tag each record by hand, or if you often create a task first and attach the project later.
+
+### Creating a Tag
+
+There are two ways to add a tag to the catalog.
+
+From *Settings > Tags*, click **New Tag**. Give it:
+
+- **Name** — the label you'll see on pills and in filters. Commas are not allowed (they conflict with how filters store multiple values). Names must be unique for that type in the company, including archived tags — if *Urgent* already exists as a task tag, restore it instead of creating a second one.
+- **Type** — **Global**, or one record kind (Task, Invoice, Client, and so on). Type is locked after you save.
+- **Color** — optional. Used on the pill so related tags are easy to scan.
+
+From a record, type a new name into the Tags field and choose **Create**. That creates a tag *of that record's type* (a task form creates a task tag, not a global one) and attaches it immediately. Only admins can create tags this way; everyone else can still attach tags that already exist.
+
+If you want a tag to inherit, create it as **Global** in Settings first, then attach it to the parent. Creating *VIP* from an invoice form makes an invoice-only tag that will never cascade.
+
+### Editing a Tag
+
+Open a tag from the list in *Settings > Tags* to rename it or change its color. The type cannot be changed — make a new tag of the other type if you picked the wrong one.
+
+From the tag's actions menu, or in bulk from the list:
+
+- **Archive** — hides the tag from pickers and filters. Existing assignments stay on records, and the name remains reserved, so you can restore it later.
+- **Restore** — brings an archived tag back into pickers.
+- **Delete** — removes it from pickers. You cannot attach a deleted tag to new records.
+
+Archiving is the safer cleanup when a label is out of season but you still want history and reports to make sense.
+
+### Tag Types
+
+Every tag belongs to exactly one type. A picker only offers **global** tags plus tags of *that* record's type, so a task never shows invoice-only tags.
+
+| Type | Use it when |
+|---|---|
+| **Global** | The label should follow a client, vendor, or project onto new work, or appear on more than one kind of record (*VIP*, *Retainer*, *Internal*, a campaign name). Required if you want inheritance. |
+| **Client** / **Vendor** | Qualifiers that only matter on the company record (*Prospect*, *Preferred*, *Net 30*). |
+| **Project** / **Task** | Delivery workflow (*Phase 2*, *Blocked*, *Billable*). Task tags do not copy onto invoices unless they are global and inheritance is on. |
+| **Invoice** / **Quote** / **Credit** / **Recurring Invoice** / **Payment** | Billing and collections (*Collections*, *Disputed*, *Prepaid*). |
+| **Expense** / **Recurring Expense** / **Purchase Order** / **Bank Transaction** | Cost-side grouping that isn't already covered by [expense categories](/docs/user-guide/expenses). |
+| **Product** | Catalog flags (*Seasonal*, *Discontinued*). Products do not inherit from anything. |
+
+The same name can exist once per type — *Urgent* as a task tag and *Urgent* as a project tag are two different tags and do not substitute for each other. If you find yourself creating the same name on every type, make one **global** tag instead.
+
 ## Expense Settings {#expense_settings}
 
 These set the defaults for every new expense. Each field can still be changed on an individual expense; this is just where you pick the starting position.
