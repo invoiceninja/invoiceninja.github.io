@@ -161,8 +161,10 @@ Email Settings shapes how every automated message leaves your system — the rep
 
 | Field | What it does |
 |---|---|
+| Email Provider | The service used to send your mail. Picking a provider reveals its credential fields (below). The available options differ between the hosted platform and self-hosted installs. |
 | Reply-To Name | Name shown in the reply-to header — for example, the contact for support questions. |
 | Reply-To Email | Address replies get routed to. |
+| From Name | Sender name shown on outgoing mail. |
 | BCC Email | Comma-separated list of addresses blind-copied on outgoing emails. Recipients can't see these. |
 | Email Design | Visual template used for emails. |
 | Email Signature | Appended to every company email. Multi-line; HTML is respected. |
@@ -171,6 +173,23 @@ Email Settings shapes how every automated message leaves your system — the rep
 | Attach Documents | Attach any files uploaded under the record's Documents tab. |
 | Attach UBL | Attach a standalone UBL XML alongside the PDF. Useful if a recipient's system reads XML but not the XML embedded inside PDFs. |
 | Enable E-invoice | Turn on regional e-invoice generation, then pick the standard your jurisdiction requires. |
+
+### Email Provider
+
+The **Email Provider** dropdown controls where your mail is sent from, and each choice exposes its own credential fields:
+
+| Provider | Fields you supply | Notes |
+|---|---|---|
+| Default | None | Hosted: the built-in Invoice Ninja mail service. Self-hosted: the server's `.env` `MAIL_*` configuration. |
+| Gmail / Microsoft (OAuth) | Sending user | Hosted only, Pro/Enterprise — send from your own connected Google or Microsoft account. See [Hosted Mail](/docs/hosted/hosted-mail). |
+| SMTP | Host, Port, Encryption, Username, Password, Local Domain, Verify Peer | Includes a **Send Test Email** button to validate the configuration. |
+| Postmark | Secret (server API token) | — |
+| Mailgun | Secret, Domain, Endpoint (US / EU) | — |
+| Brevo | Secret (API key) | — |
+| Amazon SES | Access Key, Secret Key, Region, From Address, Topic ARN | Self-hosted. |
+| From Email | The custom sending address used by Postmark, Mailgun, Brevo and SMTP. | Must be an address your provider is authorized to send from. |
+
+To track delivery, bounces and spam complaints from Postmark, Mailgun or SES, see [Webhook configuration](/docs/hosted/hosted-mail#webhook-configuration-delivery--bounce-tracking) (hosted) or the [Mail Webhooks](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking) guide (self-hosted).
 
 :::warning
 **NOTE** If you are selecting Hour 24, 12:00am is technically the next day, in order to prevent emails from being dispatched technically a day later, this system will adjust the send time slightly so that it is scheduled to send just before midnight.

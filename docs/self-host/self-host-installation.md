@@ -428,13 +428,30 @@ INmanage CLI installer for automated updates and backups.
 
 ## Mail Configuration
 
-When configuring your email, please ensure all of the fields are filled in. In particular you _must_ include the MAIL_FROM_ADDRESS and MAIL_FROM_NAME to prevent errors such as 
+Mail is now configured **inside the application** under `Settings / Email Settings`, not exclusively in your `.env` file. Each company selects its own **Email Provider**, so two companies on the same install can send through completely different services. Changes take effect immediately — no server restart or deployment is required.
 
-```bash
-Address in mailbox given [ ] does not comply with RFC 2822, 3.6.2.
-```
+### Configure in the application
 
-Here is a full example - using Gmail as an example.
+Navigate to `Settings / Email Settings` and choose an **Email Provider**. The provider you pick determines which credential fields appear:
+
+| Provider | What you enter in-app |
+|---|---|
+| **Default** | Nothing — falls back to the server `.env` `MAIL_*` settings (see [Default mailer](#default-mailer-env) below). |
+| **SMTP** | Host, Port, Encryption (STARTTLS / SSL), Username, Password, Local Domain, Verify Peer. |
+| **Postmark** | Your Postmark server API token (the **Secret** field). |
+| **Mailgun** | **Secret**, **Domain**, and **Endpoint** (`api.mailgun.net` for US, `api.eu.mailgun.net` for EU). |
+| **Brevo** | Your Brevo API key (the **Secret** field). |
+| **Amazon SES** | Access Key, Secret Key, Region, From Address, and Topic ARN. |
+
+You also set the **From Name**, **From Email**, **Reply-To**, and **BCC** on the same screen.
+
+:::tip
+When using the **SMTP** provider, use the **Send Test Email** button to validate the configuration before you rely on it. In particular ensure a valid **From Email** / **From Name** are set to avoid errors such as `Address in mailbox given [ ] does not comply with RFC 2822, 3.6.2.`
+:::
+
+### Default mailer (.env)
+
+When the Email Provider is set to **Default**, Invoice Ninja uses the global mailer defined in your server `.env`. This is the right place for a single SMTP relay shared by every company on the install. Here is a full example using Gmail:
 
 ```bash
 MAIL_MAILER=smtp
@@ -445,40 +462,104 @@ MAIL_PASSWORD="your_password_dont_forget_the_quotes!"
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="your_email_address@gmail.com"
 MAIL_FROM_NAME="Full Name With Double Quotes"
-
 ```
+
+You _must_ include `MAIL_FROM_ADDRESS` and `MAIL_FROM_NAME` to prevent the RFC 2822 error noted above.
 
 :::warning
 If you are using SSL encryption the `MAIL_PORT` is `465`. TLS encryption is on port `587`.
 :::
 
-### Individual mail configurations per company
+### Individual mail configurations per company (.env)
 
-From v5.5.38 we support per company mail configurations.
+In addition to the in-app per-company providers above, the older `.env` override (from v5.5.38) is still supported. Prefix the mail variables with the company's primary key — open the `companies` table in your database, and if the primary `id` column is `1` for Acme co, the configuration is:
 
-What does this mean?
-
-For example if you have two Companies, Acme co and Ninja co you can create separate mail server configurations for each company.
-
-To configure this you will need to prefix your .env  with the primary key of the company ie In your database open the companies table, and if the primary ID column is 1 for Acme co this would be the configuration
-
-```
+```bash
 1_MAIL_HOST=
 1_MAIL_PORT=
 1_MAIL_USERNAME=null
 1_MAIL_PASSWORD=null
 1_MAIL_ENCRYPTION=null
+1_MAIL_FROM_ADDRESS=
+1_MAIL_FROM_NAME=
 ```
 
-If Ninja Co company id 5
+If Ninja Co is company id `5`:
 
-```
+```bash
 5_MAIL_HOST=
 5_MAIL_PORT=
 5_MAIL_USERNAME=null
 5_MAIL_PASSWORD=null
 5_MAIL_ENCRYPTION=null
 ```
+
+:::info
+This `.env` override only applies when that company's Email Provider is left as **Default**. Configuring a provider in `Settings / Email Settings` is the recommended approach.
+:::
+
+## Mail Webhooks (delivery, bounce & complaint tracking)
+
+When you send through Postmark, Mailgun or Amazon SES, those services can call back to your install to report delivery status, bounces and spam complaints. Invoice Ninja uses these to update the email status of each invitation and to flag problem recipients (a bounce or complaint marks the client contact so you stop emailing a dead or hostile address).
+
+Configuration is optional — outbound mail works without it — but recommended so the email activity in your dashboard stays accurate.
+
+:::info
+Invoice Ninja tags every outbound message with the company key, so incoming webhook events are routed to the correct company automatically. You only need to point the provider at the endpoint and enable the events below.
+:::
+
+### Postmark
+
+1. Add `POSTMARK_SECRET=your_postmark_server_token` to your `.env`. This is the value Invoice Ninja checks against the `X-API-SECURITY` header on incoming webhooks.
+2. In the Postmark server, add a webhook pointing at:
+
+   ```
+   https://your-domain.com/api/v1/postmark_webhook
+   ```
+
+3. Add a custom HTTP header to the webhook so requests authenticate:
+
+   ```
+   X-API-SECURITY: your_postmark_server_token
+   ```
+
+4. Enable the **Delivery**, **Bounce**, **Spam Complaint** and (optionally) **Open** events.
+
+### Mailgun
+
+1. In the Mailgun dashboard, copy your **HTTP webhook signing key** and add it to your `.env`:
+
+   ```bash
+   MAILGUN_WEBHOOK_SIGNING_KEY=your_mailgun_signing_key
+   ```
+
+   Invoice Ninja verifies the HMAC-SHA256 signature on every request against this key, so no custom header is required.
+2. Add webhooks pointing at:
+
+   ```
+   https://your-domain.com/api/v1/mailgun_webhook
+   ```
+
+3. Enable the **Delivered Messages**, **Permanent Failure**, **Spam Complaints** and (optionally) **Opened** events.
+
+### Amazon SES
+
+SES reports events through Amazon SNS.
+
+1. Set the SNS topic ARN in your `.env` (it must match the **Topic ARN** entered in `Settings / Email Settings`):
+
+   ```bash
+   SES_TOPIC_ARN=arn:aws:sns:us-east-1:123456789012:your-topic
+   ```
+
+2. In SES, create a **configuration set** with an event destination publishing **Bounce**, **Complaint** and **Delivery** events to that SNS topic.
+3. Subscribe the SNS topic to an **HTTPS** endpoint:
+
+   ```
+   https://your-domain.com/api/v1/sns_webhook
+   ```
+
+   SNS will send a subscription-confirmation request; Invoice Ninja confirms it automatically for the matching topic ARN.
 
 ## Currency Conversion
 

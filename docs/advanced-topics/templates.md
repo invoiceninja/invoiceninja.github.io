@@ -166,37 +166,110 @@ Standard $ notation variables are also available within templates, this allows y
 * filter
 
 #### Allowed Filters
-* escape
-* e
-* upper
-* lower
+
+Filters change how a value is displayed. Add a filter after a value using a pipe (`|`). For example:
+
+```twig
+{{ project.name|upper }}
+{{ project.tags|join(', ') }}
+{{ project.quotes|length }}
+{{ quote.project.name|default('No project') }}
+```
+
+The following filters are available:
+
+* abs
+* batch
 * capitalize
+* date
+* date_modify
+* default
+* e
+* escape
 * filter
-* length
-* merge
+* first
 * format_currency
+* format_date
 * format_number
 * format_percent_number
-* map
+* format_spellout_number
+* groupBy
 * join
-* first
-* date
-* sum
+* json_decode
+* keys
+* length
+* lower
+* map
+* markdown_to_html
+* merge
 * nl2br
+* number_format
 * reduce
+* replace
+* reverse
+* round
+* shuffle
+* slice
+* sort
+* split
+* striptags
+* sum
+* title
+* trim
+* upper
+* url_encode
 
 #### Allowed Functions
 * range
 * cycle
-* constant
 * date
+* img
+* t
 
 #### Allowed Properties
 * type_id
 
-#### Allowed Methods
-* img
-* t
+### Using Projects and Quotes Together
+
+A project template can list the quotes linked to that project. A quote template can also display details from its linked project.
+
+| Starting with | Related information available |
+| --- | --- |
+| Project | The project's quotes, using `project.quotes` |
+| Quote | The quote's project, using `quote.project` |
+
+To list the quotes linked to the first project in a template:
+
+```twig
+{% if projects %}
+    {% set project = projects|first %}
+
+    {% if project.quotes %}
+        <h2>Quotes</h2>
+        <ul>
+            {% for quote in project.quotes %}
+                <li>Quote {{ quote.number }} — {{ quote.date }} — {{ quote.amount }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endif %}
+```
+
+To show the project linked to the first quote in a template:
+
+```twig
+{% if quotes %}
+    {% set quote = quotes|first %}
+
+    {% if quote.project %}
+        <p>Project: {{ quote.project.name }}</p>
+    {% endif %}
+{% endif %}
+```
+
+:::note
+When a quote displays its project, the project's `quotes`, `invoices`, `tasks`, and `expenses` lists are empty. This prevents the same related information from repeating indefinitely. Start with a project template when you need to use those lists.
+:::
 
 ## Statements
 
@@ -883,7 +956,7 @@ The `company` object is exposed as a top-level template variable carrying scalar
 | paid_to_date | formatted currency | $0.00 |
 | auto_bill_enabled | booleam (Invoice/Credit only) | false |
 | valid_until | string (Quote/Credit only) | 25. April 2024 |
-| project | object (Invoice only) | [Project](/docs/advanced-topics/templates#project-definition) |
+| project | object (Invoice and Quote only) | [Project](/docs/advanced-topics/templates#project-definition) |
 | actual_delivery_date | string (Invoice only, from e-invoice payload) | 25. March 2024 |
 | invoice_period | string (Invoice only, from e-invoice payload) | 01/03/2024 - 31/03/2024 |
 | vendor | object (Purchase Order only — reduced shape: `name`, `vat_number`, `currency`) | { name: "Acme", vat_number: "...", currency: "USD" } |
@@ -896,6 +969,7 @@ The `company` object is exposed as a top-level template variable carrying scalar
 | payments | array (Invoice/Credit only) | [Payment](/docs/advanced-topics/templates#payment-definition) |
 | total_tax_map | array | [Tax Map](/docs/advanced-topics/templates#tax-map-definition) |
 | line_tax_map | array | [Tax Map](/docs/advanced-topics/templates#tax-map-definition) |
+| tags | Array of tag names assigned to the record | ["Priority", "Retainer"] |
 | | | |
 
 Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`, and `auto_bill_enabled` are emitted for Invoices and Credits only. `payments` is emitted for Invoices and Credits only. Quotes and Purchase Orders do not include these fields.
@@ -978,6 +1052,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | refund_activity | array of string | [24. March 2024 Invoice #0029 $104.95 Refunded] |
 | paymentables | array | [Paymentables](/docs/advanced-topics/templates#paymentables-definition) |
 | client | object | [Client](/docs/advanced-topics/templates#client-definition) |
+| tags | Array of tag names assigned to the payment | ["Online", "Deposit"] |
 | | | |
 
 ### Paymentables definition
@@ -1020,6 +1095,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | client | The Client Object | See Client Property definition |
 | project | The Project Object (when emitted via `processTasks`). When the task is embedded inside an invoice line item, this is a string containing the project name instead of an object. | See Project Property definition |
 | time_log | Array of time log entries | See time_log definition |
+| tags | Tag names assigned to the task | ["Design", "Priority"] |
 | | | |
 
 ### Expense Definition
@@ -1055,6 +1131,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | vendor | The expense vendor | [Vendor](/docs/advanced-topics/templates/#vendor-definition) |
 | project | The expense project | [Project](/docs/advanced-topics/templates/#project-definition) |
 | invoice | Array of invoices the expense is linked to (when applicable) | [Invoice](/docs/advanced-topics/templates#invoice--quote--credit--purchase-order-definition) |
+| tags | Tag names assigned to the expense | ["Travel", "Billable"] |
 | | | |
 
 ### Vendor Definition
@@ -1172,7 +1249,9 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | user | The Creating User Object | [User](/docs/advanced-topics/templates/#user-definition) |
 | assigned_user | The assigned User Object (or empty array if none) | [User](/docs/advanced-topics/templates/#user-definition) |
 | client | The Client Object | [Client](/docs/advanced-topics/templates/#client-definition) |
-| invoices | Array of invoices linked to this project (top-level project only — omitted when project is nested inside another entity) | [Invoice](/docs/advanced-topics/templates#invoice--quote--credit--purchase-order-definition) |
+| invoices | Invoices linked to this project. This is an empty list when the project is displayed from another record. | [Invoice](/docs/advanced-topics/templates#invoice--quote--credit--purchase-order-definition) |
+| quotes | Quotes linked to this project. This is an empty list when the project is displayed from another record. | [Quote](/docs/advanced-topics/templates#invoice--quote--credit--purchase-order-definition) |
+| tags | Tag names assigned to the project | ["Retainer", "Website"] |
 | | | |
 
 ### Company Definition

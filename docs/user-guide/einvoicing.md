@@ -35,10 +35,40 @@ If you're on our hosted platform we'll send you region-specific onboarding instr
 
 A few things are worth knowing before you flip e-invoicing on, because they change how you build and handle invoices going forward:
 
-1. All taxes must be applied at the line level. Invoice-level (total) taxes are not supported with e-invoicing. See [Line-Level vs Invoice-Level Tax](/docs/user-guide/user-guide#line-level-vs-invoice-level-tax) for the reasoning behind the two modes.
+1. All taxes must be applied at the line level. Invoice-level (total) taxes are not supported with e-invoicing. See [Line-Level vs Invoice-Level Tax](/docs/user-guide#line-level-vs-invoice-level-tax) for the reasoning behind the two modes.
 2. If you don't charge VAT or tax on your invoices, you still need to apply a tax code or reason — for example, Cross Border exemption, or seller with no VAT number. The e-invoice schema requires an explicit answer to "why no tax?" rather than silence.
 3. Once an invoice has been *sent* it can never be modified. If something needs to change, create a new invoice or credit with the correction. This is a compliance rule, not a UI limitation — a sent e-invoice is effectively a legal document in transit.
-4. To issue a credit note under PEPPOL, use a negative invoice. That's what triggers the correct PEPPOL document type on the wire.
+4. To correct or reduce a sent PEPPOL invoice, you can create either a dedicated credit note or a negative invoice. Both are supported. See [Correcting a Sent PEPPOL Invoice](#correcting-a-sent-peppol-invoice) below.
+
+### Correcting a Sent PEPPOL Invoice
+
+You can correct a sent PEPPOL invoice in either of these ways:
+
+#### Create a Credit Note
+
+This is the simplest option when you are crediting an existing invoice:
+
+1. Open the original invoice.
+2. Open its **Actions** menu and select **Credit Note**.
+3. Review the new credit. The client, line items, and original invoice reference are filled in for you.
+4. Save the credit, then open its **E-Invoice** tab.
+5. Check that the original invoice is shown under **Reference** and resolve any validation messages.
+6. Select **Send**.
+
+![Credit Note Generation](/assets/images/einvoices/peppol_create_credit.png "Credit Note Generation")
+
+#### Create a Negative Invoice
+
+A negative invoice remains valid for PEPPOL and is sent as a credit note. Create a new invoice for the amount you need to reverse, using a negative **Quantity** and a positive **Unit Price** so the invoice total is negative.
+
+:::warning Unit prices must never be negative
+Always enter a positive **Unit Price** on PEPPOL invoices and credits.
+
+- For a negative invoice, use a negative **Quantity** with a positive **Unit Price**.
+- For a dedicated credit, use positive quantities and positive unit prices. The credit itself represents the reduction.
+
+A negative unit price will prevent the PEPPOL document from validating.
+:::
 
 ## Can I receive e-invoices?
 

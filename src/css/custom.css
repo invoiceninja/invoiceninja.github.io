@@ -770,6 +770,11 @@ h2.openapi__method-endpoint-path {
   margin-top: 0 !important;
 }
 
+/* Restore spacing between the code samples block and the request card below */
+.openapi-right-panel__container .openapi-explorer__request-form {
+  margin-top: 1.25rem;
+}
+
 /* --------------------------------------------------------------------------
    Scrollbar (subtle)
    -------------------------------------------------------------------------- */

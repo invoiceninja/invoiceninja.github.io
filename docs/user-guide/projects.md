@@ -20,29 +20,105 @@ Projects start to earn their keep when:
 
 ## Viewing a Project
 
-Selecting any project from the _Projects_ list opens its overview.
+Select a project from the **Projects** list to open it. The tabs on the project page bring its details, tasks, finances, time, expenses, and progress together in one place.
 
-![Project overview](/assets/images/projects/project_overview.png)
+![Project Overview](/assets/images/projects/projects_overview.png)
 
-The header shows the **Total** hours logged and the **Budgeted** hours you set, so progress against plan is visible immediately. You'll also see the assigned client and user, the number of linked tasks and expenses, the due date, and the default task rate. Public and private notes sit alongside, each with its own icon.
+### Overview
 
-Any expenses linked to the project appear as clickable links, making it easy to jump from the project into the underlying cost records:
+The **Overview** tab shows the project's most useful totals at a glance:
 
-![Expenses linked to project](/assets/images/projects/project_linked_expenses.png)
+| Total | What it means |
+| --- | --- |
+| Budgeted Amount | The planned value of the project. For projects created in the app, this is normally calculated from **Budgeted Hours × Task Rate**. |
+| Actual Spend | The value of work logged against the project, together with its linked expenses. |
+| Invoiced | The value already invoiced for the project. |
+| Paid | The amount received against those invoices. |
+| Outstanding | The invoiced amount that has not yet been paid. |
+| Billable | Work recorded against the project that has not yet been invoiced. |
+| Logged | The total time recorded against the project. |
 
-The dropdown at the top-right is where the day-to-day actions live — invoice the project, clone it, run it as a template for similar future work, or archive and delete.
+The **Summary** card compares budgeted and logged hours and shows the project's due date. When there is enough recorded activity, it also estimates a finish date and shows whether the project is likely to finish early or late.
 
-![Project edit dropdown arrow](/assets/images/projects/project_edit_dropdown_arrow_menu.png)
+The project details appear alongside the summary. From here you can open its client, linked quotes, invoices and expenses, and review its public and private notes.
+
+#### Include Drafts
+
+Turn on **Include Drafts** to include draft invoices in invoice-based totals and charts. Leave it off when you only want sent, partially paid, and paid invoices included.
+
+This option is only shown to users who can view the project's financial information.
 
 ### Tasks
 
-Above the tasks table, **New Task** creates a task that's already wired up to this project, which saves the usual round-trip of opening a task and hunting for the right project in the dropdown. **Invoice Project** at the bottom takes every unbilled task attached to the project and drops it onto a fresh invoice for the client.
+The **Tasks** tab lists the work recorded against the project. Select **New Task** to create a task with this project already selected. You can start or stop work, change a task's status, and open a task to review its time entries.
 
 Each row has a _More Actions_ menu for task-level controls:
 
-![Project task dropdown](/assets/images/projects/project_task_dropdown.png)
+![Project Tasks](/assets/images/projects/projects_task_list.png)
 
 For time tracking and task statuses, see [Tasks](/docs/user-guide/tasks).
+
+### Money
+
+The **Money** tab helps you understand the financial position of the project:
+
+- **Margin** compares invoiced income, expenses, and the remaining margin.
+- **Budget vs Actual** compares the planned project amount with the current value of its work and expenses.
+- **Billing Progress** compares the value of the work with how much has been invoiced, paid, remains outstanding, or has not yet been billed.
+
+Hover over a bar or line to see its exact amount.
+
+![Project Money](/assets/images/projects/projects_money.png)
+
+### Time
+
+The **Time** tab shows how the work is progressing:
+
+- **Hours** compares estimated, logged, billable, and remaining hours.
+- **Health Check** summarises budget use, schedule progress, margin, unbilled work, and outstanding amounts.
+- **Team Distribution** shows how recorded hours are divided between team members.
+- **Task Distribution** shows which tasks account for the recorded time.
+- **Task Velocity** shows how quickly work has been recorded over time.
+
+Use these charts to spot a project that is using its hours too quickly, falling behind its due date, or carrying work that has not yet been invoiced.
+
+![Project Time](/assets/images/projects/projects_time.png)
+
+### Expenses
+
+The **Expenses** tab groups project expenses by category. It also shows how the value of logged work and expenses has accumulated over time. Hover over a chart to see the amount for a category or period.
+
+![Project Time](/assets/images/projects/projects_expenses.png)
+
+### Burn Up
+
+A burn-up chart shows how completed work grows over the life of the project and compares it with the project's plan. It can help you see whether the project is progressing at the expected rate.
+
+On the **Burn Up** tab you can:
+
+- Switch between **Daily**, **Weekly**, and **Monthly** views.
+- Choose which hour measurements appear, including logged, billable, budgeted, and target hours.
+- If you can view financial information, choose which money measurements appear, including invoiced, paid, outstanding, expenses, and budgeted amount.
+- Hover over the chart to see the values for a particular date or period.
+- Use the due-date marker to compare current progress with the planned finish date.
+
+The Burn Up tab uses the same **Include Drafts** choice as the rest of the project page.
+
+![Project Burn Up](/assets/images/projects/projects_burnup.png)
+
+### If Information Is Missing
+
+The project page adjusts to the features and permissions available to you:
+
+- **Tasks** is shown when the Tasks module is enabled.
+- **Money** and **Expenses** are only shown to users who can view financial information.
+- **Time** requires access to both the project's financial information and its tasks.
+- Financial totals and money choices are hidden from the **Overview** and **Burn Up** tabs when you do not have financial access.
+- A chart may show no data until tasks, time entries, expenses, or invoices have been linked to the project.
+
+If a tab you need is missing, ask your account administrator to check your enabled modules and permissions.
+
+The actions at the top-right of the project page let you edit or invoice the project, clone it, run a template, archive it, or delete it. The actions you see depend on your permissions and the project's current state.
 
 ## Creating and Editing a Project
 
@@ -60,7 +136,14 @@ Creating a project is quick — most of the value comes later, from what you att
 
 ### Documents
 
-Files you attach under the project's _Documents_ tab — briefs, signed scopes, design references — are available to the client through the client portal under _Documents > Projects_. Keep that in mind before uploading anything internal.
+Use the project's **Documents** tab for files such as briefs, signed scopes, and design references. Only documents marked **Public** are available to the client in the client portal under **Documents > Projects**. Private documents remain available only to your team.
+
+Use **Set Public** or **Set Private** from a document's actions to change its visibility. Check the visibility before sharing sensitive or internal files.
+
+<!-- SCREENSHOT PLACEHOLDER
+Route: /projects/{project_id}/documents
+Required state: Show the Documents tab with one clearly public sample document and one private sample document. Open a document's actions so Set Public or Set Private is visible, and include any visibility indicator shown in the table. Do not use real client files.
+-->
 
 ## Invoicing a Project
 

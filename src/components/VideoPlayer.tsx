@@ -21,6 +21,11 @@ function VideoPlayerInner({ src, isDash, id }: VideoPlayerProps) {
 
       if (useDash) {
         await import("videojs-contrib-dash");
+        await import("videojs-contrib-quality-levels");
+        await import("videojs-hls-quality-selector");
+        await import(
+          "videojs-hls-quality-selector/dist/videojs-hls-quality-selector.css"
+        );
       }
 
       if (videoRef.current && !playerRef.current && !disposed) {
@@ -33,6 +38,9 @@ function VideoPlayerInner({ src, isDash, id }: VideoPlayerProps) {
 
         if (useDash) {
           player.src({ src, type: "application/dash+xml" });
+          (player as any).hlsQualitySelector?.({
+            displayCurrentQuality: true,
+          });
         }
 
         playerRef.current = player;
