@@ -110,6 +110,20 @@ when your needs change.
 </div>
 
 <div class="card-panel rounded-xl border border-slate-200 bg-white p-5 shadow-sm flex h-full flex-col gap-4">
+    <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Easypanel server</p>
+    <h3 class="text-2xl font-semibold">Easypanel one-click</h3>
+    <p>Easypanel is a self-hosted Docker deployment platform with a one-click
+    Invoice Ninja template that sets up MySQL automatically.</p>
+    <div class="card-cta">
+        <a class="card-btn card-btn-primary"
+           href="https://easypanel.io/templates/invoiceninja" target="_blank" rel="noopener noreferrer">
+           Deploy on Easypanel
+           <img src="/assets/images/icons/ArrowRight.svg" alt="" aria-hidden="true">
+        </a>
+    </div>
+</div>
+
+<div class="card-panel rounded-xl border border-slate-200 bg-white p-5 shadow-sm flex h-full flex-col gap-4">
     <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">YunoHost server</p>
     <h3 class="text-2xl font-semibold">YunoHost package</h3>
     <p>If you already run YunoHost, add Invoice Ninja as an app and inherit its
