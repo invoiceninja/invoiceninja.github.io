@@ -99,6 +99,6 @@ Yes. When you customise a template you can add dates and other input fields alon
 
 ### Is DocuNinja SOC 2 compliant?
 
-We are currently undergoing SOC 2 audit and aim to have it signed off in Q2 2026.
+Yes! DocuNinja is certified SOC 2 compliant, contact us for more information.
 
 ---
