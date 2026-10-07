@@ -1,0 +1,31 @@
+<svg fill="none" height="1em" stroke="currentColor" viewBox="0 0 18 18" width="1em" x="0px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+      <circle
+        cx="9"
+        cy="9"
+        r="7.25"
+        fill-opacity="0.3"
+        data-color="color-2"
+        data-stroke="none"
+      ></circle>
+      <path
+        d="M1.75 9C1.75 13.004 4.996 16.25 9 16.25C13.004 16.25 16.25 13.004 16.25 9C16.25 4.996 13.004 1.75 9 1.75C5.969 1.75 3.373 3.61 2.29 6.25"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+      ></path>
+      <path
+        d="M1.88 3.30499L2.288 6.24999L5.232 5.84299"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+      ></path>
+      <path
+        d="M9 4.75V9L12.25 11.25"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+      ></path>
+    </svg>
