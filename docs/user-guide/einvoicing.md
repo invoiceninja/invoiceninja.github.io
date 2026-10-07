@@ -90,10 +90,6 @@ The countries currently supported for PEPPOL delivery are:
 - Netherlands
 - Norway
 - Sweden
-
-
-From early May 2026, these countries will also enjoy full PEPPOL support;
-
 - Andorra
 - Australia
 - Bulgaria
@@ -314,7 +310,15 @@ must be set.
 
 ### FI - Finland
 
-No special requirements.
+Finland requires some special mapping of relevant IDs, the following client fields should be used for these:
+
+| Field | Scheme | Example |
+|-------|--------|---------|
+| Routing ID | FI:OPID (operator) | `003702554123` |
+| ID Number | FI:OVT | `003703854172` |
+| VAT Number | FI:VAT | `FI06874602` |
+
+
 
 ### FR - France
 
