@@ -1,0 +1,25 @@
+<svg fill="none" height="1em" stroke="currentColor" viewBox="0 0 12 12" width="1em" x="0px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+      <line
+        x1="6"
+        y1="1"
+        x2="6"
+        y2="8.75"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        data-color="color-2"
+      ></line>
+      <polyline
+        points="8.25 3 6 .75 3.75 3"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        data-color="color-2"
+      ></polyline>
+      <path
+        d="m3.5,5.25h-.25c-1.105,0-2,.895-2,2v2c0,1.105.895,2,2,2h5.5c1.105,0,2-.895,2-2v-2c0-1.105-.895-2-2-2h-.25"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
