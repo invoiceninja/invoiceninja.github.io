@@ -202,6 +202,33 @@ const config: Config = {
         indexBlog: false,
         docsRouteBasePath: "docs",
         explicitSearchResultPath: true,
+        // The root index contains authored docs; API endpoints get their own index.
+        searchContextByPaths: [
+          { label: "API Reference", path: "docs/api-reference" },
+          { label: "Developer Guides", path: "docs/developer-guide" },
+          { label: "Legal", path: "docs/legal" },
+        ],
+        useAllContextsWithNoSearchContext: false,
+        searchResultContextMaxLength: 180,
+        ignoreFiles: [/^\/?docs\/editor-guides(?:\/|$)/],
+        ignoreCssSelectors: [
+          "[data-search-ignore]",
+          "pre",
+          ".theme-code-block",
+          // Keep .hash-link: the indexer reads its href for section destinations
+          // and already excludes its text from heading titles.
+          ".theme-doc-toc-mobile",
+          ".theme-doc-footer",
+          ".pagination-nav",
+          "article button",
+          ".openapi-right-panel__container",
+          ".openapi-tabs__container",
+          ".openapi-tabs__heading",
+          ".openapi-schema__container",
+          ".openapi-schema__list-item",
+          // Keep user-facing settings tables, but omit large template object schemas.
+          "html:has(link[rel='canonical'][href$='/docs/advanced-topics/templates']) article table",
+        ],
       },
     ],
   ],

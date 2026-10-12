@@ -81,7 +81,7 @@ function VideoPlayerInner({ src, isDash, id }: VideoPlayerProps) {
 
 export default function VideoPlayer(props: VideoPlayerProps) {
   return (
-    <BrowserOnly fallback={<div>Loading video...</div>}>
+    <BrowserOnly fallback={<div data-search-ignore>Loading video...</div>}>
       {() => <VideoPlayerInner {...props} />}
     </BrowserOnly>
   );

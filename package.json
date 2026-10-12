@@ -15,7 +15,8 @@
     "gen-api-docs": "docusaurus gen-api-docs invoiceninja",
     "clean-api-docs": "docusaurus clean-api-docs invoiceninja",
     "icons:sync": "node scripts/extract-icons.js",
-    "icons:check": "node scripts/extract-icons.js && git diff --exit-code static/assets/images/icons"
+    "icons:check": "node scripts/extract-icons.js && git diff --exit-code static/assets/images/icons",
+    "search:check": "node scripts/check-search.cjs"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.0",

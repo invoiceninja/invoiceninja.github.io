@@ -2,6 +2,8 @@
 title: "Recurring Invoices"
 sidebar_position: 13
 ---
+import VideoPlayer from "@site/src/components/VideoPlayer";
+
 A recurring invoice is the template you set up once so Invoice Ninja can bill a [client](/docs/user-guide/clients) on a schedule — monthly retainers, quarterly memberships, annual renewals, weekly service fees. You build it like any other invoice, tell the app how often to run it, and from then on a fresh [invoice](/docs/user-guide/invoices) is generated on each cycle, emailed to the contacts you've chosen, and (if you'd like) charged automatically against the card or bank account on file.
 
 It helps to keep one distinction in mind from the start: the recurring invoice itself is never sent to your client. It's the blueprint. What your client actually receives is a regular invoice that the blueprint produced on its due day — with its own number, PDF, payment link, and balance. The recurring record stays behind the scenes, tracking what's been generated and what's still to come.
@@ -164,3 +166,11 @@ Start Date: first day of month
 End Date: first day of month, +1 month
 
 That produces 1st September 2025 through 1st October 2025.
+
+## Common Workflow Video Guides
+
+### Generate But Hold For Review
+
+This guide shows how you can generate recurring invoices on a schedule, but hold them for review prior to sending.
+
+<VideoPlayer src="/assets/videos/recurring_invoices/draft/draft_recurring_invoices.mpd" isDash={true} id="draft-recurring-invoices" />
