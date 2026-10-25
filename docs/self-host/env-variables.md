@@ -234,6 +234,15 @@ NORDIGEN_SECRET_KEY=
 The API id and key from [GoCardless/Nordigen](https://bankaccountdata.gocardless.com/user-secrets/) required for bank transaction imports
 
 ```bash
+QUICKBOOKS_CLIENT_ID=
+QUICKBOOKS_CLIENT_SECRET=
+QUICKBOOKS_REDIRECT_URI=https://your-invoiceninja-domain.com/quickbooks/authorized
+QUICKBOOKS_ENV=production
+```
+
+The OAuth keys and redirect URI from your own [Intuit developer](https://developer.intuit.com) app, required for the QuickBooks integration. `QUICKBOOKS_ENV` defaults to `sandbox`; set it to `production` to connect a real QuickBooks company. See [Self Host QuickBooks](/docs/self-host/self-host-quickbooks)
+
+```bash
 DELETE_BACKUP_DAYS
 ```
 

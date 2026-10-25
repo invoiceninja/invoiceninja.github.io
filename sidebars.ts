@@ -85,6 +85,7 @@ const sidebars: SidebarsConfig = {
         "self-host/env-variables",
         "self-host/self-host-debug-mode",
         "self-host/self-host-white-labeling",
+        "self-host/self-host-quickbooks",
       ],
     },
   ],

@@ -9,6 +9,10 @@ Invoice Ninja's QuickBooks Online connection can import data from QuickBooks int
 
 This allows you to create invoices and get paid in Invoice Ninja, while also keeping QuickBooks connected if you want an ongoing accounting integration.
 
+:::info
+Self-hosting? You'll need to register your own Intuit app and add its keys to your `.env` before you can connect. See [Self Host QuickBooks](/docs/self-host/self-host-quickbooks).
+:::
+
 ## Quick Start 
 
 ### Connect QuickBooks to Invoice Ninja
