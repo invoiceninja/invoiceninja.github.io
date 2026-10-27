@@ -439,7 +439,30 @@ Here are the object definitions that are available.
                                     "city": "Nicest City",
                                     "state": "Best State",
                                     "postal_code": "90210",
-                                    "country": "USA"
+                                    "country": {
+                                        "id": "840",
+                                        "name": "United States",
+                                        "iso_3166_2": "US",
+                                        "iso_3166_3": "USA"
+                                    },
+                                    "country_name": "United States",
+                                    "country_code": "US",
+                                    "shipping_location_name": "Warehouse",
+                                    "shipping_address": "55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                                    "shipping_address1": "55 Delivery Street",
+                                    "shipping_address2": "Unit 2",
+                                    "shipping_city": "Nicest City",
+                                    "shipping_state": "Best State",
+                                    "shipping_postal_code": "90210",
+                                    "shipping_country": {
+                                        "id": "840",
+                                        "name": "United States",
+                                        "iso_3166_2": "US",
+                                        "iso_3166_3": "USA"
+                                    },
+                                    "shipping_country_name": "United States",
+                                    "shipping_country_code": "US",
+                                    "shipping_exists": true
                                 }
                             },
                             "user": {
@@ -500,7 +523,30 @@ Here are the object definitions that are available.
                                 "city": "Nicest City",
                                 "state": "Best State",
                                 "postal_code": "90210",
-                                "country": "USA"
+                                "country": {
+                                    "id": "840",
+                                    "name": "United States",
+                                    "iso_3166_2": "US",
+                                    "iso_3166_3": "USA"
+                                },
+                                "country_name": "United States",
+                                "country_code": "US",
+                                "shipping_location_name": "Warehouse",
+                                "shipping_address": "55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                                "shipping_address1": "55 Delivery Street",
+                                "shipping_address2": "Unit 2",
+                                "shipping_city": "Nicest City",
+                                "shipping_state": "Best State",
+                                "shipping_postal_code": "90210",
+                                "shipping_country": {
+                                    "id": "840",
+                                    "name": "United States",
+                                    "iso_3166_2": "US",
+                                    "iso_3166_3": "USA"
+                                },
+                                "shipping_country_name": "United States",
+                                "shipping_country_code": "US",
+                                "shipping_exists": true
                             }
                         }
                     }
@@ -568,7 +614,30 @@ Here are the object definitions that are available.
                     "city": "Nicest City",
                     "state": "Best State",
                     "postal_code": "90210",
-                    "country": "USA"
+                    "country": {
+                        "id": "840",
+                        "name": "United States",
+                        "iso_3166_2": "US",
+                        "iso_3166_3": "USA"
+                    },
+                    "country_name": "United States",
+                    "country_code": "US",
+                    "shipping_location_name": "Warehouse",
+                    "shipping_address": "55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                    "shipping_address1": "55 Delivery Street",
+                    "shipping_address2": "Unit 2",
+                    "shipping_city": "Nicest City",
+                    "shipping_state": "Best State",
+                    "shipping_postal_code": "90210",
+                    "shipping_country": {
+                        "id": "840",
+                        "name": "United States",
+                        "iso_3166_2": "US",
+                        "iso_3166_3": "USA"
+                    },
+                    "shipping_country_name": "United States",
+                    "shipping_country_code": "US",
+                    "shipping_exists": true
                 }
             },
             "payments": [
@@ -619,7 +688,30 @@ Here are the object definitions that are available.
                             "city": "Nicest City",
                             "state": "Best State",
                             "postal_code": "90210",
-                            "country": "USA"
+                            "country": {
+                                "id": "840",
+                                "name": "United States",
+                                "iso_3166_2": "US",
+                                "iso_3166_3": "USA"
+                            },
+                            "country_name": "United States",
+                            "country_code": "US",
+                            "shipping_location_name": "Warehouse",
+                            "shipping_address": "55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                            "shipping_address1": "55 Delivery Street",
+                            "shipping_address2": "Unit 2",
+                            "shipping_city": "Nicest City",
+                            "shipping_state": "Best State",
+                            "shipping_postal_code": "90210",
+                            "shipping_country": {
+                                "id": "840",
+                                "name": "United States",
+                                "iso_3166_2": "US",
+                                "iso_3166_3": "USA"
+                            },
+                            "shipping_country_name": "United States",
+                            "shipping_country_code": "US",
+                            "shipping_exists": true
                         }
                     },
                     "paymentables": [
@@ -725,7 +817,30 @@ Here are the object definitions that are available.
                     "city": "Nicest City",
                     "state": "Best State",
                     "postal_code": "90210",
-                    "country": "USA"
+                    "country": {
+                        "id": "840",
+                        "name": "United States",
+                        "iso_3166_2": "US",
+                        "iso_3166_3": "USA"
+                    },
+                    "country_name": "United States",
+                    "country_code": "US",
+                    "shipping_location_name": "Warehouse",
+                    "shipping_address": "55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                    "shipping_address1": "55 Delivery Street",
+                    "shipping_address2": "Unit 2",
+                    "shipping_city": "Nicest City",
+                    "shipping_state": "Best State",
+                    "shipping_postal_code": "90210",
+                    "shipping_country": {
+                        "id": "840",
+                        "name": "United States",
+                        "iso_3166_2": "US",
+                        "iso_3166_3": "USA"
+                    },
+                    "shipping_country_name": "United States",
+                    "shipping_country_code": "US",
+                    "shipping_exists": true
                 }
             },
             "paymentables": [],
@@ -792,7 +907,30 @@ Here are the object definitions that are available.
                         "city": "Nicest City",
                         "state": "Best State",
                         "postal_code": "90210",
-                        "country": "USA"
+                        "country": {
+                            "id": "840",
+                            "name": "United States",
+                            "iso_3166_2": "US",
+                            "iso_3166_3": "USA"
+                        },
+                        "country_name": "United States",
+                        "country_code": "US",
+                        "shipping_location_name": "Warehouse",
+                        "shipping_address": "55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                        "shipping_address1": "55 Delivery Street",
+                        "shipping_address2": "Unit 2",
+                        "shipping_city": "Nicest City",
+                        "shipping_state": "Best State",
+                        "shipping_postal_code": "90210",
+                        "shipping_country": {
+                            "id": "840",
+                            "name": "United States",
+                            "iso_3166_2": "US",
+                            "iso_3166_3": "USA"
+                        },
+                        "shipping_country_name": "United States",
+                        "shipping_country_code": "US",
+                        "shipping_exists": true
                     }
                 },
                 "user": {
@@ -859,7 +997,30 @@ Here are the object definitions that are available.
                     "city": "Nicest City",
                     "state": "Best State",
                     "postal_code": "90210",
-                    "country": "USA"
+                    "country": {
+                        "id": "840",
+                        "name": "United States",
+                        "iso_3166_2": "US",
+                        "iso_3166_3": "USA"
+                    },
+                    "country_name": "United States",
+                    "country_code": "US",
+                    "shipping_location_name": "Warehouse",
+                    "shipping_address": "55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/>",
+                    "shipping_address1": "55 Delivery Street",
+                    "shipping_address2": "Unit 2",
+                    "shipping_city": "Nicest City",
+                    "shipping_state": "Best State",
+                    "shipping_postal_code": "90210",
+                    "shipping_country": {
+                        "id": "840",
+                        "name": "United States",
+                        "iso_3166_2": "US",
+                        "iso_3166_3": "USA"
+                    },
+                    "shipping_country_name": "United States",
+                    "shipping_country_code": "US",
+                    "shipping_exists": true
                 }
             }
         }
@@ -1211,6 +1372,8 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 
 ### Location Definition
 
+The `country` and `shipping_country` objects in the examples show a subset of their fields. Use `country_name` / `shipping_country_name` for display names and `country_code` / `shipping_country_code` for two-letter country codes.
+
 | Location Object | | |
 | ---- | ---- | ---- | 
 | location_name | The location name | Billy |
@@ -1220,7 +1383,20 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | city | The city | Nicest City |
 | state | The state or province | Best State |
 | postal_code | The postal or zip code | 90210 |
-| country | The country name | USA |
+| country | The country object (or null if unavailable) | `{"id": "840", "name": "United States", "iso_3166_2": "US", "iso_3166_3": "USA"}` |
+| country_name | The country name | United States |
+| country_code | The two-letter country code | US |
+| shipping_location_name | The shipping location name | Warehouse |
+| shipping_address | The formatted shipping address with HTML line breaks | 55 Delivery Street<br/>Unit 2<br/>Nicest City, Best State 90210<br/>United States<br/> |
+| shipping_address1 | The first line of the shipping address | 55 Delivery Street |
+| shipping_address2 | The second line of the shipping address | Unit 2 |
+| shipping_city | The shipping city | Nicest City |
+| shipping_state | The shipping state or province | Best State |
+| shipping_postal_code | The shipping postal or zip code | 90210 |
+| shipping_country | The shipping country object (or null if unavailable) | `{"id": "840", "name": "United States", "iso_3166_2": "US", "iso_3166_3": "USA"}` |
+| shipping_country_name | The shipping country name | United States |
+| shipping_country_code | The two-letter shipping country code | US |
+| shipping_exists | Boolean indicating whether shipping_address1 is nonempty | true |
 | | | |
 
 ### Project Definition
