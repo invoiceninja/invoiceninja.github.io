@@ -3,7 +3,7 @@ title: "Self Host Installation"
 sidebar_position: 3
 ---
 
-Invoice Ninja adapts to however you want to host it. You can use whatever fits
+[Invoice Ninja](https://invoiceninja.org) adapts to however you want to host it. You can use whatever fits
 your access level. Start with the option that is easiest today and switch later
 when your needs change.
 
