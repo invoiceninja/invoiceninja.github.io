@@ -14541,14 +14541,14 @@ paths:
           description: 'Server error'
         default:
           $ref: "#/components/responses/default"
-  "/api/v1/invoice/{invitation_key}/download":
+  "/api/v1/invoices/{invitation_key}/download":
     get:
       operationId: downloadInvoiceByInvitation
       tags:
         - invoices
       summary: "Download invoice PDF"
       description: |
-        ## GET /api/v1/invoice/{invitation_key}/download
+        ## GET /api/v1/invoices/{invitation_key}/download
 
         Downloads a specific invoice
 
@@ -14562,7 +14562,7 @@ paths:
         label: curl
         source: |
           curl --request GET \
-            --url 'https://invoicing.co/api/v1/invoice/D2J234DFA/download' \
+            --url 'https://invoicing.co/api/v1/invoices/D2J234DFA/download' \
             --header 'X-API-TOKEN: YOUR_API_TOKEN_HERE' \
             --header 'Accept: application/json'
       parameters:
@@ -14736,6 +14736,7 @@ paths:
           description: 'Server error'
         default:
           $ref: "#/components/responses/default"
+
   /api/v1/projects:
     get:
       tags:
@@ -21063,6 +21064,10 @@ components:
           type: string
           format: date
           example: '2024-01-31'
+        estimated_duration:
+          description: 'Estimated duration for the task in seconds'
+          type: integer
+          example: 7200
         priority:
           description: 'Priority level of the task'
           type: integer
@@ -21073,10 +21078,6 @@ components:
           items:
             type: string
             example: Opnel5aKBz
-        estimated_duration:
-          description: 'Estimated duration for the task in seconds'
-          type: integer
-          example: 7200
       type: object
 
     LocationRequest:
@@ -21197,6 +21198,7 @@ components:
           items:
             type: string
             example: Opnel5aKBz
+
     Document:
       properties:
         id:
@@ -21393,6 +21395,7 @@ components:
           example: '1'
           default: '1'
           description: 'The tax ID of the product: 1 product, 2 service, 3 digital, 4 shipping, 5 exempt, 5 reduced tax, 7 override, 8 zero rate, 9 reverse tax'
+
     ExpenseCategory:
       properties:
         id:
@@ -22283,13 +22286,13 @@ components:
           type: string
           description: 'The accounting income account identifier this product maps to (used by external accounting integrations such as QuickBooks).'
           example: '42'
-
         tags:
           description: 'Full sync array of hashed tag IDs. Omit to leave existing tags unchanged; send [] to detach all tags.'
           type: array
           items:
             type: string
             example: Opnel5aKBz
+
     InvoiceInvitationRequest:
       required:
         - client_contact_id
@@ -25521,6 +25524,7 @@ components:
           description: 'The French reporting schedule. ten_day or monthly'
           type: string
           example: ten_day
+
     Design:
       properties:
         id:
@@ -27157,9 +27161,10 @@ components:
             - 'App\Models\Vendor'
           example: 'App\Models\Task'
         name:
-          description: 'The tag name. Unique per company and entity type, including archived tags.'
+          description: 'The tag name. Commas are not allowed. Unique per company and entity type, including archived tags.'
           type: string
           maxLength: 191
+          pattern: '^[^,]+$'
           example: Urgent
         color:
           description: 'The tag color as a 3 or 6 digit hex value, or null when unset'
@@ -27220,9 +27225,10 @@ components:
             - 'App\Models\Vendor'
           example: 'App\Models\Task'
         name:
-          description: 'The tag name. Unique per company and entity type, including archived tags.'
+          description: 'The tag name. Commas are not allowed. Unique per company and entity type, including archived tags.'
           type: string
           maxLength: 191
+          pattern: '^[^,]+$'
           example: Urgent
         color:
           description: 'The tag color as a 3 or 6 digit hex value, or null to clear it.'
@@ -27252,6 +27258,7 @@ components:
           example: archive
       required:
         - ids
+
     RecurringInvoiceRequest:
       required:
         - client_id
@@ -27316,6 +27323,7 @@ components:
           items:
             type: string
             example: Opnel5aKBz
+
     Product:
       type: object
       properties:
@@ -27476,12 +27484,12 @@ components:
           type: string
           description: 'The accounting income account identifier this product maps to (used by external accounting integrations such as QuickBooks).'
           example: '42'
-
         tags:
           description: 'Tags assigned to this entity'
           type: array
           items:
             $ref: '#/components/schemas/TagAssignment'
+
     PaymentRequest:
       properties:
         client_id:
@@ -29642,6 +29650,15 @@ components:
           description: 'The task duration in seconds'
           type: integer
           example: 3600
+        due_date:
+          description: 'The due date of the task'
+          type: string
+          format: date
+          example: '2024-01-31'
+        estimated_duration:
+          description: 'The estimated duration of the task in seconds'
+          type: integer
+          example: 7200
         task_status_order:
           description: 'The order of the task'
           type: integer
@@ -29727,16 +29744,6 @@ components:
           type: string
           format: date
           example: '2024-01-15'
-        due_date:
-          description: 'Due date for the task'
-          type: string
-          format: date
-          example: '2024-01-31'
-        estimated_duration:
-          description: 'Estimated duration for the task in seconds'
-          type: integer
-          nullable: true
-          example: 7200
       type: object
 
 
@@ -30014,24 +30021,11 @@ tags:
   - name: products
     x-displayName: Products
     description: |
-      The Products API manages your catalog of reusable line items — the goods
-      and services you sell. Each product stores a default price, description,
-      tax settings, and cost, and can be referenced when building invoices,
-      quotes, and purchase orders to keep pricing and descriptions consistent.
-
-      ### Common uses
-      - Maintain a reusable catalog of goods and services
-      - Pre-fill invoice and quote line items from a product key
-      - Track stock quantities and notify on low inventory
+      Endpoint definitions for interacting with products.
   - name: invoices
     x-displayName: Invoices
 
     description: |
-
-      An invoice is a billable document sent to a client. The Invoices API lets
-      you create, send, and manage invoices, apply payments, download PDFs, and
-      trigger actions such as emailing or marking them paid. An invoice drives
-      the client balance and moves through the statuses below.
 
       ## Invoice Statuses
 
@@ -30055,10 +30049,7 @@ tags:
   - name: Recurring Invoices
     x-displayName: Recurring Invoices
     description: |
-      A recurring invoice is a template that automatically generates invoices on
-      a schedule (weekly, monthly, annually, and more). The Recurring Invoices
-      API lets you define the cadence, auto-billing behaviour, and remaining
-      cycles for subscription-style billing.
+      Endpoint definitions for interacting with recurring_invoices.
 
   - name: Recurring-Invoices
     x-displayName: Recurring Invoices
@@ -30068,56 +30059,32 @@ tags:
   - name: payments
     x-displayName: Payments
     description: |
-      A payment records money received from a client, optionally allocated
-      across one or more invoices. The Payments API lets you record manual
-      payments, apply credits, process refunds, and reconcile amounts so client
-      balances stay accurate.
-
-      ### Common uses
-      - Record a payment and allocate it across one or more invoices
-      - Apply credits and handle partial or over-payments
-      - Refund or delete payments and adjust balances
+      Endpoint definitions for interacting with payments.
 
   - name: quotes
     x-displayName: Quotes
     description: |
-      A quote (estimate) is a proposed set of charges you send to a client for
-      approval. The Quotes API lets you create, send, and manage quotes, and
-      convert an approved quote directly into an invoice.
-
-      ### Common uses
-      - Send estimates for client approval via the client portal
-      - Convert an accepted quote into an invoice
-      - Track quote status (draft, sent, approved)
+      Endpoint definitions for interacting with quotes.
 
   - name: credits
     x-displayName: Credits
     description: |
-      A credit is effectively a negative invoice that reduces a client's
-      balance — issued for refunds, goodwill, or overpayments. The Credits API
-      lets you create and manage credits and apply them against a client's
-      outstanding invoices.
+      Endpoint definitions for interacting with credits.
 
   - name: projects
     x-displayName: Projects
     description: |
-      A project groups tasks and expenses for a client, typically for time-based
-      or milestone work. The Projects API lets you organise work, set a budget
-      and default task rate, and roll project tasks up into invoices.
+      Endpoint definitions for interacting with projects.
 
   - name: tasks
     x-displayName: Tasks
     description: |
-      A task records time worked — billable or non-billable — optionally against
-      a project and client. The Tasks API lets you start and stop timers, log
-      time entries, and invoice tracked time.
+      Endpoint definitions for interacting with tasks.
 
   - name: vendors
     x-displayName: Vendors
     description: |
-      A vendor is a supplier you purchase goods or services from — the
-      accounts-payable counterpart to a client. The Vendors API manages vendor
-      records and their contacts, and underpins expenses and purchase orders.
+      Endpoint definitions for interacting with vendors.
 
   - name: Purchase Orders
     x-displayName: Purchase Orders
@@ -30132,9 +30099,7 @@ tags:
   - name: expenses
     x-displayName: Expenses
     description: |
-      An expense records money spent, optionally linked to a vendor, client, or
-      project, and can be marked billable to on-charge it to a client. The
-      Expenses API lets you record, categorise, and invoice expenses.
+      Endpoint definitions for interacting with expenses.
 
   - name: recurring_expenses
     x-displayName: Recurring Expenses
