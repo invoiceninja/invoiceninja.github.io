@@ -1,0 +1,17 @@
+<svg fill="none" height="1em" stroke="currentColor" viewBox="0 0 18 18" width="1em" x="0px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+      <path
+        d="M9,16.25c0-1.105,.895-2,2-2h4.25c.552,0,1-.448,1-1V3.75c0-.552-.448-1-1-1h-4.25c-1.105,0-2,.895-2,2"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        data-color="color-2"
+      ></path>
+      <path
+        d="M9,16.25V4.75c0-1.105-.895-2-2-2H2.75c-.552,0-1,.448-1,1V13.25c0,.552,.448,1,1,1H7c1.105,0,2,.895,2,2Z"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+      ></path>
+    </svg>

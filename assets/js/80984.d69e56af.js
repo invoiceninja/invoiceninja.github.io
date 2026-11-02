@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkinvoiceninja_docs=globalThis.webpackChunkinvoiceninja_docs||[]).push([[80984],{80984(i,n,c){c.r(n)}}]);
