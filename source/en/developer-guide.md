@@ -39,7 +39,7 @@ The app is divided into three main parts: the backend/API and the two admin port
 #### Lead developer: [Benjamin Beganović](https://twitter.com/beganovichhh)
 
 - Framework: [React](https://reactjs.org)
-- Code: [GitHub](https://github.com/invoiceninja/ui)
+- Code: [GitHub](https://github.com/invoiceninja/web)
 
 ## API Definition
 

@@ -39,7 +39,7 @@ L'application est divisée en trois parties principales : le backend/API et les 
 #### Développeur principal : [Benjamin Beganović](https://twitter.com/beganovichhh)
 
 - Cadre d'application : [React](https://reactjs.org)
-- Code : [GitHub](https://github.com/invoiceninja/ui)
+- Code : [GitHub](https://github.com/invoiceninja/web)
 
 ## Définition de l'API
 

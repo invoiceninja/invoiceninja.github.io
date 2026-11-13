@@ -35,7 +35,7 @@ L'application est divisée en trois parties principales : le backend/API et les 
 #### Développeur principal : [Benjamin Beganović](https://twitter.com/beganovichhh)
 
 - Cadre de travail : [React](https://reactjs.org)
-- Code : [GitHub](https://github.com/invoiceninja/ui)
+- Code : [GitHub](https://github.com/invoiceninja/web)
 - Démo : [react.invoicing.co/demo](https://react.invoicing.co/demo)
 
 ## Performance
