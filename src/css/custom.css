@@ -455,6 +455,13 @@ table {
   border-collapse: collapse;
 }
 
+@media (max-width: 996px) {
+  .generated-number-guide table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
 table thead tr {
   border-bottom: 2px solid var(--ifm-table-border-color);
 }

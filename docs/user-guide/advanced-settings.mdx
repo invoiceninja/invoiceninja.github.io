@@ -82,78 +82,186 @@ Tabs at the top of the page scope those four slots per entity:
 
 ## Generated Numbers {#generated_numbers}
 
-Generated Numbers controls the format and sequencing of invoice numbers, quote numbers, client numbers, and every other auto-incrementing identifier in Invoice Ninja. Accountants often have strict expectations here — continuous sequences, yearly resets, specific prefixes for tax compliance — and this is where you meet those requirements. If you're just starting out, the defaults (a zero-padded counter) work for almost everyone.
+<div className="generated-number-guide">
 
-### Available Variables
+Generated Numbers controls the identifiers assigned to new invoices, quotes, clients, and other records. You can add a prefix, include the year, continue an existing sequence, or give groups and clients their own numbering rules.
 
-| Variable | Description |
-|----------|----------|
-| $counter | The current count of the entity |
-| $client_counter | The current count of the client entity |
-| $group_counter | The current count of the group entity |
-| $date:Y-m-d | The current date in the defined format ie Y-m-d |
-| $year | The current year |
-| $user_id | The user id of the creator of the entity |
-| $client_custom1 | The value of the first custom field of the client entity |
-| $client_custom2 | The value of the second custom field of the client entity |
-| $client_custom3 | The value of the third custom field of the client entity |
-| $client_custom4 | The value of the fourth custom field of the client entity |
-| $client_id_number | The Client ID number |
-| $client_number | The Client number |
-| $vendor_custom1 | The value of the first custom field of the vendor entity |
-| $vendor_custom2 | The value of the second custom field of the vendor entity |
-| $vendor_custom3 | The value of the third custom field of the vendor entity |
-| $vendor_custom4 | The value of the fourth custom field of the vendor entity |
-| $vendor_id_number | The Vendor ID number |
-| $vendor_number | The Vendor number |
-| $expense_id_number | The matching Client or Vendor ID number |
-| $user_custom1 | The value of the first custom field of the user entity |
-| $user_custom2 | The value of the second custom field of the user entity |
-| $user_custom3 | The value of the third custom field of the user entity |
-| $user_custom4 | The value of the fourth custom field of the user entity |
+Start with the [quick setup](#set-up-your-first-number-pattern), choose a [ready-to-use pattern](#number-pattern-examples), or learn how to [override company settings for a group or client](#numbering-overrides).
 
-Combine these inside a number pattern:
+### Set up your first number pattern
 
-```bash
-{$date:y}-{$counter}-{$user_custom1}
-```
+For invoice numbers such as `INV-2026-0001`:
 
-:::warning
-<p>
-        <strong>Note:</strong> The patterns must resolve to a UNIQUE number, duplicates are not allowed and the generated number will not be applied - or - will be modified to be unique.
-    </p>
-:::
+1. Open **Settings > Generated Numbers > Settings** at the company level.
+2. Set **Number Padding** to the option showing `0001` (four digits). Choose **When Saved** under **Generate Number** if you want invoices numbered as soon as you save them.
+3. Open the **Invoices** tab and enter this **Number Pattern**:
 
-### Settings
+   ```text
+   INV-{$year}-{$counter}
+   ```
+
+4. Set **Number Counter** to the next number you want to use. For a new sequence, use `1`; if your last invoice was `INV-2026-0150`, use `151`.
+5. Click **Save**. The next invoice numbered in 2026 will be `INV-2026-0001`, or `INV-2026-0151` if you continued the existing sequence, provided that number is unused.
+
+Type variables exactly as shown, including the braces and dollar sign. Text outside variables stays as you type it: `INV-` is a fixed prefix, while `{$year}` and `{$counter}` are replaced with values. These numbering variables have their own syntax; the [PDF custom-field list](../advanced-topics/custom-fields#custom-fields) is a separate reference.
+
+Changing a pattern affects newly generated numbers. It does not renumber existing records or replace a number you entered manually.
+
+### Number pattern examples
+
+These examples assume the next counter is **1**, padding is **4**, and the generation date is **16 November 2026** in the company timezone.
+
+| Goal | Copy this number pattern | Example result | Additional setup |
+|---|---|---|---|
+| Simple sequence | `{$counter}` | `0001` | None. |
+| Fixed prefix | `INV-{$counter}` | `INV-0001` | Use another prefix, such as `QUO-`, in the relevant record's tab. |
+| Year in the number | `INV-{$year}-{$counter}` | `INV-2026-0001` | To restart annually, also configure **Reset Counter** and **Next Reset**. |
+| Year and month | `INV-{$date:Y-m}-{$counter}` | `INV-2026-11-0001` | To restart monthly, also configure a monthly reset and **Next Reset**. |
+| Separate sequence per client | `{$client_number}-INV-{$client_counter}` | `C001-INV-0001` | Use for invoices or other client-linked records. Give each client a unique client number, such as `C001`. |
+| Separate sequence for a group | `VIP-{$year}-{$group_counter}` | `VIP-2026-0001` | Set this in the VIP group's invoice settings; assign clients to that group. Give other groups different prefixes. |
+
+Adding a year or month changes the text in the number; it does **not** reset the counter by itself.
+
+### Numbering settings
 
 ![alt text](/assets/images/settings/generated_numbers/generated_numbers_settings_pane.png "Generated Numbers Settings")
 
-The Settings tab holds the rules that apply to *every* entity. Other tabs then fine-tune each entity individually.
+The **Settings** tab contains the shared numbering options. Each record type has its own tab for its pattern and next counter.
 
-- **Number Padding** — leading zeros. Default 3, producing `0001`, `0002`, `0003`.
-- **Generate Number** — choose *when* the number is stamped: *When Saved* (immediately) or *When Sent* (only once the entity is sent or marked as sent).
-- **Recurring Prefix** — prefix applied to invoices spawned from a recurring invoice, so they're easy to spot in a list.
-- **Shared Invoice/Quote Counter** — quotes draw from the same counter as invoices.
-- **Shared Invoice/Credit Counter** — credits draw from the same counter as invoices. Enable both shared-counter switches to put invoices, quotes, and credits on one sequence.
-- **Reset Counter** — reset at a chosen frequency (yearly, monthly, and so on). Pair this with something unique in your pattern (for example `$year`) or you'll collide.
+| Setting | How to use it |
+|---|---|
+| **Number Pattern** | The text and variables used to build a new number. An empty pattern uses the counter. Normally, if you omit a counter variable, Invoice Ninja adds the counter at the end. Include it explicitly to control its position. |
+| **Number Counter** | The next value to try, rather than the number of records you have. Use it to continue numbering after migrating from another system. |
+| **Number Padding** | Minimum width of the counter, with leading zeros. The default is **4**, so `1` becomes `0001`. It does not shorten longer numbers: `10000` stays `10000`. |
+| **Generate Number** | **When Saved** or **When Sent** for invoices, quotes, credits, and purchase orders. With **When Sent**, a draft can remain unnumbered until sent or marked as sent. Payments and recurring invoice records are numbered when saved. |
+| **Recurring Prefix** | Extra text placed before the invoice pattern when a recurring invoice generates an invoice. For example, `R-` plus `INV-{$counter}` produces `R-INV-0001`. |
+| **Shared Invoice/Quote Counter** | Quotes draw from the invoice counter, while retaining their quote pattern. |
+| **Shared Invoice/Credit Counter** | Credits draw from the invoice counter, while retaining their credit pattern. Enable both shared-counter options to share a sequence across invoices, quotes, and credits. |
+| **Reset Counter** and **Next Reset** | Choose a frequency and the next reset date. A due reset is applied when numbering is next generated. Use `{$year}` for annual resets, or `{$date:Y-m}` for monthly resets, to distinguish the new sequence from earlier periods. |
 
-### Clients, Invoices, Recurring Invoices, Payments, etc.
+Automatic resets do not reset client numbers, vendor numbers, or the recurring invoice record counter. The **Recurring Invoices** tab controls the recurring record's own number; invoices it generates use the **Invoices** pattern and counter, with **Recurring Prefix** added.
 
 ![alt text](/assets/images/settings/generated_numbers/generated_numbers_client.png "Client generated numbers")
 
-Each entity has its own tab, letting you customize its pattern and counter independently.
+### Company, group, and client overrides {#numbering-overrides}
 
-- **Number Pattern** — the rule used to build new numbers. For example:
+For client-based numbering, each setting is resolved in this order:
 
-```bash
-{$date:y}-{$counter}
-```
+1. **Client override**, if enabled for that field.
+2. **Group override**, if the client belongs to a group and that field is overridden there.
+3. **Company setting**, for everything else.
 
-…produces `2021-0009` for the 9th count in 2021. If you use *Reset Counter*, bake enough uniqueness (like `$year`) into the pattern to stop collisions.
+The order applies separately to each field. A client can override its invoice pattern while inheriting the group's padding and the company's generation timing. Later company changes flow through only where no group or client override takes precedence.
 
-- **Number Counter** — directly editable, handy if you're migrating from another system and want to continue a sequence. Edit carefully — collisions block new numbers from saving.
+#### Set an override for a group
 
-At the foot of the tab, **View Date Formats** links to a PHP date-format reference, and the per-entity variable list sits just below that.
+1. Open **Settings > Group Settings**, create or open a group, and choose **Configure Settings**.
+2. Open **Generated Numbers**, then the relevant tab, such as **Invoices**.
+3. Select the checkbox beside **Number Pattern**, enter the group's pattern, and click **Save**. Select other fields' checkboxes only when you want to override those too.
+4. Edit each client's details and select this group in the **Group** field. Save the client.
+
+For example, set a VIP group's invoice pattern to `VIP-{$year}-{$counter}`. Members receive the VIP prefix, but still draw from the company's invoice counter. A client with its own invoice-pattern override keeps that override.
+
+#### Set an override for one client
+
+1. Open the client's action menu and choose **Settings**.
+2. Open **Generated Numbers > Invoices** (or another applicable tab).
+3. Select the checkbox beside **Number Pattern**, enter the client's pattern, and click **Save**.
+
+To remove an override, clear its checkbox and save. The field then inherits from the next level. Clearing only the text is not the way to remove an override. Check the **Group Settings** or **Client Settings** banner to confirm whose settings you are editing; use its **×** button to return to company settings after saving.
+
+#### Choose whether the sequence is shared or separate
+
+Overriding a pattern changes its format. The counter variable determines where the sequence is kept:
+
+| Counter variable | Sequence used | Where to set its next counter |
+|---|---|---|
+| `{$counter}` | Company sequence for that record type, even inside a group or client pattern override. | Company **Generated Numbers**, in the relevant record's tab. |
+| `{$group_counter}` | One sequence shared by clients in the same group. Use it with clients assigned to a group. | That group's **Configure Settings > Generated Numbers**, in the relevant tab. Enable **Number Counter** to set a starting value. |
+| `{$client_counter}` | A separate sequence for each client. | That client's **Settings > Generated Numbers**, in the relevant tab. Enable **Number Counter** to set a starting value. |
+
+For a VIP group to start its own invoice sequence at `0001`, use `VIP-{$year}-{$group_counter}` and set the group's invoice **Number Counter** to `1`. For every client to have its own sequence, a group can instead supply `{$client_number}-INV-{$client_counter}`; each member then gets its own counter. A new group or client counter starts at `1` unless already set.
+
+Use one counter variable per pattern. Include a unique group prefix or client number, because invoice numbers must be unique across the company, including across clients and groups. If you want periodic resets for a separate sequence, configure **Reset Counter** and **Next Reset** at the same group or client level as that sequence.
+
+Group/client numbering overrides apply to clients, invoices, recurring invoice records, quotes, credits, payments, and projects linked to a client. Vendors, tasks, expenses, recurring expenses, purchase orders, and projects without a client use company numbering settings and counters, even when a record has a client link.
+
+### Available Variables
+
+Copy the full placeholder, including `{$` and `}`. The lists below include variables beyond those shown under each tab in the app.
+
+#### Counter and date variables
+
+| Variable | Meaning | Example value |
+|---|---|---|
+| `{$counter}` | The counter selected for this pattern, with number padding applied. | `0001` |
+| `{$client_counter}` | Select a separate client counter, as explained under [overrides](#numbering-overrides). | `0001` |
+| `{$group_counter}` | Select the client's group counter, as explained under [overrides](#numbering-overrides). | `0001` |
+| `{$year}` | Four-digit year when the number is generated, in the company timezone. | `2026` |
+| `{$date:Y-m-d}` | Generation date in the company timezone, using the format after `date:`. | `2026-11-16` |
+
+Counter selection by client or group applies only to the client-based record types listed above. For company-based records, use `{$counter}`.
+
+You can customize the date format:
+
+| Date placeholder | Example on 16 November 2026 |
+|---|---|
+| `{$date:Y}` | `2026` |
+| `{$date:y}` | `26` (two-digit year) |
+| `{$date:Y-m}` | `2026-11` |
+| `{$date:Ym}` | `202611` |
+| `{$date:Ymd}` | `20261116` |
+
+Date variables use the time of number generation, even for a backdated invoice. A group or client's timezone override does not change these date values. Use one date-format placeholder per pattern: combine components as `{$date:Y-m}` rather than separate `{$date:Y}` and `{$date:m}` placeholders, as only the first distinct date format is expanded.
+
+#### Client variables
+
+These use the client being numbered or the client linked to the record. They are also available on tasks and expenses when a client is linked, even though those records use company counters.
+
+| Variable | Meaning | Example value |
+|---|---|---|
+| `{$client_number}` | The client's **Number**, which must already exist if you use it in another record's pattern. Avoid using it to generate that same client's number. | `C001` |
+| `{$client_id_number}` | The client's **ID Number**; normally falls back to the client number if the ID Number is empty. | `ACME` |
+| `{$client_custom1}`, `{$client_custom2}`, `{$client_custom3}`, `{$client_custom4}` | The value in the corresponding client custom field, rather than its label. | `NORTH` |
+
+For example, `{$client_custom1}-{$counter}` produces `NORTH-0001` when the client's first custom field contains `NORTH`. Set up the field under **Settings > Custom Fields > Clients**, then fill in its value on the client.
+
+#### Vendor and expense variables
+
+| Variable | Where it works | Meaning |
+|---|---|---|
+| `{$vendor_id_number}` | Vendor numbers; ordinary expenses with a linked vendor. | The vendor's **ID Number**. |
+| `{$vendor_number}` | Ordinary expenses with a linked vendor. | The vendor's **Number**. |
+| `{$vendor_custom1}`, `{$vendor_custom2}`, `{$vendor_custom3}`, `{$vendor_custom4}` | Ordinary expenses with a linked vendor. | The corresponding vendor custom-field value. |
+| `{$expense_id_number}` | Ordinary expenses. | Normally empty on standard expense records. It does not insert the linked client or vendor's ID Number; use `{$client_id_number}` or `{$vendor_id_number}` for those values. |
+
+Vendor number/custom-field variables do not currently resolve in a vendor's own number pattern, purchase order patterns, or recurring expense patterns. Use `{$vendor_id_number}` for a vendor's own pattern; purchase orders and recurring expenses can use the common counter, date, and user variables.
+
+#### User variables and older aliases
+
+| Variable | Meaning | Example value |
+|---|---|---|
+| `{$user_id}` | Internal user ID, with a minimum of two digits. This is not a user name. | `03` |
+| `{$user_custom1}`, `{$user_custom2}`, `{$user_custom3}`, `{$user_custom4}` | Value in the corresponding user custom field. An unset value becomes empty text. | `SALES` |
+
+For normal client-based numbering, these user values come from the **client's creator**, who may differ from the person creating the invoice, quote, payment, or project. For company-based numbering, they come from the record's creator. They do not refer to the assigned user or necessarily the person currently logged in.
+
+Older supported spellings are `{$clientCounter}`, `{$userId}`, `{$clientCustom1}`, `{$clientCustom2}`, and `{$clientIdNumber}`. Use the underscored spellings above for new patterns. Use `{$group_counter}` rather than `{$groupCounter}`, which is not replaced.
+
+When a quote is converted using a shared invoice/quote counter, Invoice Ninja tries to reuse its counter value for the invoice. In this case, `{$client_id_number}` needs a filled-in client ID Number, and user custom-field placeholders can remain unresolved. Prefer counter/date patterns if you need consistent results through that conversion.
+
+### Troubleshooting generated numbers
+
+- **A variable appears literally in the number:** check its spelling, braces, and applicability above. For example, the PDF variable `$client.number` is not the numbering variable `{$client_number}`. Variables that need a linked client or vendor can remain unresolved when that relationship is missing.
+- **Part of the number is empty:** fill in the referenced custom field or ID Number. A field that exists but has no value can produce empty text; it does not automatically insert its label.
+- **The prefix or padding is unexpected:** check the client's overrides, its group's overrides, and the active settings banner. For recurring-generated invoices, also check **Recurring Prefix**.
+- **The date differs from the invoice date:** dates in number patterns reflect generation time in the company timezone. Check **Generate Number** if an invoice was saved in one period and numbered when sent in another.
+- **The counter skips values or does not restart at 1:** the next number may already be in use. Invoice Ninja checks for existing numbers of the same record type across the company, including archived and deleted records, and advances to find an unused number. Repeated collisions can result in an extra suffix. Use distinct prefixes for separate sequences and matching date components for resets.
+- **Changing a group/client counter has no effect:** check the pattern's counter variable. `{$counter}` still uses the company counter; a separate sequence needs `{$group_counter}` or `{$client_counter}`. Also check whether invoices, quotes, or credits share their counter.
+
+Before changing a live sequence, note its current pattern and next counter. Test the new format on the next intended record and check the saved number; deleting a test record does not make its number available for reuse.
+
+</div>
 
 ## Email Settings {#email_settings}
 
@@ -284,14 +392,14 @@ To move a client out of a group, edit the client and change or clear the group f
 
 ### Configure Settings
 
-Every field in Configure Settings can be left blank to inherit the company default, or set to override it for group members.
+In Configure Settings, select a field's override checkbox to set it for group members. Leave the checkbox clear to inherit the company setting. A client's own override takes precedence over its group's setting.
 
 - **Company Details** — group-specific invoice terms, footers, and autobill rules.
 - **Localization** — currency, timezone, and language for group members.
 - **Payment Settings** — autobill and over/under-payment rules, plus group-specific gateways (see [Payment Gateways](/docs/user-guide/gateways)).
 - **Task Settings** — task rate and portal presentation for the group.
 - **Invoice Design** — different template for the group.
-- **Generated Numbers** — separate counter and numbering rules for the group.
+- **Generated Numbers** — override number formats and choose whether to share the company counter or use a separate group sequence. See [Company, group, and client overrides](#numbering-overrides) for setup and examples.
 - **Email Settings** — override the outbound email defaults.
 - **Client Portal** — custom portal experience for group members.
 - **Templates & Reminders** — tighter or looser reminder behaviour, custom messaging.
