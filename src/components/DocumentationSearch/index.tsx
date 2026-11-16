@@ -1,8 +1,8 @@
-import React, { useEffect, useId, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { searchDocumentation } from "./client";
+import { preloadSearch, searchDocumentation } from "./client";
 import { SEARCH_SCOPES, type SearchResult } from "./schema";
 import styles from "./styles.module.css";
 
@@ -35,6 +35,18 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
   const resultCount = visibleGroups.reduce((count, group) => count + Math.min(limitFor(group.label), group.results.length), 0);
   const failedGroups = visibleGroups.filter(group => group.failed);
   const allHidden = SEARCH_SCOPES.every(scope => hiddenCategories.includes(scope.label));
+  const warmSearch = useCallback(() => {
+    preloadSearch(baseUrl, SEARCH_SCOPES.map(scope => scope.value), contextVersion);
+  }, [baseUrl, contextVersion]);
+
+  useEffect(() => {
+    const idle = window.requestIdleCallback?.(warmSearch, { timeout: 1500 });
+    const timer = idle === undefined ? window.setTimeout(warmSearch, 400) : undefined;
+    return () => {
+      if (idle !== undefined) window.cancelIdleCallback(idle);
+      if (timer !== undefined) window.clearTimeout(timer);
+    };
+  }, [warmSearch]);
 
   useEffect(() => {
     setOpen(false);
@@ -65,6 +77,7 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
       setLoading(false);
       return;
     }
+    warmSearch();
     setLoading(true);
     const timer = setTimeout(async () => {
       // Search each index independently so API volume cannot crowd out guides.
@@ -80,7 +93,7 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
       }
     }, 180);
     return () => { cancelled = true; clearTimeout(timer); };
-  }, [query, expanded, baseUrl, contextVersion]);
+  }, [query, expanded, baseUrl, contextVersion, warmSearch]);
 
   const searchParams = new URLSearchParams({ q: query.trim() });
   SEARCH_SCOPES.forEach(scope => {
@@ -91,7 +104,8 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
 
   return (
     <div className={`${styles.search} ${expanded ? styles.expanded : styles.compact}`}
-      onFocus={() => setOpen(true)}
+      onFocus={() => { warmSearch(); setOpen(true); }}
+      onPointerEnter={warmSearch}
       onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setOpen(false); }}
       onKeyDown={event => {
         if (event.key === "Escape") {

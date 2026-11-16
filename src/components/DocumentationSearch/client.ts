@@ -1,6 +1,6 @@
 // Private plugin imports are confined to this adapter and covered by production
 // browser tests. The plugin retains its index builder and background retrieval.
-import { searchByWorker } from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker";
+import { fetchIndexesByWorker, searchByWorker } from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker";
 import { searchIndexUrl } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/proxiedGeneratedConstants";
 import { SEARCH_CONTEXT_SCHEMA, type SearchContext } from "./schema";
 
@@ -31,6 +31,17 @@ async function fetchContext(baseUrl: string, scope: string, contextVersion: stri
     promise.catch(() => contextCache.delete(url));
   }
   return promise;
+}
+
+// Indexes, section context, and the ranking module are what make the first query wait.
+// Warming them fills the same caches searchDocumentation reads.
+export function preloadSearch(baseUrl: string, scopes: readonly string[], contextVersion: string) {
+  if (process.env.NODE_ENV !== "production") return;
+  void import("./retrieval");
+  for (const scope of scopes) {
+    void fetchContext(baseUrl, scope, contextVersion).catch(() => undefined);
+    void fetchIndexesByWorker(baseUrl, scope).catch(() => undefined);
+  }
 }
 
 export async function searchDocumentation(baseUrl: string, scope: string, query: string, version: string) {

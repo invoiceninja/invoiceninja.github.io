@@ -94,9 +94,10 @@ IDs when changing task titles.
 Context files have a schema version, deterministic destination IDs, source paths,
 content hashes and scope. The frontend requests filenames containing the content
 index version and a fingerprint of the context/ranking configuration. Incompatible
-or missing assets show a refresh message. Search code and assets load on demand;
-the expanded page offers additional matches without suppressing sections from
-the same page.
+or missing assets show a refresh message. Search indexes, section context, and
+ranking code start loading after the page is idle, and again when the search
+field is hovered or focused, so a query can reuse that work. The expanded page
+offers additional matches without suppressing sections from the same page.
 
 `npm run search:benchmark` writes ranked results and local Node timings to
 `.search-artifacts/candidate.json`. The checked-in baseline was captured at
