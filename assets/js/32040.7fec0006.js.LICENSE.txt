@@ -1,0 +1,1866 @@
+/*!
+ * @overview es6-promise - a tiny implementation of Promises/A+.
+ * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
+ * @license   Licensed under MIT license
+ *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
+ * @version   v4.2.8+1e68dce6
+ */
+
+/*!
+ * Programatically add the following
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
+ * @license  MIT
+ */
+
+/*! ../../../../core/Debug */
+
+/*! ../../../../core/FactoryMaker */
+
+/*! ../../../constants/Constants */
+
+/*! ../../../constants/MetricsConstants */
+
+/*! ../../../core/Debug */
+
+/*! ../../../core/EventBus */
+
+/*! ../../../core/FactoryMaker */
+
+/*! ../../../core/Utils */
+
+/*! ../../../core/errors/ErrorsBase */
+
+/*! ../../../core/events/Events */
+
+/*! ../../../externals/cea608-parser */
+
+/*! ../../../externals/xml2json */
+
+/*! ../../../streaming/constants/Constants */
+
+/*! ../../MediaPlayerEvents */
+
+/*! ../../MetricsReportingEvents */
+
+/*! ../../SwitchRequest */
+
+/*! ../../constants/Constants */
+
+/*! ../../constants/DashConstants */
+
+/*! ../../constants/MetricsConstants */
+
+/*! ../../constants/ProtectionConstants */
+
+/*! ../../core/Debug */
+
+/*! ../../core/EventBus */
+
+/*! ../../core/FactoryMaker */
+
+/*! ../../core/Settings */
+
+/*! ../../core/Utils */
+
+/*! ../../core/errors/Errors */
+
+/*! ../../core/events/Events */
+
+/*! ../../core/events/EventsBase */
+
+/*! ../../dash/DashHandler */
+
+/*! ../../dash/constants/DashConstants */
+
+/*! ../../dash/controllers/SegmentsController */
+
+/*! ../../dash/models/DashManifestModel */
+
+/*! ../../dash/utils/SegmentsUtils */
+
+/*! ../../dash/vo/BaseURL */
+
+/*! ../../dash/vo/UTCTiming */
+
+/*! ../../externals/base64 */
+
+/*! ../../externals/cea608-parser */
+
+/*! ../../streaming/MediaPlayerEvents */
+
+/*! ../../streaming/constants/ConformanceViolationConstants */
+
+/*! ../../streaming/constants/Constants */
+
+/*! ../../streaming/net/HTTPLoader */
+
+/*! ../../streaming/net/SchemeLoaderFactory */
+
+/*! ../../streaming/net/XHRLoader */
+
+/*! ../../streaming/thumbnail/ThumbnailTracks */
+
+/*! ../../streaming/utils/BoxParser */
+
+/*! ../../streaming/utils/ObjectUtils */
+
+/*! ../../streaming/utils/URLUtils */
+
+/*! ../../streaming/vo/DashJSError */
+
+/*! ../../utils/CustomTimeRanges */
+
+/*! ../../utils/HandlerHelpers */
+
+/*! ../../utils/MetricSerialiser */
+
+/*! ../../utils/RNG */
+
+/*! ../../vo/DashJSError */
+
+/*! ../../vo/metrics/HTTPRequest */
+
+/*! ../CommonEncryption */
+
+/*! ../FragmentLoader */
+
+/*! ../ManifestUpdater */
+
+/*! ../MediaPlayerEvents */
+
+/*! ../MetricsReportingEvents */
+
+/*! ../SegmentBaseLoader */
+
+/*! ../SourceBufferSink */
+
+/*! ../Stream */
+
+/*! ../SwitchRequest */
+
+/*! ../WebmSegmentBaseLoader */
+
+/*! ../XlinkLoader */
+
+/*! ../constants/ConformanceViolationConstants */
+
+/*! ../constants/Constants */
+
+/*! ../constants/DashConstants */
+
+/*! ../constants/MetricsConstants */
+
+/*! ../controllers/BlacklistController */
+
+/*! ../controllers/ProtectionKeyController */
+
+/*! ../core/Debug */
+
+/*! ../core/EventBus */
+
+/*! ../core/FactoryMaker */
+
+/*! ../core/Settings */
+
+/*! ../core/Utils */
+
+/*! ../core/Version */
+
+/*! ../core/errors/Errors */
+
+/*! ../core/events/Events */
+
+/*! ../core/events/EventsBase */
+
+/*! ../dash/DashAdapter */
+
+/*! ../dash/DashHandler */
+
+/*! ../dash/DashMetrics */
+
+/*! ../dash/constants/DashConstants */
+
+/*! ../dash/controllers/RepresentationController */
+
+/*! ../dash/controllers/SegmentBaseController */
+
+/*! ../dash/controllers/SegmentsController */
+
+/*! ../dash/parser/DashParser */
+
+/*! ../dash/utils/TimelineConverter */
+
+/*! ../errors/ProtectionErrors */
+
+/*! ../metrics/MetricsHandlerFactory */
+
+/*! ../metrics/MetricsReportingEvents */
+
+/*! ../models/BaseURLTreeModel */
+
+/*! ../models/CmcdModel */
+
+/*! ../models/DashManifestModel */
+
+/*! ../models/FragmentModel */
+
+/*! ../models/LowLatencyThroughputModel */
+
+/*! ../net/XHRLoader */
+
+/*! ../reporting/ReportingFactory */
+
+/*! ../rules/DroppedFramesHistory */
+
+/*! ../rules/RulesContext */
+
+/*! ../rules/SwitchRequest */
+
+/*! ../rules/SwitchRequestHistory */
+
+/*! ../rules/ThroughputHistory */
+
+/*! ../rules/abr/ABRRulesCollection */
+
+/*! ../streaming/MediaPlayerEvents */
+
+/*! ../streaming/constants/Constants */
+
+/*! ../streaming/constants/MetricsConstants */
+
+/*! ../streaming/models/MetricsModel */
+
+/*! ../streaming/net/URLLoader */
+
+/*! ../streaming/utils/EBMLParser */
+
+/*! ../streaming/utils/URLUtils */
+
+/*! ../streaming/vo/DashJSError */
+
+/*! ../streaming/vo/FragmentRequest */
+
+/*! ../streaming/vo/metrics/HTTPRequest */
+
+/*! ../streaming/vo/metrics/PlayList */
+
+/*! ../thumbnail/ThumbnailTracks */
+
+/*! ../utils/BaseURLSelector */
+
+/*! ../utils/BoxParser */
+
+/*! ../utils/CustomTimeRanges */
+
+/*! ../utils/InitCache */
+
+/*! ../utils/ListSegmentsGetter */
+
+/*! ../utils/ManifestParsing */
+
+/*! ../utils/ObjectUtils */
+
+/*! ../utils/RequestModifier */
+
+/*! ../utils/SegmentBaseGetter */
+
+/*! ../utils/SegmentsUtils */
+
+/*! ../utils/SupervisorTools */
+
+/*! ../utils/TTMLParser */
+
+/*! ../utils/TemplateSegmentsGetter */
+
+/*! ../utils/TimelineSegmentsGetter */
+
+/*! ../utils/URLUtils */
+
+/*! ../utils/VTTParser */
+
+/*! ../vo/AdaptationSet */
+
+/*! ../vo/BaseURL */
+
+/*! ../vo/BitrateInfo */
+
+/*! ../vo/ClearKeyKeySet */
+
+/*! ../vo/DVBErrors */
+
+/*! ../vo/DashJSError */
+
+/*! ../vo/DataChunk */
+
+/*! ../vo/Event */
+
+/*! ../vo/EventStream */
+
+/*! ../vo/FragmentRequest */
+
+/*! ../vo/IsoBox */
+
+/*! ../vo/IsoBoxSearchInfo */
+
+/*! ../vo/KeyMessage */
+
+/*! ../vo/KeyPair */
+
+/*! ../vo/KeySystemAccess */
+
+/*! ../vo/KeySystemConfiguration */
+
+/*! ../vo/LicenseRequest */
+
+/*! ../vo/LicenseResponse */
+
+/*! ../vo/MediaCapability */
+
+/*! ../vo/Metrics */
+
+/*! ../vo/MetricsList */
+
+/*! ../vo/Mpd */
+
+/*! ../vo/NeedKey */
+
+/*! ../vo/PatchOperation */
+
+/*! ../vo/Period */
+
+/*! ../vo/Range */
+
+/*! ../vo/Reporting */
+
+/*! ../vo/Representation */
+
+/*! ../vo/SimpleXPath */
+
+/*! ../vo/TextTrackInfo */
+
+/*! ../vo/Thumbnail */
+
+/*! ../vo/ThumbnailTrackInfo */
+
+/*! ../vo/URIFragmentData */
+
+/*! ../vo/UTCTiming */
+
+/*! ../vo/metrics/BufferLevel */
+
+/*! ../vo/metrics/BufferState */
+
+/*! ../vo/metrics/DVRInfo */
+
+/*! ../vo/metrics/DroppedFrames */
+
+/*! ../vo/metrics/HTTPRequest */
+
+/*! ../vo/metrics/ManifestUpdate */
+
+/*! ../vo/metrics/PlayList */
+
+/*! ../vo/metrics/RepresentationSwitch */
+
+/*! ../vo/metrics/RequestsQueue */
+
+/*! ../vo/metrics/SchedulingInfo */
+
+/*! ./ */
+
+/*! ./../../../webpack/buildin/global.js */
+
+/*! ./../../core/EventBus */
+
+/*! ./../../core/errors/Errors */
+
+/*! ./../../core/events/Events */
+
+/*! ./../../dash/vo/MediaInfo */
+
+/*! ./../../node-libs-browser/node_modules/buffer/index.js */
+
+/*! ./../../node-libs-browser/node_modules/timers-browserify/main.js */
+
+/*! ./../../process/browser.js */
+
+/*! ./../../webpack/buildin/global.js */
+
+/*! ./../CommonEncryption */
+
+/*! ./../core/Debug */
+
+/*! ./../core/EventBus */
+
+/*! ./../core/errors/Errors */
+
+/*! ./../core/events/Events */
+
+/*! ./../drm/KeySystemClearKey */
+
+/*! ./../drm/KeySystemPlayReady */
+
+/*! ./../drm/KeySystemW3CClearKey */
+
+/*! ./../drm/KeySystemWidevine */
+
+/*! ./../process/browser.js */
+
+/*! ./../servers/ClearKey */
+
+/*! ./../servers/DRMToday */
+
+/*! ./../servers/PlayReady */
+
+/*! ./../servers/Widevine */
+
+/*! ./../vo/DashJSError */
+
+/*! ./../vo/Segment */
+
+/*! ./../webpack/buildin/global.js */
+
+/*! ./AbandonRequestsRule */
+
+/*! ./BaseMatcher */
+
+/*! ./BolaRule */
+
+/*! ./CommonProperty */
+
+/*! ./CoreEvents */
+
+/*! ./DefaultURLUtils */
+
+/*! ./DroppedFramesRule */
+
+/*! ./EmbeddedTextHtmlRender */
+
+/*! ./ErrorsBase */
+
+/*! ./EventBus */
+
+/*! ./EventController */
+
+/*! ./EventsBase */
+
+/*! ./FactoryMaker */
+
+/*! ./FetchLoader */
+
+/*! ./FragmentRequest */
+
+/*! ./InsufficientBufferRule */
+
+/*! ./IsoFile */
+
+/*! ./L2ARule.js */
+
+/*! ./LearningAbrController */
+
+/*! ./LoLpQoEEvaluator */
+
+/*! ./LoLpWeightSelector */
+
+/*! ./ManifestLoader */
+
+/*! ./ManifestUpdater */
+
+/*! ./MapNode */
+
+/*! ./MediaPlayer */
+
+/*! ./MediaPlayerEvents */
+
+/*! ./MediaSourceController */
+
+/*! ./MetricsController */
+
+/*! ./MetricsHandlersController */
+
+/*! ./MetricsReportingEvents */
+
+/*! ./ProtectionEvents */
+
+/*! ./QoeInfo */
+
+/*! ./RangeController */
+
+/*! ./ReportingController */
+
+/*! ./SegmentsUtils */
+
+/*! ./StreamProcessor */
+
+/*! ./SwitchHistoryRule */
+
+/*! ./SwitchRequest */
+
+/*! ./TextSourceBuffer */
+
+/*! ./TextTracks */
+
+/*! ./ThroughputRule */
+
+/*! ./ThumbnailTracks */
+
+/*! ./TimeSyncController */
+
+/*! ./Utils.js */
+
+/*! ./XHRLoader */
+
+/*! ./_stream_duplex */
+
+/*! ./_stream_readable */
+
+/*! ./_stream_transform */
+
+/*! ./_stream_writable */
+
+/*! ./baseUrlResolution/BasicSelector */
+
+/*! ./baseUrlResolution/DVBSelector */
+
+/*! ./constants/Constants */
+
+/*! ./constants/DashConstants */
+
+/*! ./constants/MetricsConstants */
+
+/*! ./controllers/AbrController */
+
+/*! ./controllers/BaseURLController */
+
+/*! ./controllers/BlacklistController */
+
+/*! ./controllers/BufferController */
+
+/*! ./controllers/FragmentController */
+
+/*! ./controllers/GapController */
+
+/*! ./controllers/MediaController */
+
+/*! ./controllers/MetricsCollectionController */
+
+/*! ./controllers/PlaybackController */
+
+/*! ./controllers/ProtectionController */
+
+/*! ./controllers/ProtectionKeyController */
+
+/*! ./controllers/ScheduleController */
+
+/*! ./controllers/StreamController */
+
+/*! ./controllers/XlinkController */
+
+/*! ./doc */
+
+/*! ./errors/ProtectionErrors */
+
+/*! ./events/Events */
+
+/*! ./handlers/BufferLevelHandler */
+
+/*! ./handlers/DVBErrorsHandler */
+
+/*! ./handlers/GenericMetricHandler */
+
+/*! ./handlers/HttpListHandler */
+
+/*! ./html */
+
+/*! ./index_mediaplayerOnly */
+
+/*! ./internal/streams/BufferList */
+
+/*! ./internal/streams/destroy */
+
+/*! ./internal/streams/stream */
+
+/*! ./isd */
+
+/*! ./lib/_stream_duplex.js */
+
+/*! ./lib/_stream_passthrough.js */
+
+/*! ./lib/_stream_readable.js */
+
+/*! ./lib/_stream_transform.js */
+
+/*! ./lib/_stream_writable.js */
+
+/*! ./lolp/LoLpRule.js */
+
+/*! ./maps/RepresentationBaseValuesMap */
+
+/*! ./maps/SegmentValuesMap */
+
+/*! ./matchers/DateTimeMatcher */
+
+/*! ./matchers/DurationMatcher */
+
+/*! ./matchers/NumericMatcher */
+
+/*! ./matchers/StringMatcher */
+
+/*! ./metrics/MetricsHandlerFactory */
+
+/*! ./models/CmcdModel */
+
+/*! ./models/DashManifestModel */
+
+/*! ./models/FragmentModel */
+
+/*! ./models/ManifestModel */
+
+/*! ./models/MediaPlayerModel */
+
+/*! ./models/PatchManifestModel */
+
+/*! ./models/ProtectionModel_01b */
+
+/*! ./models/ProtectionModel_21Jan2015 */
+
+/*! ./models/ProtectionModel_3Feb2014 */
+
+/*! ./models/URIFragmentModel */
+
+/*! ./models/VideoModel */
+
+/*! ./names */
+
+/*! ./net/SchemeLoaderFactory */
+
+/*! ./net/URLLoader */
+
+/*! ./node_modules/webpack/buildin/global.js */
+
+/*! ./objectiron */
+
+/*! ./readable */
+
+/*! ./reporters/DVBReporting */
+
+/*! ./reporting/ReportingFactory */
+
+/*! ./src/core/Debug */
+
+/*! ./src/core/FactoryMaker */
+
+/*! ./src/core/Version */
+
+/*! ./src/streaming/MediaPlayer */
+
+/*! ./src/streaming/MediaPlayerFactory */
+
+/*! ./src/streaming/metrics/MetricsReporting */
+
+/*! ./src/streaming/protection/Protection */
+
+/*! ./src/streaming/utils/Capabilities */
+
+/*! ./styles */
+
+/*! ./text/NotFragmentedTextBufferController */
+
+/*! ./text/TextController */
+
+/*! ./thumbnail/ThumbnailController */
+
+/*! ./utils */
+
+/*! ./utils/BoxParser */
+
+/*! ./utils/Capabilities */
+
+/*! ./utils/CapabilitiesFilter */
+
+/*! ./utils/DOMStorage */
+
+/*! ./utils/DVBErrorsTranslator */
+
+/*! ./utils/ErrorHandler */
+
+/*! ./utils/RequestModifier */
+
+/*! ./utils/Round10 */
+
+/*! ./utils/SegmentsUtils */
+
+/*! ./utils/SupervisorTools */
+
+/*! ./utils/URLUtils */
+
+/*! ./vo/DashJSError */
+
+/*! ./vo/Event */
+
+/*! ./vo/HeadRequest */
+
+/*! ./vo/ManifestInfo */
+
+/*! ./vo/MediaInfo */
+
+/*! ./vo/RepresentationInfo */
+
+/*! ./vo/Segment */
+
+/*! ./vo/StreamInfo */
+
+/*! ./vo/TextRequest */
+
+/*! ./vo/metrics/HTTPRequest */
+
+/*! ./vo/metrics/PlayList */
+
+/*! @name @videojs/http-streaming @version 2.16.3 @license Apache-2.0 */
+
+/*! @name aes-decrypter @version 3.1.3 @license Apache-2.0 */
+
+/*! @name m3u8-parser @version 4.8.0 @license Apache-2.0 */
+
+/*! @name pkcs7 @version 1.0.4 @license Apache-2.0 */
+
+/*! base64-js */
+
+/*! buffer */
+
+/*! codem-isoboxer */
+
+/*! codem-isoboxer v0.3.6 https://github.com/madebyhiro/codem-isoboxer/blob/master/LICENSE.txt */
+
+/*! core-util-is */
+
+/*! es6-promise/auto */
+
+/*! events */
+
+/*! exports provided: HTTPRequest, HTTPRequestTrace */
+
+/*! exports provided: ManifestUpdate, ManifestUpdateStreamInfo, ManifestUpdateRepresentationInfo */
+
+/*! exports provided: PlayList, PlayListTrace */
+
+/*! exports provided: THUMBNAILS_SCHEME_ID_URIS, default */
+
+/*! exports provided: checkParameterType, checkInteger, checkRange, checkIsVideoOrAudioType */
+
+/*! exports provided: default */
+
+/*! exports provided: default, MediaPlayer, FactoryMaker, Debug */
+
+/*! exports provided: default, MediaPlayer, Protection, MetricsReporting, MediaPlayerFactory, Debug, supportsMediaSource */
+
+/*! exports provided: getVersionString */
+
+/*! exports provided: supportsMediaSource, default */
+
+/*! exports provided: unescapeDollarsInTemplate, replaceIDForTemplate, replaceTokenForTemplate, getIndexBasedSegment, getTimeBasedSegment */
+
+/*! fast-deep-equal */
+
+/*! http://mths.be/fromcodepoint v0.1.0 by @mathias */
+
+/*! ieee754 */
+
+/*! imsc */
+
+/*! inherits */
+
+/*! isarray */
+
+/*! no static exports found */
+
+/*! path-browserify */
+
+/*! process-nextick-args */
+
+/*! readable-stream/duplex.js */
+
+/*! readable-stream/passthrough.js */
+
+/*! readable-stream/readable.js */
+
+/*! readable-stream/transform.js */
+
+/*! readable-stream/writable.js */
+
+/*! safe-buffer */
+
+/*! sax */
+
+/*! setimmediate */
+
+/*! stream */
+
+/*! string_decoder */
+
+/*! string_decoder/ */
+
+/*! util */
+
+/*! util-deprecate */
+
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+
+/*!**********************!*\
+  !*** util (ignored) ***!
+  \**********************/
+
+/*!***************************!*\
+  !*** ./src/core/Debug.js ***!
+  \***************************/
+
+/*!***************************!*\
+  !*** ./src/core/Utils.js ***!
+  \***************************/
+
+/*!****************************!*\
+  !*** ./src/dash/vo/Mpd.js ***!
+  \****************************/
+
+/*!*****************************!*\
+  !*** ./externals/base64.js ***!
+  \*****************************/
+
+/*!*****************************!*\
+  !*** ./src/core/Version.js ***!
+  \*****************************/
+
+/*!******************************!*\
+  !*** ./src/core/EventBus.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/core/Settings.js ***!
+  \******************************/
+
+/*!******************************!*\
+  !*** ./src/dash/vo/Event.js ***!
+  \******************************/
+
+/*!*******************************!*\
+  !*** ./externals/xml2json.js ***!
+  \*******************************/
+
+/*!*******************************!*\
+  !*** ./src/dash/vo/Period.js ***!
+  \*******************************/
+
+/*!********************************!*\
+  !*** ./src/dash/vo/BaseURL.js ***!
+  \********************************/
+
+/*!********************************!*\
+  !*** ./src/dash/vo/Segment.js ***!
+  \********************************/
+
+/*!*********************************!*\
+  !*** ./src/dash/DashAdapter.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/dash/DashHandler.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/dash/DashMetrics.js ***!
+  \*********************************/
+
+/*!*********************************!*\
+  !*** ./src/streaming/Stream.js ***!
+  \*********************************/
+
+/*!**********************************!*\
+  !*** ./index_mediaplayerOnly.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/core/FactoryMaker.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/dash/vo/MediaInfo.js ***!
+  \**********************************/
+
+/*!**********************************!*\
+  !*** ./src/dash/vo/UTCTiming.js ***!
+  \**********************************/
+
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/core/errors/Errors.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/core/events/Events.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/dash/utils/Round10.js ***!
+  \***********************************/
+
+/*!***********************************!*\
+  !*** ./src/dash/vo/StreamInfo.js ***!
+  \***********************************/
+
+/*!************************************!*\
+  !*** ./externals/cea608-parser.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/dash/vo/EventStream.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/dash/vo/SimpleXPath.js ***!
+  \************************************/
+
+/*!************************************!*\
+  !*** ./src/streaming/vo/IsoBox.js ***!
+  \************************************/
+
+/*!*************************************!*\
+  !*** ./node_modules/sax/lib/sax.js ***!
+  \*************************************/
+
+/*!*************************************!*\
+  !*** ./src/dash/vo/ManifestInfo.js ***!
+  \*************************************/
+
+/*!**************************************!*\
+  !*** ./src/dash/vo/AdaptationSet.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/streaming/MediaPlayer.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/streaming/XlinkLoader.js ***!
+  \**************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/ieee754/index.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./node_modules/isarray/index.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/core/errors/ErrorsBase.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/core/events/CoreEvents.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/core/events/EventsBase.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/dash/SegmentBaseLoader.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/dash/parser/DashParser.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/dash/parser/objectiron.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/dash/vo/PatchOperation.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/dash/vo/Representation.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/streaming/vo/DataChunk.js ***!
+  \***************************************/
+
+/*!***************************************!*\
+  !*** ./src/streaming/vo/Thumbnail.js ***!
+  \***************************************/
+
+/*!****************************************!*\
+  !*** ./src/streaming/net/URLLoader.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./src/streaming/net/XHRLoader.js ***!
+  \****************************************/
+
+/*!****************************************!*\
+  !*** ./src/streaming/utils/IsoFile.js ***!
+  \****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/base64-js/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/dash/parser/maps/MapNode.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/dash/utils/SegmentsUtils.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/FragmentLoader.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/ManifestLoader.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/net/HTTPLoader.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/utils/URLUtils.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/vo/BitrateInfo.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/vo/DashJSError.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/vo/HeadRequest.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/vo/MetricsList.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/streaming/vo/TextRequest.js ***!
+  \*****************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/es6-promise/auto.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/streaming/ManifestUpdater.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/streaming/StreamProcessor.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/streaming/net/FetchLoader.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/streaming/text/TextTracks.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/streaming/utils/BoxParser.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/streaming/utils/InitCache.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/streaming/utils/VTTParser.js ***!
+  \******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/safe-buffer/index.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/dash/WebmSegmentBaseLoader.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/dash/vo/RepresentationInfo.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/streaming/SourceBufferSink.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/streaming/metrics/vo/Range.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/streaming/models/CmcdModel.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/streaming/utils/DOMStorage.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/streaming/utils/EBMLParser.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/streaming/utils/TTMLParser.js ***!
+  \*******************************************/
+
+/*!*******************************************!*\
+  !*** ./src/streaming/vo/TextTrackInfo.js ***!
+  \*******************************************/
+
+/*!********************************************!*\
+  !*** ./src/streaming/MediaPlayerEvents.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/streaming/metrics/utils/RNG.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/streaming/models/VideoModel.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/streaming/rules/abr/L2ARule.js ***!
+  \********************************************/
+
+/*!********************************************!*\
+  !*** ./src/streaming/utils/ObjectUtils.js ***!
+  \********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/dash/constants/DashConstants.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/dash/utils/SegmentBaseGetter.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/dash/utils/TimelineConverter.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/MediaPlayerFactory.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/metrics/vo/Metrics.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/rules/RulesContext.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/rules/abr/BolaRule.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/utils/Capabilities.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/utils/ErrorHandler.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/vo/FragmentRequest.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/vo/URIFragmentData.js ***!
+  \*********************************************/
+
+/*!*********************************************!*\
+  !*** ./src/streaming/vo/metrics/DVRInfo.js ***!
+  \*********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/imsc/src/main/js/doc.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./node_modules/imsc/src/main/js/isd.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/dash/models/DashManifestModel.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/dash/utils/ListSegmentsGetter.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/streaming/constants/Constants.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/streaming/models/MetricsModel.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/streaming/rules/SwitchRequest.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/streaming/text/TextController.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/streaming/vo/IsoBoxSearchInfo.js ***!
+  \**********************************************/
+
+/*!**********************************************!*\
+  !*** ./src/streaming/vo/metrics/PlayList.js ***!
+  \**********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/core-util-is/lib/util.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/fast-deep-equal/index.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/imsc/src/main/js/html.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/imsc/src/main/js/main.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./node_modules/path-browserify/index.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/dash/models/PatchManifestModel.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/streaming/metrics/vo/DVBErrors.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/streaming/metrics/vo/Reporting.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/streaming/models/FragmentModel.js ***!
+  \***********************************************/
+
+/*!***********************************************!*\
+  !*** ./src/streaming/models/ManifestModel.js ***!
+  \***********************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/imsc/src/main/js/names.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/imsc/src/main/js/utils.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./node_modules/util-deprecate/browser.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/dash/parser/maps/CommonProperty.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/protection/Protection.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/protection/vo/KeyPair.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/protection/vo/NeedKey.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/text/TextSourceBuffer.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/utils/BaseURLSelector.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/utils/DefaultURLUtils.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/utils/RequestModifier.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/utils/SupervisorTools.js ***!
+  \************************************************/
+
+/*!************************************************!*\
+  !*** ./src/streaming/vo/ThumbnailTrackInfo.js ***!
+  \************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/imsc/src/main/js/styles.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./node_modules/stream-browserify/index.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/dash/parser/matchers/BaseMatcher.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/streaming/rules/abr/lolp/QoeInfo.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/streaming/utils/CustomTimeRanges.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/streaming/vo/metrics/BufferLevel.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/streaming/vo/metrics/BufferState.js ***!
+  \*************************************************/
+
+/*!*************************************************!*\
+  !*** ./src/streaming/vo/metrics/HTTPRequest.js ***!
+  \*************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/dash/parser/maps/SegmentValuesMap.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/dash/utils/TemplateSegmentsGetter.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/dash/utils/TimelineSegmentsGetter.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/streaming/models/BaseURLTreeModel.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/streaming/models/MediaPlayerModel.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/streaming/models/URIFragmentModel.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/streaming/net/SchemeLoaderFactory.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/streaming/rules/ThroughputHistory.js ***!
+  \**************************************************/
+
+/*!**************************************************!*\
+  !*** ./src/streaming/rules/abr/lolp/LoLpRule.js ***!
+  \**************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/inherits/inherits_browser.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/readable-stream/transform.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/setimmediate/setImmediate.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/dash/parser/matchers/StringMatcher.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/streaming/metrics/MetricsReporting.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/streaming/protection/vo/KeyMessage.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/streaming/rules/abr/ThroughputRule.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/streaming/utils/CapabilitiesFilter.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/streaming/vo/metrics/DroppedFrames.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/streaming/vo/metrics/RequestsQueue.js ***!
+  \***************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/process-nextick-args/index.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/dash/controllers/SegmentsController.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/dash/parser/matchers/NumericMatcher.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/streaming/controllers/AbrController.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/streaming/controllers/GapController.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/streaming/thumbnail/ThumbnailTracks.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/streaming/vo/metrics/ManifestUpdate.js ***!
+  \****************************************************/
+
+/*!****************************************************!*\
+  !*** ./src/streaming/vo/metrics/SchedulingInfo.js ***!
+  \****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/readable-stream/passthrough.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/dash/parser/matchers/DateTimeMatcher.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/dash/parser/matchers/DurationMatcher.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/streaming/constants/MetricsConstants.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/streaming/rules/DroppedFramesHistory.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./src/streaming/rules/SwitchRequestHistory.js ***!
+  \*****************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/es6-promise/dist/es6-promise.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/controllers/EventController.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/controllers/MediaController.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/controllers/XlinkController.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/protection/CommonEncryption.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/protection/ProtectionEvents.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/protection/servers/ClearKey.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/protection/servers/DRMToday.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/protection/servers/Widevine.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/rules/abr/DroppedFramesRule.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/rules/abr/SwitchHistoryRule.js ***!
+  \******************************************************/
+
+/*!******************************************************!*\
+  !*** ./src/streaming/text/EmbeddedTextHtmlRender.js ***!
+  \******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/codem-isoboxer/dist/iso_boxer.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/dash/controllers/SegmentBaseController.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/streaming/controllers/BufferController.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/streaming/controllers/StreamController.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/streaming/metrics/utils/HandlerHelpers.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/streaming/protection/servers/PlayReady.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/streaming/protection/vo/ClearKeyKeySet.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/streaming/protection/vo/LicenseRequest.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/streaming/rules/abr/ABRRulesCollection.js ***!
+  \*******************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/readable-stream/duplex-browser.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/constants/ProtectionConstants.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/controllers/BaseURLController.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/metrics/utils/ManifestParsing.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/protection/vo/KeySystemAccess.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/protection/vo/LicenseResponse.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/protection/vo/MediaCapability.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/rules/abr/AbandonRequestsRule.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/streaming/thumbnail/ThumbnailController.js ***!
+  \********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/streaming/controllers/FragmentController.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/streaming/controllers/PlaybackController.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/streaming/controllers/ScheduleController.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/streaming/controllers/TimeSyncController.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/streaming/metrics/MetricsReportingEvents.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/streaming/metrics/utils/MetricSerialiser.js ***!
+  \*********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/readable-stream/readable-browser.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./node_modules/readable-stream/writable-browser.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/dash/controllers/RepresentationController.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/streaming/controllers/BlacklistController.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/streaming/rules/abr/lolp/LoLpQoEEvaluator.js ***!
+  \**********************************************************/
+
+/*!**********************************************************!*\
+  !*** ./src/streaming/vo/metrics/RepresentationSwitch.js ***!
+  \**********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/string_decoder/lib/string_decoder.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/streaming/models/LowLatencyThroughputModel.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/streaming/protection/drm/KeySystemClearKey.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/streaming/protection/drm/KeySystemWidevine.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/streaming/rules/abr/InsufficientBufferRule.js ***!
+  \***********************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_duplex.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/streaming/controllers/MediaSourceController.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/streaming/metrics/utils/DVBErrorsTranslator.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/streaming/protection/drm/KeySystemPlayReady.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/streaming/rules/abr/lolp/LoLpWeightSelector.js ***!
+  \************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./src/dash/parser/maps/RepresentationBaseValuesMap.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./src/streaming/metrics/reporting/ReportingFactory.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./src/streaming/protection/errors/ProtectionErrors.js ***!
+  \*************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_readable.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_writable.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./src/streaming/metrics/controllers/RangeController.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./src/streaming/protection/drm/KeySystemW3CClearKey.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./src/streaming/utils/baseUrlResolution/DVBSelector.js ***!
+  \**************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_transform.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./src/streaming/protection/vo/KeySystemConfiguration.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./src/streaming/rules/abr/lolp/LearningAbrController.js ***!
+  \***************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./src/streaming/metrics/controllers/MetricsController.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./src/streaming/metrics/metrics/MetricsHandlerFactory.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./src/streaming/protection/models/ProtectionModel_01b.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./src/streaming/utils/baseUrlResolution/BasicSelector.js ***!
+  \****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/_stream_passthrough.js ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./src/streaming/text/NotFragmentedTextBufferController.js ***!
+  \*****************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./src/streaming/constants/ConformanceViolationConstants.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./src/streaming/metrics/controllers/ReportingController.js ***!
+  \******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./src/streaming/metrics/metrics/handlers/HttpListHandler.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./src/streaming/metrics/reporting/reporters/DVBReporting.js ***!
+  \*******************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./src/streaming/metrics/metrics/handlers/DVBErrorsHandler.js ***!
+  \********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/buffer/index.js ***!
+  \*********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./src/streaming/protection/models/ProtectionModel_3Feb2014.js ***!
+  \*********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/events/events.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/internal/streams/destroy.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./src/streaming/metrics/metrics/handlers/BufferLevelHandler.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./src/streaming/protection/controllers/ProtectionController.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./src/streaming/protection/models/ProtectionModel_21Jan2015.js ***!
+  \**********************************************************************/
+
+/*!************************************************************************!*\
+  !*** ./src/streaming/metrics/controllers/MetricsHandlersController.js ***!
+  \************************************************************************/
+
+/*!************************************************************************!*\
+  !*** ./src/streaming/metrics/metrics/handlers/GenericMetricHandler.js ***!
+  \************************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/internal/streams/BufferList.js ***!
+  \*************************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ./src/streaming/protection/controllers/ProtectionKeyController.js ***!
+  \*************************************************************************/
+
+/*!**************************************************************************!*\
+  !*** ./src/streaming/metrics/controllers/MetricsCollectionController.js ***!
+  \**************************************************************************/
+
+/*!*****************************************************************************!*\
+  !*** ./node_modules/readable-stream/lib/internal/streams/stream-browser.js ***!
+  \*****************************************************************************/
+
+/*!*******************************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/timers-browserify/main.js ***!
+  \*******************************************************************************/
+
+/**
+ * @license
+ * Video.js 7.21.7 <http://videojs.com/>
+ * Copyright Brightcove, Inc. <https://www.brightcove.com/>
+ * Available under Apache License Version 2.0
+ * <https://github.com/videojs/video.js/blob/main/LICENSE>
+ *
+ * Includes vtt.js <https://github.com/mozilla/vtt.js>
+ * Available under Apache License Version 2.0
+ * <https://github.com/mozilla/vtt.js/blob/main/LICENSE>
+ */
