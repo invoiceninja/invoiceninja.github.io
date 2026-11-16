@@ -2222,6 +2222,38 @@ Show different bank account details based on the client's currency. Useful for b
 </ninja>
 ```
 
+### 16. Keep a Block on a Single Page
+
+Long text blocks, such as terms, notes, or a long description, can be split across two pages when the PDF is generated. Add `page-break-inside: avoid;` to the element that wraps the block so it moves to the next page as a whole instead of breaking in the middle.
+
+**Add to Includes Tab:**
+
+```css
+.keep-together {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+```
+
+**Add to Body Tab (around the content that must stay on one page):**
+
+```html
+<ninja>
+{% if invoices is defined and invoices is not empty %}
+    {% set invoice = invoices|first %}
+
+    <div class="keep-together">
+        <strong>Terms</strong>
+        <p>{{ invoice.public_notes }}</p>
+    </div>
+{% endif %}
+</ninja>
+```
+
+:::tip
+`page-break-inside: avoid;` only has an effect if the block fits on one page. A block taller than a page will still be split.
+:::
+
 ---
 
 ## Full Design Examples
