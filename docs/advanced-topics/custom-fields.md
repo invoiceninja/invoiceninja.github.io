@@ -1,8 +1,10 @@
 ---
-title: "Custom Fields"
+title: "PDF Templates and Custom Field Placeholders"
 sidebar_position: 2
 ---
 ## PDF Customizations
+
+This reference covers HTML/CSS invoice designs and using field placeholders in PDFs. To create or name extra invoice, client, or product fields, start with [Custom Fields in Advanced Settings](/docs/user-guide/advanced-settings#custom_fields).
 
 PDF generation in v5 is via an HTML templating system. We provide multiple design templates for you to choose from, or
 you can create your design using any HTML/CSS combinations.

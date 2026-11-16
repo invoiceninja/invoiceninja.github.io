@@ -1,0 +1,656 @@
+{
+  "baselineRevision": "128341b84f0e1ae05c584f78ff5231ab2d14df59",
+  "fixtureHash": "653d02a0b95e6191a38ef0437a509f4be16b185ce367b4537619a65df0aac2ef",
+  "conditions": "Curated 50-query fixture. Node v22.13.1, installed worker with local file-backed fetch, no network or debounce; first query per scope loads its index, subsequent queries reuse index/context caches. Gzip sizes are estimates, not browser transfer measurements.",
+  "baseline": {
+    "positiveCases": 45,
+    "top3": 32,
+    "top3Percent": 71.1,
+    "mandatoryPassed": 3,
+    "negativePassed": 3
+  },
+  "sameContent": {
+    "positiveCases": 45,
+    "top3": 45,
+    "top3Percent": 100,
+    "mandatoryPassed": 10,
+    "negativePassed": 3
+  },
+  "final": {
+    "positiveCases": 45,
+    "top3": 45,
+    "top3Percent": 100,
+    "mandatoryPassed": 10,
+    "negativePassed": 3
+  },
+  "timings": {
+    "baseline": {
+      "firstQueryPerScopeMs": [
+        39.27,
+        6.9,
+        9.35,
+        4.55
+      ],
+      "cachedIndexMedianMs": 5.95,
+      "cachedIndexP95Ms": 25.08
+    },
+    "final": {
+      "firstQueryPerScopeMs": [
+        120.84,
+        14.42,
+        24.86,
+        9.65
+      ],
+      "cachedIndexMedianMs": 13.38,
+      "cachedIndexP95Ms": 48.64
+    },
+    "contextExportMs": 1734.9
+  },
+  "payloads": [
+    {
+      "scope": "documentation",
+      "indexGzipBytes": 542555,
+      "contextGzipBytes": 227091,
+      "sectionCount": 811
+    },
+    {
+      "scope": "-docs-api-reference",
+      "indexGzipBytes": 115114,
+      "contextGzipBytes": 55357,
+      "sectionCount": 449
+    },
+    {
+      "scope": "-docs-developer-guide",
+      "indexGzipBytes": 59288,
+      "contextGzipBytes": 24785,
+      "sectionCount": 63
+    },
+    {
+      "scope": "-docs-legal",
+      "indexGzipBytes": 46593,
+      "contextGzipBytes": 11606,
+      "sectionCount": 11
+    }
+  ],
+  "rows": [
+    {
+      "id": "fees",
+      "query": "gateway fees",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 2,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "card-surcharge",
+      "query": "card surcharge",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "pass-fees",
+      "query": "how do I pass credit card fees to clients",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "cover-charges",
+      "query": "make customers cover transaction charges",
+      "kind": "positive",
+      "heldOut": false,
+      "before": null,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "fee-typo",
+      "query": "gatway fees",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 3,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "fee-percent",
+      "query": "Fee Percent",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 2,
+      "passed": true
+    },
+    {
+      "id": "fee-cap",
+      "query": "gateway fee cap",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "recover-costs",
+      "query": "recover payment processing costs",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "fixed-fee",
+      "query": "fixed credit card charge",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 4,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "reminders",
+      "query": "payment reminders",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 4,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "overdue-followup",
+      "query": "overdue follow up",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "chase-unpaid",
+      "query": "chase unpaid invoices",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 2,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "late-fee",
+      "query": "late payment fee",
+      "kind": "positive",
+      "heldOut": false,
+      "before": null,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "reminder-schedule",
+      "query": "schedule reminder before due date",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 2,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "endless-reminders",
+      "query": "endless reminders",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "late-fee-percent",
+      "query": "Late Fee Percent",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "unpaid-email",
+      "query": "automatically email clients about overdue invoices",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 15,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "custom-fields",
+      "query": "custom invoice fields",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 7,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "extra-fields",
+      "query": "extra invoice fields",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 2,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "add-fields",
+      "query": "add a dropdown field to invoices",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "pdf-customization",
+      "query": "PDF customization",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "invoice-surcharge",
+      "query": "invoice surcharge field",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "custom-design",
+      "query": "creating a custom design",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "saved-card",
+      "query": "automatically charge saved card",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "auto-bill",
+      "query": "Auto Bill",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 2,
+      "sameContent": 2,
+      "after": 2,
+      "passed": true
+    },
+    {
+      "id": "recurring-card",
+      "query": "recurring invoice automatic payment",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 38,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "billing-timing",
+      "query": "Auto Bill On",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 9,
+      "sameContent": 3,
+      "after": 3,
+      "passed": true
+    },
+    {
+      "id": "card-on-file",
+      "query": "charge the card on file every month",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 2,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "store-card",
+      "query": "save client payment methods",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "portal-logo",
+      "query": "add my logo to client portal",
+      "kind": "positive",
+      "heldOut": false,
+      "before": null,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "company-logo",
+      "query": "company logo",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 2,
+      "sameContent": 2,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "customer-branding",
+      "query": "logo shown to customers",
+      "kind": "positive",
+      "heldOut": true,
+      "before": null,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "app-url",
+      "query": "APP_URL",
+      "kind": "positive",
+      "heldOut": false,
+      "before": null,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "queue-connection",
+      "query": "QUEUE_CONNECTION",
+      "kind": "positive",
+      "heldOut": false,
+      "before": null,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "pdf-generator",
+      "query": "PDF_GENERATOR",
+      "kind": "positive",
+      "heldOut": false,
+      "before": null,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "cron",
+      "query": "cron not running",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "install",
+      "query": "manual install checklist",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "mail-failure",
+      "query": "email not sending",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "api-token",
+      "query": "X-API-TOKEN",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "api-secret",
+      "query": "X-API-SECRET",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "api-list-invoices",
+      "query": "List invoices",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "api-refund",
+      "query": "Refund payment",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "api-create-client",
+      "query": "Create client",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 1,
+      "sameContent": 2,
+      "after": 2,
+      "passed": true
+    },
+    {
+      "id": "refunds",
+      "query": "refunds",
+      "kind": "positive",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "privacy",
+      "query": "Data Privacy",
+      "kind": "positive",
+      "heldOut": true,
+      "before": 1,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "negative-random",
+      "query": "zyxqv nonexistentfeature",
+      "kind": "negative",
+      "heldOut": false,
+      "before": null,
+      "sameContent": null,
+      "after": null,
+      "passed": true
+    },
+    {
+      "id": "negative-unrelated",
+      "query": "configure lunar telescope tracking",
+      "kind": "negative",
+      "heldOut": false,
+      "before": null,
+      "sameContent": null,
+      "after": null,
+      "passed": true
+    },
+    {
+      "id": "negative-unsupported",
+      "query": "invoice ninja quantum cryptocurrency mining",
+      "kind": "negative",
+      "heldOut": false,
+      "before": null,
+      "sameContent": null,
+      "after": null,
+      "passed": true
+    },
+    {
+      "id": "ambiguous-fees",
+      "query": "fees",
+      "kind": "ambiguous",
+      "heldOut": false,
+      "before": 1,
+      "sameContent": 2,
+      "after": 1,
+      "passed": true
+    },
+    {
+      "id": "ambiguous-fields",
+      "query": "custom fields",
+      "kind": "ambiguous",
+      "heldOut": false,
+      "before": 2,
+      "sameContent": 1,
+      "after": 1,
+      "passed": true
+    }
+  ],
+  "browser": {
+    "contextVersion": "9928b6e67fb4",
+    "indexVersion": "98346345",
+    "conditions": "Headless Chromium; local uncompressed static server; three fresh browser contexts; four queries per run; no CPU/network throttling; includes input handling, the 180ms debounce, all four scopes and Playwright assertion polling. External requests blocked.",
+    "rows": [
+      {
+        "run": 0,
+        "query": "gateway fees",
+        "cold": true,
+        "milliseconds": 876
+      },
+      {
+        "run": 0,
+        "query": "payment reminders",
+        "cold": false,
+        "milliseconds": 302.8
+      },
+      {
+        "run": 0,
+        "query": "custom invoice fields",
+        "cold": false,
+        "milliseconds": 293.4
+      },
+      {
+        "run": 0,
+        "query": "add my logo to client portal",
+        "cold": false,
+        "milliseconds": 291.3
+      },
+      {
+        "run": 1,
+        "query": "gateway fees",
+        "cold": true,
+        "milliseconds": 852.5
+      },
+      {
+        "run": 1,
+        "query": "payment reminders",
+        "cold": false,
+        "milliseconds": 305.8
+      },
+      {
+        "run": 1,
+        "query": "custom invoice fields",
+        "cold": false,
+        "milliseconds": 289
+      },
+      {
+        "run": 1,
+        "query": "add my logo to client portal",
+        "cold": false,
+        "milliseconds": 291.1
+      },
+      {
+        "run": 2,
+        "query": "gateway fees",
+        "cold": true,
+        "milliseconds": 866.5
+      },
+      {
+        "run": 2,
+        "query": "payment reminders",
+        "cold": false,
+        "milliseconds": 303.8
+      },
+      {
+        "run": 2,
+        "query": "custom invoice fields",
+        "cold": false,
+        "milliseconds": 291.8
+      },
+      {
+        "run": 2,
+        "query": "add my logo to client portal",
+        "cold": false,
+        "milliseconds": 289.9
+      }
+    ]
+  }
+}

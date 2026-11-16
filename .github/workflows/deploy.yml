@@ -4,24 +4,22 @@ on:
   push:
     branches:
       - v5-rework
+  pull_request:
+    branches:
+      - v5-rework
 
 permissions:
   contents: write
 
 jobs:
   build-deploy:
-    name: Build & Deploy
+    name: Build, validate search & deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
-
-      - name: Snapshot current live site for rollback
-        run: |
-          git tag -f pre-deploy-backup origin/master || true
-          git push origin pre-deploy-backup --force || true
 
       - uses: actions/setup-node@v4
         with:
@@ -47,7 +45,26 @@ jobs:
         env:
           NODE_OPTIONS: "--max-old-space-size=16384"
 
+      - name: Check search destinations and relevance
+        run: npm run search:check
+
+      - name: Check search extraction and content lifecycle
+        run: npm run search:test
+
+      - name: Install Chromium for production search checks
+        run: npx playwright install --with-deps chromium
+
+      - name: Check production search in the browser
+        run: npm run search:smoke
+
+      - name: Snapshot current live site for rollback
+        if: github.event_name == 'push'
+        run: |
+          git tag -f pre-deploy-backup origin/master || true
+          git push origin pre-deploy-backup --force || true
+
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

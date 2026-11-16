@@ -53,9 +53,11 @@ The tabs available are:
 - **Task Columns** — columns shown for task line items.
 - **Total Fields** — the accounting totals block at the foot of the document.
 
-## Custom Fields {#custom_fields}
+## Create custom invoice fields and other record fields {#custom_fields}
 
 <VideoPlayer src="/assets/videos/advanced/custom_fields/custom_fields.mpd" isDash={true} id="custom-fields-video" />
+
+To add extra invoice fields, open **Custom Fields**, select the **Invoices** tab, and name a field to activate it. Choose its type from the options below. For using existing placeholders in a PDF design, see [PDF templates and custom field placeholders](/docs/advanced-topics/custom-fields).
 
 Custom Fields let you add up to four extra fields to each record type (clients, invoices, products, and so on), so Invoice Ninja fits the details your business actually tracks. A freelancer might add a certification expiry to their company record; a small business might record a licence number against each client; an agency might tag products with a SKU or warranty period. Fields can be shown on PDFs via placeholders (see [Clients](/docs/user-guide/clients#custom-fields)) or kept internal.
 
@@ -93,12 +95,19 @@ Start with the [quick setup](#set-up-your-first-number-pattern), choose a [ready
 For invoice numbers such as `INV-2026-0001`:
 
 1. Open **Settings > Generated Numbers > Settings** at the company level.
+
+![alt text](/assets/images/settings/generated_numbers/generated_numbers_1.png "Generated Numbers Settings")
+
 2. Set **Number Padding** to the option showing `0001` (four digits). Choose **When Saved** under **Generate Number** if you want invoices numbered as soon as you save them.
 3. Open the **Invoices** tab and enter this **Number Pattern**:
 
    ```text
    INV-{$year}-{$counter}
    ```
+
+
+![alt text](/assets/images/settings/generated_numbers/generated_numbers_2.png "Generated Numbers Configuration")
+
 
 4. Set **Number Counter** to the next number you want to use. For a new sequence, use `1`; if your last invoice was `INV-2026-0150`, use `151`.
 5. Click **Save**. The next invoice numbered in 2026 will be `INV-2026-0001`, or `INV-2026-0151` if you continued the existing sequence, provided that number is unused.
@@ -352,7 +361,7 @@ Appearance tweaks beyond the template.
 
 For setup instructions, supported CSS variables and selectors, and examples, see [Client Portal → Customization](/docs/user-guide/client-portal#customization).
 
-## Templates & Reminders {#templates_and_reminders}
+## Email templates and payment reminders {#templates_and_reminders}
 
 Templates & Reminders is where you fine-tune the subject line and body of every system-sent email — invoices, quotes, payments, and the three reminder tiers for overdue work. This is the cluster that lets you sound like a human rather than a robot, and is the main tool small businesses and agencies use to stay on top of late payers without chasing invoices manually.
 
@@ -364,7 +373,9 @@ Templates & Reminders is where you fine-tune the subject line and body of every 
 
      Basic HTML is supported, and the merge-tag tabs below add fields from the document, client, contact, your company, or the sending user. The Invoice and Quote templates expose slightly different fields — they pull from the document they're tied to. Check the **Preview** tab to see the rendered result.
 
-### Reminder Templates
+### Configure payment reminders and late fees {#reminder-templates}
+
+Use **Settings > Templates & Reminders** to schedule automatic follow-up on unpaid invoices. Select **Reminder 1**, **Reminder 2**, or **Reminder 3**, choose the **Days** and **Schedule**, and enable **Send Email**. The late-fee settings below apply to overdue invoices; they are separate from [gateway processing fees](/docs/user-guide/gateways#limitsfees).
 
 Selecting Reminder 1, 2, or 3 exposes scheduling and late-fee options. This is how automatic follow-up on overdue invoices is configured.
 

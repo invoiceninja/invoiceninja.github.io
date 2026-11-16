@@ -1,0 +1,10 @@
+{
+  "/docs/user-guide/gateways#limitsfees": ["gateway fees", "card surcharge", "credit card processing fees", "recover processing costs", "pass transaction charges to customers", "customers cover processing charges", "fixed payment fee"],
+  "/docs/user-guide/advanced-settings#reminder-templates": ["payment reminders", "overdue follow up", "chase unpaid invoices", "automatic overdue invoice emails", "late payment fees", "schedule payment reminders"],
+  "/docs/user-guide/advanced-settings#templates_and_reminders": ["email templates", "invoice reminder configuration"],
+  "/docs/user-guide/advanced-settings#custom_fields": ["create custom invoice fields", "extra invoice fields", "add invoice dropdown fields", "invoice surcharge field"],
+  "/docs/user-guide/basic-settings#logo": ["company logo", "client portal logo", "customer facing branding"],
+  "/docs/user-guide/basic-settings#payment_settings": ["automatic payment defaults", "automatically charge saved card", "Auto Bill On", "stored payment method billing"],
+  "/docs/user-guide/recurring-invoices#auto-bill-charging-the-card-on-file": ["recurring invoice automatic payment", "charge card on file monthly", "automatic subscription billing", "Auto Bill"],
+  "/docs/user-guide/client-portal#payment-methods": ["save client payment methods", "stored credit cards and bank accounts"]
+}

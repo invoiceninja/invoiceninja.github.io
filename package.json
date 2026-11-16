@@ -5,7 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --port 3010 --host 0.0.0.0",
-    "build": "docusaurus build",
+    "build": "docusaurus build && node scripts/search-context.cjs",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -16,7 +16,12 @@
     "clean-api-docs": "docusaurus clean-api-docs invoiceninja",
     "icons:sync": "node scripts/extract-icons.js",
     "icons:check": "node scripts/extract-icons.js && git diff --exit-code static/assets/images/icons",
-    "search:check": "node scripts/check-search.cjs"
+    "search:check": "node scripts/check-search.cjs && node scripts/check-search-relevance.cjs",
+    "search:benchmark": "node scripts/benchmark-search.cjs",
+    "search:report": "node scripts/report-search.cjs",
+    "search:measure": "node scripts/measure-search-browser.cjs",
+    "search:test": "node --test tests/search-context.test.cjs",
+    "search:smoke": "playwright test"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.0",
@@ -28,6 +33,7 @@
     "docusaurus-plugin-openapi-docs": "^5.0.0",
     "docusaurus-plugin-sass": "^0.2.6",
     "docusaurus-theme-openapi-docs": "^5.0.0",
+    "lunr": "2.3.9",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -40,6 +46,8 @@
     "@docusaurus/module-type-aliases": "^3.10.0",
     "@docusaurus/tsconfig": "^3.10.0",
     "@docusaurus/types": "^3.10.0",
+    "@playwright/test": "1.65.1",
+    "cheerio": "1.0.0-rc.12",
     "typescript": "~5.6.0"
   },
   "browserslist": {

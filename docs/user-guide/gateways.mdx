@@ -36,7 +36,11 @@ These control how the gateway behaves inside the admin and client portals. A han
 
 **Available Payment Types** lists the methods the gateway supports — credit card, ACH, SEPA, Apple Pay, and so on — and lets you enable or disable each. **Required Fields** lets you ask the client to fill in missing details (address, phone, VAT number) at checkout and optionally push those back onto the [client record](/docs/user-guide/clients). **Accepted Card Logos** chooses which card brand icons show up on the hosted checkout.
 
-### Limits/Fees
+<span id="limits-fees" style={{display: "block", scrollMarginTop: "calc(var(--ifm-navbar-height) + 1rem)"}} />
+
+### Configure gateway fees and card surcharges {#limitsfees}
+
+To pass payment processing costs to customers, open the gateway's **Limits/Fees** tab and select a **Payment Type**. Configure **Fee Percent**, **Fee Amount**, and an optional **Fee Cap** for that payment method. These gateway fees are separate from [late-payment fees](/docs/user-guide/advanced-settings#reminder-templates) and the [invoice Surcharge field](/docs/user-guide/advanced-settings#custom_fields).
 
 This tab is how you set per-payment-method rules for the gateway. Fees and limits are attached to a specific payment type, so credit card and ACH on the same gateway can carry different rules.
 
@@ -264,7 +268,7 @@ On the Credentials tab, paste in the Secret Key, Public Key, and Gateway ID from
 
 With the gateway configured, a few related pages are worth a read:
 
-- [Set Gateway Fees](https://invoiceninja.github.io/en/gateways/#limits-fees)
+- [Set Gateway Fees](/docs/user-guide/gateways#limitsfees)
 - [Payment Links](https://invoiceninja.github.io/en/advanced-settings/#payment_links)
 - [Custom Email Servers](https://invoiceninja.github.io/en/hosted-mail/)
 

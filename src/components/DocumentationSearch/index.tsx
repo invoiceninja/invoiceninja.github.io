@@ -2,9 +2,8 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-// Keep the existing plugin's index builder, ranking, and background search worker.
-import { searchByWorker } from "@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker";
-import { SEARCH_SCOPES, prepareResults, type SearchResult } from "./results";
+import { searchDocumentation } from "./client";
+import { SEARCH_SCOPES, type SearchResult } from "./schema";
 import styles from "./styles.module.css";
 
 function Highlight({ text, query }: { text: string; query: string }) {
@@ -18,18 +17,22 @@ function Highlight({ text, query }: { text: string; query: string }) {
 export default function DocumentationSearch({ expanded = false }: { expanded?: boolean }) {
   const location = useLocation();
   const history = useHistory();
-  const { siteConfig: { baseUrl } } = useDocusaurusContext();
+  const { siteConfig: { baseUrl, customFields } } = useDocusaurusContext();
+  const contextVersion = String(customFields.searchContextVersion);
   const params = new URLSearchParams(location.search);
   const [query, setQuery] = useState(expanded ? params.get("q") || "" : "");
   const [hiddenCategories, setHiddenCategories] = useState<string[]>(params.getAll("hide"));
   const [groups, setGroups] = useState<{ label: string; results: SearchResult[]; failed: boolean }[]>([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [visibleLimits, setVisibleLimits] = useState<Record<string, number>>({});
   const input = useRef<HTMLInputElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const id = useId();
   const visibleGroups = groups.filter(group => !hiddenCategories.includes(group.label));
-  const resultCount = visibleGroups.reduce((count, group) => count + group.results.length, 0);
+  const limitFor = (label: string) => visibleLimits[label] ?? (expanded ? 20 : 5);
+  const totalCount = visibleGroups.reduce((count, group) => count + group.results.length, 0);
+  const resultCount = visibleGroups.reduce((count, group) => count + Math.min(limitFor(group.label), group.results.length), 0);
   const failedGroups = visibleGroups.filter(group => group.failed);
   const allHidden = SEARCH_SCOPES.every(scope => hiddenCategories.includes(scope.label));
 
@@ -57,6 +60,7 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
   useEffect(() => {
     let cancelled = false;
     setGroups([]);
+    setVisibleLimits({});
     if (!query.trim()) {
       setLoading(false);
       return;
@@ -65,7 +69,7 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
     const timer = setTimeout(async () => {
       // Search each index independently so API volume cannot crowd out guides.
       const searches = await Promise.allSettled(SEARCH_SCOPES.map(async scope =>
-        prepareResults(await searchByWorker(baseUrl, scope.value, query.trim(), 200), expanded ? 40 : 3)));
+        searchDocumentation(baseUrl, scope.value, query.trim(), contextVersion)));
       if (!cancelled) {
         setGroups(searches.map((search, index) => ({
           label: SEARCH_SCOPES[index].label,
@@ -76,7 +80,7 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
       }
     }, 180);
     return () => { cancelled = true; clearTimeout(timer); };
-  }, [query, expanded, baseUrl]);
+  }, [query, expanded, baseUrl, contextVersion]);
 
   const searchParams = new URLSearchParams({ q: query.trim() });
   SEARCH_SCOPES.forEach(scope => {
@@ -97,6 +101,15 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
         if (event.key === "ArrowDown" && event.target === input.current) {
           const first = panel.current?.querySelector<HTMLAnchorElement>("li a");
           if (first) { event.preventDefault(); first.focus(); }
+        } else if ((event.key === "ArrowDown" || event.key === "ArrowUp") && panel.current) {
+          const links = Array.from(panel.current.querySelectorAll<HTMLAnchorElement>("li a"));
+          const index = links.indexOf(event.target as HTMLAnchorElement);
+          if (index >= 0) {
+            event.preventDefault();
+            const next = index + (event.key === "ArrowDown" ? 1 : -1);
+            if (next < 0) input.current?.focus();
+            else links[Math.min(next, links.length - 1)]?.focus();
+          }
         }
       }}>
       <form role="search" aria-label={expanded ? "Search documentation and API reference" : "Site search"}
@@ -113,18 +126,26 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
           {SEARCH_SCOPES.map(scope => {
             const active = !hiddenCategories.includes(scope.label);
             return <button key={scope.value} type="button" className={styles.filterBadge}
-              aria-pressed={active} onClick={() => setHiddenCategories(hidden => active
-                ? [...hidden, scope.label] : hidden.filter(label => label !== scope.label))}>
+              aria-pressed={active} onClick={() => {
+                const hidden = active ? [...hiddenCategories, scope.label]
+                  : hiddenCategories.filter(label => label !== scope.label);
+                setHiddenCategories(hidden);
+                if (expanded) {
+                  const params = new URLSearchParams({ q: query.trim() });
+                  hidden.forEach(label => params.append("hide", label));
+                  history.replace({ pathname: location.pathname, search: `?${params}` });
+                }
+              }}>
               <span aria-hidden="true">{active ? "✓" : "+"}</span> {scope.label}
             </button>;
           })}
         </div>
-        <p className={styles.status} role="status">
+        <p className={styles.status} role="status" aria-live="polite" aria-atomic="true">
           {allHidden ? "Select a category above to display results."
             : loading ? "Searching…"
             : !query.trim() ? "Enter a word or question to find a guide or API endpoint."
             : process.env.NODE_ENV !== "production" ? "Search is available in the built site preview."
-            : resultCount ? `${resultCount} results shown, grouped by content type`
+            : resultCount ? `${resultCount} of ${totalCount} matching sections shown, grouped by content type`
             : failedGroups.length ? "Some search results could not load."
             : "No results in the active categories. Try another category or search term."}
         </p>
@@ -135,15 +156,17 @@ export default function DocumentationSearch({ expanded = false }: { expanded?: b
           key={group.label} aria-labelledby={`${id}-group-${index}`}>
           <h2 id={`${id}-group-${index}`} className={styles.groupHeading}>{group.label}</h2>
           <ul className={styles.list}>
-          {group.results.map(result => <li key={result.url}>
+          {group.results.slice(0, limitFor(group.label)).map(result => <li key={result.url}>
             <Link to={result.url} className={styles.result} onClick={() => setOpen(false)}>
               <span className={styles.category}>{result.category}</span>
-              <span className={styles.title}><Highlight text={result.title} query={query} /></span>
-              {result.section && <span className={styles.section}><Highlight text={result.section} query={query} /></span>}
+              <span className={styles.title}><Highlight text={result.section || result.title} query={query} /></span>
+              {result.section && <span className={styles.section}><Highlight text={result.title} query={query} /></span>}
               {result.excerpt && <span className={styles.excerpt}><Highlight text={result.excerpt} query={query} /></span>}
             </Link>
           </li>)}
           </ul>
+          {expanded && group.results.length > limitFor(group.label) && <button type="button" className={styles.moreResults}
+            onClick={() => setVisibleLimits(limits => ({ ...limits, [group.label]: limitFor(group.label) + 20 }))}>Show more {group.label} sections</button>}
         </section>)}
         {!expanded && query.trim() && <Link className={styles.allResults} to={searchUrl} onClick={() => setOpen(false)}>See all results →</Link>}
       </div>}

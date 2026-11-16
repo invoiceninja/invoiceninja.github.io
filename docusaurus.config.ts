@@ -16,6 +16,10 @@ const config: Config = {
   projectName: "invoiceninja.github.io",
   trailingSlash: false,
 
+  customFields: {
+    searchContextVersion: require("./scripts/search-version.cjs").version(),
+  },
+
   onBrokenLinks: "warn",
 
   markdown: {

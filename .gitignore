@@ -19,3 +19,8 @@ external/
 # Logs
 npm-debug.log
 yarn-error.log
+
+# Local search evidence and browser test output
+.search-artifacts/
+test-results/
+playwright-report/

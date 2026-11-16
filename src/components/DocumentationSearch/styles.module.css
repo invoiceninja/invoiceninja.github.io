@@ -47,6 +47,8 @@
 .excerpt { font-size: 0.85rem; line-height: 1.5; overflow-wrap: anywhere; color: var(--ifm-color-emphasis-700); }
 .result mark { background: var(--ifm-color-emphasis-200); color: inherit; font-weight: 700; }
 .allResults { display: block; padding: 0.8rem 1rem; border-top: 1px solid var(--ifm-color-emphasis-300); font-size: 0.85rem; }
+.moreResults { display: block; margin: 0.75rem 1rem; padding: 0.5rem 0.75rem; border: 1px solid var(--ifm-color-primary); border-radius: 4px; background: var(--ifm-background-surface-color); color: var(--ifm-font-color-base); font: inherit; cursor: pointer; }
+.moreResults:focus-visible { outline: 2px solid var(--ifm-color-primary); outline-offset: 2px; }
 .expanded .form input { flex: 1; }
 .expanded .results { margin-top: 1rem; }
 @media (max-width: 600px) {
