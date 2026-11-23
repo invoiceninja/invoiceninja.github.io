@@ -1,185 +1,216 @@
 ---
-title: "Frequently Asked Questions"
+title: "FAQ: Common Questions About Invoices, Payments and Settings"
+sidebar_label: "FAQ"
 sidebar_position: 3
+description: "Answers to common Invoice Ninja questions: the client portal, online payments, reminders, late fees, taxes, currencies, email attachments and invoice design."
 ---
-Here you will find answers to many frequently asked questions about Invoice Ninja.
 
-### What is the Client Portal?
+# FAQ: common questions about invoices, payments and settings
 
-- When you send a client an invoice, the email contains a link to view the invoice online in the client portal.
-- The client portal is an online self-serve dashboard for your client to see their invoices, make payments, download statements, manage subscriptions, payment methods, and more.
-- Client portal access is available for all your clients. You can optionally allow anyone to register as a new client under Settings>Client Portal>Registration.
-- If you enable "Client Initiated Payments" under Settings>Payment Settings, you can even allow your clients to make a payment online without you having to send an invoice (you can also set the "Minimum Payment Amount" for client-initiated payments)
-- You can see how the client portal looks for your clients by clicking the "Client Portal" option:
+Here are short answers to the questions people ask most often when they start sending invoices, taking payments and inviting their team. Each one points to the full page if you want more detail.
 
-![Edit Client portal dropdown hilighted](/assets/images/clients/editclient_clientportalhilighted.png "Edit Client portal dropdown hilighted")
+## What is the Client Portal? {#what-is-the-client-portal}
 
-![Client portal](/assets/images/clients/client_portal.png "Client portal")
+When you email a client an invoice, that email includes a link to view the invoice online in the [Client Portal](/docs/user-guide/client-portal). The portal is a self-serve dashboard where your client can view invoices, recurring invoices, payments, quotes, credits, payment methods, documents, tasks, projects and subscriptions, and can pay online.
 
-See [Client Portal](/docs/user-guide/client-portal)
+Every client can use the portal. If you want people to sign up themselves as new clients, turn on **Client Registration** under **Settings > Client Portal**, on the **Registration** tab ("Enable clients to self register in the portal").
 
-### What is a subdomain?
+If you turn on **Client Initiated Payments** under **Settings > Payment Settings** (the page is titled **Online Payments**), clients can also pay you from the portal without you sending an invoice first. The help text is "Support making a payment in the client portal without an invoice".
 
-- The subdomain is used in the client portal to personalize links to match your brand. Ex., https://your-brand.invoicing.co
-- Under Settings > Client Portal, you can setup your subdomain.
-- Links generated in the system (invoices, quotes, etc.) that are sent to your clients will use the subdomain you have configured.
-- If you have multiple companies, you can set a different subdomain for each company. Ex., companya.invoicing.co, companyb.invoicing.co… that way, each company has its own branding and custom link.
+To see the portal the way a client sees it, open the client and use the **Client Portal** link on a contact (it sits under the contact's name and email, with a copy icon beside it). An invoice row's **Actions** menu also includes **Client Portal**. The client's own overflow menu does not include **Client Portal**.
 
-![Client portal settings](/assets/images/settings/client_portal_settings.png "Client portal settings")
+![The Client Portal link on a contact](/assets/images/clients/editclient_clientportalhilighted.png "Client Portal link on a contact")
 
-### How can I accept payments online? What is a payment gateway (AKA, merchant processor)?
+![The client portal as a contact sees it](/assets/images/clients/client_portal.png "Client portal")
 
-- Accepting online payments has never been easier. Invoice Ninja integrates with all the major online payment gateways to let you accept payments in 135+ currencies: [Payment Gateway Integrations](https://invoiceninja.com/payments/)
-- In order to accept payments online, you need to integrate your Invoice Ninja account with a "payment gateway."
-- See: [Setting Up Payment Gateways](/docs/user-guide/gateways/)
+See [Client Portal](/docs/user-guide/client-portal) and [Client Portal settings](/docs/user-guide/advanced-settings#client_portal).
 
-### How do I setup automatic reminders for unpaid invoices?
+## What is a subdomain? {#what-is-a-subdomain}
 
-- Auto-reminders for invoices can be configured under _Settings>Templates & Reminders_
+The subdomain personalizes your client portal links to match your brand, for example `https://your-brand.invoicing.co`.
 
-  - You have the options for First, Second, Third, Endless reminders.
+Set it under **Settings > Client Portal**, on the **Settings** tab. That tab has **Portal Mode**, **Subdomain** and **Login URL**. **Portal Mode** can be **Subdomain** or **Domain**. The help text on Portal Mode is "The subdomain is used in the client portal to personalize links to match your brand. ie, https://your-brand.invoicing.co". **Login URL** is a read-only address in the form of your portal login, with a copy icon.
 
-    ![Email reminder example](/assets/images/settings/first_invoice_reminder_example.png "Email reminder example")
+Links the app generates for invoices, quotes and other documents use the subdomain you configure. If you have more than one company, you can set a different subdomain for each one, for example `companya.invoicing.co` and `companyb.invoicing.co`, so each company has its own branded link.
 
-- Days: Set how many days until the selected 'Schedule' action selected below is triggered
-- You can choose these options from the Schedule dropdown:
-  - After the invoice date
-  - Before the due date
-  - After the due date
-- Remember to enable 'Send Email' to have the email reminder enabled
-- Optionally set late fees here as well
+![Client Portal settings, including the subdomain](/assets/images/settings/client_portal_settings.png "Client Portal settings")
 
-### What is the Payments module?
+See [How do I configure the client portal?](/docs/user-guide/advanced-settings#client_portal).
 
-- Invoice Ninja includes functionality to let you record every payment that you receive on your invoices. This makes it easy to report on invoices, accept partial payments, etc.
-- The Payments module records all the INCOMING payments to the system.
-- Each payment is linked to an invoice.
-- You can apply multiple payments per invoice. Ex., deposits or partial payments.
-- The payments module lets you record the amount received, payment date, payment type (the method of payment), a transaction reference, and you can record some notes.
-- You also have the option to convert currency when recording the payment. You can select the currency to convert from, and an exchange rate. The exchange rates are updated daily.
-- See: [Payments](/docs/user-guide/payments)
+## How can I accept payments online? {#how-can-i-accept-payments-online-what-is-a-payment-gateway-aka-merchant-processor}
 
-### How can I send payment email?
+A **payment gateway** is the service that processes online card and bank payments (sometimes called a merchant processor). Invoice Ninja integrates with the major gateways so you can accept payments in many currencies. A list of providers is on the [Invoice Ninja payments page](https://invoiceninja.com/payments/).
 
-- If you want your clients to receive an automatic email acknowledging payments, this can be configured under _Settings>Online Payments_.
+To accept payments online, connect a gateway to your account. See [Payment Gateways](/docs/user-guide/gateways) and [Payment Settings](/docs/user-guide/basic-settings#payment_settings).
 
-  ![Payment email options](/assets/images/settings/payment_email_options.png "Payment email options")
+## How do I set up automatic reminders for unpaid invoices? {#how-do-i-setup-automatic-reminders-for-unpaid-invoices}
 
-- You have the options for:
-  - Manual Payment Email – this checks the option 'Send Email' by default in the Enter Payment window. You can uncheck it when manually entering a payment if you don't want a receipt sent out.
-  - Online Payment Email – when the client pays online, they will be sent a receipt automatically
-  - Mark Paid Payment Email – when you mark an invoice as paid, the client will be sent a receipt automatically
-- You can customize the design of your receipt email under _Settings>Templates & Reminders_ – select the "Payment" template. There is also a template for "Partial Payment" if the payment made was not for the full invoice amount.
-- The payment email by default will include a button to view the invoice for which the payment was made for.
+Automatic invoice reminders are configured under **Settings > Templates & Reminders**, on the **Reminders** tab. The reminder tiers are **First Reminder**, **Second Reminder**, **Third Reminder** and **Endless Reminder**. There is also a **First Quote Reminder**.
 
-  ![Payment received email template](/assets/images/settings/payment_received_template.png "Payment received email template")
+![An example first invoice reminder](/assets/images/settings/first_invoice_reminder_example.png "Email reminder example")
 
-### Is it possible to change a quote into an invoice when my client decides to proceed?
+For the first, second and third reminders you can set:
 
-- Yes, this is very easy to do in Invoice Ninja.
-- On your quote, simply select "Convert to Invoice"
+- **Days:** how many days from the schedule point the reminder runs
+- **Schedule:** **Disabled**, **After the invoice date**, **Before the due date**, or **After the due date**
+- **Send Email:** turn this on only if you want the reminder emails to start going out
+- Optional late fees, as **Late Fee Amount** and **Late Fee Percent**
 
-  ![Convert quote to invoice](/assets/images/quotes/convert_quote_to_invoice.png "Convert quote to invoice")
+See [How do I configure payment reminders and late fees?](/docs/user-guide/advanced-settings#reminder-templates).
 
-### How can I charge late fees or percentages for overdue invoices?
+## What is the Payments module? {#what-is-the-payments-module}
 
-- This can be done under _Settings>Templates & Reminders_
+The [Payments](/docs/user-guide/payments) list records money you receive. Each payment can be linked to one or more invoices, including deposits and partial payments. A payment can also be left partly or fully unapplied if you received more than you allocated.
 
-  ![First Reminder email template](/assets/images/settings/first_reminder_email_template.png "First Reminder email template")
+The list button and the unsaved form are both labeled **Enter Payment**. The form fields are **Client**, **Invoice**, **Amount received**, **Payment Date**, **Payment Type**, **Transaction Reference**, **Private Notes**, **Send Email** and **Convert currency**. The help text on Amount received is "Enter a value here if the total amount received was MORE than the invoice amount, or when recording a payment with no invoices. Otherwise this field should be left blank."
 
-- You can setup different fee amounts or percentages for each of the three reminder emails. For example, First Reminder may have 5% fee, Second Reminder another 5%, Third Reminder another 5%.
+See [How do I record a payment by hand?](/docs/user-guide/payments#how-do-i-record-a-payment-by-hand).
 
-### What is the documents feature?
+## How can I send a payment email? {#how-can-i-send-payment-email}
 
-- The Documents module allows you to upload files to a client, project, or an expense. For example, this may be used for recording disbursements, contracts, or other documentation you need to easily access.
-- You can select whether the document you upload is also visible to the client in the client portal.
+If you want clients to receive an email acknowledging a payment, set that under **Settings > Payment Settings** (titled **Online Payments**).
 
-### I have some clients in different countries. How can I make an invoice in a different currency?
+![Payment email options](/assets/images/settings/payment_email_options.png "Payment email options")
 
-- The default currency selected when making a new client is determined by the "Currency" you set in Settings>Localization>Currency.
-- When you Add or Edit a client, you have the option to change the currency for the client.
+The options are:
 
-  ![Client settings additional info - currency](/assets/images/clients/client_additional_info_currency.png "Client settings additional info - currency")
+- **Manual Payment Email:** "Send an email when manually entering a payment"
+- **Online Payment Email:** "Send an email when an online payment is made"
+- **Mark Paid Payment Email:** "Send an email when marking an invoice as paid"
 
-- If your configured [Payment Gateway](/docs/user-guide/gateways) supports the currency, the client will be able to pay in that currency. Payments will record the currency they paid in.
-- You are able to report your revenues/payments by currency in the dashboard, and reports.
+The **Enter Payment** form also has a **Send Email** toggle, so you can choose whether to send a receipt for that one payment.
 
-  ![Dashboard filter by currency](/assets/images/dashboard/dashboard_filter_by_currency.png "Dashboard filter by currency")
+You can customize the receipt email under **Settings > Templates & Reminders**. Open the **Payment** tab. That tab has sub-buttons for **Payment**, **Partial Payment** and **Payment Failed**.
 
-- If you have a group of clients that you'd like to bill in a specific currency, or apply other settings to a group of clients, you can use the Groups feature in Invoice Ninja. See: [Group Settings for Client Management](/docs/user-guide/clients/#how-do-i-apply-the-same-settings-to-many-clients-groups)
-  - Groups lets you customize any setting or templates (ex. invoice templates) to tailor to your group of clients. For example, if you want a different invoice design or email for your "USD Clients" you can configure that easily with Groups.
+The payment email includes a button to view the invoice the payment was made against, by default.
 
-### How can I show the currency symbol on invoices/quotes?
+![Payment received email template](/assets/images/settings/payment_received_template.png "Payment received email template")
 
-- Under _Settings>Localization>Currency Format_, select _Code_. Your currency symbol will show on quotes/invoices (ex. _1,000.00 USD_)
+See [Payment Settings](/docs/user-guide/basic-settings#payment_settings) and [Templates & Reminders](/docs/user-guide/advanced-settings#templates_and_reminders).
 
-![Currency localization](/assets/images/settings/localization_currency_format_code.png)
+## How do I turn a quote into an invoice? {#is-it-possible-to-change-a-quote-into-an-invoice-when-my-client-decides-to-proceed}
 
-### How to Setup Taxes?
+Yes. Use **Convert To** in the quote's **Actions** menu. On the quote edit page, the same item is in the arrow next to **Save**.
 
-- Invoice Ninja supports virtually all forms of charging/recording tax.
-- You can even apply 1 to 3 tax rates together.
-- Taxes can be setup for invoices and expenses
-  - Invoice tax is tax you charge a client
-  - Expense tax is tax you recorded that you paid on an expense to a vendor (Ex. purchased equipment and X % was spent on Y tax)
-- You'll first want to go to _Settings>Tax Settings>New Tax Rate_, and add your tax name and percentage.
-- Then you select the way in which you wish to apply the tax rate to your invoices/expenses by default:
-  - Invoice Tax Rates
-  - If you do not select a tax rate to apply by default, you will have to select the tax rate manually when creating an invoice/expense.
-  - Line-item taxation is also supported. When enabled, this will add column(s) to the invoice for the line item tax rate(s) - you can select one to three line item tax rates.
-- You can also toggle whether taxes are inclusive or exclusive.
-- You can also set a tax category for your each product. That way, you can report which tax category the tax was charge for based on the products you sold. For example, "Physical Goods", "Tax Exempt"…
-- See full instructions and videos for tax configuration: [Taxes](/docs/user-guide/taxes)
+![Convert To on a quote](/assets/images/quotes/convert_quote_to_invoice.png "Convert To on a quote")
 
-### How can I create individual logins to Invoice Ninja for my staff to make invoices and use features, but not see my business's total revenues or reporting?
+See [How do I turn a quote into an invoice?](/docs/user-guide/quotes#how-do-i-turn-a-quote-into-an-invoice).
 
-- You can manage your additional account users under _Settings>User Management_.
+## How can I charge late fees on overdue invoices? {#how-can-i-charge-late-fees-or-percentages-for-overdue-invoices}
 
-  ![User Management](/assets/images/settings/settings_user_management.png "User Management")
+Set late fees under **Settings > Templates & Reminders**, on the **Reminders** tab.
 
-- When creating a New Account User, you can go under Permissions and select which areas of the system the user will have access to. If you don't want them to see any reports or analytics, don't check 'View Dashboard' or 'Reports'.
+![First Reminder email template, including late fee fields](/assets/images/settings/first_reminder_email_template.png "First Reminder email template")
 
-  ![New User](/assets/images/settings/user_management_new_user.png "New User")
+You can set a **Late Fee Amount** and a **Late Fee Percent** on **First Reminder**, **Second Reminder** and **Third Reminder**. Each tier can use a different amount or percentage. For example, the first reminder might add 5%, the second another 5%, and the third another 5%.
 
-- See: [User Management](/docs/user-guide/advanced-settings/#user_management)
+See [How do I configure payment reminders and late fees?](/docs/user-guide/advanced-settings#reminder-templates).
 
-### What happens when I email an invoice out to the client?
+## What is the documents feature? {#what-is-the-documents-feature}
 
-- When you email an invoice from Invoice Ninja, the client receives an email which allows them to open and view the invoice online, and make a payment.
-- The payment can be made in the client portal via your configured payment gateway(s)
-- The email is sent according to the "Invoice" template that you can fully customize under _Settings>Templates & Reminders_
+Documents are files you upload and attach to a record. Typical uses include contracts, receipts and other files you want close at hand.
 
-  ![Invoice email template](/assets/images/settings/default_invoice_email_template.png "Invoice email template")
+On a [client](/docs/user-guide/clients#how-do-i-add-documents-to-a-client), the **Documents** tab has a **Drop files or click to upload** zone and a table of Name, Date, Type and Size. [Quotes](/docs/user-guide/quotes) and [invoices](/docs/user-guide/invoices) also have a **Documents** tab.
 
-- See: [Email Settings](/docs/user-guide/advanced-settings/#email_settings)
+## How can I invoice a client in a different currency? {#i-have-some-clients-in-different-countries-how-can-i-make-an-invoice-in-a-different-currency}
 
-### How to make the invoice always included as a PDF attachment in the email?
+The default currency for a new client comes from **Settings > Localization** (**Currency**). When you add or edit a client, you can change that client's currency on the **Settings** tab.
 
-- Go to _Settings>Email Settings_ and enable "Attach PDF"
-  - This will attach a PDF of the invoice into every invoice and reminder email
+![Currency on the client's Settings tab](/assets/images/clients/client_additional_info_currency.png "Client currency")
 
-### How do I customize my invoice or quote design?
+Currency is set per client, not per document. If the [payment gateway](/docs/user-guide/gateways) you connected supports that currency, the client can pay in it, and the payment records the currency they paid in.
 
-- You can customize your invoice, quote, purchase order, and other template designs under _Settings>Invoice Design_.
-  - You can change the style, layout, colors, fonts, type of company and client information shown, show custom fields, whether to show a PAID stamp, whether to number pages, hide empty columns, and more.
-  - See: [Invoice Design](/docs/user-guide/advanced-settings/#invoice_design)
-- Designs can be further tailored to individual clients or groups of clients by using the Client Settings and Groups features
-  - See: [Custom Settings Per Client](/docs/user-guide/clients)
-  - See: [Group Settings](/docs/user-guide/clients/#how-do-i-apply-the-same-settings-to-many-clients-groups)
+The dashboard has a currency dropdown in the top-right toolbar, including an **All** option. You can also filter [reports](/docs/user-guide/reports) by currency.
 
-### What is the purpose of the User dropdown in invoices/quotes/expenses?
+![Dashboard filter by currency](/assets/images/dashboard/dashboard_filter_by_currency.png "Dashboard filter by currency")
 
-- The _User_ dropdown can be used in multiple ways. It can be used in the reports for tracking (ex. how many expenses assigned to each user), but it can also be used to give a user permission to view/edit an individual record.
+If a group of clients should share the same currency, or other settings, use groups. Create a group under **Settings > Group Settings**, then pick it on each client. See [How do I apply the same settings to many clients (groups)?](/docs/user-guide/clients#how-do-i-apply-the-same-settings-to-many-clients-groups) and [Group Settings](/docs/user-guide/advanced-settings#group_settings).
 
-### How can I change which columns show in the different modules?
+## How can I show the currency symbol or code on invoices and quotes? {#how-can-i-show-the-currency-symbol-on-invoicesquotes}
 
-- Every module in Invoice Ninja that stores many records has a table structure (ex. clients, products, invoices, payments, quotes, credits, expenses...), and you can change the number of rows shown per page as well as the columns.
-- There is a 'Columns' button at the bottom of the table where you can adjust the columns shown.
-- For example, if you want the expense category column to show in the expenses list:
+Under **Settings > Localization**, **Currency Format** is a radio pair: **Symbol: $ 1,000.00** or **Code: 1,000.00 USD**.
+
+![Currency Format on Localization](/assets/images/settings/localization_currency_format_code.png "Currency Format")
+
+See [How do I set language, currency and dates?](/docs/user-guide/basic-settings#localization).
+
+## How do I set up taxes? {#how-to-setup-taxes}
+
+Invoice Ninja can record tax on invoices you send and on expenses you pay. You can apply one, two or three tax rates together, at invoice level, at line-item level, or both.
+
+1. Go to **Settings > Tax Settings** and click **New Tax Rate**. Enter the tax name and percentage.
+2. Choose how many **Invoice Tax Rates**, **Line Item Tax Rates** and **Expense Tax Rates** to allow (Disabled, One Tax Rate, Two Tax Rates or Three Tax Rates).
+3. If you do not pick a **Default Tax Rate**, you will need to choose the rate yourself when you create an invoice or expense.
+4. When line-item taxes are enabled, the invoice gets tax column(s) on each line.
+5. Set **Inclusive Taxes** if tax is already built into the price. When exclusive is selected, the example shown is "Exclusive: 100 + 10% = 100 + 10".
+
+You can also set a **Tax Category** on each [product](/docs/user-guide/products), such as **Physical Goods** or **Tax Exempt**, so reports can group tax by what you sold.
+
+For calculated US sales tax, EU VAT, exemptions and the warning that turning on **Calculate Taxes** may recalculate open invoices, see [Taxes](/docs/user-guide/taxes) and [Tax Settings](/docs/user-guide/basic-settings#tax_settings).
+
+## How can I give staff their own logins without showing them all reports? {#how-can-i-create-individual-logins-to-invoice-ninja-for-my-staff-to-make-invoices-and-use-features-but-not-see-my-businesss-total-revenues-or-reporting}
+
+Manage extra users under **Settings > User Management**.
+
+![User Management](/assets/images/settings/settings_user_management.png "User Management")
+
+When you add a user with **New User**, the **Permissions** tab lets you choose what they can access. If you do not want them to see reports or analytics, leave **View Dashboard** and **Reports** off.
+
+![New User permissions](/assets/images/settings/user_management_new_user.png "New User")
+
+See [How do I add teammates and set their permissions?](/docs/user-guide/advanced-settings#user_management).
+
+## What happens when I email an invoice to the client? {#what-happens-when-i-email-an-invoice-out-to-the-client}
+
+The client receives an email with a link to open and view the invoice online, and to pay if you have a payment gateway connected. The email uses the **Invoice** template, which you can edit under **Settings > Templates & Reminders**.
+
+![Invoice email template](/assets/images/settings/default_invoice_email_template.png "Invoice email template")
+
+See [Email Settings](/docs/user-guide/advanced-settings#email_settings) and [Templates & Reminders](/docs/user-guide/advanced-settings#templates_and_reminders).
+
+## How do I attach the invoice PDF to the email? {#how-to-make-the-invoice-always-included-as-a-pdf-attachment-in-the-email}
+
+Go to **Settings > Email Settings** and turn on **Attach PDF**. That attaches a PDF of the invoice to invoice and reminder emails.
+
+See [How do I set up outgoing email?](/docs/user-guide/advanced-settings#email_settings).
+
+## How do I customize my invoice or quote design? {#how-do-i-customize-my-invoice-or-quote-design}
+
+Customize the look of invoices, quotes, purchase orders and other PDFs under **Settings > Invoice Design**. On **General Settings** you can change the design, page layout and size, fonts, colors, **Show Paid Stamp**, **Page Numbering**, and **Empty Columns** (Hide or Show). Other tabs cover client, company and document fields, plus product, task and total columns.
+
+See [How do I change how invoices look?](/docs/user-guide/advanced-settings#invoice_design).
+
+You can also tailor designs for one client or a group of clients:
+
+- [How do I change settings for just one client?](/docs/user-guide/clients#how-do-i-change-settings-for-just-one-client)
+- [How do I apply the same settings to many clients (groups)?](/docs/user-guide/clients#how-do-i-apply-the-same-settings-to-many-clients-groups)
+
+## What is the Assigned User field for? {#what-is-the-purpose-of-the-user-dropdown-in-invoicesquotesexpenses}
+
+The **Assigned User** field on an invoice or quote (on the **Settings** tab) records which team member the record belongs to. You can use it in [reports](/docs/user-guide/reports), and it can also limit who is allowed to view or edit that record.
+
+## How can I change which columns show in a list? {#how-can-i-change-which-columns-show-in-the-different-modules}
+
+Lists such as clients, products, invoices, payments, quotes, credits and expenses have a table of records. The **Columns** button sits at the top right of the list toolbar (not at the bottom of the table). It opens an **Edit Columns** dialog, where you can **Add Column** and **Order Columns**. Some lists, such as quotes, also have a **Footer Columns** button.
+
+For example, to show the expense category on the expenses list:
 
 <video width="100%" controls>
   <source src="/assets/videos/faq/add_category_column_to_expenses.mp4" type="video/mp4" />
 </video>
 
-- The column change to Expenses (showing Category column) also takes effect in every client's Expenses list page (expenses linked to the client):
-  ![Client's expenses](/assets/images/faq/client_example_expenses_linked.png)
+The same column choice also applies on a client's Expenses list (expenses linked to that client):
+
+![A client's linked expenses, with the Category column](/assets/images/faq/client_example_expenses_linked.png "Client expenses with Category column")
+
+## Related
+
+- [Get Started](/docs/user-guide)
+- [Clients](/docs/user-guide/clients)
+- [Invoices](/docs/user-guide/invoices)
+- [Payments](/docs/user-guide/payments)
+- [Payment Gateways](/docs/user-guide/gateways)
+- [Client Portal](/docs/user-guide/client-portal)
+- [Taxes](/docs/user-guide/taxes)
+- [Basic Settings](/docs/user-guide/basic-settings)
+- [Advanced Settings](/docs/user-guide/advanced-settings)
