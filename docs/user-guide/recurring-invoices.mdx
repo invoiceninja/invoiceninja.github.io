@@ -1,110 +1,154 @@
 ---
-title: "Recurring Invoices"
+title: "Recurring Invoices: Bill Clients Automatically on a Schedule"
+sidebar_label: "Recurring Invoices"
 sidebar_position: 13
+description: "How to set up recurring invoices in Invoice Ninja: frequency, start date and cycles, Auto Bill for saved cards, pausing and restarting, updating prices, date keywords like :MONTH in line items, and e-invoice periods."
 ---
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-A recurring invoice is the template you set up once so Invoice Ninja can bill a [client](/docs/user-guide/clients) on a schedule — monthly retainers, quarterly memberships, annual renewals, weekly service fees. You build it like any other invoice, tell the app how often to run it, and from then on a fresh [invoice](/docs/user-guide/invoices) is generated on each cycle, emailed to the contacts you've chosen, and (if you'd like) charged automatically against the card or bank account on file.
+# Recurring invoices: bill clients automatically on a schedule
 
-It helps to keep one distinction in mind from the start: the recurring invoice itself is never sent to your client. It's the blueprint. What your client actually receives is a regular invoice that the blueprint produced on its due day — with its own number, PDF, payment link, and balance. The recurring record stays behind the scenes, tracking what's been generated and what's still to come.
+A recurring invoice lets Invoice Ninja bill a [client](/docs/user-guide/clients) for you on a schedule. Use one for monthly retainers, quarterly memberships, annual renewals or weekly service fees.
+
+## How does a recurring invoice work?
+
+You build it once, like any other invoice, and tell Invoice Ninja how often to run it. From then on, on each cycle Invoice Ninja:
+
+1. Creates a fresh [invoice](/docs/user-guide/invoices) with its own number, PDF, payment link and balance.
+2. Emails it to the contacts you chose.
+3. Charges the client's saved card or bank account, if you turned on [Auto Bill](#auto-bill-charging-the-card-on-file).
+
+**Keep this in mind:** the recurring invoice itself is never sent to your client. It's the blueprint. What your client receives is the regular invoice it produces. The recurring invoice stays behind the scenes, keeping track of what's been billed and what's coming next.
 
 <video width="100%" controls>
   <source src="/assets/videos/recurring_invoices/create_recurring_invoice_v5.mp4" type="video/mp4" />
 </video>
 
-## Creating a Recurring Invoice
+## How do I create a recurring invoice?
 
-Choose _New Recurring Invoice_ and fill it in the way you would any normal invoice: client, line items, taxes, notes, terms, and footer. The items area behaves identically to [invoice items](/docs/user-guide/invoices#how-do-i-add-line-items), and you can attach a project, set an exchange rate, or apply a discount in the usual way. The two things that make this form different are the **Frequency** and **Remaining Cycles** fields, which control the schedule, and the support for reserved keywords in line descriptions (covered further down) so dates like "March 2026" update themselves each cycle.
+1. Click **New Recurring Invoice**.
+2. Fill it in like a normal invoice: client, line items, taxes, notes, terms and footer. Line items work exactly like [invoice line items](/docs/user-guide/invoices#how-do-i-add-line-items), and you can link a project, set an exchange rate or add a discount as usual.
+3. Set the schedule: **Frequency**, **Start Date**, **Remaining Cycles** and **Due Date**. See [How do I set the schedule?](#the-schedule-frequency-start-date-and-cycles)
+4. Optional: choose an **Auto Bill** option (it sits under Discount). See [How do I charge a saved card automatically?](#auto-bill-charging-the-card-on-file)
+5. Optional: use [date keywords](#how-do-i-add-dates-that-update-themselves) in line descriptions, so text like "March 2026" updates itself each cycle.
+6. Click **Save**.
+7. Click the arrow next to **Save** and choose **Start**. On a new recurring invoice that arrow also offers **Send Now**.
 
-When you're happy with the template, press _Save_, then _Start_. Saving on its own only stores the draft; starting is what puts it on the billing calendar.
+Saving on its own only stores a draft. **Start** is what puts it on the billing calendar.
 
-![Recurring invoice start dropdown](/assets/images/recurring_invoices/recurring_invoice_topright_save_start_dropdown.png)
+![The Save button with its dropdown open, showing Start](/assets/images/recurring_invoices/recurring_invoice_topright_save_start_dropdown.png "Save and Start")
 
-## The Schedule: Frequency, Start Date, and Cycles
+## How do I set the schedule? {#the-schedule-frequency-start-date-and-cycles}
 
-The **Frequency** is how often a new invoice is produced — weekly, monthly, every three months, annually, and so on. The **Start Date** (defaulting to today) is when the first invoice goes out; set it in the future if you need the first bill to land on a particular day. **Remaining Cycles** tells Invoice Ninja how many invoices to generate before considering the job done — pick a specific number for a fixed-term engagement, or _Endless_ for open-ended retainers and subscriptions that run until you stop them.
+| Field | What it controls | Example |
+|---|---|---|
+| **Frequency** | How often a new invoice is created. Options: Daily, Weekly, Two weeks, Four weeks, Monthly (the default), Two months, Three months, Four months, Six months, Annually, Two years, Three Years. | Monthly |
+| **Start Date** | When the first invoice goes out. Defaults to today. Set a future date if the first bill has to land on a particular day. | The 1st of next month |
+| **Remaining Cycles** | How many invoices to create before stopping. Pick **Endless** (the default) for retainers and subscriptions that run until you stop them, or a number from 0 to 36 for a fixed term. | Endless |
+| **Due Date** | When payment is due on each invoice it creates. It doesn't change the schedule. Options are **Use Payment Terms** (the default) or a fixed day of the month, **Day 1** through **Day 31**. | Use Payment Terms |
 
-The **Due Date** setting controls how the due date on each generated invoice is calculated from the day it's issued (for example, fourteen days after issue). This is separate from the schedule — it only affects when payment is expected on each individual invoice.
+## What do the recurring invoice statuses mean?
 
-## Statuses: What Each One Means
+| Status | What it means |
+|---|---|
+| **Draft** | Saved, but not started. Nothing goes out until you click **Start**. |
+| **Pending** | Started and on the schedule, but still waiting for its first run |
+| **Active** | Has created at least one invoice and has cycles left |
+| **Paused** | Stopped. No invoices are created until you click **Start** again. |
+| **Completed** | The last cycle has been billed |
+| **Archived** / **Deleted** | Tidied away. Invoices it already created are never affected. |
 
-A recurring invoice moves through a handful of states as it lives out its life. A **Draft** is a saved template that hasn't been started yet — nothing goes out until you press Start. Once you do, it becomes **Pending**: committed to the schedule but still waiting for its first run. After the first invoice is generated it flips to **Active** and stays there while cycles remain. If you **Stop** it, the status changes to **Paused** and no further invoices will be created until you start it again. When the last cycle has been billed the record is marked **Completed**. **Archived** and **Deleted** are housekeeping states for tidying up finished or unwanted records, and never affect the invoices that have already been generated.
+## How do I charge a saved card automatically? {#auto-bill-charging-the-card-on-file}
 
-## Auto Bill: Automatically charge a saved card {#auto-bill-charging-the-card-on-file}
+Use **Auto Bill** on the recurring invoice (it's on the right-hand side, under Discount). It decides whether each invoice it creates is charged automatically to the client's saved payment method, or just emailed so the client pays when they like. The saved payment method comes from one of your [payment gateways](/docs/user-guide/gateways) (the services that process card or bank payments). Company-wide defaults and timing are under [Payment Settings](/docs/user-guide/basic-settings#payment_settings), including **Auto Bill Recurring Invoices** and **Auto Bill On** (Send Date or Due Date).
 
-For recurring automatic payments, configure **Auto Bill** on the recurring invoice. When enabled with a valid saved payment method, Auto Bill charges invoices generated by that recurring schedule. Company-wide defaults and timing are described in [Payment Settings](/docs/user-guide/basic-settings#payment_settings).
+| Auto Bill | What happens | Good for |
+|---|---|---|
+| **Enabled** | The client is always charged automatically when a valid payment method is saved | Subscriptions and ongoing retainers |
+| **Opt-Out** | At checkout the client sees an auto-billing checkbox that is already ticked. They're charged automatically unless they untick it. | Most clients stay on auto-billing, but they can choose |
+| **Opt-In** | At checkout the client sees the same checkbox, unticked. They're only charged automatically if they tick it. | Situations where clear consent matters, for legal or trust reasons |
+| **Disabled** | Never charged automatically. The client gets the invoice and pays it themselves. | Clients who prefer to pay by hand |
 
-Auto Bill decides whether generated invoices are charged automatically against the client's saved payment method (set up through one of your [payment gateways](/docs/user-guide/gateways)) or simply emailed for manual payment. You've got four ways to configure it.
+Selling to new customers through a hosted checkout page, rather than billing a client you already have? See [Payment Links](/docs/user-guide/subscriptions).
 
-**Enabled** means the client is always auto-billed whenever a valid payment method is on file — the most common choice for subscriptions and ongoing retainers. **Disabled** means the invoice is never auto-billed; the client receives it and pays whenever they like. The two middle options put the choice in your client's hands during checkout: **Opt-Out** shows them a checkbox that's pre-ticked to enable auto-billing (so most will stay on it unless they actively untick), while **Opt-In** shows the same checkbox pre-unticked (so they only get auto-billed if they explicitly agree). Opt-in and opt-out are useful where consent matters for regulatory or trust reasons. If you're offering a hosted checkout experience rather than billing an existing client directly, have a look at [Payment Links](/docs/user-guide/subscriptions).
+## What can I do with a recurring invoice?
 
-## More Actions
+Click the arrow next to **Save** on a recurring invoice, or use the row **Actions** menu on the list. If you tick one or more rows, a bulk **Actions** menu appears.
 
-![More Actions](/assets/images/recurring_invoices/recurring_invoices_homescreen_more_actions.png)
+![The actions menu on the recurring invoices list](/assets/images/recurring_invoices/recurring_invoices_homescreen_more_actions.png "Recurring invoice actions")
 
-Selecting one or more recurring invoices from the list, or opening _More Actions_ inside an edit screen, exposes the controls you need to manage an active template. **Start** only appears on Drafts and puts them on the schedule. **Stop** only appears on Active records and pauses them — the status becomes Paused and no further invoices are generated until you start it again, which is ideal for a client on holiday, a temporarily suspended service, or a contract under review. **Archive** and **Delete** tidy the template away without touching any of the invoices it has already produced; **Restore** brings an archived or deleted record back, and when it restarts it will catch up by sending any missed cycles at roughly one per hour until it's back in sync.
+| Action | When it shows | What it does |
+|---|---|---|
+| **Start** | Draft or Paused | Puts the recurring invoice on the schedule. On a paused one, Start puts it back on the schedule (it becomes Pending or Active). |
+| **Stop** | Pending or Active | Pauses it. The status changes to **Paused** and no invoices are created until you start it again. Handy for a client on holiday, a suspended service or a contract under review. |
+| **Send Now** | Draft | Creates the next invoice immediately, rather than waiting for the start date. Also appears on a new recurring invoice before you save. |
+| **View PDF** | | Shows the recurring invoice PDF |
+| **Update Prices** | | Refreshes every line to the current price in your [Products](/docs/user-guide/products) list |
+| **Increase Prices** | | Raises every line by a percentage you choose. The dialog field is **Percent** and the button is **Submit**. |
+| **Bulk Update** | When you tick one or more rows | Changes one field on every selected recurring invoice. Pick the **Column** (for example Terms, Footer, Remaining Cycles or Auto Bill) and click **Update**. |
+| **Add Comment** | | Adds a comment to the record |
+| **Clone To** | | Copies the recurring invoice into a new record |
+| **Archive** / **Delete** | | Tidies the recurring invoice away. Invoices it already created don't change. |
+| **Restore** | Archived or deleted | Brings it back. An Active recurring invoice that was archived returns to **Active**. There is no prompt about missed cycles. |
 
-### Update Prices
+### How do I update prices to match my product list?
 
-Update Prices walks every line on the template and refreshes it against the current price in your [Products](/docs/user-guide/products) list. If you've raised the price of an item you sell, this is how you carry that change into existing recurring invoices going forward — already-generated invoices are untouched, but future cycles will use the new price.
+Choose **Update Prices**. Every line is refreshed to the current price in your [Products](/docs/user-guide/products) list. Use it after you raise the price of something you sell. Invoices already created keep their old prices; future cycles use the new ones.
 
-### Increase Prices
+### How do I raise all prices by a percentage?
 
-Increase Prices does what it sounds like: bumps every line on the template by a percentage you choose. Handy for an annual cost-of-living adjustment across your customer base.
+Choose **Increase Prices**, enter the percentage in **Percent**, and click **Submit**. Every line goes up by that much, which is handy for a yearly cost-of-living increase across all your clients.
 
-![Increase recurring invoice prices](/assets/images/recurring_invoices/increase_recurring_invoice_prices.png)
+![The Increase Prices dialog with a percentage field](/assets/images/recurring_invoices/increase_recurring_invoice_prices.png "Increase prices")
 
-## Overview, History, Schedule, and Activity
+## Where do I see past and upcoming invoices?
 
-On desktop, clicking a recurring invoice row (anywhere except the invoice number) opens a side panel with four tabs.
+Clicking a row on the list does nothing. Open the recurring invoice (click its number) and use the tabs along the top: **Edit**, **Documents**, **Settings**, **Activity**, **History** and **Schedule**.
 
-![Recurring invoice overview pane](/assets/images/recurring_invoices/click_recurring_invoice_overview_pane.png)
+| Tab | What it shows |
+|---|---|
+| **Edit** | The client, schedule, Auto Bill setting, line items, notes and terms. Status, frequency, remaining cycles and Auto Bill are here. |
+| **Documents** | Files attached to the recurring invoice. Drop files or click to upload. |
+| **Settings** | Extra options for this record only, including **Assigned User**, Project, Vendor, Exchange Rate, Design and Inclusive Taxes |
+| **History** | Dated revisions of this recurring invoice (amount, client and timestamp), which you can expand. It is not a list of the invoices already generated. |
+| **Schedule** | Upcoming **Send Date** and **Due Date** values, based on your schedule settings. The next send date is also a column on the list. |
+| **Activity** | The audit trail: who created, edited, stopped or otherwise changed it, and when |
 
-The **Overview** tab summarises the essentials at a glance — amount, balance, next send date, frequency, remaining cycles, auto-bill state, and status.
+![History: dated revisions of the recurring invoice](/assets/images/recurring_invoices/history_panel_recurring_invoice.png "History")
 
-![History](/assets/images/recurring_invoices/history_panel_recurring_invoice.png)
+![Schedule: upcoming send dates and due dates](/assets/images/recurring_invoices/schedule_panel_recurring_invoice.png "Schedule")
 
-**History** is a chronological list of every invoice this template has already produced, with the total of each one — the running record of what's actually been billed.
+![Activity: who changed the recurring invoice and when](/assets/images/recurring_invoices/activity_panel_recurring_invoice.png "Activity")
 
-![Schedule](/assets/images/recurring_invoices/schedule_panel_recurring_invoice.png)
+## How do I add dates that update themselves?
 
-**Schedule** flips the view forward and shows when the upcoming invoices will go out, along with the due date each one will carry, based on your Frequency, Start Date, Remaining Cycles, and Due Date settings.
+Typing "February 2026" into a line description isn't much use on an invoice that repeats, because by the next cycle it's wrong. Instead, use keywords. Invoice Ninja swaps them for the right date every time it creates the PDF.
 
-![Activity](/assets/images/recurring_invoices/activity_panel_recurring_invoice.png)
+| Keyword | Becomes | Can do math? |
+|---|---|---|
+| `:MONTH` | The month name, for example January | Yes: `+`, `-`, `*`, `/` |
+| `:YEAR` | The year, for example 2026 | Yes: `+`, `-` |
+| `:QUARTER` | The quarter, for example Q4 | Yes: `+`, `-` |
+| `:MONTHYEAR` | The month and year together, for example November 2026 | Yes: `+`, `-` |
+| `:WEEK` | The week, for example 15-Jan-2027 to 21-Jan-2027 | |
+| `:WEEK_BEFORE` | The week before, for example 08-Jan-2027 to 14-Jan-2027 | |
+| `:WEEK_AHEAD` | The week ahead, for example 22-Jan-2027 to 28-Jan-2027 | |
 
-**Activity** is the audit trail — who created, edited, stopped, or otherwise touched the template, and when.
+To shift a date, add the math right after the keyword, in the pattern **keyword, operation, value**. For example, `:MONTH+3` is three months later.
 
-## Reserved Keywords in Line Descriptions
-
-Because a recurring invoice is generated over and over, hardcoding "February 2026" into a description isn't much use — by the next cycle it's wrong. Invoice Ninja gives you a set of reserved keywords that are replaced with the correct date values each time the PDF is generated:
-
-- :MONTH
-- :YEAR
-- :QUARTER
-- :WEEK
-- :WEEK_BEFORE
-- :WEEK_AHEAD
-- :MONTHYEAR
-
-:MONTH becomes the current month name (January), :YEAR becomes the numeric year (2024), :QUARTER becomes something like Q2, and :MONTHYEAR combines them. :MONTH, :YEAR, :QUARTER, and :MONTHYEAR also support basic arithmetic — addition, subtraction, multiplication, and division — so you can shift the resolved date forward or back.
-
-The pattern is:
-
-> %KEYWORD% %OPERATION% %VALUE%
-
-Imagine you bill gym membership every three months. Put this in the line description:
+**Example:** you bill a gym membership every three months. Type this in the line description:
 
 > Gym membership: :MONTH to :MONTH+3
 
-![alt text](/assets/images/recurring_invoices/reserved-keywords-step-one.png "Typing reserved keys in description")
+![Typing date keywords into a line item description](/assets/images/recurring_invoices/reserved-keywords-step-one.png "Typing date keywords in the description")
 
-Save and preview:
+Save and preview the PDF:
 
-![alt text](/assets/images/recurring_invoices/reserved-keywords-pdf.png "Screenshot of PDF")
+![The PDF showing the keywords replaced with month names](/assets/images/recurring_invoices/reserved-keywords-pdf.png "PDF with keywords replaced")
 
-Each cycle the line now names the correct three-month window without you touching it.
+Now every cycle names the right three-month window without you touching it.
 
-### Supported combinations
+All supported combinations:
 
 ```bash
 Month: :MONTH
@@ -117,62 +161,53 @@ Quarter: :QUARTER
 :MONTHYEAR (+, -) :MONTHYEAR :MONTHYEAR+1
 ```
 
-## Date Ranges
+### How do I show a date range?
 
-Simple keywords are handy, but sometimes you need a full range — for example:
-
-> Gym membership: February 2021 to February 2023
-
-Type it like this:
+To print a full range, such as "Gym membership: February 2021 to February 2023", type:
 
 > Gym membership: [MONTHYEAR|MONTHYEAR+24]
 
-Gym membership: February 2021 to February 2023.
+![The PDF showing a month and year range](/assets/images/recurring_invoices/reserved-keywords-monthyear-preview.png "Date range on the PDF")
 
-![alt text](/assets/images/recurring_invoices/reserved-keywords-monthyear-preview.png "Screenshot of PDF")
+You could also write it the long way: `Gym membership: :MONTH :YEAR to :MONTH :YEAR+2`. The `[MONTHYEAR|MONTHYEAR]` format is tidier, because it handles ranges that cross into a new year cleanly.
 
-You can also spell it out the long way:
-
-> Gym membership: :MONTH :YEAR to :MONTH :YEAR+2
-
-The **[MONTHYEAR|MONTHYEAR]** syntax handles overlapping dates cleanly, so ranges that cross a year boundary stay tidy.
-
-### Supported combinations
+Supported range combinations:
 
 ```bash
 [MONTHYEAR|MONTHYEAR +, -], [MONTHYEAR|MONTHYEAR+16], [MONTHYEAR|MONTHYEAR-2]
 ```
 
-### Translations
+**Other languages:** the word "to" between the two dates comes from [your localization settings](/docs/user-guide/basic-settings/#localization), so ranges appear in your client's language.
 
-The word "to" between the two ends of a range isn't hardcoded — it's pulled from [your localization settings](/docs/user-guide/basic-settings/#localization), so ranges render in your clients' language.
+## How do I set the service period for e-invoices?
 
-## E-Invoicing and Invoice Period Definition
+Some e-invoices must state the service period they cover, for example February 2026 to April 2026. The **E-Invoice** tab appears when [e-invoicing](/docs/user-guide/einvoicing) is turned on. It has a **Start Date** and **End Date** for this.
 
-Some billing relationships — particularly those requiring compliant e-invoices — need you to explicitly state the service period the invoice covers (for example, February 2026 through April 2026). The **E-Invoice** tab on a recurring invoice gives you a **Start Date** and **End Date** field for exactly this.
+![The E-Invoice tab with Start Date and End Date fields](/assets/images/recurring_invoices/recurring_invoice_period.png "Invoice period")
 
-![alt text](/assets/images/recurring_invoices/recurring_invoice_period.png "Invoice Period")
+Both fields take plain-English phrases, worked out with PHP's [date_create()](https://www.php.net/manual/en/function.date-create.php) function, so you can describe the period the way you'd say it.
 
-Both fields accept natural-language expressions and are evaluated with PHP's [date_create()](https://www.php.net/manual/en/function.date-create.php) function, so you can describe the period the way you'd say it out loud.
+| Invoice created on | Start Date | End Date | Period on the invoice |
+|---|---|---|---|
+| 1 October 2025 | `first day of last month` | `last day of last month` | 1 September 2025 to 30 September 2025 |
+| 1 October 2025 | `first day of month` | `first day of month, +1 month` | 1 September 2025 to 1 October 2025 |
 
-Say your invoices generate on the 1st of October 2025 and you set:
+As the second row shows, you can chain phrases with a comma for finer control.
 
-Start Date: first day of last month
-End Date: last date of last month.
+## Which workflows are worth knowing?
 
-The invoice will carry a period of 1st September 2025 through 30th September 2025.
+### Create invoices on schedule but hold them for review
 
-You can chain phrases together for finer control:
-
-Start Date: first day of month
-End Date: first day of month, +1 month
-
-That produces 1st September 2025 through 1st October 2025.
-
-## Common Workflow Video Guides
-
-### Generate But Hold For Review
-
-This guide shows how you can generate recurring invoices on a schedule, but hold them for review prior to sending.
+This video shows how to create recurring invoices on schedule but hold them so you can check them before they're sent.
 
 <VideoPlayer src="/assets/videos/recurring_invoices/draft/draft_recurring_invoices.mpd" isDash={true} id="draft-recurring-invoices" />
+
+## Related
+
+- [Invoices](/docs/user-guide/invoices): what each cycle creates
+- [Clients](/docs/user-guide/clients): who gets billed, and their saved payment methods
+- [Payment Settings](/docs/user-guide/basic-settings#payment_settings): Auto Bill defaults and timing
+- [Payment Gateways](/docs/user-guide/gateways): save cards and bank accounts for Auto Bill
+- [Payment Links](/docs/user-guide/subscriptions): sell subscriptions through a hosted checkout
+- [Products](/docs/user-guide/products): the prices **Update Prices** uses
+- [E-Invoicing](/docs/user-guide/einvoicing): send invoices as structured electronic files

@@ -1,169 +1,190 @@
 ---
-title: "Credits"
+title: "Credits: Give Clients a Balance to Use on Future Invoices"
+sidebar_label: "Credits"
 sidebar_position: 6
+description: "How to create, apply and manage credits in Invoice Ninja: store credit, goodwill credits and vouchers, applying a credit to invoices, and what each credit status (Draft, Sent, Partial/Deposit, Applied) means."
 ---
-A credit is a balance owed *to* a client that sits on their account until you apply it against an invoice. You'll reach for a credit whenever you need to acknowledge money a client has effectively "banked" with you — a refund issued as store credit, a goodwill gesture after a service issue, an overpayment you're holding for next month's invoice, or a voucher for a specific product or flat amount.
+# Credits: give clients a balance they can use on future invoices
 
-Because credits live on the client record (not on a single invoice), the same credit can be spread across several future invoices, or consumed in one go. They behave like a payment when applied, which means they also show up in your payment history and reporting.
+A credit is money you owe a client that sits on their account until you use it against an invoice. Use one for a refund given as store credit, a goodwill gesture after a service issue, or a voucher for a product or a flat amount.
 
-![Credits homepage](/assets/images/credits/credits_homepage_table.png)
+## How do credits work?
 
-Before you start issuing credits, it's worth reviewing your [Payment Settings](/docs/user-guide/basic-settings/#payment_settings) — options there control how credits are offered to clients at checkout and whether they're applied automatically, which makes a real difference to how intuitive credits feel for your customers.
+- A credit lives on the [client](/docs/user-guide/clients) record, not on a single invoice. That means you can spread one credit across several future invoices, or use it all at once.
+- When you apply a credit, it behaves like a payment. That's why applied credits also show up in your [payments](/docs/user-guide/payments) list and reports.
+- A credit has no effect on any balance until it's sent (emailed or marked as sent).
 
-## Viewing a Credit
+![The credits list](/assets/images/credits/credits_homepage_table.png "Credits list")
 
-Select a credit number from the list to open it. The view and edit screens follow the same layout as [Invoices](/docs/user-guide/invoices) and [Quotes](/docs/user-guide/quotes), so once you're comfortable with one, the others feel familiar.
+**Before you start:** look at your [Payment Settings](/docs/user-guide/basic-settings/#payment_settings). The options there control how credits are offered to clients at checkout and whether they're applied automatically. Getting these right makes credits much easier for your clients to understand.
 
-### Credit More Actions Dropdown
+## How do I view a credit?
 
-The _More Actions_ dropdown groups the things you're most likely to do with an existing credit:
+Click **Credits** in the left menu, then click a credit number to open it. The form is a lot like an [invoice](/docs/user-guide/invoices) or a [quote](/docs/user-guide/quotes), so once you know one, the others feel familiar. The tabs along the top are **Edit**, **Documents**, **Settings**, **Activity** and **History**.
 
-- **View PDF** — open the PDF version of the credit
-- **Print PDF** — open the print dialog for the credit PDF
-- **Download PDF** — save the PDF locally
-- **Schedule** — queue the credit to be sent at a later date and time
-- **Client Portal** — see the credit exactly as the client sees it in the [Client Portal](/docs/user-guide/client-portal)
-- **Apply Credit** — open the payment entry screen pre-filled with this credit's amount so you can allocate it to one or more of the client's invoices
-- **Run Template** — render the credit through a custom design (advanced — see [Templates](/docs/advanced-topics/templates))
-- **Clone to Credit** — duplicate the credit
-- **Clone to Other** — copy the line items into a new _Invoice_, _Quote_, _Recurring Invoice_, or _Purchase Order_
-- **Archive**
-- **Delete**
+## What can I do with a credit?
 
-## Creating or Editing a Credit
+Click the arrow next to **Save** on the credit, or use the row's **Actions** menu on the list.
 
-There are two common paths to a new credit. The first is creating one from scratch — useful when the credit isn't tied to a specific invoice (for example, a goodwill gesture or a pre-paid retainer). The layout you see depends on your device: on desktop every panel is presented side-by-side on a single screen, while on mobile the same fields are grouped into tabs.
+| Action | What it does |
+|---|---|
+| **View PDF** / **Print PDF** / **Download PDF** | Shows, prints or saves the credit PDF |
+| **Email Credit** | Sends the credit to the contacts ticked to receive it |
+| **Schedule** | Sends the credit automatically at a later date and time |
+| **Client Portal** | Shows the credit exactly as your client sees it in the [Client Portal](/docs/user-guide/client-portal) |
+| **Mark Sent** | Changes a draft to sent without emailing it. Only appears on drafts. |
+| **Apply Credit** | Opens the **Enter Payment** screen with this credit already ticked, so you can use it on one or more invoices. See [How do I apply a credit to an invoice?](#how-do-i-apply-a-credit-to-an-invoice) |
+| **Clone To** | Copies the credit into a new **Credit**, **Invoice**, **Quote**, **Recurring Invoice** or **Purchase Order** |
+| **Run Template** | Runs one of your custom [templates](/docs/advanced-topics/templates) on the credit. Only appears once you've created a template. |
+| **Archive** / **Delete** | Tidies up or removes the credit. See [What do the credit statuses mean?](#what-do-the-credit-statuses-mean) |
+
+## How do I create a credit?
+
+There are two ways, depending on whether the credit is tied to an invoice.
+
+| You want to | Do this |
+|---|---|
+| Give a credit that isn't tied to an invoice, such as a goodwill gesture or a prepaid retainer | Click **Enter Credit** on the credits list and fill it in |
+| Reverse a whole invoice without retyping it | Open the invoice, click the arrow next to **Save**, choose **Clone To** and pick **Credit**. The items, quantities and prices come across automatically. |
+
+Creating a credit from scratch:
 
 <video width="100%" controls>
   <source src="/assets/videos/credits/create_credit.mp4" type="video/mp4" />
 </video>
 
-The second path is cloning an existing invoice into a credit. This is the fastest way to reverse an entire invoice — rather than retyping every line, use **Clone to Credit** from the invoice and the items, quantities, and pricing come across automatically.
+Creating a credit from an invoice:
 
 <video width="100%" controls>
   <source src="/assets/videos/credits/create_credit_from_invoice.mp4" type="video/mp4" />
 </video>
 
-The sections below describe the fields you'll see on the create/edit screen.
+### Who is the credit for?
 
-### Client
+1. Pick the client in the **Client** dropdown. Every credit needs one, because a credit is a balance on that client's account.
+2. Check which contacts get the credit email under **Contacts**. Contacts with **Add to Invoices** turned on in the client record are ticked automatically. Each contact has an **Authorized to sign** checkbox and, once the credit is saved, a **View in Portal** link.
 
-Every credit must be attached to a client, since a credit is a balance on that client's account. Pick the client from the list.
+![Client contacts with checkboxes and portal links on the credit screen](/assets/images/credits/client_auto_included_on_credit_example.png "Client contacts on credit")
 
-### Contacts
+### Which credit details do I fill in?
 
-![Client contacts on credit](/assets/images/credits/client_auto_included_on_credit_example.png "Client contacts on credit")
+| Field | What it is for |
+|---|---|
+| **Credit Date** | The date the credit takes effect. Defaults to today. |
+| **Valid Until** | Optional. An expiry date, if you only want to honor the credit for a limited time. |
+| **Partial/Deposit** | Optional. A partial amount, if you don't want the whole credit available at once. |
+| **Tags** | Optional. Labels you can use to find or group credits later. |
+| **Credit Number** | Created automatically from the pattern under **Settings > Generated Numbers > Credits**. Shows "Auto Generate" until you save. |
+| **PO #** | Optional. Your client's own purchase order reference. |
+| **Discount** | A percentage or flat amount taken off the credit total. Most often used when a credit is cloned from an invoice that already had a discount. |
 
-Each of the client's contacts is listed here. The checkbox beside each contact determines whether they'll receive the email notification when the credit is sent — contacts marked **Add to Invoices** on the client record are checked by default. Portal links for each contact are shown alongside, so you can jump straight into the customer's view if you need to.
+### How do I add line items?
 
-### Credit Details
+Line items work just like on an invoice. Each row has:
 
-- **Credit Date** — defaults to today; the effective date of the credit.
-- **Valid Until** — an optional expiry date, useful if you only want to honor the credit for a limited period.
-- **Credit Number** — generated automatically according to the pattern under _Settings > Advanced Settings > Generated Numbers_.
-- **PO #** — optional; handy when your client wants their own purchase order reference recorded.
-- **Discount** — a percentage or flat amount deducted from the credit total. Most often used when a credit is cloned from an invoice that already carried a discount.
+| Column | What it is for |
+|---|---|
+| **Item** | The product, task or expense the credit is for |
+| **Description** | Free text. Markdown (simple formatting codes for bold, lists and so on) shows as formatting when **Enable Markdown** is on under **Settings > Account Management**. |
+| **Quantity** | How many units or hours to multiply the unit cost by |
+| **Unit Cost** | The price per unit, or the hourly rate for a task |
+| **Line Total** | The quantity multiplied by the unit cost |
 
-## Items
+### What goes in the tabs below the line items?
 
-The items section is where the substance of the credit lives. It works just like the line items on an invoice — you can add _Products_, _Tasks_, or _Expenses_, and each row captures:
+![Tabs below the credit line items](/assets/images/credits/credit_bottom_tabs_nav.png "Tabs below the line items")
 
-- **Product** — the name of the product, task, or expense line item.
-- **Description** — free-form description. Supports HTML or Markdown formatting when Markdown is enabled under _Settings > Account Management_.
-- **Unit Cost** — price per unit, or hourly rate for a task.
-- **Quantity** — how many units (or hours) to multiply the unit cost by.
+| Tab | What it is for | Can the client see it? |
+|---|---|---|
+| **Public Notes** | The reason for the credit, so there's no confusion later. Printed on the PDF. | Yes |
+| **Private Notes** | Notes for your team only. Never on the PDF or in the client portal. | No |
+| **Terms** | Any conditions attached to the credit. Turn on **Save as default terms** to fill them in on future credits. | Yes |
+| **Footer** | Disclaimers or fine print at the bottom of the PDF. Turn on **Save as default footer** to fill them in on future credits. | Yes |
+| **Custom Fields** | Extra fields you've set up for credits | Depends on the field |
 
-## Bottom Tabs
+### How do I attach files to a credit?
 
-![Bottom Tabs](/assets/images/credits/credit_bottom_tabs_nav.png "Bottom Tabs")
+Open the **Documents** tab and upload contracts, photos or supporting paperwork. Your client can open them in the [Client Portal](/docs/user-guide/client-portal).
 
-The tabs along the bottom of the edit screen hold the surrounding context — notes, terms, documents, and advanced settings for the credit.
+### What is on the Settings tab?
 
-### Public Notes
+These options override your company defaults for this credit only:
 
-Notes visible to both you and your client on the credit PDF. This is the right place to record the reason for the credit so there's no confusion later.
+- **Project:** links the credit to a [project](/docs/user-guide/projects).
+- **Exchange Rate:** when the client's currency differs from yours, sets the rate used to convert the total.
+- **Design:** picks a built-in or custom PDF design. Manage designs under **Settings > Invoice Design**.
+- **Assigned User:** the user the credit is recorded against. Useful for reporting and for limiting who can see the record.
+- **Vendor:** links the credit to a [vendor](/docs/user-guide/vendors).
+- **Inclusive Taxes:** when on, tax is treated as already included in the line prices instead of added on top.
 
-### Private Notes
+## How do I apply a credit to an invoice?
 
-Internal-only notes. These never appear on the PDF and aren't visible in the client portal — they're for users of the admin portal.
+Applying a credit is how the balance on the client's account actually gets used.
 
-### Terms
+1. Open the credit.
+2. Click the arrow next to **Save** and choose **Apply Credit**. The **Enter Payment** screen opens with the client filled in and this credit already ticked.
+3. Tick the invoice, or invoices, to use the credit on. The invoice balance is filled in for you; you can lower it if you're only using part of the credit.
+4. Click **Save**.
 
-Any terms or conditions you want to attach to the credit. If you find yourself typing the same thing every time, use _Save as default terms_ to have them pre-filled on future credits.
-
-### Footer
-
-Text that prints at the bottom of the credit PDF — a good spot for disclaimers or fine print. Can also be saved as a default.
-
-### Documents
-
-Attach files — contracts, photos, supporting paperwork — to the credit. Uploaded files are accessible to the client through the [Client Portal](/docs/user-guide/client-portal).
-
-### Settings
-
-A few less-common options that override company defaults for this specific credit:
-
-- **Project** — link the credit to a [Project](/docs/user-guide/projects).
-- **User** — change the user recorded as the creator. Useful for reporting and for scoping record-level permissions to a specific user.
-- **Exchange Rate** — when the client's currency differs from your company currency, manually set the rate used to convert the total.
-- **Vendor** — optionally associate the credit with a [Vendor](/docs/user-guide/vendors).
-- **Inclusive Taxes** — treat tax amounts as already included in the line prices rather than added on top.
-- **Design** — pick one of the built-in templates or a custom design. Designs are managed under _Settings > Invoice Design_.
-
-## Applying a Credit
-
-Applying a credit is how the balance sitting on the client's account actually gets used. Choosing **Apply Credit** opens the payment entry screen with the client and credit amount already filled in — all you have to do is pick the invoice (or invoices) to apply the credit against and save. The credit behaves like a payment from that point on, which is why it appears in your [Payments](/docs/user-guide/payments) list too.
+From now on the credit behaves like a payment, so it also appears in your [Payments](/docs/user-guide/payments) list. You can also use a credit while you enter a cash payment; see [How do I use a client's credit in a payment?](/docs/user-guide/payments#how-do-i-use-a-clients-credit-in-a-payment)
 
 <video width="100%" controls>
   <source src="/assets/videos/credits/applying_credit_to_invoice.mp4" type="video/mp4" />
 </video>
 
-## Lifecycle of a Credit
+## What do the credit statuses mean?
 
-A credit moves through a handful of statuses over its life. Each one tells you at a glance whether the credit is still editable, whether any balance remains, and whether it's active on the client's account.
+The status tells you at a glance whether a credit can still be edited, whether any balance is left and whether it's active on the client's account. The **Status** filter on the list offers Draft, Sent, Partial/Deposit and Applied.
 
-### Draft
+| Status | What it means | Can I still use it? |
+|---|---|---|
+| **Draft** | Being prepared. Your client can't see it and it isn't on their account yet. | No, send it first |
+| **Sent** | Emailed or marked as sent. Now it's on the client's account. | Yes |
+| **Partial/Deposit** | Some of it has been used, and a balance is left | Yes, the remaining balance |
+| **Applied** | All of it has been used | No, nothing is left |
+| **Archived** | Hidden from your normal list | |
+| **Deleted** | Removed from reports, but can still be restored | |
 
-Draft is where every credit begins. While a credit is in Draft you can edit it freely, and it's completely invisible to the client. Nothing is linked to the client's account yet — a draft becomes "real" only once it's emailed or marked as sent.
+### What does Draft mean?
 
-:::warning
-Once a draft credit has been emailed or marked as sent, its status cannot be rolled back to Draft.
-:::
-
-### Sent
-
-A credit is marked Sent once you've emailed it or manually marked it as sent in the admin portal. This is the point at which the credit is actually attached to the client and becomes eligible to apply against invoices — before that, it has no effect on any balance.
-
-### Partial
-
-Partial means some of the credit has been used against one or more invoices, but a balance remains. The leftover amount is shown in the overview panel so you can see at a glance how much the client still has available.
-
-:::note
-There is no direct way to refund a credit that's already been applied to an invoice. To "return" an applied credit, you _Reverse_ the invoice it was applied to — reversal converts any remaining paid balance (whether from a credit or a payment) back into a _new_ credit on the client's account. If a mix of cash payment and credit was applied, refund the payment first and then reverse the invoice.
-:::
-
-### Applied
-
-When the entire balance of the credit has been consumed across one or more invoices, the credit flips to Applied. There's nothing left to use.
-
-### Deleted
-
-Deleting a credit:
-
-- Sets the credit's status to deleted.
-- Appends `_deleted` to the credit number so the original number can be reused.
-- If the credit was Partial, removes the remaining balance from the client's account — but does *not* touch any amount that had already been applied to invoices.
-
-This mirrors how deletion works elsewhere in the app (see the Archive vs Delete discussion in [Clients](/docs/user-guide/clients)): deletion is reversible via **Restore**, but it actively strips the record from reporting.
-
-### Archived
-
-Archiving simply hides the credit from the default list view. It's a tidying action — balances and history are untouched — and it's the right choice when you want a clean workspace without affecting any of your reporting.
+Every credit starts as a draft. You can edit it freely, your client can't see it and nothing is linked to their account yet. A draft only becomes real once you email it or mark it as sent.
 
 :::warning
-An archived credit cannot be modified. Restore it first if you need to make changes.
+Once you email a credit or mark it as sent, you can't change it back to a draft.
 :::
 
-### Restored
+### What does Partial/Deposit mean?
 
-Restoring an archived or deleted credit returns it to whatever status it held beforehand, with its balance and history intact.
+Some of the credit has been used on one or more invoices, but there's still a balance. The amount left is the **Remaining** column on the credits list, and **Balance** in the totals on the credit.
+
+### Can I refund a credit that's already been applied?
+
+Not directly. To give back a credit that was used on an invoice, [reverse that invoice](/docs/user-guide/invoices#what-does-reversed-mean). Reversing turns whatever was paid on it, from a credit or a payment, back into a new credit on the client's account.
+
+If the invoice was paid with a mix of a payment and a credit, [refund the payment](/docs/user-guide/payments#refunds) first, then reverse the invoice.
+
+### What happens when I delete a credit?
+
+Deleting a credit sets its status to **Deleted**. If the credit was **Partial/Deposit**, the remaining balance is removed from the client's account. Amounts already used on invoices are not touched.
+
+Like everywhere else in Invoice Ninja, you can undo a delete with **Restore**, but while it's deleted the credit is left out of your reports. See [Archive, delete or purge: which one should I use?](/docs/user-guide/clients#archive-delete-or-purge-which-one-should-i-use)
+
+### What does archiving a credit do?
+
+Archiving hides a credit from your normal list. Balances and history don't change, so it's the right choice when you want a tidy list without affecting your reports. To show it again, restore it.
+
+### How do I bring back an archived or deleted credit?
+
+1. On the credits list, open the **Lifecycle** filter, tick **Archived** (or **Deleted**) and click **Apply**.
+2. In the credit's row, open the **Actions** menu and choose **Restore**.
+
+The credit goes back to the status it had before, with its balance and history intact.
+
+## Related
+
+- [Payments](/docs/user-guide/payments): applied credits show up here
+- [Invoices](/docs/user-guide/invoices): where credits get used, and how reversing works
+- [Clients](/docs/user-guide/clients): see a client's credit balance
+- [Payment Settings](/docs/user-guide/basic-settings/#payment_settings): how credits are offered at checkout
+- [Client Portal](/docs/user-guide/client-portal): what your client sees
+- [Templates](/docs/advanced-topics/templates): build advanced documents from templates
