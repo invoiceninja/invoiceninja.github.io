@@ -106,7 +106,7 @@ See [Client Portal](/docs/user-guide/client-portal)
 
   ![Dashboard filter by currency](/assets/images/dashboard/dashboard_filter_by_currency.png "Dashboard filter by currency")
 
-- If you have a group of clients that you'd like to bill in a specific currency, or apply other settings to a group of clients, you can use the Groups feature in Invoice Ninja – see: [Group Settings for Client Management](/docs/user-guide/clients/#group-settings-for-client-management)
+- If you have a group of clients that you'd like to bill in a specific currency, or apply other settings to a group of clients, you can use the Groups feature in Invoice Ninja. See: [Group Settings for Client Management](/docs/user-guide/clients/#how-do-i-apply-the-same-settings-to-many-clients-groups)
   - Groups lets you customize any setting or templates (ex. invoice templates) to tailor to your group of clients. For example, if you want a different invoice design or email for your "USD Clients" you can configure that easily with Groups.
 
 ### How can I show the currency symbol on invoices/quotes?
@@ -165,7 +165,7 @@ See [Client Portal](/docs/user-guide/client-portal)
   - See: [Invoice Design](/docs/user-guide/advanced-settings/#invoice_design)
 - Designs can be further tailored to individual clients or groups of clients by using the Client Settings and Groups features
   - See: [Custom Settings Per Client](/docs/user-guide/clients)
-  - See: [Group Settings](/docs/user-guide/clients/#group-settings-for-client-management)
+  - See: [Group Settings](/docs/user-guide/clients/#how-do-i-apply-the-same-settings-to-many-clients-groups)
 
 ### What is the purpose of the User dropdown in invoices/quotes/expenses?
 
