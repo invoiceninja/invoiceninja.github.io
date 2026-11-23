@@ -1,353 +1,483 @@
 ---
-title: "Basic Settings"
+title: "Basic Settings: Set Your Company, Payments and Defaults"
+sidebar_label: "Basic Settings"
 sidebar_position: 26
+description: "How to set your Invoice Ninja company details, logo, payment and tax defaults, product and task options, tags, workflow, import and export, backups and account security."
 ---
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-Basic Settings is where you tell Invoice Ninja who your business is, how you work, and what your documents should look like by default. Most of what you configure here flows into every invoice, quote, and email you send, so it pays to spend a little time up front getting it right.
+# Basic Settings: set your company, payments and defaults
 
-If you're brand new, start with the walkthrough in [Get Started](/docs/user-guide) — it covers the same ground in the order you'll actually need it. When you're ready to dig deeper into templates, reminders, and custom fields, head over to [Advanced Settings](/docs/user-guide/advanced-settings).
+Basic Settings is where you tell Invoice Ninja who your business is, how you work, and what new invoices, quotes and emails should start with. Most of what you set here flows into every document you send, so it is worth getting it right early.
+
+If you are just getting started, the walkthrough in [Get Started](/docs/user-guide) covers the same ground in the order you will need it. When you are ready to go further into designs, reminders and custom fields, open [Advanced Settings](/docs/user-guide/advanced-settings).
 
 :::info
-The settings search at the top of the Settings screen is the fastest way to find any option. Searching for terms like "email", "color", or "tax" surfaces every related setting across both Basic and Advanced Settings in one list.
+The fastest way to find a setting is the search box in the top bar of the admin app (placeholder "Find invoices, clients, and more"). Searching for a term such as "tax" or "email" lists matching Settings pages from both Basic and Advanced Settings, along with other records.
 :::
 
-## Company Details {#company_details}
+The left Settings menu is split into **Basic Settings** and **Advanced Settings**. Basic Settings, in order, is Company Details, User Details, Localization, Payment Settings, Tax Settings, Product Settings, Task Settings, Tags, Expense Settings, Workflow Settings, Account Management, Backup | Restore and Import | Export.
 
-Everything in this section is tied to the company you currently have selected in the top-left company switcher. If you run more than one business from the same account, switch companies first — the settings on this screen only apply to the active one.
+## How do I set my company details? {#company_details}
 
-Company Details is the face of your business in Invoice Ninja. The name, logo, address, and contact info you enter here appear on your invoices, quotes, emails, and the client portal. The defaults you set here (payment terms, quote validity, footer text) are what every new invoice and quote starts with.
+Everything in this section belongs to the company you currently have selected in the top-left company switcher. If you run more than one business from the same account, switch companies first. The settings on this screen apply only to the active company.
+
+Go to **Settings > Company Details** (route `#/settings/company_details`). The tabs are **Details**, **Address**, **Logo**, **Defaults**, **Documents** and **Custom Fields**.
+
+The name, logo, address and contact details you enter here appear on your invoices, quotes, emails and the client portal. The terms and footers you set under Defaults are what every new invoice, quote, credit or purchase order starts with.
 
 ### Details
 
-The fields in the first block print onto most default document layouts, so treat them as your letterhead. Emails and websites render as clickable links in PDFs.
+The first block of fields prints onto most default document layouts, so treat them as your letterhead. Emails and websites become clickable links in PDFs.
 
-- **Name** — Your company name
-- **ID Number** — Business or tax identification number
-- **VAT Number** — EU/UK-style value added tax identifier
-- **Website** — Your company's website
-- **Email** — A general or sales contact address
-- **Phone** — A phone number clients can reach you on
-
-The next two are for your own reference in the admin portal and don't appear on documents.
-
-- **Size** — Approximate headcount
-- **Industry** — A searchable list of preset industry categories
+| Field | What it is for |
+|---|---|
+| **Company Name** | Your company name. |
+| **ID Number** | A business or tax identification number. |
+| **VAT Number** | An EU or UK style value added tax identifier. |
+| **Website** | Your company's website. |
+| **Email** | A general or sales contact address. |
+| **Company Phone** | A phone number clients can reach you on. |
+| **Company Size** | Approximate headcount, chosen from a dropdown. |
+| **Industry** | A searchable list of preset industry categories. |
+| **Classification** | An optional classification, such as Business. |
 
 ### Address
 
-Standard address fields that print on default invoice, quote, and statement layouts.
+These standard address fields print on default invoice, quote and statement layouts: **Street**, **Apt/Suite**, **City**, **State/Province**, **Postal Code** and **Country**.
 
-- **Street**, **Apt/Suite**, **City**, **State/Province**, **Postal Code**, **Country**
+### How do I add a company logo? {#logo}
 
-### Company logo for invoices and the client portal {#logo}
+Set your company logo under **Settings > Company Details > Logo**. The heading is **Upload Your Company Logo**. Use **Drop files or click to upload**, then **Crop Logo** or **Remove logo** if you need to adjust or clear it.
 
-Set your company logo under **Settings > Company Details > Logo**. Company branding is used on customer-facing documents and the client portal. To change portal colors or style the logo area, see [Client Portal customization](/docs/user-guide/client-portal#customization).
+Company branding is used on customer-facing documents and the client portal. To change portal colors or style the logo area, see [Client Portal customization](/docs/user-guide/client-portal#customization). A roughly 300 x 300 pixel image works best. Much larger files can cause layout issues when generating PDFs. A landscape logo usually reads best across emails and the portal.
 
-Your logo appears on invoice PDFs, emails, and in the company switcher in the top-left of the admin portal. A roughly 300×300 pixel image works best — much larger files can cause layout issues when generating PDFs. A landscape logo usually reads best across emails and the portal.
+### What defaults apply to new documents? {#defaults}
 
-### Defaults
+The **Defaults** tab holds the standard terms and footer text for each document type. They fill in automatically when you create a new record, and you can still change them on an individual document.
 
-These are company-wide defaults. They fill in automatically when you create new records, but you can always override them on an individual invoice, quote, or client.
+| Field | What it is for |
+|---|---|
+| **Invoice Terms** and **Invoice Footer** | Default wording on new invoices. |
+| **Quote Terms** and **Quote Footer** | Default wording on new quotes. |
+| **Credit Terms** and **Credit Footer** | Default wording on new credits. |
+| **Purchase Order Terms** and **Purchase Order Footer** | Default wording on new purchase orders. |
 
-- **Invoice Payment Terms** — Default due-in-days for new invoices. Use **Configure Payment Terms** to add your own (for example, "Net 14" or "Due on receipt").
-- **Quote Valid Until** — How long, in days, new quotes remain valid.
-- **Terms and Footers** — Default terms and footer text injected into every invoice and quote. Great for standing disclaimers, late-fee clauses, or policy wording you want on every document. These print below any public notes.
+Use these for standing disclaimers, late-fee clauses or policy wording you want on every document. They print below any public notes.
+
+Payment due dates and quote validity are not on this tab. Set **Payment Terms** and **Quote Valid Until** under [Payment Settings](#payment_settings).
 
 ### Documents
 
-A shared file store for company documents. Files uploaded here are accessible only from the admin portal — they don't attach to invoices automatically. Use it for template forms, blank agreements, handouts, and internal reference material. Note that files live in the `public/storage` directory, so this isn't the place for anything truly sensitive.
+The **Documents** tab is a shared file store for company documents. It has a **Set Documents Public by Default** toggle ("If enabled, new documents will be public by default.") and a **Drop files or click to upload** zone. Uploaded files appear in a table with Name, Date, Type and Size.
 
-## User Details {#user_details}
+### Custom Fields
 
-This section is about *you* — the currently signed-in user — rather than the company. Your user details identify you to teammates, receive password-reset emails, and tie you to any client, task, or project you've been assigned. If you're a solo operator, you'll still want to set a name, email, and a strong password with 2FA.
+The **Custom Fields** tab on Company Details is for extra fields on the company record. To add or rename fields for clients, invoices and other records, see [Custom Fields](/docs/user-guide/advanced-settings#custom_fields).
+
+## How do I update my user details? {#user_details}
+
+This section is about you, the currently signed-in user, rather than the company. Your user details identify you to teammates, receive password-reset emails, and tie you to any client, task or project you have been assigned.
+
+Go to **Settings > User Details** (route `#/settings/user_details`). The tabs are **Details**, **Password**, **OAuth / Mail**, **Two-Factor Authentication**, **Accent Color**, **Notifications**, **Custom Fields**, **Preferences** and **Keyboard Shortcuts**.
 
 ### Details
 
-- **First Name**, **Last Name**
-- **Email** — Used for password resets and team contact
-- **Phone** — For reference only
-- **Password** — Change your account password (your current password is never shown)
-- **Enable Two Factor** — Turn on TOTP-based 2FA using any authenticator app. You'll scan a QR code and confirm a one-time code before it saves.
-- **Accent Color** — The highlight and button color used throughout the admin portal. Accent color is per user *and* per company, so you can tell companies apart at a glance.
+| Field | What it is for |
+|---|---|
+| **First Name**, **Last Name** | Your name, as shown to teammates. |
+| **Email** | Used for password resets and team contact. |
+| **Language** | Your preferred language in the admin app. |
+| **Phone** | For reference. |
+| **Email Signature** | A personal signature you can add to messages. |
+
+### Password
+
+The **Password** tab has a **New password** field. Your current password is not shown, and there is no current-password field on this tab.
+
+### Two-Factor Authentication
+
+The **Two-Factor Authentication** tab has a **2FA** row and a **Passkey** row, each with an **Enable** button. Open this tab when you want to turn either method on. Do not enable it unless you intend to set it up on this account.
+
+### Accent Color
+
+The **Accent Color** tab has a color picker. Accent color is the highlight and button color used throughout the admin portal. It is per user and per company, so you can tell companies apart at a glance.
 
 ### Notifications
 
-Notifications control which events email you personally. Useful if you want to know the second a client views a quote, or only want to hear about records you own.
+The **Notifications** tab controls which events email you personally.
 
-- **None** — No emails for this event
-- **Owned by user** — Only when the record is assigned to you
-- **All Records** — Every time this event happens in the company
+At the top are these toggles:
 
-The **All Events** row lets you set every notification category at once.
+| Setting | Help text |
+|---|---|
+| **Login Notification** | "Sends an email notifying that a login has taken place." |
+| **Task Assigned Notification** | "Send an email when a task is assigned" |
+| **Disable Recurring Payment Notification** | "Successful recurring invoice payment notifications will not be sent." |
+| **Enable E-Invoice Received Notification** | "Receive an email notification when a new E-Invoice is received." |
 
-## Localization {#localization}
+**All Events** can be set to **All records**, **Owned by user** or **Custom**. Each event then has its own dropdown: **All records**, **Owned by user** or **None**.
 
-Localization controls how currency, dates, numbers, and language appear on your documents. Set this early — changing currency after you've issued invoices doesn't retroactively recalculate the ones you've sent.
+The event list includes Invoice Created, Invoice Sent, Invoice Viewed, Invoice Late, Inventory Threshold, Payment Success, Payment Failure, Payment Manual, Purchase Order Created, Purchase Order Sent, Purchase Order Viewed, Purchase Order Accepted, Quote Created, Quote Sent, Quote Viewed, Quote Approved, Quote Expired, Quote Rejected, Credit Created, Credit Sent and Credit Viewed.
+
+## How do I set language, currency and dates? {#localization}
+
+Localization controls how currency, dates, numbers and language appear on your documents. Set this early. Changing currency after you have issued invoices does not recalculate the ones you have already sent.
+
+Go to **Settings > Localization** (route `#/settings/localization`). The tabs are **Settings** and **Custom Labels**.
 
 ### Settings
 
-- **Currency** — Your company's default currency (individual clients can override this)
-- **Currency Format** — How amounts are presented (symbol placement, thousands separators)
-- **Language** — Default language for documents and emails
-- **Date Format** — Preferred date presentation
-- **Military Time** — Toggle 24-hour time
-- **First Month of the Year** — Anchors annual reports to your fiscal year
+| Setting | What it does |
+|---|---|
+| **Currency** | Your company's default currency. Individual clients can override this. |
+| **Currency Format** | How amounts are presented: **Symbol** (for example `$ 1,000.00`) or **Code** (for example `1,000.00 USD`). |
+| **Language** | The default language for documents and emails. |
+| **Time Zone** | The company's time zone. |
+| **Date Format** | How dates are presented. |
+| **24 Hour Time** | Toggle 24-hour time. |
+| **Rappen Rounding** | Optional rounding used in some currencies. |
+| **Decimal Comma** | "Use comma as decimal place in forms." |
+| **First Month of the Year** | Anchors annual reports to your fiscal year. |
 
 ### Custom Labels
 
-Custom Labels let you rename any built-in term across your documents — useful when your industry calls them "Line Items" or "UPC" instead of "Item", or when you want to localize a specific phrase without switching the entire app language.
+Custom Labels let you rename a built-in term across your documents. That is useful when your industry uses a different word, or when you want to change one phrase without switching the entire app language.
 
-- **Select Label** — Pick a label from a dropdown of available entries and type the replacement text.
-- **Add Custom** — To target a label not in the dropdown, click **Add Custom**, then **Labels** in the popup to open the full list of label *keys*. Enter the key (for example, `invoice_date`), not the displayed text ("Invoice Date"). Once linked, enter the text you want shown in its place (for example, "Date of Transaction").
+The Custom Labels tab has a dropdown of available labels and an **Add Custom** button. Choose a label from the dropdown (the list is the label text, such as Amount, Due Date or VAT Number), then add it and type the replacement you want shown.
 
 Edit or create a new invoice to see your relabelling applied.
 
-## Payment settings and automatic billing defaults {#payment_settings}
+## How do payment settings and automatic billing work? {#payment_settings}
 
 <VideoPlayer src="/assets/videos/payments/payment_settings/payment_settings.mpd" isDash={true} id="payment-settings-video" />
 
-Payment Settings governs *how* clients pay you — whether cards stored on file are charged automatically, whether credits on the account are applied at checkout, and which of the payment-related emails fire. Gateway connections themselves (Stripe, PayPal, etc.) are managed through a link at the bottom of this panel.
+Payment settings live under **Settings > Payment Settings**. The page title is **Online Payments**, and the route is `#/settings/online_payments`. The top of the page is the payment gateway list, with a Status filter and **Add Payment Gateway**. Company payment options sit on the same page, in a **Settings** card below the list. For connecting a provider, see [Payment Gateways](/docs/user-guide/gateways).
 
-- **Auto Bill**
-  - *Enabled* — Automatically charge a stored payment method when an invoice comes due
-  - *Enabled by default* — Clients are offered to store a payment method, pre-ticked
-  - *Disabled by default* — Same offer, unticked
-  - *Disabled* — No option shown, no auto-billing
-- **Auto Bill On** — When auto-billing runs: on send, or on the due date
-- **Payment Type** — The default payment method recorded against manual payments
-- **Use Available Credits** — Whether client-account credits are applied automatically, offered as an option, or ignored at payment time
-- **Allow Over Payment** — Let clients tip or pay more than the invoiced amount
-- **Allow Under Payment** — Accept partial payments against an invoice
-- **Payment Emails**
-  - *Manual Payment Email* — Notify the client when you record a manual payment
-  - *Online Payment Email* — Notify the client when an online payment succeeds
+These options control how clients pay you: whether a stored card is charged automatically, whether credits or unapplied payments are used at checkout, and which payment emails are sent.
 
-### Configure Payment Gateways
+| Setting | What it does |
+|---|---|
+| **Auto Bill Standard Invoices** | "Auto bill standard invoices on the due date." |
+| **Auto Bill Recurring Invoices** | Controls automatic charging for invoices created by a recurring schedule. The options are **Enabled (Option is not shown)**, **Opt-Out (Option is shown and selected)**, **Opt-In (Option is shown but not selected)** and **Disabled (Option is not shown)**. |
+| **Auto Bill On** | "Auto bill on send date OR due date (recurring invoices)." The options are **Send Date** and **Due Date**. |
+| **Use Available Credits** | "Apply any credit balances to payments prior to charging a payment method." |
+| **Use Unapplied Payments** | "Apply any payment balances prior to charging a payment method." |
+| **Payment Terms** | "The number of days after the invoice date that payment is due." A **Configure** link opens **Payment Terms** (`#/settings/payment_terms`), where you can add a term with **New Payment Term**. |
+| **Payment Type** | "The default payment type to be used for payments." |
+| **Quote Valid Until** | "The number of days that the quote is valid for." |
+| **Expense Payment Type** | "The default expense payment type to be used." |
+| **Manual Payment Email** | "Send an email when manually entering a payment." |
+| **Online Payment Email** | "Send an email when an online payment is made." |
+| **Mark Paid Payment Email** | "Send an email when marking an invoice as paid." |
+| **Manual Overpayments** | "Support adding an overpayment amount manually on a payment." |
+| **Allow Overpayment** | "Support paying extra to accept tips." |
+| **Allow Underpayment** | "Support paying at minimum the partial/deposit amount." |
+| **Minimum Under Payment Amount** | The smallest partial payment allowed when Allow Underpayment is on. There is no separate Minimum Payment Amount label. |
+| **Client Initiated Payments** | "Support making a payment in the client portal without an invoice." When this is on, a client can pay you from the portal without an outstanding invoice. See [Client Portal](/docs/user-guide/client-portal). |
+| **Payment Email To All Contacts** | "Sends the payment email to all contacts when enabled." |
+| **One-Page Checkout** | "Enable the new single page payment flow." |
+| **Unlock Documents After Payment** | "Allows client access to invoice documents when an invoice has been paid." |
 
-Connecting a gateway is what lets clients click "Pay Now" on an invoice and complete checkout without leaving the client portal. For the full list of supported providers and setup steps, see [Payment Gateways](/docs/user-guide/gateways).
+### How do I connect a payment gateway?
 
-## Tax Settings {#tax_settings}
+Connecting a gateway is what lets clients click **Pay Now** on an invoice and complete checkout in the client portal. Click **Add Payment Gateway** at the top of the Online Payments page. For the full list of supported providers and setup steps, see [Payment Gateways](/docs/user-guide/gateways).
 
-Tax Settings is where you decide whether tax lives at the invoice level, the line-item level, or both, and how many tax rates each document can carry. Set this up before your first invoice — changing it later doesn't rewrite history.
+## How do I set tax defaults? {#tax_settings}
+
+Tax Settings is where you decide whether tax lives at the invoice level, the line-item level, or both, and how many tax rates each document can carry. Set this up before your first invoice. Changing it later does not rewrite invoices you have already sent.
+
+Go to **Settings > Tax Settings** (route `#/settings/tax_settings`).
 
 :::warning
-It's easy to double-charge by enabling tax on both invoice totals *and* on every line item. Use line-level tax when different products carry different rates, and invoice-level tax when one rate applies to the whole document. For deeper tax scenarios — multiple jurisdictions, compliance modes, per-client tax rules — see [Taxes](/docs/user-guide/taxes).
+It is easy to tax twice by enabling tax on both invoice totals and every line item. Use line-level tax when different products carry different rates, and invoice-level tax when one rate applies to the whole document. For deeper tax scenarios, such as multiple jurisdictions, compliance modes and per-client tax rules, see [Taxes](/docs/user-guide/taxes).
 :::
 
-- **Invoice Tax Rates** — Disabled, one, two, or three tax rates applied to the invoice total. Enabling this spawns *Default Tax Rate* fields you can prefill.
-- **Item Tax Rates** — Disabled, one, two, or three tax rates available per line item on invoices and products.
-- **Expense Tax Rates** — Same control, for expense records.
-- **Inclusive Taxes** — When on, the tax is treated as already included in the price rather than added on top.
-  - Exclusive: 100 + 10% = 100 + 10 = 110
-  - Inclusive: 100 total = 90.91 + 9.09
+| Setting | What it does |
+|---|---|
+| **Invoice Tax Rates** | How many tax rates can be applied to the invoice total: **Disabled**, **One Tax Rate**, **Two Tax Rates** or **Three Tax Rates**. |
+| **Line Item Tax Rates** | The same choices, for tax rates on each line item. |
+| **Expense Tax Rates** | The same choices, for expense records. |
+| **Inclusive Taxes** | When the toggle is off, the example shown is "Exclusive: 100 + 10% = 100 + 10". |
+| **Calculate Taxes** | "Automatically calculate taxes when saving invoices." |
+| **Default Tax Rate** | A dropdown on a separate card, used as the default rate when invoice tax rates are enabled. |
 
-**Configure Rates** opens the Tax Rates manager. Add a rate with the **+** button, give it a name and a percentage, and it becomes selectable from the tax dropdowns on invoices, products, and expenses.
+The tax rate list sits on the same page, below those options. It has **Filter**, **Lifecycle** (Active) and **New Tax Rate**. The columns are Name, Tax Rate and Actions.
 
-## Product Settings {#product_settings}
+**New Tax Rate** opens an unsaved **Add Tax Rate** form with **Name** and **Tax Rate**. Give the rate a name and a percentage, then save it, and it becomes selectable from the tax dropdowns on invoices, products and expenses.
 
-These switches tune how products behave when you drop them onto an invoice or quote. Turn on discounts or cost tracking if you need them; leave the rest alone if you don't.
+## How do product settings change invoices? {#product_settings}
 
-- **Show Product Discount** — Add a per-line discount field (visible on the client's PDF)
-- **Show Product Cost** — Track your cost against each product for markup/margin reporting (admin-only, never shown to clients)
-- **Show Product Quantity** — Show the quantity column on invoices
-- **Default Quantity** — Default each new line to a quantity of 1
-- **Fill Products** — Auto-fill description and price when you pick a product
-- **Update Products** — When you edit a product's description or tax on an invoice, push those changes back to the product library
-- **Convert Products** — Automatically convert product prices into the client's currency
+These switches tune how products behave when you add them to an invoice or quote. Turn on discounts, cost tracking or stock if you need them. Leave the rest alone if you do not. For more on managing your catalogue, see [Products](/docs/user-guide/products).
 
-For more on managing your catalog, see [Products](/docs/user-guide/products).
+Go to **Settings > Product Settings** (route `#/settings/product_settings`).
 
-## Task Settings {#task_settings}
+| Setting | What it does |
+|---|---|
+| **Track Inventory** | "Display a product stock field and update when invoices are sent." |
+| **Stock Notifications** | "Send an email when the stock reaches the threshold." You can set a **Notification Threshold** on an individual product. |
+| **Show Product Discount** | "Display a line item discount field." |
+| **Show Product Cost** | "Display a product cost field to track the markup/profit." This cost is for your reporting. It is not shown to clients. |
+| **Show Product Quantity** | "Display a product quantity field, otherwise default to one." |
+| **Default Quantity** | "Automatically set the line item quantity to one." |
+| **Auto-fill products** | "Selecting a product will automatically fill in the description and cost." |
+| **Auto-update products** | "Updating an invoice will automatically update the product library." |
+| **Convert Products** | "Automatically convert product prices to the client's currency." This is about currency conversion, not about saving a typed invoice line into the catalogue. |
 
-Task Settings shape how time entries look and what information flows from tasks onto the invoices you bill them against.
+When **Track Inventory** is on, each product shows **Stock Quantity**, **Stock Notifications** and **Notification Threshold**. **Mark Sent** on an invoice reduces stock by the line quantity. Deleting that invoice restores the stock.
 
-- **Default Tax Rate** — A default hourly rate for new tasks
-- **Auto Start Tasks** — Start the timer the moment a task is created
-- **Show Task End Date** — Adds an *End Date* field on tasks
+## How do task settings work? {#task_settings}
 
-The next group controls how tasks appear on invoices:
+Task Settings shape how time entries look, and what information flows from tasks onto the invoices you bill them against. For the task workflow itself, see [Tasks](/docs/user-guide/tasks).
 
-- **Show Tasks Table** — Always show a *Tasks* picker when building an invoice
-- **Invoice Task Datelog** — Include task-entry dates on the invoice
-- **Invoice Task Timelog** — Include the start/stop timestamps
-- **Add Documents to Invoice** — Share documents attached to the task with the client
+Go to **Settings > Task Settings** (route `#/settings/task_settings`).
 
-**Configure Statuses** opens the Task Statuses manager — a simple list of named, colored workflow stages (for example, Backlog, In Progress, Done) you can move tasks through.
+| Setting | What it does |
+|---|---|
+| **Default Task Rate** | The default hourly rate for new tasks (and new projects, unless you type a different rate). |
+| **Auto Start Tasks** | "Start tasks before saving." |
+| **Show Task End Date** | "Enable specifying the task end date." |
+| **Show Task Item Description** | "Enable specifying task item descriptions." |
+| **Allow Billable Task Items** | "Enable configuring which task items are billed." |
+| **Show Tasks Table** | "Always show the tasks section when creating invoices." |
+| **Invoice Task Datelog** | "Add date details to the invoice line items." |
+| **Invoice Task Timelog** | "Add time details to the invoice line items." |
+| **Invoice Task Hours** | "Add the hours to the invoice line items." |
+| **Invoice Task Project** | "Add the project to the invoice line items." |
+| **Invoice Task Item Description** | "Add the item description to the invoice line items." |
+| **Lock Invoiced Tasks** | "Prevent tasks from being edited once invoiced." |
+| **Add Documents to Invoice** | "Make the documents visible to client." |
+| **Show Tasks in Client Portal** | Controls whether tasks appear in the client portal. |
+| **Tasks Shown in Portal** | A dropdown for which tasks appear there (for example Invoiced). |
+| **Task Rounding Direction** | "Round task times up or down." The control is labelled **Round Up** when rounding up is selected. |
+| **Round To Nearest** | "The interval to round the task to." For example, 1 Minute. |
 
-## Tag Settings {#tag_settings}
+A status table sits at the bottom of the same page, with **Filter**, **Lifecycle**, **New Task Status**, and columns for Name, Color and Actions. Built-in statuses include Backlog, In Progress and Done.
 
-Tags are named, colored labels you attach to records so you can filter, search, and report on related work without inventing a new custom field for every label. Typical uses: mark a client as *VIP* or *Retainer*, flag tasks as *Billable* vs *Admin*, or group invoices that belong to a campaign.
+**New Task Status** opens an unsaved form with **Name** and **Color**.
 
-You manage the catalog from *Settings > Tags*. You apply tags on the record itself — clients, vendors, products, projects, tasks, invoices, quotes, credits, recurring invoices, expenses, recurring expenses, payments, purchase orders, and bank transactions all have a Tags field.
+## How do tags work? {#tag_settings}
 
-On any of those screens, start typing in the Tags box to pick an existing tag or (if you're an admin) create a new one on the spot. List views can filter by tag, search includes tag names, and [Reports](/docs/user-guide/reports) can show a Tags column and restrict the export to selected tags.
+Tags are named, colored labels you attach to records so you can filter, search and report on related work without inventing a new custom field for every label. Typical uses are marking a client as a retainer client, flagging tasks as billable, or grouping invoices that belong to a campaign.
+
+You manage the catalog from **Settings > Tags** (route `#/settings/tags`). The page title is **Tags**. You apply tags on the record itself. Clients, vendors, products, projects, tasks, invoices, quotes, credits, recurring invoices, expenses, recurring expenses, payments, purchase orders and transactions all have a Tags field.
+
+On any of those screens, start typing in the Tags box to pick an existing tag or (if you are an admin) create a new one on the spot. List views can filter by tag, search includes tag names, and [Reports](/docs/user-guide/reports) can show a Tags column and restrict the export to selected tags.
+
+The Tags page has **Filter**, **Lifecycle**, a **Type** filter, and **New Tag**. The list columns are Name, Type, Color and Actions.
 
 Keep the catalog small and reuse names. A handful of well-chosen tags is much more useful than a unique label on every record.
 
-### Global Tag Inheritance
+### What is Global Tag Inheritance?
 
-**Global Tag Inheritance** is off by default. Turn it on when a label on a parent should automatically land on the records you create underneath it — for example, tagging a client *VIP* so every new invoice, quote, project, and task for that client starts with *VIP* already applied.
+**Global Tag Inheritance** is a toggle on the Tags page, off by default. The help text is "Determines whether child entities inherit tags from their parent entities."
+
+Turn it on when a label on a parent should automatically land on the records you create underneath it. For example, tagging a client so every new invoice, quote, project and task for that client starts with that tag already applied.
 
 Only **global** tags cascade. A task-only or project-only tag stays on that record and is never copied to children.
 
 When inheritance is on, a brand-new record picks up the union of global tags from the parents it already has:
 
-- **Client** — flows onto new projects, tasks, invoices, quotes, credits, recurring invoices, expenses, recurring expenses, payments, and purchase orders
-- **Vendor** — flows onto new expenses, recurring expenses, purchase orders, invoices/quotes/credits (when a vendor is set), and bank transactions
-- **Project** — flows onto new tasks, invoices, quotes, credits, expenses, recurring expenses, and purchase orders tied to that project
+| Parent | New records that inherit its global tags |
+|---|---|
+| **Client** | Projects, tasks, invoices, quotes, credits, recurring invoices, expenses, recurring expenses, payments and purchase orders. |
+| **Vendor** | Expenses, recurring expenses, purchase orders, invoices, quotes and credits (when a vendor is set), and transactions. |
+| **Project** | Tasks, invoices, quotes, credits, expenses, recurring expenses and purchase orders tied to that project. |
 
-Tags you set on the new record yourself are kept and merged with whatever was inherited. Products never inherit — they have no parent.
+Tags you set on the new record yourself are kept and merged with whatever was inherited. Products never inherit. They have no parent.
 
-Two things inheritance does *not* do, which catch people out:
+Two things inheritance does not do:
 
 - It runs **once, at creation**. Assigning a project or client later does not backfill tags.
 - Changing a parent's tags later does not update children that already exist.
 
-With inheritance on, invoicing also **rolls global tags up** from the tasks and expenses you add as line items. That roll-up is additive and runs whenever you save the invoice, so tagging a billed task *Retainer* (as a global tag) will add *Retainer* to the invoice without removing tags already there. Entity-specific task tags are left behind.
+With inheritance on, invoicing also rolls global tags up from the tasks and expenses you add as line items. That roll-up is additive and runs whenever you save the invoice, so tagging a billed task as a global tag will add that tag to the invoice without removing tags already there. Entity-specific task tags are left behind.
 
 A workflow that works well:
 
-1. Create the labels you want to travel as **global** tags (*Settings > Tags > New Tag*, type **Global**).
-2. Tag the parent — usually the [client](/docs/user-guide/clients) or [project](/docs/user-guide/projects).
+1. Create the labels you want to travel as **global** tags (**Settings > Tags > New Tag**, type **Global**).
+2. Tag the parent, usually the [client](/docs/user-guide/clients) or [project](/docs/user-guide/projects).
 3. Create the child records. They arrive already tagged.
-4. Use typed tags on the child for local workflow (*Follow-up*, *Write-off*) that should not spread.
+4. Use typed tags on the child for local workflow that should not spread.
 
 Leave inheritance off if you prefer to tag each record by hand, or if you often create a task first and attach the project later.
 
-### Creating a Tag
+### How do I create a tag?
 
 There are two ways to add a tag to the catalog.
 
-From *Settings > Tags*, click **New Tag**. Give it:
+From **Settings > Tags**, click **New Tag**. That opens an unsaved form with:
 
-- **Name** — the label you'll see on pills and in filters. Commas are not allowed (they conflict with how filters store multiple values). Names must be unique for that type in the company, including archived tags — if *Urgent* already exists as a task tag, restore it instead of creating a second one.
-- **Type** — **Global**, or one record kind (Task, Invoice, Client, and so on). Type is locked after you save.
-- **Color** — optional. Used on the pill so related tags are easy to scan.
+- **Name**: the label you will see on pills and in filters. Commas are not allowed (they conflict with how filters store multiple values). Names must be unique for that type in the company, including archived tags. If a name already exists as a task tag, restore it instead of creating a second one.
+- **Type**: **Global**, or one record kind. The type list includes Global, Transaction, Client, Credit, Expense, Invoice, Payment, Product, Project, Purchase Order, Quote, Recurring Expense, Recurring Invoice, Task and Vendor. Type is locked after you save.
+- **Color**: optional. Used on the pill so related tags are easy to scan.
 
-From a record, type a new name into the Tags field and choose **Create**. That creates a tag *of that record's type* (a task form creates a task tag, not a global one) and attaches it immediately. Only admins can create tags this way; everyone else can still attach tags that already exist.
+From a record, type a new name into the Tags field and choose **Create**. That creates a tag of that record's type (a task form creates a task tag, not a global one) and attaches it immediately. Only admins can create tags this way. Everyone else can still attach tags that already exist.
 
-If you want a tag to inherit, create it as **Global** in Settings first, then attach it to the parent. Creating *VIP* from an invoice form makes an invoice-only tag that will never cascade.
+If you want a tag to inherit, create it as **Global** in Settings first, then attach it to the parent. Creating a tag from an invoice form makes an invoice-only tag that will never cascade.
 
-### Editing a Tag
+### How do I edit, archive or delete a tag?
 
-Open a tag from the list in *Settings > Tags* to rename it or change its color. The type cannot be changed — make a new tag of the other type if you picked the wrong one.
+Open a tag from the list in **Settings > Tags** to rename it or change its color. The type cannot be changed. Make a new tag of the other type if you picked the wrong one.
 
-From the tag's actions menu, or in bulk from the list:
+On an active tag, the row **Actions** menu has **Edit**, **Archive** and **Delete**.
 
-- **Archive** — hides the tag from pickers and filters. Existing assignments stay on records, and the name remains reserved, so you can restore it later.
-- **Restore** — brings an archived tag back into pickers.
-- **Delete** — removes it from pickers. You cannot attach a deleted tag to new records.
+| Action | What it does |
+|---|---|
+| **Archive** | Hides the tag from pickers and filters. Existing assignments stay on records, and the name remains reserved, so you can restore it later. |
+| **Delete** | Removes it from pickers. You cannot attach a deleted tag to new records. |
 
 Archiving is the safer cleanup when a label is out of season but you still want history and reports to make sense.
 
-### Tag Types
+### What tag types can I use?
 
-Every tag belongs to exactly one type. A picker only offers **global** tags plus tags of *that* record's type, so a task never shows invoice-only tags.
+Every tag belongs to exactly one type. A picker only offers **global** tags plus tags of that record's type, so a task never shows invoice-only tags.
 
 | Type | Use it when |
 |---|---|
-| **Global** | The label should follow a client, vendor, or project onto new work, or appear on more than one kind of record (*VIP*, *Retainer*, *Internal*, a campaign name). Required if you want inheritance. |
-| **Client** / **Vendor** | Qualifiers that only matter on the company record (*Prospect*, *Preferred*, *Net 30*). |
-| **Project** / **Task** | Delivery workflow (*Phase 2*, *Blocked*, *Billable*). Task tags do not copy onto invoices unless they are global and inheritance is on. |
-| **Invoice** / **Quote** / **Credit** / **Recurring Invoice** / **Payment** | Billing and collections (*Collections*, *Disputed*, *Prepaid*). |
-| **Expense** / **Recurring Expense** / **Purchase Order** / **Bank Transaction** | Cost-side grouping that isn't already covered by [expense categories](/docs/user-guide/expenses). |
-| **Product** | Catalog flags (*Seasonal*, *Discontinued*). Products do not inherit from anything. |
+| **Global** | The label should follow a client, vendor or project onto new work, or appear on more than one kind of record. Required if you want inheritance. |
+| **Client** / **Vendor** | Qualifiers that only matter on the company record. |
+| **Project** / **Task** | Delivery workflow. Task tags do not copy onto invoices unless they are global and inheritance is on. |
+| **Invoice** / **Quote** / **Credit** / **Recurring Invoice** / **Payment** | Billing and collections. |
+| **Expense** / **Recurring Expense** / **Purchase Order** / **Transaction** | Cost-side grouping that is not already covered by [expense categories](/docs/user-guide/expenses). |
+| **Product** | Catalog flags. Products do not inherit from anything. |
 
-The same name can exist once per type — *Urgent* as a task tag and *Urgent* as a project tag are two different tags and do not substitute for each other. If you find yourself creating the same name on every type, make one **global** tag instead.
+The same name can exist once per type. An Urgent task tag and an Urgent project tag are two different tags and do not substitute for each other. If you find yourself creating the same name on every type, make one **global** tag instead.
 
-## Expense Settings {#expense_settings}
+## How do expense settings work? {#expense_settings}
 
-These set the defaults for every new expense. Each field can still be changed on an individual expense; this is just where you pick the starting position.
+These set the defaults for every new expense. Each field can still be changed on an individual expense. This is just where you pick the starting position. See [Expenses](/docs/user-guide/expenses) for the full workflow.
 
-- **Should be Invoiced** — Mark new expenses as billable by default. Invoiceable expenses sit in *Pending* until they're billed and paid.
-- **Mark Paid** — Record that *you* paid the vendor (this is not a client payment).
-  - **Payment Type**, **Date**, **Transaction Reference** — Details about that vendor payment
-- **Convert Currency** — For expenses billed in a foreign currency, set the currency you want to pay in and an exchange rate
+Go to **Settings > Expense Settings** (route `#/settings/expense_settings`).
 
-:::warning
-Reports group expenses by the currency of the vendor/expense, not by your converted currency. If you want a clean profit-and-loss total in one currency, record each expense directly in your own currency using the converted amount.
-:::
-
-- **Add Documents to Invoice** — When an invoice is created from an expense, include the expense's attachments
-- **Enter Taxes** — Choose whether tax is entered as a percentage (*By Rate*) or a fixed amount (*By Amount*). The number of tax slots available matches your *Expense Tax Rates* choice under **Tax Settings**.
-- **Inclusive Taxes** — Same inclusive/exclusive toggle as the main tax settings, applied to expenses
-
-**Configure Categories** opens the Expense Categories list (name + color), useful for grouping expenses in reports. See [Expenses](/docs/user-guide/expenses) for the full workflow.
-
-## Import | Export {#import_export}
-
-This is how you get data into or out of Invoice Ninja — whether you're migrating from another tool, onboarding a batch of clients, or backing up a company.
-
-### CSV
-
-CSV import is per-category: clients, invoices, payments, and so on each need their own file. The first row must be column headers. After upload, you'll map each CSV column to a matching Invoice Ninja field. This is the usual route when migrating from another invoicing tool. For the client-import flow specifically, see [Clients](/docs/user-guide/clients).
-
-### JSON
-
-The JSON export produces a complete backup of the selected company — settings *and* data — as a downloadable zip. The export runs in the background; you'll get an email with a download link when it's ready (links expire daily).
-
-Imports can bring a JSON backup into a different company or reinstall it into an existing one. You can choose to import only settings, only data, or both.
+| Setting | What it does |
+|---|---|
+| **Should be invoiced** | "Enable the expense to be invoiced." |
+| **Mark Paid** | "Track the expense has been paid." This records that you paid the vendor, not that a client paid you. Payment Type, Date and Transaction Reference are not on this settings page (they appear on the expense itself). |
+| **Convert currency** | "Set an exchange rate when creating an expense." |
+| **Add Documents to Invoice** | "Make the documents visible to client." |
+| **Notify Vendor When Paid** | "Send an email to the vendor when the expense is marked as paid." |
+| **Enter Taxes** | Choose **By Rate** or **By Amount**. The number of tax slots available matches your **Expense Tax Rates** choice under Tax Settings. |
+| **Inclusive Taxes** | The examples shown are "Exclusive: 100 + 10% = 100 + 10" and "Inclusive: 100 + 10% = 90.91 + 9.09". |
 
 :::warning
-A JSON import *overwrites* the currently selected company. If you want the backup imported as a new, separate company, create the empty company first and switch into it before importing.
+Reports group expenses by the currency of the vendor or expense, not by your converted currency. If you want a clean profit-and-loss total in one currency, record each expense directly in your own currency using the converted amount.
 :::
 
-:::warning
-On the hosted platform the importer runs a preflight check. If your plan doesn't have the user or client capacity to hold the dataset, the import aborts and you're notified by email.
-:::
+An expense category list sits at the bottom of the same page, with **Filter**, **Lifecycle**, **New Expense Category**, and columns for Name, Color and Actions.
 
-## Device Settings {#device_settings}
+## How do workflow settings work? {#workflow_settings}
 
-Device Settings are per-device preferences — they stay with the browser or app you set them on. Sign in from another laptop and you'll configure these again there.
+Workflow Settings cuts repetitive clicks by automating what happens when an invoice or quote changes state. In the app, this page sits under Basic Settings, after Expense Settings (route `#/settings/workflow_settings`).
 
-- **Layout** — Force desktop or mobile layout (normally auto-detected)
-- **Menu Sidebar** — The left nav: *Collapse* keeps it pinned and resizable; *Float* hides it behind the hamburger button
-- **History Sidebar** — The right-hand activity panel: *Show/Hide* for a persistent panel, *Float* to have it slide over on demand
-- **Preview Sidebar** — When on, clicking a row opens a detailed side panel. When off, rows show a bit more inline detail but the side panel is gone.
-- **List Long Press** — Whether long-pressing a list row starts multi-select or opens an action menu
-- **Rows Per Page** — Default page size for list views
-- **Dark Mode** — Toggles the dark theme
-- **Color Theme** — Color set used for status tags ("Sent", "In Progress", etc.). The UI accent is set under User Details.
+The tabs are **Invoices** and **Quotes**.
 
-## Account Management {#account_management}
+### Invoices
 
-Account Management is about the account itself — your plan, white-label license, API credentials, module toggles, and security. Come here when you're integrating with another system, disabling a module you don't use, or tightening up security.
+| Setting | What it does |
+|---|---|
+| **Auto Email** | "Automatically email recurring invoices when created." |
+| **Stop On Unpaid** | "Stop creating recurring invoices if the last invoice is unpaid." |
+| **Auto Archive** | "Automatically archive invoices when paid." |
+| **Auto Archive Cancelled Invoice** | "Automatically archive invoices when cancelled." |
+| **Lock Invoices** | Prevent edits after a trigger. The options are **Off**, **When Sent**, **When Paid** and **End of Month**. |
+
+### Quotes
+
+| Setting | What it does |
+|---|---|
+| **Auto Convert** | "Automatically convert a quote to an invoice when approved." |
+| **Auto Archive** | "Automatically archive quotes when converted to invoice." |
+| **Use Quote Terms** | "When converting a quote to an invoice." |
+
+## How do I manage my account, modules and security? {#account_management}
+
+Account Management is about the account itself: your plan, module toggles, integrations and security. Go to **Settings > Account Management** (route `#/settings/account_management`). The page opens on the **Plan** tab.
+
+The tabs are **Plan**, **Overview**, **Enabled Modules**, **Integrations**, **Security Settings**, **Referral Program**, **Users**, **Billing History** and **Danger Zone**.
+
+### Plan
+
+The **Plan** tab shows your current plan, price and expiry date, with **Upgrade**, **Downgrade** and **Payment Methods** (including **Add Payment Method**) if you need to change them. Use the in-app message feature if you need help with your plan.
 
 ### Overview
 
-Status and company-wide toggles:
+| Setting | What it does |
+|---|---|
+| **Activate Company** | "Enable emails, recurring invoices and notifications." Leave this on unless you mean to pause the company. |
+| **Enable Markdown** | "Convert markdown to HTML on the PDF." |
+| **Include Drafts** | "Include draft records in reports." |
 
-- **Plan** — Your current Invoice Ninja plan
-- **Activate Company** — Deactivating pauses emails, recurring invoices, and notifications
-- **Enable Markdown** — Allow markdown in product descriptions, rendered into the PDF
-- **Decimal Comma** — Switch decimal separators (1.00 ↔ 1,00) in admin-portal inputs
-- **Include Drafts** — Include draft records in report totals
-- **Purchase License** — Order a white-label license (invoice emailed to you)
-- **Apply License** — Enter a white-label license key to remove Invoice Ninja branding
+### Enabled Modules {#enabled-modules}
 
-Developer tooling:
+Ticking a module off removes it from the sidebar and hides its records. Nothing is deleted. Re-enable the module and everything reappears. This is useful for keeping the UI focused on what your business actually uses.
 
-- **API Tokens** — Create and manage API tokens
-- **API Webhooks** — Create and manage outbound webhooks
-- **API Docs** — Jump to the API reference
-- **Zapier** — Sign in to configure Zapier automations
-
-Danger zone — read the button twice before clicking:
-
-- **Purge Data** — Permanently wipes *every* company and record on the account
-- **Delete Company** — Permanently deletes the currently selected company
-
-### Enabled Modules
-
-Ticking a module off (for example, Projects or Tasks) removes it from the sidebar and hides its records. Nothing is deleted — re-enable the module and everything reappears. Useful for keeping the UI focused on what your business actually uses.
+The modules are Invoices, Recurring Invoices, Quotes, Credits, Projects, Tasks, Vendors, Expenses, Purchase Orders, Recurring Expenses and Transactions.
 
 ### Integrations
 
-- **Google Analytics Tracking ID** — Drop in your GA tracking ID to get analytics and ecommerce tracking on your client portal without editing code. Google's help article on [finding your tracking ID](https://support.google.com/analytics/answer/1008080#zippy=%2Cin-this-article) walks through where to grab it.
+The **Integrations** tab (route `#/settings/account_management/integrations`) lists, in order:
+
+- **API Tokens**, **API Webhooks** and **API Docs**
+- **Zapier** and **Analytics**
+- **QuickBooks**
+
+For the QuickBooks connection, see [QuickBooks](/docs/user-guide/quickbooks). Do not connect or disconnect QuickBooks unless you mean to change the company's accounting link.
 
 ### Security Settings
 
-- **Password Timeout** — How long before you need to re-confirm your password for sensitive actions (like deletions)
-- **Web Session Timeout** — Auto-logout after a period of inactivity (off by default)
-- **Require Password with Social Login** — Even when signed in via a social provider, force a password check on login
+| Setting | What it does |
+|---|---|
+| **Password Timeout** | "Time before an admin password is required to be re-entered." Options include 30 Minutes, 2 Hours, 8 Hours, 1 Day, 7 Days, 30 Days and Never. |
+| **Web Session Timeout** | "Time a browser session will remain active prior to being logged out." **Never** means this timeout is off. |
+| **End All Sessions** | "Logs out all users, requires users to re-authenticate." The button is **Log Out**. Do not click it unless you intend to sign everyone out. |
+
+### Danger Zone
+
+The **Danger Zone** tab (`#/settings/account_management/danger_zone`) has two buttons: **Purge Data** and **Delete Company**. **Purge Data** permanently wipes every company and record on the account. **Delete Company** permanently deletes the currently selected company. Do not click either button unless you intend to destroy that data.
+
+## How do I back up or restore a company? {#backup_restore}
+
+**Settings > Backup | Restore** (route `#/settings/backup_restore`) is how you download a full company backup or load one back in. The tabs are **Backup** and **Restore**.
+
+### Backup
+
+The Backup tab has the label **Create company backup**, the help text "Once the file is ready you'll receive an email with a download link", and an **Export** button. Click Export only when you want that email sent to you.
+
+### Restore
+
+The Restore tab has the label **Select company backup file**, the help text "Please upload the .zip file used to create this backup.", a **Drop files or click to upload** zone, **Import Settings** and **Import Data** options, and an **Import** button.
+
+A restore overwrites the currently selected company, so only import into the company you mean to replace. If you want the backup as a new, separate company, create the empty company first and switch into it before importing.
+
+## How do I import or export my data? {#import_export}
+
+**Settings > Import | Export** (route `#/settings/import_export`) is how you bring a spreadsheet or a file from another invoicing tool into Invoice Ninja, or export a CSV of a record type. For the full import and export steps, including how to map CSV columns to Invoice Ninja fields, see [Import and Export](/docs/advanced-topics/import-and-export).
+
+The page has two sections, with no tabs.
+
+### Import
+
+**Import Type** chooses the source format. The list includes FreshBooks, Invoice2go, Invoicely, Quickbooks, Wave Accounting and Zoho. Depending on the type, you then get upload zones (for example **Clients** and **Invoices**, each with **Drop files or click to upload**) and an **Import** button.
+
+### Export
+
+Export on this page is **CSV** only. Choose an **Export Type**, then click **Export**. The types include Activities, Clients, Client Contacts, Invoices, Invoice Items, Quotes, Quote Items, Credits, Documents, Expenses, Purchase Orders, Purchase Order Items, Recurring Invoices, Payments, Products, Vendors and Tasks.
+
+A full company backup (settings and data as a downloadable zip, emailed when ready) is not on this page. Use [Backup | Restore](#backup_restore) for that.
+
+## Device Settings {#device_settings}
+
+Device Settings is no longer a page in the Settings menu, and `#/settings/device_settings` is not a valid route. Some appearance controls, such as a dark-mode icon, sit in the admin sidebar instead.
+
+## Related
+
+- [Advanced Settings](/docs/user-guide/advanced-settings)
+- [Payment Gateways](/docs/user-guide/gateways)
+- [Client Portal](/docs/user-guide/client-portal)
+- [Taxes](/docs/user-guide/taxes)
+- [Products](/docs/user-guide/products)
+- [Tasks](/docs/user-guide/tasks)
+- [Expenses](/docs/user-guide/expenses)
+- [Import and Export](/docs/advanced-topics/import-and-export)
+- [QuickBooks](/docs/user-guide/quickbooks)
