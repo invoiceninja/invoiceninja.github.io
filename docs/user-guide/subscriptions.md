@@ -1,407 +1,112 @@
 ---
-title: "Payment Links"
+title: "Payment Links: Let Anyone Check Out Without an Invoice First"
+sidebar_label: "Payment Links"
 sidebar_position: 23
+description: "How to create Payment Links in Invoice Ninja: hosted checkout URLs, one-time and recurring products, plan changes, cancellation, checkout steps and webhooks."
 ---
-## Introduction
+# Payment Links: let anyone check out without an invoice first
 
-Payment Links (previously called Subscriptions) are Invoice Ninja's hosted checkout: a shareable URL that lets anyone buy from you without you needing to create an invoice or set up a client record first. Drop the link in an email, a social post, or a button on your website, and the person who clicks it lands on a branded checkout page, pays through your configured gateway, and becomes a client in your account automatically.
+Payment Links (previously called Subscriptions) are Invoice Ninja's hosted checkout: a shareable URL that lets anyone buy from you without you creating an invoice or a client record first. Drop the link in an email, a social post or a button on your website. The person who clicks it lands on a branded checkout page, pays through your connected [payment gateway](/docs/user-guide/gateways), and is added as a client in your account automatically.
 
-This is the feature to reach for when you want to sell something directly — a downloadable template, a one-off service fee, a monthly retainer, or a SaaS-style plan. If you already have a client on file and want to bill them on a schedule, [Recurring Invoices](/docs/user-guide/recurring-invoices) are the better fit; Payment Links are for the moment of first sale, where the customer discovers the price, pays, and self-serves from then on.
+## When should I use a Payment Link instead of a recurring invoice?
 
-![alt text](/assets/images/subscriptions/payment_links_list.png "Payment Links list")
+Use a Payment Link when you want to sell something directly: a downloadable template, a one-off service fee, a monthly retainer, or a SaaS-style plan. If you already have a client on file and want to bill them on a schedule, [Recurring Invoices](/docs/user-guide/recurring-invoices) are the better fit. Payment Links are for the first sale, where the customer sees the price, pays, and then can self-serve from then on.
 
-![alt text](/assets/images/subscriptions/payment_link_overview.png "Payment Link overview")
+![Payment Links list](/assets/images/subscriptions/payment_links_list.png "Payment Links list")
 
-## Building a Payment Link
+![Payment Link overview](/assets/images/subscriptions/payment_link_overview.png "Payment Link overview")
 
-A Payment Link is made up of one or more [Products](/docs/user-guide/products) you've already defined. When you create the link, you pick the products to include and the checkout page handles the rest — name, description, price, tax, and currency all flow through from the product record.
+## Where do I find Payment Links?
 
-![alt text](/assets/images/subscriptions/payment_link_products_dropdown.png "Subscription products")
+Open **Settings > Payment Links**. There is no left-menu item for this page. The list has a **Filter** box and a **Lifecycle** filter (Active, Archived, Deleted).
 
-You can mix one-time and recurring products in the same link. A common example is a hosting business that charges a one-off setup fee alongside a monthly server charge: the setup fee lands on the first invoice only, and a recurring invoice takes over from there for the ongoing charge. Digital downloads, course access, retainers, memberships, and physical goods all fit the same pattern.
+Columns are Name, Price and **Purchase Page**. Purchase Page is the public checkout URL, with a link and a copy icon. Each row has an **Actions** menu with **Edit**, **Archive** and **Delete** (or **Restore** once the link is archived).
 
-## Settings and Self-Service
+The public URL looks like this:
 
-![alt text](/assets/images/subscriptions/payment_link_settings.png "Subscription settings")
+`https://<your-subdomain>.invoicing.co/client/subscriptions/<id>/purchase`
 
-The settings pane is where you set billing frequency, toggle auto-billing, and add promo codes or discounts. It's also where you enable client self-service — once turned on, customers can upgrade, downgrade, or cancel their own subscription from the [Client Portal](/docs/user-guide/client-portal) without emailing you. Refunds, when you allow them, are accounted for automatically so your reports stay accurate.
+## How do I create a Payment Link?
 
-If you want customers to be able to move between plans — say, a Basic, Pro, and Enterprise tier — create a Group and tag each Payment Link with the same group. Any link in the group then shows the others as upgrade or downgrade options on the customer's portal.
+A Payment Link is made up of [products](/docs/user-guide/products) you have already defined. Name, description, price and tax come from the product record.
 
-Payment Links use the same gateways as the rest of the app, so anything you've configured under [Payment Gateways](/docs/user-guide/gateways) is available at checkout.
+1. Go to **Settings > Payment Links** and click **New Payment Link**.
+2. On the **Overview** tab, give the link a name and pick the products to include.
+3. Review **Settings**, **Webhook** and **Steps** if you need them, then click **Save**.
+4. Copy the **Purchase Page** URL from the list or from Overview, and put it on your website, in an email or in a social post.
 
-## Webhook configuration
+![Product picker on a Payment Link](/assets/images/subscriptions/payment_link_products_dropdown.png "Payment Link product picker")
 
-The final piece of the payment links puzzle is integrating with third party services. When a subscription is purchased, cancelled, or upgraded, Invoice Ninja can notify an external endpoint you control — useful for provisioning accounts, sending license keys, kicking off onboarding, or syncing to your CRM.
+The edit tabs are **Overview**, **Settings**, **Webhook** and **Steps**. After you save, Overview also shows a read-only **Purchase Page** row with a copy icon.
 
-![alt text](/assets/images/subscriptions/payment_link_webhook.png "Subscription webhooks")
+### What goes on the Overview tab?
 
-If you need to control events that occur outside of Invoice Ninja, you can configure the webhook endpoints to receive information as the user is stepping through the checkout process. All endpoints must be supported if you activate this feature of the application as the app will fail to proceed without a successful response from each of the following:
+| Field | What it is for |
+|---|---|
+| **Name** | Required. This is the name of the link, and it appears on the checkout page. |
+| **Group** | Optional. Use the same group on several links if you want clients to be able to move between those plans. |
+| **Assigned User** | Optional. The teammate this link belongs to. |
+| **Products** | One-time products included in the sale. |
+| **Recurring Products** | Products billed on a schedule after checkout. |
+| **Optional Products** | One-time products the customer can add. |
+| **Optional Recurring Products** | Recurring products the customer can add. |
 
-:::warning
-Webhooks are single time events that do not retry if your endpoint is unavailable.
-:::
+You can use both one-time and recurring products on the same link. For example, a setup fee can go in **Products** and a monthly plan in **Recurring Products**.
 
-### Eligibility checker
+## Which settings can I change?
 
-This request queries the endpoint whether the client/contact is eligible to continue through the checkout. You may use this if you wish to restrict users to one subscription at a time, the payload that is sent to the endpoint looks like this
+![Payment Link settings](/assets/images/subscriptions/payment_link_settings.png "Payment Link settings")
 
-```bash
-{
-	"context" : "is_eligible",
-	"subscription" : "l4zbq7repr",
-	"contact" : "l4zbq7repr",
-	"contact_email" : "customer@example.com",
-	"client" : "l4zbq7repr",
-	"account_key" : "unique_identifier",
-}
-```
+| Setting | What it is for |
+|---|---|
+| **Frequency** | How often a recurring product is billed (for example Monthly). |
+| **Remaining Cycles** | How many times the recurring charge should run. |
+| **Auto Bill** | Whether later cycles are charged automatically to a saved payment method. |
+| **Promo code** and **Promo Discount** | An optional discount, as a percent plus a value. |
+| **Registration Required** | "Require clients to register" before they can complete checkout. |
+| **Use Inventory Management** | "Require products to be in stock." |
+| **Return URL** | Where to send the customer after checkout. |
+| **Allow Query Overrides** | Allow the public URL to override selected values with query parameters. |
+| **Allow Plan Changes** | Let the customer move to another Payment Link in the same group, from the [Client Portal](/docs/user-guide/client-portal). |
+| **Allow Cancellation** | Let the customer cancel from the client portal. |
+| **Trial Enabled** | Offer a trial at the start of a recurring plan. |
+| **Per Seat Enabled** | Bill according to a seat or quantity count. |
 
-#### Parameters
+Payment Links use the same gateways as the rest of the app, so anything you have configured under [Payment Gateways](/docs/user-guide/gateways) is available at checkout.
 
-**context**: (string) The context identifier, `is_eligible`
-**subscription**: The id of the subscription (payment link)
-**contact**: The id of the contact
-**contact_email**: The contact email
-**client**: The id of the client
-**account_key**: A client reference (client.custom_value2)
+## What does the checkout page look like?
 
-#### Response
+The customer opens the Purchase Page URL and sees the link name, a **One Time Purchases** or **Recurring Purchases** heading, the product description and price, and the total. They continue with **Next**. Depending on the link, they may be asked for an email address, and a **Payment Methods** heading appears when it is time to pay. Card details are collected after that step, through your connected gateway.
 
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
+Copy the URL with the copy icon on **Purchase Page** when you want to share it yourself.
 
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
+## How do I use webhooks with a Payment Link?
 
-A failed request would return the an array like this:
+![Payment Link webhook settings](/assets/images/subscriptions/payment_link_webhook.png "Payment Link webhook settings")
 
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```
+If you want an external service to be notified when someone goes through checkout, open the **Webhook** tab. You can set a single **Webhook URL**, a **REST Method**, and optional headers (**Header Key** and **Header Value**). When no headers are set, the tab shows "No Headers."
 
-### Start Trial
+## How do checkout steps work?
 
-If you have configured your payment link to be a trial based subscription. Then after the eligibility check, the system will attempt to start the trial, your endpoint will receive a payload like this:
+The **Steps** tab controls the order of the checkout flow. It includes **Authentication**, **Other steps** and **Order**.
 
-```bash
-{
-	"context" : "trial",
-	"recurring_invoice" : "l4zbq7repr",
-	"client" : "l4zbq7repr",
-	"subscription" : "l4zbq7repr",
-	"account_key" : "unique_identifier",
-}
-```
+The help text says: "The order of the steps is important. The first step should not depend on any other step. The second step should depend on the first step, and so on."
 
-#### Parameters
+The steps shown include **Cart** and **Login or Register**.
 
-**context**: (string) The context identifier, `trial`
-**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
-**client**: The id of the client
-**subscription**: The subscription id
-**account_key**: A client reference (client.custom_value2)
-
-#### Response
-
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
-
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
-
-A failed request would return the an array like this:
-
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```
-
-### Recurring Purchase
-
-When a recurring subscription is created for the first time, a payload is sent to the endpoint to notify of a successful subscription creation and payment, the payload will look like this:
-
-```bash
-{
-    "context" : "recurring_purchase",
-    "recurring_invoice" : "l4zbq7repr",
-    "invoice" : "l4zbq7repr",
-    "client" : "l4zbq7repr",
-    "subscription" : "l4zbq7repr",
-    "contact" : "l4zbq7repr",
-	"account_key" : "unique_identifier",
-}
-```
-
-#### Parameters
-
-**context**: (string) The context identifier, `recurring_purchase`
-**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
-**invoice**: The id of the invoice that was generated based on the payment link
-**client**: The id of the client
-**contact**: The id of the contact
-**subscription**: The subscription id
-**account_key**: A client reference (client.custom_value2)
-
-#### Response
-
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
-
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
-
-A failed request would return the an array like this:
-
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```
-
-### Single Purchase
-
-Where your payment link is only for a standard product, and _not_ a recurring product, then your endpoint will receive a single purchase webhook with the following configuration:
-
-```bash
-{
-	"context" : "single_purchase",
-	"invoice" : "l4zbq7repr",
-	"client"  : "l4zbq7repr",
-	"subscription" : "l4zbq7repr",
-	"account_key" : "unique_identifier",
-}
-```
-
-#### Parameters
-
-**context**: (string) The context identifier, `single_purchase`
-**invoice**: The id of the invoice that was generated based on the payment link
-**client**: The id of the client
-**subscription**: The subscription id
-**account_key**: A client reference (client.custom_value2)
-
-#### Response
-
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
-
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
-
-A failed request would return the an array like this:
-
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```
-
-### Change Plan
-
-If you support allowing clients to upgrade/downgrade their subscriptions, a change_plan webhook is fired.
-
-When a client changes plans, there may be either a credit due, or a payment depending on the plan and pro rata refund that is generated. In these two cases, the payload differs with either a `credit` or `invoice` key appearing in the payload. The following are examples:
-
-```bash
-{
-	"context" : "change_plan",
-	"recurring_invoice" : "l4zbq7repr",
-	"credit" : "l4zbq7repr",
-	"client" : "l4zbq7repr",
-	"subscription" : "l4zbq7repr",
-	"contact" : "l4zbq7repr",
-	"account_key" : "unique_identifier",
-}
-```
-
-```bash
-{
-	"context" : "change_plan",
-	"recurring_invoice" : "l4zbq7repr",
-	"invoice" : "l4zbq7repr",
-	"client" : "l4zbq7repr",
-	"subscription" : "l4zbq7repr",
-	"contact" : "l4zbq7repr",
-	"account_key" : "unique_identifier",
-}
-```
-
-#### Parameters
-
-**context**: (string) The context identifier, `change_plan`
-**invoice**: The id of the invoice that was generated based on the payment link
-**credit**: The id of the credit that was generated based on the payment link **note** this field, _may_ be blank if no credit was generated
-**client**: The id of the client
-**contact**: The id of the contact
-**subscription**: The subscription id
-**account_key**: A client reference (client.custom_value2)
-
-#### Response
-
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
-
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
-
-A failed request would return the an array like this:
-
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```
-
-### Subscription Cancellation
-
-If you allow subscription cancellations, then the following payload is forwarded to the endpoint:
-
-```bash
-{
-	"context" : "cancellation",
-	"subscription" : "l4zbq7repr",
-	"recurring_invoice" : "l4zbq7repr",
-	"client" : "l4zbq7repr",
-	"contact" : "l4zbq7repr",
-	"account_key" : "unique_identifier",
-}
-```
-
-#### Parameters
-
-**context**: (string) The context identifier, `cancellation`
-**subscription**: The subscription id
-**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
-**client**: The id of the client
-**contact**: The id of the contact
-**account_key**: A client reference (client.custom_value2)
-
-#### Response
-
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
-
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
-
-A failed request would return the an array like this:
-
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```
-
-### Plan Expired
-
-A daily check is performed to check if any subscriptions have gone past their due date without a payment. If a subscription has been found to expired, a webhook is sent with the following payload:
-
-```bash
-{
-	"context" : "plan_expired",
-	"client" : "l4zbq7repr",
-	"invoice" : "l4zbq7repr",
-	"subscription" : "l4zbq7repr",
-}
-```
-
-#### Parameters
-
-**context**: (string) The context identifier, `plan_expired`
-**subscription**: The subscription id
-**invoice**: The id of the invoice that was generated based on the payment link
-**client**: The id of the client
-
-#### Response
-
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
-
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
-
-A failed request would return the an array like this:
-
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```
-
-### Plan Paid
-
-When a payment for a subscription is made (ie for a renewal), a Plan Paid webhook event is fired with the following configuration:
-
-```bash
-{
-    "context" : "plan_paid",
-    "subscription" : "l4zbq7repr",
-    "recurring_invoice" : "l4zbq7repr",
-    "client" : "l4zbq7repr",
-    "contact" : "l4zbq7repr",
-    "invoice" : "l4zbq7repr",
-    "account_key" : "l4zbq7repr",
-}
-```
-
-#### Parameters
-
-**context**: (string) The context identifier, `plan_expired`
-**subscription**: The subscription id
-**recurring_invoice**: The id of the recurring invoice that was generated based on the payment link
-**invoice**: The id of the invoice that was generated based on the payment link
-**client**: The id of the client
-**contact**: The id of the contact
-**account_key**: A client reference (client.custom_value2)
-
-#### Response
-
-A standard array should be returned under all circumstances, within the array will be two keys, a successful request will return the following response:
-
-```bash
-{
-	"message" : "Success",
-	"status_code" : "200" / HTTP status code 2xx
-}
-```
-
-A failed request would return the an array like this:
-
-```bash
-{
-	"message" : "A human readable failure message to pass back to the client",
-	"status_code" : "403" / HTTP status code 4xx/5xx
-}
-```bash
+## How do I archive, restore or delete a Payment Link?
+
+1. On **Settings > Payment Links**, open the row **Actions** menu.
+2. Choose **Archive** or **Delete**. Delete has no confirmation dialog, so choose carefully.
+3. To see archived or deleted links, use the **Lifecycle** filter, tick **Archived** and/or **Deleted**, and click **Apply**.
+4. **Restore** appears on an archived (or deleted) link and puts it back in the Active list.
+
+A deleted link keeps its name. The name does not get a `_deleted` suffix.
+
+## Related
+
+- [Products](/docs/user-guide/products): the items a Payment Link sells
+- [Payment Gateways](/docs/user-guide/gateways): the services that take payment at checkout
+- [Recurring Invoices](/docs/user-guide/recurring-invoices): better when you already have the client and want a schedule
+- [Client Portal](/docs/user-guide/client-portal): where customers manage a subscription they bought through a Payment Link
+- [Payments](/docs/user-guide/payments): payments created when someone checks out

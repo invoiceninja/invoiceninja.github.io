@@ -1,303 +1,305 @@
 ---
-title: "Payment Gateways"
+title: "Payment Gateways: Connect a Service So Clients Can Pay Online"
+sidebar_label: "Payment Gateways"
 sidebar_position: 14
+description: "How to connect a payment gateway in Invoice Ninja: Payment Settings, credentials, tokenize, required fields, limits and fees, Stripe Connect, PayPal Platform, Apple Pay and other providers."
 ---
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-A payment gateway is the service that moves money from your client's card or bank account into yours. Invoice Ninja sits in front of the gateway, handling the invoice, the receipt, and the accounting — the gateway handles the actual charge. Without one connected, the **Pay Now** button on your [invoices](/docs/user-guide/invoices) and in the [Client Portal](/docs/user-guide/client-portal) has nowhere to send the payment, so setting one up is the step that turns a PDF into a paid bill.
+# Payment Gateways: connect a service so clients can pay you online
 
-Once a gateway is connected, it powers everything related to getting paid online: the checkout button on each invoice email, hosted [Payment Links](/docs/user-guide/subscriptions), auto-bill on [recurring invoices](/docs/user-guide/recurring-invoices), and refunds issued from the [Payments](/docs/user-guide/payments) screen. See the full list of supported providers on the [Payment Gateway Integrations](https://invoiceninja.com/payments/) page.
+A payment gateway is the service that moves money from your client's card or bank account into yours. Invoice Ninja sits in front of the gateway: it handles the invoice, the receipt and the accounting, and the gateway handles the actual charge. Until a gateway is connected, the **Pay Now** button on your [invoices](/docs/user-guide/invoices) and in the [Client Portal](/docs/user-guide/client-portal) has nowhere to send the payment.
 
-## Setting Up a Gateway
+Once a gateway is connected, it powers online checkout on invoice emails, hosted [Payment Links](/docs/user-guide/subscriptions), Auto Bill on [recurring invoices](/docs/user-guide/recurring-invoices), and refunds from the [Payments](/docs/user-guide/payments) screen. The full marketing list of supported providers is on the [Payment Gateway Integrations](https://invoiceninja.com/payments/) page.
 
-Head to **Settings > Payment Settings > New Gateway**, pick a provider from the dropdown, and click **Setup**. Stripe is the fastest starting point — it supports the widest currency range and connects via a login flow that creates the account for you if you don't already have one. Other providers ask you to paste API credentials from their own dashboards.
+## How do I connect a gateway?
 
-![Payment Gateways List - Blank](/assets/images/gateways/PaymentSettingsGatewaysBlankList_1.png "Payment Gateways List - Blank")
+1. Go to **Settings > Payment Settings**. The page title is **Online Payments**.
+2. Click **Add Payment Gateway**.
+3. Pick a provider from the dropdown, or click **Setup** on a provider card.
+4. Complete the tabs as needed, then click **Save**.
 
-![Add Payment Gateway Home Page](/assets/images/gateways/AddPaymentGatewayHomePage.png "Add Payment Gateway Home Page")
+Choosing a provider adds it right away; you can delete it from the list if you added one by mistake.
 
-![Add Payment Gateway dropdown list](/assets/images/gateways/AddPaymentGatewayDropdownList.png "Add Payment Gateway dropdown list")
+Some providers, including Stripe Connect, open a login window so you can connect your account. Other providers ask you to paste API credentials from their own dashboards, or they show a **Gateway Setup** button on the **Credentials** tab.
 
-You can connect more than one gateway and split traffic between them — for example, Stripe for credit cards, Authorize.net for ACH, and PayPal for customers who prefer it. Gateways can also be scoped by transaction amount, so small invoices route to a low-fee provider and larger ones go elsewhere.
+![Empty payment gateways list under Payment Settings](/assets/images/gateways/PaymentSettingsGatewaysBlankList_1.png "Payment gateways list, empty")
 
-Each gateway configuration has three tabs: **Credentials**, **Settings**, and **Limits/Fees**.
+![Add a payment gateway](/assets/images/gateways/AddPaymentGatewayHomePage.png "Add a payment gateway")
+
+![Provider dropdown when adding a payment gateway](/assets/images/gateways/AddPaymentGatewayDropdownList.png "Payment gateway provider dropdown")
+
+You can connect more than one gateway. The list columns are **Status**, **Label** and **Test Mode**. Drag the handle on a row if you want to change the order.
+
+The same Online Payments page also holds company payment options below the gateway list, including Auto Bill, payment terms, payment emails, over and under payments, and [Client Initiated Payments](/docs/user-guide/client-portal). Those options are documented with [Payment Settings](/docs/user-guide/basic-settings#payment_settings).
+
+## How do I archive or delete a gateway?
+
+There is no Actions menu on a gateway row until you tick the row's checkbox. Then an **Actions** button appears, with **Archive** and **Delete**.
+
+**Delete** has no confirmation dialog, so tick only the gateway you mean to remove.
+
+## What tabs does a gateway have?
+
+Open a gateway to see five tabs: **Payment Provider**, **Credentials**, **Settings**, **Required Fields** and **Limits/Fees**. The edit page title is **Edit Payment Gateway**.
+
+### Payment Provider
+
+This tab identifies the provider and, where the gateway supports it, shows a **Webhook URL** and the events the provider can send, for example `payment_approved`.
 
 ### Credentials
 
-This tab is where Invoice Ninja learns how to talk to the gateway's API. The exact fields depend on the provider — usually a key pair or an OAuth connection. Without valid credentials here, nothing else works.
+This tab is how Invoice Ninja talks to the gateway. The exact fields depend on the provider: API keys, a merchant ID, a **Gateway Setup** or Connect button, and often **Test Mode**, **Threeds** (3D Secure) and a **Health Check**. Without a successful connection here, checkout cannot take a payment.
 
 ### Settings
 
-These control how the gateway behaves inside the admin and client portals. A handful of fields are worth calling out.
+These options control how the gateway behaves in the admin and in the client portal.
 
-**Label** is a name for your own reference, shown only in the admin gateway list. Useful when you have multiple gateways of the same type (for example, one per currency).
+| Setting | What it is for |
+|---|---|
+| **Label** | A name for your own reference, shown in the admin gateway list. Useful when you have more than one gateway of the same type. |
+| **Tokenize** | "Tokenize payment method for future use." Tokenisation means the gateway keeps the card or bank account on file under a token that references it, and Invoice Ninja only ever sees that token, not the card number itself. Stored tokens are what make Auto Bill and one-click payment possible in the client portal. |
+| Payment type toggles | The methods this gateway can offer, which vary by provider. Examples include Credit Card, PayPal, bank transfer, Sofort, Bancontact, iDEAL, Venmo, Pay in 4 and Apple/Google Pay. Turn on only the methods you want clients to see. |
 
-**Capture Card** decides whether card details are tokenised and stored for future use. Tokenisation means the gateway keeps the card on file under a token that references it, and Invoice Ninja only ever sees that token — not the card number itself. Storing tokens is what makes auto-bill and one-click payment possible on the client portal, because the client's saved method can be charged again without re-entering details. You can force it on, force it off, or set it to "Enabled/Disabled by Default" and let the customer tick a box at checkout.
+A bank-transfer style gateway may have only a **Label** on this tab.
 
-**Available Payment Types** lists the methods the gateway supports — credit card, ACH, SEPA, Apple Pay, and so on — and lets you enable or disable each. **Required Fields** lets you ask the client to fill in missing details (address, phone, VAT number) at checkout and optionally push those back onto the [client record](/docs/user-guide/clients). **Accepted Card Logos** chooses which card brand icons show up on the hosted checkout.
+### Required Fields
+
+This tab is where you ask the client to fill in missing details at checkout.
+
+| Setting | What it is for |
+|---|---|
+| **Client Name**, **Client Phone**, **Contact Name**, **Contact Email** | Contact details to collect if they are missing. |
+| **Postal Code**, **CVV** | Card-check details the gateway may need. |
+| **Billing Address**, **Shipping Address** | Address fields to show at checkout. |
+| **Update Address** | "Update client's address with provided details." Writes the address the client enters back onto the [client record](/docs/user-guide/clients). |
+| **Always show required fields form** | "Displays the required fields form always at checkout." |
 
 <span id="limits-fees" style={{display: "block", scrollMarginTop: "calc(var(--ifm-navbar-height) + 1rem)"}} />
 
-### Configure gateway fees and card surcharges {#limitsfees}
+## How do I add gateway fees or card surcharges? {#limitsfees}
 
-To pass payment processing costs to customers, open the gateway's **Limits/Fees** tab and select a **Payment Type**. Configure **Fee Percent**, **Fee Amount**, and an optional **Fee Cap** for that payment method. These gateway fees are separate from [late-payment fees](/docs/user-guide/advanced-settings#reminder-templates) and the [invoice Surcharge field](/docs/user-guide/advanced-settings#custom_fields).
+To pass payment processing costs to clients, open the gateway's **Limits/Fees** tab and select a **Payment Type**. These gateway fees are separate from [late-payment fees](/docs/user-guide/advanced-settings#reminder-templates) and the [invoice Surcharge field](/docs/user-guide/advanced-settings#custom_fields).
 
-This tab is how you set per-payment-method rules for the gateway. Fees and limits are attached to a specific payment type, so credit card and ACH on the same gateway can carry different rules.
+Fees and limits are attached to a specific payment type, so card and bank transfer on the same gateway can follow different rules.
 
-- **Payment Type** — pick one of the methods you enabled on the Settings tab.
-- **Min Limit / Max Limit** — floor and ceiling for the amount clients can pay with this method. Enable each with its toggle.
-- **Fee Percent** — a percentage fee added to invoices paid with this method.
-- **Fee Amount** — a flat fee, applied in addition to Fee Percent if you set both.
-- **Fee Cap** — a maximum dollar value the fee can reach.
-- **Tax** — one field per active item tax rate (from **Basic Settings > Tax Settings**), applied to the fee line itself.
+| Setting | What it is for |
+|---|---|
+| **Payment Type** | The method these limits and fees apply to, for example Credit Card. |
+| **Min Limit** / **Max Limit** | The lowest and highest amount clients can pay with this method. Turn each limit on with **Enable min** or **Enable max**. |
+| **Fee Percent** | A percentage fee added to invoices paid with this method. |
+| **Fee Amount** | A flat fee, added on top of Fee Percent if you set both. |
+| **Fee Cap** | The maximum the fee can reach. |
+| **Adjust Fee Percent** | "Adjust percent to account for fee." Use this when you want the fee recalculated so that, after the extra amount is added, the amount you actually receive matches the invoice total. |
 
-**Adjust Fee Percent** is the setting for passing Stripe-style processing costs directly to the customer. If your processor charges 30c + 1%, entering $0.30 as Fee Amount and 1 as Fee Percent with Adjust Fee Percent on will have Invoice Ninja recalculate the fee so that *after* the gross-up, the amount you actually receive matches the invoice total. To capture the fee precisely, disable **Invoice Tax Rates** and use **Item Tax Rates** only — because the fee is added as a line item, invoice-level tax would otherwise distort the calculation. You're responsible for making sure surcharging is legal in your jurisdiction; check with an accountant if you're unsure.
+You are responsible for checking that surcharging is legal where you operate; ask an accountant if you are unsure.
 
-## Notes
+## Which providers can I add?
 
-We no longer support the PayPal *Express API* integration — we've moved to the "PayPal Platform" and now also support Venmo via PayPal.
+The **Add Payment Gateway** list has these providers:
 
-## Stripe
-
-<p align="center">
-	<img class="h-40" src="https://invoiceninja.github.io/assets/images/gateways/stripe.svg" alt="Stripe"/>
-</p>
-
-Stripe is our most fully-featured integration and usually the easiest place to start. It supports token billing (for stored cards and auto-bill), refunds, and a long list of regional payment methods:
-
-- Card
-- ACH
-- SOFORT
-- Alipay
-- Pay
-- SEPA
-- Bancontact
-- iDEAL
-- Giropay
-- Przelewy24
-- EPS
-- ACSS
-- BECS
-- FPX
+- Stripe Connect
+- PayPal Platform
+- Braintree
+- Authorize.Net
+- Mollie
+- GoCardless
+- Forte
+- Razorpay
+- Square
+- Custom
+- Rotessa
+- CBA PowerBoard
+- Blockonomics
+- payware
+- CHIP
+- Helcim
 - BTCPay
+- Paytrace
+- Checkout.com
+- PayFast
+- Eway Rapid
 
-Card payments through Stripe automatically support 3D Secure (3DS) where the issuer requires it — the client is redirected to their bank's authentication page mid-checkout, and the transaction only completes once they've confirmed. This reduces fraud and shifts chargeback liability to the card issuer on authenticated transactions.
+The rest of this page covers the providers we can document from the live app and from each provider's own dashboard. For any provider, the fields you fill in are on that gateway's **Credentials** tab after you add it.
 
-<hr/>
-
-## Square
-
-Our [Square](https://squareup.com/) integration covers credit card payments, token billing, and refunds. After signing up for a Square developer account and registering an application in the Square Developer Dashboard, paste the following into the Credentials tab:
-
-```
-- **Application ID**
-- **Access Token**
-- **Location ID**
-```
-
-The *Application ID* and *Access Token* live under *OAuth* in the Square sidebar, and the *Location ID* is under *Location*. The full walkthrough is in the [Square developer documentation](https://developer.squareup.com/docs/square-get-started). Tick **Test Mode** while you're testing against sandbox credentials.
-
-<hr/>
-
-## Checkout.com
+## How do I set up Stripe Connect?
 
 <p align="center">
-	<img class="h-50" src="https://invoiceninja.github.io/assets/images/gateways/checkout.jpg" alt="Checkout.com"/>
+	<img class="h-40" src="https://invoiceninja.github.io/assets/images/gateways/stripe.svg" alt="Stripe logo"/>
 </p>
 
-Checkout.com supports credit card payments with token billing and refunds. You'll need the API public key and API secret key from "The Hub" on Checkout.com — sign in, open *Settings > Channels*, pick the right business, and the keys are on that screen. See [Checkout.com Docs](https://api-reference.checkout.com/#section/Authentication) for more.
+Stripe Connect is often the fastest starting point. When you pick it, Invoice Ninja opens a Stripe login so you can connect your Stripe account (or create one). Card payments through Stripe support 3D Secure (3DS) where the issuer requires it: the client is redirected to their bank's authentication page, and the payment only completes once they have confirmed.
 
-- **Test Mode** — use while your channel is running in test mode, not for live transactions.
-- **Threeds** — turns on 3D Secure authentication for card payments. It adds an issuer-verification step at checkout, cutting fraud and shifting dispute liability.
+The exact payment methods you can turn on appear on the Stripe gateway's **Settings** tab after it is connected.
 
 <hr/>
 
-## Mollie
+## How do I set up PayPal Platform?
 
-<p align="center">
-	<img class="h-20" src="https://invoiceninja.github.io/assets/images/gateways/mollie.png" alt="Mollie"/>
-</p>
-
-Mollie covers a broad set of European methods:
-
-- Credit Card (including token billing)
-- Bank Transfer
-- KBC
-- Bancontact
-- iDEAL
-
-You'll need your profile ID (top-left of the Mollie dashboard) and an API key from *Developers > API Keys*, as described on the [Mollie knowledgebase](https://help.mollie.com/hc/en-us/articles/115000328205-Where-can-I-find-the-live-API-key-). Tick the test mode checkbox if you're wiring up a Test API Key.
-
-### Error executing API call (422: Unprocessable Entity): No suitable payment methods found.
-
-This means no payment methods are enabled on the Mollie side. Go to [Mollie](https://mollie.com/dashboard) > Settings > Website profiles > *Select your profile* > Payment methods and enable Credit card.
+**PayPal Platform** is the PayPal option in the provider list. After the gateway is connected, the Settings tab includes toggles for **Credit Card**, **PayPal**, **Venmo**, **Pay in 4** and **Advanced Card Payments**, plus **Tokenize**.
 
 <hr/>
 
-## PayTrace
+## How do I set up Checkout.com?
 
 <p align="center">
-	<img class="h-20" src="https://invoiceninja.github.io/assets/images/gateways/paytrace.svg" alt="PayTrace"/>
+	<img class="h-50" src="https://invoiceninja.github.io/assets/images/gateways/checkout.jpg" alt="Checkout.com logo"/>
 </p>
 
-PayTrace supports credit card payments, token billing, and refunds.
+Checkout.com supports card payments and several other methods. The Credentials tab includes a Secret Api Key, Public Api Key, **Test Mode**, **Threeds**, Processing Channel Id, Client Id and a Health Check. You get the keys from "The Hub" on Checkout.com: sign in, open **Settings > Channels**, pick the right business, and the keys are on that screen. See the [Checkout.com docs](https://api-reference.checkout.com/#section/Authentication) for more.
+
+Settings include **Tokenize** and payment type toggles for Credit Card, PayPal, Sofort, **Apple/Google Pay**, Bancontact, iDEAL, GiroPay, Przelewy24 and EPS. Use **Test Mode** while your Checkout.com channel is running in test mode, not for live payments. **Threeds** turns on 3D Secure authentication for card payments.
 
 <hr/>
 
-## PayFast
+## How do I set up Braintree?
+
+[Braintree](https://www.braintreegateway.com/) can take cards, PayPal and bank transfer in one integration. The Credentials tab includes Merchant Id, Merchant Account Id, Public Key, Private Key, **Test Mode**, **Threeds**, Health Check and a Documentation link. In Braintree, the keys are under **API** and the merchant ID is under **Business** (gear icon at the top right). See the [Braintree docs](https://developer.paypal.com/braintree/articles/control-panel/important-gateway-credentials) for the full rundown.
+
+Settings include **Tokenize** and toggles for Credit Card, Bank Transfer and PayPal.
+
+<hr/>
+
+## How do I take payment by bank transfer?
+
+A **Bank Transfer** gateway does not charge a card. The Credentials tab is a text editor where you type the payment instructions you want clients to see, for example your account name and number. Settings has only a **Label**. Required Fields and Limits/Fees are still available.
+
+<hr/>
+
+<hr/>
+
+## How do I set up Square?
+
+The [Square](https://squareup.com/) integration starts when you pick Square or click **Setup** on the Square card, which adds the gateway immediately. The Credentials tab shows **Gateway Setup** and **Health Check**. Complete Gateway Setup with your Square account.
+
+If Square asks you for dashboard values, the Application ID and Access Token live under **OAuth** in the Square Developer Dashboard, and the Location ID is under **Location**. The full walkthrough is in the [Square developer documentation](https://developer.squareup.com/docs/square-get-started).
+
+<hr/>
+
+## How do I set up Mollie?
 
 <p align="center">
-	<img class="h-25" src="https://invoiceninja.github.io/assets/images/gateways/payfast.png" alt="PayFast"/>
+	<img class="h-20" src="https://invoiceninja.github.io/assets/images/gateways/mollie.png" alt="Mollie logo"/>
 </p>
 
-PayFast handles credit card payments. The video below walks through setup.
+Mollie is in the provider list and covers a broad set of European methods, including cards, bank transfer, KBC, Bancontact and iDEAL. After you add it, complete the Credentials tab with the values from your Mollie dashboard: the profile ID (top left) and an API key from **Developers > API Keys**, as described in the [Mollie knowledge base](https://help.mollie.com/hc/en-us/articles/115000328205-Where-can-I-find-the-live-API-key-).
+
+If checkout returns "No suitable payment methods found," no payment methods are enabled on the Mollie side. In the [Mollie dashboard](https://mollie.com/dashboard), open Settings > Website profiles, select your profile, and enable the methods you need.
+
+<hr/>
+
+## How do I set up Paytrace?
+
+<p align="center">
+	<img class="h-20" src="https://invoiceninja.github.io/assets/images/gateways/paytrace.svg" alt="PayTrace logo"/>
+</p>
+
+[PayTrace](https://www.paytrace.net/) is listed as **Paytrace**. After you add it, complete the Credentials tab with your PayTrace API user credentials and API key. PayTrace expects you to validate against their sandbox before going live; use **Test Mode** while you are on sandbox credentials if that option is shown. More at the [PayTrace support site](https://developers.paytrace.com/support/home).
+
+<hr/>
+
+## How do I set up PayFast?
+
+<p align="center">
+	<img class="h-25" src="https://invoiceninja.github.io/assets/images/gateways/payfast.png" alt="PayFast logo"/>
+</p>
+
+PayFast is in the provider list and handles card payments. After you add it, complete the Credentials tab with the values from your PayFast account. The video below walks through setup.
 
 <VideoPlayer src="/assets/videos/gateways/payfast/payfast.mpd" isDash={true} id="payfast-video" />
 
 <hr/>
 
-## Authorize.net
+## How do I set up Authorize.Net?
 
 <p align="center">
-	<img class="h-20" src="https://invoiceninja.github.io/assets/images/gateways/authorize.png" alt="Authorize.net"/>
+	<img class="h-20" src="https://invoiceninja.github.io/assets/images/gateways/authorize.png" alt="Authorize.net logo"/>
 </p>
 
-[Authorize.net](https://www.authorize.net/) supports credit card payments, token billing, and refunds. You'll need an API Login ID and Transaction Key — sign in to your Authorize.net merchant account, go to *Settings > API Credentials & Keys*, and generate or view them. Background reading: [Authorize.net Docs](https://support.authorize.net/s/article/How-do-I-obtain-my-API-Login-ID-and-Transaction-Key).
-
-- **Test Mode** — for accounts running in "test mode". See [Authorize.net Docs](https://support.authorize.net/s/article/What-Is-Test-Mode-and-How-Do-I-Turn-It-off-and-On).
-- **Developer Mode** — for developer sandbox accounts only. Sandbox accounts have their own credentials and no real transactions; see [sandbox.authorize.net](https://sandbox.authorize.net/).
-- **Live Endpoint** — the default value is the correct URL for live API calls.
-- **Developer Endpoint** — the default value is the correct URL for sandbox calls. More at [Authorize.net Docs](https://developer.authorize.net/api/reference/index.html#gettingstarted-section-section-header).
+[Authorize.net](https://www.authorize.net/) is listed as **Authorize.Net**. After you add it, complete the Credentials tab with your API Login ID and Transaction Key. Sign in to your Authorize.net merchant account, go to **Settings > API Credentials & Keys**, and generate or view them. Background reading: [Authorize.net docs](https://support.authorize.net/s/article/How-do-I-obtain-my-API-Login-ID-and-Transaction-Key).
 
 <hr/>
 
-## Braintree
+## How do I set up eWAY Rapid?
 
-[Braintree](https://www.braintreegateway.com/) covers PayPal, credit card, and debit/bank transfer in one integration. You'll need a merchant ID, public key, and private key — sign in, click the gear icon top-right, and find the keys under *API* and the merchant ID under *Business*. See [Braintree Docs](https://developer.paypal.com/braintree/articles/control-panel/important-gateway-credentials) for the full rundown.
-
-<hr/>
-
-## Custom
-
-A developer-only option for self-hosted installs. You can write PHP that talks to a gateway we don't support out of the box and plug it in as a custom driver.
+[eWAY](https://www.eway.com.au/) is listed as **Eway Rapid**. After you add it, complete the Credentials tab with the keys from the eWAY portal. Hover over **My Account** and click **API Keys**. The [eWAY knowledge base](https://go.eway.io/s/article/How-do-I-setup-my-Live-eWAY-API-Key-and-Password) has the full walkthrough.
 
 <hr/>
 
-## Eway Rapid
+## Can I add a custom gateway? (self-hosted)
 
-[eWAY](https://www.eway.com.au/) supports credit card payments, token billing, and refunds. After setting up your business in the eWAY portal, hover over *My Account* and click *API Keys*. The *API Key* and *Password* fields in Invoice Ninja map to the *Rapid API Key* values, and the *Public API Key* is just below under *Pay Now Button*. The [eWAY knowledgebase](https://go.eway.io/s/article/How-do-I-setup-my-Live-eWAY-API-Key-and-Password) has the full walkthrough. Tick Test Mode to use sandbox credentials.
-
-<hr/>
-
-## PayTrace
-
-[PayTrace](https://www.paytrace.net/) supports credit card payments, token billing, and refunds. Setup uses your PayTrace API user credentials and API key, which you'll have after completing the PayTrace account process. PayTrace expects you to validate against their sandbox before going live — tick Test Mode while you're using sandbox credentials. More at the [PayTrace support website](https://developers.paytrace.com/support/home).
+**Custom** appears in the provider list. It is a developer option, mainly for **self-hosted** installs, where you can write PHP that talks to a provider Invoice Ninja does not support out of the box and plug it in as a custom driver.
 
 <hr/>
 
-## Digital Wallets
+## How do digital wallets such as Apple Pay and Google Pay work?
 
-Apple Pay, Google Pay, and similar wallets aren't separate gateways — they're payment methods that ride on top of an existing gateway (typically Stripe). Support depends on the gateway, so check before promising it to a client.
+Apple Pay and Google Pay are not separate gateways. They are payment methods that ride on top of an existing gateway, when that provider supports them.
 
-### Apple Pay & Google Pay
-
-At the moment, the client needs a card already configured in their browser or device wallet to pay this way. That's a platform requirement, not an Invoice Ninja one.
-
-**Safari on desktop**:
-
-- Safari on Mac running macOS Sierra or later
-- An iPhone (iPad isn't supported yet) with a credit card configured in Wallet. More info on [Apple's support site](https://support.apple.com/en-us/HT204681).
-
-**Safari on mobile**:
-
-- iOS 10.1 or later
-- A card configured in the Wallet app
-
-**Google Chrome**:
-
-- [A saved credit card](https://support.google.com/chrome/answer/142893?co=GENIE.Platform%3DDesktop&hl=en)
-
-**Microsoft Edge**:
-
-- Microsoft Edge 16.16299 or newer
-- [A saved credit card](https://support.microsoft.com/en-us/help/4026594/microsoft-account-add-update-remove-credit-cards-and-other-ways-to-pay)
+Checkout.com has an **Apple/Google Pay** toggle on its Settings tab. Other gateways may not show this toggle. The client usually needs a card already stored in their browser or device wallet to pay this way.
 
 <hr/>
 
-## Crypto
+## How do I accept bitcoin with BTCPay?
 
-### BTCPay
-
-BTCPay Server lets you accept bitcoin with no fees and no intermediaries — payments land directly in your own bitcoin wallet.
-
-- [Instructions for BTCPay payment gateway setup](https://docs.btcpayserver.org/InvoiceNinja/)
+**BTCPay** is in the provider list. BTCPay Server lets you accept bitcoin into your own wallet. After you add the gateway, complete the Credentials tab, following the [BTCPay setup instructions for Invoice Ninja](https://docs.btcpayserver.org/InvoiceNinja/).
 
 <hr/>
 
-## CBA PowerBoard
+## How do I set up CBA PowerBoard?
 
-To connect the Commonwealth Bank's PowerBoard gateway, start on the PowerBoard side and then finish up in Invoice Ninja.
+To connect the Commonwealth Bank's PowerBoard gateway, start on the PowerBoard side and then finish in Invoice Ninja.
 
-### API Credentials
+### Where do I find the PowerBoard API credentials?
 
-Log in to the [PowerBoard](https://powerboard.commbank.com.au/v2/auth/sign-in) portal to grab your API credentials.
+Log in to the [PowerBoard](https://powerboard.commbank.com.au/v2/auth/sign-in) portal to get your API credentials.
 
-<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard1.png" alt="CBA PowerBoard"/>
+<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard1.png" alt="PowerBoard sign-in and dashboard"/>
 
-Open *My Company* and click *API & Settings*.
+Open **My Company** and click **API & Settings**.
 
-<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard2.png" alt="CBA PowerBoard"/>
+<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard2.png" alt="PowerBoard API and Settings"/>
 
 Copy the API Secret Key and API Public Key, then click the Services menu item to find your Credit Card Gateway ID.
 
-<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard3.png" alt="CBA PowerBoard"/>
+<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard3.png" alt="PowerBoard API keys"/>
 
 Copy the ID highlighted next to your Credit Card Service Provider.
 
-<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard4.png" alt="CBA PowerBoard"/>
+<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard4.png" alt="PowerBoard Credit Card Gateway ID"/>
 
-### Invoice Ninja + PowerBoard
+### How do I add PowerBoard in Invoice Ninja?
 
-In Invoice Ninja, go to Settings > Payment Settings, create a new Payment Gateway, and pick CBA PowerBoard from the dropdown.
+1. Go to **Settings > Payment Settings** and click **Add Payment Gateway**.
+2. Pick **CBA PowerBoard** from the dropdown (this adds the gateway right away).
 
-<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard5.png" alt="CBA PowerBoard"/>
+<img class="" src="https://invoiceninja.github.io/assets/images/gateways/powerboard5.png" alt="Choosing CBA PowerBoard in Invoice Ninja"/>
 
-On the Credentials tab, paste in the Secret Key, Public Key, and Gateway ID from the previous step. Further down, toggles let you choose which card types to accept.
+3. On the **Credentials** tab, enter the keys and gateway ID from the previous step, then save.
 
-### Advanced Settings
+With the gateway configured, these related pages are worth a read:
 
-With the gateway configured, a few related pages are worth a read:
-
-- [Set Gateway Fees](/docs/user-guide/gateways#limitsfees)
-- [Payment Links](https://invoiceninja.github.io/en/advanced-settings/#payment_links)
-- [Custom Email Servers](https://invoiceninja.github.io/en/hosted-mail/)
+- [Set gateway fees](/docs/user-guide/gateways#limitsfees)
+- [Payment Links](/docs/user-guide/subscriptions)
+- [Custom email servers](/docs/hosted/hosted-mail)
 
 <hr/>
 
-## CHIP
+## How do I set up CHIP?
 
-[CHIP](https://www.chip-in.asia/) is a Malaysian payment gateway that lets you accept FPX, cards (Visa, Mastercard, Maestro), DuitNow QR, and regional e-wallets (Touch 'n Go eWallet, GrabPay, ShopeePay, Maybank QRPay, Atome, Apple Pay, Google Pay). It supports token billing (stored cards and auto-bill) and refunds.
-
-> **Currency note:** CHIP currently processes payments in **MYR** only. The gateway only appears as an available payment method when the client's invoice currency is MYR.
-
-### Setup
+[CHIP](https://www.chip-in.asia/) is a Malaysian payment gateway in the provider list.
 
 1. Sign in to your [CHIP account](https://www.chip-in.asia/).
 2. In the top-right corner, open **Developers**.
 3. Under **Brands**, copy your **Brand ID**.
 4. Under **Keys**, select **New Live Key**, give it a title, and copy the generated key.
 
-Then in Invoice Ninja:
+Then in Invoice Ninja, go to **Settings > Payment Settings**, click **Add Payment Gateway**, pick **CHIP**, and complete the **Credentials** tab with the values from CHIP. See the [CHIP guide](https://blog.chip-in.asia/docs/how-to-get-api-key-api-host-brand-id/) for the full walkthrough.
 
-1. Go to **Settings > Payment Settings > New Gateway** and pick **CHIP** from the dropdown.
-2. On the **Credentials** tab, paste the **API Key** and **Brand ID**.
-3. Configure **Settings** and **Limits/Fees** as needed, then save.
+## Related
 
-The **API Key** and **Brand ID** are the same values used across all CHIP integrations. Production and test keys are different — the Brand ID stays the same in both environments. See the [CHIP guide](https://blog.chip-in.asia/docs/how-to-get-api-key-api-host-brand-id/) for the full walkthrough.
-
-### Supported features
-
-- **Hosted checkout** — clients are redirected to CHIP's hosted payment page to complete the payment.
-- **Token billing** — card details can be tokenised and stored for auto-bill and one-click payment on the client portal.
-- **Refunds** — issue refunds from the Payments screen.
-- **Webhooks** — CHIP callbacks are verified against CHIP's public key before a payment is recorded.
+- [Payments](/docs/user-guide/payments): record, apply and refund money you receive
+- [Payment Links](/docs/user-guide/subscriptions): hosted checkout URLs that use your gateways
+- [Recurring Invoices](/docs/user-guide/recurring-invoices): Auto Bill with a saved card
+- [Client Portal](/docs/user-guide/client-portal): where clients pay and manage saved payment methods
+- [Payment Settings](/docs/user-guide/basic-settings#payment_settings): Auto Bill defaults and related company options

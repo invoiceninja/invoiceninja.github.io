@@ -1,64 +1,98 @@
 ---
-title: "Client Portal"
+title: "Client Portal: Let Clients View, Pay and Manage Their Account"
+sidebar_label: "Client Portal"
 sidebar_position: 7
+description: "How the Invoice Ninja client portal works: contact logins, invoices and quotes, saved payment methods, statements, documents, Payment Link subscriptions, and self-hosted Custom CSS themes."
 ---
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-![Client portal homescreen](/assets/images/client_portal/client_portal_homescreen_invoices.png "Client portal homescreen")
+# Client Portal: let clients view, pay and manage their account
 
-The Client Portal is the customer-facing side of Invoice Ninja — a branded, self-serve dashboard where the people you invoice can view their documents, pay online, download statements, manage saved cards, and keep their own contact details up to date. Every time you email an invoice or quote, the link in that email opens the portal, so most clients end up there without ever needing to be told it exists.
+![Client portal home, showing the invoices tab](/assets/images/client_portal/client_portal_homescreen_invoices.png "Client portal home with invoices")
 
-The portal is tied to [Contacts](/docs/user-guide/clients#contacts), not clients. Each contact on a client record gets their own login, which is why a client with separate Accounts Payable and Operations contacts can have both people using the portal independently. Logins are enabled out of the box; you can additionally let anyone self-register as a new client under **Settings > Client Portal > Registration**.
+The Client Portal is the customer-facing side of Invoice Ninja: a branded, self-serve dashboard where the people you invoice can view their documents, pay online, download statements, manage saved cards and keep their own contact details up to date. Every time you email an invoice or quote, the link in that email opens the portal, so most clients end up there without being told it exists.
 
-The portal mirrors your Invoice Ninja configuration. Only the modules you have enabled appear to clients — turn off Quotes under [Basic Settings](/docs/user-guide/basic-settings/#enabled-modules) and the Quotes tab disappears from every contact's view.
+The portal follows the client's language.
 
-## Tabs in the Client Portal
+## How do contacts sign in?
+
+The portal is tied to [contacts](/docs/user-guide/clients#contacts), not to the client as a whole. Each contact on a client record gets their own login, which is why a client with separate Accounts Payable and Operations contacts can have both people using the portal independently.
+
+The usual way to open a contact's portal from the admin app is the **Client Portal** link (with a copy icon) on the contact card. A saved invoice also has **View in Portal**.
+
+The portal uses your company subdomain. The login page is:
+
+`https://<your-subdomain>.invoicing.co/client/login`
+
+Logins are enabled out of the box. You can also let anyone register themselves as a new client under **Settings > Client Portal > Registration**. **Client Registration** has the help text "Enable clients to self register in the portal." That tab also shows a **Registration URL** (`/client/register?company_key=...`) and lets you mark each sign-up field as Required or Hidden.
+
+## How do I change Client Portal settings?
+
+Go to **Settings > Client Portal**. The tabs are **Settings**, **Authorization**, **Registration**, **Messages** and **Customize**.
+
+The **Settings** tab includes Portal Mode (for example Subdomain), your subdomain, the login URL, a **Client Portal** on/off toggle, Client Document Upload, Vendor Document Upload, Accept Purchase Order Number, mobile HTML view options, Dashboard, Allow Clients To Update Their Profile, Terms of Service and Privacy Policy.
+
+**Authorization** includes Password Protect Invoices, Invoice Terms Checkbox, Quote Terms Checkbox, Invoice Signature, Quote Signature, Purchase Order Signature and Show on PDF.
+
+**Messages** has text you can show on the dashboard, on unpaid and paid invoices, and on an unapproved quote.
+
+**Customize** is covered in [How do I customize the client portal?](#customization).
+
+The portal mirrors your Invoice Ninja configuration. Only the modules you have enabled appear to clients. Besides invoices, quotes and payments, the portal can also show [tasks](/docs/user-guide/tasks) and [projects](/docs/user-guide/projects).
+
+## Which tabs do clients see?
+
+The portal navigation can include Overview, Invoices, Recurring Invoices, Payments, Quotes, Credits, Payment Methods, Documents, Tasks, Projects, Statement and Subscriptions. The footer can include your Privacy Policy and Terms.
 
 ### Invoices
 
-The Invoices tab lists every invoice the client can act on or review — anything outstanding, paid, or previously sent. It's almost always the first place a client lands after clicking through from an email.
+The Invoices tab lists invoices the client can act on or review. It is almost always the first place a client lands after clicking through from an email.
 
-Draft invoices are deliberately excluded. An invoice only becomes visible in the portal once it has left draft status, which happens whenever you take one of the following actions from **More Actions** on the invoice:
+Draft invoices are left out on purpose. An invoice only becomes visible in the portal once it has left draft status, which happens when you take one of the following actions from the arrow next to **Save** on the invoice:
 
-- **Email Invoice** — sends the invoice and marks it as sent in the same step.
-- **Mark Sent** — flips the status to sent without emailing, so the invoice appears in the portal as unpaid.
-- **Mark Paid** — marks the invoice as paid and files it in the client's portal history.
+- **Email Invoice**: sends the invoice and marks it as sent in the same step.
+- **Mark Sent**: changes the status to sent without emailing, so the invoice appears in the portal as unpaid.
+- **Mark Paid**: marks the invoice as paid and files it in the client's portal history.
 
-This is the usual cause of "my client can't see the invoice" — the record is still a draft. See [Invoices](/docs/user-guide/invoices) for the full invoice lifecycle.
+On the Invoices tab, clients can filter by Paid, Unpaid and Overdue. Columns include Invoice Number, PO Number, Invoice Date, Amount, Balance, Due Date and Status. For an unpaid invoice, the row actions are **View** and **Pay Now**. There are also **Download** and **Pay Now** buttons at the top of the list.
+
+If a client cannot see an invoice, the usual cause is that the record is still a draft. See [Invoices](/docs/user-guide/invoices) for the full invoice lifecycle.
 
 ### Recurring Invoices
 
-![Recurring Invoices](/assets/images/client_portal/client_portal_recurring_invoices.png "Recurring invoices")
+![Recurring invoices in the client portal](/assets/images/client_portal/client_portal_recurring_invoices.png "Recurring invoices in the client portal")
 
-The Recurring Invoices tab gives the client visibility over any active subscription or retainer you've set up for them — frequency, start date, next send date, cycles remaining, and amount. Clicking **View** drills into the individual invoices that recurring template has already produced, which is handy when a client is reconciling a monthly charge. See [Recurring Invoices](/docs/user-guide/recurring-invoices) for how to set one up.
+The Recurring Invoices tab shows the client any active schedule you have set up for them. Columns include Frequency, Start Date, Next Send Date, Remaining Cycles and Amount. See [Recurring Invoices](/docs/user-guide/recurring-invoices) for how to set one up.
 
 ### Payments
 
-![Payments](/assets/images/client_portal/client_portal_payments.png "Payments")
+![Payments in the client portal](/assets/images/client_portal/client_portal_payments.png "Payments in the client portal")
 
-Payments shows the client's payment history — every payment you've recorded against their account, and the invoices each one was applied to. Clients tend to reach for this tab when they need a receipt or are checking whether a transfer has landed.
+Payments shows the client's payment history. Columns include Number, Payment Date, Payment Type, Amount, Transaction Reference and Status.
 
 ### Quotes
 
-![Quotes](/assets/images/client_portal/client_portal_quotes.png "Quotes")
+![Quotes in the client portal](/assets/images/client_portal/client_portal_quotes.png "Quotes in the client portal")
 
-Clients use the Quotes tab to review anything you've proposed and approve it with a single click. Approval is what makes the portal do real work for you: once the quote is approved it's automatically converted to an invoice, and the client is taken straight to the payment screen for that new invoice. For the other side of this flow, see [Quotes](/docs/user-guide/quotes).
+Clients use the Quotes tab to review anything you have proposed. They can **Download** a quote, **Approve** it or **Reject** it. Filters include Pending, Confirmed, Expired, Rejected and Cancelled. Columns include Quote Number, Quote Date, Amount, Valid Until and Quote Status.
+
+Once a quote is approved, Invoice Ninja can convert it to an invoice and take the client on to payment. For the other side of this flow, see [Quotes](/docs/user-guide/quotes).
 
 ### Credits
 
-The Credits tab surfaces any credits sitting on the client's account — typically from a refunded invoice or a goodwill adjustment — so the client can see what's available to offset future invoices. See [Credits](/docs/user-guide/credits) for how credits are issued and applied.
+The Credits tab shows any credits sitting on the client's account, typically from a refunded invoice or a goodwill adjustment. Columns include Credit Number, Amount, Balance, Credit Date and Notes. See [Credits](/docs/user-guide/credits) for how credits are issued and applied.
 
-![Credits](/assets/images/client_portal/client_portal_credits.png "Credits")
+![Credits in the client portal](/assets/images/client_portal/client_portal_credits.png "Credits in the client portal")
 
 ### Payment Methods
 
-The Payment Methods tab is where clients review the cards and bank accounts they've saved for faster checkout, and where they can add new ones. Saving a payment method is only possible when the underlying gateway supports it — if yours doesn't, this tab simply won't offer the option. See [Payment Gateways](/docs/user-guide/gateways) for gateway capabilities.
+The Payment Methods tab is where clients review the cards and bank accounts they have saved for faster checkout, and where they can add new ones. The button is **Add Payment Method**. Saving a payment method is only possible when the underlying gateway supports it. See [Payment Gateways](/docs/user-guide/gateways) for gateway capabilities.
 
-![Payment methods](/assets/images/client_portal/client_portal_payment_methods.png "Payment methods")
+![Payment methods in the client portal](/assets/images/client_portal/client_portal_payment_methods.png "Payment methods in the client portal")
 
-Clicking **View** on a saved method lets the client remove it or, if they have more than one on file, pick which should be used by default.
+![View a saved payment method in the client portal](/assets/images/client_portal/client_portal_view_payment_method.png "View a payment method in the client portal")
 
-![View payment method](/assets/images/client_portal/client_portal_view_payment_method.png "View payment method")
+Columns include Created, Payment Type, Type, Expires, Card Number and Default.
 
 #### How are credit card details stored?
 
@@ -66,54 +100,59 @@ Card numbers are never stored by Invoice Ninja. The details are captured directl
 
 #### How can I enter a credit card on file for my client manually?
 
-If a client has given you card details over the phone or in person and you'd like to save them for future charges, log into the Client Portal on their behalf and go to **Payment Methods > Add Payment Method**. The card is captured by the gateway in exactly the same way it would be if the client had entered it themselves.
+If a client has given you card details over the phone or in person and you would like to save them for future charges, open the **Client Portal** link on that contact and go to **Payment Methods > Add Payment Method**. The card is captured by the gateway in exactly the same way as if the client had entered it themselves.
 
 ### Documents
 
-The Documents tab is where clients see any files you've chosen to share with them — typically contracts, statements of work, terms of service, or supporting documents attached to an invoice or quote. Only files you've made visible to the client will appear here; internal attachments stay hidden.
+The Documents tab is where clients see files you have shared with them, typically contracts, statements of work, or supporting documents attached to an invoice or quote.
 
-![Documents](/assets/images/client_portal/client_portal_documents.png)
+![Documents in the client portal](/assets/images/client_portal/client_portal_documents.png "Documents in the client portal")
+
+When you upload a file on an invoice's **Documents** tab, it is visible to the client by default (an unlocked padlock icon). To hide it, open that document's **Actions** menu and choose **Set private**. The menu also includes **View**, **Download** and **Delete**.
+
+A document on a draft invoice does not appear in the portal until the invoice is marked sent or otherwise leaves draft. In the portal Documents tab, invoice files can appear after the client chooses the **Invoices** type filter. Other filters include Credits, Payments, Projects, Quotes, Recurring Invoices and Tasks. Clients can also download selected files.
 
 ### Statement
 
-Statements let the client generate a PDF summary of their invoices and payments for any date range they choose. It's a common request around the end of a financial year or when a client is reconciling their own books, and offering it self-serve saves you running the report yourself.
+Statements let the client generate a PDF summary of their invoices and payments for a date range they choose.
 
-![Statement](/assets/images/client_portal/client_portal_statement.png "Statement")
+![Statement in the client portal](/assets/images/client_portal/client_portal_statement.png "Statement in the client portal")
+
+The form includes **From**, **To**, Status (All, Paid or Unpaid), **Show Payments**, **Show Aging** and **Download**.
 
 ### Subscriptions
 
-If the client signed up through a [Payment Link](/docs/user-guide/subscriptions), the Subscriptions tab is where they manage the resulting subscription — requesting cancellation or changing plans, depending on which options you enabled when configuring the subscription.
+If the client signed up through a [Payment Link](/docs/user-guide/subscriptions), the Subscriptions tab is where that subscription appears. Columns include Status, Subscription, Frequency, Amount, Auto Bill and Next Send Date. Whether the client can cancel or change plans depends on **Allow Cancellation** and **Allow Plan Changes** on the Payment Link.
 
-![Subscriptions](/assets/images/client_portal/client_portal_subscriptions.png "Subscriptions")
+![Subscriptions in the client portal](/assets/images/client_portal/client_portal_subscriptions.png "Subscriptions in the client portal")
 
-![View subscription](/assets/images/client_portal/client_portal_view_subscription.png "View subscription")
+![View a subscription in the client portal](/assets/images/client_portal/client_portal_view_subscription.png "View a subscription in the client portal")
 
-### Pre-Payment
+### Can a client pay me without an invoice?
 
-Pre-Payment lets a client pay you without attaching the payment to a specific invoice — useful for deposits, retainers, or topping up an account before work begins. The tab only appears if you've enabled it under **Settings > Online Payments > Client Initiated Payments**.
+Yes, if you turn on **Client Initiated Payments** under **Settings > Payment Settings**. The help text is "Support making a payment in the client portal without an invoice."
 
-You can set a floor for how much a client is allowed to send under **Settings > Online Payments > Client Initiated Payments > Minimum Payment Amount**. If the client ticks **Enable Recurring**, they can set the payment to repeat a fixed number of times or indefinitely, at the frequency they choose (daily, weekly, fortnightly, and so on) — handy for clients who want to fund a retainer on a schedule without you raising an invoice each time.
+While this setting is off, the portal has no pre-payment item. There is no **Minimum Payment Amount** label on Payment Settings. **Minimum Under Payment Amount** is a different setting, used with **Allow Underpayment** when a client pays less than the invoice total.
 
-![Pre-Payment](/assets/images/client_portal/client_portal_prepayment.png "Pre-Payment")
+A payment made without an invoice lands in your [Payments](/docs/user-guide/payments) list as an unapplied payment: money received but not yet matched to an invoice. When you are ready to use it, open the payment and choose **Apply Payment** from the row **Actions** menu, then pick the invoice or invoices to apply it against.
 
-#### What happens to the pre-payment after the client pays? Where is it stored?
+![Unapplied pre-payment ready to apply](/assets/images/payments/unapplied_payment.png "Apply an unapplied payment")
 
-A pre-payment lands in your [Payments](/docs/user-guide/payments) list as an unapplied payment — money received but not yet matched to an invoice. When you're ready to use it, open the payment and choose **More Actions > Apply Payment**, then pick the invoice or invoices to apply it against.
 
-![Apply payment](/assets/images/payments/unapplied_payment.png "Apply payment")
+## How do I customize the client portal? {#customization}
 
-## Customization
+On Invoice Ninja's hosted service, **Settings > Client Portal > Customize** has **Header** and **Footer** fields only. There is no Custom CSS box on the hosted app.
 
-You can change your self-hosted client portal's colors and selected styles by pasting CSS into the existing Custom CSS setting. Start with the example below, replace the colors with your own, or choose one of the [10 copy-and-paste themes](#copy-and-paste-themes). You do not need to edit application files.
+On a **self-hosted** installation, you can change the client portal's colors and selected styles by pasting CSS into the Custom CSS setting. Start with the example below, replace the colors with your own, or choose one of the [10 copy-and-paste themes](#copy-and-paste-themes). You do not need to edit application files.
 
 This feature uses the existing self-hosted customization access. It does not enable Custom CSS on Invoice Ninja's hosted service or add a visual theme editor.
 
-<VideoPlayer src="/assets/videos/client_portal/theme/client_portal_theming.mpd" isDash={true} id="draft-recurring-invoices" />
+<VideoPlayer src="/assets/videos/client_portal/theme/client_portal_theming.mpd" isDash={true} id="client-portal-theming" />
 
 
 ### Apply your colors
 
-1. Sign in to Invoice Ninja as an administrator and open **Settings → Client Portal → Customize**.
+1. Sign in to Invoice Ninja as an administrator and open **Settings > Client Portal > Customize**.
 2. Copy any existing **Custom CSS** into a separate document so you can restore it.
 3. Paste the following into Custom CSS. Paste only the CSS, without `<style>` tags. If you already have customizations, add this below them.
 4. Replace the color codes as desired, then save.
@@ -165,7 +204,7 @@ These options cover shared portal elements, not every color on every page. For e
 
 Choose one of these 10 themes for a ready-made starting point. Each CSS block includes all 13 portal variables, so you can copy a complete theme without assembling individual settings.
 
-1. Open **Settings → Client Portal → Customize** on your self-hosted installation.
+1. Open **Settings > Client Portal > Customize** on your self-hosted installation.
 2. Back up your existing **Custom CSS**.
 3. Use the copy button on your chosen CSS block, then paste it into **Custom CSS**, without `<style>` tags. Replace the starter color block or a previous theme block with your choice. Keep unrelated customizations you still need.
 4. Save, then refresh the client portal. Check desktop and mobile views, buttons, navigation, and forms.
@@ -558,3 +597,13 @@ Portal CSS does not change invoice PDFs, email designs, or the contents of payme
 - Check the option's coverage above. For a specific element, use its named target instead.
 
 To undo your changes, remove the rules you added, restore your saved CSS if needed, save, and refresh the portal.
+
+## Related
+
+- [Clients](/docs/user-guide/clients#contacts): each contact gets their own portal login
+- [Invoices](/docs/user-guide/invoices): drafts stay hidden until you mark them sent or paid
+- [Quotes](/docs/user-guide/quotes): clients can approve or reject a quote in the portal
+- [Payments](/docs/user-guide/payments): payment history and unapplied payments
+- [Payment Gateways](/docs/user-guide/gateways): saved cards and Pay Now
+- [Payment Links](/docs/user-guide/subscriptions): the Subscriptions tab in the portal
+- [Payment Settings](/docs/user-guide/basic-settings#payment_settings): Client Initiated Payments and related options
