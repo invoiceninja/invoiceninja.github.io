@@ -1,119 +1,161 @@
 ---
-title: "Reports"
+title: "Reports: Turn Your Records into Numbers You Can Share"
+sidebar_label: "Reports"
 sidebar_position: 22
+description: "How to run reports in Invoice Ninja: the 28 report types, filters, preview and CSV export, Profit and Loss, aged receivables, tax reports and scheduling."
 ---
-Reports turn the day-to-day activity inside Invoice Ninja — invoices sent, payments received, expenses logged, taxes collected — into the numbers you (or your accountant) actually need at quarter-end. Whether you're a freelancer reconciling a single client, a small business preparing for tax season, or an agency tracking profitability across dozens of projects, the Reports module is where raw records become answers.
+# Reports: turn your records into numbers you can share
 
-Every report is built from the same filters at the top of the screen, so once you learn one you've effectively learned them all.
+Reports turn the day-to-day activity inside Invoice Ninja (invoices sent, payments received, expenses logged, taxes collected) into the numbers you or your accountant need. Every report is built from filters at the top of the screen, so once you learn one you have effectively learned them all.
 
-- **Report** — the record type to report on: Clients, Invoices, Quotes, Payments, Credits, Expenses, Recurring Invoices, Products, Invoice Items (which, unlike Products, also includes invoiced Tasks), Profit and Loss, and more. Your choice here controls which columns are available.
-- **Status** — limits the report to records in specific states. This won't appear for types that have no status (Products, Profit and Loss). If you're reporting on received [payments](/docs/user-guide/payments), for example, set the status to Completed so you don't pull in failed or pending ones.
-- **Range** — a preset date window (This Month, Last Quarter, This Year, and so on) or a Custom range you type in yourself.
-- **Client** — narrows the report to a single [client](/docs/user-guide/clients), where the record type is client-related. It won't appear for something like a Product report.
-- **Products, Vendors, Projects, Expense Categories** — extra filters that show up on reports where they make sense (Expense, Invoice Item, Product Sales).
+## Which reports can I run?
 
-### Additional Report Toggles
+Go to **Reports** in the left menu (`#/reports`). The **Report** list has these types, in this order:
 
-Not every toggle applies to every report — you'll only see the ones that make sense for the type you've picked.
+Activity, Client, Contact, Credit, Document, Expense, Invoice, Invoice Item, Purchase Order, Purchase Order Item, Quote, Quote Item, Recurring Invoice, Recurring Invoice Item, Payment, Product, Product Sales, Task, Vendor, Profit and Loss, Aged Receivable Detailed Report, Aged Receivable Summary Report, Customer balance report, Customer sales report, Tax Summary Report, Tax Period Report, User sales report, Project.
 
-- **Send Email** — instead of downloading the CSV, emails it to the currently logged-in admin user as an attachment. Useful when you're running reports on a device you'd rather not save files on.
-- **Attach Documents** — also emails a ZIP of any documents attached to the records in the report. For example, running an [Invoice](/docs/user-guide/invoices) report with this enabled will also email you every receipt or contract you'd previously attached to those invoices.
-- **Include Deleted** — pulls in deleted records. Handy if you've deleted a client (see [Clients](/docs/user-guide/clients)) and still need to reconcile historical numbers.
-- **Customize Columns** — drag and drop between the left column and Report Columns to pick exactly which fields land in the CSV. The available columns follow whichever report type you've chosen.
-  ![Client report customized columns](/assets/images/reports/client_report_customize_columns.png)
+The default type is **Activity**. Some names are singular (Invoice Item, not Invoice Items) or use sentence-style capitalisation (Customer balance report).
 
-## Run the Report
+## Which filters can I use?
 
-Once the filters are set, you have two ways to see the output — Export to CSV, or Preview on-screen. Both sit in the top-right of the Reports screen.
+The filters you see depend on the report type.
 
-Export generates a CSV you can open in Excel, Google Sheets, or LibreOffice — ideal for backups, deeper analysis, or handing off to an accountant. If you've ticked Send Email, the CSV arrives in your inbox instead of downloading directly. Under More Actions you'll also find Preview (for reports that support it) and Schedule, which drops you into the New Schedule screen so a report can run on a recurring basis and email itself to you automatically — good for a monthly P&L or a weekly aged-receivables check.
+- **Range** appears on every report checked. The presets are All, Last 7 Days, Last 30 Days, This Month, Last Month, This Quarter, Last Quarter, This Year, Last Year, and Custom.
+- **Status** appears on record reports that have statuses, for example Invoice. It does not appear on Profit and Loss.
+- **Client** appears where the report is client-related. It does not appear on every type.
+- Extra filters such as **Products**, **Tags**, **Template**, **Group by**, **Vendors** or **Projects** appear when they apply to that type.
 
-## Preview
+Examples:
 
-When a report supports Preview, choosing More Actions > Preview renders the result on screen in a table you can scan without leaving the browser.
+| Report | Filters and options shown |
+|---|---|
+| **Invoice** | Send Email, Attach Documents, Attach PDF, Include Deleted, Status, Template, Tags, Group by, Range, Client, Customize Columns |
+| **Payment** | Send Email, Attach Documents, Status, Template, Group by, Range, Client, Customize Columns (no Include Deleted, no Attach PDF) |
+| **Invoice Item** | Send Email, Attach Documents, Include Deleted, Status, Template, Products, Tags, Group by, Range, Client, Customize Columns |
+| **Client** | Send Email, Attach Documents, Include Deleted, Template, Tags, Group by, Range, Customize Columns |
+| **Product Sales** | Send Email, Products, Range, Client |
+| **Profit and Loss** | Send Email, Expensed reporting, Accrual accounting, Include tax, Range |
+| **Tax Period Report** | Send Email, Accrual accounting, Range |
+| **Aged Receivable Detailed Report**, **Aged Receivable Summary Report**, **Customer balance report**, **Customer sales report**, **Tax Summary Report**, **User sales report** | Send Email and Range |
 
-### Filtering in Preview
+### Which extra options appear?
 
-The first row of the preview table is a set of text fields you can type into to filter the results live. The Download CSV file button above the preview then downloads only what's currently visible. In the example below, PAYMENT TRANSACTION REFERENCE is filtered to "manual", so Download CSV file returns only those three rows.
+- **Send Email:** instead of downloading the CSV, emails it to the currently logged-in admin user as an attachment.
+- **Attach Documents:** also emails a ZIP of documents attached to the records in the report, on types that show this option.
+- **Attach PDF:** available on Invoice reports, alongside Attach Documents.
+- **Include Deleted:** "Include deleted records in reports." Handy if you have deleted a client (see [Clients](/docs/user-guide/clients)) and still need historical numbers.
+- **Customize Columns:** available on standard record reports, not on Profit and Loss or the other special reports below. Turn it on to move fields between an available list (for example Client - Name, Client - Number, Contact - Email) and **Report Columns**. There is a **Reset** control. If you turn it on only to look, turn it off again afterwards.
 
-![Report preview filtered](/assets/images/reports/report_preview_filtered_example.png)
+![Customising columns on a client report](/assets/images/reports/client_report_customize_columns.png "Customise columns on a client report")
 
-To download every row for the report — filtered or not — use the Export button at the top right instead.
+## How do I run a report?
 
-## Special Reports
+1. Go to **Reports**.
+2. Choose the report type and set the filters.
+3. Click **Export** to download a CSV, or open **Actions** and choose **Preview** (on reports that support it).
 
-A handful of reports have a shape that doesn't fit a single flat table, so their columns can't be customised. These are the ones that tend to matter most at tax time and when you're reviewing how the business is actually performing.
+**Export** is a button at the top of the page. It downloads a CSV you can open in Excel, Google Sheets or LibreOffice.
+
+**Actions** contains **Preview** and **Schedule** on standard reports (for example Invoice and Payment). On Product Sales, Profit and Loss, the aged receivable reports, the customer reports, Tax Summary Report and User sales report, **Actions** contains only **Schedule**. Those types still have **Export**.
+
+**Schedule** opens a full page (**New Schedule**, at `#/settings/schedules/create`) rather than a small dialog. Fields include Name, Template (Email Report), Next Run, Frequency (Monthly is offered), Remaining Cycles (for example Endless), and the report options. **Send Email** is on by default on that page, so review the fields before you save if you use scheduling.
+
+## How does Preview work?
+
+On reports that support it, **Actions > Preview** shows a processing state, then a table on the screen.
+
+### How do I filter a preview?
+
+The first row of the preview table is a set of text fields you can type into to filter the results live. A totals row can appear under the headers. The **Download CSV file** button above the preview downloads what you are looking at.
+
+![A report preview with a column filter applied](/assets/images/reports/report_preview_filtered_example.png "Report preview with a column filter")
+
+To download the report with the filters you set at the top of the Reports page, use **Export**.
+
+## Which reports have a special layout?
+
+These reports do not use **Preview** or **Customize Columns**. Use **Export** (and **Schedule** if you need a repeating run).
 
 ### Product Sales
 
-![Product sales](/assets/images/reports/product_sales_report_running.png)
+![Product sales report options](/assets/images/reports/product_sales_report_running.png "Product sales report")
 
-The Product Sales report answers two questions at once: which products sold, and how profitable are they? The first table lists each individual sale by date. The second totals quantity, markup, profit, and other figures per product — so you can see at a glance which offerings are pulling their weight and which aren't worth restocking.
+The Product Sales report is for seeing which products sold and how they performed. Options are Send Email, Products, Range and Client.
 
-![Product sales report](/assets/images/reports/product_sales_report_csv.png)
+![Product sales report CSV](/assets/images/reports/product_sales_report_csv.png "Product sales report export")
 
 ### Profit and Loss Report {#profit_and_loss_report}
 
-This is the report most accountants reach for at year-end. It sums your revenue, your expenses, the profit (or loss) that falls out of the difference, and the [taxes](/docs/user-guide/taxes) you collected and paid along the way.
+This is the report most accountants reach for at year-end. It sums your revenue, your expenses, and the profit or loss that falls out of the difference, along with [taxes](/docs/user-guide/taxes) when you include them.
 
-![Profit and loss Report](/assets/images/reports/profit_and_loss_report.png)
+![Profit and Loss report options](/assets/images/reports/profit_and_loss_report.png "Profit and Loss report")
 
-Two toggles change how the numbers are tallied, and they matter. When **Expensed reporting** is on, every expense in the period is counted regardless of whether it's been marked paid; when off, only expenses you've actually paid are counted. When **Accrual accounting** is on, every invoiced total in the period is counted whether or not the client has paid; when off, only payments actually received are counted. The combination lets you switch between a cash-basis and an accrual-basis view without changing your data. **Include tax** adds tax collected on revenue (shown under Total Revenue as Total Taxes) and tax paid on expenses (shown the same way under Total Expenses) into the totals.
+Three toggles change how the numbers are tallied. All three are off by default.
 
-![Profit and loss report example](/assets/images/reports/profit_and_loss_report_result_csv_example.png)
+- **Expensed reporting:** when on, expenses in the period are counted whether or not they have been marked paid; when off, only paid expenses are counted.
+- **Accrual accounting:** when on, invoiced totals in the period are counted whether or not the client has paid; when off, only payments received are counted.
+- **Include tax:** adds tax collected on revenue and tax paid on expenses into the totals.
 
-Expenses are broken down by category so you can see where the money actually went. In the example above, $830.60 in payments received less $452.91 in expenses gave a $377.69 profit, with $51.09 of that expense figure being tax paid.
+These options let you switch between a cash-basis and an accrual-basis view without changing your underlying records.
 
-All amounts are converted to your company currency (set under _Settings > Localization_). If you recorded payments in CAD and USD but your company currency is USD, every line in the P&L is converted to USD. A breakdown of revenue, expenses, and currencies sits at the foot of the report. If you need finer detail on specific tax types or a line-by-line list of payments or expenses, run one of the dedicated reports instead.
+![Profit and Loss report CSV](/assets/images/reports/profit_and_loss_report_result_csv_example.png "Profit and Loss report export")
 
 ### Aged Receivable Detailed Report
 
-When a client hasn't paid and you need to know exactly which invoices are outstanding and for how much, this is the report. It lists every unpaid invoice with its balance — the raw material for a collections call or a dunning run.
+When a client has not paid and you need to know which invoices are outstanding and for how much, use this report. It lists unpaid invoices with their balances.
 
-![Aged receivable detailed report](/assets/images/reports/aged_receivable_detailed_report_running.png)
+![Aged receivable detailed report](/assets/images/reports/aged_receivable_detailed_report_running.png "Aged receivable detailed report")
 
 ### Aged Receivable Summary Report
 
-The summary version rolls those same unpaid balances up per client and drops them into aging buckets, so you can spot your slowest payers at a glance without wading through every invoice.
+The summary version rolls unpaid balances up per client and drops them into aging buckets, so you can spot slower payers without wading through every invoice.
 
-![Aged Receivable Summary Report](/assets/images/reports/aged_receivable_summary_report_running.png)
+![Aged receivable summary report](/assets/images/reports/aged_receivable_summary_report_running.png "Aged receivable summary report")
 
 ### Customer Balance Report
 
-A per-client snapshot of invoices, credits, and payments — the report to run when you want to know, client by client, exactly where each one stands with you right now.
+A per-client snapshot of invoices, credits and payments. An exported file includes columns such as Client Name, Client Number, ID Number, Invoices, Invoice Balance, Credit Balance and Payment Balance.
 
-![Customer balance report](/assets/images/reports/customer_balance_report_running.png)
+![Customer balance report](/assets/images/reports/customer_balance_report_running.png "Customer balance report")
 
 ### Customer Sales Report
 
-For each client, this totals invoiced amount, outstanding balance, taxes, and amount paid. It's the "who's worth what to the business" view — useful when reviewing your top accounts or planning who to nurture next.
+For each client, this totals invoiced amount, outstanding balance, taxes and amount paid: a view of who is worth what to the business.
 
-![Customer sales report](/assets/images/reports/customer_sales_report_running.png)
+![Customer sales report](/assets/images/reports/customer_sales_report_running.png "Customer sales report")
 
 ### Tax Summary Report
 
-The Tax Summary Report totals every tax collected in the chosen date range, broken down by each tax rate's name and percentage. If you collect multiple rates — GST plus a state sales tax, or VAT across jurisdictions — this is the report you'll use to calculate input tax credits and to file returns. For the bigger picture on how tax is configured and applied, see [Taxes](/docs/user-guide/taxes).
+The Tax Summary Report totals tax in the chosen date range. For how tax is configured, see [Taxes](/docs/user-guide/taxes). For a wider discussion of tax reports, see [Tax Accounting Tips](/docs/advanced-topics/tax-accounting-tips/).
 
-![Tax summary report example](/assets/images/reports/tax_summary_report_result_csv_example.png)
+![Tax summary report CSV](/assets/images/reports/tax_summary_report_result_csv_example.png "Tax summary report export")
+
+### Tax Period Report
+
+The Tax Period Report is a separate type in the list. Its options are Send Email, Accrual accounting and Range.
 
 ### User Sales Report
 
-If more than one person on your team creates invoices, the User Sales report totals the number of invoices, the total invoice amount, and taxes (converted to company currency) _for each user_. It's the accountability view — useful for commissions, performance reviews, or just seeing who's been busy.
+If more than one person on your team creates invoices, the User Sales report totals activity for each user.
 
-One caveat: if an invoice wasn't explicitly assigned to a user, it won't count against any of them. That's why the example below shows 22 invoices totalling 2,548.39 USD but the two users listed each show zero — none of those invoices were assigned to them.
+![User sales report](/assets/images/reports/user_sales_report_running.png "User sales report")
 
-![User sales report](/assets/images/reports/user_sales_report_running.png)
+## How do I work with the CSV in a spreadsheet?
 
-## Advanced Customization Tips
-
-For charts, pivot tables, or deeper analysis, open the exported CSV in a spreadsheet tool such as Microsoft Excel, Google Sheets, or LibreOffice. From there you can select the data range for auto-totals, format it as a table, and build whatever charts or summaries you need.
+For charts, pivot tables or deeper analysis, open the exported CSV in a spreadsheet tool such as Microsoft Excel, Google Sheets or LibreOffice.
 
 If Excel prompts you to remove leading zeros when opening the file, choose **Don't Convert**. Some Invoice Ninja fields (invoice numbers, client numbers) legitimately start with zeros, and you want those preserved.
 
-![Opened in Excel leading zeros removal prompt](/assets/images/reports/opened_in_excel_leading_zeros_removal_prompt.png)
+![Excel prompt asking whether to remove leading zeros](/assets/images/reports/opened_in_excel_leading_zeros_removal_prompt.png "Excel leading zeros prompt")
 
-Between the filters, custom columns, scheduling, and spreadsheet follow-up, there are far more ways to slice the data than are worth listing — but this should give you enough of the mechanics to build whatever view your business actually needs, whether that's tax-season preparation, product-sales trends, or a quick accountability check on staff billing. If you're pushing this data into your accounting software, the [QuickBooks](/docs/user-guide/quickbooks) integration may save you the CSV step entirely.
+If you are pushing this data into your accounting software, the [QuickBooks](/docs/user-guide/quickbooks) integration may save you the CSV step entirely.
 
-## Tax Reports
+## Related
 
-TIP: If you are looking for an explanation of tax or sales tax report features, see this article: [Tax Accounting Tips](/docs/advanced-topics/tax-accounting-tips/)
+- [Payments](/docs/user-guide/payments): payment records and payment reports
+- [Expenses](/docs/user-guide/expenses): expense totals that feed Profit and Loss
+- [Taxes](/docs/user-guide/taxes): how tax is configured
+- [Products](/docs/user-guide/products): the Product and Product Sales reports
+- [QuickBooks](/docs/user-guide/quickbooks): an accounting sync that can reduce CSV exports
+- [Clients](/docs/user-guide/clients): client filters, and including deleted records
+- [Tax Accounting Tips](/docs/advanced-topics/tax-accounting-tips/): tax and sales tax reports

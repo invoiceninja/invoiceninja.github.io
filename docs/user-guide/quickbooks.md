@@ -1,74 +1,79 @@
 ---
-title: "QuickBooks"
+title: "QuickBooks: Import Your Books and Keep Them in Sync"
+sidebar_label: "QuickBooks"
 sidebar_position: 28
+description: "How to connect QuickBooks Online to Invoice Ninja: import records, push invoices and clients, check a pushed invoice, automatic sales tax, and self-hosted setup."
 ---
-
-# QuickBooks
+# QuickBooks: import your books and keep them in sync
 
 Invoice Ninja's QuickBooks Online connection can import data from QuickBooks into Invoice Ninja and push Invoice Ninja activity back to QuickBooks.
 
-This allows you to create invoices and get paid in Invoice Ninja, while also keeping QuickBooks connected if you want an ongoing accounting integration.
+This lets you create invoices and get paid in Invoice Ninja, while also keeping QuickBooks connected if you want an ongoing accounting integration.
 
 :::info
-Self-hosting? You'll need to register your own Intuit app and add its keys to your `.env` before you can connect. See [Self Host QuickBooks](/docs/self-host/self-host-quickbooks).
+Self-hosting? You need to register your own Intuit app and add its keys to your `.env` file before you can connect. See [Self Host QuickBooks](/docs/self-host/self-host-quickbooks).
 :::
 
-## Quick Start 
+## How do I connect QuickBooks to Invoice Ninja?
 
-### Connect QuickBooks to Invoice Ninja
+Go to **Settings > Account Management**, open the **Integrations** tab, and click **QuickBooks**. The route is `#/settings/account_management/integrations`.
 
-To link a QuickBooks company, go to Settings > Account Management > Integrations and click the QuickBooks button to start the OAuth flow.
+That tab also lists API Tokens, API Webhooks, API Docs, Zapier and Analytics.
 
-![QuickBooks OAuth](/assets/images/quickbooks/quickbooks1.png "QuickBooks OAuth")
+Clicking **QuickBooks** opens a window with this text: "Connect your QuickBooks account to Invoice Ninja to automatically sync your transactions and invoices." and a **Connect** button. **Connect** starts the sign-in (OAuth) flow with Intuit. Choose the QuickBooks company you want to link; you are then redirected back to Invoice Ninja.
 
-Once you've authenticated and chosen the company you want to link, you'll be redirected back to Invoice Ninja. The QuickBooks page now shows the extra options below.
+![QuickBooks connection](/assets/images/quickbooks/quickbooks1.png "QuickBooks connection")
 
-![QuickBooks Menu](/assets/images/quickbooks/quickbooks2.png "QuickBooks Menu")
+While QuickBooks is not connected, invoices do not have a **QuickBooks** tab.
 
-### Start The Import
+After you connect, the QuickBooks pages in Invoice Ninja show import and sync options.
 
-Now, you are ready to import your QuickBooks data into Invoice Ninja.
+![QuickBooks menu after connecting](/assets/images/quickbooks/quickbooks2.png "QuickBooks menu after connecting")
 
-![QuickBooks Menu](/assets/images/quickbooks/qbimport.png "QuickBooks Import")
+On the hosted app, the Integrations tab does not show self-hosted setup wording. Self-hosted installs still need their own Intuit app keys, as described in [Self Host QuickBooks](/docs/self-host/self-host-quickbooks).
 
-From the import menu, you can toggle on the record types you wish to import into Invoice Ninja and then click the Sync button. 
+## How do I import my QuickBooks data?
 
-For large accounts, this can take up to several hours to complete.
+After you connect, you can import your QuickBooks data into Invoice Ninja.
 
-### Choose Sync Options
+![QuickBooks import options](/assets/images/quickbooks/qbimport.png "QuickBooks import options")
 
-After completing the data import, you can enable sync options that allow Invoice Ninja to push records that have been created or updated to QuickBooks.
+From the import menu, turn on the record types you wish to import, then start the import (the button on that screen is typically **Sync**).
 
-![QuickBooks Menu](/assets/images/quickbooks/qbsyncoptions.png "QuickBooks Sync Options")
+For large accounts, this can take several hours to complete.
 
-In this example, we have selected the Push option for Invoices. This will push from Invoice Ninja to QuickBooks when a new invoice is created, or when an existing invoice is updated.
+The exact import types and button labels are shown after the account is connected.
+
+## How do I choose sync options?
+
+After the data import, you can turn on sync options that allow Invoice Ninja to push records that have been created or updated to QuickBooks.
+
+![QuickBooks sync options](/assets/images/quickbooks/qbsyncoptions.png "QuickBooks sync options")
+
+For example, if you select the **Push** option for invoices, Invoice Ninja will push to QuickBooks when a new invoice is created, or when an existing invoice is updated.
 
 :::warning
 Only **Push** is supported for ongoing synchronisation. Pull and Bidirectional synchronisation are not supported. The initial import is a separate, one-time step that brings your selected QuickBooks records into Invoice Ninja.
 :::
 
-### How Does Sync Work?
-A couple of things worth knowing. When you push an invoice, its client has to exist in QuickBooks first - if it doesn't, Invoice Ninja will create it on the fly as part of the invoice push, regardless of whether client Push is enabled. Any line-item products that don't exist in QuickBooks yet are also created automatically during the invoice push.
+## How does a push work?
 
-Not every field change triggers a push. Client balance updates (for example, when a payment is applied) are ignored; only meaningful edits like name, address, or contact info sync across. Product updates - price changes, description edits - are not currently pushed either; only newly created products are.
+When you push an invoice, its client has to exist in QuickBooks first. If it does not, Invoice Ninja will create it on the fly as part of the invoice push, regardless of whether client Push is enabled. Any line-item products that do not exist in QuickBooks yet are also created automatically during the invoice push.
+
+Not every field change triggers a push. Client balance updates (for example, when a payment is applied) are ignored; only meaningful edits like name, address or contact info sync across. Product updates (price changes, description edits) are not currently pushed either; only newly created products are.
 
 The first time you push a record, the integration checks QuickBooks for a matching record before creating a duplicate. Clients are matched by display name, products by item name (skipping Category and Group types). If a match exists, Invoice Ninja links to it rather than creating a second copy.
 
-### Check an Invoice in QuickBooks
+## How do I check an invoice in QuickBooks?
 
-After connecting QuickBooks, individual invoices include a **QuickBooks** tab. Use it when you want to confirm that an invoice was pushed successfully or investigate a mismatch.
+After QuickBooks is connected, individual invoices can include a **QuickBooks** tab. That tab is not shown while the integration is disconnected. Use it when you want to confirm that an invoice was pushed successfully or investigate a mismatch.
 
 1. Open the invoice in Invoice Ninja.
 2. Select the **QuickBooks** tab.
-3. Review the **QuickBooks ID**, **Status**, and **Message**.
+3. Review the **QuickBooks ID**, **Status** and **Message**.
 4. Select **Check Record**.
 5. Review the connection status, QuickBooks balance and last-updated time, and the comparison of the invoice number and total.
 6. Follow the recommended action shown on the page, if one is needed.
-
-<!-- SCREENSHOT PLACEHOLDER
-Route: /invoices/{invoice_id}/quickbooks
-Required state: Show a pushed sample invoice after Check Record has completed. Include the QuickBooks ID, Status, Message, check result, connection status, QuickBooks balance and last-updated time, Number and Total comparison table, and at least one safe recommended action. Do not show real client or QuickBooks company information.
--->
 
 The available actions depend on what Invoice Ninja finds:
 
@@ -81,11 +86,11 @@ The available actions depend on what Invoice Ninja finds:
 Use **Force Link** and **Force Push** only after comparing the invoice number and total in both systems. Linking the wrong invoices or pushing the wrong version can leave your accounting records inconsistent.
 :::
 
-### Connection and Authentication
+## How does the connection stay signed in?
 
-The integration uses OAuth 2.0 and refreshes tokens automatically. If both your access and refresh tokens expire - which typically happens after 100 days of inactivity - you'll get an email prompting you to reconnect. Reconnecting from the QuickBooks settings page preserves your sync configuration and all existing record links, so you won't lose the mapping you've already built up.
+The integration uses OAuth 2.0 and refreshes tokens automatically. If both your access and refresh tokens expire, which typically happens after 100 days of inactivity, you will get an email prompting you to reconnect. Reconnecting from the QuickBooks settings page preserves your sync configuration and all existing record links, so you will not lose the mapping you have already built up.
 
-## QuickBooks Terms in Invoice Ninja
+## How do QuickBooks terms map to Invoice Ninja?
 
 | QuickBooks | Invoice Ninja | Where to learn more |
 |---|---|---|
@@ -103,45 +108,45 @@ The integration uses OAuth 2.0 and refreshes tokens automatically. If both your 
 | Sales Tax | Taxes | [Taxes](/docs/user-guide/taxes) |
 | Reports | Reports | [Reports](/docs/user-guide/reports) |
 
-## Migration Checklist
+## What should I check before I migrate?
 
 Use this checklist to keep the move controlled and easy to verify.
 
 - [ ] Confirm which QuickBooks Online company you will connect.
 - [ ] Save QuickBooks reports or exports needed for backup and reconciliation.
 - [ ] Decide whether to import only active records or include historical invoices.
-- [ ] Review duplicate customer names, product names, and invoice numbers before import.
+- [ ] Review duplicate customer names, product names and invoice numbers before import.
 - [ ] Review active recurring templates so you know which ones need to be recreated.
 - [ ] Save copies of important attachments.
 - [ ] Confirm payment gateway access.
 - [ ] Confirm invoice number sequence and next invoice number.
 - [ ] Confirm tax settings with your accountant or bookkeeper.
 
-## After You Connect QuickBooks
+## What should I do after I connect QuickBooks?
 
 Once the migration data is in place, do a short end-to-end setup pass before inviting clients.
 
-1. Set your company name, logo, address, and contact details in [Company Details](/docs/user-guide/basic-settings#company_details).
+1. Set your company name, logo, address and contact details in [Company Details](/docs/user-guide/basic-settings#company_details).
 2. Check invoice numbering in [Generated Numbers](/docs/user-guide/advanced-settings#generated_numbers).
 3. Configure taxes in [Taxes](/docs/user-guide/taxes).
 4. Connect a payment gateway in [Payment Gateways](/docs/user-guide/gateways).
 5. Create or open a migrated test client.
-6. Create and email a test invoice.
+6. Create a test invoice. Send it only when you are ready for the client (or a mailbox you control) to receive it.
 7. Pay the invoice using a test or low-value transaction if appropriate.
-8. Open the client portal as the client contact and review invoices, payments, statements, and payment methods.
+8. Open the client portal as the client contact and review invoices, payments, statements and payment methods.
 9. Run your first [report](/docs/user-guide/reports) to check the migrated billing data.
 
-## Client Portal
+## How does the client portal fit in?
 
-QuickBooks users often move to Invoice Ninja because the client-facing experience is more direct. Your clients can use the branded portal to view invoices, pay online, download statements, approve quotes, manage saved payment methods, and access shared documents.
+QuickBooks users often move to Invoice Ninja because the client-facing experience is more direct. Your clients can use the branded portal to view invoices, pay online, download statements, approve quotes, manage saved payment methods and access shared documents.
 
 The portal is connected to client contacts. When you email an invoice or quote, the link opens that contact's portal view, so the portal becomes part of the normal billing flow instead of a separate tool clients need to learn. See [Client Portal](/docs/user-guide/client-portal) for the full walkthrough.
 
-## Automatic Sales Tax (US)
+## How does Automatic Sales Tax work (US)?
 
-If your QuickBooks account uses Automated Sales Tax (AST), Invoice Ninja defers to QuickBooks for tax calculations. When an invoice is pushed, QuickBooks works out the applicable tax based on the customer's location, returns the details, and Invoice Ninja applies them per line item. Matching tax rates are created in Invoice Ninja on the fly, totals are reconciled between the two systems, and tax-exempt products stay tax-free - only taxable lines receive tax assignments.
+If your QuickBooks account uses Automated Sales Tax (AST), Invoice Ninja defers to QuickBooks for tax calculations. When an invoice is pushed, QuickBooks works out the applicable tax based on the customer's location, returns the details, and Invoice Ninja applies them per line item. Matching tax rates are created in Invoice Ninja on the fly, totals are reconciled between the two systems, and tax-exempt products stay tax-free: only taxable lines receive tax assignments.
 
-Because the response has to come back before the invoice can be finalised, invoice pushes are processed synchronously rather than queued when AST is on. See [Taxes](/docs/user-guide/taxes) for how Invoice Ninja handles tax outside of this integration.
+Because the response has to come back before the invoice can be finalised, invoice pushes are processed straight away rather than queued when AST is on. See [Taxes](/docs/user-guide/taxes) for how Invoice Ninja handles tax outside of this integration.
 
 :::warning
 When Automatic Taxes are enabled, Invoice Ninja creates the invoice in QuickBooks first (in real time) and uses QuickBooks' response as the source of truth for taxes. You cannot adjust tax calculations on the Invoice Ninja side while AST is enabled.
@@ -151,6 +156,15 @@ If a product should be tax-exempt, set the product's tax category to **Tax Exemp
 
 ## Troubleshooting
 
-### Taxes are not being carried over from Invoice Ninja to QBO.
+### Taxes are not being carried over from Invoice Ninja to QuickBooks
 
-In this scenario, Automatic Sales Taxes (AST) would be enabled in QBO, as QBO is in charge of calculating the tax nexus and applicable rates, the most common cause of taxes being removed would be the Clients record being set to tax exempt - OR - QBO not being able to determine the correct tax rates due invalid/incomplete customer address. 
+In this situation, Automatic Sales Tax (AST) is usually enabled in QuickBooks, because QuickBooks is in charge of calculating the tax and the applicable rates. The most common cause of taxes being removed is that the client record is set to tax exempt, or that QuickBooks cannot determine the correct tax rates because the customer address is missing or incomplete.
+
+## Related
+
+- [Self Host QuickBooks](/docs/self-host/self-host-quickbooks): register your own Intuit app on a self-hosted install
+- [Clients](/docs/user-guide/clients): customers imported from QuickBooks
+- [Invoices](/docs/user-guide/invoices): invoices you can push after connecting
+- [Taxes](/docs/user-guide/taxes): tax settings, including the Tax Exempt category
+- [Reports](/docs/user-guide/reports): check migrated totals
+- [Client Portal](/docs/user-guide/client-portal): what clients see after you migrate
