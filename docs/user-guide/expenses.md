@@ -1,181 +1,205 @@
 ---
-title: "Expenses"
+title: "Expenses: Record Costs, Bill Them Back and Keep Receipts"
+sidebar_label: "Expenses"
 sidebar_position: 10
+description: "How to record expenses in Invoice Ninja: linking a vendor, client and category, marking an expense billable, recording that you paid the vendor, tax and currency, receipts, and what each expense status means."
 ---
-An **Expense** is any cost your business has incurred — a software subscription, a taxi fare, materials for a job, a monthly phone bill. Tracking them inside Invoice Ninja keeps your profit and loss picture honest, gives you a home for receipts at tax time, and lets you pass costs back to clients when the work calls for it.
+# Expenses: record costs, bill them back and keep receipts
+
+An expense is any cost your business has incurred: a software subscription, a taxi fare, materials for a job, a monthly phone bill. Tracking them in Invoice Ninja keeps your profit and loss honest, gives receipts a home at tax time, and lets you pass costs back to a client when the work calls for it.
 
 <video width="100%" controls>
   <source src="/assets/videos/expenses/create_expense.mp4" type="video/mp4" />
 </video>
 
-## Why Track Expenses Here
+## Where do I see all my expenses?
 
-You can think of the expenses module as three things wearing one hat. It's a bookkeeping ledger of what you've spent, a billing pipeline for costs you intend to recover from a client, and a document archive for the receipts and invoices your accountant will ask for later. Keeping everything in one place means your [Reports](/docs/user-guide/reports) — especially Profit and Loss — reflect the full picture without you having to reconcile two systems.
+Click **Expenses** in the left menu. The list shows **Category**, **Status**, **Number**, **Client**, **Vendor**, **Date**, **Amount**, **Public Notes** and **Project**. From here you can:
 
-Most day-to-day expenses are straightforward: you paid something, you log it, you move on. The parts that trip people up are the billable-to-client workflow and the tax options, so those get a proper explanation below.
+- Search with the **Filter** box
+- Show archived or deleted expenses with the **Lifecycle** filter
+- Narrow the list with the **Status** filter: **Logged**, **Pending**, **Invoiced**, **Paid**, **Unpaid** or **Uncategorized**
+- Narrow by **Expense Categories**
+- Choose what to show with **Columns**
+- Import expenses from a file with **Import**
+- Create an expense with **Enter Expense**
 
-## Creating an Expense
+Each row has an **Actions** menu on the right with the same actions as the expense itself (see [What can I do with an expense?](#more_actions_dropdown)).
 
-Open the **Expenses** module from the left-hand navigation and click **+ Expense**, or clone an existing one from the **More Actions** menu for a faster start on recurring costs. The landing view lists every expense with status filters along the top and a search box that matches expense numbers, vendors, and amounts.
+Click the expense number to open it for editing. Clicking elsewhere on the row opens a side panel with **Overview**, **Documents** and an **Actions** menu.
 
-At a minimum, an expense needs an amount — but an amount alone tells you nothing useful three months from now. Attaching a **Vendor** (who you paid), a **Category** (what kind of cost it was), and optionally a **Client** or **Project** (who it was for) turns a line in a ledger into something your reports can actually group and total.
+You can also open the **Expenses** tab on a [vendor](/docs/user-guide/vendors) or a [client](/docs/user-guide/clients) to see only that party's expenses.
 
-## The Details Panel
+## How do I create an expense?
 
-The core fields live under **Details**:
+1. Go to **Expenses** and click **Enter Expense**, or create the expense while you are already on a vendor or client.
+2. Fill in at least an **Amount** and a **Date**. For reports that actually help later, also pick a **Vendor** (who you paid), a **Category** (what kind of cost it was) and, if it relates to a job, a **Client** or **Project**.
+3. Optional: add notes, mark it billable, record that you paid the vendor, set tax or attach a receipt. See the sections below.
+4. Click **Save**.
 
-- **Status** — set automatically based on where the expense is in its lifecycle. See [Lifecycle of an Expense](#lifecycle_of_an_expense) below.
-- **Expense Number** — auto-generated; leave it alone unless you need to. The numbering pattern lives under **Settings > Generated Numbers**.
-- **Vendor** — the business you paid. Vendor is "who the money went to," which is the mirror image of a client. See [Vendors](/docs/user-guide/vendors).
-- **Client** — who the expense is ultimately *for*. Setting this doesn't bill them — it just links the record. If you later invoice the expense, the new invoice is pre-filled with this client.
-- **Project** — link to a [Project](/docs/user-guide/projects) so the cost rolls up alongside the project's tasks and invoices.
-- **Category** — a bucket like "Travel," "Software," or "Materials." Categories are what Profit and Loss groups by, so they're worth setting even for one-off expenses. Manage the list under **Settings > Expense Settings**.
-- **User** — attach an admin portal user to the record. Handy for filtering reports by team member and for restricting view/edit access.
-- **Tax** — appears only when **Expense Tax Rates** is enabled under **Settings > Tax Settings**. Pick a rate or enter a flat amount, then control how it's applied under the Taxes panel on the right.
-- **Amount** — the total you were billed.
-- **Currency** — defaults to the vendor's currency, or your company currency if no vendor is set.
-- **Date** — the date on the vendor's invoice, not the date you paid it. This matters for tax-period reporting.
+You can also start from an existing expense: open its **Actions** menu and choose **Clone**, or choose **Clone to Recurring** if the cost repeats. See [Recurring Expenses](/docs/user-guide/recurring-expenses).
 
-### Vendor, Client, Category — Why All Three?
+New expenses follow the defaults under [Expense Settings](/docs/user-guide/basic-settings#expense_settings), including whether **Should be invoiced**, **Mark Paid** and **Add Documents to Invoice** start switched on.
 
-These three fields look similar but answer different questions. **Vendor** is who you paid. **Client** is who the expense relates to (and potentially who you'll recharge it to). **Category** is what kind of spend it is for accounting purposes. A taxi to visit Acme Corp might have vendor "City Cabs," client "Acme Corp," and category "Travel." Each drives a different report, and filling all three gives you the most flexibility later.
+### Which expense details do I fill in?
 
-## Notes
+| Field | What it is for |
+|---|---|
+| **Vendor** | The business you paid. Optional, but this is what makes spend-per-supplier reports work. See [Vendors](/docs/user-guide/vendors). The dropdown ends with **New Vendor**. |
+| **Client** | Who the expense is for. Setting a client does not bill them; it only links the record. If you later invoice the expense, the new invoice is meant for this client. See [Clients](/docs/user-guide/clients). |
+| **Project** | Links the cost to a [project](/docs/user-guide/projects), so it rolls up alongside that project's tasks and invoices. |
+| **Category** | A bucket such as Travel, Software or Materials. Profit and Loss groups expenses by category, so it is worth setting even for a one-off. Manage the list under **Settings > Expense Settings**. |
+| **Assigned User** | The team member the expense is recorded against. Useful for reporting and for limiting who can see the record. |
+| **Tags** | Optional. Labels you can use to find or group expenses later. |
+| **Amount** | The total you were billed. |
+| **Currency** | Defaults to the vendor's currency, or your company currency if no vendor is set. |
+| **Date** | The date on the vendor's invoice, not the date you paid it. This is the date your tax-period reports use. |
+| **Tax** | Appears only when **Expense Tax Rates** is enabled under **Settings > Tax Settings**. If tax rates are off, the Taxes card says "Item tax rates are disabled" and links to those settings. See [How do taxes work on an expense?](#how-do-taxes-work-on-an-expense). |
 
-The **Public Notes** field becomes the line-item description when an expense is invoiced to a client, so write it as something a customer would read — "On-site visit, Tuesday" rather than "trip 3." **Private Notes** are admin-only and are the right place for internal context ("reimburse from job #42 budget").
+On a saved expense you will also see its **Status** and **Number**. Change the numbering pattern under **Settings > Generated Numbers > Expenses**.
 
-## Additional Info
+### Why do Vendor, Client and Category all appear?
 
-This panel is where the expense stops being just a ledger entry and starts doing other work.
+These three fields answer different questions:
 
-### Billable vs Non-Billable
+- **Vendor** is who you paid.
+- **Client** is who the expense relates to, and who you might recharge it to.
+- **Category** is what kind of spend it is, for accounting.
 
-**Should be invoiced** is the toggle that makes an expense billable. When it's off, the expense is purely a cost record — it affects your Profit and Loss but never touches a client invoice. When it's on, the expense enters a **Pending** state and becomes eligible to be pushed onto a new or existing invoice via **Invoice Expense** or **Add to Invoice** on the **More Actions** menu. Until you do that, nothing is charged to the client — "Should be invoiced" is a flag, not a bill.
+A taxi to visit a client might have the taxi company as the vendor, that client, and Travel as the category. Each one drives a different report, and filling all three gives you the most flexibility later.
 
-This two-step design is deliberate. It lets you capture a billable cost the moment the receipt lands in your inbox, then batch several weeks of them onto a single invoice when you're ready to bill the client, rather than firing off an invoice each time.
+An amount alone is enough to save the record, but it tells you little three months from now.
 
-### Marking the Expense Paid
+### What goes in the notes?
 
-**Mark Paid** records that *you* paid the vendor — it has nothing to do with the client paying you. Once enabled, you can capture the payment type, date, and a transaction reference. Keeping this accurate is what makes your cash-flow and Profit and Loss reports reflect reality rather than what you intended to pay.
+| Field | What it is for | Can the client see it? |
+|---|---|---|
+| **Public Notes** | Becomes the line-item description when you invoice the expense, so write it as something a client would read, such as "On-site visit, Tuesday". | Yes, once it is on an invoice |
+| **Private Notes** | Notes for your team only, such as which job budget to reimburse it from. Never on the PDF or in the client portal. | No |
 
-### Converting Currency
+### How do I make an expense billable to a client?
 
-If you're billed in a currency different from your own — a US-based subscription for an Australian business, say — enable **Convert currency** to record both the original amount and what it cost you in your home currency. The exchange rate pre-fills with the current market rate but can be adjusted to match what your card statement actually charged.
+**Should be invoiced** is the toggle that makes an expense billable ("Enable the expense to be invoiced"). When it is off, the expense is only a cost record: it affects your Profit and Loss and never touches a client invoice. When it is on, the expense moves to **Pending** and two actions appear in the menu.
+
+Nothing is charged to the client until you take the second step. "Should be invoiced" is a flag, not a bill. That lets you capture a cost the moment the receipt arrives, then batch several weeks of costs onto one invoice when you are ready to bill.
+
+| Action | What it does |
+|---|---|
+| **Invoice Expense** | Opens a new unsaved [invoice](/docs/user-guide/invoices) with this expense already added as a line item (the public notes become the description, with quantity 1 and the expense amount as the unit cost). Pick the client, then save the invoice when you are ready. |
+| **Add To Invoice** | Adds the expense as a line item on an existing invoice for that client. Use this when you are collecting small costs against a running job. |
+
+If you turn **Should be invoiced** off, **Invoice Expense** and **Add To Invoice** disappear from the menu.
+
+See [Invoices](/docs/user-guide/invoices#how-do-i-add-line-items) for how that line sits with other items.
+
+### How do I record that I paid the vendor?
+
+**Mark Paid** records that *you* paid the vendor ("Track the expense has been paid"). It has nothing to do with the client paying you.
+
+Turn it on, then fill in **Payment Type**, **Date** and **Transaction Reference**. Keeping this accurate is what makes your cash-flow and Profit and Loss reports match what actually left the account.
+
+If **Mark Paid** is on and **Should be invoiced** is off, the expense status is **Paid**.
+
+### How do I record an expense in another currency?
+
+If you were billed in a currency different from yours, turn on **Convert currency** ("Set an exchange rate when creating an expense"). That reveals **Currency**, **Exchange Rate** and **Converted Amount**, so you can record both the original amount and what it cost in your home currency. The exchange rate fills in with the current market rate; you can change it to match what your card statement actually charged.
 
 :::warning
-Reports categorise expenses by the **expense/vendor currency**, not the converted currency. If you want a single-currency Profit and Loss, record each expense directly in your home currency using the already-converted amount, and leave the foreign-currency detail in the notes or a document attachment.
+Reports group expenses by the **expense or vendor currency**, not the converted currency. If you want a single-currency Profit and Loss, record each expense directly in your home currency using the already-converted amount, and leave the foreign-currency detail in the notes or on an attached receipt.
 :::
 
-### Add Documents to Invoice
+### How do I attach receipts, and put them on the invoice?
 
-When enabled, any receipts or PDFs attached to the expense are bundled with the invoice you generate from it — useful for clients who require proof of pass-through costs before they pay.
+Open the **Documents** tab and upload PDFs, photos of paper receipts or the vendor's original invoice.
 
-## Taxes
+Turn on **Add Documents to Invoice** if those files should go out with the invoice when you bill the client ("Make the documents visible to client"). That is useful when a client wants proof of pass-through costs before they pay.
 
-**Expense Tax Rates** must be enabled under **Settings > Tax Settings** before any of the tax controls appear (otherwise you'll see "Item tax rates are disabled"). Depending on that setting you can apply one, two, or three taxes per expense — enough to cover, say, GST plus a city-level sales tax.
+## How do taxes work on an expense?
 
-Taxes can be entered two ways. **By Rate** applies a configured percentage tax (the default). **By Amount** lets you type a tax name and a flat dollar figure, which is handy for a fixed duty or levy that isn't a clean percentage.
+**Expense Tax Rates** must be enabled under **Settings > Tax Settings** before the tax controls appear. Otherwise the Taxes card says "Item tax rates are disabled" and links to those settings. Depending on that setting you can apply one, two or three taxes per expense, enough for a national tax plus a city-level sales tax, for example.
 
-The choice that surprises people is **Inclusive vs Exclusive**:
+When tax rates are enabled, taxes can be entered two ways:
 
-- **Exclusive** — tax sits *on top of* the expense amount. $100 + 10% = $110.
-- **Inclusive** — tax is already *baked into* the amount. A $100 inclusive expense at 10% is $90.91 pre-tax plus $9.09 tax.
+- **By Rate** applies a percentage you have already set up (the default).
+- **By Amount** lets you type a tax name and a flat figure, which is handy for a fixed duty or levy that is not a clean percentage.
 
-Which one you pick should match how the vendor's invoice is written. Getting this wrong doesn't change what you paid, but it does change what lands in the tax column of your reports.
+The choice that surprises people is inclusive versus exclusive:
+
+- **Exclusive**: tax sits on top of the expense amount. 100 + 10% = 110.
+- **Inclusive**: tax is already included in the amount. A 100 inclusive expense at 10% is 90.91 pre-tax plus 9.09 tax.
+
+Pick the one that matches how the vendor's invoice is written. Getting this wrong does not change what you paid, but it does change what lands in the tax column of your reports.
 
 <video width="100%" controls>
   <source src="/assets/videos/expenses/expense_settings_taxes.mp4" type="video/mp4" />
 </video>
 
-<h2 id="more_actions_dropdown">More Actions</h2>
+## What can I do with an expense? {#more_actions_dropdown}
 
-From the expense table, or the **Save** dropdown on the edit screen, you'll find the usual management actions:
+Click the arrow next to **Save** on an expense, or use the row **Actions** menu on the list or in the side panel.
 
-- **Clone** — duplicates the record with today's date. Good for the same lunch spot every Friday.
-- **Clone to Recurring** — turns a one-off into a [Recurring Expense](/docs/user-guide/recurring-expenses) template, which is how you should handle subscriptions, rent, and anything else that lands on the same day each month.
-- **Archive** — hides the record from default views without touching reports.
-- **Delete** — hides it *and* removes it from reports.
-- **Restore** — brings an archived or deleted expense back; visible only when one is selected.
+| Action | What it does |
+|---|---|
+| **Invoice Expense** / **Add To Invoice** | Appear when **Should be invoiced** is on. See [How do I make an expense billable to a client?](#how-do-i-make-an-expense-billable-to-a-client). |
+| **Clone** | Copies the expense into a new expense. |
+| **Clone to Recurring** | Turns the expense into a [recurring expense](/docs/user-guide/recurring-expenses). Use this for rent, subscriptions and anything else that lands on the same day each cycle. |
+| **Archive** / **Delete** | Tidies up or removes the expense. See [What do the expense statuses mean?](#lifecycle_of_an_expense). |
+| **Restore** | Brings an archived or deleted expense back. |
 
-When **Should be invoiced** is on, two more options appear:
+**Run Template** only appears once you have created a [template](/docs/advanced-topics/templates).
 
-- **Invoice Expense** — creates a brand-new invoice, pre-populated with the expense as a line item.
-- **Add to Invoice** — appends the expense as a line item on an existing invoice for that client, which is the usual flow when you're accumulating small costs against a running job.
+## What do the expense statuses mean? {#lifecycle_of_an_expense}
 
-See [Invoices](/docs/user-guide/invoices) for what happens to the expense once it's on an invoice.
+The status is set for you as the expense moves along. You do not pick it yourself, but it is what the list filters use.
 
-## Documents
+| Status | What it means |
+|---|---|
+| **Logged** | Recorded as a cost, without being flagged as billable or marked as paid. |
+| **Pending** | **Should be invoiced** is on, and the expense is waiting to be added to an invoice. |
+| **Invoiced** | The expense is on a client invoice. This does not mean the client has paid. Whether that invoice is paid or overdue is tracked on the invoice, not on the expense. |
+| **Paid** | **Mark Paid** is on and **Should be invoiced** is off: you have recorded that you paid the vendor. |
+| **Archived** | Hidden from your normal list. Reports still include it, so archiving is just to keep the active list tidy. You can still edit and save an archived expense without restoring it first. |
+| **Deleted** | Hidden and left out of reports, as if it never happened. The record can still be restored. Use delete when an expense was logged in error; use archive when it is real but old. |
 
-The **Documents** tab is where the receipt lives. Upload PDFs, photos of paper receipts, or the vendor's original invoice. If **Add Documents to Invoice** is enabled on the expense, these files travel with the invoice when you bill the client.
+The **Status** filter also offers **Unpaid** and **Uncategorized**.
 
-<h2 id="lifecycle_of_an_expense">Lifecycle of an Expense</h2>
+### How do I bring back an archived or deleted expense?
 
-Every expense moves through a handful of states automatically — you don't set these yourself, but knowing what they mean helps when you're filtering the list.
+1. On the expense list, open the **Lifecycle** filter, tick **Archived** (or **Deleted**) and click **Apply**.
+2. In the expense's row, open the **Actions** menu and choose **Restore**.
 
-### Logged
+The expense goes back to the status it had before (for example, a Pending expense that was archived returns to **Pending**).
 
-The default state when an expense is first created, regardless of whether you've paid the vendor yet. "Logged" just means "recorded."
+## How do I set defaults for new expenses?
 
-### Pending
+For defaults that should apply to every new expense, see [Expense Settings](/docs/user-guide/basic-settings#expense_settings). That page includes **Should be invoiced**, **Mark Paid**, **Convert currency**, **Add Documents to Invoice**, **Notify Vendor When Paid**, tax options (**Enter Taxes**, **By Rate**, **By Amount**, **Inclusive Taxes**) and your category list. Add a category with **New Expense Category**. Categories appear in a table on that page.
 
-Set automatically when **Should be invoiced** is enabled. The expense is now billable and waiting to be attached to an invoice.
+If an expense line came from your bank feed, you can match it to a [transaction](/docs/user-guide/transactions) rather than entering it twice. For a cost that repeats, set up a [recurring expense](/docs/user-guide/recurring-expenses) once instead of recreating it by hand each month.
 
-### Invoiced
+## Can I create expenses by email? (self-hosted only)
 
-Set automatically the moment the expense is added to a client invoice. Note the subtle point here: "Invoiced" means it's *on* an invoice, not that the client has paid. Whether the invoice itself is paid or overdue is tracked on the invoice, not on the expense. The expense overview panel links straight to the invoice it was added to.
+On a self-hosted Invoice Ninja, vendors, clients or your own team can forward a receipt to a dedicated mailbox, and an expense record is created automatically. Attachments and the email body are stored on the record. The system tries to extract amount, date and vendor details using OCR. Structured e-invoices in the ZUGFeRD format are parsed directly, without OCR.
 
-### Archived
+These settings live under **Settings > Expense Settings** on a self-hosted installation. They do not appear on the hosted app:
 
-Manually hidden from the active list. Reports still include archived expenses, so archiving is cosmetic — useful for clearing out the visual noise of settled records without affecting totals. Restore from the archived filter in the table.
+- **Enable Expense Mailbox**: turns email processing on or off.
+- **Expense Mailbox E-Mail**: the address that receives forwarded receipts. It must be unique across the whole Invoice Ninja instance.
+- **Allow Company Users**: lets your own team submit by email.
+- **Allow Vendors**: lets vendors email in directly.
+- **Allow Unknown Senders**: accepts mail from addresses not already on file.
+- **Allowed Email Addresses**: a comma-separated allowlist of domains.
+- **Blocked Email Addresses**: a comma-separated blocklist of domains.
 
-### Deleted
+### Which inbound providers can I use?
 
-Manually hidden *and* excluded from reports, as if the expense never happened. The underlying record is still recoverable via **Restore** with the Deleted filter applied. Use delete when an expense was logged in error; use archive when it's real but old.
+Set up inbound parsing with **Mailgun** or **Brevo**, or forward mail from your own mailbox to one of those providers. A subdomain such as `invoicing.example.com` pointed at the provider keeps things tidy.
 
-## Tips
+- **Mailgun**: configure MX records for inbound processing, then create a receiving route using **store and notify**. Point the notify endpoint at `/api/v1/mailgun_inbound_webhook`. Configure every Mailgun region you use.
+- **Brevo**: follow the [Brevo inbound parse docs](https://developers.brevo.com/docs/inbound-parse-webhooks), set MX records, then register the webhook through the Brevo API against `/api/v1/brevo_inbound_webhook?token=brevo-api-token`.
 
-A bare-amount expense works, but the real payoff comes from tagging vendor, client, category, and project consistently. **Reports** can then slice expenses by status, client, vendor, project, and category, and your **Profit and Loss** lines up by category automatically.
+### How does receipt scanning work?
 
-Shortcuts for finding everything about one party:
-
-- All expenses for a vendor — **Vendor Details > Expenses**
-- All expenses for a client — **Client Details > Expenses**
-
-For defaults that should apply to every new expense — default category, default payment type, numbering pattern — see [Expense Settings](/docs/user-guide/basic-settings#expense_settings).
-
-For recurring costs like rent, hosting, and subscriptions, set up a template once via [Recurring Expenses](/docs/user-guide/recurring-expenses) rather than re-creating them by hand each month. And if an expense line came from your bank feed, you can match it directly to a [Transaction](/docs/user-guide/transactions) rather than double-entering it.
-
-## Expense Inbound Email (Self Host Only)
-
-For self-hosted instances, Invoice Ninja can accept expenses by email — vendors, clients, or your own team forward a receipt to a dedicated mailbox, and an expense record is created automatically. Attachments (and the email body) are stored against the record, and the system attempts to extract amount, date, and vendor details using OCR. ZUGFeRD XML invoices are parsed natively without OCR.
-
-The available settings:
-
-- **Enable Expense Mailbox** — turns email processing on or off.
-- **Expense Mailbox E-Mail** — the address that receives forwarded receipts.
-- **Allow Company Users** — lets your own admin portal users submit via email.
-- **Allow Vendors** — lets vendors email in directly.
-- **Allow Unknown Senders** — accepts mail from addresses not already on file.
-- **Allowed Email Addresses** — a comma-separated allowlist of domains.
-- **Blocked Email Addresses** — a comma-separated blocklist of domains.
-
-### Inbound Providers
-
-#### Mailgun
-
-Set up your Mailgun account, configure MX records for inbound processing, then create a receiving route using **store and notify**: go to **Receiving**, click **Create Route**, pick the mailbox configured in Invoice Ninja, and point the notify endpoint at `/api/v1/mailgun_inbound_webhook`. All Mailgun regions you use need to be configured.
-
-#### Brevo
-
-Configure Brevo inbound parsing per the [Brevo docs](https://developers.brevo.com/docs/inbound-parse-webhooks): create an account, set up MX records, then register the webhook via the Brevo API against the endpoint `/api/v1/brevo_inbound_webhook?token=brevo-api-token`.
-
-#### Your Own Mail Server
-
-If you'd rather use your existing mailbox, forward mail to one of the supported providers above, or integrate an inbound provider directly. A subdomain such as `invoicing.example.com` pointed at the provider keeps things tidy.
-
-#### Mindee OCR
-
-To extract data from free-form receipts and invoices, Invoice Ninja uses Mindee. Without an API key, only structured formats like ZUGFeRD are parsed. Mindee's free tier includes 250 pages per account, which is enough for most small self-hosted setups.
+To extract data from free-form receipts and invoices, Invoice Ninja uses Mindee. Without an API key, only structured formats such as ZUGFeRD are parsed. Mindee's free tier includes 250 pages per account, which is enough for most small self-hosted setups.
 
 Set the key in your `.env`:
 
@@ -183,7 +207,7 @@ Set the key in your `.env`:
 MINDEE_API_KEY=your-api-key
 ```
 
-Optional throttles let you cap usage and avoid surprise bills — once a limit is exceeded, Mindee is treated as not configured and ignored:
+Optional limits cap usage and avoid surprise bills. Once a limit is exceeded, Mindee is treated as not configured and ignored:
 
 ```bash
 MINDEE_MONTHLY_LIMIT
@@ -192,10 +216,22 @@ MINDEE_ACCOUNT_MONTHLY_LIMIT
 MINDEE_ACCOUNT_DAILY_LIMIT
 ```
 
-#### End-to-End Setup Walkthrough
+### How do I turn inbound email on?
 
-1. **(Optional) Mindee** — create a Mindee account, generate an API key, and set `MINDEE_API_KEY` in your `.env`. Check your free page allowance and configure the limit envs if you want a hard ceiling.
-2. **Inbound mail provider** — create an account at Mailgun, Postmark, or Brevo and follow their inbound-parsing setup. For Brevo specifically, generate a token and set `INBOUND_WEBHOOK_TOKEN=XXX` in your `.env`, configure MX records per [Brevo's guide](https://developers.brevo.com/docs/inbound-parse-webhooks), then register the webhook via the [Brevo API](https://developers.brevo.com/reference/getwebhooks-1), appending `?token=XXX` to the URL. It's worth testing the webhook first against a URL from webhook.site to confirm mail is flowing before pointing it at Invoice Ninja.
-3. **(Optional) Forward from your existing mailbox** — if you already use Google Workspace or similar, set up a forwarding rule from your public address (e.g. `expenses@your-domain.com`) to the provider's inbound address so you don't have to publish the provider mailbox.
-4. **Configure Invoice Ninja** — go to **Settings > Expenses**, enable the inbound mailbox, paste in the provider's inbound address (must be unique across the entire Invoice Ninja instance), and whitelist the senders you want to accept — typically your vendors, your team, and your own personal email.
-5. **Test** — send an email to the inbound address and confirm an expense record appears. If nothing arrives, check the provider dashboard (inbound webhooks can take up to five minutes); if the webhook fired but no record was created, check the application logs and open an issue with the details.
+1. Optional: create a Mindee account, generate an API key and set `MINDEE_API_KEY` in your `.env`. Set the limit values if you want a hard ceiling.
+2. Create an account at Mailgun or Brevo and follow their inbound-parsing setup. For Brevo, generate a token, set `INBOUND_WEBHOOK_TOKEN` in your `.env`, configure MX records, then register the webhook, appending `?token=` and your token to the URL. Test the webhook against a temporary URL first, so you know mail is flowing before you point it at Invoice Ninja.
+3. Optional: if you already use a mailbox at your domain, forward that public address to the provider's inbound address, so you do not have to publish the provider mailbox.
+4. In Invoice Ninja, go to **Settings > Expense Settings**, enable the inbound mailbox, paste in the provider's inbound address, and allow the senders you want to accept, typically your vendors, your team and your own email.
+5. Send a test email to the inbound address and confirm an expense record appears. If nothing arrives, check the provider dashboard (inbound webhooks can take up to five minutes). If the webhook fired but no record was created, check the application logs.
+
+## Related
+
+- [Vendors](/docs/user-guide/vendors): who you paid
+- [Clients](/docs/user-guide/clients): who the expense is for, and who you may bill
+- [Recurring Expenses](/docs/user-guide/recurring-expenses): for costs that repeat on a schedule
+- [Purchase Orders](/docs/user-guide/purchase-orders): convert a purchase order into an expense
+- [Invoices](/docs/user-guide/invoices#how-do-i-add-line-items): adding a billable expense to an invoice
+- [Projects](/docs/user-guide/projects): rolling costs up with the work
+- [Transactions](/docs/user-guide/transactions): matching a bank withdrawal to an expense
+- [Reports](/docs/user-guide/reports): Profit and Loss and spend by vendor, client, project or category
+- [Expense Settings](/docs/user-guide/basic-settings#expense_settings): defaults for new expenses

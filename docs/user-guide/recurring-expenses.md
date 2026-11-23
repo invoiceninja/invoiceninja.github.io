@@ -1,82 +1,149 @@
 ---
-title: "Recurring Expenses"
+title: "Recurring Expenses: Record Repeating Costs on a Schedule"
+sidebar_label: "Recurring Expenses"
 sidebar_position: 21
+description: "How to set up recurring expenses in Invoice Ninja: frequency, start date and cycles, billing a repeating cost back to a client, pausing and restarting, and what each recurring expense status means."
 ---
-A recurring expense is a template for a cost that keeps coming back — office rent, a software subscription, your accounting tool, the monthly cloud bill, a standing order with a supplier. Instead of re-entering the same figures every month, you set the details once and Invoice Ninja generates a fresh [expense](/docs/user-guide/expenses) record each cycle, on whatever frequency you choose.
+# Recurring expenses: record repeating costs on a schedule
 
-It is the same pattern as [Recurring Invoices](/docs/user-guide/recurring-invoices), pointed the other way. Recurring invoices bill your clients on a schedule; recurring expenses record what *you* pay on a schedule. If you have ever set up a monthly retainer invoice, you already know how this works.
+A recurring expense is a template for a cost that keeps coming back: office rent, a software subscription, a standing order with a supplier. You set the details once, and Invoice Ninja creates a fresh [expense](/docs/user-guide/expenses) record each cycle, on the frequency you choose.
 
-Reach for it when a cost is predictable enough to automate. If the amount, frequency, and [vendor](/docs/user-guide/vendors) stay roughly the same from one period to the next, a recurring expense will keep your books accurate without you having to remember. When a generated expense needs to be billed back to a [client](/docs/user-guide/clients), enable **Should be Invoiced** and it will flow through to their next invoice just like a one-off expense.
+It is the same idea as [recurring invoices](/docs/user-guide/recurring-invoices), pointed the other way. Recurring invoices bill your clients on a schedule; recurring expenses record what you pay on a schedule.
 
-## Recurring Expenses Module View
-
-The Recurring Expenses module displays a table view of all available expense records. You can sort and filter the records by using the options at the top of the table. The status dropdown allows you to change the visible records. Each entry in the table has a More Actions menu on the right that provides options for managing the record, such as editing and cloning.
+Use one when the amount, frequency and [vendor](/docs/user-guide/vendors) stay roughly the same from one period to the next. If a generated expense needs to be billed back to a [client](/docs/user-guide/clients), turn on **Should be invoiced** and it flows through to an invoice just like a one-off expense.
 
 <video width="100%" controls>
   <source src="/assets/videos/recurring_expenses/recurring_expenses_overview_creation.webm" type="video/webm" />
 </video>
 
-## Viewing a Recurring Expense
+## How does a recurring expense work?
 
-To view a recurring expense record, click its number from the table. The edit panel appears, where you can manage the record.
+You build it once, like any other expense, and tell Invoice Ninja how often to run it. On each cycle Invoice Ninja creates a new expense with its own number, amount, vendor and notes. The recurring expense itself is the blueprint; the records that show up in your [Expenses](/docs/user-guide/expenses) list are what your books actually use.
 
-![View recurring expense](/assets/images/recurring_expenses/view_active_recurring_expense.png)
+**Keep this in mind:** saving on its own only stores a draft. **Start** is what puts it on the calendar.
 
-### More Actions dropdown
+## Where do I see all my recurring expenses?
 
-![Filtering and More Actions dropdown](/assets/images/recurring_expenses/recurring_expense_filtering_and_dropdown_selected.png)
+Click **Recurring Expenses** in the left menu. The list shows **Status**, **Number**, **Vendor**, **Client**, **Date**, **Frequency**, **Next Send Date**, **Remaining Cycles**, **Amount**, **Public Notes** and **State**. From here you can:
 
-From More Actions you can _Start_ or _Stop_ the billing cycle at any time — handy when a subscription is paused or a supplier contract is on hold. _Clone_ creates a new recurring expense pre-filled from the original, so setting up a second, similar subscription takes seconds. _Clone to Expense_ does the same thing but produces a one-off expense instead of a recurring one, which is useful when you need to log a single out-of-cycle payment.
+- Search with the **Filter** box
+- Show archived or deleted records with the **Lifecycle** filter
+- Choose what to show with **Columns**
+- Create a recurring expense with **New Recurring Expense**
 
-### Details
+There is no **Status** filter on this list. **Status** (for example Draft, Active or Paused) and **State** (Active, or Archived or Deleted when you use the Lifecycle filter) are separate columns.
 
-- **Number** - The expense number is best left alone, so it can be automatically generated by Invoice Ninja. The policies governing generated numbers can be found in _Settings_ > _Generated Numbers_.
-- **Vendor** - Link the expense to a vendor by selecting an available vendor record from the list here. See [Vendors](/docs/user-guide/vendors) for managing the businesses you buy from.
-- **Client** - Link the recurring expense to a client by selecting an available client record. When creating an invoice from a recurring expense, the new invoice will also be automatically assigned to this client.
-- **Project** - Assign a recurring expense to a project from the list. The projects list is filtered by projects assigned to the client, if one is chosen, and the appropriate client is automatically assigned when you select a project.
-- **Category** - Categories are optional, to help add another level of sorting to your expenses and recurring expenses. There are no default expense categories, so if you wish to make proper use of this field, you will have to create a list of expense categories in _Settings_ > _Expense Settings_ > _Configure Categories_.
-- **User** - Optionally assign the expense to an admin portal user to be recorded as the creator of the recurring expense.
-- **Tax** - Select an applicable tax rate. Tax rates are configured by you in _Settings_ > _Tax Settings_ > _Configure Rates_.
-- **Amount** - The total cost per cycle of the recurring expense.
-- **Currency** - Currency you pay your expense in, automatically populated with the default currency of the vendor assigned to the recurring expense.
-- **Date** - Initial date of the recurring expense initiated with your vendor.
-- **Frequency** - How often you are billed — weekly, fortnightly, monthly, quarterly, annually, and so on. Pick whatever matches your agreement with the vendor.
-- **Start Date** - Select a date to indicate the beginning of the billing cycle. Future bills will be based on the cycle frequency and start date.
-- **Remaining Cycles** - By default, "Endless" is selected, which suits open-ended subscriptions. For fixed-term agreements like a twelve-month software licence, set the number of cycles and Invoice Ninja will stop generating records once the term is up.
+Each row has an **Actions** menu on the right. Clicking elsewhere on a row does nothing; click the number, or choose **Edit**, to open the recurring expense.
 
-### Notes
+You can also open the **Recurring Expenses** tab on a [vendor](/docs/user-guide/vendors) to see only that vendor's recurring expenses.
 
-- **Public Notes** - Use this field to describe the recurring expense. When creating an invoice for a client from a recurring expense, the public notes are included in the line item description for the recurring expense.
-- **Private Notes** - The value of this field is only viewable by users of the admin portal, so you can use it to make notes to yourself and other coworkers about the recurring expense record.
+## How do I create a recurring expense?
 
-### Additional Info
+1. Go to **Recurring Expenses** and click **New Recurring Expense**. You can also clone an existing expense or recurring expense.
+2. Fill in the same details you would on a one-off expense: vendor, amount, category, notes, tax and, if you will bill it back, a client or project. See [Which details do I fill in?](#which-details-do-i-fill-in).
+3. Set the schedule: **Frequency**, **Start Date** and **Remaining Cycles**. See [How do I set the schedule?](#the-schedule-frequency-start-date-and-cycles).
+4. Optional: turn on **Should be invoiced**, **Mark Paid**, **Convert currency** or **Add Documents to Invoice**. These follow the same defaults as new expenses, under [Expense Settings](/docs/user-guide/basic-settings#expense_settings).
+5. Click **Save**. A new recurring expense has only a **Save** button (no arrow menu) until it has been saved.
+6. Open the saved record, click the arrow next to **Save**, and choose **Start**.
 
-- **Should be Invoiced** - Enable this to mark a recurring expense as billable to a client. Recurring expenses with invoicing enabled can be included on client invoices, and when you create an invoice from a project that the invoicable expense is linked to. When a recurring expense record has invoicing enabled, its lifecycle status will change.
-- **Mark Paid** - Enable this to indicate that your organization has last paid the vendor for the recurring expense.
-  - **Payment Type** - Select the payment type your organization used to pay the vendor with.
-  - **Date** - Enter the date your organization paid the vendor.
-  - **Transaction Reference** - Enter a transaction reference code or number if applicable.
-- **Convert Currency** - If the recurring expense is billed in a currency other than your own default currency, enabling this allows you to set the currency you prefer to pay with, and an exchange rate, to calculate how much the recurring expense cost in your preferred currency.
+## How do I set the schedule? {#the-schedule-frequency-start-date-and-cycles}
+
+| Field | What it controls | Example |
+|---|---|---|
+| **Frequency** | How often a new expense is created. Options: Daily, Weekly, Two weeks, Four weeks, Monthly (the default), Two months, Three months, Four months, Six months, Annually, Two years, Three Years. | Monthly |
+| **Start Date** | When the first expense is created. Defaults to today. Set a future date if the first cycle should wait. | The 1st of next month |
+| **Remaining Cycles** | How many expenses to create before stopping. Pick **Endless** (the default) for open-ended subscriptions, or a number from 0 to 36 for a fixed term, such as a twelve-month licence. | Endless |
+
+There is no due date field and no Auto Bill setting here: a recurring expense records a cost, it does not wait for a client to pay or charge a card.
+
+**Next Send Date** on the list shows when the next expense will be created.
+
+## Which details do I fill in?
+
+These fields work the same way as on a one-off [expense](/docs/user-guide/expenses#which-expense-details-do-i-fill-in). The differences are the schedule fields above, and that each cycle creates a new expense from this template.
+
+| Field | What it is for |
+|---|---|
+| **Vendor** | Who you pay. See [Vendors](/docs/user-guide/vendors). |
+| **Client** | Who the cost is for. If you invoice a generated expense, the new invoice uses this client. See [Clients](/docs/user-guide/clients). |
+| **Project** | Links the cost to a [project](/docs/user-guide/projects). If a client is already chosen, the project list is limited to that client's projects; picking a project can also fill in the client. |
+| **Category** | What kind of spend it is. Create and manage categories under **Settings > Expense Settings**. |
+| **Assigned User** | The team member the recurring expense is recorded against. |
+| **Tags** | Optional. Labels you can use to find or group records later. |
+| **Amount** | The total cost of each cycle. |
+| **Currency** | Defaults to the vendor's currency, or your company currency if no vendor is set. |
+| **Date** | The original date of the agreement with the vendor. Defaults to today on a new record. |
+| **Tax** | Appears when **Expense Tax Rates** is enabled under **Settings > Tax Settings**. |
+
+The edit screen has two tabs along the top: **Edit** and **Documents**. There is no Settings, Activity, History or Schedule tab.
+
+### What goes in the notes?
+
+**Public Notes** describe the cost. When a generated expense is added to a client invoice, these notes become the line-item description, so write them as something a client would read.
+
+**Private Notes** are for your team only. They never appear on the PDF or in the client portal.
+
+### How do I bill a repeating cost back to a client?
+
+Turn on **Should be invoiced**. Each expense this template creates is then billable, just like a one-off expense that has the same toggle on. You can add those generated expenses to a client invoice when you are ready.
+
+See [How do I make an expense billable to a client?](/docs/user-guide/expenses#how-do-i-make-an-expense-billable-to-a-client).
+
+### How do I record that I paid the vendor, or convert the currency?
+
+**Mark Paid**, **Convert currency** and **Add Documents to Invoice** work the same way as on a one-off expense. Mark Paid records that *you* paid the vendor, with a payment type, date and transaction reference. It is not a client payment.
 
 :::warning
-When you view your reports, recurring expenses are categorized by the currency of the expense/vendor, not the currency selected under "Convert Currency". If you want to consolidate your profit and loss totals under one currency, select your own currency for each recurring expense and use the converted amount for the expense amount, leaving any reference to a foreign currency out of the record's details.
+Reports group expenses by the expense or vendor currency, not the converted currency. If you want a single-currency Profit and Loss, record each expense directly in your home currency using the already-converted amount, and leave the foreign-currency detail in the notes or on an attached document.
 :::
 
-- **Add Documents to Invoice** - Enable this feature to include any documents attached to a recurring expense, with the documents attached to the invoice when you create an invoice out of the recurring expense record.
-- **Enter Taxes** - Configure how the recurring expense is taxed to you in more detail.
-  - **By Rate** or **By Amount** - Change between rate or amount to change the _Tax_ field (under the details tab) from a percent based tax, to a custom flat tax.
-  - **Inclusive Taxes** - Enable this option if the taxes are inclusive to the cost of the expense, rather than exclusive. For example: Exclusive tax is applied on top of the expense cost, like so: 100 + 10% = $110 total (100 + 10). Inclusive tax is when taxes are deducted from the amount the vendor bills you, and included in your expense amount, rather than tacked on top of what you pay the vendor, like so: 100 + 10% = $100 total (90.91 + 9.09).
+Tax is also the same as on a one-off expense: **By Rate** or **By Amount**, and **Inclusive Taxes** when tax is already included in the amount. See [How do taxes work on an expense?](/docs/user-guide/expenses#how-do-taxes-work-on-an-expense).
 
-### Documents
+### How do I attach files?
 
-The Documents tab supports uploading files such as documents, pictures, and more to allow you to share them with the client when attached to an invoice (when enabled) or with other users of the admin portal. Attaching the original contract or a sample invoice from the vendor here keeps the paperwork alongside the record.
+Open the **Documents** tab. You can drop files or click to upload, for example the original contract or a sample invoice from the vendor. If **Add Documents to Invoice** is on, those files can go out with a client invoice.
 
-![Documents](/assets/images/recurring_expenses/recurring_expense_documents_tab.png)
+![The Documents tab on a recurring expense](/assets/images/recurring_expenses/recurring_expense_documents_tab.png "Documents")
 
-### Schedule
+## What can I do with a recurring expense?
 
-A simple list of future dates for the cycle of the recurring expense is shown here, so you can confirm at a glance when the next record will be generated.
+Click the arrow next to **Save** on a saved recurring expense, or use the row **Actions** menu on the list. If you tick one or more rows, a bulk **Actions** menu appears: **Start**, **Documents**, **Archive** and **Delete**.
 
-## Creating and Editing a Recurring Expense
+![The actions menu and filters on the recurring expenses list](/assets/images/recurring_expenses/recurring_expense_filtering_and_dropdown_selected.png "Recurring expense actions")
 
-In the desktop layout, editing or creating a recurring expense takes you to a new screen with all available fields displayed at once. In the mobile layout, editing or creating a recurring expense opens another screen with tabs, organized similar to how they appear in the desktop layout, as described above.
+| Action | When it shows | What it does |
+|---|---|---|
+| **Start** | Draft or Paused | Puts the recurring expense on the schedule. Starting a draft makes it **Active**. |
+| **Stop** | Active | Pauses it. The status changes to **Paused** and no new expenses are created until you start it again. Handy when a subscription is on hold or a supplier contract is paused. |
+| **Clone** | | Copies the recurring expense into a new recurring expense. |
+| **Clone to Expense** | | Copies it into a one-off [expense](/docs/user-guide/expenses). Use this when you need to log a single out-of-cycle payment. |
+| **Archive** / **Delete** | | Tidies the recurring expense away. Expenses it already created do not change. |
+| **Restore** | Archived or deleted | Brings it back. |
+
+**Run Template** only appears once you have created a [template](/docs/advanced-topics/templates).
+
+![A recurring expense open on the edit screen](/assets/images/recurring_expenses/view_active_recurring_expense.png "Recurring expense")
+
+## What do the recurring expense statuses mean?
+
+| Status | What it means |
+|---|---|
+| **Draft** | Saved, but not on the calendar yet. **Start** puts it on the schedule. |
+| **Active** | Running. A new expense is created on each cycle. |
+| **Paused** | Stopped. No expenses are created until you click **Start** again. |
+| **Archived** | Hidden from your normal list. The **Actions** menu then offers **Restore** and **Delete**. |
+| **Deleted** | Removed, but can still be restored. |
+
+### How do I bring back an archived or deleted recurring expense?
+
+1. On the list, open the **Lifecycle** filter, tick **Archived** (or **Deleted**) and click **Apply**.
+2. In the row, open the **Actions** menu and choose **Restore**.
+
+## Related
+
+- [Expenses](/docs/user-guide/expenses): the records each cycle creates, including billable costs, tax and currency
+- [Recurring Invoices](/docs/user-guide/recurring-invoices): the same schedule idea, for money you collect
+- [Vendors](/docs/user-guide/vendors): who you pay
+- [Clients](/docs/user-guide/clients): who you may bill the cost back to
+- [Projects](/docs/user-guide/projects)
+- [Expense Settings](/docs/user-guide/basic-settings#expense_settings)
