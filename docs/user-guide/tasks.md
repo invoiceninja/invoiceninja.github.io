@@ -1,122 +1,178 @@
 ---
-title: "Tasks"
+title: "Tasks: Track Time and Bill It on Invoices"
+sidebar_label: "Tasks"
 sidebar_position: 19
+description: "How to track time with tasks in Invoice Ninja: creating a task, starting and stopping the timer, custom statuses and the kanban board, invoicing a task, and what Running, Backlog and Invoiced mean."
 ---
+# Tasks: track time and bill it on invoices
 
-A **task** in Invoice Ninja is a time entry — a record of work you've done for a client, usually billed at an hourly rate. Tasks are built for the kind of work that's measured in hours rather than units: design sessions, legal consultations, support calls, on-site visits, development sprints, or any service where what you're selling is your time. Once the hours are tracked, a task can be dropped straight onto an invoice and billed without re-keying anything.
+A task is a time entry: a record of work you have done for a client, usually billed at an hourly rate. Use tasks for work measured in hours rather than units, such as design sessions, consultations, support calls or development work. Once the hours are tracked, you can drop the task onto an invoice without retyping anything.
 
-Tasks can stand on their own, or they can be grouped under a [Project](/docs/user-guide/projects) when a piece of work spans multiple sessions or team members. They're also one of the most useful pairings with [Expenses](/docs/user-guide/expenses) — together they let you bill a client for both your time and the out-of-pocket costs incurred on their behalf.
-
-## Overview
+Tasks can stand on their own, or you can group them under a [project](/docs/user-guide/projects) when the work spans several sessions or team members. They also pair well with [expenses](/docs/user-guide/expenses): together they let you bill a client for both your time and the costs you incurred on their behalf.
 
 <video width="100%" controls>
   <source src="/assets/videos/tasks/tasks_demo.mp4" type="video/mp4" />
 </video>
 
-### Table View
+## Where do I see all my tasks?
 
-The Tasks module opens to the table view by default, showing every task in one list. You can filter by status — *Invoiced*, *Uninvoiced*, *Backlog*, *Ready to do*, *In progress*, or *Done* — and use the **Columns** button in the bottom right to add or remove fields like the assigned user or the rate. Click a task's status in the row to change it, or to add a new custom status on the fly.
+Click **Tasks** in the left menu. The list shows **Tags**, **Date**, **Status**, **Project**, **Client**, **Description**, **Duration** and **State**. There is no Number column by default. From here you can:
 
-### Kanban View
+- Search with the **Filter** box
+- Show archived or deleted tasks with the **Lifecycle** filter
+- Narrow the list with the **Status** filter: **Invoiced**, **Uninvoiced**, **Overdue**, **Backlog**, **In Progress** or **Done**
+- Choose what to show with **Columns** (the **Edit Columns** dialog lets you add, order or reset columns)
+- Switch the view with **List**, **Daily**, **Weekly**, **Monthly** or **Kanban**
+- Create a task with **New Task**
 
-The kanban view is the same data arranged as a board. Tasks appear as cards grouped into vertical columns by status, so you can see at a glance what's waiting, what's underway, and what's finished. Hover over a card to view, edit, or start and stop its timer. Drag a card between columns to change its status. Use the **Project** selector at the top to narrow the board to a single project, and press the **+** beside any column to drop in a new task with that status already set.
+Each row has an **Actions** menu on the right with the same actions as the task itself (see [What can I do with a task?](#what-can-i-do-with-a-task)). On an uninvoiced task you can also change the workflow status by clicking the status badge in the row and choosing **Backlog**, **In Progress**, **Done** or **Create New**. An invoiced badge cannot be changed that way.
+
+Clicking a row away from a link opens a side panel titled with the task number, with tabs **Overview**, **Activity** and **Documents**, plus an **Actions** menu. Click the task or choose **Edit** to open the edit screen, which has tabs **Edit** and **Documents**.
+
+You can also open the **Tasks** tab on a [client](/docs/user-guide/clients#what-can-i-see-on-a-clients-page), or the **Tasks** tab on a [project](/docs/user-guide/projects#how-do-i-view-a-project), to see only those tasks.
+
+**Status** (for example Backlog or In Progress) and **State** (Logged or Invoiced) are separate columns.
+
+### What is the kanban view?
+
+The kanban view (`#/tasks/kanban`) is the same tasks arranged as a board. Cards are grouped into columns by status (for example **In Progress**, **Backlog** and **Done**), so you can see at a glance what is waiting, what is underway and what is finished.
+
+- Use **Filter by user** and **Filter by Project** at the top to narrow the board.
+- Press **+** in a column header to add a new task with that status already set. A **+** after the last column adds another column.
 
 <video width="100%" controls>
   <source src="/assets/videos/tasks/tasks_kanban_operations.mp4" type="video/mp4" />
 </video>
 
 :::warning
-The kanban view is a working board, not a history view — invoiced and paid tasks are hidden so you can focus on what's still in progress. If you want the full history, use the table view.
+The kanban view is a working board, not a history view. Invoiced tasks are hidden so you can focus on what is still in progress. For the full history, use the list view. If you delete the invoice that billed a task, the task becomes uninvoiced again and can show on the board once more.
 :::
 
-### Custom Task Statuses
+### How do I add a custom task status?
 
-The built-in statuses cover most workflows, but you can add your own to match how your team actually works. From the table view, click a task's status and choose **New Task Status**; from the kanban view, scroll right and press the **+**. Give the status a name and a colour, and it becomes available everywhere.
+The built-in statuses cover most workflows, but you can add your own to match how your team works.
 
-#### From Table view
+1. From the list view, click a task's status badge and choose **Create New**. From the kanban view, press **+** after the last column.
+2. Give the status a name and a colour.
+3. Save it. It becomes available everywhere.
 
-![New task status from table](/assets/images/tasks/tasks_table_view_status_options.png)
+To rename, reorder or delete statuses later, go to **Settings > Task Settings**. That page has a status table with **New Task Status**, plus Name and Color.
 
-#### From Kanban view
+#### From the list view
 
-![New task status from kanban](/assets/images/tasks/new_task_status_from_kanban.png)
+![The status menu on a task in the list view, including Create New](/assets/images/tasks/tasks_table_view_status_options.png "New task status from the list view")
 
-To rename, reorder, or delete statuses later, head to *Settings > Task Settings*.
+#### From the kanban view
 
-## Viewing a Task
+![The control for adding a new column and status on the kanban board](/assets/images/tasks/new_task_status_from_kanban.png "New task status from the kanban view")
 
-Click anywhere in a task's row from the table view, or hit **View** on a kanban card, to open the Tasks panel on the right. Along the top, the **More Actions** dropdown gives you everything you can do with that task.
+## What can I do with a task?
 
-### More Actions
+Once you have saved a task, click the arrow next to **Save** to see what you can do with it. On the list, use the row's **Actions** menu, or the **Actions** menu in the side panel. The choices change as the task moves through its states.
 
-![More actions](/assets/images/tasks/tasks_more_actions_dropdown.png)
+If you tick one or more rows, a bulk **Actions** menu appears: **Bulk Update**, **Start**, **Invoice Task**, **Documents**, **Archive** and **Delete**.
 
-- **Edit** — open the task to change its details.
-- **Start / Stop** — toggles the timer. Starting adds a new time entry with the current time; stopping closes it off with an end time.
-- **Invoice Task** — creates a new invoice for the task's client, pre-filled with the task. Available from the task's table row.
-- **Add to Invoice** — adds the task as a line item on one of the client's existing active invoices.
-- **Clone** — opens the new task screen pre-filled with this task's details.
-- **Run Template** — runs a configured template against the task.
-- **Archive** / **Delete** — hide or remove the task (see [Clients](/docs/user-guide/clients) for how archive and delete behave across the app — the same logic applies here).
+| Action | What it does |
+|---|---|
+| **Start** / **Stop** | Starts or stops the timer. Starting adds a new time entry with the current time. Stopping closes it with an end time. Start appears on the edit page of a saved task, and in the menu of an uninvoiced task. |
+| **Invoice Task** | Opens a new unsaved [invoice](/docs/user-guide/invoices) for the task's client, already filled in with the task as a line item. Appears on uninvoiced tasks. |
+| **Add to invoice** | Adds the task as a line item on one of the client's existing invoices. Appears on uninvoiced tasks. The edit arrow and side panel use this capitalisation. |
+| **Clone** | Opens a new task form already filled in with this task's details. There is no Clone To dialog. |
+| **Archive** / **Delete** | Tidies up or removes the task. See [What do the task statuses mean?](#what-do-the-task-statuses-mean). |
+| **Restore** | Brings an archived or deleted task back. |
 
-### Overview Tab
+An invoiced task's menu is **Edit**, **Clone**, **Archive** and **Delete** (no Start, Invoice Task or Add to invoice).
 
-The Overview tab shows the shape of the task at a glance: its current status, the total duration logged, and the resulting amount (duration multiplied by rate). Below that is the breakdown of every time entry recorded. The client, project, assigned user, and status are all clickable links into filtered lists elsewhere in the app.
+**Run Template** only appears once you have created a [template](/docs/advanced-topics/templates).
 
-## Creating and Editing a Task
+![The actions available on a task](/assets/images/tasks/tasks_more_actions_dropdown.png "Task actions menu")
 
-### Details
+## How do I create or edit a task?
 
-- **Client** — who the work is for. When you invoice the task, the invoice is automatically raised against this client. See [Clients](/docs/user-guide/clients).
-- **Project** — optional, but useful. Assigning a task to a [project](/docs/user-guide/projects) automatically inherits the project's client and its task rate, so a consulting retainer billed at $150/hr doesn't have to be re-entered for every session.
-- **User** — the admin portal user responsible for the task. Helpful for accountability when more than one person logs time.
-- **Task Number** — leave blank and let Invoice Ninja auto-generate it based on your *Generated Numbers* policy.
-- **Rate** — falls back through a simple order: the project's rate (if a project is set), otherwise the client's default task rate, otherwise the company-wide default. You can override any of them by typing a rate directly.
-- **Status** — pick one of the prebuilt statuses or a custom one you've created under *Settings > Task Settings*.
-- **Description** — the note that will appear as the line-item description when the task is added to an invoice, so write it with the client in mind.
+1. Go to **Tasks** and click **New Task**, or add a task from a [project](/docs/user-guide/projects) or a [client](/docs/user-guide/clients).
+2. Pick the **Client** and, if you use one, a **Project**.
+3. Fill in the rate, status and description, then log time or, after saving, start the timer.
+4. Click **Save**.
 
-### Documents
+If you click **New Task** from a project's Tasks tab, the new form is already filled in with that **Project** and the project's **Rate**, and the status is **Backlog**. The **Client** is filled in from the project after you save.
 
-The Documents tab is for attaching files — photos from a site visit, a signed scope of work, a PDF of meeting notes — that you want kept alongside the task. Uploaded documents can be shared with the client through the [Client Portal](/docs/user-guide/client-portal).
+A new unsaved task has no Start button. Save it first, then start the timer from the edit page.
 
-To pull down everything attached to one or more tasks at once, tick the checkboxes in the table view and choose *More Options > Documents*. You'll receive an email with a download link.
+### Which task details do I fill in?
 
-## Time Tracking
+| Field | What it is for |
+|---|---|
+| **Client** | Who the work is for. When you invoice the task, the invoice is raised against this client. See [Clients](/docs/user-guide/clients). On a saved task, the client name is a link. |
+| **Project** | Optional, but useful. Assigning a task to a [project](/docs/user-guide/projects) can inherit the project's task rate. Creating the task from the project prefills the project and rate. |
+| **Assigned User** | The team member responsible for the task. Helpful when more than one person logs time. |
+| **Task Number** | Leave it empty and it is created automatically when you save, from **Settings > Generated Numbers > Tasks**. |
+| **Rate** | The hourly rate for this task. A new project uses the company **Default Task Rate** from **Settings > Task Settings**. You can type a different rate. |
+| **Status** | A built-in workflow status (**Backlog**, **In Progress**, **Done**), or a custom one you created under **Settings > Task Settings**. |
+| **Due Date** | Optional. When the task is due. |
+| **Estimated Duration** | Optional. Your estimate, with a unit such as Hours. |
+| **Tags** | Optional. Labels you can use to find or group tasks later. |
+| **Description** | A note about the work, written with the client in mind. |
 
-Time tracking is where most of the day-to-day work happens. Every task has a **Time Entries** tab that holds a list of dated work sessions, and you can fill it in however suits you.
+### How do I attach files to a task?
 
-The timer is the fastest way: press **Start** and Invoice Ninja opens a new entry with the current date and start time, then updates the duration every second. Press **Stop** and the end time locks in. If you'd rather log time after the fact — say, reconciling a day of work in the evening — type the entries in manually. You can enter a start and end time and let the duration calculate itself, or type the duration and let the end time calculate instead. Tab through the columns for quick keyboard entry.
+Open the **Documents** tab on the edit page or in the side panel and upload files such as photos from a site visit, a signed scope of work or meeting notes.
 
-A task with an open-ended entry (a start time but no end time yet) is considered *Running*. Running tasks show a live-updating duration and stay visible in the kanban view with a play icon, so it's always clear what's on the clock.
+## How do I track time?
 
-## Billing a Task
+Every task holds a list of dated work sessions on the edit form. The columns are **Start Date**, **Start Time**, **End Date**, **End Time**, **Duration** and **Billable**.
 
-Once a task has hours logged, there are two ways to turn it into money. **Invoice Task** from the More Actions menu spins up a brand-new invoice for that client with the task already filled in as a line item. **Add to Invoice** lets you append the task to one of the client's existing draft or active invoices — handy when you're batching a month of small tasks onto a single monthly bill.
+The timer is the fastest way:
 
-If the task is tied to a project, you can also invoice at the project level and bring every uninvoiced task (and expense) over in one step. See [Projects](/docs/user-guide/projects) for that flow, and [Invoices](/docs/user-guide/invoices) for how line items, taxes, and totals come together on the invoice itself.
+1. Open the saved task and press **Start**. Invoice Ninja adds a new entry with the current date and start time, the duration updates live, and the badge becomes **Running**.
+2. Press **Stop** when you are done. The end time locks in, and the badge returns to the workflow status it had before (for example **Backlog**).
 
-Once a task has been added to an invoice, it moves into the *Invoiced* state and drops off the kanban board — it's done work, not pending work.
+Time is rounded using **Settings > Task Settings**: **Task Rounding Direction** (for example Round Up) and **Round To Nearest** (for example 1 Minute). A short entry can therefore show as a full minute.
 
-## Task Lifecycle
+If you would rather log time after the fact, type the entries by hand. You can enter a start and end time and let the duration calculate itself, or type the **Duration** and let the end time calculate instead.
 
-Tasks can sit in several states at once (a manually set status plus a system state like *Running* or *Invoiced*), which can feel a little unusual at first. The key thing to know is which state governs when.
+**Add Item** under the time log starts a new running entry. It does not add a blank row to fill in later. If a timer is already running, you will see "You need to stop the task before adding a new item." Stop the open entry first, then add another, and avoid overlapping times.
 
-### Logged
+A task that is **Running** shows a live duration in the header and a time-entry row with a blank end time and a pause icon.
 
-The default state. A task is *Logged* when it has a manually chosen status (either a built-in one like *Backlog* or a custom one) and isn't currently running or invoiced. Logged is just Invoice Ninja's way of saying "this task exists, has a status, and is waiting for you to do something with it".
+## How do I bill a task?
 
-### Running
+Once a task has hours logged, there are two ways to turn it into an invoice:
 
-A task enters *Running* automatically the moment its time entry list contains a line with a start time but no end time yet. The duration ticks upward in real time, and the task appears as *Running* in the table view while keeping its underlying status for the kanban board. Completing the open entry — either by stopping the timer or by filling in the end time or duration by hand — returns the task to *Logged*.
+| Action | What it does |
+|---|---|
+| **Invoice Task** | Opens a new unsaved invoice for that client, with the task already filled in as a line item (rate, hours and a line total). Save the invoice when you are ready. |
+| **Add to invoice** | Adds the task to one of the client's existing invoices. Handy when you are batching a month of small tasks onto a single bill. |
 
-### Invoiced
+If the task is tied to a project, you can also invoice at the project level and bring unbilled tasks over in one step. See [How do I invoice a project?](/docs/user-guide/projects#how-do-i-invoice-a-project). For how the line looks on the invoice itself, see [How do I add line items?](/docs/user-guide/invoices#how-do-i-add-line-items).
 
-Once a task has been added to an invoice, it's *Invoiced*. Invoiced tasks disappear from the kanban board (they're no longer work in progress) and, when viewed, show a link through to the invoice they belong to. If the invoice is later deleted, the task is released back to an uninvoiced state and becomes available to bill again.
+Once you save the invoice, the task's badge becomes **Invoiced** and it drops off the kanban board. It is done work, not pending work. If that invoice is later deleted, the task becomes uninvoiced again (for example it returns to **Backlog**), and the logged time is kept, so you can bill it again.
 
-### Archived
+## What do the task statuses mean?
 
-Archiving hides a task from the default views without removing it. Archived tasks can still be invoiced and still count toward reports — they're just tucked out of sight. Switch your status filter to *Archived* to find one, then use **Restore** to bring it back into circulation.
+A task can have a workflow status you set yourself (such as **Backlog** or **In Progress**) and a system state at the same time (such as **Logged** or **Invoiced** in the **State** column). **Running** is shown as a badge while the timer is on.
 
-### Deleted
+| Status | What it means |
+|---|---|
+| **Backlog**, **In Progress**, **Done** | Workflow statuses you (or a custom status) assign. Uninvoiced tasks can be moved between these from the status badge. |
+| **Running** | The timer is on: a time entry has a start time but no end time, and the duration ticks upward. Stopping the timer, or filling in the end time or duration by hand, returns the task to its previous workflow status. |
+| **Logged** | Shown in the **State** column when the task has not been invoiced yet. |
+| **Invoiced** | The task has been added to an invoice. It disappears from the kanban board. The invoiced badge cannot be changed from the row dropdown. |
+| **Archived** | Hidden from the default views, but not removed. The Save button stays available, and the **Actions** menu offers **Restore** and **Delete**. |
+| **Deleted** | Hidden, with a **Deleted** badge. The task number does not get a `_deleted` suffix. The menu offers **Invoice Task**, **Add to invoice**, **Clone** and **Restore**, and Save stays available. |
 
-Deleting goes a step further: a deleted task is hidden and can no longer be edited, invoiced, or billed. The data is kept, though, so you can switch the filter to *Deleted* and use **Restore** to reinstate a task if it was removed by mistake.
+The **Status** filter also offers **Uninvoiced** and **Overdue**.
+
+### How do I bring back an archived or deleted task?
+
+1. On the task list, open the **Lifecycle** filter, tick **Archived** (or **Deleted**) and click **Apply**.
+2. In the row, open the **Actions** menu and choose **Restore**.
+
+The task goes back to the status it had before (for example, a Backlog task that was archived returns to **Backlog**).
+
+## Related
+
+- [Projects](/docs/user-guide/projects): group tasks, set a default rate and invoice them together
+- [Invoices](/docs/user-guide/invoices#how-do-i-add-line-items): how a billed task appears as a line
+- [Clients](/docs/user-guide/clients#what-can-i-see-on-a-clients-page): the client a task is billed to, and the Tasks tab on their page
+- [Expenses](/docs/user-guide/expenses): bill time and costs together
+- [Client Portal](/docs/user-guide/client-portal): related client-facing documents
