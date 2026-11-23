@@ -61,15 +61,14 @@ Every vendor uses your company's currency unless you change it.
 
 New purchase orders for this vendor will use that currency.
 
-## Archive, delete or purge: which one should I use?
+## Archive or delete: which one should I use?
 
 | Action | What it does | Can I undo it? |
 |---|---|---|
 | **Archive** | Hides the vendor from your normal lists. Nothing else changes. Purchase orders, expenses and history stay. | Yes, with **Restore** |
 | **Delete** | Hides the vendor and removes their expenses and purchase orders from your report totals, as if they never happened. The data is flagged as deleted, not erased. | Yes, with **Restore** |
-| **Purge** | Permanently wipes the vendor, their contacts, purchase orders and related records. | No, never |
 
-In short: use **Archive** to tidy your vendor list without changing any totals. Use **Delete** when you want a vendor's activity left out of your reports. Use **Purge** only when you are sure you no longer need the data, for example to meet a data-removal request.
+In short: use **Archive** to tidy your vendor list without changing any totals. Use **Delete** when you want a vendor's activity left out of your reports.
 
 ### How do I archive a vendor?
 

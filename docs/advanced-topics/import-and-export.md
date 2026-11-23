@@ -31,8 +31,6 @@ Each list page, such as **Clients**, **Invoices**, **Products** or **Vendors**, 
 
 **Number format matters.** Numbers are read using your company currency format. For example, with USD a period (.) is the decimal separator. With EUR a comma (,) is the decimal separator.
 
-**Save time on repeat imports.** If you regularly import the same file layout, the app offers to save your column matches as a template. Next time, pick the template from the dropdown when you import.
-
 ## How do I import invoices?
 
 Set up your invoice CSV like this:

@@ -70,7 +70,12 @@ On the invoice screen, click the arrow next to **Save**. On the list, use the ro
 | **Convert To** | Turns the invoice into a **Purchase Order** | ✓ | ✓ | ✓ |
 | **Clone To** | Copies the invoice into a new **Invoice**, **Recurring Invoice**, **Quote**, **Credit** or **Purchase Order** | ✓ | ✓ | ✓ |
 | **Cancel** | Writes off the invoice. See [When should I cancel an invoice?](#when-should-i-cancel-an-invoice) | | ✓ | |
+| **Reverse** | Undoes a sent or paid invoice; any payments become credits. Only offered in certain circumstances. See [What does Reversed mean?](#what-does-reversed-mean) | | ✓ | ✓ |
+| **Run Template** | Runs one of your custom templates on the invoice. Only appears once you've created a template. | ✓ | ✓ | ✓ |
+| **Download E-Invoice** | Downloads the invoice as an e-invoice file. Only appears when e-invoicing is turned on. See [E-Invoicing](/docs/user-guide/einvoicing). | ✓ | ✓ | ✓ |
 | **Archive** / **Delete** | Read [What do the invoice statuses mean?](#what-do-the-invoice-statuses-mean) first | ✓ | ✓ | ✓ |
+
+Some actions, like Reverse, Run Template and Download E-Invoice, only show up when they apply to that invoice or when you've turned on the feature.
 
 Archived invoices show **Restore** in the menu, just above **Delete**.
 
