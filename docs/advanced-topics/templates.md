@@ -1,62 +1,65 @@
 ---
-title: "Templates"
+title: "Templates: build custom PDFs with Twig"
+sidebar_label: "Templates"
 sidebar_position: 5
+description: "Create Invoice Ninja templates with HTML, CSS and Twig to build statements, receipts, delivery notes and custom PDFs from your data."
 ---
 
-## Introduction
+# Templates: build custom PDFs with Twig
 
-Templates allow you to create customized designs and documents using raw data. We have a prebuilt range of templates that will allow you to quickly create Statements / Payment Receipts / Payment Refund Receipts and Delivery Notes,  but the functionality does not stop there.
+## What are templates? {#introduction}
 
-You can also run a templates against any entity within the application and have a PDF returned the the entities dataset embedded in. Here is an example of a template which has been produced from a Project:
+Templates let you build custom PDFs from your Invoice Ninja data, using HTML, CSS and the [Twig](https://twig.symfony.com/) templating engine. This guide includes downloadable sample templates for statements, payment receipts, payment refund receipts and delivery notes. Those samples are not built into the app; you add them yourself. You can also run a template against other records, such as a project, to produce a PDF with that record's data.
 
-![alt text](/assets/images/templates/project_template.png "Project Template")
+Here is a project template in the editor, and the PDF it produces, with the project details and a summary of each task time log:
 
-When run against our project template, we receive a PDF like this:
+![A project template in the template editor](/assets/images/templates/project_template.png "Project template in the editor")
 
-![alt text](/assets/images/templates/project_template_output.png "Project Template Output")
+![A PDF produced from a project template, with project details and task time logs](/assets/images/templates/project_template_output.png "PDF produced from a project template")
 
-In our template we have constructed (use the Twig templating engine) a document which contain the projects details and a summary of each task time log entry.
+## How do I get started? {#getting-started}
 
-## Getting Started
+### Is there a delivery note example? {#delivery-note-example}
 
-### Delivery Note Example
+<iframe class="video" src="https://www.youtube.com/embed/kfG5vvcbYes" title="YouTube video player: delivery note template example" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe class="video" src="https://www.youtube.com/embed/kfG5vvcbYes" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+### How do templates work? {#concepts}
 
-### Concepts
+A template is an HTML and CSS document that can also use Twig for logic and data. Create one here:
 
-Templates are simple Html / CSS documents combined with the super powerful [twig](https://twig.symfony.com/) templating engine.
+1. Go to **Settings > Invoice Design**.
+2. Open the **Custom Designs** tab (`#/settings/invoice_design/custom_designs`).
+3. Click **New Design** (`#/settings/invoice_design/custom_designs/create`).
+4. Enter a **Name**.
+5. Set **Type** to **Template** (the other option is **Design**, which is for standard invoice and quote layouts). When Type is Template, the **Design** starting-template dropdown is hidden.
+6. Under **Resource**, tick the record types this template should run against: Invoice, Payment, Client, Quote, Credit, Purchase Order, Project, Task or Expense. You can tick more than one. This controls where the template appears in the app and which data is prepared when you run it.
+7. Open the **Import** accordion if you want to start from the prefilled HTML skeleton. It already contains `<html><head></head><body><ninja></ninja></body></html>`. Wrap Twig code in `<ninja></ninja>` tags.
+8. Click **Save** when you are ready.
 
-This combined with the raw data from Invoice Ninja allows you to create a document that exactly fits your requirements. To start, simply create a new template in
+After you save, edit the template in the design editor. The tabs are **Settings**, **Body**, **Header**, **Footer**, **Includes** and **Variables**. Put CSS in **Includes**, and HTML or Twig in **Body** (or Header or Footer if you need them).
 
-```bash
-Settings / Invoice Design / Custom Designs
-```
+On an existing design, **Import** on the Settings tab opens an **Import Design** dialog, with a text box and an **Import** button. If you do not want to import, close the dialog with the **X** (there is no Cancel button).
 
-![alt text](/assets/images/templates/template_starter_1.png "Creating a new template")
+![The New Design form, where you can set Type to Template](/assets/images/templates/template_starter_1.png "New Design form with the Template type")
 
-You will see that along with providing a name for the design/template, there is a new selector which allows you to choose whether the design is a regular design (ie for invoices / quotes) or a template which can also be a custom design, but also includes the power twig syntax and data to create bespoke templates.
+Once you have a Template-type design for a record type, **Run Template** appears on those records, for example on a [project](/docs/user-guide/projects) or [task](/docs/user-guide/tasks).
 
-After selecting the template option, a series of checkboxes will appear where you can associate the data types with the template. This is an important step as it allows us to provide the menu options for this template in the correct location and also provides the correct context when running the template;
+Here is how a typical project template is put together.
 
-for example, if you select the invoice checkbox, the system will be able to prepare your invoice/s to be run through the template. You can select multiple options here and the system will ensure this data is prepared and ready for use in the template.
+![Twig code inside ninja tags in a template](/assets/images/templates/template_starter_2.png "Ninja tags around Twig code")
 
-How did we construct this? Lets take a look at a template sample:
+The `<ninja></ninja>` tags tell Invoice Ninja to process the contents as Twig.
 
-![alt text](/assets/images/templates/template_starter_2.png "Ninja Blocks")
+![Selecting the first project from a projects array](/assets/images/templates/template_starter_3.png "Reading the first project from the data")
 
-Embedded in the html/css is a dedicated set of `<ninja></ninja>` tags, this tells the template engine that we are now using the Twig Templating system.
-
-![alt text](/assets/images/templates/template_starter_3.png "Harvesting the data")
-
-Templates always assume that the data being processed in an array of objects. In this particular case, we have an array of projects. If your template will only ever consider a single project then you'll want to harvest the first project in your array of projects using this syntax:
+Templates treat the incoming data as an array of objects. If you only need a single project, take the first item in the `projects` array:
 
 ```twig
 {% if projects %}
 {% set project = projects|first %}
 ```
 
-Now that we have the project object, we can use this in our template, to print a variable to the template, you would wrap the variable in {{ }} like this:
+To print a value, wrap it in `{{ }}`:
 
 ```twig
 <h1>{{ project.name }}</h1>
@@ -64,13 +67,13 @@ Now that we have the project object, we can use this in our template, to print a
 <h6>{{ project.current_hours }} / {{ project.budgeted_hours }}: (Hours / Budgeted Hours @ {{ project.task_rate }}) - Report generated on {{ "now"|date('Y-m-d') }}</h6>
 ```
 
-We've now started to introduce variables into our template and also some nifty twig formats for dynamic data such as a date using this following syntax to present when the report was generated
+Twig can also format dynamic values, such as today's date:
 
 ```twig
 Report generated on {{ "now"|date('Y-m-d') }}
 ```
 
-Lets now loop through the project tasks and output the time_log data with the following sequence
+To list each task and its time log entries:
 
 ```twig
 {% for task in project.tasks %}
@@ -94,13 +97,11 @@ Lets now loop through the project tasks and output the time_log data with the fo
 {% endfor %}
 ```
 
-Here we have created a for loop, iterating over every task in the project, this follows with another for loop where we loop over every time_log entry in each task where we output the dates / description and duration of each task.
+The first loop walks every task on the project. The inner loop walks each `time_log` entry and prints the dates, description and duration. `log.duration` is in seconds; `|date('h:i:s')` formats it as hours, minutes and seconds.
 
-Finally, we are able to transform the log.duration (seconds), into a date format with h:i:s format (Hours:Minutes:Seconds)
+## How do I use standard detail blocks? {#using-blocks-in-templates}
 
-## Using blocks in templates
-
-If you wish to use standard company/client/vendor details, this is super simple using standard div blocks:
+To show the usual company, client or vendor details, use these `div` blocks:
 
 ```html
 <div id="client-details">
@@ -111,25 +112,23 @@ If you wish to use standard company/client/vendor details, this is super simple 
 
 <div id="vendor-details">
 
-<div id="shipping-address">
+<div id="shipping-details">
 ```
 
-These will populate using the data stored in Settings > Invoice Designs for each block.
+They are filled from the fields you choose under **Settings > Invoice Design** for each block.
 
-## Data Access
+## How do I access data in a template? {#data-access}
 
-### Twig variables
+### How do I use Twig variables? {#twig-variables}
 
-Accessing data using twig would be as follows:
-
-First we'd check to ensure the variable is available
+First check that the variable is available:
 
 ```twig
 {% if tasks|e %}
 {% endif %}
 ```
 
-Then we can iterate
+Then iterate:
 
 ```twig
 {% if tasks|e %}
@@ -140,15 +139,17 @@ Then we can iterate
 {% endif %}
 ```
 
-Accessing data is done using dot notation, for example retrieving the client name of a tasks project would be as follows:
+Access nested data with dot notation. For example, the client name of a task's project is:
 
 ```twig
 {{ task.project.client.name }}
 ```
 
-### Invoice Ninja variables
+### Can I use Invoice Ninja $variables too? {#invoice-ninja-variables}
 
-Standard $ notation variables are also available within templates, this allows you to use familiar variables such as $invoice.amount - you can also combine twig and ninja variables like this to integrate conditionals into your template. ie
+Standard `$` placeholders also work in templates, so you can use familiar names such as `$invoice.amount`. The design editor's **Variables** tab lists these `$` names, grouped as Invoice, Client, Contact and Company. Twig tags such as `{{ }}` and `{% %}` are documented below; they are not listed on that tab.
+
+You can combine Twig and Invoice Ninja variables, for example to add a condition:
 
 ```twig
 
@@ -159,13 +160,14 @@ Standard $ notation variables are also available within templates, this allows y
 {% endif %}
 ```
 
-#### Allowed Tags
+#### Which Twig tags are allowed? {#allowed-tags}
+
 * if
 * for
 * set
 * filter
 
-#### Allowed Filters
+#### Which Twig filters are allowed? {#allowed-filters}
 
 Filters change how a value is displayed. Add a filter after a value using a pipe (`|`). For example:
 
@@ -219,17 +221,19 @@ The following filters are available:
 * upper
 * url_encode
 
-#### Allowed Functions
+#### Which Twig functions are allowed? {#allowed-functions}
+
 * range
 * cycle
 * date
 * img
 * t
 
-#### Allowed Properties
+#### Which properties are allowed? {#allowed-properties}
+
 * type_id
 
-### Using Projects and Quotes Together
+### How do I use projects and quotes together? {#using-projects-and-quotes-together}
 
 A project template can list the quotes linked to that project. A quote template can also display details from its linked project.
 
@@ -248,7 +252,7 @@ To list the quotes linked to the first project in a template:
         <h2>Quotes</h2>
         <ul>
             {% for quote in project.quotes %}
-                <li>Quote {{ quote.number }} — {{ quote.date }} — {{ quote.amount }}</li>
+                <li>Quote {{ quote.number }} - {{ quote.date }} - {{ quote.amount }}</li>
             {% endfor %}
         </ul>
     {% endif %}
@@ -271,11 +275,11 @@ To show the project linked to the first quote in a template:
 When a quote displays its project, the project's `quotes`, `invoices`, `tasks`, and `expenses` lists are empty. This prevents the same related information from repeating indefinitely. Start with a project template when you need to use those lists.
 :::
 
-## Statements
+## How do I mark a template as a statement? {#statements}
 
-Statements are special objects in templates. Because the input data point is a client/s we need additional information to understand whether a template is a "statement" template or not.
+Statements are special in templates. The input is one or more clients, so Invoice Ninja needs a marker to tell a statement template from other templates.
 
-When creating custom statements, you will want to insert a comment within the template so that the system can resolve that it is a statement for processing
+When you create a custom statement, put this comment in the template so the system can treat it as a statement:
 
 ```html
 <!doctype html>
@@ -284,19 +288,19 @@ When creating custom statements, you will want to insert a comment within the te
 <head>
 ```
 
-Note the special text 
+The special text is:
 
 ```bash
 ##statement##
 ```
 
-This will allow the system to resolve a custom statement.
+That marker is required inside the comment. It is not a heading in this guide, and the app does not show help text for it. With it in place, Invoice Ninja can resolve a custom statement.
 
-## Object Json Definitions
+## What do the JSON objects look like? {#object-json-definitions}
 
-Here are the object definitions that are available.
+These are the object shapes available to a template.
 
-### Invoice
+### Invoice {#invoice}
 ```json
 {
     "invoices": [
@@ -665,7 +669,7 @@ Here are the object definitions that are available.
                     "custom_value4": "",
                     "created_at": "25. March 2024",
                     "updated_at": "25. March 2024",
-                    "refund_activity": ["24. March 2024 Invoice #0029 $104.95 Refunded"],
+                    "refund_activity": ["24. March 2024 Invoice #123 $104.95 Refunded"],
                     "client": {
                         "name": "cypress",
                         "balance": "0.000000",
@@ -766,7 +770,7 @@ Here are the object definitions that are available.
 }
 ```
 
-### Payment
+### Payment {#payment}
 
 ```json
 {
@@ -850,7 +854,7 @@ Here are the object definitions that are available.
 }
 ```
 
-### Task
+### Task {#task}
 
 ```json
 {
@@ -1028,14 +1032,14 @@ Here are the object definitions that are available.
 }
 ```
 
-### Company
+### Company {#company}
 
 The `company` object is exposed as a top-level template variable carrying scalar fields describing the company that owns the entity being rendered.
 
 ```json
 {
     "company": {
-        "name": "Acme Pty Ltd",
+        "name": "Example Company",
         "classification": "business",
         "address1": "1 Main St",
         "address2": "Suite 200",
@@ -1048,10 +1052,10 @@ The `company` object is exposed as a top-level template variable carrying scalar
         "postal_city_state": "2000 Sydney, NSW",
         "postal_city": "2000 Sydney",
         "phone": "555 123 1321",
-        "email": "hello@acme.test",
+        "email": "hello@example.com",
         "vat_number": "123456789",
         "id_number": "ABC-1234",
-        "website": "https://acme.test",
+        "website": "https://www.example.com",
         "payment_terms": "30",
         "valid_until": "14",
         "custom1": "",
@@ -1062,9 +1066,9 @@ The `company` object is exposed as a top-level template variable carrying scalar
 }
 ```
 
-## Definitions
+## What fields can I use? {#definitions}
 
-### Invoice / Quote / Credit / Purchase Order Definition
+### Invoice, quote, credit and purchase order definition {#invoice-quote-credit-purchase-order-definition}
 
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
@@ -1120,7 +1124,7 @@ The `company` object is exposed as a top-level template variable carrying scalar
 | project | object (Invoice and Quote only) | [Project](/docs/advanced-topics/templates#project-definition) |
 | actual_delivery_date | string (Invoice only, from e-invoice payload) | 25. March 2024 |
 | invoice_period | string (Invoice only, from e-invoice payload) | 01/03/2024 - 31/03/2024 |
-| vendor | object (Purchase Order only — reduced shape: `name`, `vat_number`, `currency`) | { name: "Acme", vat_number: "...", currency: "USD" } |
+| vendor | object (Purchase Order only - reduced shape: `name`, `vat_number`, `currency`) | { name: "Example Company", vat_number: "...", currency: "USD" } |
 | is_deleted | boolean (Purchase Order only) | false |
 | has_tasks | boolean (Purchase Order only) | false |
 | has_expenses | boolean (Purchase Order only) | false |
@@ -1135,7 +1139,7 @@ The `company` object is exposed as a top-level template variable carrying scalar
 
 Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`, and `auto_bill_enabled` are emitted for Invoices and Credits only. `payments` is emitted for Invoices and Credits only. Quotes and Purchase Orders do not include these fields.
 
-### Line items definition
+### Line items definition {#line-items-definition}
 
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
@@ -1177,14 +1181,14 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | product_cost_raw | float | 0 |
 | | | |
 
-### Tax map definition
+### Tax map definition {#tax-map-definition}
 | Field      | Description | Example |
 | --- | --- | --- |
 | name | string |  GST 10% |
 | total | float|  470.09 |
 | | | |
 
-### Payment definition
+### Payment definition {#payment-definition}
 | Field      | Description | Example |
 | ---- | --- | --- |
 | status | string | Refunded |
@@ -1210,13 +1214,13 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | custom_value4 | string | Custom Value |
 | created_at | string | 25. March 2024 |
 | updated_at | string | 25. March 2024 |
-| refund_activity | array of string | [24. March 2024 Invoice #0029 $104.95 Refunded] |
+| refund_activity | array of string | [24. March 2024 Invoice #123 $104.95 Refunded] |
 | paymentables | array | [Paymentables](/docs/advanced-topics/templates#paymentables-definition) |
 | client | object | [Client](/docs/advanced-topics/templates#client-definition) |
 | tags | Array of tag names assigned to the payment | ["Online", "Deposit"] |
 | | | |
 
-### Paymentables definition
+### Paymentables definition {#paymentables-definition}
 | Field      | Description | Example |
 | --- | --- | --- |
 | invoice | string (present when the paymentable is an invoice) | 0029 |
@@ -1234,7 +1238,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | timestamp | unix timestamp | 171132933 |
 | | | |
 
-### Task Definition
+### Task definition {#task-definition}
 
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
@@ -1259,7 +1263,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | tags | Tag names assigned to the task | ["Design", "Priority"] |
 | | | |
 
-### Expense Definition
+### Expense definition {#expense-definition}
 
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
@@ -1295,7 +1299,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | tags | Tag names assigned to the expense | ["Travel", "Billable"] |
 | | | |
 
-### Vendor Definition
+### Vendor definition {#vendor-definition}
 
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
@@ -1315,7 +1319,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | locale | The vendor locale | en |
 | | | |
 
-### Time Log Definition
+### Time log definition {#time-log-definition}
 
 | Time Log Array (of objects) | | | 
 | ---- | ---- | ---- | 
@@ -1329,7 +1333,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 |duration | formatted duration | 14:53:23 |
 | | | |
 
-### User Definition
+### User definition {#user-definition}
 
 | Creating User Object | | | 
 | ---- | ---- | ---- | 
@@ -1338,7 +1342,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | signature | The user's email signature (HTML) | &lt;p&gt;Regards, Bob&lt;/p&gt; |
 | | | |
 
-### Client Definition
+### Client definition {#client-definition}
 
 | Client Object | | |
 | ---- | ---- | ---- | 
@@ -1370,7 +1374,7 @@ Note: `reminder1_sent`, `reminder2_sent`, `reminder3_sent`, `reminder_last_sent`
 | custom_value4 | The fourth client custom value | Pistachio |
 | | | |
 
-### Location Definition
+### Location definition {#location-definition}
 
 The `country` and `shipping_country` objects in the examples show a subset of their fields. Use `country_name` / `shipping_country_name` for display names and `country_code` / `shipping_country_code` for two-letter country codes.
 
@@ -1399,7 +1403,7 @@ The `country` and `shipping_country` objects in the examples show a subset of th
 | shipping_exists | Boolean indicating whether shipping_address1 is nonempty | true |
 | | | |
 
-### Project Definition
+### Project definition {#project-definition}
 
 | Project Object | | |
 | ---- | ---- | ---- | 
@@ -1430,13 +1434,13 @@ The `country` and `shipping_country` objects in the examples show a subset of th
 | tags | Tag names assigned to the project | ["Retainer", "Website"] |
 | | | |
 
-### Company Definition
+### Company definition {#company-definition}
 
 The `company` object is available as a top-level template variable and carries scalar fields describing the company that owns the entity being rendered.
 
 | Company Object | | |
 | ---- | ---- | ---- |
-| name | The company name | Acme Pty Ltd |
+| name | The company name | Example Company |
 | classification | The company classification | business |
 | address1 | First line of the company address | 1 Main St |
 | address2 | Second line of the company address | Suite 200 |
@@ -1449,10 +1453,10 @@ The `company` object is available as a top-level template variable and carries s
 | postal_city_state | Pre-formatted "Postal City, State" string | 2000 Sydney, NSW |
 | postal_city | Pre-formatted "Postal City" string | 2000 Sydney |
 | phone | The company phone | 555 123 1321 |
-| email | The company email | hello@acme.test |
+| email | The company email | hello@example.com |
 | vat_number | The company VAT number | 123456789 |
 | id_number | The company id number | ABC-1234 |
-| website | The company website | https://acme.test |
+| website | The company website | https://www.example.com |
 | payment_terms | The default payment terms (days) | 30 |
 | valid_until | The default quote validity (days) | 14 |
 | custom1 | Company custom value 1 | Custom Value |
@@ -1461,9 +1465,11 @@ The `company` object is available as a top-level template variable and carries s
 | custom4 | Company custom value 4 | Custom Value |
 | | | |
 
-## Sample Templates
+## Where can I get sample templates? {#sample-templates}
 
-### Statements
+The samples below are downloads in this guide. They are not built into Invoice Ninja. Download a file, then paste it into a custom design with **Import**, and review it before you click **Save**.
+
+### Statements {#statements-1}
 |Name | Description| Preview | |
 |---- | ---- | ---- | ---- |
 |TS1 |  Plain Statement | [<img src="/assets/images/templates/ts1.png" width="200"/>](/assets/images/templates/ts1.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts1.html "download") |  
@@ -1472,7 +1478,7 @@ The `company` object is available as a top-level template variable and carries s
 |TS4 |  Logo Statement | [<img src="/assets/images/templates/ts4.png" width="200"/>](/assets/images/templates/ts4.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/statements/ts4.html "download") |
 | | | | |
 
-### Delivery Notes
+### Delivery Notes {#delivery-notes}
 |Name | Description| Preview | |
 |---- | ---- | ---- | ---- |
 |TD4 | 3 Column | [<img src="/assets/images/templates/td4.png" width="200"/>](/assets/images/templates/td4.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td4.html "download") |  
@@ -1481,36 +1487,36 @@ The `company` object is available as a top-level template variable and carries s
 |TD13 | 2 Column Mono | [<img src="/assets/images/templates/td13.png" width="200"/>](/assets/images/templates/td13.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/delivery_notes/td13.html "download") |  
 |||||
 
-### Payment Receipts
+### Payment Receipts {#payment-receipts}
 |Name | Description| Preview | |
 |---- | ---- | ---- | ---- |
 |TP6 | Standard | [<img src="/assets/images/templates/tp6.png" width="200"/>](/assets/images/templates/tp6.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tp6.html "download") |  
 |TP7 | Horizontal | [<img src="/assets/images/templates/tp7.png" width="200"/>](/assets/images/templates/tp7.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tp7.html "download") |  
 |||||
 
-### Refund Receipts
+### Refund Receipts {#refund-receipts}
 |Name | Description| Preview | |
 |---- | ---- | ---- | ---- |
 |TR8 | Horizontal | [<img src="/assets/images/templates/tr8.png" width="200"/>](/assets/images/templates/tr8.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tr8.html "download") |  
 |TR9 | Standard | [<img src="/assets/images/templates/tr9.png" width="200"/>](/assets/images/templates/tr9.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/payments/tr9.html "download") |  
 |||||
 
-### Project/Tasks
+### Project/Tasks {#project-tasks}
 |Name | Description| Preview | |
 |---- | ---- | ---- | ---- |
 |TP11 | Project Outline | [<img src="/assets/images/templates/tp11.png" width="200"/>](/assets/images/templates/tp11.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/projects/tp11.html "download") |
 |TT10 | Task | [<img src="/assets/images/templates/tt10.png" width="200"/>](/assets/images/templates/tt10.png) | [Download](https://raw.githubusercontent.com/invoiceninja/invoiceninja/v5-develop/resources/views/templates/tasks/tt10.html "download") |  
 |||||
 
-## Snippets
+## What snippets can I reuse? {#snippets}
 
-Here are some quick and easy snippets you can use in your templates/designs. Each snippet shows the CSS to add to the **Includes** section and the HTML/Twig to add to the **Body** section of your design.
+These snippets are starting points you can paste into a template or design. Add the CSS to the **Includes** tab and the HTML or Twig to the **Body** tab.
 
 :::tip
 All Twig code must be wrapped in `<ninja></ninja>` tags. Place these blocks in the Body section of your design.
 :::
 
-### 1. Task Subtotal on Invoice
+### 1. Task subtotal on an invoice {#1-task-subtotal-on-invoice}
 
 Calculate and display a subtotal for task/service line items only.
 
@@ -1567,7 +1573,7 @@ Calculate and display a subtotal for task/service line items only.
 </ninja>
 ```
 
-### 2. Product Subtotal on Invoice
+### 2. Product subtotal on an invoice {#2-product-subtotal-on-invoice}
 
 Same concept as the task subtotal, but filtering for product line items (`type_id == 1`). Place this after the `<table id="product-table">` element.
 
@@ -1623,9 +1629,9 @@ Same concept as the task subtotal, but filtering for product line items (`type_i
 </ninja>
 ```
 
-### 3. Separate Products and Tasks into Distinct Tables
+### 3. Separate products and tasks into distinct tables {#3-separate-products-and-tasks-into-distinct-tables}
 
-When an invoice contains both products and services, render them in two separate custom tables with individual subtotals. This replaces the default product and task tables — you can hide them via CSS if needed.
+When an invoice contains both products and services, render them in two separate custom tables with individual subtotals. This replaces the default product and task tables - you can hide them via CSS if needed.
 
 **Add to Includes:**
 
@@ -1746,7 +1752,7 @@ When an invoice contains both products and services, render them in two separate
 </ninja>
 ```
 
-### 4. Conditional "PAID" / "OVERDUE" Watermark Stamp
+### 4. Conditional "PAID" / "OVERDUE" watermark stamp {#4-conditional-paid-overdue-watermark-stamp}
 
 Overlay a rotated stamp on the invoice based on its payment status. This uses the `balance_raw` field to determine if the invoice is fully paid.
 
@@ -1798,7 +1804,7 @@ Overlay a rotated stamp on the invoice based on its payment status. This uses th
 </ninja>
 ```
 
-### 5. Dynamic Payment Instructions Based on Balance
+### 5. Dynamic payment instructions based on the balance {#5-dynamic-payment-instructions-based-on-balance}
 
 Show bank transfer details when there is an outstanding balance, or a thank you message when the invoice is paid. Place this in the footer area of your design.
 
@@ -1823,14 +1829,14 @@ Show bank transfer details when there is an outstanding balance, or a thank you 
     </div>
     {% else %}
     <div style="margin-top: 2rem; padding: 1rem; text-align: center; color: #2e7d32;">
-        <strong>Payment received — thank you for your business!</strong>
+        <strong>Payment received - thank you for your business!</strong>
     </div>
     {% endif %}
 {% endif %}
 </ninja>
 ```
 
-### 7. Line Item Grouping with Category Headers
+### 7. Line item grouping with category headers {#7-line-item-grouping-with-category-headers}
 
 Group line items by a custom value (e.g., `custom_value1` used as a category). This inserts a header row each time the category changes. Ensure your line items are sorted by `custom_value1` for best results.
 
@@ -1908,7 +1914,7 @@ Group line items by a custom value (e.g., `custom_value1` used as a category). T
 </ninja>
 ```
 
-### 9. Running Line Item Counter / Row Numbering
+### 9. Running line item counter / row numbering {#9-running-line-item-counter-row-numbering}
 
 Add sequential row numbers to your line items using Twig's built-in `loop.index` variable.
 
@@ -1977,7 +1983,7 @@ Add sequential row numbers to your line items using Twig's built-in `loop.index`
 </ninja>
 ```
 
-### 10. Client Outstanding Balance Banner
+### 10. Client outstanding balance banner {#10-client-outstanding-balance-banner}
 
 Display a prominent banner at the top of the invoice showing the client's total outstanding balance across all invoices.
 
@@ -2017,7 +2023,7 @@ Display a prominent banner at the top of the invoice showing the client's total 
 </ninja>
 ```
 
-### 12. Enhanced Payment History Table
+### 12. Enhanced payment history table {#12-enhanced-payment-history-table}
 
 An improved version of the basic payments table that includes payment method, transaction reference, and refund details.
 
@@ -2108,7 +2114,7 @@ An improved version of the basic payments table that includes payment method, tr
 </ninja>
 ```
 
-### 13. Discount Summary
+### 13. Discount summary {#13-discount-summary}
 
 When the invoice has a discount applied, display a summary showing the discount details prominently.
 
@@ -2175,7 +2181,7 @@ When the invoice has a discount applied, display a summary showing the discount 
 </ninja>
 ```
 
-### 15. Custom Footer with Conditional Bank Details
+### 15. Custom footer with conditional bank details {#15-custom-footer-with-conditional-bank-details}
 
 Show different bank account details based on the client's currency. Useful for businesses that hold accounts in multiple currencies.
 
@@ -2222,7 +2228,7 @@ Show different bank account details based on the client's currency. Useful for b
 </ninja>
 ```
 
-### 16. Keep a Block on a Single Page
+### 16. Keep a block on a single page {#16-keep-a-block-on-a-single-page}
 
 Long text blocks, such as terms, notes, or a long description, can be split across two pages when the PDF is generated. Add `page-break-inside: avoid;` to the element that wraps the block so it moves to the next page as a whole instead of breaking in the middle.
 
@@ -2256,13 +2262,13 @@ Long text blocks, such as terms, notes, or a long description, can be split acro
 
 ---
 
-## Full Design Examples
+## What are some full design examples? {#full-design-examples}
 
-These are complete, ready-to-use designs that demonstrate the full power of the Twig templating engine. You can import these directly into **Settings > Invoice Design > Custom Designs**.
+These are complete example designs that show what a full Twig template can do. They are not built into the app. You can paste one into **Settings > Invoice Design > Custom Designs** using **Import** on the design Settings tab (the **Import Design** dialog). Review the result before you click **Save**.
 
-### Professional Invoice with Mixed Line Items
+### Professional invoice with mixed line items {#professional-invoice-with-mixed-line-items}
 
-A complete invoice design that separates products from services, includes a tax breakdown, payment history, and conditional paid/overdue styling.
+A complete invoice design that separates products from services, and includes a tax breakdown, payment history, and conditional paid or overdue styling.
 
 ```html
 <!DOCTYPE html>
@@ -2492,7 +2498,7 @@ A complete invoice design that separates products from services, includes a tax 
     </div>
     <div class="details-box">
         <h4>Ship To</h4>
-        <div id="shipping-address"></div>
+        <div id="shipping-details"></div>
     </div>
     <div class="details-box">
         <h4>Invoice Details</h4>
@@ -2658,7 +2664,7 @@ A complete invoice design that separates products from services, includes a tax 
 </html>
 ```
 
-### Detailed Timesheet Invoice
+### Detailed timesheet invoice {#detailed-timesheet-invoice}
 
 A task-focused invoice design that expands each service line item to show the associated task's time log entries including start/end times, descriptions, and durations. Ideal for agencies and freelancers billing by the hour.
 
@@ -2830,7 +2836,7 @@ A task-focused invoice design that expands each service line item to show the as
     </div>
     <div style="text-align: right;">
         <div class="ts-title">TIMESHEET INVOICE</div>
-        <div class="ts-subtitle">#{{ invoice.number }} — {{ invoice.date }}</div>
+        <div class="ts-subtitle">#{{ invoice.number }} - {{ invoice.date }}</div>
     </div>
 </div>
 
@@ -2898,7 +2904,7 @@ A task-focused invoice design that expands each service line item to show the as
 
     <div class="task-subtotal">
         {% if item.task is defined %}
-            Task Duration: {{ item.task.duration|date('H:i:s') }} —
+            Task Duration: {{ item.task.duration|date('H:i:s') }} - 
         {% endif %}
         Line Total: {{ item.line_total }}
     </div>
@@ -2971,9 +2977,9 @@ A task-focused invoice design that expands each service line item to show the as
 </html>
 ```
 
-### Project Progress Report
+### Project progress report {#project-progress-report}
 
-A template designed to be run against a **Project** entity, showing project details, task breakdown with statuses, hours burned vs. budgeted, associated expenses, and a cost summary.
+A template designed to be run against a **Project**, showing project details, a task breakdown with statuses, hours used versus budgeted, associated expenses, and a cost summary.
 
 :::info
 When creating this template, select the **Project** checkbox in the template entity associations.
@@ -3201,7 +3207,7 @@ When creating this template, select the **Project** checkbox in the template ent
 
 <div class="report-header">
     <div class="report-title">{{ project.name }}</div>
-    <div class="report-subtitle">Project Progress Report — Generated {{ "now"|date('d M Y') }}</div>
+    <div class="report-subtitle">Project Progress Report - Generated {{ "now"|date('d M Y') }}</div>
 </div>
 
 <div class="report-meta">
@@ -3394,3 +3400,12 @@ When creating this template, select the **Project** checkbox in the template ent
 </body>
 </html>
 ```
+
+## Related
+
+- [PDF templates and custom field placeholders](/docs/advanced-topics/custom-fields)
+- [Advanced Settings](/docs/user-guide/advanced-settings)
+- [Invoices](/docs/user-guide/invoices)
+- [Projects](/docs/user-guide/projects)
+- [Tasks](/docs/user-guide/tasks)
+- [Email customization](/docs/advanced-topics/email-customization)
