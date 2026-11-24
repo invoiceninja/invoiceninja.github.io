@@ -1,110 +1,109 @@
 ---
-title: "Hosted Mail"
+title: "Send invoice emails from your own mailbox"
+sidebar_label: "Hosted Mail"
 sidebar_position: 5
+description: "Send Invoice Ninja email from Gmail, Microsoft, Postmark, Mailgun, Brevo or SMTP on the hosted app, and track delivery, bounces and unsubscribes."
 ---
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-# Hosted Mail
+# Send invoice emails from your own mailbox
 
-If you are a Pro Plan or Enterprise Plan user, you have access to multiple different ways to send emails from Invoice Ninja. We offer OAuth integrations with both Google and Microsoft allowing you to send emails from your own email address. 
+You can send Invoice Ninja emails from your own mailbox or from a bulk provider, as well as through the default hosted mail service. This is documented as a Pro or Enterprise plan option.
 
-### Send with Gmail / Microsoft
+Go to **Settings > Email Settings** (route `#/settings/email_settings`) to choose the **Email Provider**. On the hosted app, the options are **Default (Postmark)**, **Mailgun (Hosted)**, **Amazon SES (Hosted)**, **Gmail (OAuth)**, **Microsoft (OAuth)**, **Postmark**, **Mailgun**, **Brevo** and **SMTP**.
 
+For reply-to, signatures, PDF attachments and send time, see [How do I set up outgoing email?](/docs/user-guide/advanced-settings#email_settings).
 
-Connecting either Gmail or Microsoft involves the same steps. Below is a short video showing the steps.
+## How do I send with Gmail or Microsoft? {#send-with-gmail--microsoft}
+
+Sending with Gmail or Microsoft uses the same steps. This short video shows the flow:
 
 <VideoPlayer src="/assets/videos/hosted_mail/hosted_mail.mpd" isDash={true} id="hosted_mail-video" />
 
 :::info
-Note: Both the initial authentication and the connection to Gmail must use the same OAuth account. ie if you attempt to connect bob@gmail.com you must select this email address for authenticating with Google, and then also allow permissions for this email address to send email. Cross account linking is not possible.
+The Google or Microsoft account you sign in with must be the same address you want to send from. Sign in with that address, then grant permission for that same address to send email. You cannot use one account to authenticate and a different address to send.
 :::
 
-Once you have connected your OAuth account, you can select either Gmail or Microsoft as the Email Provider in
+1. Go to **Settings > User Details** (route `#/settings/user_details`) and open the **OAuth / Mail** tab (route `#/settings/user_details/connect`).
+2. Use the Google sign-in button, or click **Log in with Microsoft**, and sign in with the account you want to send from. Use that same address when you authenticate and when you grant sending permission.
+3. Go to **Settings > Email Settings**.
+4. Set **Email Provider** to **Gmail (OAuth)** or **Microsoft (OAuth)**.
+5. If the page then shows a user or account selector for that provider, choose the user you signed in with.
 
-```bash
-Settings / Email Settings
-```
+![Email Settings when Gmail or Microsoft is the provider](/assets/images/user_guide/gmail_config.png "Email Settings for Gmail or Microsoft")
 
-![alt text](/assets/images/user_guide/gmail_config.png "Configuration screen for Gmail/Microsoft")
+## How do I send with Postmark? {#send-with-postmark}
 
-After selecting the email provider, you'll then want to select the user who has been authenticated to send emails from the field beneath this.
+If you prefer to send bulk email through your own Postmark account, choose **Postmark**. Invoice Ninja does not throttle outbound mail when you use Postmark, so this suits high-volume sending.
 
-### Send with Postmark
+![Email Settings when Postmark is the provider](/assets/images/user_guide/postmark_config.png "Email Settings for Postmark")
 
-If you prefer to send bulk emails via PostMark, then this is also supported. We do not throttle the outbound emails using Postmark, so this is suitable if you require a high throughput email service.
-
-![alt text](/assets/images/user_guide/postmark_config.png "Configuration screen for Postmark")
-
-Simply add your Postmark API token to the configuration in 
-
-```bash
-Settings / Email Settings
-```
+1. Go to **Settings > Email Settings**.
+2. Set **Email Provider** to **Postmark**.
+3. Enter the Postmark credentials the form shows, such as your API or server token.
 
 :::warning
-Warning! You must configure a sender signature in Postmark, else Postmark will reject all email attempts. To do this, ensure the email address of your primary user in Invoice Ninja matches the Sender Signature you configured in Postmark
+You must configure a sender signature in Postmark, or Postmark will reject the messages. The email address of your primary Invoice Ninja user must match the sender signature you set in Postmark.
 :::
 
-### Send with Mailgun
+To receive delivery and bounce events back in Invoice Ninja, see [Webhook configuration](#webhook-configuration-delivery--bounce-tracking).
 
-If you prefer to send bulk emails via Mailgun, then this is also supported. We do not throttle the outbound emails using Mailgun, so this is suitable if you require a high throughput email service.
+## How do I send with Mailgun? {#send-with-mailgun}
 
-![alt text](/assets/images/user_guide/mailgun_config.png "Configuration screen for Mailgun")
+Your own Mailgun account is also supported, and outbound mail is not throttled, so this also suits high-volume sending.
 
-Ensure to fill in both your Mailgun Secret and Domain that has been configured.
+![Email Settings when Mailgun is the provider](/assets/images/user_guide/mailgun_config.png "Email Settings for Mailgun")
 
-### Handling Spam / Contacts unsubscribing from your emails.
+1. Go to **Settings > Email Settings**.
+2. Set **Email Provider** to **Mailgun**.
+3. Enter the Mailgun details the form shows, such as your secret and domain.
 
-Email delivery is _hard_ the large email providers such as GMail, Yahoo, Microsoft are continuing their fight against unsolicited / spam emails from filling the inboxes that they serve.
+**Mailgun (Hosted)** is a separate option. That one uses Invoice Ninja's hosted Mailgun service, not your own Mailgun account.
 
-In 2024 it will become even harder with additional checks in place on all emails to ensure that only high quality emails arrive to a users inbox.
+## What happens if a contact unsubscribes or marks mail as spam? {#handling-spam--contacts-unsubscribing-from-your-emails}
 
-In particular, their focus is on working unsubscribe links within emails. Previously we have not needed to insert an unsubscribe link into an invoice email, however now it will become a standard part of all outbound emails to include a unsubscribe link.
+Email delivery is hard. Large providers such as Gmail, Yahoo and Microsoft keep tightening the rules against unsolicited mail. Since 2024 they have added more checks so that only high-quality mail reaches the inbox. In particular, they expect a working unsubscribe link in emails.
 
 :::warning
-All ourbound emails that are sent from the Invoice Ninja Hosted Mail Service (maildelivery@mail.invoicing.co and maildelivery@invoicing.co) will now contain a working unsubscribe link. If you are sending via your own provider (PostMark / MailGun / GMail / Microsoft) we will not be injecting these unsubscribe links into your emails.
+All outbound emails sent from the Invoice Ninja hosted mail service (`maildelivery@mail.invoicing.co` and `maildelivery@invoicing.co`) include a working unsubscribe link. If you send through your own provider (Postmark, Mailgun, Gmail or Microsoft), Invoice Ninja does not insert these unsubscribe links into your emails.
 :::
 
-If your client clicks on an unsubscribe link, they'll be taken to a page where they can opt out of receiving emails from you. This will mark their client record as "DO NOT SEND" and you will also receive a follow up email advising that this action has been taken by your client.
+If a client clicks an unsubscribe link, they are taken to a page where they can opt out of emails from you. This marks their client record as **DO NOT SEND**, and you receive a follow-up email about that action.
 
-For more information, you can read this great article from ![Postmark](https://postmarkapp.com/blog/2024-gmail-yahoo-email-requirements "Postmark") 
+For more on the 2024 Gmail and Yahoo requirements, see [this Postmark article](https://postmarkapp.com/blog/2024-gmail-yahoo-email-requirements).
 
-### Send with SMTP
+## How do I send with SMTP? {#send-with-smtp}
 
-You can also configure your own SMTP server to send emails from Invoice Ninja.
+You can also send through your own SMTP server.
 
-![alt text](/assets/images/user_guide/smtp_server_configuration.png "Configuration screen for SMTP Server")
+![Email Settings when SMTP is the provider](/assets/images/user_guide/smtp_server_configuration.png "Email Settings for an SMTP server")
 
-The following parameters are supported:
+1. Go to **Settings > Email Settings**.
+2. Set **Email Provider** to **SMTP**.
+3. Fill in the SMTP details the form shows, such as host, port, encryption, username, password and any option to verify the server certificate. Examples of host and port values include `smtp.gmail.com` and `587`, `25` or `465`. Encryption may be listed as tls, ssl or starttls.
+4. If the form includes a test-email action, use it only when you intend to send a test message and confirm the server works.
 
-- Host ie smtp.gmail.com
-- Port ie 587,25,465
-- Encryption ie tls,ssl,starttls
-- Username SMTP username
-- Password SMTP password
-- Verify Peer (verifies the identity of the SMTP server, including checking the certificate and hostname)
+## How do I send with Brevo? {#send-with-brevo}
 
-You can use the Send Test Email button to test the configuration and send a test email to ensure that your SMTP server is working.
+![Email Settings when Brevo is the provider](/assets/images/user_guide/brevo_server_configuration.png "Email Settings for Brevo")
 
-### Send with Brevo
+Your own Brevo account is also supported, and outbound mail is not throttled, so this suits high-volume sending.
 
-![alt text](/assets/images/user_guide/brevo_server_configuration.png "Configuration screen for Brevo")
+1. Go to **Settings > Email Settings**.
+2. Set **Email Provider** to **Brevo**.
+3. Enter the Brevo credentials the form shows, such as your API key.
 
-If you prefer to send bulk emails via Brevo, then this is also supported. We do not throttle the outbound emails using Brevo, so this is suitable if you require a high throughput email service.
+## How do I track delivery, bounces and complaints? {#webhook-configuration-delivery--bounce-tracking}
 
-The only configuration required is your Brevo API key.
-
-### Webhook configuration (delivery & bounce tracking)
-
-When email providers report back on what happened to a message — delivered, bounced, or marked as spam — Invoice Ninja uses those events to update the email status shown in your dashboard and to flag problem recipients so you stop emailing dead or hostile addresses.
+When an email provider reports that a message was delivered, bounced or marked as spam, Invoice Ninja uses those events to update the email status in the app and to flag problem recipients so you stop emailing dead or hostile addresses.
 
 :::info
-If you send through the **default** Hosted Mail service, this is fully automatic — delivery, bounce, complaint and unsubscribe handling is built in and requires no setup on your part.
+If you send through the **default** hosted mail service, this is fully automatic. Delivery, bounce, complaint and unsubscribe handling is built in and needs no setup from you.
 :::
 
-If you are sending through **your own** provider account (the Postmark, Mailgun or Amazon SES options above), you can optionally enable webhooks so this tracking still works. The credentials you enter under `Settings / Email Settings` are the ones the webhook is validated against — you do not need server access.
+If you send through **your own** provider account (the Postmark, Mailgun or Amazon SES options above), you can optionally enable webhooks so this tracking still works. The credentials you enter under **Settings > Email Settings** are the ones the webhook is validated against. You do not need server access.
 
-#### Postmark
+### Postmark {#postmark}
 
 In your own Postmark server, add a webhook pointing at:
 
@@ -112,7 +111,7 @@ In your own Postmark server, add a webhook pointing at:
 https://invoicing.co/api/v1/postmark_webhook
 ```
 
-Add a custom HTTP header so the request authenticates, using the same Postmark server token you entered in `Settings / Email Settings`:
+Add a custom HTTP header so the request authenticates, using the same Postmark server token you entered in **Settings > Email Settings**:
 
 ```
 X-API-SECURITY: your_postmark_server_token
@@ -120,6 +119,12 @@ X-API-SECURITY: your_postmark_server_token
 
 Then enable the **Delivery**, **Bounce**, **Spam Complaint** and (optionally) **Open** events.
 
-#### Mailgun & Amazon SES
+### Mailgun and Amazon SES {#mailgun--amazon-ses}
 
-Delivery webhooks for Mailgun and Amazon SES rely on a signing key (Mailgun) or SNS topic (SES) that is managed at the platform level. If you need bounce and delivery tracking wired up for your own Mailgun or SES account on the hosted platform, please reach out to support so we can enable it. If you self-host, see the [Mail Webhooks](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking) guide for the full configuration.
+Delivery webhooks for Mailgun and Amazon SES rely on a signing key (Mailgun) or an SNS topic (SES) that is managed at the platform level. If you need bounce and delivery tracking wired up for your own Mailgun or SES account on the hosted platform, contact support so it can be enabled. If you self-host, see the [Mail Webhooks](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking) guide for the full configuration.
+
+## Related
+
+- [How do I set up outgoing email?](/docs/user-guide/advanced-settings#email_settings)
+- [How do I send email from my Gmail account?](/docs/hosted/hosted-quickstart#send-emails-from-your-own-gmail-account)
+- [Mail Webhooks (self-host)](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking)

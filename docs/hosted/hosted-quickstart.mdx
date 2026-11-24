@@ -1,48 +1,77 @@
 ---
-title: "Hosted Quick Start"
+title: "Set up your hosted Invoice Ninja account"
+sidebar_label: "Hosted Quick Start"
 sidebar_position: 1
+description: "Set up a hosted Invoice Ninja account: company details, taxes, Stripe, your first invoice, Gmail, and images on invoices."
 ---
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-## Initial Setup
+# Set up your hosted Invoice Ninja account
+
+These short videos walk you through the first things to configure on a hosted Invoice Ninja account, from company details to sending your first invoice.
+
+## How do I complete the initial setup? {#initial-setup}
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8H1jO1rtBYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Here is a quick video to help you perform the initial configuration of Invoice Ninja.
+This video covers the initial configuration of Invoice Ninja after you create a hosted account.
 
-## Company Defaults
+## How do I set my company defaults? {#company-defaults}
 
-After your initial company setup, you may want to configure additional details about your company. You can follow this video to configure some default settings:
+After that first setup, add the company details that appear on invoices, quotes, emails and the client portal. Go to **Settings > Company Details** (route `#/settings/company_details`). The tabs are **Details**, **Address**, **Logo**, **Defaults**, **Documents** and **Custom Fields**.
+
+This video walks through some of those default settings:
 
 <VideoPlayer src="/assets/videos/setup/setup.mpd" isDash={true} id="initial-setup-video" />
 
-## Taxes and Localization
+For the full field list, see [How do I set my company details?](/docs/user-guide/basic-settings#company_details).
+
+## How do I set taxes and localization? {#taxes-and-localization}
 
 <VideoPlayer src="/assets/videos/taxes/tax_configuration/tax_configuration_react.mpd" isDash={true} id="tax-configuration-video" />
 
-Learn how to setup total taxes and line item taxes, and also localize your installation for your region.
+Use this video to turn on invoice-level or line-item taxes, and to set language, currency and date formats for your region.
 
-## Configure Stripe Payment Gateway
+- Taxes: **Settings > Tax Settings** (route `#/settings/tax_settings`). See [How do I set tax defaults?](/docs/user-guide/basic-settings#tax_settings) and [Taxes](/docs/user-guide/taxes).
+- Language, currency and dates: **Settings > Localization** (route `#/settings/localization`). See [How do I set language, currency and dates?](/docs/user-guide/basic-settings#localization).
+
+## How do I connect Stripe? {#configure-stripe-payment-gateway}
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/qitfiD6L8rQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Learn how to connect your existing (or create a new) Stripe account to Invoice Ninja
+This video shows how to connect an existing Stripe account, or create a new one, and link it to Invoice Ninja.
 
-## Let's create your first invoice
+To do this in the app, go to **Settings > Payment Settings**. The page title is **Online Payments** (route `#/settings/online_payments`). That page lists any connected gateways and has an **Add Payment Gateway** button. For the full Stripe steps, see [Payment Gateways](/docs/user-guide/gateways) and [Hosted Stripe](/docs/hosted/hosted-stripe).
+
+## How do I create my first invoice? {#lets-create-your-first-invoice}
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kU1Ok-1RG5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Step through the process of creating your first invoice. Includes creating custom product columns and also customizing your invoice number patterns.
+This video steps through creating your first invoice. It also covers custom product columns and invoice number patterns.
 
-## Send emails from your own Gmail account
+- Custom fields and product columns: [How do I add custom fields?](/docs/user-guide/advanced-settings#custom_fields) and [Custom Fields](/docs/advanced-topics/custom-fields).
+- Invoice number patterns: [How do generated numbers work?](/docs/user-guide/advanced-settings#generated_numbers).
+- Creating an invoice: [Invoices](/docs/user-guide/invoices).
+
+## How do I send email from my Gmail account? {#send-emails-from-your-own-gmail-account}
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dU48fu3tmS0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Learn how to setup sending emails using your own Gmail account.
+This video shows how to send Invoice Ninja emails from your own Gmail account. For the written steps, including Microsoft, Postmark, Mailgun, Brevo and SMTP, see [Send invoice emails from your own mailbox](/docs/hosted/hosted-mail).
 
-
-## Easily embed images onto invoices
+## How do I embed images on invoices? {#easily-embed-images-onto-invoices}
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/alGp17kfyjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Learn how to configure Invoice Ninja to embed images directly onto invoices/quotes!
+This video shows how to embed images directly on invoices and quotes.
+
+In the app, go to **Settings > Invoice Design**. On **General Settings**, **Embed Images/Documents** has the help text "Include attached images/pdfs in the invoice." See [How do I change how invoices look?](/docs/user-guide/advanced-settings#invoice_design).
+
+## Related
+
+- [How do I set my company details?](/docs/user-guide/basic-settings#company_details)
+- [How do I set tax defaults?](/docs/user-guide/basic-settings#tax_settings)
+- [Payment Gateways](/docs/user-guide/gateways)
+- [Hosted Stripe](/docs/hosted/hosted-stripe)
+- [Send invoice emails from your own mailbox](/docs/hosted/hosted-mail)
+- [Point the client portal at your own domain](/docs/hosted/hosted-custom-domain)
