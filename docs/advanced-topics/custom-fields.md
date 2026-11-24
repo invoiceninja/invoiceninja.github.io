@@ -134,7 +134,7 @@ This is a shorter list than the [full placeholder reference](#custom-fields) lat
 
 Invoice Design has several other tabs besides **Custom Designs**.
 
-- **General Settings**: choose the design for invoices, quotes, credits, purchase orders, statements, delivery notes, payment receipts and payment refunds. You can also set **Page Layout**, **Page Size**, **Font Size**, **Logo Size**, **Primary Font**, **Primary Color**, **Secondary Font**, **Secondary Color**, **Show Paid Stamp**, **Show Shipping Address**, **Embed Images/Documents** (help text: "Include attached images/pdfs in the invoice."), **Empty Columns** (Hide or Show) and **Page Numbering**. Click **Save** to store these options.
+- **General Settings**: choose the design for invoices, quotes, credits, purchase orders, statements, delivery notes, payment receipts and payment refunds. You can also set **Page Layout**, **Page Size**, **Font Size**, **Logo Size**, **Primary Font**, **Primary Color**, **Secondary Font**, **Secondary Color**, **Show Paid Stamp**, **Show Shipping Address**, **Embed Images/Documents** (help text: "Include attached images/pdfs in the invoice."), **Empty Columns** (Hide or Show) and **Page Numbering**. Ticking **Update all records** is optional. When it is ticked, the design is applied to existing records too. When it is not ticked, the new design applies only to records created from then on. Click **Save** to store these options.
 - **Custom Designs**: create and edit custom designs, as described above.
 
 The remaining tabs control which fields and columns appear on every design that includes that data. For example, to show the client's VAT number, add that field on the **Client** tab and it appears on invoices that include the client block.
