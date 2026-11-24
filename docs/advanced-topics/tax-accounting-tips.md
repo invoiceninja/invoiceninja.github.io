@@ -1,135 +1,134 @@
 ---
-title: "Tax Accounting Tips"
+title: "Tax accounting tips: keep records ready for year end"
+sidebar_label: "Tax Accounting Tips"
 sidebar_position: 7
+description: "Use Invoice Ninja expenses, payments, bank transactions and reports to keep tax and accounting records through the year. This is not tax advice."
 ---
 
-Invoice Ninja is a fully featured invoicing system with many small-business friendly features.
+# Tax accounting tips: keep records ready for year end
 
-You can invoice your clients, sell products and services, quotes, purchase orders, auto bill payment methods, track time/tasks, projects, payments...
+If you already bill clients in Invoice Ninja, you can also use it to record expenses, payments and tax, then run reports at year end. This page describes what the app can do. It is not tax advice. For advice, talk to a tax professional.
 
-Some of our features which can help with accounting include:
+Features that help with bookkeeping include:
 
-- **Expenses**: Track any type of expense, track tax(es) paid per expense, currency conversion, track expenses per vendor and client. See [Expenses](/docs/user-guide/expenses/)
-- **Recurring Expenses**: Any expense can be made into an expense that automatically reoccurs on a set schedule. See [Recurring Expenses](/docs/user-guide/recurring-expenses)
-- **Transactions**: Connect your bank account to Invoice Ninja for automatic reconciliation of payments and expenses. See [Transactions](/docs/user-guide/transactions)
-- **Payments**: Track all payments received by your business, by customer. You can run reports on payments, clients, and keep track of reference numbers/payment methods. See [Payments](/docs/user-guide/payments)
-- **Reports**: Generate highly customized and fine-tuned reports for your various records. You can track profits, sales, expenses, performance of your products and services, and either visualize that data directly, or export it for processing and analysis in an external application. See [Reports](/docs/user-guide/reports)
+- **[Expenses](/docs/user-guide/expenses)**: record what you spend, including tax paid, currency, vendor, client and category.
+- **[Recurring Expenses](/docs/user-guide/recurring-expenses)**: repeat an expense on a schedule, for example a monthly subscription.
+- **[Transactions](/docs/user-guide/transactions)**: bring in bank lines, then turn withdrawals into expenses or create invoices from deposits. To connect a bank or import a CSV, see [Banking](/docs/user-guide/banking).
+- **[Payments](/docs/user-guide/payments)**: record money you receive, by client and invoice, including reference numbers and payment methods.
+- **[Reports](/docs/user-guide/reports)**: build and export reports for sales, expenses, tax and profit, including Profit and Loss, Tax Summary Report and Tax Period Report.
 
-If your business uses Invoice Ninja for billing your clients, you may want to take advantage of the accounting features we'll describe below.
+## What is cash basis accounting? {#what-is-cash-basis-accounting}
 
-## What is Cash Basis Accounting
+Cash basis accounting recognizes revenue and expenses **at the time** the money is received or paid out.
 
-Cash basis accounting recognizes revenues and expenses **at the time** the money is received or paid out.
+For example, if you invoiced a client in November 2023 and your tax year is the calendar year ending December 31, 2023, but the client paid in February 2024, that revenue belongs to the 2024 tax year. Most small businesses use cash basis accounting.
 
-For example, if you invoiced a client in November 2023 and your tax year is the calendar year ending December 31, 2023, but the client paid their invoice in February 2024, the revenue would be under the 2024 calendar year. Most small businesses use cash basis accounting.
+## How do I track my expenses? {#track-all-of-your-expenses}
 
-## Track all of your expenses
+As a small business, it is much easier to log a business expense when it happens than to reconstruct it at the end of the tax year. Enter each one under [Expenses](/docs/user-guide/expenses).
 
-As a small business, whenever you have a business expense it's much easier to log it right away than trying to dig it up and remember what it was for at the end of the tax year.
+### How do I enter a new expense? {#enter-a-new-expense}
 
-You can enter each of your expenses in the Invoice Ninja Expenses module:
+- To track who you paid, attach a vendor.
+- If the expense relates to a client or project, attach those too.
+- Categorize the expense by selecting or creating a category.
+- **Mark Paid** records that the expense has been paid (the help text is "Track the expense has been paid"). This means you paid the vendor, not that a client paid you.
+- If you need to record tax you paid, so you can claim input tax credits, first set **Expense Tax Rates** under **Settings > Tax Settings** (`#/settings/tax_settings`) to One Tax Rate, Two Tax Rates or Three Tax Rates. Until that is enabled, the expense form shows "Item tax rates are disabled" with a link to Settings, and the tax rate fields are hidden. You can also use **Inclusive Taxes** on Tax Settings when the amount you enter already includes tax. See [Taxes](/docs/user-guide/taxes) for the full tax setup.
 
-### Enter a new expense
+### What are some example use cases? {#example-use-cases}
 
-- If you want to track WHO you paid the expense to, attach it to a vendor.
-  - If the expense was related to a client or project, you can attach it to a client and project.
-- You are able to categorize the expense by selecting or creating a category.
-- Tax: if you are required to keep track of taxes you PAID on business expenses to claim input tax credits, you can do this by enabling Expense Tax under _Settings > Tax Settings > Expense Tax Rates_.
-  - You can even layer up to three calculated tax rates. See [Tax Settings](/docs/user-guide/taxes/) for details on tax configuration.
+- A business pays $100 plus 13% sales tax, so the card is charged $113. After Expense Tax Rates is enabled, it creates an expense for $113, selects the 13% tax rate, and uses **Inclusive Taxes**. Reports then show the net amount and the tax paid correctly.
+- A business uses a recurring expense for a $123 monthly internet bill that already includes 13% sales tax. Because the provider charges the company card automatically, **Mark Paid** is turned on so each occurrence is recorded as paid.
+- A utilities bill is entered with a vendor and a category (for example water). Later, expenses can be filtered by that vendor or category, and the year-end Profit and Loss report reflects the categories you used.
 
-### Example use cases
+## How do I collect sales tax? {#sales-tax-collection}
 
-- John's business pays a total of $100 for an item purchased by the business which included 13% sales tax. He creates an expense in Invoice Ninja, enters the total amount as $113, selects the 13% Tax option, and selects _Inclusive Taxes_. The expense total was 113.00 which included 13% tax. Now the amounts and taxes paid will be accurately reflected on reports.
-- John's business uses the Recurring Expense feature to log the company internet bill which is $123 each month which includes 13% sales tax. Since the internet provider charges the company card automatically, John selected the option “Mark Paid” when creating the recurring expense so that it's marked as paid automatically.
-- John manually enters an expense record for when he pays his New York utilities bill. He set the vendor as ‘City of New York' and category as ‘Water Bill'. He is later able to track his expenses paid to the City of New York, or by the Water Bill category. On his year-end Profit and Loss report, the categorized expenses will be reflected accurately.
+If you collect sales tax, set up your rates under **Settings > Tax Settings**, including **Invoice Tax Rates** and **Line Item Tax Rates**. See [Taxes](/docs/user-guide/taxes).
 
-## Sales tax collection
+On a product, choose a **Tax Category**. Line-item tax rate fields appear on the product when **Line Item Tax Rates** is enabled in Tax Settings. There is no separate tax-exempt checkbox on the product form. For client-level exemptions and the rest of the tax setup, see [Taxes](/docs/user-guide/taxes) and [Products](/docs/user-guide/products).
 
-If you are collecting sales tax, ensure you have the tax rates configured properly in Invoice Ninja.
-See [Tax Settings](/docs/user-guide/taxes/) for details on tax configuration.
+## How do bank transactions help with bookkeeping? {#transactions}
 
-Once your tax rate(s) are added, you would apply tax to your products/invoices. If certain items sold are exempt from sales tax, it's easy to mark a product as Tax Exempt, or taxable at 0% in case you are able to claim input tax credits on it.
+You can connect a bank account under **Settings > Credit Cards & Banks**, import a bank CSV, or enter a transaction by hand. See [Banking](/docs/user-guide/banking) and [Transactions](/docs/user-guide/transactions).
 
-## Transactions
+The Transactions list has separate **Deposit** and **Withdrawal** columns, plus Date, Description, Invoices and Expense. Each line is a deposit or a withdrawal, with a currency, bank account and description. Withdrawals can be turned into expenses. Deposits can be used to create an invoice. Matching rules can do some of this automatically.
 
-You can link your bank account to Invoice Ninja and have it sync your transactions for bookkeeping purposes. See [Transactions](/docs/user-guide/transactions/) for how to set this up.
+## How do payments fit into the tax year? {#payments}
 
-You can import your transactions on demand, or with automatic syncing, which will keep all of your transactions up to date. You also have the option to import bank statements in CSV format.
+Payments are records of money your business receives against invoices. When a client pays online through Invoice Ninja, a payment is created and linked automatically. You can also click **Enter Payment** to record a payment by hand, for example if the client paid by check.
 
-Or, if you need to, you can enter transactions manually by yourself.
+A payment form includes the client, amount, invoice, payment date, payment type and transaction reference, and can show applied, refunded and unapplied amounts. There is no tax field on the payment. For year-end reporting, treat tax as coming from the related invoice, not from the payment record.
 
-Whether the transactions are added manually, imported, or synced from your bank account, you have the ability to categorize them as Deposit or Withdrawal, set the currency, bank account, and description.
+You can run the Payment report and filter by date, client, invoice or amount.
 
-Once a deposit transaction is recorded in Invoice Ninja, you have the ability to link it to an existing payment, or create a new payment record from the transaction. If the transaction is a withdrawal, you can link it to an expense record.
+## Which reports help at year end? {#financial-reports}
 
-## Payments
+If you have entered expenses and payments through the year, you can use built-in reports to total revenue, tax collected, expenses and profit for your tax agency. On **Reports**, choose the report type and a date **Range**, then use **Export**. The list includes **Payment**, **Expense**, **Profit and Loss**, **Tax Summary Report** and **Tax Period Report**, among others.
 
-Payments are records of all invoice payments your business receives. When a client pays an invoice online via Invoice Ninja, a payment record will automatically be created and linked to that client and invoice.
+### How do I use the Profit and Loss report? {#profit-and-loss-report}
 
-You are able to manually record payments (for example, if client paid with cheque). Each payment is linked to an invoice. The invoice module checks the payments linked to the invoice to determine if the invoice is outstanding (payment amounts < invoice total amount).
+See [Reports: Profit and Loss Report](/docs/user-guide/reports#profit_and_loss_report). That report can convert amounts into your company's default currency when you have more than one currency.
 
-Reports can be run on payments which can filter the dates, clients, invoices, amounts, etc. Since each payment must be linked to an invoice, taxes are not set on the payment level – the tax rates used for reporting are based on the invoice.
+### How do I add the figures up myself? {#manual-calculations}
 
-## Financial Reports
+If you prefer not to use the Profit and Loss report, you can run a combination of reports and add the figures yourself.
 
-You can generate customized reports for your various records in Invoice Ninja.
+#### How do I total payments? {#payment}
 
-If you consistently entered all your expenses and payments received in Invoice Ninja throughout the year, at the end of the tax year when you need to calculate the total revenues, taxes collected, expenses, and profit amounts to your tax agency, it's easy to accomplish with the built-in reports.
+![The Payment report options](/assets/images/reports/payment_report.png "Payment report")
 
-### Profit and Loss Report
+- The Payment report totals payments received in the date range you choose.
+- After you export a CSV, you can open it in a spreadsheet, select the payment amount column, and read the sum (many spreadsheets show it in the status bar).
+- That sum is not enough if you received payments in more than one currency. The Profit and Loss report converts payments to your company's default currency automatically.
 
-See [Reports: Profit and Loss Report](/docs/user-guide/reports#profit_and_loss_report)
+#### How do I total expenses? {#expense}
 
-### Manual Calculations
+![The Expense report options](/assets/images/reports/expense_report.png "Expense report")
 
-If you do not wish to use the Profit and Loss report, you can run a combination of reports manually.
+The Expense report totals expenditures in the date range you choose. You can also filter by expense type and other options.
 
-#### Payment
+#### How do I total tax collected? {#tax-summary-report}
 
-![Payment report](/assets/images/reports/payment_report.png)
+![The Tax Summary report options](/assets/images/reports/tax_summary_report.png "Tax Summary report")
 
-- The Payment report can be used to tally up all received payments in the chosen date range.
-- You can open the CSV in Excel, click to select the entire Payment Amount column, and the Sum will be displayed in the bottom right.
-- NOTE the sum of payment amounts won't suffice for you if you've received payments in multiple currencies. The Profit and Loss report automatically converts payments to your company's default currency.
+The Tax Summary Report totals tax in the date range, broken down by each tax rate's name and rate. This is useful if you collect more than one rate and need to work out input tax credits. **Tax Period Report** is also in the Reports list if you need totals by tax period.
 
-#### Expense
+![An example Tax Summary report export](/assets/images/reports/tax_summary_report_result_csv_example.png "Tax Summary report export example")
 
-![Expense report](/assets/images/reports/expense_report.png)
+#### What other reports can I use? {#other-reports}
 
-The Expense report can be used to tally up all expenditures in the chosen date range. You can further filter by expense types etc.
+There are also reports for product sales, invoices by client, credits, quotes, purchase orders and more. See [Reports](/docs/user-guide/reports).
 
-#### Tax Summary Report
+### How do the year-end figures come together? {#calculations}
 
-![Tax summary report](/assets/images/reports/tax_summary_report.png)
+If you have logged expenses, payments and tax in Invoice Ninja, you can produce the year-end totals at any time with the reports above.
 
-The Tax Summary Report can be used to see a total of all the taxes collected in the chosen date range, broken down by each tax rate's name and rate. You may wish to use this report for calculating your input tax credits if you collect multiple rates.
+## How does the dashboard help? {#dashboard}
 
-![Tax summary report example](/assets/images/reports/tax_summary_report_result_csv_example.png)
+![The Invoice Ninja dashboard chart](/assets/images/dashboard/react_dashboard.png "Dashboard")
 
-#### Other Reports
+At the top right of the dashboard you can set the currency, the period (**Day**, **Week** or **Month**) and the date range (for example Last 7 Days). There is also a sliders icon and a gear icon.
 
-There are a number of other reports available for product sales, invoices by client, credits, quotes, purchase orders, and more. See [Reports](/docs/user-guide/reports/)
+![Dashboard overview preferences, including date range and currency](/assets/images/dashboard/dashboard_overview_preferences.png "Dashboard overview preferences")
 
-### Calculations
+The **Overview** chart can show invoices, payments, outstanding amounts and expenses. Hover over a point to see the figures for that date. A **Recent Transactions** card also lists Invoices, Payments, Expenses, Outstanding and Total Invoices Outstanding. Other cards include Recent Activity, Recent Payments, Upcoming Invoices and Past Due Invoices.
 
-If you've logged all your expenses, payments received, and taxes collected in Invoice Ninja, the fiscal year-end should be a breeze since it can be calculated at any time with the reports described above.
+![Dashboard chart hover showing invoice, payment, outstanding and expense amounts](/assets/images/dashboard/dashboard_chart_hover_example_amounts.png "Dashboard chart hover amounts")
 
-## Dashboard
+The amounts shown on the dashboard include sales tax collected.
 
-![Dashboard](/assets/images/dashboard/react_dashboard.png)
+## Is this tax advice? {#disclaimer}
 
-Clicking the settings gear in the top-right of the dashboard allows you to select the date range for the chart, as well as currency (if you bill in different currencies).
+This article is not any form of tax advice. It only describes Invoice Ninja's capabilities and configuration. For tax advice, consult a tax professional.
 
-![Dashboard overview preferences](/assets/images/dashboard/dashboard_overview_preferences.png)
+## Related
 
-The Invoice Ninja dashboard features a chart displaying your invoices, payments, outstanding, and expenses.
-
-Hovering over any point on the chart will show the pop-up calculations:
-
-![Dashboard chart hover report](/assets/images/dashboard/dashboard_chart_hover_example_amounts.png)
-
-Note that the amounts shown in the dashboard report **include sales taxes** collected.
-
-## Disclaimer
-
-Disclaimer: this article is not any form of tax advice. It is simply describing Invoice Ninja's capabilities and configuration. For tax advice consult a tax professional.
+- [Taxes](/docs/user-guide/taxes)
+- [Tax Settings](/docs/user-guide/basic-settings#tax_settings)
+- [Expenses](/docs/user-guide/expenses)
+- [Recurring Expenses](/docs/user-guide/recurring-expenses)
+- [Transactions](/docs/user-guide/transactions)
+- [Banking](/docs/user-guide/banking)
+- [Payments](/docs/user-guide/payments)
+- [Reports](/docs/user-guide/reports)
+- [Products](/docs/user-guide/products)

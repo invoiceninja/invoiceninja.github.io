@@ -1,49 +1,114 @@
 ---
-title: "Schedules"
+title: "Schedules: send statements, reports and payment plans automatically"
+sidebar_label: "Schedules"
 sidebar_position: 6
+description: "Set up Invoice Ninja schedules to email statements, documents and reports, invoice outstanding tasks, or collect invoice payments in installments."
 ---
+
 import VideoPlayer from "@site/src/components/VideoPlayer";
 
-# Schedules
+# Schedules: send statements, reports and payment plans automatically
 
-The Invoice Ninja scheduler allow you to configure tasks to run automatically. For instance, you can configure a monthly aging report to be emailed, or you can configure client statements to be sent at months end. Below we step through each of the available schedulers we have.
+Use schedules to run a task on a date or a repeating interval, so you don't have to send the same statement, report or invoice email by hand each time.
 
-## Email Statement
+Manage schedules under **Settings > Schedules** (`#/settings/schedules`), in the Advanced Settings group (between Payment Links and User Management). The list has a **Filter** box, a **Lifecycle** filter, and **New Schedule**. Columns are **Name**, **Next Run**, **Frequency** and **Link**. Payment schedules for invoices also appear in this list.
 
-The Email Statement scheduler enables you to automatically send client statements at predetermined intervals.  
-This feature is particularly useful for maintaining regular communication with your clients about their account status and outstanding balances.  
-You can configure the frequency (daily, weekly, monthly, or custom intervals) and specify which clients should receive these statements.  
-The system will automatically generate and send professional-looking statements that include current balances, recent transactions, and payment history.
+You can also start some schedules from the record they apply to: **Schedule** in the menu next to **Save** on an invoice, **Actions > Schedule** on a report, and the **Payment Schedule** tab on an invoice.
+
+**New Schedule** opens an unsaved form at `#/settings/schedules/create`. The **Template** options are **Email Statement**, **Email Record**, **Email Report**, **Invoice Outstanding Tasks** and **Payment Schedule**.
+
+:::warning
+A new **Email Report** schedule has **Send Email** turned on by default, even if Send Email was off on the Reports page. Review the form carefully, and do not click **Save** until you mean the emails to go out on the scheduled dates.
+:::
+
+Repeating schedules share this **Frequency** list: Daily, Weekly, Two weeks, Four weeks, Monthly, Two months, Three months, Four months, Six months, Annually, Two years and Three Years. There is no separate custom-interval option.
+
+## How do I email client statements automatically? {#email-statement}
+
+The **Email Statement** schedule sends client statements at the interval you choose, so clients get a regular picture of their account and outstanding balances.
+
+1. Go to **Settings > Schedules** and click **New Schedule**.
+2. Set **Template** to **Email Statement**.
+3. Set **Next Run**, **Frequency** and **Remaining Cycles** (Endless, or a number of cycles).
+4. Choose a **Date Range** (for example Last 7 Days, This Month or This Year) and a **Status** (All, Paid or Unpaid).
+5. Optionally turn on **Show Aging Table**, **Show Payments Table**, **Show Credits Table** or **Only Clients with Invoices**.
+6. Leave **Client** empty to include all clients, or pick a client.
+7. Click **Save** when you are ready for the schedule to run.
+
+Invoice Ninja generates the statement and emails it when the schedule runs. This form does not have a separate Send Email toggle.
 
 <VideoPlayer src="/assets/videos/email_statement/email_statement.mpd" isDash={true} id="statement-schedule" />
 
-## Email Record
+## How do I email an invoice, quote, credit or purchase order on a set date? {#email-record}
 
-The Email Record scheduler allows you to configure an Invoice/Quote/Credit or Purchase Order to be sent on exact date.  
-This is perfect when you need fine grained control over _when_ the client or vendor will receive the document.
+The **Email Record** schedule sends an invoice, quote, credit or purchase order on a date you choose. Use this when you want precise control over when the client or vendor receives the document.
+
+1. Go to **Settings > Schedules** and click **New Schedule**, or on an invoice open the menu next to **Save** and choose **Schedule**. That invoice shortcut opens the same Email Record form (`#/settings/schedules/create?template=email_record`).
+2. Set **Template** to **Email Record** if it is not already selected.
+3. Set **Next Run** to the send date.
+4. Set **Type** to Invoice, Quote, Credit or Purchase Order, then select the document. If you started from an invoice, check that the invoice is selected; you may need to pick it yourself.
+5. Optionally choose an email **Template**.
+6. Click **Save** when you are ready for the email to go out on that date.
+
+Email Record uses a single date (**Next Run**). It does not use Frequency or Remaining Cycles.
 
 <VideoPlayer src="/assets/videos/schedule_invoice/schedule_invoice_email.mpd" isDash={true} id="invoice-email-schedule" />
 
-## Email Report
+## How do I email a report automatically? {#email-report}
 
-The Email Report scheduler is designed to automatically generate and distribute various business reports to stakeholders.  
-You can schedule reports such as aging reports, revenue summaries, expense breakdowns, or custom financial analyses to be sent to specific email addresses or team members.  
-This ensures that key decision-makers receive regular updates on business performance without manual intervention, helping maintain transparency and informed decision-making across your organization.
+The **Email Report** schedule generates a report and emails it, so you or your team get regular figures without running the report by hand.
+
+You can start this from **Settings > Schedules**, or from **Reports** with **Actions > Schedule**. That opens a **New Schedule** form (`#/settings/schedules/create?template=email_report`).
+
+The form includes **Name**, **Template** (Email Report), **Next Run**, **Frequency**, **Remaining Cycles** (for example Endless), **Report**, **Range** and **Send Email**. **Send Email** is on by default, so check the report, range and other options before you save.
+
+Aging reports, Profit and Loss, Expense and other report types can be scheduled this way. For the report types themselves, see [Reports](/docs/user-guide/reports).
 
 <VideoPlayer src="/assets/videos/schedule_report/schedule_report.mpd" isDash={true} id="report-schedule" />
 
-## Invoice Outstanding Tasks
+## How do I invoice outstanding tasks automatically? {#invoice-outstanding-tasks}
 
-The Invoice Outstanding Tasks scheduler helps you stay on top of follow-up activities related to unpaid invoices.  
-This feature can automatically create an invoice based on outstanding tasks over a given period.  
-You can configure the system to create these invoices based on specific criteria, such as the date range and types of tasks to be invoiced.
+The **Invoice Outstanding Tasks** schedule creates an invoice from outstanding tasks over a period you choose.
+
+1. Go to **Settings > Schedules** and click **New Schedule**.
+2. Set **Template** to **Invoice Outstanding Tasks**.
+3. Set **Next Run**, **Frequency** and **Date Range**.
+4. Optionally turn on **Auto Send** ("Automatically emails the invoice to the client") and **Include Project Tasks** ("Also invoice tasks that are part of a project").
+5. Leave **Client** empty for all clients, or pick a client.
+6. Click **Save** when you are ready for the schedule to create invoices.
+
+This form does not use Remaining Cycles. For day-to-day task billing, see [Tasks](/docs/user-guide/tasks) and [Projects](/docs/user-guide/projects).
 
 <VideoPlayer src="/assets/videos/schedule_invoice_tasks/schedule_invoice_tasks.mpd" isDash={true} id="invoice-tasks-schedule" />
 
-## Payment Schedules
+## How do I let a client pay an invoice in installments? {#payment-schedules}
 
-Allow your clients to payment invoices on a time based program. You can use our easy setup which just needs the start date, number of payments and the frequency. (for example. 4 monthly payments starting on the 1st of October).  
-The client will receive an email on each scheduled date for the payable amount. You can also configure the scheduler to auto bill these if preferred.  
-Schedules can be configure by using either Dollar amounts, or percentage amounts.
+A payment schedule splits an invoice into a series of payments. You can set one on the invoice, and the same schedules also appear under **Settings > Schedules**.
+
+### From the invoice
+
+1. Open a draft or sent invoice and go to the **Payment Schedule** tab.
+2. Choose a schedule type:
+   - **Split Payments** splits the invoice amount into multiple payments over a period of time, for example 4 payments over 4 months. Next you set **Number of payments**, **Frequency** and **First Payment Date**.
+   - **Manually create a custom payment schedule** lets you set exact dates and amounts for each payment.
+3. Complete the remaining steps, then save when you are ready.
+
+You can set split amounts as currency amounts or as percentages. The client receives an email on each scheduled date for the amount due.
+
+### From Settings > Schedules
+
+1. Click **New Schedule** and set **Template** to **Payment Schedule**.
+2. Select the invoice.
+3. Optionally turn on **Auto Bill**. The help text is: "If enabled, when the schedule runs, auto bill will be attempted for the scheduled amount." This charges a saved payment method if a [payment gateway](/docs/user-guide/gateways) is connected and the client has a method on file.
+4. Click **Save** when you are ready.
 
 <VideoPlayer src="/assets/videos/payment_schedule/paymentschedulemp4265.mpd" isDash={true} id="payment-schedule" />
+
+## Related
+
+- [Reports](/docs/user-guide/reports)
+- [Invoices](/docs/user-guide/invoices)
+- [Recurring Invoices](/docs/user-guide/recurring-invoices)
+- [Tasks](/docs/user-guide/tasks)
+- [Payment Settings](/docs/user-guide/basic-settings#payment_settings)
+- [Email customization](/docs/advanced-topics/email-customization)
