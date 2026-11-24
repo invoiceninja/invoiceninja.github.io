@@ -37,8 +37,9 @@ function matches(index, query) {
 assert(matches(docs, 'refund').some(doc => doc.u === '/docs/user-guide/payments'));
 // Both heading and passage results must land on the matching section.
 const refundUrl = '/docs/user-guide/payments';
-const refundHeading = docs[1].documents.find(doc => doc.u === refundUrl && doc.t === 'Refunds');
-const refundPassage = docs[4].documents.find(doc => doc.u === refundUrl && doc.s === 'Refunds');
+const refundTitle = 'How do I refund a payment?';
+const refundHeading = docs[1].documents.find(doc => doc.u === refundUrl && doc.t === refundTitle);
+const refundPassage = docs[4].documents.find(doc => doc.u === refundUrl && doc.s === refundTitle);
 assert.equal(refundHeading?.h, '#refunds', 'Refunds heading lost its section anchor');
 assert.equal(refundPassage?.h, '#refunds', 'Refunds passage lost its section anchor');
 assert(matches(docs, 'refund').some(doc => doc.u + (doc.h || '') === `${refundUrl}#refunds`),
