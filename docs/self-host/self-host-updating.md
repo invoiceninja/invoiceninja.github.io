@@ -1,34 +1,33 @@
 ---
-title: "Self Host Updating"
+title: "Update a self-hosted Invoice Ninja"
+sidebar_label: "Self Host Updating"
 sidebar_position: 5
+description: "Update a self-hosted Invoice Ninja install with INmanage, Docker, git, or the in-app updater, including the /update?secret= route and php artisan ninja:post-update."
 ---
 
-### INmanage CLI
+# Update a self-hosted Invoice Ninja
 
-If your Invoice Ninja instance is managed by the
-<a href="/docs/self-host/self-host-installation#choose-your-install-path">INmanage CLI</a>,
-updates boil down to a single command:
+How you update depends on how you installed the app. Use the same method you used to install, then run any follow-up commands for that method.
+
+## How do I update with the INmanage CLI? {#inmanage-cli}
+
+If your Invoice Ninja instance is managed by the [INmanage CLI](/docs/self-host/self-host-installation#choose-your-install-path), updates are a single command:
 
 ```bash
 inm core update
 ```
 
-The script creates a pre-update snapshot automatically, applies the latest
-Invoice Ninja release, ensures file integrity, clears caches, and restarts the queue worker. If
-something goes sideways, roll back instantly:
+The script creates a pre-update snapshot, applies the latest Invoice Ninja release, checks file integrity, clears caches, and restarts the queue worker. If something goes wrong, roll back with:
 
 ```bash
 inm core update rollback last
 ```
 
-Snapshots are timestamped and stored in the INmanage backup directory so you can
-audit or restore them later. Refer to the
-[INmanage repository](https://github.com/DrDBanner/inmanage) for advanced flags
-and automation tips.
+Snapshots are timestamped and stored in the INmanage backup directory, so you can audit or restore them later. See the [INmanage repository](https://github.com/DrDBanner/inmanage) for advanced flags and automation.
 
-### Docker
+## How do I update a Docker install? {#docker}
 
-When we tag a new release, a new image is built. All that is required for docker users is to bring down the container, pull in the new image and then bring the container up again, these three commands are all that are needed.
+When a new release is tagged, a new image is built. Bring the container down, pull the new image, then bring the container up again:
 
 ```bash
 docker-compose down
@@ -36,42 +35,41 @@ docker-compose pull
 docker-compose up
 ```
 
-### Git users
+If your Docker install uses the Compose plugin (Docker Compose V2), the same steps are `docker compose down`, `docker compose pull` and `docker compose up`.
 
-If you have installed Invoice Ninja using just git, then all that is required is to pull in the changes and to call the post-update command. These commands are as follows:
+## How do I update a git install? {#git-users}
 
-```bash 
+If you installed Invoice Ninja with git, pull the changes, install PHP dependencies, then run the post-update command:
+
+```bash
 git pull
 composer install -o --no-dev
 php artisan ninja:post-update
 ```
 
-### Shared hosting / ZIP builds
+`php artisan ninja:post-update` runs database migrations, clears config, view and application caches, and restarts the queue worker.
 
-If you have installed the application using the precompiled .zip file, then the internal self updater should perform all the necessary tasks to bring your app up to the latest version. The only strict requirements are:
+## How do I update a shared-hosting or ZIP install? {#shared-hosting--zip-builds}
 
-* The directory is owned recursively by the web user.
-* The scheduler cron is running.
-* 1024M for the PHP ```memory_limit``` to run the update
+If you installed from the precompiled release archive, you can use the in-app updater (labeled **Update App**). It downloads `invoiceninja.tar` from the [GitHub releases](https://github.com/invoiceninja/invoiceninja/releases) page, extracts it, and overwrites the application files. Before it downloads, it checks that application files are writable (it skips the `.git` and `vendor` directories in that check).
 
-The self updater will pull the latest release from our Github repository, extract and overwrite the system files. Prior to attempting any of this, the system performs a recursive file check to ensure _all_ files are owned by the webuser.
+The updater is started from the app. It is not available if auto-update has been turned off with `DISABLE_AUTO_UPDATE=true` in `.env`.
 
-If the update button does not work, you can alternatively download the invoiceninja.tar file and overwrite the folder of your installation, note that there are 3 files always:  https://github.com/invoiceninja/invoiceninja/releases
+If the in-app update does not run, you can download `invoiceninja.tar` from the releases page and overwrite your installation folder with it. Use that release tarball, not the generic "Source code" zip or tar.gz assets.
 
-```
-invoiceninja.tar - 170 MB or 500 MB roughly
-Source code (zip) - 15 MB roughly
-Source code (tar.gz) - 14 MB roughly
+After the files are in place, open the update route so the app can finish migrations and clear caches:
+
+```text
+https://your-site.example/update?secret=YOUR_UPDATE_SECRET
 ```
 
-:::warning
-Please ensure to delete the `.git` folder prior to attempting updates on v5.1.50 and over. The updater will fail silently if any hidden folders are present.
-:::
+The `secret` query parameter must match `UPDATE_SECRET` in your `.env` file. If the secret does not match, the app redirects to `/`. Use a private value, not a placeholder. If you are already signed in and the request is redirected, try the URL while signed out.
 
-After running the updater you'll want to run the update route
+For the git-based flow, `php artisan ninja:post-update` performs the same kind of follow-up work from the command line.
 
-```bash
-https://url.com/update?secret=
-```
+## Related
 
-The value of the secret query parameter is found in the .env file under the key ```UPDATE_SECRET``` 
+- [Choose your install path](/docs/self-host/self-host-installation#choose-your-install-path)
+- [Get started with self-hosted Invoice Ninja](/docs/self-host/getting-started)
+- [Env Variables](/docs/self-host/env-variables)
+- [Self Host Troubleshooting](/docs/self-host/self-host-troubleshooting)

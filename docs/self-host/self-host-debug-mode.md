@@ -1,39 +1,65 @@
 ---
-title: "Self Host Debug Mode"
+title: "Turn debug mode on and off on a self-hosted Invoice Ninja"
+sidebar_label: "Self Host Debug Mode"
 sidebar_position: 7
+description: "Use APP_DEBUG in .env to show detailed errors on a self-hosted Invoice Ninja, then turn it off. Never leave debug mode on in production."
 ---
-## Overview
 
-Debug mode should only ever be used to get addtional information on why your system may not be responding / behaving as expected.
+# Turn debug mode on and off on a self-hosted Invoice Ninja
 
-By default the .env variable which controls this is set to FALSE.
+Debug mode makes your self-hosted Invoice Ninja show detailed error messages in the browser. Use it only for a short time, when the app has stopped responding or is behaving strangely and the log file does not tell you why.
 
-If your application has become unresponsive, and there is no information in the log files located in
+:::warning
+**Never leave debug mode switched on.** It can leak credentials, such as passwords and database details, and leave your system exposed to attackers. Turn it off as soon as you have found the problem.
+:::
+
+## When should I turn on debug mode? {#overview}
+
+Only when you need extra information about why your system is not responding or behaving as expected.
+
+First, check the log file:
 
 ```bash
 storage/logs/laravel.log
 ```
 
-Then you may need to enable debug mode as this will output errors in the browser so you will get direct feedback as to the issue that has caused the application to fail.
+If the app has become unresponsive and that log file does not explain the problem, you can turn on debug mode. It shows errors directly in the browser, so you can see what caused the app to fail.
 
-:::warning
-You should **NEVER** leave your application in debug mode, this potentially could leak credentials and your system will be exposed to potential attackers
-:::
+## How do I turn debug mode on and off?
 
-##  Security concerns
+Debug mode is controlled by `APP_DEBUG` in your `.env` file. The default is `false` (off).
 
-In Laravel, the ".env" file is used to store configuration values for the application. One of the values that can be set in this file is "APP_DEBUG". This value controls whether or not detailed error messages are displayed when an error occurs in the application.
+1. Open the `.env` file on your server.
+2. To turn debug mode on, set `APP_DEBUG=true`.
+3. If you cache configuration on this server, run `php artisan config:clear` so the new value is picked up.
+4. Reproduce the problem and read the error shown in your browser.
+5. Set `APP_DEBUG=false` as soon as you are done, and run `php artisan config:clear` again if you use a config cache.
 
-When "APP_DEBUG" is set to "true", Laravel will display detailed error messages that can include sensitive information such as the file path, database credentials, and other configuration details. This information can be used by attackers to gain unauthorized access to the application and its underlying infrastructure.
+## Why is debug mode a security risk? {#security-concerns}
 
-Leaving "APP_DEBUG" set to "true" in a production environment is a security concern because it can allow attackers to gain valuable information about the application and its environment. Attackers can use this information to craft targeted attacks against the application or its users, and can also use it to gain unauthorized access to the underlying infrastructure.
+When `APP_DEBUG` is `true`, Laravel (the framework Invoice Ninja is built on) shows detailed error messages when something goes wrong. Those messages can include sensitive information, such as:
 
-To mitigate this security concern, it is recommended to set "APP_DEBUG" to "false" in the ".env" file of a production environment. This will prevent detailed error messages from being displayed and help to protect the application and its users from potential attacks. Additionally, it is important to ensure that all sensitive information is properly secured and not exposed in error messages or other application outputs.
+- File paths on your server
+- Database credentials
+- Other configuration details
 
-The following CVEs have been reported exploiting this:
+Attackers can use this information to plan targeted attacks against your app or its users, or to break into the app and the server it runs on. That is why leaving `APP_DEBUG` set to `true` on a live (production) system is a security risk.
 
-* CVE-2020-15168: Laravel 7.x before 7.27.0 allows remote attackers to execute arbitrary code because of an "Unrestricted File Upload" vulnerability via a request to "/debugbar/file".
-* CVE-2019-16785: Laravel Framework through 5.8.35 allows unauthorized remote attackers to execute arbitrary OS commands via a crafted web site that is mishandled by the "artisan serve" command.
-* CVE-2018-15133: In Laravel Framework through 5.5.40 and 5.6.x through 5.6.29, remote code execution might occur as a result of an unserialize call on a potentially untrusted X-XSRF-TOKEN value, because of the fallback mechanism for CSRF tokens.
+To stay safe:
 
-These vulnerabilities demonstrate the potential for serious security issues when APP_DEBUG=true is left enabled in a production environment. It is therefore crucial to take appropriate security measures to protect against these types of attacks.
+- Keep `APP_DEBUG` set to `false` in the `.env` file of your live system, except for the short time you are diagnosing a problem.
+- Make sure no sensitive information is exposed in error messages or other app output.
+
+These public Laravel CVEs show how serious problems can be when debug tooling or related framework issues are left exposed on a live system:
+
+- **CVE-2020-15168:** Laravel 7.x before 7.27.0 allows remote attackers to run arbitrary code because of an "Unrestricted File Upload" vulnerability via a request to "/debugbar/file".
+- **CVE-2019-16785:** Laravel Framework through 5.8.35 allows unauthorized remote attackers to run arbitrary OS commands via a crafted web site that is mishandled by the "artisan serve" command.
+- **CVE-2018-15133:** In Laravel Framework through 5.5.40 and 5.6.x through 5.6.29, remote code execution might occur as a result of an unserialize call on a potentially untrusted X-XSRF-TOKEN value, because of the fallback mechanism for CSRF tokens.
+
+Always switch debug mode off when you finish.
+
+## Related
+
+- [Env Variables](/docs/self-host/env-variables)
+- [What should I do if something goes wrong?](/docs/self-host/getting-started#debugging-problems)
+- [Self Host Troubleshooting](/docs/self-host/self-host-troubleshooting)

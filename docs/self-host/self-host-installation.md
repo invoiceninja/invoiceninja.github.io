@@ -7,7 +7,7 @@ sidebar_position: 3
 your access level. Start with the option that is easiest today and switch later
 when your needs change.
 
-<span id="choose-your-install-path"></span>
+## Choose your install path {#choose-your-install-path}
 
 <div class="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2 install-path-grid">
 
