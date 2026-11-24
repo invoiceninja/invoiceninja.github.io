@@ -25,7 +25,7 @@ An **e-signature** here means a signature captured electronically on a document,
 
 ## Why is DocuNinja a separate product? {#why-its-a-separate-product}
 
-DocuNinja is built and maintained by the same team, but it runs as its own application rather than a feature built into Invoice Ninja. E-signature compliance has its own legal, infrastructure and audit requirements that are easier to meet in a dedicated service. Keeping it separate also means you can use DocuNinja outside Invoice Ninja, for documents that never become invoices, or for paperwork that starts in another system.
+DocuNinja is built and maintained by the same team, but it runs as its own application rather than a feature built into Invoice Ninja. E-signature compliance has its own legal, infrastructure and audit requirements that are easier to meet in a dedicated service. Today it works only inside Invoice Ninja.
 
 From your point of view, that separation stays in the background. DocuNinja connects to your Invoice Ninja account and its menu sits alongside the rest of the app.
 
@@ -38,6 +38,8 @@ You can upload a file, start from a template, or clone an existing document to a
 Work from the **DocuNinja** menu, not from the invoice or quote edit screen. Those edit views do not have a DocuNinja, Request Signature or Authorized Signatories control. What they do have, on the Contacts card, is the same **Authorized to sign** toggle you set on the [client](/docs/user-guide/clients#contacts) or [vendor](/docs/user-guide/purchase-orders) contact.
 
 Create or reuse a document in DocuNinja. Templates can have a Type such as **Quote Design**. When a quote, invoice, credit or purchase order is signed, DocuNinja Settings can email the client or vendor. See [Notifications](#docuninja-settings) below.
+
+Signing is optional. When an e-signature is required on an invoice, the client must sign before they can continue to the payment page.
 
 Every completed document has an **Audit Log**, which downloads as a PDF. That file is the official audit record you can keep or share as proof. There is no separate Document Certificate action.
 
