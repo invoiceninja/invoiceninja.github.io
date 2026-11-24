@@ -1,111 +1,106 @@
 ---
-title: "Env Variables"
+title: "Set environment variables on a self-hosted Invoice Ninja"
+sidebar_label: "Env Variables"
 sidebar_position: 6
+description: "A reference for the .env keys on a self-hosted Invoice Ninja, including defaults and what each setting does."
 ---
-```bash
-LICENSE_KEY="your_white_label_license"
-```
 
-Your white label license key - required if using e-invoicing where you are proxying your einvoices via Invoice Ninja onto the PEPPOL network.
+# Set environment variables on a self-hosted Invoice Ninja
+
+Self-hosted Invoice Ninja (source-available under the Elastic License, ELv2) reads most server settings from the `.env` file in the project root. Set `APP_URL` to the full public URL of your install, including `http://` or `https://`. After you change `.env`, run `php artisan config:clear` or `php artisan optimize:clear` so a cached config does not keep the old values. If you run the official Docker images, restart the containers instead.
+
+This page lists the keys you are most likely to set. Boolean values are `true` or `false`. Defaults below are what the app uses when the key is omitted, unless noted.
+
+## How do I set the application basics?
 
 ```bash
 APP_NAME="Invoice Ninja"
-```
-
-Your application name - used in client portal title banner
-
-```bash
-APP_ENV=local
-```
-
-Your application environment variable - options include local / development / production
-
-```bash
+APP_ENV=production
 APP_KEY=
+APP_DEBUG=false
+APP_URL=https://your-site.example
+REACT_URL=
+REQUIRE_HTTPS=true
+NINJA_ENVIRONMENT=selfhost
+LICENSE_KEY=
 ```
 
-Your application encryption key - used for encryption / decryption of some datapoints within the application. Backup this key in a secure location. Without it your application could be rendered in an invalid state
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `APP_NAME` | `Invoice Ninja` | The application name. Used in the client portal title. |
+| `APP_ENV` | `production` (Laravel) | The Laravel environment. Typical values are `production`, `local` and `development`. |
+| `APP_KEY` | none | The application encryption key. Back it up in a safe place. If you lose it, encrypted data in the app can become unreadable. Generate one with `php artisan key:generate`. |
+| `APP_DEBUG` | `false` | Turns on detailed error output and extra logging. Leave this `false` on a live site. See [Debug Mode](/docs/self-host/self-host-debug-mode). |
+| `APP_URL` | `http://localhost` | The full public URL of your install, including `http://` or `https://`. Do not add a trailing slash. |
+| `REACT_URL` | the same value as `APP_URL` | The URL the app sends you back to after some OAuth flows, including QuickBooks. Set this if the admin app is served from a different URL. |
+| `REQUIRE_HTTPS` | `true` | When `true`, the app expects HTTPS. The example `.env` sets this to `false`; set `true` on a public HTTPS site. |
+| `NINJA_ENVIRONMENT` | `selfhost` | Marks this install as self-hosted. Leave this as `selfhost`. |
+| `LICENSE_KEY` | unset | Your white label license key. Also used when you proxy e-invoices through Invoice Ninja onto the PEPPOL network. See [White Labeling](/docs/self-host/self-host-white-labeling). |
+
+`SERVER_TIMEZONE` (default `UTC`) sets the app timezone, including the scheduler.
+
+## How do I set the database?
 
 ```bash
-APP_DEBUG=true
-```
-
-Boolean option which puts the app in debug mode for additional logging. Keep it set to FALSE unless you need to do some debugging
-
-```bash
-APP_URL=http://ninja.test:8000
-```
-
-Your full app URL include HTTP/HTTPS prefix.
-
-```bash
+DB_CONNECTION=mysql
 DB_HOST=localhost
-DB_DATABASE=db-ninja-01
+DB_DATABASE=ninja
 DB_USERNAME=ninja
 DB_PASSWORD=ninja
 DB_PORT=3306
 ```
 
-Database definitions.
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `DB_CONNECTION` | `mysql` | The database driver. Invoice Ninja is set up for MySQL or MariaDB. |
+| `DB_HOST` | | The database host. On the official Docker Compose stack this is `mysql`. |
+| `DB_DATABASE` | | The database name. |
+| `DB_USERNAME` | | The database user. |
+| `DB_PASSWORD` | | The database password. |
+| `DB_PORT` | `3306` | The database port. |
+
+## How do I set logs, cache, queue, sessions and Redis?
 
 ```bash
 LOG_CHANNEL=stack
-```
-
-Where we send logs to.
-
-```bash
-REQUIRE_HTTPS=false
-```
-
-If you require HTTPS to be forced everywhere in your app, set this to TRUE.
-
-```bash
-BROADCAST_DRIVER=pusher
-```
-
-Default laravel env var - not used in Invoice Ninja
-
-```bash
-CACHE_DRIVER=redis
-```
-
-Cache driver, options include file / redis / database
-
-```bash
-QUEUE_CONNECTION=database
-```
-
-Queue Connection - by default set to sync, if you want your app to perform faster you'll want to change this to database or redis. Note, you'll need to configure your queue workers.
-
-```bash
-SESSION_DRIVER=redis
-```
-
-Where your session info lives, options include redis / database / file
-
-```bash
+CACHE_DRIVER=file
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
 REDIS_HOST=127.0.0.1
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+INTERNAL_QUEUE_ENABLED=true
+BROADCAST_DRIVER=log
 ```
 
-Your redis configuration - if you are using Redis
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `LOG_CHANNEL` | `stack` | Where Laravel writes application logs. The default stack writes to `storage/logs/laravel.log`. |
+| `CACHE_DRIVER` | `file` | The cache store. Common options are `file`, `redis` and `database`. |
+| `QUEUE_CONNECTION` | `sync` | The queue driver. `sync` runs jobs in the web request. For background email and imports, use `database` or `redis` and run a worker. See [After installation](/docs/self-host/self-host-installation#after-installation). |
+| `SESSION_DRIVER` | `file` | Where session data is stored. Options include `file`, `redis` and `database`. |
+| `SESSION_LIFETIME` | `120` | Session lifetime in minutes. |
+| `REDIS_HOST`, `REDIS_PASSWORD`, `REDIS_PORT` | `127.0.0.1`, `null`, `6379` | Redis connection settings, used when cache, queue or session is set to `redis`. |
+| `INTERNAL_QUEUE_ENABLED` | `true` | When `QUEUE_CONNECTION=database`, the install is self-hosted, and the app is not in Docker, the scheduler can start a short-lived `queue:work` process. Set this to `false` if Supervisor already runs the worker. |
+| `BROADCAST_DRIVER` | `log` | Laravel's broadcasting driver. You do not need to set up Pusher for ordinary Invoice Ninja use. |
+
+`EXPANDED_LOGGING=true` writes extra detail to `storage/logs/invoiceninja.log`. `ERROR_EMAIL` is the address that receives system error emails.
+
+## How do I set mail and webhooks?
+
+Mail is configured per company in **Settings > Email Settings**. These `MAIL_*` keys apply when a company's Email Provider is **Default**. See [Mail Configuration](/docs/self-host/self-host-installation#mail-configuration).
 
 ```bash
 MAIL_MAILER=smtp
-MAIL_HOST=localhost
-MAIL_PORT=1025
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-MAIL_FROM_ADDRESS='jimmy@gmail.com'
-MAIL_FROM_NAME='David Canary'
-```
-
-Your global mail configuration. As of v5, mail is configured per-company inside the application under `Settings / Email Settings`; these `MAIL_*` variables only apply when a company's Email Provider is left as **Default**. See [Mail Configuration](/docs/self-host/self-host-installation#mail-configuration) for the full guide.
-
-```bash
+MAIL_HOST=smtp.example.com
+MAIL_PORT=587
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="billing@example.com"
+MAIL_FROM_NAME="Your Company"
+MAIL_EHLO_DOMAIN=
 POSTMARK_SECRET=
 MAILGUN_WEBHOOK_SIGNING_KEY=
 SES_AWS_ACCESS_KEY_ID=
@@ -114,149 +109,111 @@ SES_REGION=us-east-1
 SES_TOPIC_ARN=
 ```
 
-Credentials used by the mail webhooks that track delivery, bounces and spam complaints. `POSTMARK_SECRET` is your Postmark server token (also matched against the webhook `X-API-SECURITY` header), `MAILGUN_WEBHOOK_SIGNING_KEY` is your Mailgun HTTP signing key, and the `SES_*` values configure the Amazon SES / SNS notification topic. See [Mail Webhooks](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking).
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `MAIL_MAILER` | `smtp` | The default mail driver, for example `smtp`, `postmark`, `mailgun` or `log`. |
+| `MAIL_HOST`, `MAIL_PORT`, `MAIL_USERNAME`, `MAIL_PASSWORD`, `MAIL_ENCRYPTION` | port `587`, encryption `tls` | SMTP connection settings. Use port `465` for SSL. |
+| `MAIL_FROM_ADDRESS`, `MAIL_FROM_NAME` | | The default From address and name. Set both to avoid RFC 2822 errors. |
+| `MAIL_EHLO_DOMAIN` | unset | The hostname sent in the SMTP EHLO handshake. Required for some relays, including Gmail SMTP relay. |
+| `POSTMARK_SECRET` | unset | Your Postmark server token. Also matched against the webhook `X-API-SECURITY` header. |
+| `MAILGUN_WEBHOOK_SIGNING_KEY` | unset | Your Mailgun HTTP webhook signing key. |
+| `SES_AWS_ACCESS_KEY_ID`, `SES_AWS_SECRET_ACCESS_KEY`, `SES_REGION`, `SES_TOPIC_ARN` | region `us-east-1` | Amazon SES credentials and the SNS topic used for delivery, bounce and complaint webhooks. |
+
+See [Mail Webhooks](/docs/self-host/self-host-installation#mail-webhooks-delivery-bounce--complaint-tracking) for the webhook URLs.
+
+## How do I set file storage?
 
 ```bash
-API_SECRET=password
-```
-
-As an additional layer of security for self hosters, this prevents randoms from registering / probing your API
-
-```bash
-ERROR_EMAIL=error@gmail.com
-```
-
-System error emails are sent to this email address
-
-```bash
-AWS_ACCESS_KEY_ID=s3_compatible_key
-AWS_SECRET_ACCESS_KEY=a_long_and_glorious_key
+FILESYSTEM_DISK=public
+FILESYSTEM_CLOUD=s3
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
 AWS_DEFAULT_REGION=us-east-1
-AWS_BUCKET=bucket_name
-AWS_URL=https://endpoint.com
-AWS_ENDPOINT=https://endpoint.com/
+AWS_BUCKET=
+AWS_URL=
+AWS_ENDPOINT=
 ```
 
-If using S3 compatible storage, this is where you want to configure it.
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `FILESYSTEM_DISK` | `public` | The default filesystem disk for stored files. Use this key, not the older `FILESYSTEM_DRIVER` name. |
+| `FILESYSTEM_CLOUD` | `s3` | The cloud disk name, used when you store files on S3-compatible storage. |
+| `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION`, `AWS_BUCKET`, `AWS_URL`, `AWS_ENDPOINT` | region `us-east-1` | Credentials and endpoint for S3-compatible storage. |
+
+`ADDITIONAL_UPLOAD_EXTENSIONS` is a comma-separated list of extra upload extensions to allow, for example `ADDITIONAL_UPLOAD_EXTENSIONS=mp3,mp4,mkv`.
+
+## How do I set the PDF engine?
 
 ```bash
-FILESYSTEM_DRIVER=public
-```
-
-Defines where to store your files, options include local / public
-
-```bash
-OPENEXCHANGE_APP_ID=key_r_us
-```
-
-Used to pull in exchange rate data
-
-```bash
-EXPANDED_LOGGING=true
-```
-
-Pushes additional logging to storage/logs/invoiceninja.log
-
-```bash
-LOG_PDF_HTML=true
-```
-
-Used when debugging PDF output, this will dump the full HTML of the PDF object being rendered.
-
-```bash
-UPDATE_SECRET=secret
-```
-
-Used as pseudo protection of the /update?secret= route to allow only people with this secret to access this url for updating the app
-
-```bash
-PHANTOMJS_KEY='a-demo-key-with-low-quota-per-ip-address'
-PHANTOMJS_SECRET=password
-```
-
-Phantom Cloud JS configuration API key and password used to secure the phantom route
-
-```bash
-#options - snappdf / phantom / hosted_ninja
-PDF_GENERATOR=snappdf
-```
-
-Configures the PDF engine to be used. SnapPDF is the recommended way to generate PDFs however does require direct access to the server to install some required packages.
-
-```bash
-PDF_PAGE_NUMBER_X=
-PDF_PAGE_NUMBER_Y=
-```
-
-Override the default x/y coordinates of page numbering on PDFs. 
-
-```bash
-TRUSTED_PROXIES=*
-```
-
-If your server sit behind a proxy, you may need to enable trusted_proxies else you will get SSL errors
-
-```bash
-IS_DOCKER=FALSE
-```
-
-If you are running a docker setup, you may want to set this to true as there are some docker specific tweaks that are required.
-
-```bash
-LOCAL_DOWNLOAD=FALSE
-```
-
-This var circumvents our base64 encoding of the company logo, this may help if the logo is failing to show on the PDF.
-
-```bash
-NINJA_ENVIRONMENT=selfhost
-```
-
-This is the default environment setting.
-
-```bash
-WEBCRON_SECRET=secret
-```
-
-If using the webcron feature, you'll want to set a password here to prevent unauthorized people accessing this URL
-
-```bash
-ZIP_TAX_KEY=
-```
-
-The API key from [Zip-Tax](https://zip-tax.com) required to support address based tax rates in the US
-
-```bash
-NORDIGEN_SECRET_ID=
-NORDIGEN_SECRET_KEY=
-```
-
-The API id and key from [GoCardless/Nordigen](https://bankaccountdata.gocardless.com/user-secrets/) required for bank transaction imports
-
-```bash
-QUICKBOOKS_CLIENT_ID=
-QUICKBOOKS_CLIENT_SECRET=
-QUICKBOOKS_REDIRECT_URI=https://your-invoiceninja-domain.com/quickbooks/authorized
-QUICKBOOKS_ENV=production
-```
-
-The OAuth keys and redirect URI from your own [Intuit developer](https://developer.intuit.com) app, required for the QuickBooks integration. `QUICKBOOKS_ENV` defaults to `sandbox`; set it to `production` to connect a real QuickBooks company. See [Self Host QuickBooks](/docs/self-host/self-host-quickbooks)
-
-```bash
-DELETE_BACKUP_DAYS
-```
-
-The number of days that backups are stored. Any backups created after this will be purged when system maintenance runs
-
-```bash
-ADDITIONAL_UPLOAD_EXTENSIONS
-```
-
-Additional upload extensions that are to be allowed, this should be a comma separated string ie `ADDITIONAL_UPLOAD_EXTENSIONS='mp3,mp4,mkv'`
-
-```bash
+# options: snappdf / phantom / hosted_ninja / gotenberg / simulator
+PDF_GENERATOR=hosted_ninja
+PHANTOMJS_KEY=
+PHANTOMJS_SECRET=
+LOG_PDF_HTML=false
+LOCAL_DOWNLOAD=false
 PDF_PAGE_NUMBER_X=0
 PDF_PAGE_NUMBER_Y=-6
 ```
 
-Controls the x/y coordinates of the PDF page numbering (if enabled)
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `PDF_GENERATOR` | unset in config (the example `.env` uses `hosted_ninja`) | The PDF engine. Valid values are `snappdf`, `phantom`, `hosted_ninja`, `gotenberg` and `simulator`. Official Docker images use `snappdf`. See [PDF conversion issues](/docs/self-host/self-host-troubleshooting#pdf-conversion-issues). |
+| `PHANTOMJS_KEY`, `PHANTOMJS_SECRET` | a low-quota demo key for `PHANTOMJS_KEY` | PhantomJS Cloud API key, and a private secret used when that service fetches HTML. |
+| `LOG_PDF_HTML` | `false` | When `true`, dumps the HTML of the PDF being rendered, which helps when debugging PDF output. |
+| `LOCAL_DOWNLOAD` | `false` | When `true`, embeds the company logo in the PDF from local storage instead of fetching it over the network. Official Docker images already do this. |
+| `PDF_PAGE_NUMBER_X`, `PDF_PAGE_NUMBER_Y` | `0` and `-6` | Override the default x and y coordinates of PDF page numbering, when numbering is enabled. |
+
+## How do I set updates, cron and maintenance?
+
+```bash
+UPDATE_SECRET=
+WEBCRON_SECRET=
+DISABLE_AUTO_UPDATE=false
+DELETE_PDF_DAYS=0
+DELETE_BACKUP_DAYS=0
+NINJA_AUTO_BILL_TIME=06:20
+```
+
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `UPDATE_SECRET` | empty | The secret required by `https://your-site.example/update?secret=...`. If it does not match, the app redirects to `/`. Use a private value. |
+| `WEBCRON_SECRET` | unset | The secret required by `https://your-site.example/webcron?secret=...`, which runs the scheduler. See [WebCron configuration](/docs/self-host/self-host-troubleshooting#webcron-configuration). |
+| `DISABLE_AUTO_UPDATE` | `false` | When `true`, the in-app updater is turned off. |
+| `DELETE_PDF_DAYS` | `0` | If set to a number greater than 0, generated PDFs older than this many days are removed when system maintenance runs. |
+| `DELETE_BACKUP_DAYS` | `0` | If set to a number greater than 0, backups older than this many days are removed when system maintenance runs. |
+| `NINJA_AUTO_BILL_TIME` | `06:20` | The time (HH:MM, in the app timezone) when auto-billing runs. |
+
+`IS_DOCKER=true` turns on Docker-specific behaviour, such as logo handling and log output. Official images typically set this for you.
+
+`TRUSTED_PROXIES` should be set if the app sits behind a reverse proxy and you see SSL or IP-related errors. `API_SECRET`, if set, is an extra check on some unauthenticated API registration and probe routes.
+
+`OPENEXCHANGE_APP_ID` is your [Open Exchange Rates](https://openexchangerates.org/) key, used to update currency rates. See [Currency conversion](/docs/self-host/self-host-installation#currency-conversion).
+
+## How do I set integration keys?
+
+```bash
+QUICKBOOKS_CLIENT_ID=
+QUICKBOOKS_CLIENT_SECRET=
+QUICKBOOKS_REDIRECT_URI=https://your-site.example/quickbooks/authorized
+QUICKBOOKS_ENV=sandbox
+NORDIGEN_SECRET_ID=
+NORDIGEN_SECRET_KEY=
+GOCARDLESS_CLIENT_ID=
+GOCARDLESS_CLIENT_SECRET=
+ZIP_TAX_KEY=
+```
+
+| Key | Default if omitted | What it does |
+|---|---|---|
+| `QUICKBOOKS_CLIENT_ID`, `QUICKBOOKS_CLIENT_SECRET`, `QUICKBOOKS_REDIRECT_URI`, `QUICKBOOKS_ENV` | `QUICKBOOKS_ENV` defaults to `sandbox` | Your Intuit app credentials for QuickBooks Online. Set `QUICKBOOKS_ENV=production` to connect a real company. See [Self Host QuickBooks](/docs/self-host/self-host-quickbooks). |
+| `NORDIGEN_SECRET_ID`, `NORDIGEN_SECRET_KEY` | unset | API id and key from [GoCardless Bank Account Data](https://bankaccountdata.gocardless.com/user-secrets/) for bank transaction imports. |
+| `GOCARDLESS_CLIENT_ID`, `GOCARDLESS_CLIENT_SECRET` | unset | OAuth credentials if you connect GoCardless as a payment service from your own app. |
+| `ZIP_TAX_KEY` | unset | API key from [Zip-Tax](https://zip-tax.com) for address-based US tax rates. |
+
+## Related
+
+- [Install a self-hosted Invoice Ninja](/docs/self-host/self-host-installation)
+- [Self Host QuickBooks](/docs/self-host/self-host-quickbooks)
+- [Turn debug mode on and off](/docs/self-host/self-host-debug-mode)
+- [Remove Invoice Ninja branding](/docs/self-host/self-host-white-labeling)
+- [Troubleshoot a self-hosted Invoice Ninja](/docs/self-host/self-host-troubleshooting)
