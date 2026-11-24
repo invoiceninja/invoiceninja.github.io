@@ -1,40 +1,41 @@
 ---
-title: "PDF Templates and Custom Field Placeholders"
+title: "PDF templates and custom field placeholders: customize how documents look"
+sidebar_label: "PDF Templates and Custom Field Placeholders"
 sidebar_position: 2
+description: "Customize invoice PDFs with HTML and CSS, create a custom design, and use field placeholders in Invoice Ninja."
 ---
-## PDF Customizations
 
-This reference covers HTML/CSS invoice designs and using field placeholders in PDFs. To create or name extra invoice, client, or product fields, start with [Custom Fields in Advanced Settings](/docs/user-guide/advanced-settings#custom_fields).
+# PDF templates and custom field placeholders: customize how documents look
 
-PDF generation in v5 is via an HTML templating system. We provide multiple design templates for you to choose from, or
-you can create your design using any HTML/CSS combinations.
+You can change how invoices, quotes and other documents look by editing their HTML and CSS, and by inserting placeholders for standard fields and your own custom fields.
 
-## Snippets
+## What is PDF customization? {#pdf-customizations}
 
-These snippets are collected over time, some might find them useful, so we decided to collect them in the official
-documentation.
+This page is about HTML and CSS invoice designs, and about using field placeholders in PDFs. To create or name extra invoice, client or product fields, start with [Custom Fields in Advanced Settings](/docs/user-guide/advanced-settings#custom_fields).
 
-### Getting all available selectors on the design
+Invoice Ninja builds PDFs from HTML templates. You can pick one of the built-in designs, or create your own with HTML and CSS.
 
-To make sure we can target all elements easily & make changes available faster to you, turn on "HTML Mode":
+## What CSS snippets can I use? {#snippets}
 
-Settings (Advanced settings) > Invoice Design > Custom Designs (edit) > HTML Mode:
+These snippets are starting points you can paste into a custom design. They are most useful when you are targeting a specific field in the generated HTML.
 
-![alt text](/assets/images/pdf_customization/custom_design_html_mode.png "Toggling HTML mode")
+### How do I find a selector on a design? {#getting-all-available-selectors-on-the-design}
 
-Let's select the item column:
+1. Go to **Settings > Invoice Design**.
+2. Open the **Custom Designs** tab and edit a design.
+3. Use the **Body**, **Header** and **Footer** tabs to read the HTML source. On the **Settings** tab, **HTML Mode** is a toggle at the bottom of the page.
 
-![alt text](/assets/images/pdf_customization/1-selecting-element-in-draft.png "Selecting element in the draft mode")
+![The HTML Mode toggle on the design editor Settings tab](/assets/images/pdf_customization/custom_design_html_mode.png "HTML Mode toggle on the Settings tab")
 
-Now you can select element & inspect its selector:
+![Selecting an element in the design preview](/assets/images/pdf_customization/1-selecting-element-in-draft.png "Selecting an element in the design preview")
 
-![alt text](/assets/images/pdf_customization/2-inspecting-data-ref-of-element.png "Inspecting data-ref in the source code")
+![Inspecting the data-ref attribute of an element in the source](/assets/images/pdf_customization/2-inspecting-data-ref-of-element.png "Inspecting the data-ref attribute in the source")
 
-The important part for us is **data-ref**.
+Many mapped fields get a `data-ref` attribute when the PDF is generated. You can target those with CSS. They may not all appear in the template source, because some are added at render time.
 
-### Showing table column on one design & hiding on others
+### How do I show a table column on one design and hide it on others? {#showing-table-column-on-one-design-hiding-on-others}
 
-This will hide columns & rows related entirely. In this example, we hide the custom product field.
+This example hides a custom product column, including its heading and cells, on the design where you add the CSS. To hide the column on some designs and leave it visible on others, add this only to the designs that should hide it.
 
 ```css
 /** CSS (includes) **/
@@ -45,9 +46,9 @@ This will hide columns & rows related entirely. In this example, we hide the cus
 }
 ```
 
-### Overwriting the "hidden" property on element
+### How do I overwrite a hidden property on an element? {#overwriting-the-hidden-property-on-element}
 
-Some elements have a "hidden" property on the element. You can overwrite this with CSS.
+Some elements have a `hidden` property. You can overwrite that with CSS. This example targets the subtotal label in the totals table:
 
 ```css
 [data-ref="totals_table-subtotal-label"] {
@@ -55,128 +56,129 @@ Some elements have a "hidden" property on the element. You can overwrite this wi
 }
 ```
 
-## Creating a custom design
+## How do I create a custom design? {#creating-a-custom-design}
 
-This is a section for you that want to create a new design completely from scratch
-or just curious about understanding how templates work.
-
-:::info
-Keep in mind that in order to create designs some knowledge of HTML and CSS is mandatory.
-:::
-
-### Creating a design entry
-
-Let's start by cloning an existing design. To do so, open the admin panel and navigate to **Settings > Invoice Design > Custom Designs > New Design**.
-
-From this list you can create, edit, archive and delete custom designs.
-
-![alt text](/assets/images/creating-custom-design/custom_designs_list.png)
-
-Creating a new design:
-
-![alt text](/assets/images/creating-custom-design/new_tutorial_design.png "Creating a design entry")
-
-We will name ours **Tutorial** and base it off of the "Clean" existing design.
-
-The base design isn't important if you have a completely new design in mind. Name your design and click **Save**.
-
-### Design structure
-
-On the top of the page we should see tabs such as, **Settings**, **Body**, **Header**, **Footer**, **Includes**, **Variables**.
-This is how design is structured and for the most part, you can leave at is.
-
-We will spend most of our time in **Includes** and **Body** sections.
-
-#### Settings
-
-![alt text](/assets/images/creating-custom-design/create_edit_design_settings_page.png "Design Edit or Create - Settings Page")
-
-On the settings page, you can control how your design behaves while developing.
-
-- Name: This is the name of your design
-- Design: This is a dropdown list of existing designs; selecting an option will override your current design with the selected one.
-- Entity: Select the type of item the design is for; Invoice, Quote, Credit, or Purchase Order.
-- Invoice: In this example, the dropdown below the Entity dropdown is titled "Invoice" because we have selected the entity as Invoice. This will provide a list of recent items that are the type of entity you selected, so you can preview how your design would look based on the selected item.
-  - Ex. We could select invoice #0027 to see that invoice's data (client, items, etc.) populated on the preview in real time as we are changing the design. Note: Changing the design doesn't modify the invoice itself; this only serves as a preview tool to see how it would apply to the selected invoice.
-  - ![alt text](/assets/images/creating-custom-design/design_selecting_invoice_entity_example.png "Selecting invoice entity example")
-- View Docs: This is a link which opens the current page you are reading (documentation on custom designs).
-- Import: This allows you to paste the code of a design you wish to import. The code to paste is obtained from selecting "Export" in the source design you're copying.
-  - ![alt text](/assets/images/creating-custom-design/design_import_popup.png)
-- Export: This button will copy the code of the design to your clipboard. You can use this to import to another design.
-
-#### Body
-
-As the name suggests this is the heart of the design. This is where we will organize our elements. The HTML code of the body is all here.
-
-#### Header
-
-If you want to be fully semantic & fully follow HTML standards, this is where you should place your header content.
-
-#### Footer
-
-Just like the header, this is a more semantic section for footer content.
-
-#### Includes
-
-This is where your styles go.
-
-#### Variables
-
-This is a list of some of the variables which are available to the current design. Clicking on a variable will copy it to the clipboard, so it can be pasted in the design.
-
-### Other Tabs
-
-You will see several additional tabs under Settings>Invoice Design.
-
-- General Settings
-  - This is where you can customize general settings for the _selected_ design. Toggling "Update all records" will apply your changes to all past records that were created with that design.
-  - Ex. Page Layout, Page Size, Font Size, Logo Size, Fonts, Colors, Page Numbering...
-  - Note that changing a design does not change invoices/records that were previously created using that design; to apply changes to all existing records, select "Update all records" after making a change.
-- Custom Designs
-  - This is where you can create & edit custom designs.
-
-The remaining tabs listed below control which fields/variables/columns display on **all designs** that contain the data. For example, to include the client's VAT Number, you would add that field under the Client tab, and it would show on all invoices.
-
-- Client
-- Company
-- Company Address
-- Invoice
-- Quote
-- Credit
-- Vendor
-- Purchase Order
-- Product Columns
-- Task Columns
-- Total Fields
-
-### Requirements
-
-Before we start customizing/coding our own design, keep in mind that Invoice Ninja has some requirements.
-They are specific IDs for contents.
-
-#### Target elements:
-
-- #company-details
-- #company-address
-- #client-details
-- #entity-details
-- #delivery-note-table
-- #product-table
-- #task-table
-- #table-totals
-- #footer
-
-To get specific selectors, please refer to [Getting all available selectors on the design](#getting-all-available-selectors-on-the-design).
-
-If it's easier for you to develop a static template first, you can always copy the source code provided under Settings tab and develop locally, copying changes into Invoice Ninja once you're happy with the design.
-
-### Selectors
+Use this when you want a new design from scratch, or when you want to see how the templates are put together.
 
 :::info
-All the following selectors are marked using `data-ref` attribute.
+Creating or heavily editing a design needs some knowledge of HTML and CSS.
 :::
 
-To query `client_details-client.name` for example, use following:
+### How do I add a design entry? {#creating-a-design-entry}
+
+1. Go to **Settings > Invoice Design**.
+2. Open the **Custom Designs** tab (`#/settings/invoice_design/custom_designs`).
+3. Click **New Design**.
+
+The list has a **Filter** box, a **Lifecycle** filter (for example **Active**), and a **Name** column. An **Active** badge appears next to the name of an active design. Each row's **Actions** menu has **Edit**, **Clone**, **Export**, **Archive** and **Delete**.
+
+![The Custom Designs list, with a New Design button](/assets/images/creating-custom-design/custom_designs_list.png "Custom Designs list")
+
+**New Design** opens an unsaved form (`#/settings/invoice_design/custom_designs/create`). It is not stored until you click **Save**.
+
+![The New Design form, including name, type and a base design](/assets/images/creating-custom-design/new_tutorial_design.png "New Design form")
+
+4. Enter a **Name**.
+5. Set **Type** to **Design** or **Template**. **Design** is the default.
+6. Optionally pick a **Design** to use as the starting point. Built-in options include **Bold**, **Business**, **Calm**, **Clean**, **Creative**, **Elegant**, **Hipster**, **Modern**, **Plain**, **Playful** and **Tech**. The base design is less important if you already have a complete layout in mind.
+7. Click **Save**.
+
+### How is a design structured? {#design-structure}
+
+The design editor is split into tabs: **Settings**, **Body**, **Header**, **Footer**, **Includes** and **Variables**. Most day-to-day editing happens in **Includes** and **Body**.
+
+#### What is on the Settings tab? {#settings}
+
+![The Settings tab of the design editor, with name, design, type and import options](/assets/images/creating-custom-design/create_edit_design_settings_page.png "Design editor Settings tab")
+
+On the Settings tab you control how the design behaves while you edit it:
+
+- **Name**: the name of your design.
+- **Design**: a dropdown of existing designs. Selecting one replaces the current design with the selected design.
+- **Type**: the kind of document the preview is for: Invoice, Quote, Credit or Purchase Order.
+- A fourth dropdown, labeled with the type you picked (for example **Invoice**). It lists recent records of that type, so the live preview on the right can show real data. Changing the design or the preview record does not change the record itself.
+- **API Docs**: a documentation link.
+- **Import**: opens the **Import Design** dialog, with a textarea and an **Import** button. Paste code you copied with **Export** from another design. If you do not want to import, close the dialog with the **X** (there is no Cancel button).
+- **Export**: copies the design code to your clipboard, so you can import it into another design.
+- **HTML Mode**: a toggle at the bottom of the Settings tab.
+
+The editor header has **Save**. A live PDF preview appears on the right.
+
+![Choosing a record in the preview dropdown](/assets/images/creating-custom-design/design_selecting_invoice_entity_example.png "Previewing the design with a selected record")
+
+![The Import Design dialog, with a textarea and an Import button](/assets/images/creating-custom-design/design_import_popup.png "Import Design dialog")
+
+#### What is on the Body tab? {#body}
+
+The **Body** tab is the main content of the PDF. This is where you organize the layout. The HTML for the body is all here.
+
+#### What is on the Header tab? {#header}
+
+The **Header** tab is the usual place for content that belongs at the top of the page.
+
+#### What is on the Footer tab? {#footer}
+
+The **Footer** tab is the usual place for content that belongs at the bottom of the page.
+
+#### What is on the Includes tab? {#includes}
+
+The **Includes** tab is where your styles go. This is the usual place for the CSS snippets above.
+
+#### What is on the Variables tab? {#variables}
+
+The **Variables** tab lists common placeholders, grouped as **Invoice**, **Client**, **Contact** and **Company**. Clicking a variable copies it to the clipboard (the app confirms with a "Copied ... to the clipboard" message), so you can paste it into the design.
+
+This is a shorter list than the [full placeholder reference](#custom-fields) later on this page. Custom field placeholders such as `$client.custom1` may not appear in these groups.
+
+### What else is on Invoice Design? {#other-tabs}
+
+Invoice Design has several other tabs besides **Custom Designs**.
+
+- **General Settings**: choose the design for invoices, quotes, credits, purchase orders, statements, delivery notes, payment receipts and payment refunds. You can also set **Page Layout**, **Page Size**, **Font Size**, **Logo Size**, **Primary Font**, **Primary Color**, **Secondary Font**, **Secondary Color**, **Show Paid Stamp**, **Show Shipping Address**, **Embed Images/Documents** (help text: "Include attached images/pdfs in the invoice."), **Empty Columns** (Hide or Show) and **Page Numbering**. Click **Save** to store these options.
+- **Custom Designs**: create and edit custom designs, as described above.
+
+The remaining tabs control which fields and columns appear on every design that includes that data. For example, to show the client's VAT number, add that field on the **Client** tab and it appears on invoices that include the client block.
+
+- **Client**
+- **Company**
+- **Company Address**
+- **Invoice**
+- **Quote**
+- **Credit**
+- **Vendor**
+- **Purchase Order**
+- **Invoice Product Columns**
+- **Quote Product Columns**
+- **Task Columns**
+- **Total Fields**
+
+## What does a design need in order to work? {#requirements}
+
+Invoice Ninja expects certain element IDs to be present in the design. The app uses them when it maps your field and column choices onto the PDF.
+
+### Which element IDs are required? {#target-elements}
+
+- `#company-details`
+- `#company-address`
+- `#client-details`
+- `#entity-details`
+- `#delivery-note-table`
+- `#product-table`
+- `#task-table`
+- `#table-totals`
+- `#footer`
+
+For more specific selectors, use [How do I find a selector on a design?](#getting-all-available-selectors-on-the-design).
+
+If you prefer to develop a static template first, you can export the design from the Settings tab, work on it locally, then import the changes when you are happy with them.
+
+## What selectors can I use? {#selectors}
+
+:::info
+The selectors below are marked with a `data-ref` attribute.
+:::
+
+To target `client_details-client.name`, for example, use CSS like this:
 
 ```css
 [data-ref="client_details-client.name"] {
@@ -184,7 +186,9 @@ To query `client_details-client.name` for example, use following:
 }
 ```
 
-#### Client details
+Some older notes use `entity_details-quote.*` under credit details. Check the generated HTML for the `data-ref` values your design actually emits before you rely on a selector.
+
+### Client details {#client-details}
 
 - client_details-client.name
 - client_details-client.number
@@ -196,7 +200,7 @@ To query `client_details-client.name` for example, use following:
 - client_details-client.phone
 - client_details-client.email
 
-#### Company details
+### Company details {#company-details}
 
 - company_details-company.name
 - company_details-company.id_number
@@ -205,14 +209,14 @@ To query `client_details-client.name` for example, use following:
 - company_details-company.email
 - company_details-company.phone
 
-#### Company address
+### Company address {#company-address}
 
 - company_address-company.address1
 - company_address-company.address2
 - company_address-company.city_state_postal
 - company_address-company.country
 
-#### Invoice details
+### Invoice details {#invoice-details}
 
 - entity_details-invoice.number_label
 - entity_details-invoice.number
@@ -227,7 +231,7 @@ To query `client_details-client.name` for example, use following:
 - entity_details-invoice.balance_due_label
 - entity_details-invoice.balance_due
 
-#### Quote details
+### Quote details {#quote-details}
 
 - entity_details-quote.number_label
 - entity_details-quote.number
@@ -240,7 +244,7 @@ To query `client_details-client.name` for example, use following:
 - entity_details-quote.total_label
 - entity_details-quote.total
 
-#### Credit details
+### Credit details {#credit-details}
 
 - entity_details-quote.number_label
 - entity_details-quote.number
@@ -253,7 +257,7 @@ To query `client_details-client.name` for example, use following:
 - entity_details-quote.total_label
 - entity_details-quote.total
 
-#### Product table
+### Product table {#product-table}
 
 - product_table-product.item-th
 - product_table-product.description-th
@@ -263,7 +267,7 @@ To query `client_details-client.name` for example, use following:
 - product_table-product.tax-th
 - product_table-product.line_total-th
 
-#### Task table
+### Task table {#task-table}
 
 - task_table-task.service-th
 - task_table-task.description-th
@@ -273,7 +277,7 @@ To query `client_details-client.name` for example, use following:
 - task_table-task.tax-th
 - task_table-task.line_total-th
 
-#### Total columns
+### Total columns {#total-columns}
 
 - totals_table-net_subtotal-label
 - totals_table-net_subtotal
@@ -294,7 +298,11 @@ To query `client_details-client.name` for example, use following:
 - totals_table-outstanding-label
 - totals_table-outstanding
 
-## Custom fields
+## Which placeholders can I use in a design? {#custom-fields}
+
+Placeholders use a `$` prefix, for example `$client.name` or `$invoice.number`. Custom fields you created under **Settings > Custom Fields** appear as `$client.custom1`, `$invoice.custom2`, and similar names. Those custom field names may not appear in the design editor's **Variables** tab; you can still type them into the design.
+
+You can use these placeholders in a custom design, and many of them also work in [email templates](/docs/advanced-topics/email-customization). The list below is the usual set. If a placeholder is blank in a PDF, the field may be empty on that record, or it may not apply to that document type.
 
 ```bash
 $tax - Tax Label
@@ -328,7 +336,7 @@ $project.name - Project name label/value
 $project.number - Project number /value
 
 $entity_number - Alias of $number
-$invoice.discount - Invoice dicount label/value
+$invoice.discount - Invoice discount label/value
 $discount - Alias of $invoice.discount
 $subtotal - Subtotal label/value
 $invoice.subtotal - Alias of $subtotal
@@ -336,7 +344,7 @@ $invoice.subtotal - Alias of $subtotal
 $balance_due - Currency formatted balance due label/value
 $balance_due_raw - Unformatted balance due label/value
 $quote.balance_due - Alias of $balance_due
-$invoice.balance_due - Alias of$balance_due
+$invoice.balance_due - Alias of $balance_due
 $outstanding - Alias of $balance_due
 
 $partial_due - Partial due label/value
@@ -440,7 +448,7 @@ $paid_to_date - Client paid to date label/value
 
 $contact.full_name - Contact full name label/value
 $contact.email - Contact email label/value
-$contact.phone - Contant phone label/value
+$contact.phone - Contact phone label/value
 
 $contact.name - Contact name label/value
 $contact.first_name - Contact first name label/value
@@ -528,4 +536,12 @@ $secondary_font_name - The name of the secondary font
 $font_size - The size of the font selected in the settings
 $font_name - The name of the primary font
 $font_url - The URL to the primary font resource
-```bash
+```
+
+## Related
+
+- [Advanced Settings](/docs/user-guide/advanced-settings)
+- [Custom fields in Advanced Settings](/docs/user-guide/advanced-settings#custom_fields)
+- [Email customization](/docs/advanced-topics/email-customization)
+- [QR codes](/docs/advanced-topics/qr-codes)
+- [Templates](/docs/advanced-topics/templates)

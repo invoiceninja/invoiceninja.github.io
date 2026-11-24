@@ -1,137 +1,138 @@
 ---
-title: "QR Codes"
+title: "Add QR codes to your invoices"
+sidebar_label: "QR Codes"
 sidebar_position: 4
+description: "Add Swiss QR, SEPA or payment link QR codes to Invoice Ninja invoices, and work out a Swiss QR-IBAN."
 ---
-We currently offer three options for QR codes in Invoice Ninja: Swiss QR, SEPA ERC and generic Payment link QR codes which will take the end user to the Invoice Ninja Client portal for payment.
 
-## Swiss QR Codes
+# Add QR codes to your invoices
 
-For Swiss users, you are able to automatically inject Swiss Compatible payment QR codes directly into the invoice design.
+Put a scannable payment QR code on your invoice PDFs, so clients can pay from their banking app or open the client portal.
 
-There are three types of QR-Rechnungen.
+Invoice Ninja supports three kinds of QR code. Type the placeholder into an invoice's **Public Notes** or **Terms**, or into a custom design. These placeholders are not listed in the design editor's **Variables** tab.
 
-1. **QR-IBAN with QR-Reference**.
+| QR code | Best for | Placeholder |
+|---|---|---|
+| Swiss QR | Swiss businesses (QR-Rechnung) | `$swiss_qr`, `$swiss_qr_raw` |
+| SEPA QR | Bank transfers in the SEPA area | `$sepa_qr_code`, `$sepa_qr_code_raw` |
+| Payment link | Paying online in the client portal | `$payment_qrcode` |
 
-This is a special IBAN, different from you normal IBAN. Easiest way is to ask your bank for the QR-IBAN, but you can also calculate it yourself.
-The QR-Reference is a 26 digit number follow by one checksum digit. The checksum has to be modulo 10, recursive. Additionally you can add 140 symbols of text.
+## How do I add Swiss QR codes? {#swiss-qr-codes}
 
-### How to calculate automatically your QR-IBAN:
+If your business is in Switzerland, Invoice Ninja can add Swiss payment QR codes (QR-Rechnungen) directly to your invoice design. There are three types:
 
-Now there is a new tool to calculate it automatically, you will find it here : 
-[Swiss IBAN to QR-IBAN Converter](https://alexin-tech.github.io/Swiss-IBAN-to-QR-IBAN-Converter/)
+1. **QR-IBAN with QR-Reference.** A QR-IBAN is a special IBAN, different from your normal IBAN. The easiest way to get one is to ask your bank, but you can also calculate it yourself (see below). The QR-Reference is a 26 digit number followed by one check digit, calculated with recursive modulo 10. You can also add up to 140 characters of text.
+2. **IBAN without a reference.** This uses your normal IBAN. You can't use a reference, only up to 140 characters of text.
+3. **IBAN with a Creditor Reference.** This follows the ISO 11649 standard. It works like a QR-Reference, but it can be used internationally, including outside Switzerland. Use your normal IBAN, not the QR-IBAN.
 
-In order to find your QR-IID , just : 
-Go to the [SIX Group IID Inquiry Page](https://www.six-group.com/en/products-services/banking-services/interbank-clearing/online-services/inquiry-iid.html)
-Enter your bank name in the **Bank/Institution** field.
-Click the **Search** button.
-Look for a **QR-IID** in the results (values between **30000 - 31999**).
-Copy the QR-IID and paste it into the input field of the [Swiss IBAN to QR-IBAN Converter](https://alexin-tech.github.io/Swiss-IBAN-to-QR-IBAN-Converter/) 
+### How do I calculate my QR-IBAN automatically? {#how-to-calculate-automatically-your-qr-iban}
 
-### How to calculate manually your QR-IBAN:
+1. Go to the [SIX Group IID inquiry page](https://www.six-group.com/en/products-services/banking-services/interbank-clearing/online-services/inquiry-iid.html).
+2. Enter your bank name in the **Bank/Institution** field and click **Search**.
+3. Find the **QR-IID** in the results. It is a number between 30000 and 31999.
+4. Paste the QR-IID and your IBAN into the [Swiss IBAN to QR-IBAN Converter](https://alexin-tech.github.io/Swiss-IBAN-to-QR-IBAN-Converter/).
 
-For example, the normal IID of Raiffeisen is 80808.
+### How do I calculate my QR-IBAN by hand? {#how-to-calculate-manually-your-qr-iban}
 
-Because of that, a Raiffeisen IBAN could look like this CH21 **8080 8**001 2345 6789 0
+This worked example uses a sample IBAN, not a real account.
 
-Lookup the QR-IID of your bank (something between 30000 and 31999) and replace the IID with the QR-IID. The Raiffeisen QR-IID is 30808. If we replace the previous IBAN with this, we get: CH21 **3080 8**001 2345 6789 0. This is the QR-IBAN with wrong checksum therefore we have to calculate it.
+1. Find your bank's normal IID. For example, Raiffeisen's IID is 80808, so a Raiffeisen IBAN could look like CH21 **8080 8**001 2345 6789 0.
+2. Replace the IID with your bank's QR-IID. Raiffeisen's QR-IID is 30808, which gives CH21 **3080 8**001 2345 6789 0. The check digits (21) are now wrong, so you need to recalculate them.
+3. Move the first four characters to the end, and replace the check digits with XX: 3080 8001 2345 6789 0 CHXX.
+4. Replace the letters with numbers (A=10, B=11, C=12 and so on, so C=12 and H=17). CH becomes 1217: 3080 8001 2345 6789 0 1217XX.
+5. Put 00 in place of XX and calculate modulo 97. 3080 8001 2345 6789 0 121700 modulo 97 = 32.
+6. Work out the check digits: 98 minus 32 = 66. Check it: 3080 8001 2345 6789 0 121766 modulo 97 = 1.
+7. Move the digits back to the front and put the country code back: **CH66 3080 8001 2345 6789 0**. This is your QR-IBAN.
 
-We start with the original checksum (CH**21** 3080 8001 2345 6789 0). The QR-IBAN should be one for modulo 97. We have to move the first 4 symbols to the end (3080 8001 2345 6789 0 CH21). We replace the checksum 21 with two XX, because we don't know this yet (38080 8001 2345 6789 0 CHXX). After that we replace CH with digits. It is alphabetical and starts with 10. So A=10, B=11 and C=13. Because of that, CH is 1217. This gives us 3080 8001 2345 6789 0 1217XX. We now have to find two numbers that give us the modulo 97 = 1.
-
-We start by using 00 for XX. 3080 8001 2345 6789 0 121700 modulo 97 = 32. That is to low. 97-32+1= 66. 3080 8001 2345 6789 0 121766 modulo 97 = 1. Now we got it! We move them back to the front (121766 3080 8001 2345 6789 0) and replace 1217 with the country code (CH66 3080 8001 2345 6789 0). This is our QR-IBAN.
-
-2. **QR-Rechnung with IBAN and without reference**
-
-This is your normal IBAN. You can't use a reference! You are only allowed to use 140 symbols of text.
-
-3. **QR-Rechnung with IBAN and Creditor Reference**
-
-Follows the ISO-11649 norm. Works like a QR-Reference but uses ISO-11649 which makes it usable international. Unlike the provious two QR codes, this also works outside of Switzerland. You have to use the normal IBAN, not the QR IBAN.
-
-### Inserting the QR Code into your Invoice
+### How do I put the Swiss QR code on my invoice? {#inserting-the-qr-code-into-your-invoice}
 
 :::info
-> Your company country must be set to Switzerland for the QR IBAN and BESR Number fields to become visible on the Company Details page.
+Your company country must be set to Switzerland before the **QR IBAN** and **BESR Number** fields appear on the **Company Details** page.
 :::
 
-![alt text](/assets/images/pdf_customization/swiss_qrcode1.png "Swiss QR Codes")
+![The QR IBAN and BESR Number fields on Company Details](/assets/images/pdf_customization/swiss_qrcode1.png "Swiss QR fields on Company Details")
 
-Codes can be inserted directly into the wysiwyg editor in either the public notes or terms sections. 
+The quickest option is to type `$swiss_qr` into the **Public Notes** or **Terms** of an invoice, using the editor. The invoice editor does not show a hint for this placeholder; type it yourself.
 
-![alt text](/assets/images/pdf_customization/swiss_qrcode3.png "Swiss QR Codes")
+![The Swiss QR placeholder typed into an invoice's notes](/assets/images/pdf_customization/swiss_qrcode3.png "Swiss QR placeholder in invoice notes")
 
 :::warning
-> Due to the width of these containers, the QR Code will appear compressed. If you prefer to have the QR code stretch the width of the PDF, you'll want to create a custom design and insert the QR code into the body of the invoice as shown below.
+Those sections are narrow, so the QR code will look squashed. To make it span the full width of the PDF, add it to a custom design instead.
 :::
 
-In the body tab, at the bottom add
+To add it to a [custom design](/docs/advanced-topics/custom-fields#creating-a-custom-design), add this at the bottom of the **Body** tab:
 
-```bash
+```html
 <div style="page-break-inside: avoid;" data-state="encoded-html">
 $swiss_qr
 ```
 
-or we have also made available a decoded version using the following variable
+There is also a decoded version:
 
 ```bash
 $swiss_qr_raw
 ```
 
-![alt text](/assets/images/pdf_customization/swiss_qrcode4.png "Swiss QR Codes")
+![The Swiss QR placeholder in a custom design's Body tab](/assets/images/pdf_customization/swiss_qrcode4.png "Swiss QR in a custom design")
 
-This will then allow the QR code to stretch the width of the PDF and will appear as follows.
+The QR code then spans the width of the PDF:
 
-![alt text](/assets/images/pdf_customization/swiss_qrcode5.png "Swiss QR Codes")
+![An invoice PDF with a full-width Swiss QR payment slip](/assets/images/pdf_customization/swiss_qrcode5.png "Full-width Swiss QR code on an invoice")
 
-After you have saved the design, you'll want to make this your new default design.
+After you save the design, set it as your default invoice design under **Settings > Invoice Design > General Settings**.
 
-If your QR codes are not appearing then there would be a configuration issue that needs to be addressed. The most common reasons the QR code does not appear on the PDF is due to missing company details. Your full address is required along with the clients full details.
+**QR code not showing?** This is usually missing details. Your company needs a full address, and so does the client.
 
-## SEPA ERC QR Codes
+## How do I add SEPA QR codes? {#sepa-erc-qr-codes}
 
-To enable SEPA QR codes you'll need to follow a couple of steps to ensure there is the correct data.
+SEPA QR codes need at least an IBAN. For payments from outside the EEA you also need a BIC.
 
-SEPA QR codes require at the very least a IBAN, for payments outside of EEA you will also need the BIC. 
+1. Go to **Settings > E-Invoicing** (`#/settings/e_invoice`).
+2. Under **Payment Means**, set **Code** to **Credit transfer** or **SEPA credit transfer**. The dropdown lists names only; it does not show numeric codes. Payment Means is on this page even if **Enable E-Invoice** is off.
+3. Fill in the account fields that appear, then click **Save**.
 
-You can configure your payment details by enabling E Invoicing and setting the payment method to Credit Transfer (code 30) or SEPA Credit Transfer (code 58).
+![The E-Invoicing page, including Payment Means](/assets/images/qr/sepa_qr_code_config_1.png "E-Invoicing page with Payment Means")
 
-![alt text](/assets/images/qr/sepa_qr_code_config_1.png "Enable E Invoicing")
+![The Payment Means Code dropdown](/assets/images/qr/sepa_qr_code_config_2.png "Payment Means Code dropdown")
 
-Once you enable E Invoicing, the payment means dialog will appear, then set either code 30 or 58, the form will then populate with the correct fields.
-
-![alt text](/assets/images/qr/sepa_qr_code_config_2.png "Set payment method to Credit/Transfer")
-
-The variable
+Then type `$sepa_qr_code` into an invoice's **Public Notes** or **Terms**, and the QR code is generated automatically:
 
 ```bash
 $sepa_qr_code
 ```
 
-Can be placed directly into the Public Notes or Terms sections of your invoice, for automatic generation of the QR code in your invoice.
+![The SEPA QR placeholder in an invoice's notes](/assets/images/qr/sepa_qr_code_config_3.png "SEPA QR placeholder in invoice notes")
 
-![alt text](/assets/images/qr/sepa_qr_code_config_3.png "Insert code into invoice")
+To control where the code appears, add it to a custom design instead:
 
-If you prefer to have control over the location of the QR code you can create a custom design and then use the following options to inject the QR code into your PDF.
-
-
-```bash
+```html
 <div data-state="encoded-html">
 $sepa_qr_code
 ```
 
-or
+or use the decoded version:
 
 ```bash
 $sepa_qr_code_raw
 ```
 
-![alt text](/assets/images/qr/sepa_qr_code_config_4.png "Insert code into the custom design")
+![The SEPA QR placeholder in a custom design](/assets/images/qr/sepa_qr_code_config_4.png "SEPA QR in a custom design")
 
+These placeholders are not listed in the design editor's **Variables** tab.
 
-## Generic Payment link QR Codes
+For more on payment means, see [E-Invoicing](/docs/user-guide/einvoicing).
 
-Generic payment QR codes can easily be applied to your Invoice PDF using the following block in your custom Design
+## How do I add a payment link QR code? {#generic-payment-link-qr-codes}
 
-```bash
+A payment link QR code takes your client to the client portal to pay. Add this block to your custom design. `$payment_qrcode` is not listed in the design editor's **Variables** tab.
+
+```html
 <div>
 $payment_qrcode
 ```
+
+## Related
+
+- [PDF templates and custom field placeholders](/docs/advanced-topics/custom-fields)
+- [E-Invoicing](/docs/user-guide/einvoicing)
+- [Advanced Settings](/docs/user-guide/advanced-settings)
