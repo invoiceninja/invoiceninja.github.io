@@ -45,7 +45,7 @@ As a small business, it is much easier to log a business expense when it happens
 
 If you collect sales tax, set up your rates under **Settings > Tax Settings**, including **Invoice Tax Rates** and **Line Item Tax Rates**. See [Taxes](/docs/user-guide/taxes).
 
-On a product, choose a **Tax Category**. Line-item tax rate fields appear on the product when **Line Item Tax Rates** is enabled in Tax Settings. There is no separate tax-exempt checkbox on the product form. For client-level exemptions and the rest of the tax setup, see [Taxes](/docs/user-guide/taxes) and [Products](/docs/user-guide/products).
+On a product, choose a **Tax Category**. Line-item tax rate fields appear on the product when **Line Item Tax Rates** is enabled in Tax Settings. For a tax-exempt product, set it on the product itself, using its **Tax Category** and tax fields, or handle it under **Settings > Tax Settings**. For client-level exemptions and the rest of the tax setup, see [Taxes](/docs/user-guide/taxes) and [Products](/docs/user-guide/products).
 
 ## How do bank transactions help with bookkeeping? {#transactions}
 
