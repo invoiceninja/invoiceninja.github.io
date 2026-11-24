@@ -1068,7 +1068,7 @@ The `company` object is exposed as a top-level template variable carrying scalar
 
 ## What fields can I use? {#definitions}
 
-### Invoice, quote, credit and purchase order definition {#invoice-quote-credit-purchase-order-definition}
+### Invoice, quote, credit and purchase order definition {#invoice--quote--credit--purchase-order-definition}
 
 | Field      | Description | Example |
 | ----------- | ----------- | ----------- |
