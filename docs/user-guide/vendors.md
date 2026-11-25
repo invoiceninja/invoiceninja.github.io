@@ -1,159 +1,106 @@
 ---
-title: "Vendors: Track Who You Buy From"
-sidebar_label: "Vendors"
+title: "Vendors"
 sidebar_position: 25
-description: "How to add, find, edit, archive, delete and restore vendors in Invoice Ninja, and link them to expenses and purchase orders."
+description: "Create and manage vendors, set vendor currency, and archive or delete vendor records in Invoice Ninja."
 ---
-# Vendors: track the people and businesses you pay
 
-A vendor is anyone you buy from, such as your accountant, hosting provider, office supplier or a contractor. Add your vendors in Invoice Ninja when you want to link your spending to the people you pay and see how much you spend with each one.
+A vendor is a person or business you buy from, the counterpart of a [client](/docs/user-guide/clients). [Expenses](/docs/user-guide/expenses) and [recurring expenses](/docs/user-guide/recurring-expenses) can be linked to a vendor. This is optional. Every [purchase order](/docs/user-guide/purchase-orders) must be issued to a vendor.
 
-## What is a vendor in Invoice Ninja?
+## Create a vendor {#creating-vendors}
 
-A vendor is the opposite of a [client](/docs/user-guide/clients). A client is someone you sell to (money coming in). A vendor is someone you buy from (money going out). A vendor can be a person, such as a sole trader or a freelancer you subcontract to, or a company.
+Go to **Vendors** and click **New Vendor**. You can also click the **+** next to **Vendors** in the left menu, choose **+ → Expense → Vendor** in the top bar, or select **New Vendor** from the vendor dropdown when creating an expense or a purchase order.
 
-## Why should I add vendors?
+Vendors can also be imported (see [Import and Export](/docs/advanced-topics/import-and-export)) or created through Zapier, Make, APISync, or the [API](https://invoiceninja.github.io/docs/api-reference/invoice-ninja-api-reference).
 
-Vendors connect your spending to real people and businesses:
+If **Name** is left empty, the vendor is displayed using the primary contact's name, or the primary contact's email if that name is also empty.
 
-- Every [expense](/docs/user-guide/expenses) and [recurring expense](/docs/user-guide/recurring-expenses) can be linked to a vendor. This is optional.
-- Every [purchase order](/docs/user-guide/purchase-orders) (a formal order you send to a supplier) must be sent to a vendor. This is required.
+## Vendor list {#vendor-module-view}
 
-Once these links are in place, you can answer questions like "How much did we spend with this supplier last quarter?" without digging through receipts.
+Select **Vendors** in the left menu to open the vendor list. You can sort by column, add or remove columns with **Columns**, search with **Filter**, import vendors with **Import**, and include archived or deleted vendors with the **Lifecycle** filter (**Active**, **Archived** or **Deleted**, then **Apply**).
 
-## How do I add a new vendor?
+Each row has an **Actions** menu with **Edit**, **Add Comment**, **Merge**, **Archive** and **Delete**.
 
-You can add a vendor in any of these ways:
+<a id="actions-dropdown"></a>
 
-1. Go to **Vendors** and click **New Vendor** (top right).
-2. Click the small **+** next to **Vendors** in the left menu.
-3. Click the **+** button in the top bar and choose **Vendor** under **Expense**.
-4. Create the vendor while you enter an expense.
-5. Connect another tool, such as Zapier, Make or APISync, or build your own connection with the [API Documentation](https://invoiceninja.github.io/docs/api-reference/invoice-ninja-api-reference). (An API lets other software send data into Invoice Ninja automatically.)
+![vendors table view](/assets/images/vendors/vendors_table_view.png "vendors table view")
 
-Tip: If you leave the vendor name empty, Invoice Ninja uses the first contact's name as the display name.
+![vendors actions dropdown](/assets/images/vendors/vendors_action_dropdown.png "vendors actions dropdown")
 
-## Where do I see all my vendors?
+## Change vendor currency {#change-a-vendors-currency}
 
-Click **Vendors** in the left menu of the admin portal (the screen you and your team use, not the one your clients see). You will see a table of every vendor. From here you can:
+Navigate to **Vendors → Edit Vendor → Additional Info → Settings → Currency** to change the vendor currency.
 
-- Sort the list by clicking a column header
-- Add or remove columns with **Columns**
-- Show archived or deleted vendors with the **Lifecycle** filter
-- Search with the **Filter** box
-- Import vendors from a file with **Import**
-- Create a new vendor with **New Vendor**
+If no currency is set, the company's currency is used. Purchase order PDFs and purchase order reports use the vendor's current currency, so changing it can affect how existing purchase orders are displayed and reported.
 
-Each row has an **Actions** menu on the right. Use it to edit, add a comment to, merge, archive or delete a vendor. **Merge** combines two vendor records into one, which is handy when the same supplier was added twice.
+## Archive, delete and restore {#archive-a-vendor}
 
-![vendors table view](https://invoiceninja.github.io/assets/images/vendors/vendors_table_view.png "vendors table view")
+<a id="common-tasks"></a>
+<a id="delete-a-vendor"></a>
+<a id="restore-an-archived-vendor"></a>
+<a id="purge-a-vendor"></a>
 
-![vendors actions dropdown](https://invoiceninja.github.io/assets/images/vendors/vendors_action_dropdown.png "vendors actions dropdown")
+| Action | Effect | Reversible |
+| --- | --- | --- |
+| **Archive** | Hides the vendor from the default list. Related purchase orders and expenses are not archived. | Yes, with **Restore** |
+| **Delete** | Hides the vendor from the default list. Related purchase orders and expenses are not deleted. Purchase order reports and dashboard expense totals omit activity linked to a deleted vendor. | Yes, with **Restore** |
 
-## How do I change the currency a vendor bills me in?
+Use **Archive** to hide a vendor without changing report totals. Use **Delete** when purchase order reports and dashboard expense totals should omit that vendor's activity.
 
-Every vendor uses your company's currency unless you change it.
+Vendors cannot be purged. A deleted vendor can be restored.
 
-1. Open the vendor.
-2. Click **Edit Vendor**.
-3. In **Additional Info**, open the **Settings** tab and pick the **Currency**.
-4. Click **Save**.
+To archive or delete a vendor, choose **Archive** or **Delete** from the arrow menu next to **Edit Vendor**, or from the **Actions** menu on the vendor list. That arrow menu also includes **Add Comment** and **Merge**.
 
-New purchase orders for this vendor will use that currency.
+To restore a deleted vendor, set the **Lifecycle** filter to **Deleted**, then choose **Restore** from the row **Actions** menu or from the arrow menu on the vendor.
 
-## Archive or delete: which one should I use?
+## Merge vendors
 
-| Action | What it does | Can I undo it? |
-|---|---|---|
-| **Archive** | Hides the vendor from your normal lists. Nothing else changes. Purchase orders, expenses and history stay. | Yes, with **Restore** |
-| **Delete** | Hides the vendor and removes their expenses and purchase orders from your report totals, as if they never happened. The data is flagged as deleted, not erased. | Yes, with **Restore** |
+Administrators can merge two vendor records from the row **Actions** menu, or from the arrow menu next to **Edit Vendor**. Purchase orders, expenses, recurring expenses, contacts, documents and related activity move to the vendor you keep. The other vendor is permanently removed. Contacts with a matching or empty email are not kept as duplicates.
 
-In short: use **Archive** to tidy your vendor list without changing any totals. Use **Delete** when you want a vendor's activity left out of your reports.
+## View a vendor {#viewing-a-vendor}
 
-### How do I archive a vendor?
+Select a vendor in the list to open the record. The page shows **Details**, **Address** and **Contacts**, with tabs for **Purchase Orders**, **Expenses**, **Recurring Expenses**, **Activity** and **Documents**.
 
-1. Open the vendor.
-2. Click the arrow next to **Edit Vendor** and choose **Archive**. You can also do this from the **Actions** menu on the vendor list.
+![view vendor page](/assets/images/vendors/view_vendor_page.png "view vendor page")
 
-### How do I delete a vendor?
+- <a id="purchase-orders"></a>**Purchase Orders**: every [purchase order](/docs/user-guide/purchase-orders) issued to this vendor.
+- <a id="expenses"></a>**Expenses**: [expenses](/docs/user-guide/expenses) linked to this vendor. Linking an expense to a vendor is optional.
+- <a id="recurring-expenses"></a>**Recurring Expenses**: [recurring expenses](/docs/user-guide/recurring-expenses) linked to this vendor.
+- **Activity**: a log of changes to the vendor.
+- <a id="documents"></a>**Documents**: files stored on the vendor record. The tab has an upload area and a table of Name, Date, Type and Size. It does not include a public or private control for individual files.
 
-1. Open the vendor.
-2. Click the arrow next to **Edit Vendor** and choose **Delete**.
+New files are public by default when **Settings → Company Details → Documents → Set Documents Public by Default** is enabled (the default). Public documents can be accessed by the vendor's contacts in the vendor portal. If that company setting is turned off, new files are not accessible in the vendor portal. On hosted Invoice Ninja, uploading documents requires the Enterprise plan. Self-hosted installations include this feature.
 
-### How do I restore an archived or deleted vendor?
+## Vendor fields {#creating-and-editing-a-vendor}
 
-1. On the vendor list, open the **Lifecycle** filter, tick **Archived** (or **Deleted**) and click **Apply**.
-2. In the vendor's row, open the **Actions** menu and choose **Restore**.
+<a id="details"></a>
+<a id="address"></a>
+<a id="contacts"></a>
+<a id="additional-info"></a>
+<a id="settings"></a>
+<a id="notes"></a>
+<a id="custom-fields"></a>
 
-The vendor comes back to your active list with all data unchanged.
+Most fields are optional. **Currency**, **Language**, **Public Notes** and **Private Notes** are under **Additional Info → Settings**. Custom fields appear on the **Additional Info → Custom Fields** tab.
 
-## What can I see on a vendor's page?
+![creating editing vendor](/assets/images/vendors/create_edit_vendor_fields.png "creating editing vendor")
 
-Click a vendor's row in the table to open it. At the top you see three panels: **Details** (including the vendor's status), **Address** and **Contacts**. Below them are tabs:
+| Field | Behaviour |
+| --- | --- |
+| **Number** | Generated automatically if you leave it empty. Number patterns are configured under **Settings → Generated Numbers → Vendors**. |
+| **Assigned User** | A team member can view and edit a vendor they are assigned to, or that they created, even if they do not have permission to view or edit all vendors. |
+| **Currency** | See [Change vendor currency](#change-a-vendors-currency). |
+| **Language** | Used for purchase order PDFs and emails, and for expense payment notifications sent to the vendor. If unset, the company's language is used. |
+| **Public Notes** | Copied onto a new purchase order when the purchase order's public notes are empty. Later changes to the vendor notes do not update existing purchase orders. |
+| **Private Notes** | Visible in the admin portal. They are not included on purchase order PDFs. |
+| **Send Email** (contact) | Contacts with **Send Email** enabled, and **CC Only** disabled, receive a purchase order invitation and are included when the purchase order is emailed. If no contact is set to receive the email, an invitation is still created for the primary contact. |
+| **CC Only** (contact) | The contact is copied on the email (up to four addresses) instead of receiving their own invitation. |
+| **Custom Fields** | Fields configured under **Settings → Custom Fields → Vendors** appear on the vendor form. |
 
-![view vendor page](https://invoiceninja.github.io/assets/images/vendors/view_vendor_page.png "view vendor page")
-
-- **Purchase Orders**: every [purchase order](/docs/user-guide/purchase-orders) sent to this vendor. Since purchase orders always need a vendor, this is the full record of what you formally ordered from them.
-- **Expenses**: the [expenses](/docs/user-guide/expenses) linked to this vendor. Linking is optional, but it is what makes spend-per-supplier reporting possible.
-- **Recurring Expenses**: the [recurring expenses](/docs/user-guide/recurring-expenses) linked to this vendor. Useful for regular costs like monthly hosting, software subscriptions or retainers you pay.
-- **Activity**: a log of what happened with this vendor and when.
-- **Documents**: upload contracts, supplier agreements, W-9s or other files. Only admin portal users can see these. Vendors cannot.
-
-## What information can I store for a vendor?
-
-On desktop, all fields are on one screen. On mobile, they are split across tabs. Most fields are optional, so fill in only what your bookkeeping needs.
-
-![creating editing vendor](https://invoiceninja.github.io/assets/images/vendors/create_edit_vendor_fields.png "creating editing vendor")
-
-### Details
-
-- **Name**: the vendor's business or trading name.
-- **Number**: created automatically to identify the vendor. You can change the number pattern under _Settings > Generated Numbers_.
-- **Assigned User**: the team member responsible for this vendor.
-- **ID Number**: optional, for any business ID number used in your country or region.
-- **VAT Number**: the vendor's Value Added Tax number, often required in the European Union.
-- **Website**: the vendor's website address.
-- **Phone**: the vendor's main phone number.
-- **Routing ID**: optional, the vendor's bank routing ID.
-- **Tax Exempt**: reserved for future E-Invoicing behaviour.
-- **Classification**: optional, the type of vendor: Individual, Business, Company, Partnership, Trust, Charity, Government or Other.
-- **Tags**: optional labels to help you group and find vendors.
-
-### Address
-
-The vendor's billing address: **Street**, **Apt/Suite**, **City**, **State/Province**, **Postal Code** and **Country**.
-
-### Contacts
-
-Click **Add contact** to add as many contacts as you like, one for each person or department you deal with. Contacts matter most for purchase orders: anyone with **Send Email** ticked gets a copy of the purchase order email by default.
-
-- **First Name** and **Last Name**: the person's name. You can also put a department name in the first name field.
-- **Email**: the contact's preferred email address.
-- **Phone**: the contact's preferred phone number.
-- **Send Email**: turn this on to include the contact on purchase order emails by default.
-- **CC Only**: the contact is copied on emails rather than being a main recipient.
-- **Authorized to sign**: marks this contact as allowed to sign documents for the vendor.
-
-### Additional Info
-
-**Settings** tab
-
-- **Currency**: the currency the vendor bills you in. New purchase orders for this vendor use it by default.
-- **Language**: the vendor's preferred language.
-
-Below Currency and Language are two notes boxes:
-
-- **Public Notes**: shown by default on this vendor's purchase orders. Good for instructions or descriptions you want on every purchase order.
-- **Private Notes**: only admin portal users can see these. Use them for internal notes, such as reliability or pricing quirks.
-
-**Custom Fields** tab
-
-Any custom fields you set up under _Settings > Custom Fields > Vendors_ appear here for you to fill in. If you have none yet, the tab links you straight to that settings page.
-
-## Related
+## Related documentation
 
 - [Clients](/docs/user-guide/clients)
 - [Expenses](/docs/user-guide/expenses)
 - [Recurring Expenses](/docs/user-guide/recurring-expenses)
 - [Purchase Orders](/docs/user-guide/purchase-orders)
+- [Import and Export](/docs/advanced-topics/import-and-export)
 - [API Documentation](https://invoiceninja.github.io/docs/api-reference/invoice-ninja-api-reference)

@@ -1,49 +1,48 @@
 ---
-title: "Import and Export Data"
-sidebar_label: "Import and Export"
+title: "Import and Export"
 sidebar_position: 3
-description: "How to import clients, invoices and other records from a CSV file or another invoicing app, and how to export reports, CSV files and full backups in Invoice Ninja."
 ---
-# How to import and export your data in Invoice Ninja
+## Import Data
 
-Use this page when you want to bring your clients, invoices, products and other records into Invoice Ninja from a spreadsheet or another invoicing app, or when you want to get your data out as a CSV file or a full backup.
+You can import data into Invoice Ninja from CSV files or other accounting software from anywhere in the application using the green Import Button.
 
-A CSV file is a simple spreadsheet file (comma-separated values) that Excel, Google Sheets and most accounting apps can save and open.
+:::warning
+**Note** Numbers are imported based on your company currency format. ie  USD currency will parse a period (.) as the decimal, EUR with parse a comma (,) as the decimal separator.
+:::
 
-## How do I import a CSV file?
+![alt text](/assets/images/settings/import_overview.png "CSV Imports")
 
-Each list page, such as **Clients**, **Invoices**, **Products** or **Vendors**, has an **Import** button at the top. It opens an import page for that type of record.
+First start by uploading your CSV file to the dropzone.
 
-![CSV Imports](https://invoiceninja.github.io/assets/images/settings/import_overview.png "CSV Imports")
+![alt text](/assets/images/settings/import_column_matching.png "CSV Mapping")
 
-1. Go to the list for the records you want to import (for example **Clients**) and click **Import**.
-2. Drop your file onto the **CSV file** box, or click it to choose the file.
+This will upload the file and we will perform column matching and return you to a new page.
 
-   ![CSV Mapping](https://invoiceninja.github.io/assets/images/settings/import_column_matching.png "CSV Mapping")
+![alt text](/assets/images/settings/import_column_matching2.png "CSV Mapping")
 
-3. Invoice Ninja uploads the file, matches your columns and opens a new page.
+Here we match the column from the CSV (left column) with the matching Invoice Ninja columns (right columns). From here you can adjust the mappings and when they look correct, click on Import.
 
-   ![CSV Mapping](https://invoiceninja.github.io/assets/images/settings/import_column_matching2.png "CSV Mapping")
+The system will then process the CSV file and email you the results of the import.
 
-4. Check the matches. The left column shows the columns from your CSV. The right column shows the Invoice Ninja field each one goes into. Change any that are wrong.
-5. Click **Import**.
-6. Invoice Ninja processes the file and emails you the results.
+:::warning
+If you regularly import the same file format, the application will offer you the ability to save the import columns as a template. You can select the template from the dropdown when importing.
+:::
 
-**Number format matters.** Numbers are read using your company currency format. For example, with USD a period (.) is the decimal separator. With EUR a comma (,) is the decimal separator.
+## Importing Invoices
 
-## How do I import invoices?
+There are some special considerations when importing invoices.
 
-Set up your invoice CSV like this:
+1. A invoice number must be included in the file and must be unique. (If no invoice number is provided, the system will attempt to assign one itself.)
+2. If you have multiple line items you wish to include within the same invoice, use the same invoice number for each line.
+3. Each line item MUST include a quantity and cost column for the calculations of the invoice total. (Otherwise a generic 1 x Invoice Amount line item will be used.)
+4. If you wish to include a payment on the invoice, add a payment amount column and reference the amount paid.
 
-1. **Include a unique invoice number.** Every invoice must have its own number. If you leave it out, the system will try to assign one itself.
-2. **Use the same invoice number for each line item** that belongs on the same invoice. For example, an invoice with three items has three rows with the same invoice number.
-3. **Add a quantity and a cost column for every line item.** These are used to work out the invoice total. If they are missing, a single line item of 1 x Invoice Amount is used.
-4. **To record a payment**, add a payment amount column with the amount paid.
+### Invoice Status Values
 
-### What status values can I use for invoices?
+When importing invoices, you can set the status using the following values in your CSV:
 
-| CSV value | Imported status |
-|---|---|
+| CSV Value | Result |
+|-----------|--------|
 | `draft` | Draft |
 | `sent` | Sent |
 | `paid` | Paid |
@@ -51,25 +50,25 @@ Set up your invoice CSV like this:
 | `0` or `false` or `no` | Sent |
 | *(empty)* | Sent |
 
-## How do I import quotes?
+## Importing Quotes
 
-### What status values can I use for quotes?
+### Quote Status Values
 
-| CSV value | Imported status |
-|---|---|
+When importing quotes, you can set the status using the following values in your CSV:
+
+| CSV Value | Result |
+|-----------|--------|
 | `draft` | Draft |
 | `sent` | Sent |
 
-## How do I import recurring invoices?
+## Importing Recurring Invoices
 
-A recurring invoice is one that is sent automatically on a schedule, for example every month.
+### Frequency Values
 
-### How do I set how often a recurring invoice is sent?
+When importing recurring invoices, you can set the billing frequency using the following values in your CSV:
 
-Put one of these values in the frequency column:
-
-| CSV value | Frequency |
-|---|---|
+| CSV Value | Frequency |
+|-----------|-----------|
 | `daily` | Daily |
 | `weekly` | Weekly |
 | `biweekly` | Every 2 weeks |
@@ -83,74 +82,74 @@ Put one of these values in the frequency column:
 | `2years` | Every 2 years |
 | `3years` | Every 3 years |
 
-If you leave it empty, the frequency is **Monthly**.
+If no frequency is provided, the default is **Monthly**.
 
-### How do I set auto bill?
+### Auto Bill Options
 
-Auto bill controls whether the client's saved payment method is charged automatically. Put one of these values in the auto bill column:
+When importing recurring invoices, you can set the auto bill behavior using the following values in your CSV:
 
-| CSV value | Result |
-|---|---|
+| CSV Value | Result |
+|-----------|--------|
 | `no` or `off` or `false` | Off |
 | `yes` or `always` or `true` | Always |
 | `optin` | Opt-in |
 | `optout` | Opt-out |
 
-If you leave it empty, auto bill is **Off**.
+If no value is provided, the default is **Off**.
 
-## Can I update existing products with an import?
 
-Yes. Besides adding new products, an import can update products you already have.
+## Importing / Updating Products
 
-Invoice Ninja looks for an existing product with the same Product/Item name. If it finds one, it updates that product with the new data instead of creating a new one.
+As well as importing new products, you can also update existing products!
 
-**Note:** only active products are updated. If a matching product is archived or deleted, it is not updated. A NEW product is created instead.
+Invoice Ninja will check for existing products with the same Product/Item name and instead of creating a new product, it will update the product with the new data.
 
-## How do I move from another invoicing app?
+:::warning
+**Note** Invoice Ninja will only update active products, archived/deleted products will not be updated instead NEW products will be created.
+:::
 
-1. Go to **Settings > Import | Export**.
-2. Under **Import**, pick your old app in the **Import Type** dropdown.
-3. Upload the files it asks for (see the table below).
-4. Click **Import**. Invoice Ninja does the rest.
+## Third Party Import
 
-| Coming from | Import Type | Files to upload |
-|---|---|---|
-| FreshBooks | FreshBooks | Clients and invoices files |
-| Invoice2go | Invoice2go | Invoice file |
-| Invoicely | Invoicely | Clients and invoices files |
-| QuickBooks | Quickbooks | The upload boxes shown for this option |
-| Wave | Wave Accounting | Clients and accounting files |
-| Zoho | Zoho | Contacts and invoices files |
+### Freshbooks
 
-## How do I export my data?
+From the Import page, select Freshbooks and then upload your clients and invoices files, we'll do the rest!
 
-There are three ways to get data out of Invoice Ninja.
+### Invoice2go
 
-### Export a report to CSV
+From the Import page, select Invoice2go, upload your invoice file and we'll do the rest!
 
-1. Open [Reports](/docs/user-guide/reports).
-2. Pick the report type (for example **Invoice**, **Client** or **Profit and Loss**) and set the filters. Turn on **Customize Columns** to choose which columns to include.
-3. Click **Export** (top right) to download the data as a CSV file straight away.
+### Invoicely
 
-![Exports](https://invoiceninja.github.io/assets/images/settings/export_report.png "Exports")
+From the Import page, select Invoicely and then upload your clients and invoices files, we'll do the rest!
 
-To get a report by email on a regular basis, open the **Actions** menu (top right) and choose **Schedule**.
+### Wave
 
-### Export one type of record to CSV
+From the Import page, select Wave Account and then upload your clients and accounting files, we'll do the rest!
 
-1. Go to **Settings > Import | Export**.
-2. Under **Export**, choose what to export in the **Export Type** dropdown (for example **Activities**).
-3. Click **Export**.
+### Zoho
 
-### Back up everything
+From the Import page, select Zoho and then upload your contacts and invoices files, we'll do the rest!
 
-Go to **Settings > Backup | Restore**.
+# Export Data
 
-- **To make a backup**, open the **Backup** tab and click **Export**. When the file is ready, you get an email with a download link.
-- **To restore a backup**, open the **Restore** tab, upload the .zip file from your backup, choose whether to bring back settings (**Import Settings**), data (**Import Data**) or both, and click **Import**.
+There are several ways to export data out of Invoice Ninja:
 
-![Backup Exports](https://invoiceninja.github.io/assets/images/settings/export_backup.png "Backup Exports")
+## Export Function using Reports
 
-## Related
+Using the [report](/docs/user-guide/reports) you are able to generate reports and filter them down. When you are ready, there is an Export button which will export the data to csv for instant downloads.
 
-- [Reports](/docs/user-guide/reports)
+![alt text](/assets/images/settings/export_report.png "Exports")
+
+From the reports  menu you are able to curate custom reports including the ability to customize the columns that you wish to export.
+
+You are also able to use the Schedule action to automatically email a report to a selected email address on a regular basis.
+
+## Backup Function
+
+```bash
+Settings > Backup | Restore
+```
+
+Full system backups and restores can be performed from this section of the application. You can create a full backup which will be emailed to you for safe keeping.
+
+![alt text](/assets/images/settings/export_backup.png "Backup Exports")
